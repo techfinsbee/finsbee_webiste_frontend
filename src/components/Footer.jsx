@@ -24,23 +24,23 @@ const Footer = () => {
           {/* Column 1 */}
           <div>
             <ul className="space-y-2">
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600 ">Privacy Policy</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Terms & Condition</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Credit Score</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">FM's Calculator</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Our Lending Partners</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Our Brands</a></li>
+              <li><a href="/privacy-policy" className="text-xl font-semibold hover:text-gray-600 ">Privacy Policy</a></li>
+              <li><a href="/terms-and-conditions" className="text-xl font-semibold hover:text-gray-600">Terms & Condition</a></li>
+              <li><a href="/credit-score" className="text-xl font-semibold hover:text-gray-600">Credit Score</a></li>
+              <li><a href="/fm-calculator" className="text-xl font-semibold hover:text-gray-600">FM's Calculator</a></li>
+              <li><a href="/lending-partners" className="text-xl font-semibold hover:text-gray-600">Our Lending Partners</a></li>
+              <li><a href="/brands" className="text-xl font-semibold hover:text-gray-600">Our Brands</a></li>
             </ul>
           </div>
 
           {/* Column 2 */}
           <div>
             <ul className="space-y-2">
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">About Us</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Contact Us</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Our Partners</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Security</a></li>
-              <li><a href="#" className="text-xl font-semibold hover:text-gray-600">Grievance Redressal</a></li>
+              <li><a href="/about-us" className="text-xl font-semibold hover:text-gray-600">About Us</a></li>
+              <li><a href="contact-us" className="text-xl font-semibold hover:text-gray-600">Contact Us</a></li>
+              <li><a href="/our-partners" className="text-xl font-semibold hover:text-gray-600">Our Partners</a></li>
+              <li><a href="/security" className="text-xl font-semibold hover:text-gray-600">Security</a></li>
+              <li><a href="/grievance-redressal" className="text-xl font-semibold hover:text-gray-600">Grievance Redressal</a></li>
             </ul>
           </div>
 
