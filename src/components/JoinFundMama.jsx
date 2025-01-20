@@ -81,6 +81,21 @@ const JoinFundMama = () => {
           }
         }
 
+        /* Redmi Note 10 specific styling */
+        @media screen and (width: 393px) {
+          .signup-button {
+            right: 24%;
+            bottom: -100px;
+            width: 170px !important;
+            height: 58px !important;
+            font-size: 25px;
+          }
+          
+          .button-visible {
+            transform: translateY(430px);
+          }
+        }
+
         @media screen and (max-width: 425px) {
           .signup-button {
             right: 25%;
