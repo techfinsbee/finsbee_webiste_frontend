@@ -99,7 +99,7 @@ const JoinFundMama = () => {
         @media screen and (max-width: 425px) {
           .signup-button {
             right: 25%;
-            bottom: -50px;
+            bottom: 0px;
             width: 180px !important;
             height: 60px !important;
             font-size: 26px;
