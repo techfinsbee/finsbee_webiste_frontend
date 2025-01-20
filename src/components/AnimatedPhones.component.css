@@ -1,0 +1,13 @@
+@media screen and (max-width: 728px) {
+  .allPhones{
+    gap:5rem !important;
+    margin-top: 40px;
+  }
+  .animated-phones{
+    margin-top:50px;
+  }
+  .middle-image{
+    width: 10rem !important;
+    margin-bottom: 100px;
+  }
+}

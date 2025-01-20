@@ -1,0 +1,14 @@
+
+@media screen and (max-width:728px) {
+  .steps{
+    flex-direction: column !important;
+    padding: 0 !important;
+  }
+  .steps .steps-content, .step-image{
+    width: 100% !important;
+  }
+
+  .step-image{
+    margin-top: 100px;
+  }
+}

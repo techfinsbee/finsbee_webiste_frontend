@@ -1,0 +1,174 @@
+import React, { useState, useEffect } from "react";
+import './Steps.components.css'
+const Steps = () => {
+  const Data = {
+    our_solutions: [
+      {
+        title: "Download & Sign-Up",
+        content: "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
+        image:"/c3.png"
+      },
+      {
+        title: "Fill the Application",
+        content: "Provide basic details like your full name, date of birth, and email address to get started.",
+        image:"/c4.png"
+      },
+      {
+        title: "Apply for Loan",
+        content: "Submit your loan application after a smooth verification process, with just a few taps.",
+        image:"/c2.png"
+      },
+      {
+        title: "Upload Required Documents",
+        content: "Upload essential documents, such as your PAN and Aadhaar card, to complete the application.",
+        image:"/c1.png"
+      },
+      {
+        title: "Loan Disbursal",
+        content: "Get your loan approved and disbursed quickly — as fast as within 10 minutes.",
+        image:"/c4.png"
+      }
+    ],
+  };
+
+  const [activeIndexList, setActiveIndexList] = useState(0);
+  const [intervalId, setIntervalId] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setActiveIndexList((prevIndex) => (prevIndex + 1) % Data.our_solutions.length);
+        setIsAnimating(false);
+      }, 500);
+    }, 2000);
+
+    setIntervalId(interval);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleListItemClick = (index) => {
+    if (index === activeIndexList) return;
+    
+    setIsAnimating(true);
+    setTimeout(() => {
+      setActiveIndexList(index);
+      setIsAnimating(false);
+    }, 600);
+
+    clearInterval(intervalId);
+    const newInterval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setActiveIndexList((prevIndex) => (prevIndex + 1) % Data.our_solutions.length);
+        setIsAnimating(false);
+      }, 600);
+    }, 3000);
+    
+    setIntervalId(newInterval);
+  };
+
+  return (
+    <section className="container mt-30 p-0">
+      <div>
+      <h1 className="loan-header" style={
+        {textAlign:"center", fontSize:"50px", marginTop:"50px", display:"flex", justifyContent:"center",gap:"10px", fontWeight:"700"}}>Fast-track Your Loan in Just<span style={{color:"#8B6B4E"}}>5 Simple Steps</span></h1>
+    </div>
+      <div className="flex flex-col h-fit w-full m-0 px-5">
+        
+        <div className="flex flex-row justify-start w-full pr-8 pt-8 pl-24 steps">
+          <div className="w-1/2 steps-content">
+            <div className="flex flex-col gap-8">
+              {Data.our_solutions.map((data, index) => (
+                <div
+                  key={index}
+                  className="rounded-lg p-4 cursor-pointer transition-all duration-300"
+                  onClick={() => handleListItemClick(index)}
+                  style={{
+                    background: activeIndexList === index ? "#d09c75" : "",
+                    boxShadow: activeIndexList === index ? "5px 2px 15px #d09c75" : "",
+                  }}
+                >
+                  <div className="flex gap-12 items-center">
+                    <div className="relative">
+                      <div
+                        className={`h-10 w-10 bg-[#a54a0c] rounded-full flex-shrink-0 transition-transform duration-300 ${
+                          activeIndexList === index ? 'scale-110' : 'scale-100'
+                        }`}
+                      />
+                      {activeIndexList === index && (
+                        <div className="absolute inset-0 rounded-full border-2 border-white animate-ping" />
+                      )}
+                    </div>
+                    
+                    <div>
+                      <h3
+                        className={`text-lg font-bold ${
+                          activeIndexList === index ? "text-white" : "text-black"
+                        }`}
+                      >
+                        {data.title}
+                      </h3>
+                      {activeIndexList === index && (
+                        <p className={`mt-2 ${
+                          activeIndexList === index ? "text-white" : "text-gray-600"
+                        }`}>
+                          {data.content}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="w-1/2 relative h-[700px] overflow-hidden step-image">
+            <div
+              className={`absolute w-full h-full transition-all duration-500 ease-in-out ${
+                isAnimating ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'
+              }`}
+            >
+              <img
+                src={Data.our_solutions[activeIndexList].image}
+                alt=""
+                className="w-[300px] h-[600px] rounded-lg mx-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        .animate-ping {
+          animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        
+        @keyframes ping {
+          75%, 100% {
+            transform: scale(1.5);
+            opacity: 0;
+          }
+        }
+        
+        @media screen and (max-width: 728px) {
+          .flex-row {
+            flex-direction: column;
+          }
+          
+          .w-1/2 {
+            width: 100%;
+          }
+            .loan-header{
+              font-size: 21px !important;
+              gap:  5px !important;
+              margin-bottom: 40px !important;
+            }
+        }
+      `}</style>
+    </section>
+  );
+};
+
+export default Steps;

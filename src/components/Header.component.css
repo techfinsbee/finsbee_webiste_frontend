@@ -1,0 +1,213 @@
+/* CSS Custom Properties for reusable values */
+:root {
+  --header-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --dropdown-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --transition-standard: 0.3s ease;
+  --color-text: #333;
+  --color-hover: #f9f9f9;
+  --color-subtext: #727272;
+}
+
+/* Base Layout */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(255, 252, 247);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 0;
+}
+
+/* Logo */
+.head {
+  width: 20%;
+}
+
+.logo img {
+  height: auto;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.nav-item {
+  position: relative;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Dropdown Menus */
+.dropdown-menu {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 300px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: var(--dropdown-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 
+    opacity var(--transition-standard),
+    transform var(--transition-standard),
+    visibility var(--transition-standard);
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: background-color var(--transition-standard);
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  transition: 
+    background-color var(--transition-standard),
+    transform 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--color-hover);
+  transform: scale(1.02);
+}
+
+.dropdown-item img {
+  height: 30px;
+  width: 30px;
+  margin-right: 0.75rem;
+}
+
+/* Sub Items */
+
+
+
+
+
+
+
+/* Mobile Menu Button */
+.burger-menu {
+  display: none;
+  width: 30px;
+  height: 25px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.burger-menu span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: var(--color-text);
+  transition: transform var(--transition-standard);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header {
+    justify-content: space-around;
+    padding: 1rem 1rem;
+  }
+  
+  .head {
+    width: 80%;
+  }
+  
+  .logo img {
+    width: 200px;
+  }
+  
+  .contact-sales {
+    display: none;
+  }
+  
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .nav {
+    display: none;
+  }
+  
+  .nav.open {
+    display: flex;
+    position: fixed;
+    top: 12%;
+    right: 0;
+    width: 60%;
+    max-width: 400px;
+    height: auto;
+    background: white;
+    flex-direction: column;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    border-radius: 15px 0 0 15px;
+    animation: slide-in var(--transition-standard);
+  }
+  
+  .menu-item a,
+  .menu-item span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.625rem 0;
+  }
+  
+  .menu-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .menu-title{
+    padding: 10px;
+  }
+  .back-btn {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: #0073e6;
+    margin-bottom: 0.625rem;
+    cursor: pointer;
+  }
+}
+
+/* Animations */
+@keyframes slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
