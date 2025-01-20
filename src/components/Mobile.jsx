@@ -70,7 +70,7 @@ const Mobile = () => {
   ];
 
   const { ref, inView } = useInView({
-    threshold: 0.3, 
+    threshold: 1, 
     triggerOnce: true, // Trigger only once
   });
 
