@@ -14,7 +14,7 @@
   .signup-div button{
     right: 27% !important;
     transform: translateY(450px);
-    bottom: -500px;
+    bottom: -150px;
   }
 
   .head{
@@ -26,7 +26,7 @@
   .signup-div button{
     right: 23% !important;
     transform: translateY(450px);
-    bottom: 0px;
+    bottom: -150px;
   }
 
   .head{
@@ -38,7 +38,7 @@
   .signup-div button{
     right: 18% !important;
     transform: translateY(450px);
-    bottom: 0px;
+    bottom: -200px;
   }
 
   .head{
