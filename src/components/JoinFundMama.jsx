@@ -48,7 +48,7 @@ const JoinFundMama = () => {
           padding: 0.75rem 1.5rem;
           background-color: #E6D5C3;
           border-radius: 0.5rem;
-          bottom: 0%;
+          bottom: -20%;
           right: 40%;
           height: 70px;
           width: 200px;
