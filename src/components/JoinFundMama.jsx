@@ -48,7 +48,7 @@ const JoinFundMama = () => {
           padding: 0.75rem 1.5rem;
           background-color: #E6D5C3;
           border-radius: 0.5rem;
-          bottom: -45%;
+          bottom: -35%;
           right: 40%;
           height: 70px;
           width: 200px;
@@ -99,7 +99,7 @@ const JoinFundMama = () => {
         @media screen and (max-width: 425px) {
           .signup-button {
             right: 25%;
-            bottom: 0px;
+            bottom: -150px;
             width: 180px !important;
             height: 60px !important;
             font-size: 26px;
@@ -109,7 +109,7 @@ const JoinFundMama = () => {
         @media screen and (max-width: 375px) {
           .signup-button {
             right: 23%;
-            bottom: 0px;
+            bottom: -120px;
             width: 160px !important;
             height: 55px !important;
             font-size: 24px;
@@ -122,8 +122,8 @@ const JoinFundMama = () => {
 
         @media screen and (max-width: 320px) {
           .signup-button {
-            right: 18%;
-            bottom: 0px;
+            right: 20%;
+            bottom: -200px;
             width: 150px !important;
             height: 50px !important;
             font-size: 22px;
