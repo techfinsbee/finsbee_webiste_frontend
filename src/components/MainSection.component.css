@@ -1,3 +1,7 @@
+.main{
+  height: 90vh;
+  justify-content: flex-end !important;
+}
 .main-right-text{
   width: auto;
 }
@@ -9,9 +13,7 @@
   transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
-.main2{
-  width: 40%;
-}
+
 @media screen and (max-width: 728px) {
   .main{
     display: flex;
@@ -19,11 +21,13 @@
     padding: 0px !important;  
     padding-left: 0px !important;
     gap: 0px !important;
+    height: 100vh !important;
+    justify-content:flex-start !important;
   }
   .main1{
-    width: 100%;
-    margin: 30px 10px !important;
-    padding: 30px !important;
+    width: 100% !important;
+    margin: 0px 10px !important;
+    padding: 0px 30px !important;
     gap: 30px !important;
   }
   .main1 h1, .main1 h2{
@@ -48,7 +52,14 @@
     margin-left: 0px !important;
   }
   .main-right-text{
-    width: 70%;
+    width: 62%;
+    left: -50px !important;
+  }
+}
+
+@media screen and (max-width: 320px){
+  .main-right-text{
+    width: 6%;
     left: -50px !important;
   }
 }

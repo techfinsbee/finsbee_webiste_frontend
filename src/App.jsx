@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import SocialSidebar from './components/SocialSidebar'
 import MainSection from './components/MainSection'
 import JoinFundMama from './components/JoinFundMama'
 import Mobile from './components/Mobile'
@@ -14,10 +15,7 @@ import './App.css'
 
 function App() {
   const brands_we_trust ={ 
-    title: {
-      t1:"Brands We",
-      t2:"Trust",
-    },
+    title: "Brands We Trust",
     logos:[
     { image: "/brand1.png" },
     { image: "/brand2.png" },
@@ -29,10 +27,7 @@ function App() {
   ]}
 
   const lending_partners = {
-    title: {
-      t1:"Lending",
-      t2:"Partners",
-    },
+    title: "Lending Partners",
     logos:[
     { image: "/lending_partner1.png" },
     { image: "/lending_partner2.png" },
@@ -47,6 +42,7 @@ function App() {
   return (
     <>
       <Header></Header>
+      <SocialSidebar></SocialSidebar>
       <MainSection></MainSection>
       <JoinFundMama></JoinFundMama>
       <Mobile></Mobile>

@@ -77,7 +77,7 @@ const Steps = () => {
   };
 
   return (
-    <section className="container mt-30 p-0">
+    <section className="container mt-30 p-0" style={{maxWidth:"100%"}}>
       <div>
         <h1
           className="loan-header"
@@ -98,7 +98,7 @@ const Steps = () => {
       <div className="flex flex-col h-fit w-full m-0 px-5">
         <div className="flex flex-row justify-start w-full pr-8 pt-8 pl-24 steps">
           <div className="w-1/2 steps-content">
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col">
               {Data.our_solutions.map((data, index) => (
                 <div
                   key={index}
@@ -126,7 +126,7 @@ const Steps = () => {
 
                     <div>
                       <h3
-                        className={`text-lg font-bold ${
+                        className={`text-lg font-bold roboto-serif ${
                           activeIndexList === index
                             ? "text-white"
                             : "text-black"
@@ -135,7 +135,7 @@ const Steps = () => {
                         {data.title}
                       </h3>
                       <p
-                        className={`mt-2 transition-colors duration-150 ${
+                        className={`mt-2 transition-colors duration-150 roboto-slab ${
                           activeIndexList === index
                             ? "text-white"
                             : "text-gray-600"
@@ -150,7 +150,7 @@ const Steps = () => {
             </div>
           </div>
 
-          <div className="w-1/2 relative h-[700px] overflow-hidden step-image">
+          <div className="w-1/2 relative h-[700px] overflow-hidden step-image flex justify-center">
             <div
               className={`absolute w-full h-full transition-all duration-150 ease-in-out ${
                 isAnimating

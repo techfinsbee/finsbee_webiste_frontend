@@ -11,4 +11,7 @@
   .box-div{
     width: 100% !important; 
   }
+  #loan-section{
+    height: 200vh !important;
+  }
 }

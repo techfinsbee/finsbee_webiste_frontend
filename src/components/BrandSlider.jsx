@@ -1,29 +1,32 @@
-import Slider from 'react-infinite-logo-slider'
+import React from 'react';
+import Slider from 'react-infinite-logo-slider';
 import './BrandSlider.component.css'
-const BrandSlider = ({allLogos}) => {
-    return (
-      <div className='brand-slider' style={{width:"1000px"}}>
-        <Slider
-            width="250px"
-            duration={60}
-            pauseOnHover={true}
-            blurBorders={false}
-            blurBorderColor={'#fff'}
-        >
-          {allLogos.map((logo, index)=>{
-            return (
-              <>
-              <div key={index} className='flex justify-center items-center mr-10'>
-                <Slider.Slide >
-                <img src={logo.image}  alt="any" className='w-36 brand-image' />
+const BrandSlider = ({ allLogos }) => {
+  return (
+    <div className="brand-slider max-w-7xl mx-auto overflow-hidden">
+      <Slider
+        width="300px"
+        duration={60}
+        pauseOnHover={true}
+        blurBorders={false}
+        blurBorderColor={'#fff'}
+      >
+        {allLogos.map((logo, index) => (
+          <div key={index} className="flex justify-center items-center mr-10">
+            <Slider.Slide>
+              <div className="w-36 h-36 flex items-center justify-center">
+                <img
+                  src={logo.image}
+                  alt={`brand-${index}`}
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </Slider.Slide>
-            </div>
-              </>
-            )
-          })}
-        </Slider>
-        </div>
-    )
-}              
-                     
+          </div>
+        ))}
+      </Slider>
+    </div>
+  );
+};
+
 export default BrandSlider;

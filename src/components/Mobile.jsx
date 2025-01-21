@@ -36,13 +36,13 @@ const AnimatedCounter = ({ end, duration, label, prefix = '', suffix = '+' }) =>
   };
   
   return (
-    <div className="bg-[#E6D5C3] rounded-3xl p-6 flex flex-col items-center justify-center text-center min-w-[310px]
+    <div className="bg-[#E6D5C3] rounded-3xl p-6 flex flex-col items-center justify-center text-center min-w-[250px]
                     shadow-[0_8px_30px_rgb(0,0,0,0.12)] transform hover:scale-105 transition-all duration-300
                     border border-[rgba(255,255,255,0.1)]">
       <div className="text-4xl font-bold mb-2 text-gray-800">
         {prefix}{formatNumber(count)}{suffix}
       </div>
-      <div className="text-gray-700 whitespace-pre-wrap">
+      <div className="text-gray-700">
         {label}
       </div>
     </div>
@@ -70,27 +70,29 @@ const Mobile = () => {
   ];
 
   const { ref, inView } = useInView({
-    threshold: 1, 
-    triggerOnce: true, // Trigger only once
+    threshold: 0.2, 
+    triggerOnce: false, 
   });
 
   return (
     <>
-      <div className="" style={{ marginTop: "180px", display: "flex", justifyContent: "center" }}>
+    <div style={{height:"50vh"}}>
+      <div className="" style={{ display: "flex", justifyContent: "center" }}>
         <img src="/mobile.png" alt="" />
       </div>
-      <div ref={ref} className="p-8 flex flex-wrap gap-28 justify-center items-center counter">
+      <div ref={ref} className="flex flex-wrap gap-28 justify-center items-center counter">
         {inView &&
           stats.map((stat, index) => (
             <AnimatedCounter
               key={index}
               end={stat.end}
-              duration={1000} // 1.5 seconds
+              duration={1000}
               label={stat.label}
               prefix={stat.prefix}
               suffix={stat.suffix}
             />
           ))}
+      </div>
       </div>
     </>
   );

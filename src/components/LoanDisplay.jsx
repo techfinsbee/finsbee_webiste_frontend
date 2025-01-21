@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
-
+import AnimatedBenefits from './AnimatedBenefits';
 const LoanBox = ({ title, description, position, delay, isInView, onClick, isActive, isHighlighted }) => {
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -16,22 +16,22 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
   const getPositionClasses = () => {
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
-      transition-all duration-500 transform opacity-0
-      w-100 hidden md:block cursor-pointer
+      transition-all duration-400 transform opacity-0
+      w-90 hidden md:block cursor-pointer
     `;
 
     // Separate scaling classes for automatic and hover effects
     const scaleClasses = isHighlighted 
-      ? 'scale-110 shadow-2xl bg-[#725839] ring-4 ring-white ring-opacity-50' 
+      ? 'scale-105 shadow-2xl bg-[#725839] ring-4 ring-white ring-opacity-50' 
       : 'scale-95 hover:scale-105 hover:shadow-xl hover:bg-[#725839]';
 
     const positions = {
-      leftTop: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} top-20 -left-20`,
+      leftTop: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} top-10 -left-20`,
       leftMiddle: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} top-1/2 -translate-y-1/2 -left-20`,
-      leftBottom: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} bottom-20 -left-20`,
-      rightTop: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} top-20 -right-20`,
+      leftBottom: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} bottom-10 -left-20`,
+      rightTop: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} top-10 -right-20`,
       rightMiddle: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} top-1/2 -translate-y-1/2 -right-20`,
-      rightBottom: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} bottom-20 -right-20`,
+      rightBottom: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} bottom-10 -right-20`,
     };
 
     return `${baseClasses} ${positions[position]} ${isAnimated ? 'opacity-100' : ''} ${scaleClasses}`;
@@ -43,13 +43,13 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       style={{ 
         transitionDelay: `${delay}ms`,
         transitionProperty: 'all',
-        transitionDuration: '500ms',
+        transitionDuration: '400ms',
         transitionTimingFunction: 'ease-in-out'
       }}
       onClick={onClick}
     >
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-sm leading-tight">{description}</p>
+      <h3 className="text-xl font-bold mb-2 roboto-serif">{title}</h3>
+      <p className="text-sm leading-tight roboto-slab">{description}</p>
     </div>
   );
 };
@@ -115,7 +115,7 @@ const LoanDisplay = () => {
       interval = setInterval(() => {
         setCurrentImageIndex((prevIndex) => (prevIndex + 1) % loans.length);
         setSelectedLoan(null);
-      }, 3000);
+      }, 2000);
     }
     return () => clearInterval(interval);
   }, [autoPlay, loans.length]);
@@ -141,7 +141,7 @@ const LoanDisplay = () => {
           className={`
             bg-[#8B6B4E] text-white p-4 rounded-xl shadow-lg w-250 cursor-pointer
             transition-all duration-500 ease-in-out
-            ${currentImageIndex === index ? 'scale-110 shadow-2xl bg-[#725839] ring-4 ring-white ring-opacity-50' : 'scale-100 hover:scale-105 hover:shadow-xl hover:bg-[#725839]'}
+            ${currentImageIndex === index ? 'scale-[1.02] shadow-xl bg-[#725839] ring-2 ring-white ring-opacity-50' : 'scale-100 hover:scale-[1.02] hover:shadow-lg hover:bg-[#725839]'}
           `}
           onClick={() => handleBoxClick(index)}
         >
@@ -154,22 +154,25 @@ const LoanDisplay = () => {
 
   return (
     <>
+    <section style={{height:"90vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
       <div>
-        <h1 className="loan-header" style={{
+        <h1 className="loan-header roboto-serif" style={{
           textAlign: "center",
           fontSize: "50px",
           marginTop: "50px",
           display: "flex",
           justifyContent: "center",
-          gap: "10px"
+          gap: "10px",
+          fontWeight:"700"
         }}>
           Check Out the<h1 style={{color:"#8B6B4E"}}>FundsMama</h1> Loan
         </h1>
       </div>
-      <div className="relative min-h-screen flex flex-col items-center justify-center p-4 md:pl-32 md:pr-32 mobile" style={{ marginTop: '50px' }}>
+      <AnimatedBenefits></AnimatedBenefits>
+      <div className="relative min-h-screen flex flex-col mt-12 items-center p-4 md:pl-32 md:pr-32 mobile">
         <div 
           ref={ref} 
-          className="relative w-[300px] h-[600px] mx-auto"
+          className="relative w-[300px] h-[500px] mx-auto"
         >
           <div className="absolute inset-0 z-10 overflow-hidden rounded-3xl">
             <div 
@@ -206,6 +209,10 @@ const LoanDisplay = () => {
       </div>
       <style jsx>{`
         @media (max-width: 428px) {
+        .loan-section{
+          height: 200vh !important;
+          margin-top: 500px !important;
+        }
           .loan-header {
             font-size: 25px !important;
             font-weight: 700 !important;
@@ -217,6 +224,7 @@ const LoanDisplay = () => {
           }
         }
       `}</style>
+      </section>
     </>
   );
 };

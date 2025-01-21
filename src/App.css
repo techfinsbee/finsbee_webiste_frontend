@@ -4,6 +4,14 @@ body{
   background: linear-gradient(to bottom, rgb(255, 252, 247), rgb(254, 245, 233));
 }
 
+.roboto-serif{
+  font-family: 'Roboto Serif'
+}
+
+.roboto-slab{
+  font-family: 'Roboto Slab'
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
