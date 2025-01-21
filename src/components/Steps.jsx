@@ -47,8 +47,8 @@ const Steps = () => {
       setTimeout(() => {
         setActiveIndexList((prevIndex) => (prevIndex + 1) % Data.our_solutions.length);
         setIsAnimating(false);
-      }, 300); // Reduced from 500ms to 300ms for smoother transition
-    }, 5000); // Increased from 2000ms to 5000ms for slower automatic cycling
+      }, 150); // Reduced to 150ms for faster transition
+    }, 5000);
   };
 
   useEffect(() => {
@@ -58,25 +58,22 @@ const Steps = () => {
   }, []);
 
   const handleListItemClick = (index) => {
-    if (index === activeIndexList || isAnimating) return; // Prevent clicking during animation
+    if (index === activeIndexList || isAnimating) return;
 
-    // Clear existing interval
     if (intervalId) {
       clearInterval(intervalId);
     }
 
-    // Immediate state updates
     setIsAnimating(true);
     
-    // Handle the transition
+    // Reduced timeout to 150ms for faster response
     setTimeout(() => {
       setActiveIndexList(index);
       setIsAnimating(false);
       
-      // Restart the interval after transition
       const newInterval = startInterval();
       setIntervalId(newInterval);
-    }, 300); // Reduced from 600ms to 300ms for quicker response
+    }, 150);
   };
 
   return (
@@ -105,7 +102,7 @@ const Steps = () => {
               {Data.our_solutions.map((data, index) => (
                 <div
                   key={index}
-                  className={`rounded-lg p-4 cursor-pointer transition-all duration-300 ${
+                  className={`rounded-lg p-4 cursor-pointer transition-all duration-150 ${
                     isAnimating ? 'pointer-events-none' : ''
                   }`}
                   onClick={() => handleListItemClick(index)}
@@ -115,10 +112,10 @@ const Steps = () => {
                       activeIndexList === index ? "5px 2px 15px #d09c75" : "",
                   }}
                 >
-                  <div className="flex gap-12 items-center">
+                  <div className="flex gap-12 items-start">
                     <div className="relative">
                       <div
-                        className={`h-10 w-10 bg-[#a54a0c] rounded-full flex-shrink-0 transition-transform duration-300 ${
+                        className={`h-10 w-10 bg-[#a54a0c] rounded-full flex-shrink-0 transition-transform duration-150 ${
                           activeIndexList === index ? "scale-110" : "scale-100"
                         }`}
                       />
@@ -137,17 +134,15 @@ const Steps = () => {
                       >
                         {data.title}
                       </h3>
-                      {activeIndexList === index && (
-                        <p
-                          className={`mt-2 ${
-                            activeIndexList === index
-                              ? "text-white"
-                              : "text-gray-600"
-                          }`}
-                        >
-                          {data.content}
-                        </p>
-                      )}
+                      <p
+                        className={`mt-2 transition-colors duration-150 ${
+                          activeIndexList === index
+                            ? "text-white"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        {data.content}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -157,7 +152,7 @@ const Steps = () => {
 
           <div className="w-1/2 relative h-[700px] overflow-hidden step-image">
             <div
-              className={`absolute w-full h-full transition-all duration-300 ease-in-out ${
+              className={`absolute w-full h-full transition-all duration-150 ease-in-out ${
                 isAnimating
                   ? "translate-x-full opacity-0"
                   : "translate-x-0 opacity-100"
