@@ -250,6 +250,9 @@ const CibilScoreSection = () => {
           .check {
             font-size: 1.8rem !important;
           }
+          .cibil-score {
+            margin-top: 0px !important;
+          }
           .cibil-w {
             width: 100% !important;
           }
@@ -269,7 +272,7 @@ const CibilScoreSection = () => {
             font-size: 1.3rem !important;
           }
           .cibil-score {
-            margin-top: 100px !important;
+            margin-top: 0px !important;
           }
           .cibil-w {
             width: 100% !important;
