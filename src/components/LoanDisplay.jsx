@@ -134,7 +134,7 @@ const LoanDisplay = () => {
 
   // Mobile view component
   const MobileBoxes = () => (
-    <div className="flex flex-col gap-4 md:hidden p-2 mt-8">
+    <div className="flex flex-col gap-4 md:hidden p-2">
       {loans.map((loan, index) => (
         <div 
           key={index}
@@ -156,7 +156,7 @@ const LoanDisplay = () => {
     <>
     <section style={{height:"90vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
       <div>
-        <h1 className="loan-header roboto-serif" style={{
+        <h1 className="loan-headers roboto-serif" style={{
           textAlign: "center",
           fontSize: "50px",
           marginTop: "50px",
@@ -208,12 +208,12 @@ const LoanDisplay = () => {
         <MobileBoxes />
       </div>
       <style jsx>{`
-        @media (max-width: 428px) {
+        @media (max-width: 728px) {
         .loan-section{
-          height: 200vh !important;
-          margin-top: 500px !important;
+          height: 160vh !important;
+          margin-top: 400px !important;
         }
-          .loan-header {
+          .loan-headers {
             font-size: 25px !important;
             font-weight: 700 !important;
             margin-top: 50px !important;
