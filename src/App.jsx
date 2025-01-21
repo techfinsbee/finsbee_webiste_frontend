@@ -11,6 +11,7 @@ import AnimatedPhones from './components/AnimatedPhones'
 import FeaturedBrands from './components/FeaturedBrands'
 import FeatureCards from './components/FeatureCards'
 import Footer from './components/Footer'
+import MobileFrame from './components/MobileFrame';
 import './App.css'
 
 function App() {
@@ -57,6 +58,9 @@ function App() {
       <FeatureCards></FeatureCards>
       <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
       <Footer></Footer>
+      {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
+      <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
+    </div> */}
     </>
   )
 }
