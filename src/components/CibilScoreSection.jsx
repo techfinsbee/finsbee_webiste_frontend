@@ -250,9 +250,6 @@ const CibilScoreSection = () => {
           .check {
             font-size: 1.8rem !important;
           }
-          .cibil-score {
-            margin-top: 100px !important;
-          }
           .cibil-w {
             width: 100% !important;
           }
