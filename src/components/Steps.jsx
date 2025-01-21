@@ -190,7 +190,7 @@ const Steps = () => {
             width: 100%;
           }
           .loan-header {
-            font-size: 21px !important;
+            font-size: 18px !important;
             gap: 5px !important;
             margin-bottom: 40px !important;
           }
