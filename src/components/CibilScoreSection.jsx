@@ -42,7 +42,10 @@ const CibilScoreSection = () => {
   }, [inView]);
 
   return (
-    <div className="flex justify-center p-8 cibil-score" style={{marginTop:"150px"}}>
+    <div
+      className="flex justify-center p-8 cibil-score"
+      style={{ marginTop: "250px" }}
+    >
       <div className="cibil-w" style={{ width: "84%" }}>
         {/* Header */}
         <h1 className="text-4xl md:text-5xl gap-2  flex justify-center font-bold mb-12 check roboto-serif">
@@ -183,7 +186,9 @@ const CibilScoreSection = () => {
                 />
               </div>
               <div>
-                <h2 className="text-2xl font-bold roboto-serif">Learn About Key Insights</h2>
+                <h2 className="text-2xl font-bold roboto-serif">
+                  Learn About Key Insights
+                </h2>
 
                 <p className="text-gray-600 roboto-light">
                   Make better decisions to grow your savings and improve your
@@ -276,6 +281,13 @@ const CibilScoreSection = () => {
           }
           .cibil-w {
             width: 100% !important;
+          }
+
+          @media (min-width: 1367px) and (max-width: 1920px) {
+            /* For screens up to 17 inches (approx.) */
+            .cibil-score {
+              margin-top: 0px;
+            }
           }
         }
       `}</style>

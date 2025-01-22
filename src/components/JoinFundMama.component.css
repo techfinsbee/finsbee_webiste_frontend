@@ -1,0 +1,11 @@
+@media (min-width: 1500px) and (max-width: 1920px) {
+  .join-text{
+    font-size: 3rem !important;
+    line-height: 3rem !important;
+  }
+  .signup-button{
+    height: 100px;
+    width: 300px;
+    font-size: 2rem !important;
+  }
+}

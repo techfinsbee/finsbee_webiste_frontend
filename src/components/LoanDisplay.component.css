@@ -1,17 +1,10 @@
-.loanbox{
-  max-width: 20rem !important;
-  height: 10rem !important;
-}
 
-@media screen and (max-width: 728px) {
-  .main-image{
-    height: 300px !important;
-
-  }
-  .box-div{
-    width: 100% !important; 
-  }
+@media (min-width: 1500px) and (max-width: 1920px) {
   #loan-section{
-    height: 200vh !important;
+    height: 60vh !important;
+    margin-top: 50px !important;
+  }
+  .mobile{
+    min-height: 0vh !important;
   }
 }

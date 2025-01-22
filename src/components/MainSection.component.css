@@ -66,4 +66,20 @@
     width: 85% !important;
     left: -50px !important;
   }
+  
+}
+
+@media (min-width: 1500px) and (max-width: 1920px) {
+  .main-h1{
+    font-size: 5rem !important;
+    line-height: 5rem !important;
+  }
+  .main-right-text{
+    width: 60% !important;
+    left: -50px !important;
+    height: 25%;
+  }
+  .main-right-text p{
+    font-size: 2rem;
+  }
 }

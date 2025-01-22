@@ -17,7 +17,7 @@ const MainSection = () => {
     >
       {/* Left content */}
       <div className="flex flex-col main1 gap-24 ml-24" style={{width:"60%"}}>
-        <h1 className="text-4xl font-bold text-gray-800 max-w-full ml-5 roboto-serif">
+        <h1 className="text-4xl font-bold text-gray-800 max-w-full ml-5 roboto-serif main-h1">
         Your Ultimate Financial <br /> SuperApp-Loans, Shopping, Rewards, and More!
         </h1>
 
@@ -76,8 +76,10 @@ const MainSection = () => {
             .main2 img{
               width: 400px !important;
             }
-            
+          
           }
+
+          
         `
       }</style>
     </div>

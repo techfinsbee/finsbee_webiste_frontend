@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import AnimatedBenefits from './AnimatedBenefits';
+import './LoanDisplay.component.css'
 const LoanBox = ({ title, description, position, delay, isInView, onClick, isActive, isHighlighted }) => {
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -156,7 +157,7 @@ const LoanDisplay = () => {
 
   return (
     <>
-    <section style={{height:"90vh", marginTop:"300px"}} id="loan-section" className='mb-16 loan-section'>
+    <section style={{height:"90vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
       <div>
         <h1 className="loan-headers roboto-serif" style={{
           textAlign: "center",
