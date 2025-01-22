@@ -59,7 +59,7 @@ const MainSection = () => {
           `}
         >
           <p className="text-gray-800 whitespace-nowrap font-medium text-2xl earn roboto-serif" style={{textAlign:"center"}}>
-          Earn FMCoins on <br />each transaction via <br />App
+          Earn FMCoins on <br /> each transaction via <br /> App
           </p>
         </div>
       </div>
@@ -71,7 +71,7 @@ const MainSection = () => {
               height: auto !important;
             }
               .main-right-text p{
-              font-size: 0.8rem !important;
+              font-size: 1.5rem !important;
             }
             .main2 img{
               width: 400px !important;

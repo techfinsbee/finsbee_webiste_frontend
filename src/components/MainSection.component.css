@@ -46,20 +46,24 @@
     width: 100% !important;
   }
   .main2 p{
-    font-size: 0.8rem !important;
+    font-size: 1.5rem !important;
   }
   .play{
     margin-left: 0px !important;
   }
   .main-right-text{
-    width: 65%;
+    width: 75% !important;
     left: -50px !important;
+    height: 45%;
+  }
+  .-bottom-0{
+    bottom:-40px !important;
   }
 }
 
 @media screen and (max-width: 320px){
   .main-right-text{
-    width: 60%;
+    width: 85% !important;
     left: -50px !important;
   }
 }
