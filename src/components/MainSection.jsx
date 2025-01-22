@@ -71,7 +71,7 @@ const MainSection = () => {
               height: auto !important;
             }
               .main-right-text p{
-              font-size: 1.2rem !important;
+              font-size: 0.8rem !important;
             }
             .main2 img{
               width: 400px !important;
