@@ -60,7 +60,7 @@ const CibilScoreSection = () => {
               >
                 <img
                   src="/sheet.png"
-                  className="w-12 h-8 text-green-500"
+                  className="w-[40px] h-8 text-green-500"
                   alt=""
                 />
               </div>

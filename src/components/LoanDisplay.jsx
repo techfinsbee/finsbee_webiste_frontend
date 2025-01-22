@@ -17,7 +17,7 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
       transition-all duration-400 transform opacity-0
-      w-90 hidden md:block cursor-pointer
+      w-[300px] h-[120px] hidden md:block cursor-pointer
     `;
 
     // Separate scaling classes for automatic and hover effects
@@ -44,7 +44,9 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
         transitionDelay: `${delay}ms`,
         transitionProperty: 'all',
         transitionDuration: '400ms',
-        transitionTimingFunction: 'ease-in-out'
+        transitionTimingFunction: 'ease-in-out',
+        background: "linear-gradient(145deg,rgb(238, 192, 128), #E8D5C0)",
+        color: "black"
       }}
       onClick={onClick}
     >
