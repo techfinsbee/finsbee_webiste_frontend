@@ -11,7 +11,7 @@ const JoinFundMama = () => {
     <div className="flex flex-col items-center">
       <div className="text-center max-w-5xl mx-auto">
         <h1 className="text-3xl md:text-3xl font-bold roboto-serif  ">
-          Join FundsMama – Your First Step to Smarter Savings and Easier Investments
+        Join FundsMama – Empowering Your Finances with Easy Loans and Shopping!
         </h1>
         
         <div ref={ref} className={`transform transition-all duration-700 ease-out ${

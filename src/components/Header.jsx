@@ -4,19 +4,22 @@
   const dropdownData = [
     {
       title: "Home",
+      link: "home"
+    },
+    
+    {
+      title: "Loan",
+      link: "loan-section",
+    },
+    {
+      title: "Mart",
+      link: "mart",
     },
     {
       title: "About Us",
     },
     {
       title: "Contact Us",
-    },
-    {
-      title: "Loans",
-      link: "loan-section",
-    },
-    {
-      title: "Mart",
     },
   ];
 

@@ -12,6 +12,10 @@ body{
   font-family: 'Roboto Slab'
 }
 
+.roboto-light{
+  font-family: 'Roboto Light'
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

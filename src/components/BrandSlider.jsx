@@ -3,7 +3,7 @@ import Slider from 'react-infinite-logo-slider';
 import './BrandSlider.component.css'
 const BrandSlider = ({ allLogos }) => {
   return (
-    <div className="brand-slider max-w-7xl mx-auto overflow-hidden">
+    <div className="brand-slider mx-auto overflow-hidden">
       <Slider
         width="300px"
         duration={60}

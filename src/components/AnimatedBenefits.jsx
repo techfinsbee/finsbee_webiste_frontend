@@ -19,11 +19,13 @@ const AnimatedBenefits = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-2 sm:p-4">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-0">
-        <span className="text-base sm:text-xl lg:text-2xl font-medium roboto-slab">
+    <div className="w-full max-w-2xl mx-auto p-2 sm:p-4" style={{display:"flex", justifyContent:"center",alignItems:"center", flexDirection:"column"}}>
+      <span className="text-base sm:text-xl lg:text-2xl font-medium roboto-slab" style={{textAlign:"center"}}>
           With FundsMama, you unlock
         </span>
+      <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-0">
+        
+        <br />
         <div className="relative h-6 sm:h-8 sm:ml-2">
           <div className="relative h-full overflow-hidden inline-block w-[200px] sm:w-[250px] lg:w-[300px]">
             {benefits.map((benefit, index) => (
@@ -34,6 +36,7 @@ const AnimatedBenefits = () => {
                   transform: `translateY(${index === currentIndex ? '0%' : '100%'})`,
                   opacity: index === currentIndex ? 1 : 0,
                   willChange: 'transform',
+                  textAlign:"center"
                 }}
               >
                 <span className="text-green-500 block">{benefit}</span>

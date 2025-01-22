@@ -69,7 +69,7 @@ const CibilScoreSection = () => {
                   Correct Any Discrepancies
                 </h2>
 
-                <p className="text-gray-600 roboto-slab">
+                <p className="text-gray-600 roboto-light">
                   Contact the lender or the concerned credit bureau to correct
                   any discrepancies
                 </p>
@@ -110,7 +110,7 @@ const CibilScoreSection = () => {
                 <h2 className="text-2xl font-bold flex gap-4 roboto-serif">
                   Get Better Loan Rates
                 </h2>
-                <p className="text-gray-600 roboto-slab">
+                <p className="text-gray-600 roboto-light">
                   A good Credit Score will help you get better interest rates
                   and credit Limits
                 </p>
@@ -135,7 +135,7 @@ const CibilScoreSection = () => {
                 <h2 className="text-2xl font-bold flex gap-4 roboto-serif">
                   Monitor Your Credit Health
                 </h2>
-                <p className="text-gray-600 roboto-slab">
+                <p className="text-gray-600 roboto-light">
                   Check your credit score and report regularly to track your
                   credit health
                 </p>
@@ -161,7 +161,7 @@ const CibilScoreSection = () => {
                   Improve Your Financial Decision
                 </h2>
 
-                <p className="text-gray-600 roboto-slab">
+                <p className="text-gray-600 roboto-light">
                   Learn about your credit history, credit health, and various
                   other factors
                 </p>
@@ -185,7 +185,7 @@ const CibilScoreSection = () => {
               <div>
                 <h2 className="text-2xl font-bold roboto-serif">Learn About Key Insights</h2>
 
-                <p className="text-gray-600 roboto-slab">
+                <p className="text-gray-600 roboto-light">
                   Make better decisions to grow your savings and improve your
                   Finances
                 </p>
@@ -210,7 +210,7 @@ const CibilScoreSection = () => {
                 <h2 className="text-2xl font-bold flex gap-4 roboto-serif">
                   Your Credit Health Matters
                 </h2>
-                <p className="text-gray-600 roboto-slab">
+                <p className="text-gray-600 roboto-light">
                   Credit health is one of the most Important Factors
                 </p>
               </div>

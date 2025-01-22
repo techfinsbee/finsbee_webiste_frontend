@@ -17,7 +17,7 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
       transition-all duration-400 transform opacity-0
-      w-[300px] h-[120px] hidden md:block cursor-pointer
+      w-[300px] h-[130px] hidden md:block cursor-pointer
     `;
 
     // Separate scaling classes for automatic and hover effects
@@ -51,7 +51,7 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       onClick={onClick}
     >
       <h3 className="text-xl font-bold mb-2 roboto-serif">{title}</h3>
-      <p className="text-sm leading-tight roboto-slab">{description}</p>
+      <p className="text-md leading-tight roboto-light">{description}</p>
     </div>
   );
 };

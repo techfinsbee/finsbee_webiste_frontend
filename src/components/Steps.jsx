@@ -135,7 +135,7 @@ const Steps = () => {
                         {data.title}
                       </h3>
                       <p
-                        className={`mt-2 transition-colors duration-150 roboto-slab ${
+                        className={`mt-2 transition-colors duration-150 roboto-light ${
                           activeIndexList === index
                             ? "text-white"
                             : "text-gray-600"

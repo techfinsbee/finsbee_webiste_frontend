@@ -12,9 +12,12 @@ import FeaturedBrands from './components/FeaturedBrands'
 import FeatureCards from './components/FeatureCards'
 import Footer from './components/Footer'
 import MobileFrame from './components/MobileFrame';
+import ReactDOM from 'react-dom'
 import './App.css'
 
 function App() {
+
+
   const brands_we_trust ={ 
     title: "Brands We Trust",
     logos:[

@@ -9,19 +9,17 @@ const MainSection = () => {
   });
 
   return (
+    <section id="home" className=''>
+
     <div
       ref={ref} // Attach the ref to the main section
       className="relative w-full max-w-full flex items-center  gap-40 main"
     >
       {/* Left content */}
-      <div className="flex flex-col gap-8 main1 ml-24" style={{width:"70%"}}>
+      <div className="flex flex-col main1 gap-24 ml-24" style={{width:"60%"}}>
         <h1 className="text-4xl font-bold text-gray-800 max-w-full ml-5 roboto-serif">
-          Your Ultimate Finance App with a Seamless Experience
+        Your Ultimate Financial <br /> SuperApp-Loans, Shopping, Rewards, and More!
         </h1>
-
-        <h2 className="text-5xl text-gray-700 mb-6 ml-5 roboto-slab">
-        Borrow, Shop, Insure - All Seamlessly 
-        </h2>
 
         {/* App store buttons */}
         <div className="flex gap-4 ml-5 play">
@@ -54,14 +52,14 @@ const MainSection = () => {
         <div
           className={`
             main-right-text
-            absolute -left-24 px-6 py-3 -bottom-0
+            absolute -left-20 px-6 py-3 -bottom-0
             bg-[#E6D5C3] rounded-lg
             transform transition-all duration-[1500ms]
             ${inView ? '-translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
           `}
         >
-          <p className="text-gray-800 whitespace-nowrap font-medium text-3xl earn roboto-serif">
-            Earn coins and <br /> unlock benefits
+          <p className="text-gray-800 whitespace-nowrap font-medium text-2xl earn roboto-serif" style={{textAlign:"center"}}>
+          Earn FMCoins on <br />each transaction via <br />App
           </p>
         </div>
       </div>
@@ -83,6 +81,7 @@ const MainSection = () => {
         `
       }</style>
     </div>
+    </section>
   );
 };
 
