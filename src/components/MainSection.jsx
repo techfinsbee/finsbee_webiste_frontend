@@ -67,7 +67,7 @@ const MainSection = () => {
         `
           @media (max-width: 375px) {
             .main-right-text{
-              width: 75%;
+              width: 80%;
               height: auto !important;
             }
               .main-right-text p{
