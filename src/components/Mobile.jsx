@@ -86,7 +86,7 @@ const Mobile = () => {
             <AnimatedCounter
               key={index}
               end={stat.end}
-              duration={1000}
+              duration={1500}
               label={stat.label}
               prefix={stat.prefix}
               suffix={stat.suffix}
