@@ -213,8 +213,8 @@ const LoanDisplay = () => {
       <style jsx>{`
         @media (max-width: 728px) {
         .loan-section{
-          height: 160vh !important;
-          margin-top: 400px !important;
+          height: 200vh !important;
+          margin-top: 450px !important;
         }
           .loan-headers {
             font-size: 25px !important;
