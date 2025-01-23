@@ -17,7 +17,7 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
   const getPositionClasses = () => {
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
-      transition-all duration-400 transform opacity-0
+      transition-all duration-300 transform opacity-0
       w-[300px] h-[130px] hidden md:block cursor-pointer
     `;
 
@@ -44,7 +44,7 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       style={{ 
         transitionDelay: `${delay}ms`,
         transitionProperty: 'all',
-        transitionDuration: '400ms',
+        transitionDuration: '300ms',
         transitionTimingFunction: 'ease-in-out',
         background: "linear-gradient(145deg,rgb(238, 192, 128), #E8D5C0)",
         color: "black"
@@ -74,7 +74,7 @@ const LoanDisplay = () => {
       title: "EMI Loan", 
       description: "Flexible loans, no collateral, repay in easy installments.", 
       position: "leftMiddle", 
-      delay: 100,
+      delay: 200,
       image: images[1]
     },
     { 
@@ -88,21 +88,21 @@ const LoanDisplay = () => {
       title: "Loan Against Property", 
       description: "Unlock high-value loans with flexible tenures by leveraging your property assets.", 
       position: "rightTop", 
-      delay: 300,
+      delay: 200,
       image: images[2]
     },
     { 
       title: "Home Loan", 
       description: "Affordable loans to turn your homeownership dreams into reality.", 
       position: "rightMiddle", 
-      delay: 400,
+      delay: 200,
       image: images[3]
     },
     { 
       title: "Loan Against Security", 
       description: "Access funds by pledging shares, mutual funds, or other securities.", 
       position: "rightBottom", 
-      delay: 500,
+      delay: 200,
       image: images[4]
     }
   ];
