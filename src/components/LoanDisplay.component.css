@@ -2,7 +2,7 @@
 @media (min-width: 1500px) and (max-width: 1920px) {
   #loan-section{
     height: 60vh !important;
-    margin-top: 50px !important;
+    margin-top: 200px !important;
   }
   .mobile{
     min-height: 0vh !important;
