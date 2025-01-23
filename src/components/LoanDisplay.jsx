@@ -229,7 +229,7 @@ const LoanDisplay = () => {
 
         @media (max-width: 425px) {
           .loan-section{
-          height: 150vh !important;
+          height: 151vh !important;
         }
         }
       `}</style>
