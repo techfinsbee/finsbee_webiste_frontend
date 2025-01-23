@@ -32,9 +32,9 @@ const JoinFundMama = () => {
             margin-top: 200px !important;
           }
         }
-          @media (max-width: 400px) {
+          @media (max-width: 425px) {
           .join-fund{
-            margin-top: 0px !important;
+            margin-top: 40px !important;
           }
         }
       `}</style>
