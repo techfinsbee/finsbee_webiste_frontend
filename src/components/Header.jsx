@@ -8,7 +8,7 @@
     },
     
     {
-      title: "Loan",
+      title: "Loans",
       link: "loan-section",
     },
     {
