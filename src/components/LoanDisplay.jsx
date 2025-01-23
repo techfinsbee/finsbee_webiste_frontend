@@ -226,6 +226,12 @@ const LoanDisplay = () => {
             margin-top: 50px !important;
           }
         }
+
+        @media (max-width: 400px) {
+          .loan-section{
+          height: 150vh !important;
+        }
+        }
       `}</style>
       </section>
     </>
