@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Steps.components.css";
-import MobileStepsCarousel from './MobileStepsCarousel';
+import MobileStepsCarousel from "./MobileStepsCarousel";
 const Steps = () => {
   const Data = {
     our_solutions: [
@@ -36,6 +36,41 @@ const Steps = () => {
       },
     ],
   };
+  const images = ["/c1.png", "/c2.png", "/c3.png", "/c4.png"];
+
+  const steps_content = [
+    {
+      title: "Download & Sign-Up",
+      content:
+        "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
+      image: images[2],
+    },
+    {
+      title: "Fill the Application",
+      content:
+        "Provide basic details like your full name, date of birth, and email address to get started.",
+      image: images[3],
+    },
+    {
+      title: "Apply for Loan",
+      content:
+        "Submit your loan application after a smooth verification process, with just a few taps.",
+      image: images[1],
+    },
+    {
+      title: "Upload Required Documents",
+      content:
+        "Upload essential documents, such as your PAN and Aadhaar card, to complete the application.",
+      image: images[0],
+    },
+    {
+      title: "Loan Disbursal",
+      content:
+        "Get your loan approved and disbursed quickly — as fast as within 10 minutes.",
+      image: images[3],
+    },
+  ];
+
 
   const [activeIndexList, setActiveIndexList] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
@@ -45,7 +80,9 @@ const Steps = () => {
     return setInterval(() => {
       setIsAnimating(true);
       setTimeout(() => {
-        setActiveIndexList((prevIndex) => (prevIndex + 1) % Data.our_solutions.length);
+        setActiveIndexList(
+          (prevIndex) => (prevIndex + 1) % Data.our_solutions.length
+        );
         setIsAnimating(false);
       }, 150); // Reduced to 150ms for faster transition
     }, 5000);
@@ -65,19 +102,19 @@ const Steps = () => {
     }
 
     setIsAnimating(true);
-    
+
     // Reduced timeout to 150ms for faster response
     setTimeout(() => {
       setActiveIndexList(index);
       setIsAnimating(false);
-      
+
       const newInterval = startInterval();
       setIntervalId(newInterval);
     }, 150);
   };
 
   return (
-    <section className="container mt-30 p-0" style={{maxWidth:"100%"}}>
+    <section className="container mt-30 p-0" style={{ maxWidth: "100%" }}>
       <div>
         <h1
           className="loan-header"
@@ -103,7 +140,7 @@ const Steps = () => {
                 <div
                   key={index}
                   className={`rounded-lg p-4 cursor-pointer transition-all duration-150 ${
-                    isAnimating ? 'pointer-events-none' : ''
+                    isAnimating ? "pointer-events-none" : ""
                   }`}
                   onClick={() => handleListItemClick(index)}
                   style={{
@@ -150,7 +187,7 @@ const Steps = () => {
             </div>
           </div>
 
-          <div className="w-1/2 relative h-[700px] overflow-hidden step-image flex justify-center">
+          <div className="w-1/2 relative h-[700px] steps-content overflow-hidden step-image flex justify-center">
             <div
               className={`absolute w-full h-full transition-all duration-150 ease-in-out ${
                 isAnimating
@@ -161,14 +198,15 @@ const Steps = () => {
               <img
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
-                className="w-[300px] h-[600px] step-per-image rounded-lg mx-auto"
+                className="w-full h-full step-per-image rounded-lg mx-auto"
+                style={{position:"relative", top:"-100px"}}
               />
             </div>
           </div>
         </div>
         <div className="md:hidden">
-        <MobileStepsCarousel steps={Data.our_solutions} />
-      </div>
+          <MobileStepsCarousel steps={steps_content} images={images} />
+        </div>
       </div>
 
       <style jsx>{`
@@ -211,19 +249,19 @@ const Steps = () => {
           }
         }
 
-         @media screen and (max-width: 450px) {
-          .steps-content{
+        @media screen and (max-width: 450px) {
+          .steps-content {
             display: none !important;
           }
-            .step-image {
+          .step-image {
             margin-top: 0px;
             height: 550px !important;
           }
-          .step-per-image{
+          .step-per-image {
             width: 250px !important;
             height: 500px !important;
           }
-         }
+        }
       `}</style>
     </section>
   );

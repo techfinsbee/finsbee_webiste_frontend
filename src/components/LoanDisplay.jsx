@@ -69,7 +69,7 @@ const LoanDisplay = () => {
       description: "Quick disbursal, no-collateral loans for urgent financial needs.", 
       position: "leftTop", 
       delay: 0,
-      image: images[0]
+      image: images[0],
     },
     { 
       title: "EMI Loan", 
@@ -173,7 +173,7 @@ const LoanDisplay = () => {
         </h1>
       </div>
       <AnimatedBenefits></AnimatedBenefits>
-      <div className="relative min-h-screen flex flex-col items-center p-4 md:pl-32 md:pr-32 mobile">
+      <div className="relative min-h-screen flex flex-col items-center p-4 mobile">
         <div 
           ref={ref} 
           className="relative w-[700px] images h-[700px] ml-12 mr-12"
@@ -227,7 +227,7 @@ const LoanDisplay = () => {
           }
           .mobile {
             padding: 0px !important;
-            margin-top: 50px !important;
+            margin-top: 0px !important;
           }
         }
 
