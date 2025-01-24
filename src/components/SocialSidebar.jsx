@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Youtube } from 'lucide-react';
 
 const SocialSidebar = () => {
   return (
@@ -8,9 +8,6 @@ const SocialSidebar = () => {
         <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors duration-300">
           <Facebook size={25} />
         </a>
-        <a href="#" className="text-gray-700 hover:text-black transition-colors duration-300">
-        <i class="fa-brands fa-x-twitter fa-xl"></i>
-        </a>
         <a href="#" className="text-gray-700 hover:text-pink-600 transition-colors duration-300">
           <Instagram size={25} />
         </a>
@@ -18,6 +15,13 @@ const SocialSidebar = () => {
           <Youtube size={25} />
         </a>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 450px){
+        .fixed{
+          display: none !important;
+        }
+      `}</style>
     </div>
   );
 };

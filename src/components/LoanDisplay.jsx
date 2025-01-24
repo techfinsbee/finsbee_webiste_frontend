@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
 import AnimatedBenefits from './AnimatedBenefits';
 import './LoanDisplay.component.css'
+import MobileLoanCarousel from './MobileLoanCarousel';
 const LoanBox = ({ title, description, position, delay, isInView, onClick, isActive, isHighlighted }) => {
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -175,9 +176,9 @@ const LoanDisplay = () => {
       <div className="relative min-h-screen flex flex-col mt-12 items-center p-4 md:pl-32 md:pr-32 mobile">
         <div 
           ref={ref} 
-          className="relative w-[300px] h-[500px] mx-auto"
+          className="relative w-[300px] images h-[500px] mx-auto"
         >
-          <div className="absolute inset-0 z-10 overflow-hidden rounded-3xl">
+          <div className="absolute images inset-0 z-10 overflow-hidden rounded-3xl">
             <div 
               className="transition-transform duration-500 ease-in-out h-full"
               style={{ transform: `translateY(-${currentImageIndex * 100}%)` }}
@@ -208,7 +209,9 @@ const LoanDisplay = () => {
           ))}
         </div>
 
-        <MobileBoxes />
+        <div className="md:hidden">
+          <MobileLoanCarousel loans={loans} images={images} />
+        </div>
       </div>
       <style jsx>{`
         @media (max-width: 728px) {
@@ -230,6 +233,10 @@ const LoanDisplay = () => {
         @media (max-width: 425px) {
           .loan-section{
           height: 151vh !important;
+        }
+
+        .images{
+          display: none !important;
         }
         }
       `}</style>

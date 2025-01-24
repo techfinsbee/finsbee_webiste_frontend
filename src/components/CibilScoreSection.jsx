@@ -232,7 +232,6 @@ const CibilScoreSection = () => {
             className="bg-[#D4B8AC] text-black text-4xl px-12 py-3 font-semibold hover:bg-[#C17D5B] hover:text-white transition-colors w-96 mb-8 roboto-serif"
             style={{ height: "130px", borderRadius: "20px" }}
           >
-            Download <br />
             Cibil Score
           </button>
           <div style={{ display: "flex", justifyContent: "center" }}>
