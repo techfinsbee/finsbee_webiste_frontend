@@ -28,12 +28,12 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       : 'scale-95 hover:scale-105 hover:shadow-xl hover:bg-[#725839]';
 
     const positions = {
-      leftTop: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} top-10 -left-20`,
-      leftMiddle: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} top-1/2 -translate-y-1/2 -left-20`,
-      leftBottom: `${isAnimated ? '-translate-x-96' : 'translate-x-0'} bottom-10 -left-20`,
-      rightTop: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} top-10 -right-20`,
-      rightMiddle: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} top-1/2 -translate-y-1/2 -right-20`,
-      rightBottom: `${isAnimated ? 'translate-x-96' : 'translate-x-0'} bottom-10 -right-20`,
+      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-20 -left-0`,
+      leftMiddle: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 -left-0`,
+      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-20 -left-0`,
+      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-20 -right-0`,
+      rightMiddle: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 -right-0`,
+      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-20 -right-0`,
     };
 
     return `${baseClasses} ${positions[position]} ${isAnimated ? 'opacity-100' : ''} ${scaleClasses}`;
@@ -62,7 +62,7 @@ const LoanDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [selectedLoan, setSelectedLoan] = useState(null);
-  const images = ['/solar.png', '/emi_loan.png', '/loan_against_property.png', '/home_loan.png','/loan_against_security.png', '/emi_loan.png'];
+  const images = ['/instant_loan.png', '/emi_loan.png', '/loan_against_property.png', '/home_loan.png','/loan_against_security.png', '/solar.png'];
   const loans = [
     { 
       title: "Instant Loan", 
@@ -173,14 +173,14 @@ const LoanDisplay = () => {
         </h1>
       </div>
       <AnimatedBenefits></AnimatedBenefits>
-      <div className="relative min-h-screen flex flex-col mt-12 items-center p-4 md:pl-32 md:pr-32 mobile">
+      <div className="relative min-h-screen flex flex-col items-center p-4 md:pl-32 md:pr-32 mobile">
         <div 
           ref={ref} 
-          className="relative w-[300px] images h-[500px] mx-auto"
+          className="relative w-[700px] images h-[700px] ml-12 mr-12"
         >
-          <div className="absolute images inset-0 z-10 overflow-hidden rounded-3xl">
+          <div className="absolute images w-full inset-0 z-10 overflow-hidden rounded-3xl">
             <div 
-              className="transition-transform duration-500 ease-in-out h-full"
+              className="transition-transform w-full duration-500 ease-in-out h-full"
               style={{ transform: `translateY(-${currentImageIndex * 100}%)` }}
             >
               {loans.map((loan, index) => (
@@ -188,7 +188,8 @@ const LoanDisplay = () => {
                   key={index}
                   src={loan.image}
                   alt={`${loan.title} interface`} 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full"
+                  style={{width: "700px", height: "700px"}}
                 />
               ))}
             </div>
@@ -232,7 +233,7 @@ const LoanDisplay = () => {
 
         @media (max-width: 425px) {
           .loan-section{
-          height: 151vh !important;
+          height: 90vh !important;
         }
 
         .images{

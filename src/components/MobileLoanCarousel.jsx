@@ -10,7 +10,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
     if (autoPlay) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-      }, 2000);
+      }, 5000);
     }
     return () => clearInterval(interval);
   }, [autoPlay, loans.length]);
@@ -36,11 +36,11 @@ const MobileLoanCarousel = ({ loans, images }) => {
           className="flex flex-col items-center"
         >
           {/* Image */}
-          <div className="w-[300px] h-[400px] mb-4">
+          <div className="w-[400px] h-[400px] mb-4">
             <img 
               src={images[currentIndex]} 
               alt={loans[currentIndex].title} 
-              className="w-full h-full object-contain"
+              className="w-screen h-full"
             />
           </div>
 

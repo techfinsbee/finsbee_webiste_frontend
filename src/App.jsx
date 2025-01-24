@@ -11,7 +11,6 @@ import AnimatedPhones from './components/AnimatedPhones'
 import FeaturedBrands from './components/FeaturedBrands'
 import FeatureCards from './components/FeatureCards'
 import Footer from './components/Footer'
-import MobileFrame from './components/MobileFrame';
 import ReactDOM from 'react-dom'
 import './App.css'
 

@@ -3,15 +3,17 @@ import { useInView } from "react-intersection-observer";
 
 const CibilScoreSection = () => {
   const [score, setScore] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: false,
   });
 
+  // Existing score animation logic
   useEffect(() => {
     let animationFrame;
     let startTime;
-    const duration = 1000; // Animation duration in milliseconds
+    const duration = 1000;
     const targetScore = 400;
 
     const animateValue = (timestamp) => {
@@ -41,6 +43,89 @@ const CibilScoreSection = () => {
     };
   }, [inView]);
 
+  // Carousel items data
+  const carouselItems = [
+    {
+      icon: "/sheet.png",
+      title: "Correct Any Discrepancies",
+      description: "Contact the lender or the concerned credit bureau to correct any discrepancies"
+    },
+    {
+      icon: "/credit.png",
+      title: "Monitor Your Credit Health",
+      description: "Check your credit score and report regularly to track your credit health"
+    },
+    {
+      icon: "/money.png",
+      title: "Improve Your Financial Decision",
+      description: "Learn about your credit history, credit health, and various other factors"
+    },
+    {
+      icon: "/piggy-bank.png",
+      title: "Learn About Key Insights",
+      description: "Make better decisions to grow your savings and improve your Finances"
+    },
+    {
+      icon: "/cibil-mobile.png",
+      title: "Your Credit Health Matters",
+      description: "Credit health is one of the most Important Factors"
+    },
+    {
+      svg: (
+        <svg className="w-8 h-8 text-green-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" />
+          <path d="M8 12l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+      title: "Get Better Loan Rates",
+      description: "A good Credit Score will help you get better interest rates and credit Limits"
+    }
+  ];
+
+  // Auto-slide effect
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselItems.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // Manual slide handler
+  const handleSlideChange = (direction) => {
+    setCurrentSlide((prev) => {
+      if (direction === 'next') {
+        return (prev + 1) % carouselItems.length;
+      } else {
+        return prev === 0 ? carouselItems.length - 1 : prev - 1;
+      }
+    });
+  };
+
+  // Touch handling for manual sliding
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      // Swipe left
+      handleSlideChange('next');
+    }
+
+    if (touchStart - touchEnd < -75) {
+      // Swipe right
+      handleSlideChange('prev');
+    }
+  };
+
   return (
     <div
       className="flex justify-center p-8 cibil-score"
@@ -48,191 +133,106 @@ const CibilScoreSection = () => {
     >
       <div className="cibil-w" style={{ width: "84%" }}>
         {/* Header */}
-        <h1 className="text-4xl md:text-5xl gap-2  flex justify-center font-bold mb-12 check roboto-serif">
+        <h1 className="text-4xl md:text-5xl gap-2 flex justify-center font-bold mb-12 check roboto-serif">
           Check Your <span className="text-[#C17D5B]">Cibil Score</span>
         </h1>
 
-        {/* Main content grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-4 mb-12">
-          {/* Item 1 */}
-          <div className="space-y-1">
-            <div className="flex gap-4">
-              <div
-                className="flex justify-center"
-                style={{ alignItems: "center" }}
+        {/* Mobile Carousel */}
+        <div 
+          className="md:hidden carousel-container overflow-hidden"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div 
+            className="flex transition-transform duration-300 ease-in-out" 
+            style={{ 
+              transform: `translateX(-${currentSlide * 100}%)`,
+              width: `${carouselItems.length * 100}%`
+            }}
+          >
+            {carouselItems.map((item, index) => (
+              <div 
+                key={index} 
+                className="w-full flex-shrink-0 space-y-1 px-4"
               >
-                <img
-                  src="/sheet.png"
-                  className="w-[40px] h-8 text-green-500"
-                  alt=""
-                />
+                <div className="flex gap-4 w-80">
+                  <div className="flex justify-center" style={{ alignItems: "center" }}>
+                    {item.icon ? (
+                      <img
+                        src={item.icon}
+                        className="w-12 h-8 text-green-500"
+                        alt=""
+                      />
+                    ) : (
+                      item.svg
+                    )}
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold roboto-serif">
+                      {item.title}
+                    </h2>
+                    <p className="text-gray-600 roboto-light">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h2 className="text-2xl font-bold roboto-serif">
-                  Correct Any Discrepancies
-                </h2>
-
-                <p className="text-gray-600 roboto-light">
-                  Contact the lender or the concerned credit bureau to correct
-                  any discrepancies
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Item 2 */}
-          <div className="space-y-1">
-            <div className="flex gap-4">
-              <div
-                className="flex justify-center"
-                style={{ alignItems: "center" }}
-              >
-                <svg
-                  className="w-8 h-8 text-green-500"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="11"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M8 12l3 3 5-5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold flex gap-4 roboto-serif">
-                  Get Better Loan Rates
-                </h2>
-                <p className="text-gray-600 roboto-light">
-                  A good Credit Score will help you get better interest rates
-                  and credit Limits
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Item 3 */}
-          <div className="space-y-1">
-            <div className="flex gap-4">
-              <div
-                className="flex justify-center"
-                style={{ alignItems: "center" }}
-              >
-                <img
-                  src="/credit.png"
-                  className="w-8 h-8 text-green-500"
-                  alt=""
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold flex gap-4 roboto-serif">
-                  Monitor Your Credit Health
-                </h2>
-                <p className="text-gray-600 roboto-light">
-                  Check your credit score and report regularly to track your
-                  credit health
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Item 4 */}
-          <div className="space-y-1">
-            <div className="flex gap-4">
-              <div
-                className="flex justify-center"
-                style={{ alignItems: "center" }}
-              >
-                <img
-                  src="/money.png"
-                  className="w-8 h-8 text-green-500"
-                  alt=""
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold roboto-serif">
-                  Improve Your Financial Decision
-                </h2>
-
-                <p className="text-gray-600 roboto-light">
-                  Learn about your credit history, credit health, and various
-                  other factors
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Item 5 */}
-          <div className="space-y-1">
-            <div className="flex gap-4">
-              <div
-                className="flex justify-center"
-                style={{ alignItems: "center" }}
-              >
-                <img
-                  src="/piggy-bank.png"
-                  className="w-8 h-8 text-green-500"
-                  alt=""
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold roboto-serif">
-                  Learn About Key Insights
-                </h2>
-
-                <p className="text-gray-600 roboto-light">
-                  Make better decisions to grow your savings and improve your
-                  Finances
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Item 6 */}
-          <div className="space-y-1">
-            <div className="flex gap-4">
-              <div
-                className="flex justify-center"
-                style={{ alignItems: "center" }}
-              >
-                <img
-                  src="/cibil-mobile.png"
-                  className="w-8 h-8 text-green-500"
-                  alt=""
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold flex gap-4 roboto-serif">
-                  Your Credit Health Matters
-                </h2>
-                <p className="text-gray-600 roboto-light">
-                  Credit health is one of the most Important Factors
-                </p>
-              </div>
-            </div>
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-4">
+            {carouselItems.map((_, index) => (
+              <span 
+                key={index}
+                className={`h-2 w-2 mx-1 rounded-full ${
+                  index === currentSlide ? 'bg-[#C17D5B]' : 'bg-gray-300'
+                }`}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Bottom Section */}
+        {/* Desktop Grid (unchanged) */}
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-2 gap-4 mb-12">
+          {carouselItems.map((item, index) => (
+            <div key={index} className="space-y-1">
+              <div className="flex gap-4">
+                <div className="flex justify-center" style={{ alignItems: "center" }}>
+                  {item.icon ? (
+                    <img
+                      src={item.icon}
+                      className="w-8 h-8 text-green-500"
+                      alt=""
+                    />
+                  ) : (
+                    item.svg
+                  )}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold roboto-serif">
+                    {item.title}
+                  </h2>
+                  <p className="text-gray-600 roboto-light">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Section (unchanged) */}
         <div
           ref={ref}
-          className="flex flex-col md:flex-row justify-between items-center gap-4"
+          className="flex flex-col md:flex-row justify-between items-center gap-4 mt-10"
         >
           <button
-            className="bg-[#D4B8AC] text-black text-4xl px-12 py-3 font-semibold hover:bg-[#C17D5B] hover:text-white transition-colors w-96 mb-8 roboto-serif"
+            className="bg-[#D4B8AC] cibil-button text-black text-4xl px-12 py-3 font-semibold hover:bg-[#C17D5B] hover:text-white transition-colors w-96 mb-8 roboto-serif"
             style={{ height: "130px", borderRadius: "20px" }}
           >
-            Cibil Score
+            Check Your <br />Cibil Score
           </button>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <img src="/lever.gif" style={{ width: "90%" }} alt="" />
@@ -240,17 +240,14 @@ const CibilScoreSection = () => {
         </div>
       </div>
 
+      {/* Existing styles */}
       <style jsx>{`
         @media (max-width: 768px) {
-          .w-96 {
+          .cibil-button {
             width: 15rem !important;
             height: 100px !important;
             font-size: 1.5rem !important;
           }
-          .grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-          }
-
           .check {
             font-size: 1.8rem !important;
           }
@@ -263,15 +260,11 @@ const CibilScoreSection = () => {
         }
 
         @media (max-width: 375px) {
-          .w-96 {
+          .cibil-button {
             width: 15rem !important;
             height: 100px !important;
             font-size: 1.5rem !important;
           }
-          .grid {
-            grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-          }
-
           .check {
             font-size: 1.3rem !important;
           }
@@ -281,12 +274,16 @@ const CibilScoreSection = () => {
           .cibil-w {
             width: 100% !important;
           }
+        }
 
-          @media (min-width: 1367px) and (max-width: 1920px) {
-            /* For screens up to 17 inches (approx.) */
-            .cibil-score {
-              margin-top: 0px;
-            }
+        @media (max-width: 320px) {
+        .cibil-score {
+            margin-top: 200px !important;
+          }
+        }
+        @media (min-width: 1367px) and (max-width: 1920px) {
+          .cibil-score {
+            margin-top: 0px;
           }
         }
       `}</style>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import FeatureCardsCarousel from "./FeatureCardsCarousel";
 const FeatureCards = () => {
   const features = [
     {
@@ -34,7 +34,8 @@ const FeatureCards = () => {
   ];
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4 mt-20">
+    <>
+    <div className="w-full max-w-6xl mx-auto p-4 mt-20 main-cards">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((feature, index) => (
           <div
@@ -60,7 +61,21 @@ const FeatureCards = () => {
           </div>
         ))}
       </div>
+      
     </div>
+
+    <style jsx>{
+    `
+    @media (max-width: 425px){
+    .main-cards {
+      display: none !important;
+    }
+    }
+    `}</style>
+    <div className="md:hidden">
+      <FeatureCardsCarousel></FeatureCardsCarousel>
+      </div>
+    </>
   );
 };
 

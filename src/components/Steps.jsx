@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Steps.components.css";
-
+import MobileStepsCarousel from './MobileStepsCarousel';
 const Steps = () => {
   const Data = {
     our_solutions: [
@@ -124,7 +124,7 @@ const Steps = () => {
                       )}
                     </div>
 
-                    <div>
+                    <div className="step-content">
                       <h3
                         className={`text-lg font-bold roboto-serif ${
                           activeIndexList === index
@@ -161,11 +161,14 @@ const Steps = () => {
               <img
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
-                className="w-[300px] h-[600px] rounded-lg mx-auto"
+                className="w-[300px] h-[600px] step-per-image rounded-lg mx-auto"
               />
             </div>
           </div>
         </div>
+        <div className="md:hidden">
+        <MobileStepsCarousel steps={Data.our_solutions} />
+      </div>
       </div>
 
       <style jsx>{`
@@ -207,6 +210,20 @@ const Steps = () => {
             margin-top: 100px;
           }
         }
+
+         @media screen and (max-width: 450px) {
+          .steps-content{
+            display: none !important;
+          }
+            .step-image {
+            margin-top: 0px;
+            height: 550px !important;
+          }
+          .step-per-image{
+            width: 250px !important;
+            height: 500px !important;
+          }
+         }
       `}</style>
     </section>
   );
