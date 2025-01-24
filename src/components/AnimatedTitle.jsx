@@ -3,7 +3,7 @@ import './AnimatedTitle.component.css'
 const AnimatedTitle = () => {
   return (
     <section id="mart">
-    <div className="text-9xl font-bold flex justify-center gap-2 mt-20 main-title">
+    <div className="text-9xl font-bold flex justify-center gap-2 main-title">
       <span className="animate-color-change">Mama</span>
       <span className="animate-color-change">Mart</span>
     </div>

@@ -4,7 +4,7 @@ import './FeaturedBrands.component.css'
 const FeaturedBrands = ({allLogos}) => {
 
   return (
-    <div className=" rounded-xl pb-6 mb-20" >
+    <div className=" rounded-xl pb-6" >
       <h2 className="text-[#006d5b] text-6xl font-bold mb-6 center" style={{textAlign:"center"}}>
           {allLogos.title}
         </h2>
