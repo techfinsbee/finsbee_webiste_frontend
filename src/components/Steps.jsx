@@ -36,7 +36,7 @@ const Steps = () => {
       },
     ],
   };
-  const images = ["/c1.png", "/c2.png", "/c3.png", "/c4.png"];
+  const images = ["/c3.png", "/c4.png", "/c2.png", "/c1.png","/c4.png"];
 
   const steps_content = [
     {

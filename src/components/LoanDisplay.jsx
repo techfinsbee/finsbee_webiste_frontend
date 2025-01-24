@@ -28,12 +28,12 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       : 'scale-95 hover:scale-105 hover:shadow-xl hover:bg-[#725839]';
 
     const positions = {
-      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-20 -left-0`,
+      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-32 -left-0`,
       leftMiddle: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 -left-0`,
-      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-20 -left-0`,
-      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-20 -right-0`,
+      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-32 -left-0`,
+      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-32 -right-0`,
       rightMiddle: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 -right-0`,
-      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-20 -right-0`,
+      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-32 -right-0`,
     };
 
     return `${baseClasses} ${positions[position]} ${isAnimated ? 'opacity-100' : ''} ${scaleClasses}`;
@@ -158,7 +158,7 @@ const LoanDisplay = () => {
 
   return (
     <>
-    <section style={{height:"90vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
+    <section style={{height:"100vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
       <div>
         <h1 className="loan-headers roboto-serif" style={{
           textAlign: "center",
