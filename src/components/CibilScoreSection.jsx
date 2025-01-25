@@ -229,7 +229,6 @@ const CibilScoreSection = () => {
         <div
           ref={ref}
           className="flex flex-col md:flex-row justify-between items-center gap-4 mt-10"
-          style={{ overflowX: "hidden" }} 
         >
           <button
             className="bg-[#D4B8AC] cibil-button text-black text-4xl px-12 py-3 font-semibold hover:bg-[#C17D5B] hover:text-white transition-colors w-96 mb-8 roboto-serif"
