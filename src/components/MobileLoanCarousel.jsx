@@ -7,18 +7,29 @@ const MobileLoanCarousel = ({ loans, images }) => {
   const [dragDirection, setDragDirection] = useState(0);
 
   useEffect(() => {
+      // Preload images before rendering
+      const preloadImages = () => {
+        images.forEach((src) => {
+          const img = new Image();
+          img.src = src;
+        });
+      };
+      preloadImages();
+    }, [images]);
+
+  useEffect(() => {
     let interval;
     if (autoPlay) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-      }, 5000);
+      }, 4000);
     }
     return () => clearInterval(interval);
   }, [autoPlay, loans.length]);
 
   const handleTouchStart = () => {
     setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 5000);
+    setTimeout(() => setAutoPlay(true), 4000);
   };
 
   const handleDragEnd = (event, info) => {
@@ -59,6 +70,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
               className="w-full max-w-[90%] h-auto object-contain rounded-md"
+              loading="lazy"
             />
           </div>
 
