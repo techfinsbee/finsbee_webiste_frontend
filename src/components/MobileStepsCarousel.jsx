@@ -72,8 +72,9 @@ const MobileStepsCarousel = ({ steps, images }) => {
             <img
               src={images[currentIndex]}
               alt={steps[currentIndex].title}
-              className="w-full max-w-[90%] h-auto object-contain rounded-md"
-              loading="lazy"
+              className={`w-full max-w-[100%] h-auto object-contain rounded-md 
+                ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setIsImageLoaded(true)}
             />
           </div>
 

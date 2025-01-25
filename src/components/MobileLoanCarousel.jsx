@@ -5,17 +5,18 @@ const MobileLoanCarousel = ({ loans, images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
-      // Preload images before rendering
-      const preloadImages = () => {
-        images.forEach((src) => {
-          const img = new Image();
-          img.src = src;
-        });
-      };
-      preloadImages();
-    }, [images]);
+    // Preload images before rendering
+    const preloadImages = () => {
+      images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+    preloadImages();
+  }, [images]);
 
   useEffect(() => {
     let interval;
@@ -38,7 +39,9 @@ const MobileLoanCarousel = ({ loans, images }) => {
 
     if (info.offset.x > threshold) {
       // Swiped right
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
+      setCurrentIndex(
+        (prevIndex) => (prevIndex - 1 + loans.length) % loans.length
+      );
     } else if (info.offset.x < -threshold) {
       // Swiped left
       setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
@@ -51,7 +54,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
       style={{ overflowX: "hidden" }}
     >
       <AnimatePresence mode="wait">
-      <motion.div
+        <motion.div
           key={currentIndex}
           initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -62,15 +65,16 @@ const MobileLoanCarousel = ({ loans, images }) => {
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
           className="flex flex-col items-center w-full"
-          style={{overflowX: "hidden"}}
+          style={{ overflowX: "hidden" }}
         >
           {/* Image */}
           <div className="w-full flex justify-center mb-4">
             <img
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
-              className="w-full max-w-[90%] h-auto object-contain rounded-md"
-              loading="lazy"
+              cclassName={`w-full max-w-[100%] h-auto object-contain rounded-md 
+                ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+              onLoad={() => setIsImageLoaded(true)}
             />
           </div>
 
