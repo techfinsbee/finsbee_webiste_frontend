@@ -28,11 +28,11 @@ const MobileStepsCarousel = ({ steps, images }) => {
     if (info.offset.x > threshold) {
       // Swiped right
       setCurrentIndex(
-        (prevIndex) => (prevIndex - 1 + loans.length) % loans.length
+        (prevIndex) => (prevIndex - 1 + steps.length) % steps.length
       );
     } else if (info.offset.x < -threshold) {
       // Swiped left
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % steps.length);
     }
   };
 
