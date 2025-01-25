@@ -8,7 +8,7 @@ const JoinFundMama = () => {
   });
 
   return (
-    <div className="flex flex-col items-center join-fund" style={{ overflowX: "hidden" }}>
+    <div className="flex flex-col items-center join-fund" >
       <div className="text-center max-w-5xl mx-auto">
         <h1 className="text-3xl md:text-3xl font-bold roboto-serif join-text ">
         Join FundsMama – Empowering Your Finances with Easy Loans and Shopping!

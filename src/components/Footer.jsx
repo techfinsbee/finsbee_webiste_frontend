@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#E6D5C3] text-gray-800" style={{ overflowX: "hidden" }}>
+    <footer className="w-full bg-[#E6D5C3] text-gray-800" >
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Top section with logo and sign up button */}

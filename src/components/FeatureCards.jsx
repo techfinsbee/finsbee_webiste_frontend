@@ -35,7 +35,7 @@ const FeatureCards = () => {
 
   return (
     <>
-    <div className="w-full max-w-6xl mx-auto mt-10 p-4 main-cards" style={{ overflowX: "hidden" }}>
+    <div className="w-full max-w-6xl mx-auto mt-10 p-4 main-cards" >
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {features.map((feature, index) => (
           <div
