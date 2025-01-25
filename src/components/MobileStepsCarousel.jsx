@@ -10,11 +10,11 @@ const MobileStepsCarousel = ({ steps, images }) => {
     let interval;
     if (autoPlay) {
       interval = setInterval(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % steps.length);
       }, 5000);
     }
     return () => clearInterval(interval);
-  }, [autoPlay, loans.length]);
+  }, [autoPlay, steps.length]);
 
   const handleTouchStart = () => {
     setAutoPlay(false);
