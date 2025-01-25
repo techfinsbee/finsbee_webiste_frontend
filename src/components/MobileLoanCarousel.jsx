@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const MobileLoanCarousel = ({ loans, images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
+  const [dragDirection, setDragDirection] = useState(0);
 
   useEffect(() => {
     let interval;
@@ -17,19 +18,21 @@ const MobileLoanCarousel = ({ loans, images }) => {
 
   const handleTouchStart = () => {
     setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 5000); // Resume autoplay after 5 seconds
+    setTimeout(() => setAutoPlay(true), 5000);
   };
 
   const handleDragEnd = (event, info) => {
-  const threshold = 100; // Minimum swipe distance to trigger a slide
-  if (info.offset.x > threshold) {
-    // Swiped right (move to previous slide)
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
-  } else if (info.offset.x < -threshold) {
-    // Swiped left (move to next slide)
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-  }
-};
+    const threshold = 100;
+    setDragDirection(info.offset.x);
+
+    if (info.offset.x > threshold) {
+      // Swiped right
+      setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
+    } else if (info.offset.x < -threshold) {
+      // Swiped left
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
+    }
+  };
   return (
     <div
       className="relative w-full overflow-hidden touch-pan-y"
@@ -37,12 +40,12 @@ const MobileLoanCarousel = ({ loans, images }) => {
       style={{ overflowX: "hidden" }}
     >
       <AnimatePresence mode="wait">
-        <motion.div
-         key={currentIndex}
-         initial={{ opacity: 0, x: -100 }} // Changed from 100 to -100
-         animate={{ opacity: 1, x: 0 }}
-         exit={{ opacity: 0, x: 100 }} // Changed from -100 to 100
-         transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
@@ -67,8 +70,12 @@ const MobileLoanCarousel = ({ loans, images }) => {
               hover:bg-[#725839] hover:scale-[1.02]
             "
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-2">{loans[currentIndex].title}</h3>
-            <p className="text-sm sm:text-md leading-tight">{loans[currentIndex].description}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2">
+              {loans[currentIndex].title}
+            </h3>
+            <p className="text-sm sm:text-md leading-tight">
+              {loans[currentIndex].description}
+            </p>
           </div>
         </motion.div>
       </AnimatePresence>
