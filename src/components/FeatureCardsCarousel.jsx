@@ -75,6 +75,7 @@ const FeatureCardsCarousel = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      style={{ overflowX: "hidden" }}
     >
       <div 
         className="flex transition-transform duration-500 ease-in-out"

@@ -158,7 +158,7 @@ const LoanDisplay = () => {
 
   return (
     <>
-    <section style={{height:"100vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
+    <section style={{height:"100vh", marginTop:"250px", overflowX:"hidden"}} id="loan-section" className='mb-16 loan-section'>
       <div>
         <h1 className="loan-headers roboto-serif" style={{
           textAlign: "center",

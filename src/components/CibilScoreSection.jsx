@@ -129,7 +129,7 @@ const CibilScoreSection = () => {
   return (
     <div
       className="flex justify-center p-8 cibil-score"
-      style={{ marginTop: "300px" }}
+      style={{ marginTop: "300px" , overflowX:"hidden"}}
     >
       <div className="cibil-w" style={{ width: "84%" }}>
         {/* Header */}
@@ -143,12 +143,14 @@ const CibilScoreSection = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
+          style={{ overflowX: "hidden" }}
         >
           <div 
             className="flex transition-transform duration-300 ease-in-out" 
             style={{ 
               transform: `translateX(-${currentSlide * 100}%)`,
               width: `${carouselItems.length * 100}%`
+              , overflowX:"hidden"
             }}
           >
             {carouselItems.map((item, index) => (
@@ -182,7 +184,7 @@ const CibilScoreSection = () => {
           </div>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center mt-4">
+          <div className="flex justify-center mt-4" style={{ overflowX: "hidden" }}>
             {carouselItems.map((_, index) => (
               <span 
                 key={index}
@@ -195,7 +197,7 @@ const CibilScoreSection = () => {
         </div>
 
         {/* Desktop Grid (unchanged) */}
-        <div className="hidden md:grid grid-cols-2 md:grid-cols-2 gap-4 mb-12">
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-2 gap-4 mb-12" style={{ overflowX: "hidden" }}>
           {carouselItems.map((item, index) => (
             <div key={index} className="space-y-1">
               <div className="flex gap-4">
@@ -227,6 +229,7 @@ const CibilScoreSection = () => {
         <div
           ref={ref}
           className="flex flex-col md:flex-row justify-between items-center gap-4 mt-10"
+          style={{ overflowX: "hidden" }} 
         >
           <button
             className="bg-[#D4B8AC] cibil-button text-black text-4xl px-12 py-3 font-semibold hover:bg-[#C17D5B] hover:text-white transition-colors w-96 mb-8 roboto-serif"

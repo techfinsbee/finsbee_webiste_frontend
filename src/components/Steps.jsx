@@ -114,7 +114,7 @@ const Steps = () => {
   };
 
   return (
-    <section className="container mt-30 p-0" style={{ maxWidth: "100%" }}>
+    <section className="container mt-30 p-0" style={{ maxWidth: "100%", overflowX:"hidden" }}>
       <div>
         <h1
           className="loan-header"

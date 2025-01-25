@@ -69,7 +69,7 @@
     };
 
     return (
-      <header className="header">
+      <header className="header" style={{ overflowX: "hidden" }}>
         <a href="/" className="head">
           <div className="logo">
             <img src="/logo.png" className="w-[300px] max-w-[300px]" alt="FUNDSMAMA" />

@@ -19,7 +19,7 @@ const AnimatedBenefits = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-2 sm:p-4" style={{display:"flex", justifyContent:"center",alignItems:"center", flexDirection:"column"}}>
+    <div className="w-full max-w-2xl mx-auto p-2 sm:p-4" style={{display:"flex", justifyContent:"center",alignItems:"center", flexDirection:"column" , overflowX:"hidden"}}>
       <span className="text-base sm:text-xl lg:text-2xl font-medium roboto-slab" style={{textAlign:"center"}}>
           With FundsMama, you unlock
         </span>

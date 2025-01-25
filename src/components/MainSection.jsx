@@ -9,7 +9,7 @@ const MainSection = () => {
   });
 
   return (
-    <section id="home" className=''>
+    <section id="home" className='' style={{ overflowX: "hidden" }}>
 
     <div
       ref={ref} // Attach the ref to the main section

@@ -76,7 +76,7 @@ const Mobile = () => {
 
   return (
     <>
-    <div style={{height:"50vh"}}>
+    <div style={{height:"50vh", overflowX:"hidden"}}>
       <div className="" style={{ display: "flex", justifyContent: "center" }}>
         <img src="/mobile.png" alt="" />
       </div>
