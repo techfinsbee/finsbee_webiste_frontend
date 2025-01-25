@@ -54,6 +54,7 @@ const MobileStepsCarousel = ({ steps, images }) => {
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
           className="flex flex-col items-center w-full"
+          style={{overflowX: "hidden"}}
         >
           {/* Image */}
           <div className="w-full flex justify-center mb-4">

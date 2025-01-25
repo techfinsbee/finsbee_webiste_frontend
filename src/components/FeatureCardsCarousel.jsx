@@ -75,7 +75,7 @@ const FeatureCardsCarousel = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      style={{ overflowX: "hidden" }}
+      style={{overflowX:"hidden"}}
     >
       <div 
         className="flex transition-transform duration-500 ease-in-out"
@@ -88,7 +88,7 @@ const FeatureCardsCarousel = () => {
           <div 
             key={index} 
             className=" rounded-lg p-6 flex flex-col h-[280px] w-full flex-shrink-0 justify-center"
-            style={{ minWidth: "100%" }}
+            style={{ minWidth: "100%", overflow: "hidden" }}
           >
             <div className=' bg-orange-100 w-96 h-[300px] rounded-lg p-6 flex flex-col justify-center items-center feature-div'>
             <h3 className="text-2xl font-bold text-center h-14 flex items-center justify-center roboto-serif">
