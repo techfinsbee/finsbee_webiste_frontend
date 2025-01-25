@@ -38,11 +38,11 @@ const MobileLoanCarousel = ({ loans, images }) => {
     >
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+         key={currentIndex}
+         initial={{ opacity: 0, x: -100 }} // Changed from 100 to -100
+         animate={{ opacity: 1, x: 0 }}
+         exit={{ opacity: 0, x: 100 }} // Changed from -100 to 100
+         transition={{ type: "spring", stiffness: 300, damping: 30 }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
