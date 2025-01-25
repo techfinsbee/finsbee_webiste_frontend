@@ -98,7 +98,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile2.png"
               alt="Cart Screen"
-              className="w-36 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
+              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
             />
           </div>
           
@@ -107,7 +107,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile1.png"
               alt="Main Screen"
-              className="w-48 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain"
+              className="w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain"
             />
           </div>
           
@@ -116,7 +116,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile3.png"
               alt="Details Screen"
-              className="w-36 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
+              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
             />
           </div>
         </div>
