@@ -23,14 +23,14 @@ const MobileLoanCarousel = ({ loans, images }) => {
     if (autoPlay) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-      }, 4000);
+      }, 3000);
     }
     return () => clearInterval(interval);
   }, [autoPlay, loans.length]);
 
   const handleTouchStart = () => {
     setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 4000);
+    setTimeout(() => setAutoPlay(true), 3000);
   };
 
   const handleDragEnd = (event, info) => {

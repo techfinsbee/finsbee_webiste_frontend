@@ -86,7 +86,7 @@ const AnimatedPhones = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 main-context" style={{height:"110vh"}}>
+    <div className="flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 main-context" style={{height:"110vh", overflow:"hidden"}}>
       <div
         ref={containerRef}
         className="relative flex items-center justify-center w-full max-w-7xl mx-auto"
@@ -98,7 +98,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile2.png"
               alt="Cart Screen"
-              className="w-24 xs:w-28 sm:w-36 md:w-48 lg:w-64 object-contain"
+              className="w-36 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
             />
           </div>
           
@@ -107,7 +107,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile1.png"
               alt="Main Screen"
-              className="w-28 xs:w-32 sm:w-40 md:w-56 lg:w-72 object-contain"
+              className="w-48 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain"
             />
           </div>
           
@@ -116,7 +116,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile3.png"
               alt="Details Screen"
-              className="w-24 xs:w-28 sm:w-36 md:w-48 lg:w-64 object-contain"
+              className="w-36 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
             />
           </div>
         </div>
@@ -135,7 +135,7 @@ const AnimatedPhones = () => {
             transition: transform 0.18s ease-out;
           }
           .main-context {
-            height: 50vh !important;
+            height: 30vh !important;
           }
         }
         @media (max-width: 375px) {
@@ -143,7 +143,7 @@ const AnimatedPhones = () => {
             transition: transform 0.18s ease-out;
           }
           .main-context {
-            height: 70vh !important;
+            height: 30vh !important;
           }
         }
         @media (max-width: 320px) {
@@ -151,7 +151,7 @@ const AnimatedPhones = () => {
             transition: transform 0.15s ease-out;
           }
           .main-context {
-            height: 60vh !important;
+            height: 30vh !important;
           }
         }
       `}</style>

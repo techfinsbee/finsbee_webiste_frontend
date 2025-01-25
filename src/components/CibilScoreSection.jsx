@@ -86,7 +86,7 @@ const CibilScoreSection = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % carouselItems.length);
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(intervalId);
   }, []);

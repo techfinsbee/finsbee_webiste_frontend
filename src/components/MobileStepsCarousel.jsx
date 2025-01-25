@@ -22,14 +22,14 @@ const MobileStepsCarousel = ({ steps, images }) => {
     if (autoPlay) {
       interval = setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % steps.length);
-      }, 4000);
+      }, 3000);
     }
     return () => clearInterval(interval);
   }, [autoPlay, steps.length]);
 
   const handleTouchStart = () => {
     setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 4000);
+    setTimeout(() => setAutoPlay(true), 3000);
   };
 
   const handleDragEnd = (event, info) => {
