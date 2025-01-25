@@ -71,7 +71,7 @@ const FeatureCardsCarousel = () => {
 
   return (
     <div 
-      className="relative w-full overflow-hidden md:hidden"
+      className="relative w-full overflow-hidden mt-20 md:hidden"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

@@ -9,16 +9,16 @@ const AnimatedPhones = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const screenWidth = window.innerWidth;
-
+      
       // Enhanced mobile detection with specific breakpoints
       const isXXSmall = screenWidth <= 320;
       const isXSmall = screenWidth <= 375 && screenWidth > 320;
       const isMobile = screenWidth < 768;
-
+      
       // Calculate scroll progress (0 to 1)
-      const scrollProgress = 1.5 - rect.bottom / (viewportHeight + rect.height);
+      const scrollProgress = 1.5 - (rect.bottom / (viewportHeight + rect.height));
       const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-
+      
       // Adjust scale based on screen size
       let baseScale, scaleGrowth;
       if (isXXSmall) {
@@ -34,9 +34,9 @@ const AnimatedPhones = () => {
         baseScale = 0.8;
         scaleGrowth = 0.4;
       }
-
-      const scale = baseScale + clampedProgress * scaleGrowth;
-
+      
+      const scale = baseScale + (clampedProgress * scaleGrowth);
+      
       // Adjust spread distance based on screen size
       let maxSpread;
       if (isXXSmall) {
@@ -48,9 +48,9 @@ const AnimatedPhones = () => {
       } else {
         maxSpread = 300;
       }
-
+      
       const spread = clampedProgress * maxSpread;
-
+      
       const phones = containerRef.current.getElementsByClassName('phone');
       Array.from(phones).forEach((phone, index) => {
         if (index === 1) {
@@ -65,11 +65,11 @@ const AnimatedPhones = () => {
           // Side phones (mobile2.png and mobile3.png)
           const direction = index === 0 ? -1 : 1;
           const zTranslate = isXXSmall ? 15 : isXSmall ? 20 : isMobile ? 25 : 50;
-
+          
           phone.style.transform = `
             scale(${scale})
             translateX(${spread * direction}px)
-            translateZ(${-25 + clampedProgress * zTranslate}px)
+            translateZ(${-25 + (clampedProgress * zTranslate)}px)
           `;
           phone.style.zIndex = '10';
         }
@@ -86,60 +86,70 @@ const AnimatedPhones = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center px-4 mt-8 sm:px-6 lg:px-8 main-context">
+    <div className="flex items-center justify-center p-2 mt-8 sm:p-4 md:p-6 lg:p-8 main-context">
       <div
         ref={containerRef}
         className="relative flex items-center justify-center w-full max-w-7xl mx-auto"
         style={{ perspective: '1500px' }}
       >
-        <div className="relative w-[100vw] h-[80vh] flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center">
           {/* Left Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
               src="/mobile2.png"
               alt="Cart Screen"
-              className="w-[180px] h-[45vh] xs:w-[250px] xs:h-[50vh] sm:w-[300px] sm:h-[55vh] md:w-[350px] md:h-[60vh] lg:w-[400px] lg:h-[65vh] object-contain"
+              className="w-24 xs:w-28 sm:w-36 md:w-48 lg:w-64 object-contain"
             />
           </div>
-
+          
           {/* Middle Phone */}
           <div className="phone transition-all duration-300 ease-out">
             <img
               src="/mobile1.png"
               alt="Main Screen"
-              className="w-[230px] h-[50vh] xs:w-[300px] xs:h-[55vh] sm:w-[350px] sm:h-[60vh] md:w-[400px] md:h-[70vh] lg:w-[450px] lg:h-[75vh] object-contain"
+              className="w-28 xs:w-32 sm:w-40 md:w-56 lg:w-72 object-contain"
             />
           </div>
-
+          
           {/* Right Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
               src="/mobile3.png"
               alt="Details Screen"
-              className="w-[180px] h-[45vh] xs:w-[250px] xs:h-[50vh] sm:w-[300px] sm:h-[55vh] md:w-[350px] md:h-[60vh] lg:w-[400px] lg:h-[65vh] object-contain"
+              className="w-24 xs:w-28 sm:w-36 md:w-48 lg:w-64 object-contain"
             />
           </div>
         </div>
       </div>
-
-      {/* Styles */}
+      
       <style jsx>{`
         .phone {
           will-change: transform;
           transform-style: preserve-3d;
+          transition: transform 0.3s ease-out;
           transform-origin: center center;
         }
+        
         @media (max-width: 425px) {
+          .phone {
+            transition: transform 0.18s ease-out;
+          }
           .main-context {
             height: 50vh !important;
           }
         }
         @media (max-width: 375px) {
+          .phone {
+            transition: transform 0.18s ease-out;
+          }
           .main-context {
             height: 70vh !important;
           }
         }
         @media (max-width: 320px) {
+          .phone {
+            transition: transform 0.15s ease-out;
+          }
           .main-context {
             height: 60vh !important;
           }

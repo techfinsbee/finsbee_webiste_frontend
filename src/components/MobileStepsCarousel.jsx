@@ -35,6 +35,7 @@ const MobileStepsCarousel = ({ steps, images }) => {
     <div
       className="relative w-full overflow-hidden touch-pan-y"
       onTouchStart={handleTouchStart}
+      style={{ overflowX: 'hidden' }}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -42,33 +43,33 @@ const MobileStepsCarousel = ({ steps, images }) => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           drag="x" // Enable dragging on the x-axis
           dragConstraints={{ left: 0, right: 0 }} // Limit dragging to horizontal swiping
           dragElastic={0.2} // Elasticity for smoother dragging
           onDragEnd={handleDragEnd} // Handle drag end for swipe functionality
-          className="flex flex-col items-center"
+          className="flex flex-col items-center w-full"
         >
           {/* Image */}
-          <div className="w-full h-full mb-4">
+          <div className="w-full flex justify-center mb-4">
             <img
               src={images[currentIndex]}
               alt={steps[currentIndex].title}
-              style={{ width: "450px", height: "500px" }}
+              className="w-full max-w-[90%] h-auto object-contain rounded-md"
             />
           </div>
 
-          {/* Loan Box */}
+          {/* Step Box */}
           <div
-            className={`
-              bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
+            className="
+              bg-[#8B6B4E] text-white p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#725839] hover:scale-[1.02]
-            `}
+            "
           >
-            <h3 className="text-xl font-bold mb-2">{steps[currentIndex].title}</h3>
-            <p className="text-md leading-tight">{steps[currentIndex].content}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2">{steps[currentIndex].title}</h3>
+            <p className="text-sm sm:text-md leading-tight">{steps[currentIndex].content}</p>
           </div>
         </motion.div>
       </AnimatePresence>

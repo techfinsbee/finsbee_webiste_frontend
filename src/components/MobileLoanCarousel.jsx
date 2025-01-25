@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const MobileLoanCarousel = ({ loans, images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,6 +35,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
     <div
       className="relative w-full overflow-hidden touch-pan-y"
       onTouchStart={handleTouchStart}
+      style={{ overflowX: "hidden" }}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -43,32 +44,32 @@ const MobileLoanCarousel = ({ loans, images }) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          drag="x" // Enable dragging on the x-axis
-          dragConstraints={{ left: 0, right: 0 }} // Limit dragging to horizontal swiping
-          dragElastic={0.2} // Elasticity for smoother dragging
-          onDragEnd={handleDragEnd} // Handle drag end for swipe functionality
-          className="flex flex-col items-center"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={handleDragEnd}
+          className="flex flex-col items-center w-full"
         >
           {/* Image */}
-          <div className="w-full h-full mb-4">
+          <div className="w-full flex justify-center mb-4">
             <img
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
-              style={{ width: "450px", height: "500px" }}
+              className="w-full max-w-[90%] h-auto object-contain rounded-md"
             />
           </div>
 
           {/* Loan Box */}
           <div
-            className={`
-              bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
+            className="
+              bg-[#8B6B4E] text-white p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#725839] hover:scale-[1.02]
-            `}
+            "
           >
-            <h3 className="text-xl font-bold mb-2">{loans[currentIndex].title}</h3>
-            <p className="text-md leading-tight">{loans[currentIndex].description}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2">{loans[currentIndex].title}</h3>
+            <p className="text-sm sm:text-md leading-tight">{loans[currentIndex].description}</p>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -80,7 +81,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? 'bg-[#8B6B4E]' : 'bg-gray-300'}
+              ${index === currentIndex ? "bg-[#8B6B4E]" : "bg-gray-300"}
             `}
           />
         ))}
