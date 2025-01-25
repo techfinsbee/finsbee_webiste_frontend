@@ -86,7 +86,7 @@ const AnimatedPhones = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center p-2 mt-8 sm:p-4 md:p-6 lg:p-8 main-context" style={{ overflowX: "hidden" }}>
+    <div className="flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 main-context" style={{height:"110vh"}}>
       <div
         ref={containerRef}
         className="relative flex items-center justify-center w-full max-w-7xl mx-auto"

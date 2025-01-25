@@ -5,6 +5,17 @@ const MobileStepsCarousel = ({ steps, images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  useEffect(() => {
+    // Preload images before rendering
+    const preloadImages = () => {
+      images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+    preloadImages();
+  }, [images]);
 
   useEffect(() => {
     let interval;
@@ -54,7 +65,7 @@ const MobileStepsCarousel = ({ steps, images }) => {
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
           className="flex flex-col items-center w-full"
-          style={{overflowX: "hidden"}}
+          style={{ overflowX: "hidden" }}
         >
           {/* Image */}
           <div className="w-full flex justify-center mb-4">
@@ -62,13 +73,14 @@ const MobileStepsCarousel = ({ steps, images }) => {
               src={images[currentIndex]}
               alt={steps[currentIndex].title}
               className="w-full max-w-[90%] h-auto object-contain rounded-md"
+              loading="lazy"
             />
           </div>
 
           {/* Step Box */}
           <div
             className="
-              bg-[#8B6B4E] text-white p-4 rounded-xl shadow-lg 
+              bg-[#d09c75] text-white p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#725839] hover:scale-[1.02]

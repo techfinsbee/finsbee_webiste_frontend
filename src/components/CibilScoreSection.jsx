@@ -139,7 +139,7 @@ const CibilScoreSection = () => {
 
         {/* Mobile Carousel */}
         <div 
-          className="md:hidden carousel-container overflow-hidden"
+          className="md:hidden carousel-container overflow-hidden mt-10"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
