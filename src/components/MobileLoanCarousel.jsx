@@ -21,15 +21,15 @@ const MobileLoanCarousel = ({ loans, images }) => {
   };
 
   const handleDragEnd = (event, info) => {
-    const threshold = 100; // Minimum swipe distance to trigger a slide
-    if (info.offset.x > threshold) {
-      // Swiped right (move to previous slide)
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
-    } else if (info.offset.x < -threshold) {
-      // Swiped left (move to next slide)
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-    }
-  };
+  const threshold = 100; // Minimum swipe distance to trigger a slide
+  if (info.offset.x > threshold) {
+    // Swiped right (move to previous slide)
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
+  } else if (info.offset.x < -threshold) {
+    // Swiped left (move to next slide)
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
+  }
+};
   return (
     <div
       className="relative w-full overflow-hidden touch-pan-y"
