@@ -135,7 +135,7 @@ const AnimatedPhones = () => {
             transition: transform 0.18s ease-out;
           }
           .main-context {
-            height: 30vh !important;
+            height: 40vh !important;
           }
         }
         @media (max-width: 375px) {
@@ -143,7 +143,7 @@ const AnimatedPhones = () => {
             transition: transform 0.18s ease-out;
           }
           .main-context {
-            height: 30vh !important;
+            height: 40vh !important;
           }
         }
         @media (max-width: 320px) {
@@ -151,7 +151,7 @@ const AnimatedPhones = () => {
             transition: transform 0.15s ease-out;
           }
           .main-context {
-            height: 30vh !important;
+            height: 40vh !important;
           }
         }
       `}</style>
