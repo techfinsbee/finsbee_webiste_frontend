@@ -17,6 +17,6 @@ body{
   font-family: 'Roboto Light'
 }
 
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
