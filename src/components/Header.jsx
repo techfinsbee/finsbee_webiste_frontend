@@ -87,17 +87,7 @@
         {isMobile ? (
           <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
             {/* Back Button */}
-            <div>
-              {(currentMenu !== null || currentSubItems) && (
-                <button
-                  className="back-btn"
-                  onClick={handleBackClick}
-                  style={{ display: "block" }}
-                >
-                  ← Back
-                </button>
-              )}
-            </div>
+            
             {/* Display Main Titles */}
             {currentMenu === null && !currentSubItems && (
               <div className="menu">
@@ -107,7 +97,7 @@
                     className="menu-title"
                     // onClick={() => }
                     onClick={() => {
-                      handleMenuClick(index)
+                      // handleMenuClick(index)
                       scrollToSection(menu.link)
                       console.log(menu.link)
                     }}
