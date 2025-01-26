@@ -23,7 +23,7 @@
 }
 
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 512px) {
 	.brand-slider{
 		width: 350px !important;
 		margin-bottom: 50px;
@@ -35,7 +35,7 @@
 	}
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 512px) {
 	.brand-slider{
 		width: 250px !important;
 		margin-bottom: 50px;

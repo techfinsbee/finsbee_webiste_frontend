@@ -1,4 +1,4 @@
-@media screen and ( max-width: 728px ) {
+@media screen and ( max-width: 512px ) {
   .feature-brand{
     flex-direction: column !important;
     max-width: 100% !important;

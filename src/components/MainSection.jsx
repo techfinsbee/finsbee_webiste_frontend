@@ -65,7 +65,7 @@ const MainSection = () => {
       </div>
       <style jsx>{
         `
-          @media (max-width: 375px) {
+          @media (max-width: 512px) {
             .main-right-text{
               width: 80%;
               height: auto !important;

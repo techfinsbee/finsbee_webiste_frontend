@@ -61,7 +61,7 @@
   }
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 512px){
   .main-right-text{
     width: 85% !important;
     left: -50px !important;

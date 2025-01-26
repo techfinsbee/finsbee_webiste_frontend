@@ -260,7 +260,7 @@ const CibilScoreSection = () => {
           }
         }
 
-        @media (max-width: 375px) {
+        @media (max-width: 512px) {
           .cibil-button {
             width: 15rem !important;
             height: 100px !important;
@@ -277,7 +277,7 @@ const CibilScoreSection = () => {
           }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: 512px) {
         .cibil-score {
             margin-top: 200px !important;
           }

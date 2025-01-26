@@ -120,7 +120,7 @@ const FeatureCardsCarousel = () => {
         ))}
       </div>
       <style jsx>{`
-        @media screen and (max-width: 420px){
+        @media screen and (max-width: 512px){
           .feature-div{
             width: 31% !important;
           }

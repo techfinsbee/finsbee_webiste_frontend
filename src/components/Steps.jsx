@@ -249,7 +249,7 @@ const Steps = () => {
           }
         }
 
-        @media screen and (max-width: 450px) {
+        @media screen and (max-width: 512px) {
           .steps-content {
             display: none !important;
           }

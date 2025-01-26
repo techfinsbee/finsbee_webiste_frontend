@@ -17,7 +17,7 @@ const SocialSidebar = () => {
       </div>
 
       <style jsx>{`
-        @media (max-width: 450px){
+        @media (max-width: 512px){
         .fixed{
           display: none !important;
         }
