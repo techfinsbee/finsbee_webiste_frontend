@@ -81,7 +81,7 @@ const FeatureCardsCarousel = () => {
         className="flex transition-transform duration-500 ease-in-out"
         style={{
           transform: `translateX(-${currentSlide * 100}%)`,
-          width: `${features.length * 100}%`
+          width: `${features.length * 100}%`,
         }}
       >
         {features.map((feature, index) => (

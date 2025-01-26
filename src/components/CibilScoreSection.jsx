@@ -149,12 +149,13 @@ const CibilScoreSection = () => {
             style={{ 
               transform: `translateX(-${currentSlide * 100}%)`,
               width: `${carouselItems.length * 100}%`,
+              
             }}
           >
             {carouselItems.map((item, index) => (
               <div 
                 key={index} 
-                className="w-full flex-shrink-0 space-y-1 px-4"
+                className="w-full flex-shrink-0 space-y-1 px-4 overflow-hidden"
               >
                 <div className="flex gap-4 w-80">
                   <div className="flex justify-center" style={{ alignItems: "center" }}>
