@@ -9,14 +9,14 @@ const MainSection = () => {
   });
 
   return (
-    <section id="home" className='' >
+    <section id="home" className='min-h-screen' >
 
     <div
       ref={ref} // Attach the ref to the main section
       className="relative w-full max-w-full flex items-center  gap-40 main"
     >
       {/* Left content */}
-      <div className="flex flex-col main1 gap-24 ml-24" style={{width:"60%"}}>
+      <div className="flex flex-col main1 gap-24 ml-24" >
         <h1 className="text-4xl font-bold text-gray-800 max-w-full ml-5 roboto-serif main-h1">
         Your Ultimate Financial <br /> SuperApp-Loans, Shopping, Rewards, and More!
         </h1>

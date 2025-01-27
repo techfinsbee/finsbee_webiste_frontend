@@ -128,8 +128,7 @@ const CibilScoreSection = () => {
 
   return (
     <div
-      className="flex justify-center p-8 cibil-score"
-      style={{ marginTop: "300px" }}
+      className="flex justify-center p-8 cibil-score min-h-screen mt-64"
     >
       <div className="cibil-w" style={{ width: "84%" }}>
         {/* Header */}

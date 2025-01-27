@@ -70,8 +70,8 @@ const Mobile = () => {
   ];
 
   const { ref, inView } = useInView({
-    threshold: 0.2, 
-    triggerOnce: false, 
+    threshold: 0.1, 
+    triggerOnce: true, 
   });
 
   return (

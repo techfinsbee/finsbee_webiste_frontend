@@ -49,7 +49,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
   };
   return (
     <div
-      className="relative w-full overflow-hidden touch-pan-y"
+      className="relative w-full min-h-screen overflow-hidden touch-pan-y"
       onTouchStart={handleTouchStart}
       style={{ overflowX: "hidden" }}
     >
