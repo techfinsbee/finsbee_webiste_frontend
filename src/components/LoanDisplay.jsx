@@ -215,12 +215,12 @@ const LoanDisplay = () => {
         </div>
       </div>
       <style jsx>{`
-      @media screen and (min-width: 900px) {
+      @media  (min-width: 900px){
           .loan-mobile {
             display: none !important;
           }
         }
-        @media (max-width: 900px) {
+        @media (max-width: 900px) , (max-height: 600px) {
         .loan-section{
           height: 120vh !important;
         }
@@ -237,7 +237,7 @@ const LoanDisplay = () => {
           display: none !important;
         }
         }
-        @media (max-height:692px ) and (max-width: 768px) {
+        @media (max-height:692px ) and (max-width: 900px) {
           .loan-section{
           height: 150vh !important;
           margin-top: 400px !important;
@@ -256,6 +256,12 @@ const LoanDisplay = () => {
           display: none !important;
         }
         }
+
+        @media , (max-height: 600px) {
+        .loan-section{
+          height: fit-content !important;
+        }
+      }
       `}</style>
       </section>
     </>
