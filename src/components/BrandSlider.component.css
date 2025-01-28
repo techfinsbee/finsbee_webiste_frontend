@@ -13,7 +13,7 @@
 }
 @media screen and (max-width: 728px) {
 	.brand-slider{
-		width: 400px !important;
+		width: 100vw !important;
 		margin-bottom: 50px;
 	}
 	.brand-image{
@@ -25,19 +25,6 @@
 
 @media screen and (max-width: 512px) {
 	.brand-slider{
-		width: 350px !important;
-		margin-bottom: 50px;
-		gap: 10px !important;
-	}
-	.brand-image{
-		height: 90px !important;
-		width: auto !important;
-	}
-}
-
-@media screen and (max-width: 512px) {
-	.brand-slider{
-		width: 250px !important;
 		margin-bottom: 50px;
 		gap: 10px !important;
 	}

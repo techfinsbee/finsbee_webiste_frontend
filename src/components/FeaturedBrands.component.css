@@ -1,7 +1,7 @@
 @media screen and ( max-width: 512px ) {
   .feature-brand{
     flex-direction: column !important;
-    max-width: 100% !important;
+    
     margin: 0px !important;
     text-align: center;
     
