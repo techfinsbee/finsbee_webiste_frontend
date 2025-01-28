@@ -16,7 +16,7 @@ const MainSection = () => {
       className="relative w-full min-h-screen flex items-center main-section  gap-40 main"
     >
       {/* Left content */}
-      <div className="flex flex-col main1 gap-24 ml-24" >
+      <div className="flex flex-col main1 gap-28 ml-24" >
         <h1 className="text-4xl font-bold text-gray-800  ml-5 roboto-serif main-h1">
         Your Ultimate Financial <br /> SuperApp-Loans, Shopping, Rewards, and More!
         </h1>
