@@ -58,7 +58,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 820 || window.innerHeight <= 512);
+      setIsMobile(window.innerWidth <= 913 || window.innerHeight <= 512);
     };
 
     const handleClickOutside = (event) => {
