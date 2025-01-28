@@ -66,15 +66,23 @@ const FeatureCards = () => {
 
     <style jsx>{
     `
-    @media (max-width: 512px){
+    @media (max-width: 768px){
     .main-cards {
       display: none !important;
     }
     }
     `}</style>
-    <div className="md:hidden">
+    <div className="mobile-card flex justify-center">
       <FeatureCardsCarousel></FeatureCardsCarousel>
       </div>
+
+      <style jsx>{`
+        @media screen and (min-width: 781px) {
+          .mobile-card{
+            display: none !important;
+          }
+        }
+      `}</style>
     </>
   );
 };

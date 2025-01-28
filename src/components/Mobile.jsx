@@ -106,6 +106,13 @@ const Mobile = () => {
         </div>
       </div>
       <style jsx>{`
+      @media screen and (max-width: 1000px) {
+        .counters {
+            gap: 0rem !important;
+            justify-content: space-between !important;
+            padding: 0px 10px;
+          }
+      }
         @media screen and (max-width: 820px) {
           .counters {
             gap: 0rem !important;

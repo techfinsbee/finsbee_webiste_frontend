@@ -36,7 +36,7 @@ const Steps = () => {
       },
     ],
   };
-  const images = ["/c3.png", "/c4.png", "/c2.png", "/c1.png","/c4.png"];
+  const images = ["/c3.png", "/c4.png", "/c2.png", "/c1.png", "/c4.png"];
 
   const steps_content = [
     {
@@ -71,6 +71,8 @@ const Steps = () => {
     },
   ];
 
+  const screenWidth = window.innerWidth;
+  const isMobile = screenWidth < 425;
 
   const [activeIndexList, setActiveIndexList] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
@@ -114,13 +116,13 @@ const Steps = () => {
   };
 
   return (
-    <section className="container mt-30 p-0">
+    <section className="mt-30 p-0">
       <div>
         <h1
-          className="loan-header"
+          className="loan-header step-header"
           style={{
             textAlign: "center",
-            fontSize: "50px",
+            fontSize: "40px",
             marginTop: "50px",
             display: "flex",
             justifyContent: "center",
@@ -199,12 +201,12 @@ const Steps = () => {
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
                 className="h-full object-contain step-per-image rounded-lg mx-auto"
-                style={{position:"relative", top:"-100px"}}
+                style={{ position: "relative", top: "-100px" }}
               />
             </div>
           </div>
         </div>
-        <div className="lg:hidden">
+        <div className="mobile-step">
           <MobileStepsCarousel steps={steps_content} images={images} />
         </div>
       </div>
@@ -222,7 +224,13 @@ const Steps = () => {
           }
         }
 
-        @media screen and (max-width: 820px) {
+        @media screen and (min-width: 900px) {
+          .mobile-step {
+            display: none !important;
+          }
+        }
+
+        @media screen and (max-width: 900px) {
           .flex-row {
             flex-direction: column;
           }
@@ -230,15 +238,18 @@ const Steps = () => {
           .w-1/2 {
             width: 100%;
           }
+
           .loan-header {
             font-size: 18px !important;
             gap: 5px !important;
             margin-bottom: 40px !important;
           }
+
           .steps {
             flex-direction: column !important;
             padding: 0 !important;
           }
+
           .steps .steps-content,
           .step-image {
             width: 100% !important;
@@ -247,7 +258,7 @@ const Steps = () => {
           .step-image {
             margin-top: 100px;
           }
-            .steps-content {
+          .steps-content {
             display: none !important;
           }
         }
@@ -256,13 +267,21 @@ const Steps = () => {
           .steps-content {
             display: none !important;
           }
+
           .step-image {
             margin-top: 0px;
             height: 550px !important;
           }
+
           .step-per-image {
             width: 250px !important;
             height: 500px !important;
+          }
+        }
+
+        @media screen and (max-width: 360px) {
+          .step-header {
+            font-size: 1rem !important;
           }
         }
       `}</style>

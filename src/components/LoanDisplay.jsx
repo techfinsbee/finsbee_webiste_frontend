@@ -28,12 +28,12 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       : 'scale-95 hover:scale-105 hover:shadow-xl hover:bg-[#725839]';
 
     const positions = {
-      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-32 -left-0`,
-      leftMiddle: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 -left-0`,
-      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-32 -left-0`,
-      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-32 -right-0`,
-      rightMiddle: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 -right-0`,
-      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-32 -right-0`,
+      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-32 left-20`,
+      leftMiddle: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 left-20`,
+      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-32 left-20`,
+      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-32 right-20`,
+      rightMiddle: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 right-20`,
+      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-32 right-20`,
     };
 
     return `${baseClasses} ${positions[position]} ${isAnimated ? 'opacity-100' : ''} ${scaleClasses}`;
@@ -210,12 +210,17 @@ const LoanDisplay = () => {
           ))}
         </div>
 
-        <div className="lg:hidden loan-mobile">
+        <div className="loan-mobile">
           <MobileLoanCarousel loans={loans} images={images} />
         </div>
       </div>
       <style jsx>{`
-        @media (max-width: 820px) {
+      @media screen and (min-width: 900px) {
+          .loan-mobile {
+            display: none !important;
+          }
+        }
+        @media (max-width: 900px) {
         .loan-section{
           height: 120vh !important;
         }
@@ -244,7 +249,9 @@ const LoanDisplay = () => {
           height: 80vh !important;
           margin-top: 300px !important;
         }
-
+        .loan-headers{
+          font-size: 1.2rem !important;
+        }
         .images{
           display: none !important;
         }

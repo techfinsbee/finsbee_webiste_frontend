@@ -71,7 +71,7 @@ const FeatureCardsCarousel = () => {
 
   return (
     <div 
-      className="relative w-full overflow-hidden mt-20 md:hidden"
+      className="relative w-full overflow-hidden mt-20 mall-card-carousel"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -87,7 +87,7 @@ const FeatureCardsCarousel = () => {
         {features.map((feature, index) => (
           <div 
             key={index} 
-            className=" rounded-lg p-6 flex flex-col h-[280px] w-full flex-shrink-0 justify-center"
+            className=" rounded-lg p-6 flex flex-col h-[280px] w-full flex-shrink-0 justify-center "
             style={{ minWidth: "100%", overflow: "hidden" }}
           >
             <div className=' bg-orange-100 w-96 h-[300px] rounded-lg p-6 flex flex-col justify-center items-center feature-div'>
@@ -120,9 +120,17 @@ const FeatureCardsCarousel = () => {
         ))}
       </div>
       <style jsx>{`
+        @media screen and (max-width: 780px){
+          .mall-card-carousel{
+            width: 60vw !important;
+          }
+        }
         @media screen and (max-width: 512px){
           .feature-div{
             width: 31% !important;
+          }
+            .mall-card-carousel{
+            width: 100% !important;
           }
         }
       `}</style>

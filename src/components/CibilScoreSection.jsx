@@ -138,7 +138,7 @@ const CibilScoreSection = () => {
 
         {/* Mobile Carousel */}
         <div 
-          className="md:hidden carousel-container overflow-hidden mt-10"
+          className="md:hidden flex flex-col   carousel-container overflow-hidden mt-10"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -154,10 +154,11 @@ const CibilScoreSection = () => {
             {carouselItems.map((item, index) => (
               <div 
                 key={index} 
-                className="w-full flex-shrink-0 space-y-1 px-4 overflow-hidden"
+                className="w-full cibil-card flex flex-shrink-0 space-y-1 overflow-hidden"
+                style={{alignContent:"center", padding: "0 auto"}}
               >
-                <div className="flex gap-4 w-80">
-                  <div className="flex justify-center" style={{ alignItems: "center" }}>
+                <div className="flex gap-4 cibil-container w-80">
+                  <div className="flex " style={{ alignItems: "center" }}>
                     {item.icon ? (
                       <img
                         src={item.icon}
@@ -242,24 +243,42 @@ const CibilScoreSection = () => {
 
       {/* Existing styles */}
       <style jsx>{`
+       @media (max-height: 760px) and (max-width: 820px) {
+        .cibil-score {
+            margin-top: 200px !important;
+          }
+       }
         @media (max-width: 820px) {
           .cibil-button {
             width: 50% !important;
             height: 100px !important;
             font-size: 1.5rem !important;
           }
+            .cibil-card{
+              margin-right: 10px;
+            }
           .check {
             font-size: 1.8rem !important;
           }
           .cibil-score {
-            margin-top: 0px !important;
+            margin-top: 100px !important;
           }
           .cibil-w {
             width: 100% !important;
           }
+            .cibil-container{
+            width: 100% !important;
+            }
         }
 
         @media (max-width: 512px) {
+        .cibil-card{
+              margin-right: 0px;
+            }
+        .cibil-container{
+        text-align: center;
+            width: 80vw !important;
+            }
           .cibil-button {
             width: 15rem !important;
             height: 100px !important;
