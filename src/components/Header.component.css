@@ -38,7 +38,6 @@
 /* Navigation */
 .nav {
   display: flex;
-  gap: 1rem;
 }
  .nav-item:hover{
   background-color: black;

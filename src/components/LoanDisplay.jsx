@@ -220,7 +220,7 @@ const LoanDisplay = () => {
             display: none !important;
           }
         }
-        @media (max-width: 900px) , (max-height: 600px) {
+        @media (max-width: 912px) , (max-height: 600px) {
         .loan-section{
           height: fit-content !important;
         }
@@ -232,7 +232,7 @@ const LoanDisplay = () => {
           display: none !important;
         }
         }
-        @media (max-height:692px ) and (max-width: 900px) {
+        @media (max-height:692px ) and (max-width: 912px) {
           .loan-section{
           height: fit-content !important;
         }
