@@ -13,8 +13,23 @@
   transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
-
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
+  .main1{
+    margin-left: 0px !important;
+    width: 50% !important;
+  }
+  .main-right-text{
+    /* width: 85% !important; */
+    left: -100px !important;
+  }
+  .main-right-text p{
+    font-size: 20px !important;
+  }
+  .-bottom-0{
+    bottom:-40px !important;
+  }
+}
+@media screen and (max-width: 512px ) {
   .main{
     display: flex;
     flex-direction: column;
@@ -52,22 +67,15 @@
     margin-left: 0px !important;
   }
   .main-right-text{
-    width: 80% !important;
+    width: 85% !important;
     left: -50px !important;
-    height: 45%;
   }
   .-bottom-0{
     bottom:-40px !important;
   }
 }
 
-@media screen and (max-width: 512px){
-  .main-right-text{
-    width: 85% !important;
-    left: -50px !important;
-  }
-  
-}
+
 
 @media (min-width: 1500px) and (max-width: 1920px) {
   .main-h1{

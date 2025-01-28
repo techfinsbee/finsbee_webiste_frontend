@@ -5,88 +5,85 @@ const AnimatedPhones = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const screenWidth = window.innerWidth;
+  if (!containerRef.current) return;
+  const rect = containerRef.current.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  const screenWidth = window.innerWidth;
 
-      // Enhanced mobile detection with specific breakpoints
-      const isXXSmall = screenWidth <= 320;
-      const isXSmall = screenWidth <= 375 && screenWidth > 320;
-      const isMobile = screenWidth < 768;
+  // Enhanced mobile detection with specific breakpoints
+  const isXXSmall = screenWidth <= 320;
+  const isXSmall = screenWidth <= 375 && screenWidth > 320;
+  const isMobile = screenWidth < 768;
+  const isTablet = screenWidth >= 768 && screenWidth <= 1024; // Tablet range
 
-      // Calculate scroll progress (0 to 1)
-      const scrollProgress = 1.5 - rect.bottom / (viewportHeight + rect.height);
-      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+  // Calculate scroll progress (0 to 1)
+  const scrollProgress = 1.5 - rect.bottom / (viewportHeight + rect.height);
+  const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
 
-      // Adjust scale based on screen size
-      let baseScale, scaleGrowth;
-      if (isXXSmall) {
-        baseScale = 0.5;
-        scaleGrowth = 0.15;
-      } else if (isXSmall) {
-        baseScale = 0.6;
-        scaleGrowth = 0.18;
-      } else if (isMobile) {
-        baseScale = 0.7;
-        scaleGrowth = 0.2;
-      } else {
-        baseScale = 0.8;
-        scaleGrowth = 0.4;
-      }
+  // Adjust scale based on screen size
+  let baseScale, scaleGrowth;
+  if (isXXSmall) {
+    baseScale = 0.5;
+    scaleGrowth = 0.15;
+  } else if (isXSmall) {
+    baseScale = 0.6;
+    scaleGrowth = 0.18;
+  } else if (isMobile) {
+    baseScale = 0.7;
+    scaleGrowth = 0.2;
+  } else if (isTablet) {
+    baseScale = 0.75; // Slightly smaller base scale for tablets
+    scaleGrowth = 0.25;
+  } else {
+    baseScale = 0.8;
+    scaleGrowth = 0.4;
+  }
 
-      const scale = baseScale + clampedProgress * scaleGrowth;
+  const scale = baseScale + clampedProgress * scaleGrowth;
 
-      // Adjust spread distance based on screen size
-      let maxSpread;
-      if (isXXSmall) {
-        maxSpread = 80;
-      } else if (isXSmall) {
-        maxSpread = 100;
-      } else if (isMobile) {
-        maxSpread = 130;
-      } else {
-        maxSpread = 300;
-      }
+  // Adjust spread distance and z-scaling for tablet view
+  let maxSpread, zScaleFactor;
+  if (isXXSmall) {
+    maxSpread = 80;
+    zScaleFactor = 15;
+  } else if (isXSmall) {
+    maxSpread = 100;
+    zScaleFactor = 20;
+  } else if (isMobile) {
+    maxSpread = 130;
+    zScaleFactor = 25;
+  } else if (isTablet) {
+    maxSpread = 200;
+    zScaleFactor = 25 / 2; // Reduce z-scaling by half for tablets
+  } else {
+    maxSpread = 300;
+    zScaleFactor = 50;
+  }
 
-      const spread = clampedProgress * maxSpread;
+  const spread = clampedProgress * maxSpread;
 
-      const phones = containerRef.current.getElementsByClassName("phone");
-      Array.from(phones).forEach((phone, index) => {
-        if (index === 1) {
-          // Middle phone (mobile1.png)
-          const zTranslate = isXXSmall
-            ? 15
-            : isXSmall
-            ? 20
-            : isMobile
-            ? 25
-            : 50;
-          phone.style.transform = `
-            scale(${scale})
-            translateZ(${clampedProgress * zTranslate}px)
-          `;
-          phone.style.zIndex = "20";
-        } else {
-          // Side phones (mobile2.png and mobile3.png)
-          const direction = index === 0 ? -1 : 1;
-          const zTranslate = isXXSmall
-            ? 15
-            : isXSmall
-            ? 20
-            : isMobile
-            ? 25
-            : 50;
+  const phones = containerRef.current.getElementsByClassName("phone");
+  Array.from(phones).forEach((phone, index) => {
+    if (index === 1) {
+      // Middle phone (mobile1.png)
+      phone.style.transform = `
+        scale(${scale})
+        translateZ(${clampedProgress * zScaleFactor}px)
+      `;
+      phone.style.zIndex = "20";
+    } else {
+      // Side phones (mobile2.png and mobile3.png)
+      const direction = index === 0 ? -1 : 1;
+      phone.style.transform = `
+        scale(${scale})
+        translateX(${spread * direction}px)
+        translateZ(${-25 + clampedProgress * zScaleFactor}px)
+      `;
+      phone.style.zIndex = "10";
+    }
+  });
+};
 
-          phone.style.transform = `
-            scale(${scale})
-            translateX(${spread * direction}px)
-            translateZ(${-25 + clampedProgress * zTranslate}px)
-          `;
-          phone.style.zIndex = "10";
-        }
-      });
-    };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
@@ -113,7 +110,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile2.png"
               alt="Cart Screen"
-              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
+              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
             />
           </div>
 
@@ -122,7 +119,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile1.png"
               alt="Main Screen"
-              className="w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain"
+              className="w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
             />
           </div>
 
@@ -131,7 +128,7 @@ const AnimatedPhones = () => {
             <img
               src="/mobile3.png"
               alt="Details Screen"
-              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain"
+              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
             />
           </div>
         </div>
@@ -144,7 +141,17 @@ const AnimatedPhones = () => {
           transition: transform 0.3s ease-out;
           transform-origin: center center;
         }
-
+        @media screen and (max-width: 820px) {
+          .ani-img1 {
+            width: 300px !important;
+          }
+          .ani-img2 {
+            width: 400px !important;
+          }
+            .main-context {
+            height: 70vh !important;
+          }
+        }
         @media (max-width: 512px) {
           .phone {
             transition: transform 0.18s ease-out;

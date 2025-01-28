@@ -128,7 +128,7 @@ const CibilScoreSection = () => {
 
   return (
     <div
-      className="flex justify-center p-8 cibil-score min-h-screen mt-64"
+      className="flex justify-center p-8 cibil-score mt-64"
     >
       <div className="cibil-w" style={{ width: "84%" }}>
         {/* Header */}
@@ -242,9 +242,9 @@ const CibilScoreSection = () => {
 
       {/* Existing styles */}
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 820px) {
           .cibil-button {
-            width: 15rem !important;
+            width: 50% !important;
             height: 100px !important;
             font-size: 1.5rem !important;
           }
@@ -269,18 +269,14 @@ const CibilScoreSection = () => {
             font-size: 1.3rem !important;
           }
           .cibil-score {
-            margin-top: 0px !important;
+            margin-top: 50px !important;
           }
           .cibil-w {
             width: 100% !important;
           }
         }
 
-        @media (max-width: 512px) {
-        .cibil-score {
-            margin-top: 200px !important;
-          }
-        }
+        
         @media (min-width: 1367px) and (max-width: 1920px) {
           .cibil-score {
             margin-top: 0px;

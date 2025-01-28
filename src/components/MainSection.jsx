@@ -9,15 +9,15 @@ const MainSection = () => {
   });
 
   return (
-    <section id="home" className='min-h-screen' >
+    <section id="home" className='' >
 
     <div
       ref={ref} // Attach the ref to the main section
-      className="relative w-full max-w-full flex items-center  gap-40 main"
+      className="relative w-full min-h-screen flex items-center  gap-40 main"
     >
       {/* Left content */}
       <div className="flex flex-col main1 gap-24 ml-24" >
-        <h1 className="text-4xl font-bold text-gray-800 max-w-full ml-5 roboto-serif main-h1">
+        <h1 className="text-4xl font-bold text-gray-800  ml-5 roboto-serif main-h1">
         Your Ultimate Financial <br /> SuperApp-Loans, Shopping, Rewards, and More!
         </h1>
 
@@ -44,8 +44,8 @@ const MainSection = () => {
       <div className="relative flex items-center main2">
         <img
           src="/person.png"
-          alt="Person using mobile app"
-          className="w-[700px] object-cover"
+          alt="Person using app"
+          className="main-img object-cover"
         />
 
         {/* Animated text bubble */}

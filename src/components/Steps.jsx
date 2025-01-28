@@ -187,7 +187,7 @@ const Steps = () => {
             </div>
           </div>
 
-          <div className="w-1/2 relative h-[700px] steps-content overflow-hidden step-image flex justify-center">
+          <div className="w-1/2 relative min-h-screen steps-content overflow-hidden step-image flex justify-center">
             <div
               className={`absolute w-full h-full transition-all duration-150 ease-in-out ${
                 isAnimating
@@ -198,13 +198,13 @@ const Steps = () => {
               <img
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
-                className="w-full h-full step-per-image rounded-lg mx-auto"
+                className="h-full object-contain step-per-image rounded-lg mx-auto"
                 style={{position:"relative", top:"-100px"}}
               />
             </div>
           </div>
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <MobileStepsCarousel steps={steps_content} images={images} />
         </div>
       </div>
@@ -222,7 +222,7 @@ const Steps = () => {
           }
         }
 
-        @media screen and (max-width: 728px) {
+        @media screen and (max-width: 820px) {
           .flex-row {
             flex-direction: column;
           }
@@ -246,6 +246,9 @@ const Steps = () => {
 
           .step-image {
             margin-top: 100px;
+          }
+            .steps-content {
+            display: none !important;
           }
         }
 

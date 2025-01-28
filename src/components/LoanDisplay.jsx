@@ -210,15 +210,14 @@ const LoanDisplay = () => {
           ))}
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden loan-mobile">
           <MobileLoanCarousel loans={loans} images={images} />
         </div>
       </div>
       <style jsx>{`
-        @media (max-width: 728px) {
+        @media (max-width: 820px) {
         .loan-section{
-          height: 200vh !important;
-          margin-top: 450px !important;
+          height: 120vh !important;
         }
           .loan-headers {
             font-size: 25px !important;
@@ -229,12 +228,21 @@ const LoanDisplay = () => {
             padding: 0px !important;
             margin-top: 0px !important;
           }
+            .images{
+          display: none !important;
         }
+        }
+        @media (max-height:692px ) and (max-width: 768px) {
+          .loan-section{
+          height: 150vh !important;
+          margin-top: 400px !important;
+        }
+      }
 
         @media (max-width: 512px) {
           .loan-section{
           height: 80vh !important;
-          margin-bottom: 0px !important;
+          margin-top: 300px !important;
         }
 
         .images{

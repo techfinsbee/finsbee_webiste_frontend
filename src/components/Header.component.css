@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: rgb(255, 252, 247);
-  position: sticky;
+  position: -webkit-sticky;
   top: 0;
   height: 80px;
   width: 100%;
@@ -131,7 +131,7 @@
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .header {
     justify-content: space-around;
     padding: 1rem 1rem;
