@@ -128,9 +128,9 @@ const CibilScoreSection = () => {
 
   return (
     <div
-      className="flex justify-center p-8 cibil-score mt-64"
+      className="flex justify-center p-8 cibil-score "
     >
-      <div className="cibil-w" style={{ width: "84%" }}>
+      <div className="cibil-w" style={{ width: "86%" }}>
         {/* Header */}
         <h1 className="text-4xl md:text-5xl gap-2 flex justify-center font-bold mb-12 check roboto-serif">
           Check Your <span className="text-[#C17D5B]">Cibil Score</span>
@@ -138,7 +138,7 @@ const CibilScoreSection = () => {
 
         {/* Mobile Carousel */}
         <div 
-          className="md:hidden flex flex-col   carousel-container overflow-hidden mt-10"
+          className="md:hidden flex flex-col   carousel-container overflow-hidden "
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -244,11 +244,9 @@ const CibilScoreSection = () => {
       {/* Existing styles */}
       <style jsx>{`
        @media (max-height: 760px) and (max-width: 820px) {
-        .cibil-score {
-            margin-top: 200px !important;
-          }
+      
        }
-        @media (max-width: 820px) {
+        @media (max-width: 825px) {
           .cibil-button {
             width: 50% !important;
             height: 100px !important;
@@ -261,7 +259,7 @@ const CibilScoreSection = () => {
             font-size: 1.8rem !important;
           }
           .cibil-score {
-            margin-top: 100px !important;
+            // margin-top: 100px !important;
           }
           .cibil-w {
             width: 100% !important;
@@ -288,7 +286,7 @@ const CibilScoreSection = () => {
             font-size: 1.3rem !important;
           }
           .cibil-score {
-            margin-top: 50px !important;
+            // margin-top: 50px !important;
           }
           .cibil-w {
             width: 100% !important;

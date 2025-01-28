@@ -158,7 +158,7 @@ const LoanDisplay = () => {
 
   return (
     <>
-    <section style={{height:"100vh", marginTop:"250px"}} id="loan-section" className='mb-16 loan-section'>
+    <section style={{height:"fit-content"}} id="loan-section" className='mb-16 loan-section'>
       <div>
         <h1 className="loan-headers roboto-serif" style={{
           textAlign: "center",
@@ -215,23 +215,18 @@ const LoanDisplay = () => {
         </div>
       </div>
       <style jsx>{`
-      @media  (min-width: 900px){
+      @media  (min-width: 950px){
           .loan-mobile {
             display: none !important;
           }
         }
         @media (max-width: 900px) , (max-height: 600px) {
         .loan-section{
-          height: 120vh !important;
+          height: fit-content !important;
         }
           .loan-headers {
             font-size: 25px !important;
             font-weight: 700 !important;
-            margin-top: 50px !important;
-          }
-          .mobile {
-            padding: 0px !important;
-            margin-top: 0px !important;
           }
             .images{
           display: none !important;
@@ -239,15 +234,13 @@ const LoanDisplay = () => {
         }
         @media (max-height:692px ) and (max-width: 900px) {
           .loan-section{
-          height: 150vh !important;
-          margin-top: 400px !important;
+          height: fit-content !important;
         }
       }
 
         @media (max-width: 512px) {
           .loan-section{
           height: 80vh !important;
-          margin-top: 300px !important;
         }
         .loan-headers{
           font-size: 1.2rem !important;

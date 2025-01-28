@@ -84,7 +84,7 @@ const Mobile = () => {
 
   return (
     <>
-      <div style={{ height: "50vh" }}>
+      <div className="mobile-counter" style={{height: "fit-content"}}>
         <div className="" style={{ display: "flex", justifyContent: "center" }}>
           <img src="/mobile.png" alt="" />
         </div>
@@ -106,6 +106,12 @@ const Mobile = () => {
         </div>
       </div>
       <style jsx>{`
+      @media screen and (max-height: 425px) {
+        .mobile-counter{
+          height: fit-content !important; 
+        }
+      }
+
       @media screen and (max-width: 1000px) {
         .counters {
             gap: 0rem !important;

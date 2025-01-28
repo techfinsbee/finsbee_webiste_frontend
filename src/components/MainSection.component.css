@@ -29,6 +29,15 @@
     bottom:-40px !important;
   }
 }
+
+@media screen and (max-height: 512px ) {
+  .main{
+    gap: 6rem !important;
+  }
+  .main1{
+    margin-left: 10px !important;
+  }
+}
 @media screen and (max-width: 512px ) {
   .main{
     display: flex;

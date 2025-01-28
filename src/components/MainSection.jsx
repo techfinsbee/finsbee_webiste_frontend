@@ -13,7 +13,7 @@ const MainSection = () => {
 
     <div
       ref={ref} // Attach the ref to the main section
-      className="relative w-full min-h-screen flex items-center  gap-40 main"
+      className="relative w-full min-h-screen flex items-center main-section  gap-40 main"
     >
       {/* Left content */}
       <div className="flex flex-col main1 gap-24 ml-24" >
@@ -66,6 +66,7 @@ const MainSection = () => {
       <style jsx>{
         `
           @media (max-width: 512px) {
+          
             .main-right-text{
               width: 80%;
               height: auto !important;
