@@ -12,6 +12,7 @@ import FeaturedBrands from './components/FeaturedBrands'
 import FeatureCards from './components/FeatureCards'
 import Footer from './components/Footer'
 import ReactDOM from 'react-dom'
+import { Outlet } from 'react-router-dom';
 import './App.css'
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
   return (
     <>
       <Header></Header>
+      <Outlet />
       <SocialSidebar></SocialSidebar>
       <MainSection></MainSection>
       <JoinFundMama></JoinFundMama>

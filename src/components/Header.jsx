@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Header.component.css";
-
+import { useNavigate } from 'react-router-dom';
 const dropdownData = [
   {
     title: "Home",
@@ -16,13 +16,16 @@ const dropdownData = [
   },
   {
     title: "About Us",
+    link: "/about-us",
   },
   {
     title: "Contact Us",
+    link: "footer",
   },
 ];
 
 const Header = () => {
+  const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +35,14 @@ const Header = () => {
   const burgerRef = useRef(null);
 
   const scrollToSection = (sectionId) => {
+    // Check if it's an external route (starts with '/')
+    if (sectionId.startsWith('/')) {
+      navigate(sectionId);
+      setIsMenuOpen(false);
+      return;
+    }
+    
+    // Otherwise scroll to section as before
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });

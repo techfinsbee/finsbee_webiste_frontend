@@ -96,8 +96,8 @@ const AnimatedPhones = () => {
 
   return (
     <div
-      className="flex items-center justify-center p-2 sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: "110vh", overflow: "hidden" }}
+      className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
+      style={{ height: "fit-content", overflow: "hidden", padding:"0" }}
     >
       <div
         ref={containerRef}
@@ -140,6 +140,17 @@ const AnimatedPhones = () => {
           transform-style: preserve-3d;
           transition: transform 0.3s ease-out;
           transform-origin: center center;
+        }
+          @media screen and (max-width: 1023px) {
+          .ani-img1 {
+            width: 300px !important;
+          }
+          .ani-img2 {
+            width: 400px !important;
+          }
+            .main-context {
+            height: 70vh !important;
+          }
         }
         @media screen and (max-width: 820px) {
           .ani-img1 {
