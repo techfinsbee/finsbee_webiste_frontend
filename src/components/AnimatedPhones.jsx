@@ -152,6 +152,11 @@ const AnimatedPhones = () => {
             height: 70vh !important;
           }
         }
+        @media screen and (max-height: 512px) {
+          .main-context{
+            height: fit-content !important;
+          }
+        }
         @media screen and (max-width: 820px) {
           .ani-img1 {
             width: 300px !important;

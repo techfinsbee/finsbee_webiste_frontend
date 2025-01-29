@@ -34,8 +34,12 @@
   .main{
     gap: 6rem !important;
   }
+  .main-right-text {
+    left: -50px !important;
+  }
   .main1{
     margin-left: 10px !important;
+    gap: 3rem !important;
   }
 }
 @media screen and (max-width: 512px ) {
