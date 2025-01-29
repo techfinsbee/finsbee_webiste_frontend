@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <section id='footer'>
+    <section id='contact-us'>
     <footer className="w-full bg-[#E6D5C3] text-gray-800" >
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -37,7 +37,7 @@ const Footer = () => {
           <div>
             <ul className="space-y-2">
               <li><a href="/about-us" className="text-xl font-semibold hover:text-gray-600">About Us</a></li>
-              <li><a href="/contact-us" className="text-xl font-semibold hover:text-gray-600">Contact Us</a></li>
+              <li><a href="#contact-us" className="text-xl font-semibold hover:text-gray-600">Contact Us</a></li>
               
             </ul>
           </div>

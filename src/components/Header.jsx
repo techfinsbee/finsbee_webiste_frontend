@@ -20,7 +20,7 @@ const dropdownData = [
   },
   {
     title: "Contact Us",
-    link: "footer",
+    link: "contact-us",
   },
 ];
 
