@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Header.component.css";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 const dropdownData = [
   {
     title: "Home",
@@ -26,6 +27,7 @@ const dropdownData = [
 
 const Header = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,20 +37,39 @@ const Header = () => {
   const burgerRef = useRef(null);
 
   const scrollToSection = (sectionId) => {
-    // Check if it's an external route (starts with '/')
-    if (sectionId.startsWith('/')) {
+    // Check if it's the about-us route
+    if (sectionId === '/about-us') {
       navigate(sectionId);
       setIsMenuOpen(false);
       return;
     }
+
+    // If we're on about-us page and clicking a section link, first navigate to home
+    if (location.pathname === '/about-us' && !sectionId.startsWith('/')) {
+      navigate('/', { state: { scrollTo: sectionId } });
+      setIsMenuOpen(false);
+      return;
+    }
     
-    // Otherwise scroll to section as before
+    // Normal section scrolling on home page
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
     }
   };
+
+  // Handle scrolling after navigation from about-us page
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const section = document.getElementById(location.state.scrollTo);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        // Clear the state after scrolling
+        navigate(location.pathname, { replace: true, state: {} });
+      }
+    }
+  }, [location]);
 
   const handleMenuClick = (menuIndex) => {
     setCurrentMenu(menuIndex);
@@ -73,7 +94,6 @@ const Header = () => {
     };
 
     const handleClickOutside = (event) => {
-      // Check if click is outside both the menu and the burger button
       if (
         menuRef.current && 
         !menuRef.current.contains(event.target) &&

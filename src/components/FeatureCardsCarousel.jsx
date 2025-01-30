@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const FeatureCardsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -8,40 +8,61 @@ const FeatureCardsCarousel = () => {
   const features = [
     {
       title: "FundsMama Rewards: FMCoins",
-      description: "Consumers earn FM Coins with every successful loan disbursement or product purchase.",
+      description:
+        "Consumers earn FM Coins with every successful loan disbursement or product purchase.",
       imageContent: (
         <div className="flex items-center justify-center gap-6">
-          <img src="/coin.png" alt="FM Coin" className="w-18 h-14 object-contain" />
-          <span className="text-5xl flex" style={{ position: "relative", top: "-5px" }}>=</span>
-          <img src="/1 inr.png" alt="INR 1" className="w-12 h-12 object-contain" />
+          <img
+            src="/coin.png"
+            alt="FM Coin"
+            className="w-18 h-14 object-contain"
+          />
+          <span
+            className="text-5xl flex"
+            style={{ position: "relative", top: "-5px" }}
+          >
+            =
+          </span>
+          <img
+            src="/1 inr.png"
+            alt="INR 1"
+            className="w-12 h-12 object-contain"
+          />
         </div>
-      )
+      ),
     },
     {
       title: "Discover FundsMall",
       description: "Access 30+ products across 20+ categories",
       imageContent: (
         <div className="flex items-center justify-center">
-          <img src="/category.png" alt="Categories" className="w-12 h-12 object-contain" />
+          <img
+            src="/category.png"
+            alt="Categories"
+            className="w-12 h-12 object-contain"
+          />
         </div>
-      )
+      ),
     },
     {
       title: "Flexible payment options",
-      description: "Enjoy seamless shopping with flexible payment options that suit your preferences",
+      description:
+        "Enjoy seamless shopping with flexible payment options that suit your preferences",
       imageContent: (
         <div className="flex items-center justify-center">
-          <img src="/flexible.png" alt="Flexible Payment" className="w-12 h-12 object-contain" />
+          <img
+            src="/flexible.png"
+            alt="Flexible Payment"
+            className="w-12 h-12 object-contain"
+          />
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   useEffect(() => {
     const autoSlide = setInterval(() => {
-      setCurrentSlide((prev) => 
-        prev === features.length - 1 ? 0 : prev + 1
-      );
+      setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
     }, 3000);
 
     return () => clearInterval(autoSlide);
@@ -57,27 +78,23 @@ const FeatureCardsCarousel = () => {
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 75) {
-      setCurrentSlide((prev) => 
-        prev === features.length - 1 ? 0 : prev + 1
-      );
+      setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
     }
 
     if (touchStart - touchEnd < -75) {
-      setCurrentSlide((prev) => 
-        prev === 0 ? features.length - 1 : prev - 1
-      );
+      setCurrentSlide((prev) => (prev === 0 ? features.length - 1 : prev - 1));
     }
   };
 
   return (
-    <div 
+    <div
       className="relative w-full overflow-hidden mt-20 mall-card-carousel"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      style={{overflowX:"hidden"}}
+      style={{ overflowX: "hidden" }}
     >
-      <div 
+      <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{
           transform: `translateX(-${currentSlide * 100}%)`,
@@ -85,23 +102,23 @@ const FeatureCardsCarousel = () => {
         }}
       >
         {features.map((feature, index) => (
-          <div 
-            key={index} 
-            className=" rounded-lg p-6 flex flex-col h-[280px] w-full flex-shrink-0 justify-center "
+          <div
+            key={index}
+            className=" rounded-lg p-6 flex flex-col h-[280px] flex-shrink-0 justify-center "
             style={{ minWidth: "100%", overflow: "hidden" }}
           >
-            <div className=' bg-orange-100 w-96 h-[300px] rounded-lg p-6 flex flex-col justify-center items-center feature-div'>
-            <h3 className="text-2xl font-bold text-center h-14 flex items-center justify-center roboto-serif">
-              {feature.title}
-            </h3>
-            <div className="h-24 flex items-center justify-center">
-              {feature.imageContent}
-            </div>
-            <div>
-              <p className="text-base roboto-light text-xl">
-                {feature.description}
-              </p>
-            </div>
+            <div className=" bg-orange-100 w-96 h-[250px] rounded-lg p-6 flex flex-col justify-center items-center feature-div">
+              <h3 className="text-2xl font-bold text-center h-14 flex items-center justify-center roboto-serif">
+                {feature.title}
+              </h3>
+              <div className="h-24 flex items-center justify-center">
+                {feature.imageContent}
+              </div>
+              <div>
+                <p className="text-base roboto-light text-xl">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           </div>
         ))}
@@ -114,23 +131,24 @@ const FeatureCardsCarousel = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`h-3 w-3 rounded-full ${
-              currentSlide === index ? 'bg-orange-500' : 'bg-orange-200'
+              currentSlide === index ? "bg-orange-500" : "bg-orange-200"
             }`}
           />
         ))}
       </div>
       <style jsx>{`
-        @media screen and (max-width: 780px){
-          .mall-card-carousel{
+        @media screen and (max-width: 780px) {
+          .mall-card-carousel {
             width: 60vw !important;
           }
         }
-        @media screen and (max-width: 512px){
-          .feature-div{
+        @media screen and (max-width: 512px) {
+          .feature-div {
             width: 31% !important;
           }
-            .mall-card-carousel{
+          .mall-card-carousel {
             width: 100% !important;
+            height: 80% !important;
           }
         }
       `}</style>

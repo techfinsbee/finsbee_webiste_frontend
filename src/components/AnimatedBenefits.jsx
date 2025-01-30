@@ -46,9 +46,9 @@ const AnimatedBenefits = () => {
         </div>
       </div>
       <style jsx>{`
-      @media (max-width: 728px){
+      @media (max-width: 425px){
         .text-base{
-          font-size: 1.5rem !important;
+          font-size: 1.3rem !important;
         }
       }
       `}</style>

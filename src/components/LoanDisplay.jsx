@@ -169,7 +169,7 @@ const LoanDisplay = () => {
           gap: "10px",
           fontWeight:"700"
         }}>
-          Check Out the<h1 style={{color:"#8B6B4E"}}>FundsMama</h1> Loan
+          Check Out<h1 style={{color:"#8B6B4E"}}>FundsMama</h1> Loan
         </h1>
       </div>
       <AnimatedBenefits></AnimatedBenefits>
@@ -237,14 +237,18 @@ const LoanDisplay = () => {
           height: fit-content !important;
         }
       }
-
+        @media (max-width: 350px) {
+          .loan-headers{
+          font-size: 1.5rem !important;
+        }
+        }
         @media (max-width: 512px) {
           .loan-section{
           height: 80vh !important;
         }
-        .loan-headers{
-          font-size: 1.2rem !important;
-        }
+        // .loan-headers{
+        //   font-size: rem !important;
+        // }
         .images{
           display: none !important;
         }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import './MainSection.component.css';
-
+import AnimatedMain from './AnimatedMain';
 const MainSection = () => {
   const { ref, inView } = useInView({
     threshold: 0.3, // Trigger when 30% of the section is visible
@@ -18,7 +18,9 @@ const MainSection = () => {
       {/* Left content */}
       <div className="flex flex-col main1 gap-28 ml-24" >
         <h1 className="text-4xl font-bold text-gray-800  ml-5 roboto-serif main-h1">
-        Your Ultimate Financial <br /> SuperApp-Loans, Shopping, Rewards, and More!
+        Your Ultimate Financial SuperApp
+        <br />
+        <AnimatedMain></AnimatedMain>
         </h1>
 
         {/* App store buttons */}

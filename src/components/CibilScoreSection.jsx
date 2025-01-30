@@ -278,12 +278,13 @@ const CibilScoreSection = () => {
             width: 80vw !important;
             }
           .cibil-button {
-            width: 15rem !important;
+            width: 13rem !important;
             height: 100px !important;
-            font-size: 1.5rem !important;
+            font-size: 1.3rem !important;
+            line-height: 1.5rem !important;
           }
           .check {
-            font-size: 1.3rem !important;
+            font-size: 1.6rem !important;
           }
           .cibil-score {
             // margin-top: 50px !important;

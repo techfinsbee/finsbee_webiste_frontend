@@ -201,7 +201,7 @@ const Steps = () => {
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
                 className="h-full object-contain step-per-image rounded-lg mx-auto"
-                style={{ position: "relative", top: "-100px" }}
+                style={{ position: "relative", top: "-100px", left: "20px" }}
               />
             </div>
           </div>

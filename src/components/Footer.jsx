@@ -50,9 +50,9 @@ const Footer = () => {
                   Customercare@fundsmama.com  
                 </a>
               </li>
-              <li className="text-xl font-semibold hover:text-gray-600">L42 ,Lajpat Nagar</li>
-              <li className="text-xl font-semibold hover:text-gray-600">2,Newdelhi-110042</li>
-              <li className="text-xl font-semibold hover:text-gray-600">+91 96505 53609</li>
+              <li className="text-xl font-semibold hover:text-gray-600" >L42, Lajpat Nagar-2, New Delhi-110024</li>
+              <li className="text-xl font-semibold hover:text-gray-600"></li>
+              <li className="text-xl font-semibold hover:text-gray-600">+91-96505 53609</li>
 
             </ul>
           </div>
