@@ -4,7 +4,7 @@ import './FeaturedBrands.component.css'
 const FeaturedBrands = ({allLogos}) => {
 
   return (
-    <div className=" rounded-xl mt-8 pb-6" style={{ overflowX: "hidden" }}>
+    <div className=" rounded-xl mt-24 mb-12 pb-6" style={{ overflowX: "hidden" }}>
       <h2 className="text-[#006d5b] text-6xl brand-text font-bold mb-6 center" style={{textAlign:"center"}}>
           {allLogos.title}
         </h2>
