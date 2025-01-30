@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section id="contact-us" style={{background:"rgb(255, 252, 247)"}}>
-      <footer className="w-full text-gray-800 border-t border-gray-200 " style={{background:"rgb(255, 252, 247)", boxShadow:"200px 200px 200px #000000"}}>
+    <section id="contact-us" >
+      <footer className="w-full text-gray-800 border-t border-gray-200 " style={{ boxShadow:"200px 200px 200px #000000"}}>
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Top section with logo and sign up button */}

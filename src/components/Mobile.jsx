@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-import "./Mobile.component.css";
 
 const AnimatedCounter = ({
   end,
@@ -8,10 +7,16 @@ const AnimatedCounter = ({
   label,
   prefix = "",
   suffix = "+",
+  shouldAnimate
 }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    if (!shouldAnimate) {
+      setCount(0);
+      return;
+    }
+
     let startTime;
     let animationFrame;
 
@@ -30,7 +35,7 @@ const AnimatedCounter = ({
     animationFrame = requestAnimationFrame(animate);
 
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration]);
+  }, [end, duration, shouldAnimate]);
 
   const formatNumber = (num) => {
     if (num >= 1000000) {
@@ -77,10 +82,23 @@ const Mobile = () => {
     },
   ];
 
-  const { ref, inView } = useInView({
+  const { ref, inView, entry } = useInView({
     threshold: 0.1,
-    triggerOnce: true,
+    rootMargin: '-5% 0px -5% 0px', // This creates a smaller trigger area in the middle of the viewport
+    triggerOnce: false
   });
+
+  // Track whether we've fully exited the viewport
+  const [hasExited, setHasExited] = useState(true);
+
+  useEffect(() => {
+    if (!inView) {
+      setHasExited(true);
+    }
+  }, [inView]);
+
+  // Only trigger animation when coming into view after having fully exited
+  const shouldAnimate = inView && hasExited;
 
   return (
     <>
@@ -92,55 +110,55 @@ const Mobile = () => {
           ref={ref}
           className="flex flex-wrap gap-28 justify-center items-center counters"
         >
-          {inView &&
-            stats.map((stat, index) => (
-              <AnimatedCounter
-                key={index}
-                end={stat.end}
-                duration={1500}
-                label={stat.label}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
-              />
-            ))}
+          {stats.map((stat, index) => (
+            <AnimatedCounter
+              key={index}
+              end={stat.end}
+              duration={1000}
+              label={stat.label}
+              prefix={stat.prefix}
+              suffix={stat.suffix}
+              shouldAnimate={shouldAnimate}
+            />
+          ))}
         </div>
       </div>
       <style jsx>{`
-      @media screen and (max-height: 425px) {
-        .mobile-counter{
-          height: fit-content !important; 
+        @media screen and (max-height: 512px) {
+          .mobile-counter {
+            height: fit-content !important; 
+          }
         }
-      }
 
-      @media screen and (max-width: 1000px) {
-        .counters {
+        @media screen and (max-width: 1000px) {
+          .counters {
             gap: 0rem !important;
             justify-content: space-between !important;
             padding: 0px 10px;
           }
-      }
+        }
+        
         @media screen and (max-width: 820px) {
           .counters {
             gap: 0rem !important;
             justify-content: space-between !important;
             padding: 0px 10px;
           }
-            .mobile-box{
-              min-width: 200px !important;
-            }
+          .mobile-box {
+            min-width: 200px !important;
+          }
         }
-            @media screen and (max-width: 655px) {
+        
+        @media screen and (max-width: 655px) {
           .counters {
             gap: 1rem !important;
             justify-content: center !important;
             padding: 0px 10px;
           }
-            .mobile-box{
-              min-width: 250px !important;
-            }
+          .mobile-box {
+            min-width: 250px !important;
+          }
         }
-
-
       `}</style>
     </>
   );

@@ -224,13 +224,13 @@ const Steps = () => {
           }
         }
 
-        @media screen and (min-width: 913px) {
+        @media screen and (min-width: 933px) {
           .mobile-step {
             display: none !important;
           }
         }
 
-        @media screen and (max-width: 912px) {
+        @media screen and (max-width: 933px){
           .flex-row {
             flex-direction: column;
           }

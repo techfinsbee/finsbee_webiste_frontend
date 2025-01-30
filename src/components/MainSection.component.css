@@ -49,8 +49,9 @@
     padding: 0px !important;  
     padding-left: 0px !important;
     gap: 50px !important;
-    height: 80vh !important;
+    height: fit-content !important;
     justify-content:flex-start !important;
+    margin-bottom: 30px !important;
   }
   .main1{
     width: 100% !important;

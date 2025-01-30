@@ -84,6 +84,11 @@ const MainSection = () => {
           </div>
         </div>
         <style jsx>{`
+          @media (max-height: 512px) {
+            .main{
+              height: fit-content !important;
+            }
+          }
           @media (max-width: 912px) {
           .number{
               align-items: baseline !important;
