@@ -5,7 +5,6 @@ const AnimatedMain = () => {
     "Loans",
     "Shopping",
     "Rewards",
-    "More"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
