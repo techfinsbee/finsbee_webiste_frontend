@@ -115,7 +115,7 @@ const FeatureCardsCarousel = () => {
                 {feature.imageContent}
               </div>
               <div>
-                <p className="text-base roboto-light text-xl">
+                <p className="roboto-light text-xl">
                   {feature.description}
                 </p>
               </div>
@@ -142,7 +142,7 @@ const FeatureCardsCarousel = () => {
             width: 60vw !important;
           }
         }
-        @media screen and (max-width: 512px) {
+        @media screen and (max-width: 681px) {
           .feature-div {
             width: 31% !important;
           }

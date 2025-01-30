@@ -22,11 +22,11 @@ const AnimatedMain = () => {
       <div className="flex  sm:text-left gap-2 sm:gap-0">
         
         <div className="relative h-10  ">
-          <div className="relative h-full overflow-hidden inline-block w-[200px] sm:w-[250px] lg:w-[300px]">
+          <div className="relative overflow-hidden animated-text inline-block w-[300px] sm:w-[300px] lg:w-[300px]" style={{height:"50px"}}>
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="absolute inset-0 w-full transition-all duration-500 ease-in-out lg:text-4xl roboto-slab"
+                className="absolute inset-0 w-full transition-all duration-500 ease-in-out lg:text-5xl roboto-slab"
                 style={{
                   transform: `translateY(${index === currentIndex ? '0%' : '100%'})`,
                   opacity: index === currentIndex ? 1 : 0,
@@ -34,7 +34,7 @@ const AnimatedMain = () => {
                   
                 }}
               >
-                <span className="text-[#CD855F] block h-[300px]">{benefit}</span>
+                <span className="text-[#CD855F] block h-[400px]">{benefit}</span>
               </div>
             ))}
           </div>
@@ -46,6 +46,13 @@ const AnimatedMain = () => {
           font-size: 5rem !important;
         }
       }
+
+      @media (max-width: 512px){
+      .animated-text{
+        font-size: 3rem !important;
+      }
+      }
+
       `}</style>
     </div>
   );

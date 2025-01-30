@@ -84,7 +84,7 @@ const Mobile = () => {
 
   return (
     <>
-      <div className="mobile-counter" style={{height: "fit-content"}}>
+      <div className="mobile-counter" style={{height: "80vh"}}>
         <div className="" style={{ display: "flex", justifyContent: "center" }}>
           <img src="/mobile.png" alt="" />
         </div>
