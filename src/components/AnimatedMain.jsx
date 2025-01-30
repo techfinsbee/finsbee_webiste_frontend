@@ -18,7 +18,7 @@ const AnimatedMain = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-1 mt-5" >
+    <div className="w-full max-w-2xl px-1 mt-5" >
       <div className="flex  sm:text-left gap-2 sm:gap-0">
         
         <div className="relative h-10  ">
