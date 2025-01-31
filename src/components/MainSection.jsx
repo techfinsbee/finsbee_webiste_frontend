@@ -68,7 +68,7 @@ const MainSection = () => {
             className={`
             main-right-text
             absolute -left-20 px-6 py-3 -bottom-0
-            bg-[#E6D5C3] rounded-lg
+            bg-[#E6D5C3] rounded-lg h-fit 
             transform transition-all duration-[1500ms]
             ${
               inView ? "-translate-y-0 opacity-100" : "translate-y-10 opacity-0"
