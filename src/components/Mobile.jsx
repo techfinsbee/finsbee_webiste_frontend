@@ -148,7 +148,6 @@ const Mobile = () => {
             min-width: 200px !important;
           }
         }
-        
         @media screen and (max-width: 655px) {
           .counters {
             gap: 1rem !important;

@@ -215,6 +215,11 @@ const LoanDisplay = () => {
         </div>
       </div>
       <style jsx>{`
+       @media screen and (max-height: 780px) {
+        .loan-section{
+          margin-top: 100px !important;
+        }
+      }
       @media  (min-width: 950px){
           .loan-mobile {
             display: none !important;
