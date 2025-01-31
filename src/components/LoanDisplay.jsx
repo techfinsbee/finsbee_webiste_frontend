@@ -62,7 +62,7 @@ const LoanDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [selectedLoan, setSelectedLoan] = useState(null);
-  const images = ['/instant_loan.svg', '/emi_loan.svg', '/solar.svg','/loan_against_property.svg', '/home_loan.svg','/loan_against_security.svg'];
+  const images = ['/instant_loan.svg', '/emi_loan.png', '/solar.svg','/loan_against_property.png', '/home_loan.svg','/loan_against_security.png'];
   const loans = [
     { 
       title: "Instant Loan", 
