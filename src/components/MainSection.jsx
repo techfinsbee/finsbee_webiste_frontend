@@ -76,7 +76,7 @@ const MainSection = () => {
           `}
           >
             <p
-              className="text-gray-800 whitespace-nowrap font-medium text-xl earn roboto-serif"
+              className="text-gray-800 whitespace-nowrap font-medium text-2xl earn roboto-serif"
               style={{ textAlign: "center" }}
             >
               Earn FMCoins on <br /> each transaction via <br /> App
