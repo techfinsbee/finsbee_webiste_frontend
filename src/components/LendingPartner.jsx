@@ -1,3 +1,4 @@
+import Header from "./Header";
 const LendingPartner = () => {
   const LendingPartners = [
     {partner:"Olyv", link: "http://olyv.co.in"},
@@ -10,6 +11,7 @@ const LendingPartner = () => {
 
   return (
     <>
+    <Header />
     <section className="py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">
