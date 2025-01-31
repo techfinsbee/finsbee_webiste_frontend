@@ -72,8 +72,8 @@ const MobileLoanCarousel = ({ loans, images }) => {
             <img
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
-              cclassName={`w-full max-w-[100%] h-auto object-contain rounded-md 
-                ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+              className={`w-full max-w-[100%] h-auto object-contain rounded-md theme-image
+      ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
               onLoad={() => setIsImageLoaded(true)}
             />
           </div>
@@ -94,6 +94,16 @@ const MobileLoanCarousel = ({ loans, images }) => {
               {loans[currentIndex].description}
             </p>
           </div>
+
+          <style jsx>{`
+            .theme-image {
+              filter: none;
+            }
+
+            .dark .theme-image {
+              filter: brightness(1.2) contrast(1.1);
+            }
+          `}</style>
         </motion.div>
       </AnimatePresence>
 
