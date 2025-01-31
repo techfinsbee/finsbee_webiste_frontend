@@ -62,7 +62,7 @@ const LoanDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [selectedLoan, setSelectedLoan] = useState(null);
-  const images = ['/instant_loan.png', '/emi_loan.png', '/loan_against_property.png', '/home_loan.png','/loan_against_security.png', '/solar.png'];
+  const images = ['/instant_loan.svg', '/emi_loan.svg', '/solar.svg','/loan_against_property.svg', '/home_loan.svg','/loan_against_security.svg'];
   const loans = [
     { 
       title: "Instant Loan", 
@@ -83,28 +83,28 @@ const LoanDisplay = () => {
       description: "Flexible, rewarding credit cards for seamless spending and exclusive perks.", 
       position: "leftBottom", 
       delay: 200,
-      image: images[5]
+      image: images[2]
     },
     { 
       title: "Loan Against Property", 
       description: "Unlock high-value loans with flexible tenures by leveraging your property assets.", 
       position: "rightTop", 
       delay: 200,
-      image: images[2]
+      image: images[3]
     },
     { 
       title: "Home Loan", 
       description: "Affordable loans to turn your homeownership dreams into reality.", 
       position: "rightMiddle", 
       delay: 200,
-      image: images[3]
+      image: images[4]
     },
     { 
       title: "Loan Against Security", 
       description: "Access funds by pledging shares, mutual funds, or other securities.", 
       position: "rightBottom", 
       delay: 200,
-      image: images[4]
+      image: images[5]
     }
   ];
 

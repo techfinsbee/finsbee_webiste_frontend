@@ -8,35 +8,35 @@ const Steps = () => {
         title: "Download & Sign-Up",
         content:
           "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
-        image: "/c3.png",
+        image: "/c3.svg",
       },
       {
         title: "Fill the Application",
         content:
           "Provide basic details like your full name, date of birth, and email address to get started.",
-        image: "/c4.png",
+        image: "/c4.svg",
       },
       {
         title: "Apply for Loan",
         content:
           "Submit your loan application after a smooth verification process, with just a few taps.",
-        image: "/c2.png",
+        image: "/c2.svg",
       },
       {
         title: "Upload Required Documents",
         content:
           "Upload essential documents, such as your PAN and Aadhaar card, to complete the application.",
-        image: "/c1.png",
+        image: "/c1.svg",
       },
       {
         title: "Loan Disbursal",
         content:
           "Get your loan approved and disbursed quickly — as fast as within 10 minutes.",
-        image: "/c4.png",
+        image: "/c4.svg",
       },
     ],
   };
-  const images = ["/c3.png", "/c4.png", "/c2.png", "/c1.png", "/c4.png"];
+  const images = ["/c3.svg", "/c4.svg", "/c2.svg", "/c1.svg", "/c4.svg"];
 
   const steps_content = [
     {

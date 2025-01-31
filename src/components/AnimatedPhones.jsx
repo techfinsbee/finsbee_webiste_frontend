@@ -65,14 +65,14 @@ const AnimatedPhones = () => {
   const phones = containerRef.current.getElementsByClassName("phone");
   Array.from(phones).forEach((phone, index) => {
     if (index === 1) {
-      // Middle phone (mobile1.png)
+      // Middle phone (mobile1.svg)
       phone.style.transform = `
         scale(${scale})
         translateZ(${clampedProgress * zScaleFactor}px)
       `;
       phone.style.zIndex = "20";
     } else {
-      // Side phones (mobile2.png and mobile3.png)
+      // Side phones (mobile2.svg and mobile3.svg)
       const direction = index === 0 ? -1 : 1;
       phone.style.transform = `
         scale(${scale})
@@ -108,7 +108,7 @@ const AnimatedPhones = () => {
           {/* Left Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
-              src="/mobile2.png"
+              src="/mobile2.svg"
               alt="Cart Screen"
               className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
             />
@@ -117,7 +117,7 @@ const AnimatedPhones = () => {
           {/* Middle Phone */}
           <div className="phone transition-all duration-300 ease-out">
             <img
-              src="/mobile1.png"
+              src="/mobile1.svg"
               alt="Main Screen"
               className="w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
             />
@@ -126,7 +126,7 @@ const AnimatedPhones = () => {
           {/* Right Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
-              src="/mobile3.png"
+              src="/mobile3.svg"
               alt="Details Screen"
               className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
             />
