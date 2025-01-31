@@ -45,7 +45,7 @@ const Header = () => {
     }
 
     // If we're on about-us page and clicking a section link, first navigate to home
-    if (location.pathname === '/about-us' || location.pathname === '/terms-and-conditions' || location.pathname === '/faqs' ||location.pathname === '/privacy-policy' && !sectionId.startsWith('/')) {
+    if (location.pathname === '/about-us' || location.pathname === '/terms-and-conditions' || location.pathname === '/faqs' ||location.pathname === '/privacy-policy' || location.pathname === '/lending-partners' && !sectionId.startsWith('/')) {
       navigate('/', { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
