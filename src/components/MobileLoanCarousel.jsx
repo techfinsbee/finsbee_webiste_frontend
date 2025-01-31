@@ -6,7 +6,9 @@ const MobileLoanCarousel = ({ loans, images }) => {
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-
+  const getImageType = (imagePath) => {
+    return imagePath.toLowerCase().endsWith(".svg") ? "svg" : "png";
+  };
   useEffect(() => {
     // Preload images before rendering
     const preloadImages = () => {
@@ -72,7 +74,12 @@ const MobileLoanCarousel = ({ loans, images }) => {
             <img
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
-              className={`w-full max-w-[100%] h-auto object-contain rounded-md theme-image
+              className={`w-full max-w-[100%] h-auto object-contain rounded-md
+      ${
+        getImageType(images[currentIndex]) === "svg"
+          ? "theme-image-svg"
+          : "theme-image-png"
+      }
       ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
               onLoad={() => setIsImageLoaded(true)}
             />
@@ -94,16 +101,6 @@ const MobileLoanCarousel = ({ loans, images }) => {
               {loans[currentIndex].description}
             </p>
           </div>
-
-          <style jsx>{`
-            .theme-image {
-              filter: none;
-            }
-
-            .dark .theme-image {
-              filter: brightness(1.2) contrast(1.1);
-            }
-          `}</style>
         </motion.div>
       </AnimatePresence>
 
@@ -119,6 +116,23 @@ const MobileLoanCarousel = ({ loans, images }) => {
           />
         ))}
       </div>
+      <style jsx>{`
+        .theme-image-svg {
+          filter: none;
+        }
+
+        .dark .theme-image-svg {
+          filter: opacity(0.8) brightness(0.8); // Reduce brightness for SVGs in dark mode
+        }
+
+        .theme-image-png {
+          filter: none;
+        }
+
+        .dark .theme-image-png {
+          filter: brightness(1.2) contrast(1.1); // Increase brightness for PNGs in dark mode
+        }
+      `}</style>
     </div>
   );
 };
