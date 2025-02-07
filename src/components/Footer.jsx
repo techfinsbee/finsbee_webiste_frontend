@@ -34,24 +34,31 @@ const Footer = () => {
                     href="/terms-and-conditions"
                     className="text-xl font-semibold hover:text-gray-600"
                   >
-                    Terms & Condition
+                    Terms & Condition Credit Score
                   </a>
                 </li>
-
+                <li>
+                  <a
+                    href="/mama-calculator"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Mama's Calculator
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/mama-shoppingmall"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Mama's Shoppingmall
+                  </a>
+                </li>
                 <li>
                   <a
                     href="/lending-partners"
                     className="text-xl font-semibold hover:text-gray-600"
                   >
                     Our Lending Partners
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/faqs"
-                    className="text-xl font-semibold hover:text-gray-600"
-                  >
-                    FAQs
                   </a>
                 </li>
               </ul>
@@ -74,6 +81,63 @@ const Footer = () => {
                     className="text-xl font-semibold hover:text-gray-600"
                   >
                     Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/features"
+                    className="text-xl font-semibold hover:text-gray-600"
+                  >
+                    Features
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="/testimonials"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Testimonials
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/blog"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/sitemap"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Sitemap
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/press-release"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Press Release
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/customer-care"
+                    className="text-xl font-semibold hover:text-gray-600 "
+                  >
+                    Customer Care
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/faqs"
+                    className="text-xl font-semibold hover:text-gray-600"
+                  >
+                    FAQs
                   </a>
                 </li>
               </ul>

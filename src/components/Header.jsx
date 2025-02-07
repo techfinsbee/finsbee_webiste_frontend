@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Header.component.css";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from "react-router-dom";
 
 const dropdownData = [
   {
     title: "Home",
-    link: "home"
+    link: "home",
   },
   {
     title: "Loans",
@@ -38,19 +38,33 @@ const Header = () => {
 
   const scrollToSection = (sectionId) => {
     // Check if it's the about-us route
-    if (sectionId === '/about-us') {
+    if (sectionId === "/about-us") {
       navigate(sectionId);
       setIsMenuOpen(false);
       return;
     }
 
     // If we're on about-us page and clicking a section link, first navigate to home
-    if (location.pathname === '/about-us' || location.pathname === '/terms-and-conditions' || location.pathname === '/faqs' ||location.pathname === '/privacy-policy' || location.pathname === '/lending-partners' && !sectionId.startsWith('/')) {
-      navigate('/', { state: { scrollTo: sectionId } });
+    if (
+      location.pathname === "/about-us" ||
+      location.pathname === "/terms-and-conditions" ||
+      location.pathname === "/faqs" ||
+      location.pathname === "/privacy-policy" ||
+      location.pathname === "/lending-partners" ||
+      location.pathname === "/mama-calculator" ||
+      location.pathname === "/mama-shoppingmall" ||
+      location.pathname === "/features" ||
+      location.pathname === "/testimonials" ||
+      location.pathname === "/blog" ||
+      location.pathname === "/sitemap" ||
+      location.pathname === "/press-release" ||
+      (location.pathname === "/customer-care" && !sectionId.startsWith("/"))
+    ) {
+      navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
     }
-    
+
     // Normal section scrolling on home page
     const section = document.getElementById(sectionId);
     if (section) {
@@ -95,9 +109,9 @@ const Header = () => {
 
     const handleClickOutside = (event) => {
       if (
-        menuRef.current && 
+        menuRef.current &&
         !menuRef.current.contains(event.target) &&
-        burgerRef.current && 
+        burgerRef.current &&
         !burgerRef.current.contains(event.target)
       ) {
         setIsMenuOpen(false);
@@ -122,7 +136,11 @@ const Header = () => {
     <header className="header">
       <a href="/" className="head">
         <div className="logo">
-          <img src="/logo.png" className="w-[300px] max-w-[300px]" alt="FUNDSMAMA" />
+          <img
+            src="/logo.png"
+            className="w-[300px] max-w-[300px]"
+            alt="FUNDSMAMA"
+          />
         </div>
       </a>
 
