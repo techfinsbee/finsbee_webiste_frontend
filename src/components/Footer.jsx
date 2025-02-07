@@ -20,6 +20,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Column 1 */}
             <div>
+              <h1 className="text-3xl font-bold">Support</h1> <br />
               <ul className="space-y-2">
                 <li>
                   <a
@@ -66,6 +67,8 @@ const Footer = () => {
 
             {/* Column 2 */}
             <div>
+            <h1 className="text-3xl font-bold">Company</h1> <br />
+
               <ul className="space-y-2">
                 <li>
                   <a
