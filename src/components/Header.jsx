@@ -25,7 +25,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 //   },
 // ];
 
-const Header = ({dropdownData}) => {
+const Header = ({dropdownData =[]}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -61,6 +61,26 @@ const Header = ({dropdownData}) => {
       (location.pathname === "/customer-care" && (!sectionId.startsWith("/")))
     ) {
       navigate("/", { state: { scrollTo: sectionId } });
+      setIsMenuOpen(false);
+      return;
+    }
+
+    if (
+      location.pathname === "/about-us" ||
+      location.pathname === "/terms-and-conditions" ||
+      location.pathname === "/faqs" ||
+      location.pathname === "/privacy-policy" ||
+      location.pathname === "/lending-partners" ||
+      location.pathname === "/mama-calculator" ||
+      location.pathname === "/mama-shoppingmall" ||
+      location.pathname === "/features" ||
+      location.pathname === "/testimonials" ||
+      location.pathname === "/blog" ||
+      location.pathname === "/sitemap" ||
+      location.pathname === "/press-release" ||
+      (location.pathname === "/customer-care" && (!sectionId.startsWith("/home")))
+    ) {
+      navigate("/home", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
     }
