@@ -1,9 +1,33 @@
 import React from "react";
 import Header from "./Header";
+
 const TermsAndConditions = () => {
+  const dropdownData = [
+    {
+      title: "Home",
+      link: "home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section",
+    },
+    {
+      title: "Mart",
+      link: "mart",
+    },
+    {
+      title: "About Us",
+      link: "/about-us",
+    },
+    {
+      title: "Contact Us",
+      link: "contact-us",
+    },
+  ];
   return (
     <>
-      <Header></Header>
+            <Header dropdownData={dropdownData}></Header>
+
       <div className="max-w-4xl mx-auto p-6 ">
         <h1 className="text-3xl font-bold mb-8 text-center">
           Terms and Conditions

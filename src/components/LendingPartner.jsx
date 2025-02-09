@@ -8,10 +8,32 @@ const LendingPartner = () => {
     {partner:"Payme", link:"https://paymeindia.in"},
     {partner:"Capri Global", link:"https://capriloans.in"},
   ];
-
+  const dropdownData = [
+    {
+      title: "Home",
+      link: "home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section",
+    },
+    {
+      title: "Mart",
+      link: "mart",
+    },
+    {
+      title: "About Us",
+      link: "/about-us",
+    },
+    {
+      title: "Contact Us",
+      link: "contact-us",
+    },
+  ];
   return (
     <>
-    <Header />
+          <Header dropdownData={dropdownData}></Header>
+
     <section className="py-16 px-4">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-800">

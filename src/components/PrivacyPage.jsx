@@ -1,9 +1,32 @@
 import React from 'react';
 import Header from './Header';
 const PrivacyPage = () => {
+  const dropdownData = [
+    {
+      title: "Home",
+      link: "home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section",
+    },
+    {
+      title: "Mart",
+      link: "mart",
+    },
+    {
+      title: "About Us",
+      link: "/about-us",
+    },
+    {
+      title: "Contact Us",
+      link: "contact-us",
+    },
+  ];
   return (
     <>
-    <Header></Header>
+          <Header dropdownData={dropdownData}></Header>
+
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>
       

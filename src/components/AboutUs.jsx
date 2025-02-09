@@ -37,7 +37,29 @@ const AboutUs = () => {
       description:
         "Your personal and financial data is safe with us. FundsMama adheres to strict data security and compliance protocols to ensure your peace of mind.",
     },
+  ];const dropdownData = [
+    {
+      title: "Home",
+      link: "home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section",
+    },
+    {
+      title: "Mart",
+      link: "mart",
+    },
+    {
+      title: "About Us",
+      link: "/about-us",
+    },
+    {
+      title: "Contact Us",
+      link: "contact-us",
+    },
   ];
+
 
   return (
     <div
@@ -47,7 +69,8 @@ const AboutUs = () => {
           "linear-gradient(to bottom, rgb(255, 252, 247), rgb(254, 245, 233))",
       }}
     >
-      <Header />
+            <Header dropdownData={dropdownData}></Header>
+
       {/* Hero Section */}
       <section className=" py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
