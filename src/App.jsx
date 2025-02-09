@@ -41,9 +41,31 @@ function App() {
     { image: "/lending_partner8.png" },
     { image: "/lending_partner9.png" },
   ]};
+  const dropdownData = [
+    {
+      title: "Home",
+      link: "home-home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section-home",
+    },
+    {
+      title: "Mart",
+      link: "mart-home",
+    },
+    {
+      title: "About Us",
+      link: "/about-us",
+    },
+    {
+      title: "Contact Us",
+      link: "contact-us-home",
+    },
+  ];
   return (
     <>
-      <Header></Header>
+      <Header dropdownData={dropdownData}></Header>
       <Outlet />
       <HomeMainSection></HomeMainSection>
       <HomeAnimatedCounter></HomeAnimatedCounter>

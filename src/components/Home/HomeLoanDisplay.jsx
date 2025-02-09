@@ -185,8 +185,8 @@ const HomeLoanDisplay = () => {
     <>
       <section
         style={{ height: "fit-content" }}
-        id="loan-section"
-        className="mb-16 loan-section"
+        id="loan-section-home"
+        className="mb-16 loan-section min-h-screen"
       >
         <div>
           <h1

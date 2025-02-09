@@ -2,7 +2,7 @@ import React from "react";
 
 const HomeFooter = () => {
   return (
-    <section id="contact-us ">
+    <section id="contact-us-home">
       <footer className="w-full text-white-800 bg-[#163312] border-t border-gray-200 " style={{ boxShadow:"200px 200px 200px #000000"}}>
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -158,7 +158,7 @@ const HomeFooter = () => {
                   </a>
                 </li>
                 <li className="text-xl font-semibold hover:text-white-600 flex gap-2">
-                  <img src="/Map_Pin.png" alt="" />L42, Lajpat Nagar-2, New Delhi-110024
+                  <img src="/Map_Pin.png" className="h-6" alt="" />L42, Lajpat Nagar-2, New Delhi-110024
                 </li>
                 <li className="text-xl font-semibold hover:text-white-600 flex gap-2">
                   <img src="/Frame.svg" alt="" />+91-96505 53609

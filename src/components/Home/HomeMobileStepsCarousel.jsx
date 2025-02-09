@@ -49,10 +49,14 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
 
   return (
     <div
-      className="relative w-full overflow-hidden touch-pan-y"
+      className="relative w-full min-h-screen bg-[#112B00] overflow-hidden touch-pan-y pb-10  mb-20"
       onTouchStart={handleTouchStart}
-      style={{ overflowX: "hidden" }}
+      style={{ overflowX: "hidden", borderTopLeftRadius:"50px", borderTopRightRadius:"50px"}}
     >
+      <div className="text-center mt-10 flex flex-col gap-4">
+              <h1 className="text-[#fff] text-3xl font-bold">Loan Application Steps</h1>
+              <p className="text-md text-white">With Fundsmama you unlock loans at lower prices</p>
+            </div>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -81,16 +85,17 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
           {/* Step Box */}
           <div
             className="
-              bg-[#d09c75] text-white p-4 rounded-xl shadow-lg 
+              rgb(178, 255, 142) text-white p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
-              hover:bg-[#725839] hover:scale-[1.02]
+               hover:scale-[1.02]
             "
+            style={{background:"rgb(178, 255, 142)"}}
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-2">
+            <h3 className="text-lg sm:text-xl text-[#163312] font-bold mb-2">
               {steps[currentIndex].title}
             </h3>
-            <p className="text-sm sm:text-md leading-tight">
+            <p className="text-sm sm:text-md text-black">
               {steps[currentIndex].content}
             </p>
           </div>
@@ -104,7 +109,7 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? "bg-[#8B6B4E]" : "bg-gray-300"}
+              ${index === currentIndex ? "bg-[#fff]" : "bg-[#b2ff8e]"}
             `}
           />
         ))}

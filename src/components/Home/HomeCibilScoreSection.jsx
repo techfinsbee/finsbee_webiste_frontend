@@ -170,7 +170,7 @@ const HomeCibilScoreSection = () => {
                       />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold roboto-serif">
+                    <h2 className="text-2xl font-bold text-white roboto-serif">
                       {item.title}
                     </h2>
                     <p className="text-white roboto-light">

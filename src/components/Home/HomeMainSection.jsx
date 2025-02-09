@@ -8,12 +8,12 @@ const HomeMainSection = () => {
   });
 
   return (
-    <section id="home">
+    <section id="home-home">
       <div
         ref={ref}
         className="w-full relative flex items-center justify-between px-8 lg:px-16 HomeMain overflow-hidden"
         style={{
-          background: "linear-gradient(180deg, rgb(255, 252, 247) 0%, rgb(178, 255, 142) 100%)",
+          background: "linear-gradient(180deg, rgb(255, 252, 247) 0%, #b2ff8e 100%)",
           borderBottomLeftRadius:"10%",
           borderBottomRightRadius:"10%",
           height:"90vh"
@@ -29,13 +29,10 @@ const HomeMainSection = () => {
           
           {/* Download button */}
           <div className="flex items-center gap-4">
-            <button className="px-6 py-3 bg-green-400 text-gray-800 rounded-full font-semibold flex items-center gap-2">
-              Download Now
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-              </svg>
+            <button className="px-6 py-3 rounded-full font-semibold flex items-center gap-2">
+              <img src="/download.png" alt="" />
             </button>
-            <img src="/api/placeholder/24/24" alt="Apple" className="w-6 h-6" />
+            
           </div>
 
           {/* Downloads count */}

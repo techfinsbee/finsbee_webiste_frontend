@@ -2,7 +2,7 @@ import React from "react";
 import "../AnimatedTitle.component.css";
 const HomeAnimatedTitle = () => {
   return (
-    <section id="mart">
+    <section id="mart-home">
       <div style={{ boxSizing: "border-box", filter: "drop-shadow(96px 96px 96px rgb(178, 255, 142)" }}>
         <div
           className="text-9xl font-bold flex justify-center gap-2 main-title"

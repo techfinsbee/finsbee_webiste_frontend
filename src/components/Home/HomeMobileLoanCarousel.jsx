@@ -51,9 +51,9 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
   };
   return (
     <div
-      className="relative w-full min-h-screen overflow-hidden touch-pan-y"
+      className="relative w-full min-h-screen mb-100 overflow-hidden touch-pan-y"
       onTouchStart={handleTouchStart}
-      style={{ overflowX: "hidden" }}
+      style={{ overflowX: "hidden"}}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -111,7 +111,7 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? "bg-[#8B6B4E]" : "bg-gray-300"}
+              ${index === currentIndex ? "bg-[#163312]" : "bg-[#b2ff8e]"}
             `}
           />
         ))}

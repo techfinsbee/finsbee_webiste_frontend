@@ -115,7 +115,7 @@ const HomeSteps = () => {
   };
 
   return (
-    <section className=" p-0" 
+    <section className=" p-0 min-h-screen" 
     style={{
       borderRadius:"50px"
     }}>
@@ -270,7 +270,7 @@ const HomeSteps = () => {
 
         @media screen and (max-width: 360px) {
           .step-header {
-            font-size: 1rem !important;
+            font-size: 1.5rem !important;
           }
         }
       `}</style>

@@ -2,30 +2,30 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Header.component.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const dropdownData = [
-  {
-    title: "Home",
-    link: "home",
-  },
-  {
-    title: "Loans",
-    link: "loan-section",
-  },
-  {
-    title: "Mart",
-    link: "mart",
-  },
-  {
-    title: "About Us",
-    link: "/about-us",
-  },
-  {
-    title: "Contact Us",
-    link: "contact-us",
-  },
-];
+// const dropdownData = [
+//   {
+//     title: "Home",
+//     link: "home",
+//   },
+//   {
+//     title: "Loans",
+//     link: "loan-section",
+//   },
+//   {
+//     title: "Mart",
+//     link: "mart",
+//   },
+//   {
+//     title: "About Us",
+//     link: "/about-us",
+//   },
+//   {
+//     title: "Contact Us",
+//     link: "contact-us",
+//   },
+// ];
 
-const Header = () => {
+const Header = ({dropdownData}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -58,7 +58,7 @@ const Header = () => {
       location.pathname === "/blog" ||
       location.pathname === "/sitemap" ||
       location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && !sectionId.startsWith("/"))
+      (location.pathname === "/customer-care" && (!sectionId.startsWith("/")))
     ) {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);

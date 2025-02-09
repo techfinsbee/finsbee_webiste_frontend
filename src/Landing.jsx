@@ -39,9 +39,31 @@ const Landing = () => {
     { image: "/lending_partner8.png" },
     { image: "/lending_partner9.png" },
   ]};
+  const dropdownData = [
+    {
+      title: "Home",
+      link: "home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section",
+    },
+    {
+      title: "Mart",
+      link: "mart",
+    },
+    {
+      title: "About Us",
+      link: "/about-us",
+    },
+    {
+      title: "Contact Us",
+      link: "contact-us",
+    },
+  ];
   return (
     <>
-      <Header></Header>
+      <Header dropdownData={dropdownData}></Header>
       <Outlet />
       <SocialSidebar></SocialSidebar>
       <MainSection></MainSection>

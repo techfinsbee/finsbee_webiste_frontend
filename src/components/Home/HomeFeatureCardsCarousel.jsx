@@ -15,23 +15,27 @@ const HomeFeatureCardsCarousel = () => {
           <img
             src="/reward1.png"
             alt="FM Coin"
-            className="w-18 h-14 object-contain"
+            className="w-full h-32"
           />
         </div>
       ),
+      bgColor:"bg-[#FEFFC5]",
+      txtColor:"bg-[#FEFFC5]",
     },
     {
-      title: "Discover FundsMall",
+      title: "Discover Mamamart",
       description: "Access 30+ products across 20+ categories",
       imageContent: (
         <div className="flex items-center justify-center">
           <img
             src="/reward2.png"
             alt="Categories"
-            className="w-12 h-12 object-contain"
+            className="w-full h-32"
           />
         </div>
       ),
+      bgColor:"bg-[#FFF1F0]",
+      txtColor:"text-[#331800]",
     },
     {
       title: "Flexible payment options",
@@ -42,10 +46,12 @@ const HomeFeatureCardsCarousel = () => {
           <img
             src="/reward3.png"
             alt="Flexible Payment"
-            className="w-12 h-12 object-contain"
+            className="w-full h-32"
           />
         </div>
       ),
+      bgColor:"bg-[#CAFFDC]",
+      txtColor:"text-[#003813]",
     },
   ];
 
@@ -93,20 +99,21 @@ const HomeFeatureCardsCarousel = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className=" rounded-lg p-6 flex flex-col h-[280px] flex-shrink-0 justify-center "
+            className={`rounded-lg p-6 flex flex-col h-[280px] flex-shrink-0 justify-center ${feature.bgColor} ${feature.txtColor}`}
             style={{ minWidth: "100%", overflow: "hidden" }}
           >
-            <div className=" bg-orange-100 w-96 h-[250px] rounded-lg p-6 flex flex-col justify-center items-center feature-div">
+            <div className="w-96 h-fit rounded-lg p-6 flex flex-col justify-center items-center feature-div">
               <h3 className="text-2xl font-bold text-center h-14 flex items-center justify-center roboto-serif">
                 {feature.title}
               </h3>
-              <div className="h-24 flex items-center justify-center">
-                {feature.imageContent}
-              </div>
+              
               <div>
                 <p className="roboto-light text-xl">
                   {feature.description}
                 </p>
+              </div>
+              <div className="flex items-center justify-center">
+                {feature.imageContent}
               </div>
             </div>
           </div>
@@ -120,7 +127,7 @@ const HomeFeatureCardsCarousel = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`h-3 w-3 rounded-full ${
-              currentSlide === index ? "bg-orange-500" : "bg-orange-200"
+              currentSlide === index ? "bg-[#163312]" : "bg-[#b2ff8e]"
             }`}
           />
         ))}
