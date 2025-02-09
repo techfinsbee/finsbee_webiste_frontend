@@ -15,9 +15,14 @@ import CustomerCare from "./components/CustomerCare.jsx";
 import Blog from "./components/Blog.jsx";
 import Feature from "./components/Feature.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Landing from "./Landing.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Landing />
+  },
+  {
+    path:'/home',
     element: <App />
   },
   {

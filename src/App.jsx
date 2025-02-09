@@ -1,20 +1,18 @@
-import Header from './components/Header'
-import SocialSidebar from './components/SocialSidebar'
-import MainSection from './components/MainSection'
-import JoinFundMama from './components/JoinFundMama'
-import Mobile from './components/Mobile'
-import LoanDisplay from './components/LoanDisplay'
-import CibilScoreSection from './components/CibilScoreSection'
-import Steps from './components/Steps'
-import AnimatedTitle from './components/AnimatedTitle'
-import AnimatedPhones from './components/AnimatedPhones'
-import FeaturedBrands from './components/FeaturedBrands'
-import FeatureCards from './components/FeatureCards'
-import Footer from './components/Footer'
+
 import ReactDOM from 'react-dom'
 import { Outlet } from 'react-router-dom';
 import './App.css'
-
+import HomeMainSection from './components/Home/HomeMainSection';
+import Header from './components/Header';
+import HomeAnimatedCounter from './components/Home/HomeAnimatedCounter';
+import HomeLoanDisplay from './components/Home/HomeLoanDisplay';
+import AnimatedPhones from './components/AnimatedPhones';
+import HomeAnimatedTitle from './components/Home/HomeAnimatedTitle';
+import HomeSteps from './components/Home/HomeSteps';
+import RewardsSection from './components/Home/RewardSection';
+import FeaturedBrands from './components/FeaturedBrands'
+import HomeFooter from './components/Home/HomeFooter';
+import HomeCibilScoreSection from './components/Home/HomeCibilScoreSection';
 function App() {
 
 
@@ -47,21 +45,17 @@ function App() {
     <>
       <Header></Header>
       <Outlet />
-      <SocialSidebar></SocialSidebar>
-      <MainSection></MainSection>
-      <JoinFundMama></JoinFundMama>
-      <Mobile></Mobile>
-      <LoanDisplay></LoanDisplay>
-      <CibilScoreSection></CibilScoreSection>
-      
-      <Steps></Steps>
-      <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
-
-      <AnimatedTitle></AnimatedTitle>
+      <HomeMainSection></HomeMainSection>
+      <HomeAnimatedCounter></HomeAnimatedCounter>
+      <HomeLoanDisplay></HomeLoanDisplay>
+      <HomeSteps></HomeSteps>
+      <HomeAnimatedTitle></HomeAnimatedTitle>
       <AnimatedPhones></AnimatedPhones>
-      <FeatureCards></FeatureCards>
+      <RewardsSection></RewardsSection> 
+      <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
+      <HomeCibilScoreSection></HomeCibilScoreSection>
       <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
-      <Footer></Footer>
+      <HomeFooter></HomeFooter>
       {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}

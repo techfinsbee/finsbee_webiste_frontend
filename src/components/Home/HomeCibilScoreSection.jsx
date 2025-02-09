@@ -1,0 +1,301 @@
+import React, { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
+const HomeCibilScoreSection = () => {
+  const [score, setScore] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+  });
+
+  // Existing score animation logic
+  useEffect(() => {
+    let animationFrame;
+    let startTime;
+    const duration = 1000;
+    const targetScore = 400;
+
+    const animateValue = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = (timestamp - startTime) / duration;
+
+      if (progress < 1 && inView) {
+        const currentScore = Math.min(
+          Math.floor(progress * targetScore),
+          targetScore
+        );
+        setScore(currentScore);
+        animationFrame = requestAnimationFrame(animateValue);
+      } else {
+        setScore(targetScore);
+      }
+    };
+
+    if (inView) {
+      animationFrame = requestAnimationFrame(animateValue);
+    }
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [inView]);
+
+  // Carousel items data
+  const carouselItems = [
+    {
+      icon: "/CAD.png",
+      title: "Correct Any Discrepancies",
+      description: "Contact the lender or the concerned credit bureau to correct any discrepancies"
+    },
+    {
+      icon: "/CH.png",
+      title: "Monitor Your Credit Health",
+      description: "Check your credit score and report regularly to track your credit health"
+    },
+    {
+      icon: "/FD.png",
+      title: "Improve Your Financial Decision",
+      description: "Learn about your credit history, credit health, and various other factors"
+    },
+    {
+      icon: "/KI.png",
+      title: "Learn About Key Insights",
+      description: "Make better decisions to grow your savings and improve your Finances"
+    },
+    {
+      icon: "/CHM.png",
+      title: "Your Credit Health Matters",
+      description: "Credit health is one of the most Important Factors"
+    },
+    {
+      icon:"/BLR.png",
+      title: "Get Better Loan Rates",
+      description: "A good Credit Score will help you get better interest rates and credit Limits"
+    }
+  ];
+
+  // Auto-slide effect
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselItems.length);
+    }, 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  // Manual slide handler
+  const handleSlideChange = (direction) => {
+    setCurrentSlide((prev) => {
+      if (direction === 'next') {
+        return (prev + 1) % carouselItems.length;
+      } else {
+        return prev === 0 ? carouselItems.length - 1 : prev - 1;
+      }
+    });
+  };
+
+  // Touch handling for manual sliding
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      // Swipe left
+      handleSlideChange('next');
+    }
+
+    if (touchStart - touchEnd < -75) {
+      // Swipe right
+      handleSlideChange('prev');
+    }
+  };
+
+  return (
+    <div
+      className="flex justify-center p-8 cibil-score"
+    >
+      <div className="cibil-w bg-[#163312] p-8" style={{ width: "86%",borderRadius:"30px" }}>
+        {/* Header */}
+        <div className="flex cibil-header" style={{justifyContent:"space-between"}}>
+        <h1 className="text-4xl md:text-5xl text-white gap-2 flex justify-center font-bold mb-12 check roboto-serif">
+          Check Your Cibil Score
+        </h1>
+        <button
+            className="bg-white cibil-button text-black text-xl p-0 font-semibold roboto-serif"
+            style={{ borderRadius: "50px", padding:"10px 10px", height:"fit-content" }}
+          >
+            Check Your Cibil Score
+          </button>
+          </div>
+
+        {/* Mobile Carousel */}
+        <div 
+          className="md:hidden flex flex-col   carousel-container overflow-hidden "
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div 
+            className="flex transition-transform duration-300 ease-in-out" 
+            style={{ 
+              transform: `translateX(-${currentSlide * 100}%)`,
+              width: `${carouselItems.length * 100}%`,
+              
+            }}
+          >
+            {carouselItems.map((item, index) => (
+              <div 
+                key={index} 
+                className="w-full cibil-card flex flex-shrink-0 space-y-1 overflow-hidden"
+                style={{alignContent:"center", padding: "0 auto"}}
+              >
+                <div className="flex gap-4 cibil-container w-80">
+                  <div className="flex " style={{ alignItems: "center" }}>
+                    
+                      <img
+                        src={item.icon}
+                        className="w-12 h-8 text-green-500"
+                        alt=""
+                      />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold roboto-serif">
+                      {item.title}
+                    </h2>
+                    <p className="text-white roboto-light">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-4">
+            {carouselItems.map((_, index) => (
+              <span 
+                key={index}
+                className={`h-2 w-2 mx-1 rounded-full ${
+                  index === currentSlide ? 'bg-[#C17D5B]' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid (unchanged) */}
+        <div className="hidden md:grid grid-cols-2 md:grid-cols-2 gap-4 mb-12 ">
+          {carouselItems.map((item, index) => (
+            <div key={index} className="space-y-1">
+              <div className="flex gap-6">
+                <div className="flex justify-center" style={{ alignItems: "center" }}>
+                  {item.icon ? (
+                    <img
+                      src={item.icon}
+                      className="w-16 h-16 text-green-500"
+                      alt=""
+                    />
+                  ) : (
+                    item.svg
+                  )}
+                </div>
+                <div>
+                  <h2 className="text-2xl text-white font-bold roboto-serif">
+                    {item.title}
+                  </h2>
+                  <p className="text-gray-300 roboto-light">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Section (unchanged) */}
+        
+      </div>
+
+      {/* Existing styles */}
+      <style jsx>{`
+       @media (max-height: 760px) and (max-width: 820px) {
+      
+       }
+        @media (max-width: 825px) {
+        .cibil-header{
+          flex-direction: column;
+          justify-content: center !important;
+          align-items: center;
+          margin-bottom: 20px;
+        }
+          .cibil-button {
+            width: 50% !important;
+            // height: 100px !important;
+            font-size: 1.5rem !important;
+          }
+            .cibil-card{
+              margin-right: 10px;
+            }
+          .check {
+            font-size: 1.8rem !important;
+          }
+          .cibil-score {
+            // margin-top: 100px !important;
+          }
+          .cibil-w {
+            width: 100% !important;
+          }
+            .cibil-container{
+            width: 100% !important;
+            }
+        }
+
+        @media (max-width: 512px) {
+        .cibil-card{
+              margin-right: 0px;
+            }
+        .cibil-container{
+        text-align: center;
+            width: 80vw !important;
+            }
+          .cibil-button {
+            width: 13rem !important;
+            // height: 100px !important;  
+            font-size: 1.3rem !important;
+            // line-height: 1.5rem !important;
+          }
+          .check {
+            font-size: 1.6rem !important;
+          }
+          .cibil-score {
+            // margin-top: 50px !important;
+          }
+          .cibil-w {
+            width: 100% !important;
+          }
+        }
+
+        
+        @media (min-width: 1367px) and (max-width: 1920px) {
+          .cibil-score {
+            margin-top: 0px;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default HomeCibilScoreSection;
