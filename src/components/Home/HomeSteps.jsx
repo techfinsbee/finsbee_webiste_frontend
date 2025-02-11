@@ -113,23 +113,51 @@ const HomeSteps = () => {
       setIntervalId(newInterval);
     }, 150);
   };
+  const BG = "/bg-loan.png";
 
   return (
-    <section className=" p-0 min-h-screen" 
-    style={{
-      borderRadius:"50px"
-    }}>
-     
-      <div className="flex flex-col h-fit w-full m-0" >
+    <section
+      className=" p-0 min-h-screen"
+      style={{
+        borderRadius: "50px",
+      }}
+    >
+      <div className="flex flex-col h-fit w-full m-0">
         <div className="flex flex-row justify-start w-full steps">
-          <div className="w-1/2 relative min-h-screen steps-content overflow-hidden step-image flex justify-center"
-          style={{background:"rgb(178, 255, 142)", borderTopLeftRadius:"50px"}}>
-            <div className="text-center mt-10 flex flex-col gap-4">
-              <h1 className="text-[#163312] text-5xl font-bold">Loan Application Steps</h1>
-              <p className="text-xl">With Fundsmama you unlock loans at lower prices</p>
+          <div
+            className="w-1/2 relative min-h-screen steps-content overflow-hidden step-image flex justify-center"
+            style={{
+              background: "#97F15D",
+              borderTopLeftRadius: "50px",
+            }}
+          >
+            <div className="text-center mt-32 flex flex-col gap-4">
+              <h1 className="text-[#163312] text-5xl font-bold">
+                Loan Application Steps
+              </h1>
+              <p className="text-xl">
+                With Fundsmama you unlock loans at lower prices
+              </p>
             </div>
+            <div className=" absolute object-cover bottom-0">
+              <img src="/Ellipse1.png" alt="" />
+            </div>
+            <div className=" absolute object-cover bottom-0">
+              <img src="/Ellipse2.png" alt="" />
+            </div>
+            <div className=" absolute object-cover bottom-0">
+              <img src="/Ellipse3.png" alt="" />
+            </div>
+            <div className="absolute object-cover bottom-0 bg-[]">
+              <img src="/BLUR.png" alt="" />
+            </div>
+            <div className=" absolute object-contain top-[50%]">
+              <img src="/bg-loan.png" alt="" />
+            </div>
+
+            
             <div
-              className={`absolute w-full h-full transition-all duration-150 ease-in-out ${
+              className={`absolute w-fit h-fit transition-all duration-150 ease-in-out ${
                 isAnimating
                   ? "translate-x-full opacity-0"
                   : "translate-x-0 opacity-100"
@@ -139,13 +167,19 @@ const HomeSteps = () => {
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
                 className="h-full object-contain step-per-image rounded-lg mx-auto"
-                style={{top:"80px", position:"relative"}}
+                style={{
+                  top: "130px",
+                  position: "relative",
+                }}
               />
             </div>
           </div>
-          <div className="w-1/2 steps-content bg-[#112B00] p-10" style={{
-             borderTopRightRadius:"50px"
-          }}>
+          <div
+            className="w-1/2 steps-content bg-[#112B00] p-10"
+            style={{
+              borderTopRightRadius: "50px",
+            }}
+          >
             <div className="flex flex-col">
               {Data.our_solutions.map((data, index) => (
                 <div
@@ -155,8 +189,9 @@ const HomeSteps = () => {
                   }`}
                   onClick={() => handleListItemClick(index)}
                   style={{
-                    background: activeIndexList === index ? "rgb(178, 255, 142)" : "",
-                    margin:"10px"
+                    background:
+                      activeIndexList === index ? "rgb(178, 255, 142)" : "",
+                    margin: "10px",
                   }}
                 >
                   <div className="flex gap-12 items-start">
@@ -164,7 +199,6 @@ const HomeSteps = () => {
                       <div>
                         <img src="Rectangle.png" alt="" />
                       </div>
-                      
                     </div>
 
                     <div className="step-content">
@@ -192,8 +226,6 @@ const HomeSteps = () => {
               ))}
             </div>
           </div>
-
-          
         </div>
         <div className="mobile-step">
           <HomeMobileStepsCarousel steps={steps_content} images={images} />
@@ -219,7 +251,7 @@ const HomeSteps = () => {
           }
         }
 
-        @media screen and (max-width: 933px){
+        @media screen and (max-width: 933px) {
           .flex-row {
             flex-direction: column;
           }

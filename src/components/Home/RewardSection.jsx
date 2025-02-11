@@ -16,22 +16,22 @@ const RewardsSection = () => {
               Consumers earn FM Coins with every successful loan disbursement or product purchase.
             </p>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center relative top-40 justify-center">
             <img
               src="/reward1.png"
               alt="FMCoins Rewards"
               style={{objectFit:"cover",
-                width: "60%",
-                height: "60%",
+                width: "100%",
+                height: "100%",
               }}
             />
           </div>
         </div>
 
         {/* Right column - split into two boxes */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col justify-between">
           {/* Top box - Mamamart */}
-          <div className="bg-[#FFF1F0] rounded-2xl px-4 py-2 flex justify-between items-center">
+          <div className="bg-[#FFF1F0] rounded-2xl px-4 py-0 flex justify-between items-center">
             <div>
               <h2 className="text-2xl text-[#331800]  lg:text-3xl font-bold text-gray-800 mb-2">
                 Discover
@@ -45,12 +45,12 @@ const RewardsSection = () => {
             <img
               src="/reward2.png"
               alt="Mamamart Shopping"
-              className="w-48 h-48 object-contain"
+              className="w-[400px] h-[240px] object-contain"
             />
           </div>
 
           {/* Bottom box - Payment Options */}
-          <div className="bg-[#CAFFDC] rounded-2xl p-8 flex justify-between items-center">
+          <div className="bg-[#CAFFDC] rounded-2xl px-4 flex justify-between items-center">
             <div>
               <h2 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2">
                 Flexible Payment
@@ -64,7 +64,8 @@ const RewardsSection = () => {
             <img
               src="/reward3.png"
               alt="Payment Options"
-              className="w-48 h-48 object-contain"
+              className="w-[400px] h-[240px] object-contain flex"
+              style={{flexDirection:"row-reverse"}}
             />
           </div>
         </div>

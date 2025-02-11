@@ -123,9 +123,9 @@ const HomeCibilScoreSection = () => {
 
   return (
     <div
-      className="flex justify-center p-8 cibil-score"
+      className="flex justify-center p-4 cibil-score"
     >
-      <div className="cibil-w bg-[#163312] p-8" style={{ width: "86%",borderRadius:"30px" }}>
+      <div className="cibil-w bg-[#163312] p-3" style={{ width: "86%",borderRadius:"30px" }}>
         {/* Header */}
         <div className="flex cibil-header" style={{justifyContent:"space-between"}}>
         <h1 className="text-4xl md:text-5xl text-white gap-2 flex justify-center font-bold mb-12 check roboto-serif">
@@ -141,7 +141,7 @@ const HomeCibilScoreSection = () => {
 
         {/* Mobile Carousel */}
         <div 
-          className="md:hidden flex flex-col   carousel-container overflow-hidden "
+          className="md:hidden flex flex-col  carousel-container overflow-hidden "
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -158,14 +158,14 @@ const HomeCibilScoreSection = () => {
               <div 
                 key={index} 
                 className="w-full cibil-card flex flex-shrink-0 space-y-1 overflow-hidden"
-                style={{alignContent:"center", padding: "0 auto"}}
+                style={{ padding: "0 auto"}}
               >
-                <div className="flex gap-4 cibil-container w-80">
+                <div className="flex gap-2 cibil-container w-80">
                   <div className="flex " style={{ alignItems: "center" }}>
                     
                       <img
                         src={item.icon}
-                        className="w-12 h-8 text-green-500"
+                        className="w-20 h-12 text-green-500"
                         alt=""
                       />
                   </div>

@@ -38,22 +38,22 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-0 -left-20`,
+      } top-0 -left-28`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 -left-20`,
+      } top-1/2 -translate-y-1/2 -left-28`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 -left-20`,
+      } bottom-0 -left-28`,
       rightTop: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-0 -right-20`,
+      } top-0 -right-28`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 -right-20`,
+      } top-1/2 -translate-y-1/2 -right-28`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 -right-20`,
+      } bottom-0 -right-28`,
     };
 
     return `${baseClasses} ${positions[position]} ${
@@ -71,13 +71,16 @@ const LoanBox = ({
         transitionTimingFunction: "ease-in-out",
         background: "#F8F9FA",
         color: "#112A00",
-        width:"70%",
-        height:"fit-content",
+        width: "78%",
+        height: "30%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
       }}
       onClick={onClick}
     >
-      <div className="flex gap-2 mb-2 "> 
-        <img src={TIMG} alt="" />
+      <div className="flex gap-2 items-center mb-2 ">
+        <img src={TIMG} alt="" className="w-10" />
         <h3 className="text-xl font-bold mb-2 roboto-serif">{title}</h3>
       </div>
       <p className="text-md leading-tight roboto-light">{description}</p>
@@ -190,19 +193,20 @@ const HomeLoanDisplay = () => {
       >
         <div>
           <h1
-            className="loan-headers roboto-serif"
+            className="loan-headers"
             style={{
               textAlign: "center",
-              fontSize: "60px",
+              fontSize: "70px",
               marginTop: "50px",
               display: "flex",
               justifyContent: "center",
               gap: "10px",
               fontWeight: "700",
               color: "#163312",
+              fontFamily: "Manrope",
             }}
           >
-            Funds Mama Loan Offer
+            Funds Mama Loan Offers
           </h1>
         </div>
         <div className="relative min-h-screen flex flex-col items-center p-4 mobile">
@@ -220,26 +224,37 @@ const HomeLoanDisplay = () => {
               style={{
                 backgroundImage: `url(${BG})`,
                 backgroundSize: "cover",
+                borderRadius: "50px",
               }}
             >
               <div
                 className="transition-transform w-full duration-500 ease-in-out h-full"
                 style={{
-                  transform: `translateY(-${currentImageIndex * 100}%)`,
+                  height: "600%",
+                  transform: `translateY(-${currentImageIndex * (100 / 6)}%)`,
                 }}
               >
                 {loans.map((loan, index) => {
                   return (
-                    <img
+                    <div
                       key={index}
-                      src={loan.image}
-                      alt={`${loan.title} interface`}
+                      className="w-full"
                       style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
+                        height: `${100 / 6}%`, // Each image takes 1/6 of the container
                       }}
-                    />
+                    >
+                      <img
+                        key={index}
+                        src={loan.image}
+                        className="relative -top-12"
+                        alt={`${loan.title} interface`}
+                        style={{
+                          width: "100%",
+                          height:"100%",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </div>
                   );
                 })}
               </div>

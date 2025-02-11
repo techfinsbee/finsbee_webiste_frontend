@@ -49,16 +49,16 @@ const AnimatedCounter = ({
 
   return (
     <div
-      className={`rounded-xl p-6 flex flex-col items-center justify-center text-center min-w-96 h-[200px]
+      className={`rounded-xl p-6 gap-24 flex flex-col min-w-96 h-[200px]
                   shadow-lg transition-transform duration-300 hover:scale-105`}
       style={{ backgroundColor: bgColor }}
     >
-      <div className="text-5xl font-bold text-[#1D3800]">
+      <div className="text-5xl font-bold text-left text-[#1D3800]">
         {prefix}
         {formatNumber(count)}
         {suffix}
       </div>
-      <div className="text-gray-600 text-sm">{label}</div>
+      <div className="text-gray-600 text-right text-md">{label}</div>
     </div>
   );
 };
@@ -76,7 +76,7 @@ const HomeAnimatedCounter = () => {
       end: 1000000,
       label: "App downloads",
       prefix: "",
-      bgColor: "#A7FA5A",
+      bgColor: "#97F15D",
     },
     {
       end: 40000,
@@ -103,7 +103,7 @@ const HomeAnimatedCounter = () => {
   const shouldAnimate = inView && hasExited;
 
   return (
-    <div ref={ref} className="flex flex-wrap gap-20 justify-center items-center mt-20">
+    <div ref={ref} className="flex flex-wrap gap-2 justify-center items-center mt-20">
       {stats.map((stat, index) => (
         <AnimatedCounter
           key={index}
