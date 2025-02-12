@@ -1,8 +1,9 @@
 import React from "react";
 import "../AnimatedTitle.component.css";
+import { filter } from "framer-motion/client";
 const HomeAnimatedTitle = () => {
   return (
-    <section id="mart-home" className="mt-32">
+    <section id="mart-home" className="mart-home mt-20">
       <div style={{ boxSizing: "border-box", filter: "drop-shadow(96px 96px 96px rgb(178, 255, 142)" }}>
         <div
           className="text-9xl font-bold flex justify-center gap-2 main-title"
@@ -10,9 +11,17 @@ const HomeAnimatedTitle = () => {
             borderRadius: "50%",
           }}
         >
+          <div className="absolute h-52 w-[90vw]" style={{borderRadius:"50%",backgroundColor:"rgb(178, 255, 142)",filter:"blur(50px)", zIndex:"-100000", top:"-30px"}}></div>
           <span className="text-[#163312]">Mama Mart</span>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 728px){
+          .mart-home{
+            margin-top: 0px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

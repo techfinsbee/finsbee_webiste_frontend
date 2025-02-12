@@ -5,9 +5,9 @@ const RewardsSection = () => {
     <section className="w-full py-12 px-4 lg:px-16">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 rewards">
         {/* Left box - FMCoins */}
-        <div className="bg-[#FEFFC5] rounded-2xl p-8 flex flex-col">
+        <div className="bg-[#FEFFC5] h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden  flex flex-col">
           <div>
-            <h2 className="text-2xl text-[#323300] lg:text-3xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl color-[#323300] lg:text-3xl font-bold text-gray-800 mb-2" style={{color:"#323300"}}>
               FundsMama
               <br />
               Rewards: FMCoins
@@ -16,24 +16,26 @@ const RewardsSection = () => {
               Consumers earn FM Coins with every successful loan disbursement or product purchase.
             </p>
           </div>
-          <div className="flex items-center relative top-40 justify-center">
+
             <img
               src="/reward1.png"
+              className='relative  top-0'
               alt="FMCoins Rewards"
-              style={{objectFit:"cover",
+              style={{
+                objectFit:"cover",
                 width: "100%",
                 height: "100%",
+                position:"relative",
               }}
             />
-          </div>
         </div>
 
         {/* Right column - split into two boxes */}
         <div className="flex flex-col justify-between">
           {/* Top box - Mamamart */}
-          <div className="bg-[#FFF1F0] rounded-2xl px-4 py-0 flex justify-between items-center">
+          <div className="bg-[#FFE8D4] rounded-2xl px-4 py-0 flex justify-between items-center">
             <div>
-              <h2 className="text-2xl text-[#331800]  lg:text-3xl font-bold text-gray-800 mb-2">
+              <h2 className="text-2xl text-[#331800]  lg:text-3xl font-bold text-gray-800 mb-2" style={{color:"#331800"}}>
                 Discover
                 <br />
                 Mamamart
@@ -45,14 +47,14 @@ const RewardsSection = () => {
             <img
               src="/reward2.png"
               alt="Mamamart Shopping"
-              className="w-[400px] h-[240px] object-contain"
+              className="w-full h-[240px] object-contain relative left-16"
             />
           </div>
 
           {/* Bottom box - Payment Options */}
-          <div className="bg-[#CAFFDC] rounded-2xl px-4 flex justify-between items-center">
+          <div className="bg-[#CAFFDC] rounded-2xl overflow-hidden px-4 flex justify-between items-center">
             <div>
-              <h2 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2">
+              <h2 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2" style={{color:"#003813"}}>
                 Flexible Payment
                 <br />
                 Options
@@ -62,9 +64,9 @@ const RewardsSection = () => {
               </p>
             </div>
             <img
-              src="/reward3.png"
+              src="/2.png"
               alt="Payment Options"
-              className="w-[400px] h-[240px] object-contain flex"
+              className="w-[400px] h-[240px] relative -right-4 object-contain flex"
               style={{flexDirection:"row-reverse"}}
             />
           </div>

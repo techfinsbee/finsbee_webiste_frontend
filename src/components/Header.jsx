@@ -25,7 +25,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 //   },
 // ];
 
-const Header = ({dropdownData =[]}) => {
+const Header = ({dropdownData =[], COLOR}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -153,7 +153,7 @@ const Header = ({dropdownData =[]}) => {
   };
 
   return (
-    <header className="header">
+    <header className="header" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
       <a href="/" className="head">
         <div className="logo">
           <img

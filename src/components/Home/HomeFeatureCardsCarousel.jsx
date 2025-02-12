@@ -99,7 +99,7 @@ const HomeFeatureCardsCarousel = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className={`rounded-lg p-6 flex flex-col h-[280px] flex-shrink-0 justify-center ${feature.bgColor} ${feature.txtColor}`}
+            className={`rounded-lg p-6 flex flex-col h-[330px] flex-shrink-0 justify-center ${feature.bgColor} ${feature.txtColor}`}
             style={{ minWidth: "100%", overflow: "hidden" }}
           >
             <div className="w-96 h-fit rounded-lg p-6 flex flex-col justify-center items-center feature-div">
@@ -147,7 +147,7 @@ const HomeFeatureCardsCarousel = () => {
           }
           .mall-card-carousel {
             width: 100% !important;
-            height: 80% !important;
+            height: 100% !important;
           }
         }
       `}</style>

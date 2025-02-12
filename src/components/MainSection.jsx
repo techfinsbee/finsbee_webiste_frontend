@@ -7,7 +7,11 @@ const MainSection = () => {
     threshold: 0.3, // Trigger when 30% of the section is visible
     triggerOnce: false, // Trigger animation only once
   });
-
+  const benefits = [
+      "Loans",
+      "Shopping",
+      "Rewards",
+    ];
   return (
     <section id="home" className="">
       <div
@@ -19,7 +23,7 @@ const MainSection = () => {
           <h1 className="text-6xl font-bold text-gray-800  ml-5 roboto-serif main-h1">
             Your Ultimate Financial <br /> SuperApp
             <br />
-            <AnimatedMain></AnimatedMain>
+            <AnimatedMain benefits={benefits}></AnimatedMain>
           </h1>
           <div className="flex flex-row gap-2 justiy-center items-center number">
             <input

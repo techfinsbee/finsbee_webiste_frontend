@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const AnimatedMain = () => {
-  const benefits = [
-    "Loans",
-    "Shopping",
-    "Rewards",
-  ];
+const AnimatedMain = ({benefits}) => {
+  
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

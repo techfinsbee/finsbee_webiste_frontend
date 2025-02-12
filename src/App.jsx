@@ -47,17 +47,18 @@ function App() {
       link: "home-home",
     },
     {
-      title: "Loans",
-      link: "loan-section-home",
-    },
-    {
-      title: "Mart",
-      link: "mart-home",
-    },
-    {
       title: "About Us",
       link: "/about-us",
     },
+    {
+      title: "Services",
+      link: "/services",
+    },
+    {
+      title: "Career",
+      link: "/career",
+    },
+    
     {
       title: "Contact Us",
       link: "contact-us-home",
@@ -65,7 +66,7 @@ function App() {
   ];
   return (
     <>
-      <Header dropdownData={dropdownData}></Header>
+      <Header dropdownData={dropdownData} COLOR="#fff"></Header>
       <Outlet />
       <HomeMainSection></HomeMainSection>
       <HomeAnimatedCounter></HomeAnimatedCounter>

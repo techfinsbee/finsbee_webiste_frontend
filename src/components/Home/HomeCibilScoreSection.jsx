@@ -123,12 +123,12 @@ const HomeCibilScoreSection = () => {
 
   return (
     <div
-      className="flex justify-center p-4 cibil-score"
+      className="flex justify-center px-4 cibil-score"
     >
-      <div className="cibil-w bg-[#163312] p-3" style={{ width: "86%",borderRadius:"30px" }}>
+      <div className="cibil-w bg-[#163312] p-8" style={{ width: "86%",borderRadius:"30px" }}>
         {/* Header */}
-        <div className="flex cibil-header" style={{justifyContent:"space-between"}}>
-        <h1 className="text-4xl md:text-5xl text-white gap-2 flex justify-center font-bold mb-12 check roboto-serif">
+        <div className="flex cibil-header pt-8" style={{justifyContent:"space-between"}}>
+        <h1 className="text-4xl md:text-[60px] text-white gap-2 flex justify-center font-bold mb-12 check roboto-serif">
           Check Your Cibil Score
         </h1>
         <button
@@ -200,11 +200,11 @@ const HomeCibilScoreSection = () => {
           {carouselItems.map((item, index) => (
             <div key={index} className="space-y-1">
               <div className="flex gap-6">
-                <div className="flex justify-center" style={{ alignItems: "center" }}>
+                <div className="flex justify-center items-center">
                   {item.icon ? (
                     <img
                       src={item.icon}
-                      className="w-16 h-16 text-green-500"
+                      className="w-20 h-18 text-green-500"
                       alt=""
                     />
                   ) : (

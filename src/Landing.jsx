@@ -73,12 +73,12 @@ const Landing = () => {
       <CibilScoreSection></CibilScoreSection>
       
       <Steps></Steps>
-      <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
+      <FeaturedBrands allLogos={lending_partners} Color="#006d5b"></FeaturedBrands>
 
       <AnimatedTitle></AnimatedTitle>
       <AnimatedPhones></AnimatedPhones>
       <FeatureCards></FeatureCards>
-      <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
+      <FeaturedBrands allLogos={brands_we_trust} Color="#006d5b"></FeaturedBrands>
       <Footer></Footer>
     </>
   )

@@ -102,17 +102,17 @@ const HomeLoanDisplay = () => {
   ];
   const loans = [
     {
-      title: "Personal Loan",
+      title: "Instant Loan",
       description:
-        "Get the Loan You Deserve – Quick Approvals, Flexible Terms, and Complete Security,Speedy,",
+        "Quick Cash When You Need It Most. Get instant loans upto xxx in minutes.,",
       position: "leftTop",
       delay: 0,
       image: images[0],
       TImg: "/PL.png",
     },
     {
-      title: "EMI Loan",
-      description: "Flexible loans, no collateral, repay in easy installments.",
+      title: "Personal EMI-Based Loan",
+      description: "Financial Freedom in Easy Instalments. Get loans upto xx at rr%",
       position: "leftMiddle",
       delay: 200,
       image: images[1],
@@ -121,7 +121,7 @@ const HomeLoanDisplay = () => {
     {
       title: "Credit Cards",
       description:
-        "Flexible, rewarding credit cards for seamless spending and exclusive perks.",
+        "oEmpower Your Credit Journey with Your FD. Leverage your fixed deposit to secure loans upto xx at bjb%.",
       position: "leftBottom",
       delay: 200,
       image: images[2],
@@ -130,7 +130,7 @@ const HomeLoanDisplay = () => {
     {
       title: "Loan Against Property",
       description:
-        "Unlock high-value loans with flexible tenures by leveraging your property assets.",
+        "Leverage Your Property for a Better Tomorrow. Loans upto xxx, starting at cxx%",
       position: "rightTop",
       delay: 200,
       image: images[3],
@@ -139,7 +139,7 @@ const HomeLoanDisplay = () => {
     {
       title: "Home Loan",
       description:
-        "Get the Loan You Need Fast, with Flexible Options and a Secure, Reliable Process.",
+        "Lay the foundation of your home with loans upto 3cr. starting at 12 %p.a",
       position: "rightMiddle",
       delay: 200,
       image: images[4],
@@ -148,7 +148,7 @@ const HomeLoanDisplay = () => {
     {
       title: "Loan Against Security",
       description:
-        "Access funds by pledging shares, mutual funds, or other securities.",
+        "Smart Loans Backed by Smart Investments. Unlock the valur of your portfolio to avail loans upto tt% at best LTVs",
       position: "rightBottom",
       delay: 200,
       image: images[5],
@@ -203,7 +203,7 @@ const HomeLoanDisplay = () => {
               gap: "10px",
               fontWeight: "700",
               color: "#163312",
-              fontFamily: "Manrope",
+              fontFamily: 'manrope',
             }}
           >
             Funds Mama Loan Offers
@@ -326,9 +326,9 @@ const HomeLoanDisplay = () => {
             .loan-section {
               height: 80vh !important;
             }
-            // .loan-headers{
-            //   font-size: rem !important;
-            // }
+            .loan-headers{
+              font-size: 1.8rem !important;
+            }
             .images {
               display: none !important;
             }

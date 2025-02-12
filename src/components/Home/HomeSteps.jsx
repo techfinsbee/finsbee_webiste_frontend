@@ -6,31 +6,31 @@ const HomeSteps = () => {
       {
         title: "Download & Sign-Up",
         content:
-          "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
+          "Get the Fundsmama app on Google Play Store or App Store and sign up in minutes.",
         image: "/c3.svg",
       },
       {
         title: "Fill the Application",
         content:
-          "Provide basic details like your full name, date of birth, and email address to get started.",
+          "Enter basic details like name, DOB, and email to begin.",
         image: "/c4.svg",
       },
       {
         title: "Apply for Loan",
         content:
-          "Submit your loan application after a smooth verification process, with just a few taps.",
+          "Submit your request with a seamless verification process.",
         image: "/c2.svg",
       },
       {
         title: "Upload Required Documents",
         content:
-          "Upload essential documents, such as your PAN and Aadhaar card, to complete the application.",
+          "Securely upload PAN, Aadhaar, and other required documents.",
         image: "/c1.svg",
       },
       {
         title: "Loan Disbursal",
         content:
-          "Get your loan approved and disbursed quickly — as fast as within 10 minutes.",
+          "Get quick approvals and receive funds in as fast as 10 minutes.",
         image: "/c4.svg",
       },
     ],
@@ -41,31 +41,31 @@ const HomeSteps = () => {
     {
       title: "Download & Sign-Up",
       content:
-        "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
+        "Get the Fundsmama app on Google Play Store or App Store and sign up in minutes.",
       image: images[2],
     },
     {
       title: "Fill the Application",
       content:
-        "Provide basic details like your full name, date of birth, and email address to get started.",
+        "Enter basic details like name, DOB, and email to begin.",
       image: images[3],
     },
     {
       title: "Apply for Loan",
       content:
-        "Submit your loan application after a smooth verification process, with just a few taps.",
+        "Submit your request with a seamless verification process.",
       image: images[1],
     },
     {
       title: "Upload Required Documents",
       content:
-        "Upload essential documents, such as your PAN and Aadhaar card, to complete the application.",
+        "Securely upload PAN, Aadhaar, and other required documents.",
       image: images[0],
     },
     {
       title: "Loan Disbursal",
       content:
-        "Get your loan approved and disbursed quickly — as fast as within 10 minutes.",
+        "Get quick approvals and receive funds in as fast as 10 minutes.",
       image: images[3],
     },
   ];
@@ -151,9 +151,9 @@ const HomeSteps = () => {
             <div className="absolute object-cover bottom-0 bg-[]">
               <img src="/BLUR.png" alt="" />
             </div>
-            <div className=" absolute object-contain top-[50%]">
-              <img src="/bg-loan.png" alt="" />
-            </div>
+            {/* <div className=" absolute w-[500px] object-cover top-[50%]"> */}
+              <img src="/bg-loan.png" className="w-[600px] h-[300px] absolute object-cover top-[527px] left-[30px]" alt="" />
+            {/* </div> */}
 
             
             <div
