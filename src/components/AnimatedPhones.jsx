@@ -58,7 +58,7 @@ const AnimatedPhones = ({ Home }) => {
           zScaleFactor = 12.5;
         } else {
           maxSpread = 400; // Increased from 300
-          zScaleFactor = 25;
+          zScaleFactor = 50;
         }
       } else {
         // Original spread values for SVG
@@ -131,7 +131,7 @@ const AnimatedPhones = ({ Home }) => {
               alt="Cart Screen"
               className={
                 Home
-                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain"
+                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain svg-1"
                   : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
               }
             />
@@ -144,7 +144,7 @@ const AnimatedPhones = ({ Home }) => {
               alt="Main Screen"
               className={
                 Home
-                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[230px] object-contain"
+                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[230px] object-contain svg-2"
                   : "w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
               }
             />
@@ -157,7 +157,7 @@ const AnimatedPhones = ({ Home }) => {
               alt="Details Screen"
               className={
                 Home
-                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain"
+                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain svg-1"
                   : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
               }
             />
@@ -187,6 +187,7 @@ const AnimatedPhones = ({ Home }) => {
           .main-context {
             height: fit-content !important;
           }
+            
         }
         @media screen and (max-width: 820px) {
           .ani-img1 {
@@ -206,6 +207,12 @@ const AnimatedPhones = ({ Home }) => {
           .main-context {
             height: 40vh !important;
           }
+            .svg-1{
+              width: 30vw !important;
+            }
+              .svg-2{
+              width: 35vw !important;
+            }
         }
       `}</style>
     </div>

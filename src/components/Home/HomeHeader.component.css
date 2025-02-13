@@ -27,13 +27,9 @@
 }
 
 /* Logo */
-.head {
-  width: 20%;
-}
 
-.logo img {
-  height: auto;
-}
+
+
 
 /* Navigation */
 .nav {
@@ -138,13 +134,11 @@
     padding: 1rem 1rem;
   }
   
-  .head {
+  .head-fund {
     width: 80%;
   }
   
-  .logo img {
-    width: 200px;
-  }
+ 
   
   .contact-sales {
     display: none;
@@ -197,6 +191,9 @@
     color: #0073e6;
     margin-bottom: 0.625rem;
     cursor: pointer;
+  }
+  .header-fundmama{
+    font-size: 2rem;
   }
 }
 

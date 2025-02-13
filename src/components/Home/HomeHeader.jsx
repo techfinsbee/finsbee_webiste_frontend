@@ -131,13 +131,16 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
 
   return (
     <header className="header manrope" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
-      <a href="/" className="head">
-        <div className="logo">
+      <a href="/" className="head-fund">
+        <div className="flex">
           <img
-            src="/logo.png"
-            className="w-[300px] max-w-[300px]"
+            src="/fundsmama-logo.svg"
+            className="w-[100px]"
             alt="FUNDSMAMA"
-          />
+          /> <span className="text-4xl header-fundmama flex juistify-center items-center" style={{
+            fontWeight:"800",
+            fontFamily:"Helvetica"
+          }}>FUNDSMAMA</span>
         </div>
       </a>
 

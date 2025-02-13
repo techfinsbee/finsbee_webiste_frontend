@@ -22,7 +22,7 @@ const HomeMainSection = () => {
       >
         {/* Left content */}
         <div className="flex flex-col text-[#163312] ml-12 gap-8 lg:gap-12 w-full lg:w-1/2 pt-8 lg:pt-0 home-left coolvetica">
-          <h1 className="text-2xl lg:text-5xl font-bold leading-tight">
+          <h1 className="text-2xl lg:text-5xl font-bold leading-tight" style={{fontWeight:"bold"}}>
             Jab Zaroorat Ho Loan Ki,
             <br />
             Aur Shauk Ho Shopping Ka!
