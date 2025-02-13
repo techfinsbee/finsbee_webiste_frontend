@@ -27,9 +27,7 @@
 }
 
 /* Logo */
-.head {
-  width: 20%;
-}
+
 
 .logo img {
   height: auto;
@@ -197,6 +195,12 @@
     color: #0073e6;
     margin-bottom: 0.625rem;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header-fundmama{
+    font-size: 1.8rem !important;
   }
 }
 

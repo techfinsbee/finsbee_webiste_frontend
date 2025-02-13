@@ -43,7 +43,11 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
       setIsMenuOpen(false);
       return;
     }
-
+    if (sectionId === "/home") {
+      navigate(sectionId);
+      setIsMenuOpen(false);
+      return;
+    }
     // If we're on about-us page and clicking a section link, first navigate to home
     if (
       location.pathname === "/about-us" ||
@@ -155,12 +159,15 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
   return (
     <header className="header" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
       <a href="/" className="head">
-        <div className="logo">
+      <div className="flex">
           <img
-            src="/logo.png"
-            className="w-[300px] max-w-[300px]"
+            src="/fundsmama-logo.svg"
+            className="w-[100px]"
             alt="FUNDSMAMA"
-          />
+          /> <span className="text-4xl header-fundmama flex juistify-center items-center" style={{
+            fontWeight:"800",
+            fontFamily:"Helvetica"
+          }}>FUNDSMAMA</span>
         </div>
       </a>
 
