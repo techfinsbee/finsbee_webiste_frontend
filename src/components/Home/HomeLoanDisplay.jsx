@@ -81,7 +81,7 @@ const LoanBox = ({
     >
       <div className="flex gap-2 items-center mb-2 ">
         <img src={TIMG} alt="" className="w-10" />
-        <h3 className="text-xl font-bold mb-2 coolvetica">{title}</h3>
+        <h3 className="text-xl mb-2 coolvetica" style={{fontWeight:"900"}}>{title}</h3>
       </div>
       <p className="text-md leading-tight manrope">{description}</p>
     </div>

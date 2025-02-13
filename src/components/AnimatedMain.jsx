@@ -22,7 +22,7 @@ const AnimatedMain = ({benefits, Color}) => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="absolute inset-0 w-full transition-all duration-500 ease-in-out lg:text-5xl roboto-slab"
+                className="absolute inset-0 w-full transition-all duration-500 ease-in-out lg:text-5xl"
                 style={{
                   transform: `translateY(${index === currentIndex ? '0%' : '100%'})`,
                   opacity: index === currentIndex ? 1 : 0,
@@ -30,7 +30,7 @@ const AnimatedMain = ({benefits, Color}) => {
                   
                 }}
               >
-                <span className="block h-[400px]" style={{color:`${Color?'#163312':'#CD855F'}`}}>{benefit}</span>
+                <span className="block h-[400px]" style={{color:`${Color?'#163312':'#CD855F'}`, fontFamily:`${Color?'coolvetica':'roboto-slab'}`}}>{benefit}</span>
               </div>
             ))}
           </div>
