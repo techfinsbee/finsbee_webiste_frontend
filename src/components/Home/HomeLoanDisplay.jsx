@@ -105,16 +105,16 @@ const HomeLoanDisplay = () => {
     {
       title: "Instant Loan",
       description:
-        "Quick Cash When You Need It Most. Get instant loans upto xxx in minutes.,",
-      position: "leftTop",
+        "Quick Cash When You Need It Most. Get instant loans upto INR 2 Lakhs in minutes.",
+      position: "rightMiddle",
       delay: 0,
       image: images[0],
       TImg: "/PL.png",
     },
     {
       title: "Personal EMI-Based Loan",
-      description: "Financial Freedom in Easy Instalments. Get loans upto xx at rr%",
-      position: "leftMiddle",
+      description: "Financial Freedom in Easy Instalments. Get loans upto INR 5 Lakhs with flexible EMIs.",
+      position: "leftBottom",
       delay: 200,
       image: images[1],
       TImg: "/EL.png",
@@ -122,8 +122,8 @@ const HomeLoanDisplay = () => {
     {
       title: "Credit Cards",
       description:
-        "oEmpower Your Credit Journey with Your FD. Leverage your fixed deposit to secure loans upto xx at bjb%.",
-      position: "leftBottom",
+        "Empower Your Credit Journey with Your FD. Leverage your fixed deposit to secure loans upto INR 5Cr.",
+      position: "rightTop",
       delay: 200,
       image: images[2],
       TImg: "/CC.png",
@@ -131,8 +131,8 @@ const HomeLoanDisplay = () => {
     {
       title: "Loan Against Property",
       description:
-        "Leverage Your Property for a Better Tomorrow. Loans upto xxx, starting at cxx%",
-      position: "rightTop",
+        "Leverage Your Property for a Better Tomorrow.Secure loans upto INR 25 Lakhs",
+      position: "leftMiddle",
       delay: 200,
       image: images[3],
       TImg: "/LAP.png",
@@ -140,8 +140,8 @@ const HomeLoanDisplay = () => {
     {
       title: "Home Loan",
       description:
-        "Lay the foundation of your home with loans upto 3cr. starting at 12 %p.a",
-      position: "rightMiddle",
+        "Lay the foundation of your home with loans upto INR 3 Cr with minimal documentation and digital process.",
+      position: "leftTop",
       delay: 200,
       image: images[4],
       TImg: "/HL.png",
@@ -149,7 +149,7 @@ const HomeLoanDisplay = () => {
     {
       title: "Loan Against Security",
       description:
-        "Smart Loans Backed by Smart Investments. Unlock the valur of your portfolio to avail loans upto tt% at best LTVs",
+        "Smart Loans Backed by Smart Investments. Unlock the value of your portfolio to avail loans upto INR 60 Cr at best LTVs",
       position: "rightBottom",
       delay: 200,
       image: images[5],
@@ -207,7 +207,7 @@ const HomeLoanDisplay = () => {
               fontFamily: 'Coolvetica',
             }}
           >
-            Funds Mama Loan Offers
+            FundsMama Loan Offers
           </h1>
         </div>
         <div className="relative min-h-screen flex flex-col items-center p-4 mobile">

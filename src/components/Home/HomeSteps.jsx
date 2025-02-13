@@ -125,7 +125,7 @@ const HomeSteps = () => {
       <div className="flex flex-col w-full m-0">
         <div className="flex flex-row justify-start w-full steps">
           <div
-            className="w-1/2 relative min-h-fit steps-content overflow-hidden step-image flex justify-center"
+            className="w-1/2 relative steps-content overflow-hidden step-image flex justify-center"
             style={{
               background: "#97F15D",
               borderTopLeftRadius: "50px",
@@ -168,7 +168,7 @@ const HomeSteps = () => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: "-80px",
+                  bottom: `${window.innerWidth > 1400?"-80px":"-120px"}`,
                   position: "relative",
                 }}
               />
