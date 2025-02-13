@@ -96,10 +96,7 @@
     font-size: 5rem !important;
     line-height: 5rem !important;
   }
-  .main-right-text{
-    left: -50px !important;
-    height: 25%;
-  }
+  
   .main-right-text p{
     font-size: 1.5rem;
   }
