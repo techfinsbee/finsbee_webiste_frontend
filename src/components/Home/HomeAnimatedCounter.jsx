@@ -58,7 +58,7 @@ const AnimatedCounter = ({
         {formatNumber(count)}
         {suffix}
       </div>
-      <div className="text-gray-600 suffix text-right text-xl manrope">{label}</div>
+      <div className={`text-gray-600 suffix text-right ${window.innerWidth>1400?"text-xl":"text-[1.6rem]"} manrope`}>{label}</div>
     </div>
   );
 };
