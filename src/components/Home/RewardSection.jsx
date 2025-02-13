@@ -47,7 +47,7 @@ const RewardsSection = () => {
             <img
               src="/reward2.png"
               alt="Mamamart Shopping"
-              className="w-full h-[240px] object-contain relative left-16"
+              className="w-full h-[240px] object-contain relative left-12"
             />
           </div>
 

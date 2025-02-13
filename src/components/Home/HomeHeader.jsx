@@ -1,31 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Header.component.css";
+import "./HomeHeader.component.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
-// const dropdownData = [
-//   {
-//     title: "Home",
-//     link: "home",
-//   },
-//   {
-//     title: "Loans",
-//     link: "loan-section",
-//   },
-//   {
-//     title: "Mart",
-//     link: "mart",
-//   },
-//   {
-//     title: "About Us",
-//     link: "/about-us",
-//   },
-//   {
-//     title: "Contact Us",
-//     link: "contact-us",
-//   },
-// ];
-
-const Header = ({dropdownData =[], COLOR, Hover}) => {
+const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -196,7 +173,7 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
           className={`nav ${isMobile ? (isMenuOpen ? "open" : "closed") : ""}`}
         >
           {dropdownData.map((dropdown, index) => (
-            <div className="nav-item dropdown" key={index}>
+            <div className="nav-item-home dropdown" key={index}>
               <div
                 className="content"
                 onClick={() => {
@@ -225,4 +202,4 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
   );
 };
 
-export default Header;
+export default HomeHeader;

@@ -1,103 +1,122 @@
 import React, { useEffect, useRef } from "react";
 
-const AnimatedPhones = () => {
+const AnimatedPhones = ({ Home }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-  if (!containerRef.current) return;
-  const rect = containerRef.current.getBoundingClientRect();
-  const viewportHeight = window.innerHeight;
-  const screenWidth = window.innerWidth;
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const screenWidth = window.innerWidth;
 
-  // Enhanced mobile detection with specific breakpoints
-  const isXXSmall = screenWidth <= 320;
-  const isXSmall = screenWidth <= 375 && screenWidth > 320;
-  const isMobile = screenWidth < 768;
-  const isTablet = screenWidth >= 768 && screenWidth <= 1024; // Tablet range
+      // Enhanced mobile detection with specific breakpoints
+      const isXXSmall = screenWidth <= 320;
+      const isXSmall = screenWidth <= 375 && screenWidth > 320;
+      const isMobile = screenWidth < 768;
+      const isTablet = screenWidth >= 768 && screenWidth <= 1024;
 
-  // Calculate scroll progress (0 to 1)
-  const scrollProgress = 1.5 - rect.bottom / (viewportHeight + rect.height);
-  const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+      const scrollProgress = 1.5 - rect.bottom / (viewportHeight + rect.height);
+      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
 
-  // Adjust scale based on screen size
-  let baseScale, scaleGrowth;
-  if (isXXSmall) {
-    baseScale = 0.5;
-    scaleGrowth = 0.15;
-  } else if (isXSmall) {
-    baseScale = 0.6;
-    scaleGrowth = 0.18;
-  } else if (isMobile) {
-    baseScale = 0.7;
-    scaleGrowth = 0.2;
-  } else if (isTablet) {
-    baseScale = 0.75; // Slightly smaller base scale for tablets
-    scaleGrowth = 0.25;
-  } else {
-    baseScale = 0.8;
-    scaleGrowth = 0.4;
-  }
+      // Adjust scale based on screen size
+      let baseScale, scaleGrowth;
+      if (isXXSmall) {
+        baseScale = 0.5;
+        scaleGrowth = 0.15;
+      } else if (isXSmall) {
+        baseScale = 0.6;
+        scaleGrowth = 0.18;
+      } else if (isMobile) {
+        baseScale = 0.7;
+        scaleGrowth = 0.2;
+      } else if (isTablet) {
+        baseScale = 0.75;
+        scaleGrowth = 0.25;
+      } else {
+        baseScale = 0.8;
+        scaleGrowth = 0.4;
+      }
 
-  const scale = baseScale + clampedProgress * scaleGrowth;
+      const scale = baseScale + clampedProgress * scaleGrowth;
 
-  // Adjust spread distance and z-scaling for tablet view
-  let maxSpread, zScaleFactor;
-  if (isXXSmall) {
-    maxSpread = 80;
-    zScaleFactor = 15;
-  } else if (isXSmall) {
-    maxSpread = 100;
-    zScaleFactor = 20;
-  } else if (isMobile) {
-    maxSpread = 130;
-    zScaleFactor = 25;
-  } else if (isTablet) {
-    maxSpread = 200;
-    zScaleFactor = 25 / 2; // Reduce z-scaling by half for tablets
-  } else {
-    maxSpread = 300;
-    zScaleFactor = 50;
-  }
+      // Separate spread distances for PNG and SVG
+      let maxSpread, zScaleFactor;
+      if (Home) {
+        // Increased spread for PNG images
+        if (isXXSmall) {
+          maxSpread = 120; // Increased from 80
+          zScaleFactor = 15;
+        } else if (isXSmall) {
+          maxSpread = 150; // Increased from 100
+          zScaleFactor = 20;
+        } else if (isMobile) {
+          maxSpread = 180; // Increased from 130
+          zScaleFactor = 25;
+        } else if (isTablet) {
+          maxSpread = 250; // Increased from 200
+          zScaleFactor = 12.5;
+        } else {
+          maxSpread = 400; // Increased from 300
+          zScaleFactor = 50;
+        }
+      } else {
+        // Original spread values for SVG
+        if (isXXSmall) {
+          maxSpread = 80;
+          zScaleFactor = 15;
+        } else if (isXSmall) {
+          maxSpread = 100;
+          zScaleFactor = 20;
+        } else if (isMobile) {
+          maxSpread = 130;
+          zScaleFactor = 25;
+        } else if (isTablet) {
+          maxSpread = 200;
+          zScaleFactor = 12.5;
+        } else {
+          maxSpread = 300;
+          zScaleFactor = 50;
+        }
+      }
 
-  const spread = clampedProgress * maxSpread;
+      const spread = clampedProgress * maxSpread;
 
-  const phones = containerRef.current.getElementsByClassName("phone");
-  Array.from(phones).forEach((phone, index) => {
-    if (index === 1) {
-      // Middle phone (mobile1.svg)
-      phone.style.transform = `
-        scale(${scale})
-        translateZ(${clampedProgress * zScaleFactor}px)
-      `;
-      phone.style.zIndex = "20";
-    } else {
-      // Side phones (mobile2.svg and mobile3.svg)
-      const direction = index === 0 ? -1 : 1;
-      phone.style.transform = `
-        scale(${scale})
-        translateX(${spread * direction}px)
-        translateZ(${-25 + clampedProgress * zScaleFactor}px)
-      `;
-      phone.style.zIndex = "10";
-    }
-  });
-};
-
+      const phones = containerRef.current.getElementsByClassName("phone");
+      Array.from(phones).forEach((phone, index) => {
+        if (index === 1) {
+          // Middle phone
+          phone.style.transform = `
+            scale(${scale})
+            translateZ(${clampedProgress * zScaleFactor}px)
+          `;
+          phone.style.zIndex = "20";
+        } else {
+          // Side phones
+          const direction = index === 0 ? -1 : 1;
+          phone.style.transform = `
+            scale(${scale})
+            translateX(${spread * direction}px)
+            translateZ(${-25 + clampedProgress * zScaleFactor}px)
+          `;
+          phone.style.zIndex = "10";
+        }
+      });
+    };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [Home]); // Added Home to dependency array
 
   return (
     <div
       className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: "fit-content", overflow: "hidden", padding:"0" }}
+      style={{ height: "100vh", overflow: "hidden", padding: "0" }}
     >
       <div
         ref={containerRef}
@@ -108,27 +127,39 @@ const AnimatedPhones = () => {
           {/* Left Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
-              src="/mobile2.svg"
+              src={Home ? "/mama2.png" : "/mobile2.svg"}
               alt="Cart Screen"
-              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
+              className={
+                Home
+                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain"
+                  : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
+              }
             />
           </div>
 
           {/* Middle Phone */}
           <div className="phone transition-all duration-300 ease-out">
             <img
-              src="/mobile1.svg"
+              src={Home ? "/mama1.png" : "/mobile1.svg"}
               alt="Main Screen"
-              className="w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
+              className={
+                Home
+                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[230px] object-contain"
+                  : "w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
+              }
             />
           </div>
 
           {/* Right Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
-              src="/mobile3.svg"
+              src={Home ? "/mama3.png" : "/mobile3.svg"}
               alt="Details Screen"
-              className="w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
+              className={
+                Home
+                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain"
+                  : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
+              }
             />
           </div>
         </div>
@@ -141,19 +172,19 @@ const AnimatedPhones = () => {
           transition: transform 0.3s ease-out;
           transform-origin: center center;
         }
-          @media screen and (max-width: 1023px) {
+        @media screen and (max-width: 1023px) {
           .ani-img1 {
             width: 300px !important;
           }
           .ani-img2 {
             width: 400px !important;
           }
-            .main-context {
-            height: 70vh !important;
+          .main-context {
+            height: 100vh !important;
           }
         }
         @media screen and (max-height: 512px) {
-          .main-context{
+          .main-context {
             height: fit-content !important;
           }
         }
@@ -164,7 +195,7 @@ const AnimatedPhones = () => {
           .ani-img2 {
             width: 400px !important;
           }
-            .main-context {
+          .main-context {
             height: 70vh !important;
           }
         }

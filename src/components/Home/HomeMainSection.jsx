@@ -22,12 +22,12 @@ const HomeMainSection = () => {
       >
         {/* Left content */}
         <div className="flex flex-col ml-12 gap-8 lg:gap-12 w-full lg:w-1/2 pt-8 lg:pt-0 home-left">
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-800 leading-tight">
+          <h1 className="text-2xl lg:text-5xl font-bold text-gray-800 leading-tight">
             Jab Zaroorat Ho Loan Ki,
             <br />
             Aur Shauk Ho Shopping Ka!
             <br />
-            <AnimatedMain benefits={benefits}></AnimatedMain>
+            <AnimatedMain benefits={benefits} Color="#163312"></AnimatedMain>
           </h1>
 
           {/* Download button */}
@@ -40,12 +40,18 @@ const HomeMainSection = () => {
 
         {/* Right content - Phone mockup */}
         <div className="lg:block w-1/2 relative HomeImage">
-          <div className="relative top-32 h-full left-20 w-96 mx-auto">
-            <img src="/image1.png" className="w-full h-full" alt="" />
+          <div className="relative home-main-div -bottom-40 h-full left-20 w-96 mx-auto">
+            <img src="/image1.png" className="w-full home-main-image h-full" alt="" />
           </div>
         </div>
       </div>
       <style jsx>{`
+        @media (max-width: 912px) {
+
+        .home-main-div{
+          left: 1.8rem;
+      }
+      }
         @media (max-width: 680px) {
         .home-left{
           margin-left: 0px !important;
@@ -66,6 +72,17 @@ const HomeMainSection = () => {
               top: 5% !important;
             }
         }
+
+        @media (max-height: 512px) {
+          .home-main-image{
+            width: 80%;
+            height: 50%;
+          }
+            .home-main-div{
+              bottom: -7rem;
+            }
+        }
+
       `}</style>
     </section>
   );

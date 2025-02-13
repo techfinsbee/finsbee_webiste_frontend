@@ -150,7 +150,7 @@ const HomeCibilScoreSection = () => {
             className="flex transition-transform duration-300 ease-in-out" 
             style={{ 
               transform: `translateX(-${currentSlide * 100}%)`,
-              width: `${carouselItems.length * 100}%`,
+              width: `${carouselItems.length * 20}%`,
               
             }}
           >
@@ -173,7 +173,7 @@ const HomeCibilScoreSection = () => {
                     <h2 className="text-2xl font-bold text-white roboto-serif">
                       {item.title}
                     </h2>
-                    <p className="text-white roboto-light">
+                    <p className="desc text-white roboto-light">
                       {item.description}
                     </p>
                   </div>
@@ -258,17 +258,25 @@ const HomeCibilScoreSection = () => {
             width: 100% !important;
           }
             .cibil-container{
-            width: 100% !important;
+            width: 80% !important;
             }
+
+            
         }
 
         @media (max-width: 512px) {
+        .desc{
+              width: 90%;
+            }
         .cibil-card{
               margin-right: 0px;
             }
-        .cibil-container{
-        text-align: center;
+        .cibil-container{ 
             width: 80vw !important;
+            text-align: center;
+            }
+            .cibil-container h2{
+              font-size: 1.3rem;
             }
           .cibil-button {
             width: 13rem !important;

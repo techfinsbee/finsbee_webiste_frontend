@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const AnimatedMain = ({benefits}) => {
+const AnimatedMain = ({benefits, Color}) => {
   
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,7 +30,7 @@ const AnimatedMain = ({benefits}) => {
                   
                 }}
               >
-                <span className="text-[#CD855F] block h-[400px]">{benefit}</span>
+                <span className="block h-[400px]" style={{color:`${Color?'#163312':'#CD855F'}`}}>{benefit}</span>
               </div>
             ))}
           </div>

@@ -8,7 +8,7 @@ const AnimatedCounter = ({
   prefix = "",
   suffix = "+",
   shouldAnimate,
-  bgColor
+  bgColor,
 }) => {
   const [count, setCount] = useState(0);
 
@@ -49,16 +49,16 @@ const AnimatedCounter = ({
 
   return (
     <div
-      className={`rounded-xl p-6 gap-24 flex flex-col min-w-96 h-[200px]
-                  shadow-lg transition-transform duration-300 hover:scale-105`}
+      className={`rounded-xl p-4 gap-24 flex flex-col min-w-[27vw] h-fit
+                  shadow-lg transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
-      <div className="text-5xl font-bold text-left text-[#1D3800]">
+      <div className="text-5xl font-bold prefix text-left text-[#1D3800]">
         {prefix}
         {formatNumber(count)}
         {suffix}
       </div>
-      <div className="text-gray-600 text-right text-md">{label}</div>
+      <div className="text-gray-600 suffix text-right text-md">{label}</div>
     </div>
   );
 };
@@ -103,7 +103,10 @@ const HomeAnimatedCounter = () => {
   const shouldAnimate = inView && hasExited;
 
   return (
-    <div ref={ref} className="flex flex-wrap gap-2 justify-center items-center mt-20">
+    <div
+      ref={ref}
+      className="flex flex-wrap gap-2 justify-center items-center mt-20 counters"
+    >
       {stats.map((stat, index) => (
         <AnimatedCounter
           key={index}
@@ -116,6 +119,57 @@ const HomeAnimatedCounter = () => {
           bgColor={stat.bgColor}
         />
       ))}
+
+      <style jsx>{`
+       
+
+        @media screen and (max-width: 1000px) {
+          .counters {
+            gap: 1rem !important;
+            padding: 0px 10px;
+          }
+        }
+
+        @media screen and (max-width: 820px) {
+          .counters {
+            gap: 1rem !important;
+            padding: 0px 10px;
+          }
+            .prefix{
+              font-size: 1.7rem;
+            }
+              .suffix{
+                font-size: 0.7rem;
+              }
+          .mobile-box {
+            min-width: 30vw !important;
+          }
+        }
+        @media screen and (max-width: 655px) {
+          .counters {
+            gap: 10px !important;
+            padding: 0px 10px;
+          }
+              .prefix{
+              font-size: 1.6rem;
+            }
+              .suffix{
+                font-size: 0.6rem
+              }
+          .mobile-box {
+            min-width: 30vw !important;
+          }
+        }
+        @media screen and (max-width: 510px) {
+        .counters{
+          flex-direction: column;
+        }
+          .mobile-box {
+            min-width: 80vw !important;
+          }
+      }
+
+      `}</style>
     </div>
   );
 };

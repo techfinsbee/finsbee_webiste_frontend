@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 import './App.css'
 import HomeMainSection from './components/Home/HomeMainSection';
 import Header from './components/Header';
+
+import HomeHeader from './components/Home/HomeHeader';
 import HomeAnimatedCounter from './components/Home/HomeAnimatedCounter';
 import HomeLoanDisplay from './components/Home/HomeLoanDisplay';
 import AnimatedPhones from './components/AnimatedPhones';
@@ -66,14 +68,14 @@ function App() {
   ];
   return (
     <>
-      <Header dropdownData={dropdownData} COLOR="#fff"></Header>
+      <HomeHeader dropdownData={dropdownData} COLOR="#fff" Hover="home"></HomeHeader>
       <Outlet />
       <HomeMainSection></HomeMainSection>
       <HomeAnimatedCounter></HomeAnimatedCounter>
       <HomeLoanDisplay></HomeLoanDisplay>
       <HomeSteps></HomeSteps>
       <HomeAnimatedTitle></HomeAnimatedTitle>
-      <AnimatedPhones></AnimatedPhones>
+      <AnimatedPhones Home="Home"></AnimatedPhones>
       <RewardsSection></RewardsSection> 
       <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
       <HomeCibilScoreSection></HomeCibilScoreSection>
