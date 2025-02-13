@@ -168,7 +168,7 @@ const HomeSteps = () => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: "0px",
+                  bottom: "-100px",
                   position: "relative",
                 }}
               />
