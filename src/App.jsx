@@ -46,21 +46,20 @@ function App() {
   const dropdownData = [
     {
       title: "Home",
-      link: "home-home",
+      link: "/home",
+    },
+    {
+      title: "Loans",
+      link: "loan-section-home",
+    },
+    {
+      title: "Mart",
+      link: "mart-home",
     },
     {
       title: "About Us",
       link: "/about-us",
     },
-    {
-      title: "Services",
-      link: "/services",
-    },
-    {
-      title: "Career",
-      link: "/career",
-    },
-    
     {
       title: "Contact Us",
       link: "contact-us-home",

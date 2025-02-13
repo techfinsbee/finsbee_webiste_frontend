@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 // const dropdownData = [
 //   {
 //     title: "Home",
-//     link: "home",
+//     link: "/home",
 //   },
 //   {
 //     title: "Loans",

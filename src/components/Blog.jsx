@@ -4,7 +4,7 @@ const Blog = () => {
   const dropdownData = [
     {
       title: "Home",
-      link: "home",
+      link: "/home",
     },
     {
       title: "Loans",
