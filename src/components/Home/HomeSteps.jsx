@@ -125,7 +125,7 @@ const HomeSteps = () => {
       <div className="flex flex-col h-fit w-full m-0">
         <div className="flex flex-row justify-start w-full steps">
           <div
-            className="w-1/2 relative min-h-screen steps-content overflow-hidden step-image flex justify-center"
+            className="w-1/2 relative min-h-fit steps-content overflow-hidden step-image flex justify-center"
             style={{
               background: "#97F15D",
               borderTopLeftRadius: "50px",
