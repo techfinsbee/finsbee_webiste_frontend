@@ -17,7 +17,7 @@ const AnimatedMain = ({ benefits, Color }) => {
         <div className="relative h-12">
           <div
             className="relative overflow-hidden animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]"
-            style={{ height: "50px" }}
+            style={{ height: "80px" }}
           >
             {benefits.map((benefit, index) => (
               <div
@@ -31,38 +31,39 @@ const AnimatedMain = ({ benefits, Color }) => {
                   willChange: "transform",
                 }}
               >
-                 <span 
-      className="block h-[400px]"
-      style={{
-        fontFamily: Color ? 'coolvetica' : 'roboto-slab',
-      }}
-    >
-      {benefit.split('').map((char, index) => (
-        <span
-          key={index}
-          className="inline-block"
-          style={{
-            animation: `text-color-shift 5s ease infinite`,
-            animationDelay: `${index * 0.1}s`
-          }}
-        >
-          {char === ' ' ? '\u00A0' : char}
-          <style jsx>{`
-            @keyframes text-color-shift {
-              0%, 100% {
-                color:rgb(28, 51, 17);
-              }
-              33% {
-                color: #b2ff8e;
-              }
-              66% {
-                color: #163312;
-              }
-            }
-          `}</style>
-        </span>
-      ))}
-    </span>
+                <span
+                  className="block h-[400px]"
+                  style={{
+                    fontFamily: Color ? "coolvetica" : "roboto-slab",
+                  }}
+                >
+                  {benefit.split("").map((char, index) => (
+                    <span
+                      key={index}
+                      className="inline-block"
+                      style={{
+                        animation: `text-color-shift 5s ease infinite`,
+                        animationDelay: `${index * 0.1}s`,
+                      }}
+                    >
+                      {char === " " ? "\u00A0" : char}
+                      <style jsx>{`
+                        @keyframes text-color-shift {
+                          0%,
+                          100% {
+                            color: rgb(28, 51, 17);
+                          }
+                          33% {
+                            color: #b2ff8e;
+                          }
+                          66% {
+                            color: #163312;
+                          }
+                        }
+                      `}</style>
+                    </span>
+                  ))}
+                </span>
               </div>
             ))}
           </div>
