@@ -38,22 +38,22 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-0 -left-44`,
+      } top-0 ${window.innerWidth > 1400 ?'-left-56':'-left-44'}`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 -left-44`,
+      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-left-56':'-left-44'}`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 -left-44`,
+      } bottom-0 ${window.innerWidth > 1400 ?'-left-56':'-left-44'}`,
       rightTop: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-0 -right-44`,
+      } top-0 ${window.innerWidth > 1400 ?'-right-56':'-right-44'}`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 -right-44`,
+      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-right-56':'-right-44'}`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 -right-44`,
+      } bottom-0 ${window.innerWidth > 1400 ?'-right-56':'-right-44'}`,
     };
 
     return `${baseClasses} ${positions[position]} ${

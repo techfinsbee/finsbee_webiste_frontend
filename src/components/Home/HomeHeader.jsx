@@ -37,7 +37,7 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
       location.pathname === "/press-release" ||
       (location.pathname === "/customer-care" && (!sectionId.startsWith("/")))
     ) {
-      navigate("/", { state: { scrollTo: sectionId } });
+      navigate("/home", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
     }
