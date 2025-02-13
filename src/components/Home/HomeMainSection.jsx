@@ -31,7 +31,9 @@ const HomeMainSection = () => {
           </h1>
 
           {/* Download button */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 w-fit" style={{
+          background: "linear-gradient(90deg, #b2ff8e 0%,#fff 50%, #b2ff8e 100%)",  
+          }}>
             <button className="py-3 rounded-full font-semibold flex items-center gap-2">
               <img src="/download.svg" alt="" />
             </button>

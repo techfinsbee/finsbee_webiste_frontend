@@ -25,9 +25,9 @@ const LoanBox = ({
 
   const getPositionClasses = () => {
     const baseClasses = `
-      absolute bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
+      absolute bg-[#8B6B4E] text-white rounded-xl shadow-lg 
       transition-all duration-300 transform opacity-0
-      w-[300px] h-[130px] hidden md:block cursor-pointer manrope
+      w-[30vw] h-[130px] hidden md:block cursor-pointer manrope
     `;
 
     // Separate scaling classes for automatic and hover effect
@@ -38,22 +38,22 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-0 -left-28`,
+      } top-0 -left-44`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 -left-28`,
+      } top-1/2 -translate-y-1/2 -left-44`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 -left-28`,
+      } bottom-0 -left-44`,
       rightTop: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-0 -right-28`,
+      } top-0 -right-44`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 -right-28`,
+      } top-1/2 -translate-y-1/2 -right-44`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 -right-28`,
+      } bottom-0 -right-44`,
     };
 
     return `${baseClasses} ${positions[position]} ${
@@ -71,16 +71,17 @@ const LoanBox = ({
         transitionTimingFunction: "ease-in-out",
         background: "#F8F9FA",
         color: "#112A00",
-        width: "78%",
-        height: "30%",
+        width: "30vw",
+        height: "fit-content",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-around",
+        gap:'10px',
+        padding:"1.5rem"
       }}
       onClick={onClick}
     >
       <div className="flex gap-2 items-center mb-2 ">
-        <img src={TIMG} alt="" className="w-10" />
+        <img src={TIMG} alt="" className="w-12" />
         <h3 className="text-xl mb-2 coolvetica" style={{fontWeight:"900"}}>{title}</h3>
       </div>
       <p className="text-md leading-tight manrope">{description}</p>
