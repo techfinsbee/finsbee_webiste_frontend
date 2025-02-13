@@ -117,7 +117,7 @@ const HomeSteps = () => {
 
   return (
     <section
-      className=" p-0 min-h-[110vh]"
+      className=" p-0 min-h-[120vh]"
       style={{
         borderRadius: "50px",
       }}
@@ -131,7 +131,7 @@ const HomeSteps = () => {
               borderTopLeftRadius: "50px",
             }}
           >
-            <div className="text-center mt-32 flex flex-col gap-4 coolvetica">
+            <div className="text-center mt-28 flex flex-col gap-4 coolvetica">
               <h1 className="text-[#163312] text-5xl font-bold">
                 Loan Application Steps
               </h1>
@@ -166,9 +166,9 @@ const HomeSteps = () => {
               <img
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
-                className="h-full object-contain step-per-image rounded-lg mx-auto"
+                className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  top: "130px",
+                  bottom: "0px",
                   position: "relative",
                 }}
               />

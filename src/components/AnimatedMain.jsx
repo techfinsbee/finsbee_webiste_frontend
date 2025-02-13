@@ -17,12 +17,12 @@ const AnimatedMain = ({benefits, Color}) => {
     <div className="w-full max-w-2xl px-1 mt-5" >
       <div className="flex  sm:text-left gap-2 sm:gap-0">
         
-        <div className="relative h-10  ">
-          <div className="relative overflow-hidden animated-text inline-block w-[300px] sm:w-[300px] lg:w-[300px]" style={{height:"50px"}}>
+        <div className="relative h-12">
+          <div className="relative overflow-hidden animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]" style={{height:"50px"}}>
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="absolute inset-0 w-full transition-all duration-500 ease-in-out lg:text-5xl"
+                className="absolute inset-0 w-full p-0 transition-all duration-500 ease-in-out lg:text-5xl"
                 style={{
                   transform: `translateY(${index === currentIndex ? '0%' : '100%'})`,
                   opacity: index === currentIndex ? 1 : 0,
