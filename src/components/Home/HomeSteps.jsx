@@ -131,7 +131,7 @@ const HomeSteps = () => {
               borderTopLeftRadius: "50px",
             }}
           >
-            <div className="text-center mt-28 flex flex-col gap-4 coolvetica">
+            <div className="text-center mt-[5rem] flex flex-col gap-4 coolvetica">
               <h1 className="text-[#163312] text-5xl font-bold">
                 Loan Application Steps
               </h1>
@@ -168,7 +168,7 @@ const HomeSteps = () => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400?"-80px":"-120px"}`,
+                  bottom: `${window.innerWidth > 1400?"-70px":"-120px"}`,
                   position: "relative",
                 }}
               />
