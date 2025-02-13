@@ -12,7 +12,7 @@ const HomeAnimatedTitle = () => {
           }}
         >
           <div className="absolute h-52 w-[90vw]" style={{borderRadius:"50%",backgroundColor:"rgb(178, 255, 142)",filter:"blur(50px)", zIndex:"-100000", top:"-30px"}}></div>
-          <span className="text-[#163312]">Mama Mart</span>
+          <span className="text-[#163312] coolvetica">Mama Mart</span>
         </div>
       </div>
       <style jsx>{`

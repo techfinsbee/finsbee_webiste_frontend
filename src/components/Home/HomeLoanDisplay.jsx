@@ -27,7 +27,7 @@ const LoanBox = ({
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white p-6 rounded-xl shadow-lg 
       transition-all duration-300 transform opacity-0
-      w-[300px] h-[130px] hidden md:block cursor-pointer
+      w-[300px] h-[130px] hidden md:block cursor-pointer manrope
     `;
 
     // Separate scaling classes for automatic and hover effect
@@ -81,9 +81,9 @@ const LoanBox = ({
     >
       <div className="flex gap-2 items-center mb-2 ">
         <img src={TIMG} alt="" className="w-10" />
-        <h3 className="text-xl font-bold mb-2 roboto-serif">{title}</h3>
+        <h3 className="text-xl font-bold mb-2 coolvetica">{title}</h3>
       </div>
-      <p className="text-md leading-tight roboto-light">{description}</p>
+      <p className="text-md leading-tight manrope">{description}</p>
     </div>
   );
 };
@@ -203,7 +203,7 @@ const HomeLoanDisplay = () => {
               gap: "10px",
               fontWeight: "700",
               color: "#163312",
-              fontFamily: 'manrope',
+              fontFamily: 'Coolvetica',
             }}
           >
             Funds Mama Loan Offers

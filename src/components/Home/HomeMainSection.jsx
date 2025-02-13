@@ -21,7 +21,7 @@ const HomeMainSection = () => {
         }}
       >
         {/* Left content */}
-        <div className="flex flex-col ml-12 gap-8 lg:gap-12 w-full lg:w-1/2 pt-8 lg:pt-0 home-left">
+        <div className="flex flex-col ml-12 gap-8 lg:gap-12 w-full lg:w-1/2 pt-8 lg:pt-0 home-left coolvetica">
           <h1 className="text-2xl lg:text-5xl font-bold text-gray-800 leading-tight">
             Jab Zaroorat Ho Loan Ki,
             <br />

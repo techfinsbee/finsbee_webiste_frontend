@@ -33,6 +33,28 @@ html, body{
     width: 50% !important;
   } */
 }
+@font-face {
+  font-family: 'Coolvetica';
+  src: url(./assets/fonts/coolveticarg.ttf) format('truetype');
+  src: url(./assets/fonts/Manrope-VariableFont_wght.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url(./assets/fonts/Manrope-VariableFont_wght.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.coolvetica{
+  font-family: 'Coolvetica',sans-serif;
+}
+
+.manrope{
+  font-family: 'Manrope',sans-serif;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

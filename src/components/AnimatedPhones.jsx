@@ -58,7 +58,7 @@ const AnimatedPhones = ({ Home }) => {
           zScaleFactor = 12.5;
         } else {
           maxSpread = 400; // Increased from 300
-          zScaleFactor = 50;
+          zScaleFactor = 25;
         }
       } else {
         // Original spread values for SVG

@@ -131,7 +131,7 @@ const HomeSteps = () => {
               borderTopLeftRadius: "50px",
             }}
           >
-            <div className="text-center mt-32 flex flex-col gap-4">
+            <div className="text-center mt-32 flex flex-col gap-4 coolvetica">
               <h1 className="text-[#163312] text-5xl font-bold">
                 Loan Application Steps
               </h1>
@@ -203,7 +203,7 @@ const HomeSteps = () => {
 
                     <div className="step-content">
                       <h3
-                        className={`text-lg font-bold roboto-serif ${
+                        className={`text-2xl font-bold coolvetica ${
                           activeIndexList === index
                             ? "text-black"
                             : "text-white"
@@ -212,7 +212,7 @@ const HomeSteps = () => {
                         {data.title}
                       </h3>
                       <p
-                        className={`mt-2 transition-colors duration-150 roboto-light ${
+                        className={`mt-2 transition-colors duration-150 manrope ${
                           activeIndexList === index
                             ? "text-black"
                             : "text-gray-300"

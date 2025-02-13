@@ -53,12 +53,12 @@ const AnimatedCounter = ({
                   shadow-lg transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
-      <div className="text-5xl font-bold prefix text-left text-[#1D3800]">
+      <div className="text-5xl font-bold prefix text-left text-[#1D3800] coolvetica">
         {prefix}
         {formatNumber(count)}
         {suffix}
       </div>
-      <div className="text-gray-600 suffix text-right text-md">{label}</div>
+      <div className="text-gray-600 suffix text-right text-md manrope">{label}</div>
     </div>
   );
 };

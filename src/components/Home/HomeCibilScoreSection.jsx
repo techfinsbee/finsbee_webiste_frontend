@@ -128,11 +128,11 @@ const HomeCibilScoreSection = () => {
       <div className="cibil-w bg-[#163312] p-8" style={{ width: "86%",borderRadius:"30px" }}>
         {/* Header */}
         <div className="flex cibil-header pt-8" style={{justifyContent:"space-between"}}>
-        <h1 className="text-4xl md:text-[60px] text-white gap-2 flex justify-center font-bold mb-12 check roboto-serif">
+        <h1 className="text-4xl md:text-[60px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">
           Check Your Cibil Score
         </h1>
         <button
-            className="bg-white cibil-button text-black text-xl p-0 font-semibold roboto-serif"
+            className="bg-white cibil-button text-black text-xl p-0 font-semibold coolvetica"
             style={{ borderRadius: "50px", padding:"10px 10px", height:"fit-content" }}
           >
             Check Your Cibil Score
@@ -170,10 +170,10 @@ const HomeCibilScoreSection = () => {
                       />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white roboto-serif">
+                    <h2 className="text-2xl font-bold text-white coolvetica">
                       {item.title}
                     </h2>
-                    <p className="desc text-white roboto-light">
+                    <p className="desc text-white manrope">
                       {item.description}
                     </p>
                   </div>
@@ -212,10 +212,10 @@ const HomeCibilScoreSection = () => {
                   )}
                 </div>
                 <div>
-                  <h2 className="text-2xl text-white font-bold roboto-serif">
+                  <h2 className="text-2xl text-white font-bold coolvetica">
                     {item.title}
                   </h2>
-                  <p className="text-gray-300 roboto-light">
+                  <p className="text-gray-300 manrope">
                     {item.description}
                   </p>
                 </div>

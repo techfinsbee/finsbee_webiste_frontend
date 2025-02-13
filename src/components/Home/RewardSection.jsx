@@ -3,7 +3,7 @@ import HomeFeatureCardsCarousel from './HomeFeatureCardsCarousel';
 const RewardsSection = () => {
   return (
     <section className="w-full py-12 px-4 lg:px-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 rewards">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 rewards coolvetica">
         {/* Left box - FMCoins */}
         <div className="bg-[#FEFFC5] h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden  flex flex-col">
           <div>
