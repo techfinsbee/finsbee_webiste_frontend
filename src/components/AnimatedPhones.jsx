@@ -45,13 +45,13 @@ const AnimatedPhones = ({ Home }) => {
       if (Home) {
         // Increased spread for PNG images
         if (isXXSmall) {
-          maxSpread = 120; // Increased from 80
+          maxSpread = 100; // Increased from 80
           zScaleFactor = 15;
         } else if (isXSmall) {
-          maxSpread = 150; // Increased from 100
+          maxSpread = 120; // Increased from 100
           zScaleFactor = 20;
         } else if (isMobile) {
-          maxSpread = 180; // Increased from 130
+          maxSpread = 150; // Increased from 130
           zScaleFactor = 25;
         } else if (isTablet) {
           maxSpread = 250; // Increased from 200
