@@ -117,12 +117,12 @@ const HomeSteps = () => {
 
   return (
     <section
-      className=" p-0 min-h-fit"
+      className=" p-0 min-h-[110vh]"
       style={{
         borderRadius: "50px",
       }}
     >
-      <div className="flex flex-col h-fit w-full m-0">
+      <div className="flex flex-col w-full m-0">
         <div className="flex flex-row justify-start w-full steps">
           <div
             className="w-1/2 relative min-h-fit steps-content overflow-hidden step-image flex justify-center"
