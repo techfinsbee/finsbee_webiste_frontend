@@ -2,7 +2,7 @@ html, body{
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: rgb(255, 252, 247) !important;
+  background: #fff !important;
   max-width: 100%;
 }
 
