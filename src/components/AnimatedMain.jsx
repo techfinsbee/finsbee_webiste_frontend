@@ -22,7 +22,9 @@ const AnimatedMain = ({ benefits, Color }) => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="absolute inset-0 w-full p-0 transition-all duration-500 ease-in-out lg:text-5xl"
+                className={`absolute inset-0 w-full p-0 transition-all duration-500 ease-in-out ${
+                  Color ? "lg:text-5xl" : "lg:text-6xl"
+                } `}
                 style={{
                   transform: `translateY(${
                     index === currentIndex ? "0%" : "100%"
@@ -34,9 +36,7 @@ const AnimatedMain = ({ benefits, Color }) => {
                 <span
                   className="block h-[400px]"
                   style={{
-                    fontFamily: Color ? "coolvetica" : "roboto-slab",
-                    fontWeight: Color ? "bold" : "800",
-
+                    fontFamily: Color ? "Helvetica" : "roboto-slab",
                   }}
                 >
                   {benefit.split("").map((char, index) => (
@@ -44,9 +44,12 @@ const AnimatedMain = ({ benefits, Color }) => {
                       key={index}
                       className="inline-block"
                       style={{
-                        animation: Color?"text-color-shift 5s ease infinite":"text-[#CD855F] 5s ease infinite",
-                        animationDelay: Color?`${index * 0.1}s`:"",
-                        color:Color?"":"#CD855F"
+                        animation: Color
+                          ? "text-color-shift 5s ease infinite"
+                          : "text-[#CD855F] 5s ease infinite",
+                        animationDelay: Color ? `${index * 0.1}s` : "",
+                        color: Color ? "" : "#CD855F",
+                        fontWeight: Color ? "700" : "bold",
                       }}
                     >
                       {char === " " ? "\u00A0" : char}
