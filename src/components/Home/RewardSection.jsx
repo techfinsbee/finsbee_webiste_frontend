@@ -2,8 +2,8 @@ import React from 'react';
 import HomeFeatureCardsCarousel from './HomeFeatureCardsCarousel';
 const RewardsSection = () => {
   return (
-    <section className="w-full py-12 px-4 lg:px-16">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 rewards coolvetica">
+    <section className="w-full py-10 px-4 lg:px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 rewards coolvetica">
         {/* Left box - FMCoins */}
         <div className="bg-[#FEFFC5] h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden  flex flex-col">
           <div>
@@ -19,7 +19,7 @@ const RewardsSection = () => {
 
             <img
               src="/reward1.png"
-              className='relative  top-0'
+              className='relative img1 top-10'
               alt="FMCoins Rewards"
               style={{
                 objectFit:"cover",
@@ -34,7 +34,7 @@ const RewardsSection = () => {
         <div className="flex flex-col justify-between">
           {/* Top box - Mamamart */}
           <div className="bg-[#FFE8D4] rounded-2xl px-4 py-0 flex justify-between items-center">
-            <div>
+            <div >
               <h2 className="text-2xl text-[#331800]  lg:text-3xl font-bold text-gray-800 mb-2" style={{color:"#331800"}}>
                 Discover
                 <br />
@@ -47,12 +47,12 @@ const RewardsSection = () => {
             <img
               src="/reward2.png"
               alt="Mamamart Shopping"
-              className="w-full h-[240px] object-contain relative left-12"
+              className="w-[300px] h-fit object-contain relative left-12 img2"
             />
           </div>
 
           {/* Bottom box - Payment Options */}
-          <div className="bg-[#CAFFDC] rounded-2xl overflow-hidden px-4 flex justify-between items-center">
+          <div className="bg-[#CAFFDC] rounded-2xl overflow-hidden pl-4 flex justify-between items-center">
             <div>
               <h2 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2" style={{color:"#003813"}}>
                 Flexible Payment
@@ -66,7 +66,7 @@ const RewardsSection = () => {
             <img
               src="/2.png"
               alt="Payment Options"
-              className="w-[400px] h-[240px] relative -right-4 object-contain flex"
+              className="w-[250px] h-fit relative bottom-0 right-0 object-contain flex img3"
               style={{flexDirection:"row-reverse"}}
             />
           </div>
@@ -79,6 +79,12 @@ const RewardsSection = () => {
       .mobile-rewards {
         display: none;
       }
+        @media (max-width: 912px){
+          .img2,.img3{
+            width: 25vw;
+            height: 25vh;
+          }
+        }
         @media (max-width: 728px){
           .mobile-rewards{
             display: block;
