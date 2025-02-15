@@ -50,7 +50,7 @@ const AnimatedCounter = ({
   return (
     <div
       className={`rounded-xl p-4 gap-24 flex flex-col min-w-[27vw] h-fit
-                  shadow-lg transition-transform duration-300 hover:scale-105 mobile-box`}
+                  shadow-md transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
       <div className="text-[3.5rem] prefix text-left text-[#1D3800] coolvetica" style={{fontWeight:"bolder"}}>

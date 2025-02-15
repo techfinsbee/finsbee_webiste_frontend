@@ -35,6 +35,8 @@ const AnimatedMain = ({ benefits, Color }) => {
                   className="block h-[400px]"
                   style={{
                     fontFamily: Color ? "coolvetica" : "roboto-slab",
+                    fontWeight: Color ? "bold" : "800",
+
                   }}
                 >
                   {benefit.split("").map((char, index) => (
@@ -42,8 +44,9 @@ const AnimatedMain = ({ benefits, Color }) => {
                       key={index}
                       className="inline-block"
                       style={{
-                        animation: `text-color-shift 5s ease infinite`,
-                        animationDelay: `${index * 0.1}s`,
+                        animation: Color?"text-color-shift 5s ease infinite":"text-[#CD855F] 5s ease infinite",
+                        animationDelay: Color?`${index * 0.1}s`:"",
+                        color:Color?"":"#CD855F"
                       }}
                     >
                       {char === " " ? "\u00A0" : char}

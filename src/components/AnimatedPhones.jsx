@@ -116,7 +116,7 @@ const AnimatedPhones = ({ Home }) => {
   return (
     <div
       className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: "100vh", overflow: "hidden", padding: "0" }}
+      style={{ height: "110vh", overflow: "hidden", padding: "0" }}
     >
       <div
         ref={containerRef}

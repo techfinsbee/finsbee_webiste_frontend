@@ -25,15 +25,15 @@ const LoanBox = ({
 
   const getPositionClasses = () => {
     const baseClasses = `
-      absolute bg-[#8B6B4E] text-white rounded-xl shadow-lg 
+      absolute bg-[#8B6B4E] text-white rounded-xl shadow-md 
       transition-all duration-300 transform opacity-0
       w-[30vw] h-[130px] hidden md:block cursor-pointer manrope
     `;
 
     // Separate scaling classes for automatic and hover effect
     const scaleClasses = isHighlighted
-      ? "scale-105 shadow-2xl bg-[#725839] ring-4 ring-white ring-opacity-50"
-      : "scale-95 hover:scale-105 hover:shadow-xl hover:bg-[#725839]";
+      ? "scale-105 shadow-lg bg-[#725839] ring-4 ring-white ring-opacity-50"
+      : "scale-95 hover:scale-105 hover:shadow-md hover:bg-[#725839]";
 
     const positions = {
       leftTop: `${
@@ -103,13 +103,22 @@ const HomeLoanDisplay = () => {
   ];
   const loans = [
     {
-      title: "Instant Loan",
+      title: "Home Loan",
       description:
-        "Quick Cash When You Need It Most. Get instant loans upto INR 2 Lakhs in minutes.",
-      position: "rightMiddle",
-      delay: 0,
-      image: images[0],
-      TImg: "/PL.png",
+        "Lay the foundation of your home with loans upto INR 3 Cr with minimal documentation and digital process.",
+      position: "leftTop",
+      delay: 200,
+      image: images[4],
+      TImg: "/HL.png",
+    },
+    {
+      title: "Loan Against Property",
+      description:
+        "Leverage Your Property for a Better Tomorrow.Secure loans upto INR 25 Lakhs",
+      position: "leftMiddle",
+      delay: 200,
+      image: images[3],
+      TImg: "/LAP.png",
     },
     {
       title: "Personal EMI-Based Loan",
@@ -129,23 +138,18 @@ const HomeLoanDisplay = () => {
       TImg: "/CC.png",
     },
     {
-      title: "Loan Against Property",
+      title: "Instant Loan",
       description:
-        "Leverage Your Property for a Better Tomorrow.Secure loans upto INR 25 Lakhs",
-      position: "leftMiddle",
-      delay: 200,
-      image: images[3],
-      TImg: "/LAP.png",
+        "Quick Cash When You Need It Most. Get instant loans upto INR 2 Lakhs in minutes.",
+      position: "rightMiddle",
+      delay: 0,
+      image: images[0],
+      TImg: "/PL.png",
     },
-    {
-      title: "Home Loan",
-      description:
-        "Lay the foundation of your home with loans upto INR 3 Cr with minimal documentation and digital process.",
-      position: "leftTop",
-      delay: 200,
-      image: images[4],
-      TImg: "/HL.png",
-    },
+    
+    
+    
+    
     {
       title: "Loan Against Security",
       description:

@@ -85,8 +85,8 @@ const HomeSteps = () => {
           (prevIndex) => (prevIndex + 1) % Data.our_solutions.length
         );
         setIsAnimating(false);
-      }, 150); // Reduced to 150ms for faster transition
-    }, 5000);
+      }, 200); // Reduced to 150ms for faster transition
+    }, 6000);
   };
 
   useEffect(() => {
