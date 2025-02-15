@@ -8,9 +8,16 @@ const Footer = () => {
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Top section with logo and sign up button */}
           <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-            <div className="flex items-center mb-4 sm:mb-0">
-              <img src="/logo.png" alt="FUNDSMAMA" className="h-24" />
-            </div>
+          <div className="flex">
+          <img
+            src="/fundsmama-logo.svg"
+            className="w-[100px]"
+            alt="FUNDSMAMA"
+          /> <span className="text-4xl header-fundmama flex juistify-center items-center" style={{
+            fontWeight:"800",
+            fontFamily:"Helvetica"
+          }}>FUNDSMAMA</span>
+        </div>
             <button className="bg-[#C4957E] text-white px-6 py-2 rounded-lg hover:bg-[#B3846D] transition-colors">
               Sign up for Updates
             </button>
