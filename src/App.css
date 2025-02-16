@@ -49,11 +49,11 @@ html, body{
 }
 
 .coolvetica{
-  font-family: 'Helvetica',sans-serif;
+  font-family: 'Helvetica';
 }
 
 .manrope{
-  font-family: 'Manrope',sans-serif;
+  font-family: 'Manrope';
 }
 @tailwind base;
 @tailwind components;

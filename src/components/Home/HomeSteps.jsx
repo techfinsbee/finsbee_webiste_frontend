@@ -11,20 +11,17 @@ const HomeSteps = () => {
       },
       {
         title: "Fill the Application",
-        content:
-          "Enter basic details like name, DOB, and email to begin.",
+        content: "Enter basic details like name, DOB, and email to begin.",
         image: "/c4.svg",
       },
       {
         title: "Apply for Loan",
-        content:
-          "Submit your request with a seamless verification process.",
+        content: "Submit your request with a seamless verification process.",
         image: "/c2.svg",
       },
       {
         title: "Upload Required Documents",
-        content:
-          "Securely upload PAN, Aadhaar, and other required documents.",
+        content: "Securely upload PAN, Aadhaar, and other required documents.",
         image: "/c1.svg",
       },
       {
@@ -46,20 +43,17 @@ const HomeSteps = () => {
     },
     {
       title: "Fill the Application",
-      content:
-        "Enter basic details like name, DOB, and email to begin.",
+      content: "Enter basic details like name, DOB, and email to begin.",
       image: images[3],
     },
     {
       title: "Apply for Loan",
-      content:
-        "Submit your request with a seamless verification process.",
+      content: "Submit your request with a seamless verification process.",
       image: images[1],
     },
     {
       title: "Upload Required Documents",
-      content:
-        "Securely upload PAN, Aadhaar, and other required documents.",
+      content: "Securely upload PAN, Aadhaar, and other required documents.",
       image: images[0],
     },
     {
@@ -151,11 +145,16 @@ const HomeSteps = () => {
             <div className="absolute object-cover bottom-0 bg-[]">
               <img src="/BLUR.png" alt="" />
             </div>
-            {/* <div className=" absolute w-[500px] object-cover top-[50%]"> */}
-              <img src="/bg-loan.png" className="w-[600px] h-[300px] absolute object-cover top-[527px] left-[30px]" alt="" />
-            {/* </div> */}
+            <div className="flex w-full absolute bottom-0 justify-center items-center">
+              <div className="relative w-[75%] h-[48vh] overflow-hidden">
+                <img
+                  src="/bg-loan.png"
+                  alt="Coin background"
+                  className="w-[100%] h-[90%] object-cover object-center transform relative -left-10 translate-y-[50%]"
+                />
+              </div>
+            </div>
 
-            
             <div
               className={`absolute w-fit h-fit transition-all duration-150 ease-in-out ${
                 isAnimating
@@ -168,7 +167,7 @@ const HomeSteps = () => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400?"-70px":"-120px"}`,
+                  bottom: `${window.innerWidth > 1400 ? "-70px" : "-120px"}`,
                   position: "relative",
                 }}
               />

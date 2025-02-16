@@ -15,14 +15,14 @@ const HomeMainSection = () => {
         className="w-full relative flex items-center justify-between px-8 lg:px-16 HomeMain overflow-hidden"
         style={{
           background: "linear-gradient(180deg, #fff 0%,#fff 50%, #b2ff8e 100%)",
-          borderBottomLeftRadius: "120px",
-          borderBottomRightRadius: "120px",
+          borderBottomLeftRadius: "100px",
+          borderBottomRightRadius: "100px",
           height: "90vh",
         }}
       >
         {/* Left content */}
         <div className="flex flex-col text-[#163312] ml-12 gap-4 lg:gap-12 w-full lg:w-1/2 pt-4 lg:pt-0 home-left coolvetica">
-          <h1 className="text-4xl lg:text-5xl font-bold leading-tight" style={{fontWeight:"bold"}}>
+          <h1 className="text-3xl lg:text-5xl font-bold leading-tight" style={{fontWeight:"bold"}}>
             Jab Zaroorat Ho Loan Ki,
             <br />
             Aur Shauk Ho Shopping Ka!

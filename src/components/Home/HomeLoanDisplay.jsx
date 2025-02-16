@@ -82,9 +82,9 @@ const LoanBox = ({
     >
       <div className="flex gap-2 items-center mb-2 ">
         <img src={TIMG} alt="" className="w-12" />
-        <h3 className="text-xl mb-2 coolvetica" style={{fontWeight:"900"}}>{title}</h3>
+        <h3 className="text-xl mb-2 coolvetica" style={{fontWeight:"750", color:"#112A00"}}>{title}</h3>
       </div>
-      <p className="text-md leading-tight manrope">{description}</p>
+      <p className="text-md leading-tight text-gray-500" style={{fontFamily:"Helvetica", fontWeight:"500"}}>{description}</p>
     </div>
   );
 };
@@ -198,7 +198,7 @@ const HomeLoanDisplay = () => {
       >
         <div>
           <h1
-            className="loan-headers"
+            className="loan-headers mb-8"
             style={{
               textAlign: "center",
               fontSize: "70px",

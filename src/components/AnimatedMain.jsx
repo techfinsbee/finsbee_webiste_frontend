@@ -14,7 +14,7 @@ const AnimatedMain = ({ benefits, Color }) => {
   return (
     <div className="w-full max-w-2xl px-1 mt-5">
       <div className="flex  sm:text-left gap-2 sm:gap-0">
-        <div className="relative h-12">
+        <div className="relative h-8">
           <div
             className="relative overflow-hidden animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]"
             style={{ height: "80px" }}
@@ -84,7 +84,7 @@ const AnimatedMain = ({ benefits, Color }) => {
 
         @media (max-width: 512px) {
           .animated-text {
-            font-size: 3rem !important;
+            font-size: 2rem !important;
           }
         }
       `}</style>

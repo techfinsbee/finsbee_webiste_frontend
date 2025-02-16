@@ -49,7 +49,7 @@ const AnimatedCounter = ({
 
   return (
     <div
-      className={`rounded-xl p-4 gap-24 flex flex-col min-w-[31vw] h-fit
+      className={`rounded-xl p-4 gap-24 flex flex-col min-w-[30vw] h-fit
                   shadow-md transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
@@ -105,7 +105,7 @@ const HomeAnimatedCounter = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-wrap gap-2 justify-center items-center mt-20 counters"
+      className="flex gap-2 justify-center items-center mt-20 counters"
     >
       {stats.map((stat, index) => (
         <AnimatedCounter
@@ -164,6 +164,12 @@ const HomeAnimatedCounter = () => {
         .counters{
           flex-direction: column;
         }
+          .prefix{
+            font-size: 2.2rem;
+          }
+            .suffix{
+              font-size: 1rem;
+            }
           .mobile-box {
             min-width: 80vw !important;
           }
