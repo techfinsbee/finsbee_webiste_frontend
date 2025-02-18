@@ -166,7 +166,7 @@ const HomeCibilScoreSection = ({COLOR, cibilImgaes}) => {
                 style={{ padding: "0 auto"}}
               >
                 <div className="flex gap-2 cibil-container w-80">
-                  <div className="flex " style={{ alignItems: "center" }}>
+                  <div className="flex" style={{ alignItems: "center" }}>
                     
                       <img
                         src={item.icon}
@@ -205,13 +205,23 @@ const HomeCibilScoreSection = ({COLOR, cibilImgaes}) => {
           {carouselItems.map((item, index) => (
             <div key={index} className="space-y-1">
               <div className="flex gap-6">
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center ">
                   {item.icon ? (
-                    <img
+                    
+                      item.title==="Your Credit Health Matters"?
+                      <img
                       src={item.icon}
-                      className="w-20 h-18 text-green-500"
+                      className="w-14 h-fit text-green-500 object-cover"
                       alt=""
                     />
+                      :
+                      <img
+                        src={item.icon}
+                        className="w-16 h-fit text-green-500 object-cover"
+                        alt=""
+                      />
+                    
+                    
                   ) : (
                     item.svg
                   )}
@@ -235,8 +245,10 @@ const HomeCibilScoreSection = ({COLOR, cibilImgaes}) => {
 
       {/* Existing styles */}
       <style jsx>{`
-       @media (max-height: 760px) and (max-width: 820px) {
-      
+       @media (max-height: 512px) {
+      .check{
+              font-size: 2rem;
+            }
        }
         @media (max-width: 825px) {
         .cibil-header{

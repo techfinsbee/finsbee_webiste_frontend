@@ -211,7 +211,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
       >
         <div>
           <h1
-            className="loan-headers mb-8"
+            className="loan-headers-home mb-8"
             style={{
               textAlign: "center",
               fontSize: "70px",
@@ -323,16 +323,16 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               display: none !important;
             }
           }
-          @media (max-width: 912px), screen and (max-height: 512px) {
+          @media screen and (max-width: 912px), screen and (max-height: 512px) {
             .loan-section-home {
               height: fit-content !important;
             }
             .loan-mobile {
               display: block !important;
             }
-            ,
-            .loan-headers {
-              font-size: 25px !important;
+            
+            .loan-headers-home {
+              font-size: 50px !important;
               font-weight: 700 !important;
             }
             .images {
@@ -345,7 +345,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
             }
           }
           @media (max-width: 350px) {
-            .loan-headers {
+            .loan-headers-home {
               font-size: 1.5rem !important;
             }
           }
@@ -353,7 +353,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
             .loan-section-home {
               height: fit-content !important;
             }
-            .loan-headers {
+            .loan-headers-home {
               font-size: 1.8rem !important;
             }
             .images {

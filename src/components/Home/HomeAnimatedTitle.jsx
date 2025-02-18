@@ -19,10 +19,18 @@ const HomeAnimatedTitle = ({COLOR, DIVCOLOR}) => {
         </div>
       </div>
       <style jsx>{`
-        @media (max-width: 728px){  
+        @media (max-width: 912px){  
           .mart-home{
             margin-top: 0px !important;
           }
+            .main-title{
+              font-size:120px !important;
+            }
+        }
+        @media (max-width: 912px){  
+          .main-title{
+              font-size:50px !important;
+            }
         }
       `}</style>
     </section>

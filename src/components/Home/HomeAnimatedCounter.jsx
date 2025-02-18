@@ -286,7 +286,7 @@ const HomeAnimatedCounter = ({COLOR}) => {
           }
         }
 
-        @media screen and (max-width: 820px) {
+        @media screen and (max-width: 974px) {
           .counters {
             gap: 1rem !important;
             padding: 0px 10px;

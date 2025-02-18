@@ -109,7 +109,7 @@ const HomeFooter = ({COLOR}) => {
                 <li>
                   <a
                     href="mailto:Customercare@fundsmama.com"
-                    className="text-xl flex gap-2 font-semibold hover:text-white-600 underline"
+                    className="text-lg md:text-lg flex gap-2 font-semibold hover:text-white-600 underline"
                   >
                     <img src="/Mail.png" alt="" />
                     Customercare@fundsmama.com
