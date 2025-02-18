@@ -15,8 +15,8 @@ const HomeMainSection = () => {
         className="w-full relative flex items-center justify-between px-8 lg:px-16 HomeMain overflow-hidden"
         style={{
           background: "linear-gradient(180deg, #fff 0%,#fff 50%, #b2ff8e 100%)",
-          borderBottomLeftRadius: "100px",
-          borderBottomRightRadius: "100px",
+          borderBottomLeftRadius: "90px",
+          borderBottomRightRadius: "90px",
           height: "90vh",
         }}
       >

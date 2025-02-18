@@ -145,12 +145,12 @@ const HomeSteps = () => {
             <div className="absolute object-cover bottom-0 bg-[]">
               <img src="/BLUR.png" alt="" />
             </div>
-            <div className="flex w-full absolute bottom-0 justify-center items-center">
-              <div className="relative w-[75%] h-[48vh] overflow-hidden">
+            <div className="flex w-full absolute bottom-0 justify-center  items-center">
+              <div className="relative w-[80%] h-[55vh] overflow-hidden coin-image">
                 <img
                   src="/bg-loan.png"
                   alt="Coin background"
-                  className="w-[100%] h-[90%] object-cover object-center transform relative -left-10 translate-y-[50%]"
+                  className="w-[100%] h-[70%] object-cover  object-center transform relative -left-10 translate-y-[90%]"
                 />
               </div>
             </div>
@@ -302,6 +302,11 @@ const HomeSteps = () => {
         @media screen and (max-width: 360px) {
           .step-header {
             font-size: 1.5rem !important;
+          }
+        }
+        @media screen and (max-height: 720px) {
+        .coin-image{
+          height: 70vh;
           }
         }
       `}</style>
