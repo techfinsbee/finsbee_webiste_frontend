@@ -146,11 +146,11 @@ const HomeSteps = () => {
               <img src="/BLUR.png" alt="" />
             </div>
             <div className="flex w-full absolute bottom-0 justify-center  items-center">
-              <div className="relative w-[80%] h-[60vh] overflow-hidden coin-image">
+              <div className="relative w-[80%] h-[57vh] overflow-hidden coin-image">
                 <img
                   src="/bg-loan.png"
                   alt="Coin background"
-                  className="w-[100%] h-[70%] object-cover  object-center transform relative -left-10 translate-y-[90%]"
+                  className="w-[100%] h-[70%] object-cover  object-center transform relative -left-10 translate-y-[92%]"
                 />
               </div>
             </div>
