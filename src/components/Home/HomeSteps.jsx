@@ -311,9 +311,9 @@ const HomeSteps = ({StepColor, stepImage}) => {
           }
         }
         
-        @media screen and (min-height: 810px) {
+        @media screen and (min-width: 1400px) {
           .coin-image {
-            height: 60vh;
+            height: 63vh;
           }
         }
       `}</style>
