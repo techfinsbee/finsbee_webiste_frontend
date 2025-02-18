@@ -102,10 +102,10 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
             style={{ background: `${COLOR?'#69B6B2':'rgb(178, 255, 142) '}` }}
           >
             <h3 className="text-lg sm:text-xl font-bold mb-2"
-            style={{ color: `${COLOR?'#fff':'#112B00'}` }}
+            style={{ color: `${COLOR?'#09615D':'#112B00'}` }}
             >
               {steps[currentIndex].title}
-            </h3>
+            </h3> 
             <p className="text-sm sm:text-md text-black"
             style={{ color: `${COLOR?'#09615D':'#112B00'}` }}
             >

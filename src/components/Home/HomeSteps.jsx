@@ -48,7 +48,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
     },
     {
       title: "Apply for Loan",
-      content: "Submit your request with a seamless verification process.",
+      content: "Submit your request with a seamless verification process.",
       image: images[1],
     },
     {
@@ -238,7 +238,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
         </div>
         <div className="mobile-step">
           {StepColor ? (
-            <HomeMobileStepsCarousel steps={steps_content} images={images} COLOR = ""/>
+            <HomeMobileStepsCarousel steps={steps_content} images={images} COLOR = "#"/>
           ) : (
             <HomeMobileStepsCarousel steps={steps_content} images={images} />
           )}
