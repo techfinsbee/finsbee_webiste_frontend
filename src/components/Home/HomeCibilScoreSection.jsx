@@ -128,7 +128,7 @@ const HomeCibilScoreSection = () => {
       <div className="cibil-w bg-[#163312] p-8" style={{ width: "86%",borderRadius:"30px" }}>
         {/* Header */}
         <div className="flex cibil-header pt-8" style={{justifyContent:"space-between"}}>
-        <h1 className="text-4xl md:text-[80px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">
+        <h1 className="text-3xl md:text-[70px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">
           Check Your Cibil Score
         </h1>
         <button
