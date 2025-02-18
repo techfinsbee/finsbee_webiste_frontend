@@ -150,7 +150,7 @@ const HomeSteps = () => {
                 <img
                   src="/bg-loan.png"
                   alt="Coin background"
-                  className="w-[100%] h-[66%] object-cover  object-center transform relative -left-12 translate-y-[95%]"
+                  className="w-[100%] h-[66%] object-cover object-center transform relative -left-12 translate-y-[95%]"
                 />
               </div>
             </div>
@@ -307,6 +307,16 @@ const HomeSteps = () => {
         @media screen and (max-height: 720px) {
         .coin-image{
           height: 70vh;
+          }
+        }
+          @media screen and (max-height: 720px) {
+        .coin-image{
+          height: 70vh;
+          }
+        }
+          @media screen and (max-height: 1080px) {
+        .coin-image{
+          height: 63vh;
           }
         }
       `}</style>
