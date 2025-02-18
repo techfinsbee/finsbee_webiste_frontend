@@ -89,7 +89,7 @@ const LoanBox = ({
         <img src={TIMG} alt="" className="w-12" />
         <h3
           className="text-xl mb-2 coolvetica"
-          style={{ fontWeight: "750", color: "#112A00",color:`${COLOR?"#09615D":"#163312"}` }}
+          style={{ fontWeight: "750", color:`${COLOR?"#09615D":"#112A00"}` }}
         >
           {title}
         </h3>
