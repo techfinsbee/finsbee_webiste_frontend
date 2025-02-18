@@ -47,11 +47,11 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
     } else if (info.offset.x < -threshold) {
       // Swiped left
       setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-    }
+    } 
   };
   return (
     <div
-      className="relative w-full min-h-screen mb-100 overflow-hidden touch-pan-y"
+      className="relative w-full min-h-fit overflow-hidden"
       onTouchStart={handleTouchStart}
       style={{ overflowX: "hidden"}}
     >

@@ -59,10 +59,16 @@ const AnimatedMain = ({ benefits, Color }) => {
                           100% {
                             color: rgb(28, 51, 17);
                           }
-                          33% {
+                          20% {
                             color: #b2ff8e;
                           }
-                          66% {
+                            40% {
+                            color: #163312;
+                          }
+                            60% {
+                            color: #b2ff8e;
+                          }
+                          80% {
                             color: #163312;
                           }
                         }

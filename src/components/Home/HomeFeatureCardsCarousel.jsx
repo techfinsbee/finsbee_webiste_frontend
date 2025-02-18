@@ -83,7 +83,7 @@ const HomeFeatureCardsCarousel = () => {
 
   return (
     <div
-      className="relative w-full overflow-hidden mt-20 mall-card-carousel"
+      className="relative w-full overflow-hidden mall-card-carousel"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

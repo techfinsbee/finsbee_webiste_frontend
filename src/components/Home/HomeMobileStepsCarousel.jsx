@@ -49,7 +49,7 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
 
   return (
     <div
-      className="relative w-full min-h-screen bg-[#112B00] overflow-hidden touch-pan-y pb-10  mb-20"
+      className="relative w-full min-h-fiten bg-[#112B00] overflow-hidden touch-pan-y pb-10  mb-20"
       onTouchStart={handleTouchStart}
       style={{ overflowX: "hidden", borderTopLeftRadius:"50px", borderTopRightRadius:"50px"}}
     >

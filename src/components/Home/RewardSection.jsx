@@ -2,7 +2,7 @@ import React from "react";
 import HomeFeatureCardsCarousel from "./HomeFeatureCardsCarousel";
 const RewardsSection = () => {
   return (
-    <section className="w-full py-10 px-4 lg:px-4">
+    <section className="w-full py-10 px-4 lg:px-4 reward-section">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 rewards coolvetica">
         {/* Left box - FMCoins */}
         <div className="bg-[#FEFFC5] h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden  flex flex-col">
@@ -103,6 +103,11 @@ const RewardsSection = () => {
           .rewards {
             display: none;
           }
+            .reward-section{
+              padding-top: 0px !important;
+              padding-bottom: 0px !important;
+
+            }
         }
       `}</style>
     </section>

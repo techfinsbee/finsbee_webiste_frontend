@@ -12,6 +12,7 @@ import FeaturedBrands from './components/FeaturedBrands'
 import FeatureCards from './components/FeatureCards'
 import Footer from './components/Footer'
 import ReactDOM from 'react-dom'
+import './Landing.css'
 import { Outlet } from 'react-router-dom';
 const Landing = () => {
   const brands_we_trust ={ 
@@ -63,6 +64,7 @@ const Landing = () => {
   ];
   return (
     <>
+    <div className='Landing'>
       <Header dropdownData={dropdownData}></Header>
       <Outlet />
       <SocialSidebar></SocialSidebar>
@@ -80,6 +82,7 @@ const Landing = () => {
       <FeatureCards></FeatureCards>
       <FeaturedBrands allLogos={brands_we_trust} Color="#006d5b"></FeaturedBrands>
       <Footer></Footer>
+      </div>
     </>
   )
 }

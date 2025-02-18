@@ -41,46 +41,59 @@ const AnimatedPhones = ({ Home }) => {
       const scale = baseScale + clampedProgress * scaleGrowth;
 
       // Separate spread distances for PNG and SVG
-      let maxSpread, zScaleFactor;
+      let maxSpread, zScaleFactor, verticalDistance;
       if (Home) {
-        // Increased spread for PNG images
+        // Increased spread for PNG images and added vertical movement
         if (isXXSmall) {
-          maxSpread = 100; // Increased from 80
-          zScaleFactor = 15;
-        } else if (isXSmall) {
-          maxSpread = 120; // Increased from 100
-          zScaleFactor = 20;
-        } else if (isMobile) {
-          maxSpread = 150; // Increased from 130
-          zScaleFactor = 25;
-        } else if (isTablet) {
-          maxSpread = 250; // Increased from 200
-          zScaleFactor = 12.5;
-        } else {
-          maxSpread = 400; // Increased from 300
-          zScaleFactor = 50;
-        }
-      } else {
-        // Original spread values for SVG
-        if (isXXSmall) {
-          maxSpread = 80;
-          zScaleFactor = 15;
-        } else if (isXSmall) {
           maxSpread = 100;
+          zScaleFactor = 15;
+          verticalDistance = -60;
+        } else if (isXSmall) {
+          maxSpread = 120;
           zScaleFactor = 20;
+          verticalDistance = -80;
         } else if (isMobile) {
-          maxSpread = 130;
+          maxSpread = 150;
           zScaleFactor = 25;
+          verticalDistance = -100;
         } else if (isTablet) {
-          maxSpread = 200;
+          maxSpread = 250;
           zScaleFactor = 12.5;
+          verticalDistance = -150;
         } else {
           maxSpread = 300;
           zScaleFactor = 50;
+          verticalDistance = -100;
+        }
+      } else {
+        // Original spread values for SVG with no vertical movement
+        if (isXXSmall) {
+          maxSpread = 80;
+          zScaleFactor = 15;
+          verticalDistance = 0;
+        } else if (isXSmall) {
+          maxSpread = 100;
+          zScaleFactor = 20;
+          verticalDistance = 0;
+        } else if (isMobile) {
+          maxSpread = 130;
+          zScaleFactor = 25;
+          verticalDistance = 0;
+        } else if (isTablet) {
+          maxSpread = 200;
+          zScaleFactor = 12.5;
+          verticalDistance = 0;
+        } else {
+          maxSpread = 300;
+          zScaleFactor = 50;
+          verticalDistance = 0;
         }
       }
 
       const spread = clampedProgress * maxSpread;
+      
+      // Calculate vertical translation based on scroll progress (only for Home)
+      const verticalTranslate = Home ? clampedProgress * verticalDistance : 0;
 
       const phones = containerRef.current.getElementsByClassName("phone");
       Array.from(phones).forEach((phone, index) => {
@@ -89,6 +102,7 @@ const AnimatedPhones = ({ Home }) => {
           phone.style.transform = `
             scale(${scale})
             translateZ(${clampedProgress * zScaleFactor}px)
+            ${Home ? `translateY(${verticalTranslate}px)` : ''}
           `;
           phone.style.zIndex = "20";
         } else {
@@ -98,6 +112,7 @@ const AnimatedPhones = ({ Home }) => {
             scale(${scale})
             translateX(${spread * direction}px)
             translateZ(${-25 + clampedProgress * zScaleFactor}px)
+            ${Home ? `translateY(${verticalTranslate}px)` : ''}
           `;
           phone.style.zIndex = "10";
         }
@@ -116,7 +131,7 @@ const AnimatedPhones = ({ Home }) => {
   return (
     <div
       className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: "110vh", overflow: "hidden", padding: "0" }}
+      style={{ height: `${Home?"60vh":"110vh"}`, padding: "0" }}
     >
       <div
         ref={containerRef}
@@ -187,7 +202,6 @@ const AnimatedPhones = ({ Home }) => {
           .main-context {
             height: fit-content !important;
           }
-            
         }
         @media screen and (max-width: 820px) {
           .ani-img1 {
@@ -207,12 +221,12 @@ const AnimatedPhones = ({ Home }) => {
           .main-context {
             height: 40vh !important;
           }
-            .svg-1{
-              width: 30vw !important;
-            }
-              .svg-2{
-              width: 35vw !important;
-            }
+          .svg-1 {
+            width: 30vw !important;
+          }
+          .svg-2 {
+            width: 35vw !important;
+          }
         }
       `}</style>
     </div>

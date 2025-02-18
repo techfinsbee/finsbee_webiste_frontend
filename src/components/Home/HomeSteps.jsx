@@ -111,7 +111,7 @@ const HomeSteps = () => {
 
   return (
     <section
-      className=" p-0 min-h-[120vh]"
+      className=" p-0 min-h-fit"
       style={{
         borderRadius: "50px",
       }}

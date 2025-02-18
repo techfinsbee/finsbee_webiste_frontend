@@ -3,9 +3,9 @@ import React from "react";
 const Footer = () => {
   return (
     <section id="contact-us" >
-      <footer className="w-full text-gray-800 border-t border-gray-200 " style={{ boxShadow:"200px 200px 200px #000000"}}>
+      <footer className="w-full text-gray-800 border-t border-gray-200 " style={{ boxShadow:"200px 200px 200px #000000", backgroundColor:"rgb(255, 252, 247)"}}>
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="max-w-7xl mx-auto px-4 py-8" style={{backgroundColor:"rgb(255, 252, 247)"}}>
           {/* Top section with logo and sign up button */}
           <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
           <div className="flex">

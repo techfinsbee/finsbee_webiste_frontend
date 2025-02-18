@@ -194,7 +194,7 @@ const HomeLoanDisplay = () => {
       <section
         style={{ height: "fit-content" }}
         id="loan-section-home"
-        className="mb-16 loan-section min-h-screen"
+        className="mb-16 loan-section-home min-h-fit"
       >
         <div>
           <h1
@@ -214,7 +214,7 @@ const HomeLoanDisplay = () => {
             FundsMama Loan Offers
           </h1>
         </div>
-        <div className="relative min-h-screen flex flex-col items-center p-4 mobile">
+        <div className="relative min-h-fit flex flex-col items-center p-4 mobile">
           <div
             ref={ref}
             className="relative w-[450px] images h-[600px] ml-12 mr-12 loan-image-container"
@@ -292,7 +292,7 @@ const HomeLoanDisplay = () => {
             }
           }
           @media screen and (max-height: 780px) {
-            .loan-section {
+            .loan-section-home {
               margin-top: 100px !important;
             }
           }
@@ -302,7 +302,7 @@ const HomeLoanDisplay = () => {
             }
           }
           @media (max-width: 912px), screen and (max-height: 512px) {
-            .loan-section {
+            .loan-section-home {
               height: fit-content !important;
             }
             .loan-mobile {
@@ -318,7 +318,7 @@ const HomeLoanDisplay = () => {
             }
           }
           @media (max-height: 692px) and (max-width: 912px) {
-            .loan-section {
+            .loan-section-home {
               height: fit-content !important;
             }
           }
@@ -328,8 +328,8 @@ const HomeLoanDisplay = () => {
             }
           }
           @media (max-width: 512px) {
-            .loan-section {
-              height: 80vh !important;
+            .loan-section-home {
+              height: fit-content !important;
             }
             .loan-headers{
               font-size: 1.8rem !important;
@@ -340,7 +340,7 @@ const HomeLoanDisplay = () => {
           }
 
           @media (max-height: 600px) {
-            .loan-section {
+            .loan-section-home {
               height: fit-content !important;
             }
           }
