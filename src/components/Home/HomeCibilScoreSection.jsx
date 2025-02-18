@@ -193,7 +193,7 @@ const HomeCibilScoreSection = ({COLOR, cibilImgaes}) => {
               <span 
                 key={index}
                 className={`h-2 w-2 mx-1 rounded-full ${
-                  index === currentSlide ? 'bg-[#C17D5B]' : 'bg-gray-300'
+                  index === currentSlide ? `${cibilImgaes?'bg-[#68e6df]':'bg-[#b2ff8e]'}` : 'bg-gray-300'
                 }`}
               />
             ))}

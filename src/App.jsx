@@ -98,7 +98,7 @@ function App() {
       <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
       <HomeAnimatedTitle COLOR="#09615D" DIVCOLOR="#28B3ACA1"></HomeAnimatedTitle>
       <AnimatedPhones Home="Home"></AnimatedPhones>
-      <RewardsSection></RewardsSection> 
+      <RewardsSection COLOR="#"></RewardsSection> 
       <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
       <HomeCibilScoreSection COLOR="#09615D" cibilImgaes={cibilImgaes}></HomeCibilScoreSection>
       <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>

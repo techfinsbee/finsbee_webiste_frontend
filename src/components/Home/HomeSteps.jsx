@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomeMobileStepsCarousel from "./HomeMobileStepsCarousel";
-const HomeSteps = ({StepColor, stepImage}) => {
+const HomeSteps = ({ StepColor, stepImage }) => {
   const Data = {
     our_solutions: [
       {
@@ -120,14 +120,15 @@ const HomeSteps = ({StepColor, stepImage}) => {
           <div
             className="w-1/2 relative steps-content overflow-hidden step-image flex justify-center"
             style={{
-              background: `${StepColor.left ? StepColor.left:"#97F15D"}`,
+              background: `${StepColor.left ? StepColor.left : "#97F15D"}`,
               borderTopLeftRadius: "50px",
             }}
           >
-            <div className="text-center mt-[5rem] flex flex-col gap-4 coolvetica" style={{color:`${stepImage?"#09615D":"#163312"}`}}>
-              <h1 className=" text-5xl font-bold">
-                Loan Application Steps
-              </h1>
+            <div
+              className="text-center mt-[5rem] flex flex-col gap-4 coolvetica"
+              style={{ color: `${stepImage ? "#09615D" : "#163312"}` }}
+            >
+              <h1 className=" text-5xl font-bold">Loan Application Steps</h1>
               <p className="text-xl">
                 With Fundsmama you unlock loans at lower prices
               </p>
@@ -176,8 +177,7 @@ const HomeSteps = ({StepColor, stepImage}) => {
             className="w-1/2 steps-content p-10"
             style={{
               borderTopRightRadius: "50px",
-              background: `${StepColor.right?StepColor.right:"#112B00"}`,
-
+              background: `${StepColor.right ? StepColor.right : "#112B00"}`,
             }}
           >
             <div className="flex flex-col">
@@ -190,14 +190,23 @@ const HomeSteps = ({StepColor, stepImage}) => {
                   onClick={() => handleListItemClick(index)}
                   style={{
                     background:
-                      activeIndexList === index ? `${StepColor.left?StepColor.left:'rgb(178, 255, 142)'}` : "",
+                      activeIndexList === index
+                        ? `${
+                            StepColor.left
+                              ? StepColor.left
+                              : "rgb(178, 255, 142)"
+                          }`
+                        : "",
                     margin: "10px",
                   }}
                 >
                   <div className="flex gap-12 items-start">
                     <div className="relative">
                       <div>
-                        <img src={`${stepImage?stepImage:'Rectangle.png'}`} alt="" />
+                        <img
+                          src={`${stepImage ? stepImage : "Rectangle.png"}`}
+                          alt=""
+                        />
                       </div>
                     </div>
 
@@ -228,7 +237,11 @@ const HomeSteps = ({StepColor, stepImage}) => {
           </div>
         </div>
         <div className="mobile-step">
-          <HomeMobileStepsCarousel steps={steps_content} images={images} />
+          {StepColor ? (
+            <HomeMobileStepsCarousel steps={steps_content} images={images} COLOR = ""/>
+          ) : (
+            <HomeMobileStepsCarousel steps={steps_content} images={images} />
+          )}
         </div>
       </div>
 
@@ -310,7 +323,7 @@ const HomeSteps = ({StepColor, stepImage}) => {
             height: 70vh;
           }
         }
-        
+
         @media screen and (min-width: 1400px) {
           .coin-image {
             height: 63vh;

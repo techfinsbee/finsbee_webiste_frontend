@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const HomeFeatureCardsCarousel = () => {
+const HomeFeatureCardsCarousel = ({COLOR}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -126,8 +126,8 @@ const HomeFeatureCardsCarousel = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-3 w-3 rounded-full ${
-              currentSlide === index ? "bg-[#163312]" : "bg-[#b2ff8e]"
+            className={`h-2 w-2 rounded-full ${
+              currentSlide === index ? `${COLOR?'bg-[#09615D]':'bg-[#163312]'}` : "bg-gray-300"
             }`}
           />
         ))}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const HomeMobileStepsCarousel = ({ steps, images }) => {
+const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
@@ -49,14 +49,23 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
 
   return (
     <div
-      className="relative w-full min-h-fiten bg-[#112B00] overflow-hidden touch-pan-y pb-10  mb-20"
+      className={`relative w-full min-h-fiten overflow-hidden touch-pan-y pb-10  mb-20`}
       onTouchStart={handleTouchStart}
-      style={{ overflowX: "hidden", borderTopLeftRadius:"50px", borderTopRightRadius:"50px"}}
+      style={{
+        overflowX: "hidden",
+        borderTopLeftRadius: "50px",
+        borderTopRightRadius: "50px",
+        background: `${COLOR ? "#09615D" : "#112B00"}`,
+      }}
     >
       <div className="text-center mt-10 flex flex-col gap-4">
-              <h1 className="text-[#fff] text-3xl font-bold">Loan Application Steps</h1>
-              <p className="text-md text-white">With Fundsmama you unlock loans at lower prices</p>
-            </div>
+        <h1 className="text-[#fff] text-3xl font-bold">
+          Loan Application Steps
+        </h1>
+        <p className="text-md text-white">
+          With Fundsmama you unlock loans at lower prices
+        </p>
+      </div>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -77,7 +86,7 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
               src={images[currentIndex]}
               alt={steps[currentIndex].title}
               className={`w-full max-w-[100%] h-auto object-contain rounded-md 
-                ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
               onLoad={() => setIsImageLoaded(true)}
             />
           </div>
@@ -85,17 +94,21 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
           {/* Step Box */}
           <div
             className="
-              rgb(178, 255, 142) text-white p-4 rounded-xl shadow-lg 
+               text-white p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
                hover:scale-[1.02]
             "
-            style={{background:"rgb(178, 255, 142)"}}
+            style={{ background: `${COLOR?'#69B6B2':'rgb(178, 255, 142) '}` }}
           >
-            <h3 className="text-lg sm:text-xl text-[#163312] font-bold mb-2">
+            <h3 className="text-lg sm:text-xl font-bold mb-2"
+            style={{ color: `${COLOR?'#fff':'#112B00'}` }}
+            >
               {steps[currentIndex].title}
             </h3>
-            <p className="text-sm sm:text-md text-black">
+            <p className="text-sm sm:text-md text-black"
+            style={{ color: `${COLOR?'#09615D':'#112B00'}` }}
+            >
               {steps[currentIndex].content}
             </p>
           </div>
@@ -109,7 +122,7 @@ const HomeMobileStepsCarousel = ({ steps, images }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? "bg-[#fff]" : "bg-[#b2ff8e]"}
+              ${index === currentIndex ? `${COLOR?'bg-[#69B6B2]':'bg-[#b2ff8e]'}` : "bg-gray-300"}
             `}
           />
         ))}

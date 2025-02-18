@@ -191,13 +191,13 @@ const HomeAnimatedCounter = ({COLOR}) => {
     setCurrentSlide(prev => (prev === 0 ? stats.length - 1 : prev - 1));
   };
   // Mobile carousel indicators
-  const renderIndicators = () => {
+  const renderIndicators = (COLOR) => {
     return (
       <div className="flex justify-center mt-4 gap-2">
         {stats.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full ${currentSlide === index ? 'bg-green-500' : 'bg-gray-300'}`}
+            className={`w-2 h-2 rounded-full ${currentSlide === index ? `${COLOR?'bg-[#09615D]':'bg-[#112B00]'}` : 'bg-gray-300'}`}
             onClick={() => {
               setCurrentSlide(index);
               setIsPaused(true);
@@ -239,7 +239,7 @@ const HomeAnimatedCounter = ({COLOR}) => {
               </div>
             ))}
           </div>
-          {renderIndicators()}
+          {renderIndicators(COLOR)}
         </div>
       ) : (
         <div className="flex gap-2 justify-center items-center counters">

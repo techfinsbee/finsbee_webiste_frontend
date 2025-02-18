@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const HomeMobileLoanCarousel = ({ loans, images }) => {
+const HomeMobileLoanCarousel = ({ loans, images, COLOR }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
@@ -47,13 +47,13 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
     } else if (info.offset.x < -threshold) {
       // Swiped left
       setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
-    } 
+    }
   };
   return (
     <div
       className="relative w-full min-h-fit overflow-hidden touch-pan-y"
       onTouchStart={handleTouchStart}
-      style={{ overflowX: "hidden"}}
+      style={{ overflowX: "hidden" }}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -88,11 +88,12 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
           {/* Loan Box */}
           <div
             className="
-              bg-[#F8F9FA] text-black p-4 rounded-xl shadow-lg 
+              bg-[#F8F9FA] p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#F8F9FA] hover:scale-[1.02]
             "
+            style={{ color: `${COLOR ? "#09615D" : "#163312"}` }}
           >
             <h3 className="text-lg sm:text-xl font-bold mb-2">
               {loans[currentIndex].title}
@@ -111,7 +112,7 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? "bg-[#163312]" : "bg-[#b2ff8e]"}
+              ${index === currentIndex ? `${COLOR?'bg-[#09615D]':'bg-[#112B00]'}` : "bg-gray-300"}
             `}
           />
         ))}

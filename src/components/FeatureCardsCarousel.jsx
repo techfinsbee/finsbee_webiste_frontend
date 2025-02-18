@@ -130,7 +130,7 @@ const FeatureCardsCarousel = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-3 w-3 rounded-full ${
+            className={`h-2 w-2 rounded-full ${
               currentSlide === index ? "bg-orange-500" : "bg-orange-200"
             }`}
           />

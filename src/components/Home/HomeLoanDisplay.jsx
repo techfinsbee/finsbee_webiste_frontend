@@ -300,7 +300,11 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
           </div>
 
           <div className="loan-mobile">
+            {
+              COLOR?
+            <HomeMobileLoanCarousel loans={loans} images={images} COLOR="#"/>:
             <HomeMobileLoanCarousel loans={loans} images={images} />
+            }
           </div>
         </div>
         <style jsx>{`

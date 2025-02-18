@@ -1,6 +1,6 @@
 import React from "react";
 import HomeFeatureCardsCarousel from "./HomeFeatureCardsCarousel";
-const RewardsSection = () => {
+const RewardsSection = ({COLOR}) => {
   return (
     <section className="w-full py-10 px-4 lg:px-4 reward-section">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 rewards coolvetica">
@@ -83,7 +83,7 @@ const RewardsSection = () => {
         </div>
       </div>
       <div className="mobile-rewards">
-        <HomeFeatureCardsCarousel></HomeFeatureCardsCarousel>
+        <HomeFeatureCardsCarousel COLOR={COLOR}></HomeFeatureCardsCarousel>
       </div>
       <style jsx>{`
         .mobile-rewards {
