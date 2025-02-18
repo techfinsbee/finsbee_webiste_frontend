@@ -38,22 +38,22 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-0 ${window.innerWidth > 1400 ?'-left-56':'-left-44'}`,
+      } top-0 ${window.innerWidth > 1400 ?'-left-56':'-left-36'}`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-left-56':'-left-44'}`,
+      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-left-56':'-left-36'}`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 ${window.innerWidth > 1400 ?'-left-56':'-left-44'}`,
+      } bottom-0 ${window.innerWidth > 1400 ?'-left-56':'-left-36'}`,
       rightTop: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-0 ${window.innerWidth > 1400 ?'-right-56':'-right-44'}`,
+      } top-0 ${window.innerWidth > 1400 ?'-right-56':'-right-36'}`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-right-56':'-right-44'}`,
+      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-right-56':'-right-36'}`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 ${window.innerWidth > 1400 ?'-right-56':'-right-44'}`,
+      } bottom-0 ${window.innerWidth > 1400 ?'-right-56':'-right-36'}`,
     };
 
     return `${baseClasses} ${positions[position]} ${
@@ -71,7 +71,7 @@ const LoanBox = ({
         transitionTimingFunction: "ease-in-out",
         background: "#F8F9FA",
         color: "#112A00",
-        width: "30vw",
+        width: "28vw",
         height: "fit-content",
         display: "flex",
         flexDirection: "column",

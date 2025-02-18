@@ -305,18 +305,18 @@ const HomeSteps = () => {
           }
         }
         @media screen and (max-height: 720px) {
-        .coin-image{
-          height: 70vh;
+          .coin-image {
+            height: 70vh;
           }
         }
-          @media screen and (max-height: 720px) {
-        .coin-image{
-          height: 70vh;
+        @media screen and (min-height: 800px) {
+          .coin-image {
+            height: 70vh !important;
           }
         }
-          @media screen and (max-height: 1080px),screen and (min-height: 1081px) {
-        .coin-image{
-          height: 63vh;
+        @media screen and (min-height: 810px) {
+          .coin-image {
+            height: 60vh;
           }
         }
       `}</style>
