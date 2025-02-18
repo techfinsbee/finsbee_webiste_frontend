@@ -11,6 +11,7 @@ const LoanBox = ({
   isActive,
   isHighlighted,
   TIMG,
+  COLOR
 }) => {
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -36,24 +37,28 @@ const LoanBox = ({
       : "scale-95 hover:scale-105 hover:shadow-md hover:bg-[#725839]";
 
     const positions = {
-      leftTop: `${
-        isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-0 ${window.innerWidth > 1400 ?'-left-56':'-left-36'}`,
+      leftTop: `${isAnimated ? "-translate-x-64" : "translate-x-0"} top-0 ${
+        window.innerWidth > 1400 ? "-left-56" : "-left-36"
+      }`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-left-56':'-left-36'}`,
+      } top-1/2 -translate-y-1/2 ${
+        window.innerWidth > 1400 ? "-left-56" : "-left-36"
+      }`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 ${window.innerWidth > 1400 ?'-left-56':'-left-36'}`,
-      rightTop: `${
-        isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-0 ${window.innerWidth > 1400 ?'-right-56':'-right-36'}`,
+      } bottom-0 ${window.innerWidth > 1400 ? "-left-56" : "-left-36"}`,
+      rightTop: `${isAnimated ? "translate-x-64" : "translate-x-0"} top-0 ${
+        window.innerWidth > 1400 ? "-right-56" : "-right-36"
+      }`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${window.innerWidth > 1400 ?'-right-56':'-right-36'}`,
+      } top-1/2 -translate-y-1/2 ${
+        window.innerWidth > 1400 ? "-right-56" : "-right-36"
+      }`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 ${window.innerWidth > 1400 ?'-right-56':'-right-36'}`,
+      } bottom-0 ${window.innerWidth > 1400 ? "-right-56" : "-right-36"}`,
     };
 
     return `${baseClasses} ${positions[position]} ${
@@ -75,21 +80,31 @@ const LoanBox = ({
         height: "fit-content",
         display: "flex",
         flexDirection: "column",
-        gap:'10px',
-        padding:"1.5rem"
+        gap: "10px",
+        padding: "1.5rem",
       }}
       onClick={onClick}
     >
       <div className="flex gap-2 items-center mb-2 ">
         <img src={TIMG} alt="" className="w-12" />
-        <h3 className="text-xl mb-2 coolvetica" style={{fontWeight:"750", color:"#112A00"}}>{title}</h3>
+        <h3
+          className="text-xl mb-2 coolvetica"
+          style={{ fontWeight: "750", color: "#112A00",color:`${COLOR?"#09615D":"#163312"}` }}
+        >
+          {title}
+        </h3>
       </div>
-      <p className="text-md leading-tight text-gray-500" style={{fontFamily:"Helvetica", fontWeight:"500"}}>{description}</p>
+      <p
+        className="text-md leading-tight text-gray-500"
+        style={{ fontFamily: "Helvetica", fontWeight: "500" }}
+      >
+        {description}
+      </p>
     </div>
   );
 };
 
-const HomeLoanDisplay = () => {
+const HomeLoanDisplay = ({ COLOR, loanImages }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [selectedLoan, setSelectedLoan] = useState(null);
@@ -109,7 +124,7 @@ const HomeLoanDisplay = () => {
       position: "leftTop",
       delay: 200,
       image: images[4],
-      TImg: "/HL.png",
+      TImg: `${loanImages ? loanImages.image1 : "/HL.png"}`,
     },
     {
       title: "Loan Against Property",
@@ -118,15 +133,16 @@ const HomeLoanDisplay = () => {
       position: "leftMiddle",
       delay: 200,
       image: images[3],
-      TImg: "/LAP.png",
+      TImg: `${loanImages ? loanImages.image2 : "/LAP.png"}`,
     },
     {
       title: "Personal EMI-Based Loan",
-      description: "Financial Freedom in Easy Instalments. Get loans upto INR 5 Lakhs with flexible EMIs.",
+      description:
+        "Financial Freedom in Easy Instalments. Get loans upto INR 5 Lakhs with flexible EMIs.",
       position: "leftBottom",
       delay: 200,
       image: images[1],
-      TImg: "/EL.png",
+      TImg: `${loanImages ? loanImages.image3 : "/EL.png"}`,
     },
     {
       title: "Credit Cards",
@@ -135,7 +151,7 @@ const HomeLoanDisplay = () => {
       position: "rightTop",
       delay: 200,
       image: images[2],
-      TImg: "/CC.png",
+      TImg: `${loanImages ? loanImages.image4 : "/CC.png"}`,
     },
     {
       title: "Instant Loan",
@@ -144,12 +160,9 @@ const HomeLoanDisplay = () => {
       position: "rightMiddle",
       delay: 0,
       image: images[0],
-      TImg: "/PL.png",
+      TImg: `${loanImages ? loanImages.image5 : "/PL.png"}`,
     },
-    
-    
-    
-    
+
     {
       title: "Loan Against Security",
       description:
@@ -157,7 +170,7 @@ const HomeLoanDisplay = () => {
       position: "rightBottom",
       delay: 200,
       image: images[5],
-      TImg: "/LAS.png",
+      TImg: `${loanImages ? loanImages.image6 : "/LAS.png"}`,
     },
   ];
 
@@ -207,8 +220,8 @@ const HomeLoanDisplay = () => {
               justifyContent: "center",
               gap: "10px",
               fontWeight: "700",
-              color: "#163312",
-              fontFamily: 'Coolvetica',
+              color:`${COLOR?"#09615D":"#163312"}`,
+              fontFamily: "Helvetica",
             }}
           >
             FundsMama Loan Offers
@@ -219,7 +232,11 @@ const HomeLoanDisplay = () => {
             ref={ref}
             className="relative w-[450px] images h-[600px] ml-12 mr-12 loan-image-container"
             style={{
-              backgroundColor: "rgb(178, 255, 142)",
+              background: `${
+                COLOR
+                  ? "linear-gradient( #18ADA5 0%, #18ADA5 20%, #fff 100%)"
+                  : "rgb(178, 255, 142)"
+              }`,
               objectFit: "contain",
               borderRadius: "50px",
             }}
@@ -255,7 +272,7 @@ const HomeLoanDisplay = () => {
                         alt={`${loan.title} interface`}
                         style={{
                           width: "100%",
-                          height:"100%",
+                          height: "100%",
                           objectFit: "cover",
                         }}
                       />
@@ -277,6 +294,7 @@ const HomeLoanDisplay = () => {
                 onClick={() => handleBoxClick(index)}
                 isActive={selectedLoan === index}
                 isHighlighted={currentImageIndex === index}
+                COLOR={COLOR}
               />
             ))}
           </div>
@@ -331,7 +349,7 @@ const HomeLoanDisplay = () => {
             .loan-section-home {
               height: fit-content !important;
             }
-            .loan-headers{
+            .loan-headers {
               font-size: 1.8rem !important;
             }
             .images {

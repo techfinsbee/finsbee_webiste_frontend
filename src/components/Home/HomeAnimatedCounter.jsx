@@ -9,6 +9,7 @@ const AnimatedCounter = ({
   suffix = "+",
   shouldAnimate,
   bgColor,
+  COLOR
 }) => {
   const [count, setCount] = useState(0);
 
@@ -53,7 +54,7 @@ const AnimatedCounter = ({
                   shadow-md transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
-      <div className="text-[3.5rem] prefix text-left text-[#1D3800] coolvetica" style={{fontWeight:"bolder"}}>
+      <div className="text-[3.5rem] prefix text-left coolvetica" style={{fontWeight:"bolder",color:`${COLOR?"#09615D":"#1D3800"}`}}>
         {prefix}
         {formatNumber(count)}
         {suffix}
@@ -63,7 +64,7 @@ const AnimatedCounter = ({
   );
 };
 
-const HomeAnimatedCounter = () => {
+const HomeAnimatedCounter = ({COLOR}) => {
   const stats = [
     {
       end: 60,
@@ -76,7 +77,7 @@ const HomeAnimatedCounter = () => {
       end: 1000000,
       label: "App downloads",
       prefix: "",
-      bgColor: "#97F15D",
+      bgColor: `${COLOR?"#18ADA5":"#97F15D"}`,
     },
     {
       end: 40000,
@@ -189,7 +190,6 @@ const HomeAnimatedCounter = () => {
   const prevSlide = () => {
     setCurrentSlide(prev => (prev === 0 ? stats.length - 1 : prev - 1));
   };
-
   // Mobile carousel indicators
   const renderIndicators = () => {
     return (
@@ -234,6 +234,7 @@ const HomeAnimatedCounter = () => {
                   suffix={stat.suffix}
                   shouldAnimate={shouldAnimate && currentSlide === index}
                   bgColor={stat.bgColor}
+                  COLOR={COLOR}
                 />
               </div>
             ))}
@@ -252,6 +253,7 @@ const HomeAnimatedCounter = () => {
               suffix={stat.suffix}
               shouldAnimate={shouldAnimate}
               bgColor={stat.bgColor}
+              COLOR={COLOR}
             />
           ))}
         </div>

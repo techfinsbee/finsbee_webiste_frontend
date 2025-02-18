@@ -15,7 +15,7 @@ import RewardsSection from './components/Home/RewardSection';
 import FeaturedBrands from './components/FeaturedBrands'
 import HomeFooter from './components/Home/HomeFooter';
 import HomeCibilScoreSection from './components/Home/HomeCibilScoreSection';
-function App() {
+function Home() {
 
 
   const brands_we_trust ={ 
@@ -65,44 +65,22 @@ function App() {
       link: "contact-us-home",
     },
   ];
-  const StepColor = {
-    left:"#69B6B2",
-    right:"#09615D",
-  }
-  const loanImages={
-    image1: "/loan1.png",
-    image2: "/loan2.png",
-    image3: "/loan3.png",
-    image4: "/loan4.png",
-    image5: "/loan5.png",
-    image6: "/loan6.png",
-  }
-  const cibilImgaes = {
-    image1: "/cibil1.png",
-    image2: "/cibil2.png",
-    image3: "/cibil3.png",
-    image4: "/cibil4.png",
-    image5: "/cibil5.png",
-    image6: "/cibil6.png",
-  }
-
-  const stepImage = "/step.png"
-  const downloadImage = "/download1.svg"
+ 
   return (
     <>
-      <HomeHeader dropdownData={dropdownData} COLOR="#fff" Hover="home" ></HomeHeader>
+      <HomeHeader dropdownData={dropdownData} COLOR="#fff" Hover="home"></HomeHeader>
       <Outlet />
-      <HomeMainSection COLOR="#18ADA5BF" downloadImage={downloadImage} TXTCOLOR="#"></HomeMainSection>
-      <HomeAnimatedCounter COLOR="#18ADA5"></HomeAnimatedCounter>
-      <HomeLoanDisplay COLOR="#18ADA5" loanImages={loanImages}></HomeLoanDisplay>
-      <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
-      <HomeAnimatedTitle COLOR="#09615D" DIVCOLOR="#28B3ACA1"></HomeAnimatedTitle>
+      <HomeMainSection></HomeMainSection>
+      <HomeAnimatedCounter></HomeAnimatedCounter>
+      <HomeLoanDisplay loanImages=""></HomeLoanDisplay>
+      <HomeSteps StepColor=""></HomeSteps>
+      <HomeAnimatedTitle></HomeAnimatedTitle>
       <AnimatedPhones Home="Home"></AnimatedPhones>
       <RewardsSection></RewardsSection> 
       <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
-      <HomeCibilScoreSection COLOR="#09615D" cibilImgaes={cibilImgaes}></HomeCibilScoreSection>
+      <HomeCibilScoreSection cibilImgaes=""></HomeCibilScoreSection>
       <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
-      <HomeFooter COLOR="#09615D"></HomeFooter>
+      <HomeFooter></HomeFooter>
       {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}
@@ -110,4 +88,4 @@ function App() {
   )
 }
 
-export default App
+export default Home

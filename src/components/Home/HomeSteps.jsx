@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomeMobileStepsCarousel from "./HomeMobileStepsCarousel";
-const HomeSteps = () => {
+const HomeSteps = ({StepColor, stepImage}) => {
   const Data = {
     our_solutions: [
       {
@@ -108,7 +108,6 @@ const HomeSteps = () => {
     }, 150);
   };
   const BG = "/bg-loan.png";
-
   return (
     <section
       className=" p-0 min-h-fit"
@@ -121,12 +120,12 @@ const HomeSteps = () => {
           <div
             className="w-1/2 relative steps-content overflow-hidden step-image flex justify-center"
             style={{
-              background: "#97F15D",
+              background: `${StepColor.left ? StepColor.left:"#97F15D"}`,
               borderTopLeftRadius: "50px",
             }}
           >
-            <div className="text-center mt-[5rem] flex flex-col gap-4 coolvetica">
-              <h1 className="text-[#163312] text-5xl font-bold">
+            <div className="text-center mt-[5rem] flex flex-col gap-4 coolvetica" style={{color:`${stepImage?"#09615D":"#163312"}`}}>
+              <h1 className=" text-5xl font-bold">
                 Loan Application Steps
               </h1>
               <p className="text-xl">
@@ -167,16 +166,18 @@ const HomeSteps = () => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400 ? "-70px" : "-120px"}`,
+                  bottom: `${window.innerWidth > 1400 ? "-70px" : "-80px"}`,
                   position: "relative",
                 }}
               />
             </div>
           </div>
           <div
-            className="w-1/2 steps-content bg-[#112B00] p-10"
+            className="w-1/2 steps-content p-10"
             style={{
               borderTopRightRadius: "50px",
+              background: `${StepColor.right?StepColor.right:"#112B00"}`,
+
             }}
           >
             <div className="flex flex-col">
@@ -189,14 +190,14 @@ const HomeSteps = () => {
                   onClick={() => handleListItemClick(index)}
                   style={{
                     background:
-                      activeIndexList === index ? "rgb(178, 255, 142)" : "",
+                      activeIndexList === index ? `${StepColor.left?StepColor.left:'rgb(178, 255, 142)'}` : "",
                     margin: "10px",
                   }}
                 >
                   <div className="flex gap-12 items-start">
                     <div className="relative">
                       <div>
-                        <img src="Rectangle.png" alt="" />
+                        <img src={`${stepImage?stepImage:'Rectangle.png'}`} alt="" />
                       </div>
                     </div>
 

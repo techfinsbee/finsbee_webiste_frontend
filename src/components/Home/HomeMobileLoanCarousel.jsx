@@ -51,7 +51,7 @@ const HomeMobileLoanCarousel = ({ loans, images }) => {
   };
   return (
     <div
-      className="relative w-full min-h-fit overflow-hidden"
+      className="relative w-full min-h-fit overflow-hidden touch-pan-y"
       onTouchStart={handleTouchStart}
       style={{ overflowX: "hidden"}}
     >

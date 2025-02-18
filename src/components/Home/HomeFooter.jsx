@@ -1,11 +1,11 @@
 import React from "react";
 
-const HomeFooter = () => {
+const HomeFooter = ({COLOR}) => {
   return (
     <section id="contact-us-home">
       <footer
-        className="w-full text-white-800 bg-[#163312] border-t border-gray-200 coolvetica"
-        style={{ boxShadow: "200px 200px 200px #000000" }}
+        className="w-full text-white-800 border-t border-gray-200 coolvetica"
+        style={{ boxShadow: "200px 200px 200px #000000" ,background:`${COLOR?'#09615D':'#163312'} `}}
       >
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-8">

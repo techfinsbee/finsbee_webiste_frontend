@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-const HomeCibilScoreSection = () => {
+const HomeCibilScoreSection = ({COLOR, cibilImgaes}) => {
   const [score, setScore] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const { ref, inView } = useInView({
@@ -46,32 +46,37 @@ const HomeCibilScoreSection = () => {
   // Carousel items data
   const carouselItems = [
     {
-      icon: "/CAD.png",
+      icon: `${cibilImgaes?cibilImgaes.image6:'/CAD.png'}`,
       title: "Correct Any Discrepancies",
       description: "Contact the lender or the concerned credit bureau to correct any discrepancies"
     },
     {
-      icon: "/CH.png",
+      icon: `${cibilImgaes?cibilImgaes.image3:'/CH.png'}`,
+
       title: "Monitor Your Credit Health",
       description: "Check your credit score and report regularly to track your credit health"
     },
     {
-      icon: "/FD.png",
+      icon: `${cibilImgaes?cibilImgaes.image4:'/FD.png'}`,
+
       title: "Improve Your Financial Decision",
       description: "Learn about your credit history, credit health, and various other factors"
     },
     {
-      icon: "/KI.png",
+      icon: `${cibilImgaes?cibilImgaes.image5:'/KI.png'}`,
+
       title: "Learn About Key Insights",
       description: "Make better decisions to grow your savings and improve your Finances"
     },
     {
-      icon: "/CHM.png",
+      icon: `${cibilImgaes?cibilImgaes.image1:'/CHM.png'}`,
+
       title: "Your Credit Health Matters",
       description: "Credit health is one of the most Important Factors"
     },
     {
-      icon:"/BLR.png",
+      icon: `${cibilImgaes?cibilImgaes.image2:'/BLR.png'}`,
+
       title: "Get Better Loan Rates",
       description: "A good Credit Score will help you get better interest rates and credit Limits"
     }
@@ -125,7 +130,7 @@ const HomeCibilScoreSection = () => {
     <div
       className="flex justify-center px-4 cibil-score"
     >
-      <div className="cibil-w bg-[#163312] p-8" style={{ width: "86%",borderRadius:"30px" }}>
+      <div className="cibil-w p-8" style={{ width: "86%",borderRadius:"30px", background:`${COLOR?'#09615D':'#163312'}`}}>
         {/* Header */}
         <div className="flex cibil-header pt-8" style={{justifyContent:"space-between"}}>
         <h1 className="text-3xl md:text-[70px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">

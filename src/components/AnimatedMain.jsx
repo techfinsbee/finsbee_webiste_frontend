@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const AnimatedMain = ({ benefits, Color }) => {
+const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -45,10 +45,16 @@ const AnimatedMain = ({ benefits, Color }) => {
                       className="inline-block"
                       style={{
                         animation: Color
-                          ? "text-color-shift 5s ease infinite"
-                          : "text-[#CD855F] 5s ease infinite",
+                          ? `${
+                              TXTCOLOR
+                                ? "text-color-blue-shift"
+                                : "text-color-shift"
+                            } 5s ease infinite`
+                          : " ",
                         animationDelay: Color ? `${index * 0.1}s` : "",
-                        color: Color ? "" : "#CD855F",
+                        color: Color
+                          ? "#163312"
+                          : `${TXTCOLOR ? "#09615D" : "#CD855F"}`,
                         fontWeight: Color ? "700" : "bold",
                       }}
                     >
@@ -62,14 +68,33 @@ const AnimatedMain = ({ benefits, Color }) => {
                           20% {
                             color: #b2ff8e;
                           }
-                            40% {
+                          40% {
                             color: #163312;
                           }
-                            60% {
+                          60% {
                             color: #b2ff8e;
                           }
                           80% {
                             color: #163312;
+                          }
+                        }
+
+                        @keyframes text-color-blue-shift {
+                          0%,
+                          100% {
+                            color: #09615d;
+                          }
+                          20% {
+                            color: rgb(104, 230, 223);
+                          }
+                          40% {
+                            color: #09615d;
+                          }
+                          60% {
+                            color: rgb(104, 230, 223);
+                          }
+                          80% {
+                            color: rgb(104, 230, 223);
                           }
                         }
                       `}</style>

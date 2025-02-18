@@ -16,6 +16,7 @@ import Blog from "./components/Blog.jsx";
 import Feature from "./components/Feature.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./Landing.jsx";
+import Home from "./Home.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   },
   {
     path:'/home',
+    element: <Home />
+  },
+  {
+    path:'/home/blue',
     element: <App />
   },
   {

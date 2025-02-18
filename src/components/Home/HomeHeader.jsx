@@ -54,6 +54,7 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
       location.pathname === "/testimonials" ||
       location.pathname === "/blog" ||
       location.pathname === "/sitemap" ||
+      location.pathname === "/home/blue" ||
       location.pathname === "/press-release" ||
       (location.pathname === "/customer-care" && (!sectionId.startsWith("/home")))
     ) {
