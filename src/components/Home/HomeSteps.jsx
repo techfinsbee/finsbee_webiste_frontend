@@ -309,11 +309,7 @@ const HomeSteps = () => {
             height: 70vh;
           }
         }
-        @media screen and (min-height: 800px) {
-          .coin-image {
-            height: 70vh !important;
-          }
-        }
+        
         @media screen and (min-height: 810px) {
           .coin-image {
             height: 60vh;
