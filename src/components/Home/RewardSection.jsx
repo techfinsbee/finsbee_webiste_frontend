@@ -58,7 +58,7 @@ const RewardsSection = ({ COLOR }) => {
           </div>
 
           {/* Bottom box - Payment Options */}
-          <div className="bg-[#CAFFDC] reward-2 rounded-2xl overflow-hidden pl-4 flex justify-between items-center">
+          <div className="bg-[#CAFFDC] reward-3 rounded-2xl overflow-hidden pl-4 flex justify-between items-center">
             <div>
               <h2
                 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
@@ -134,6 +134,9 @@ const RewardsSection = ({ COLOR }) => {
             padding-top: 10px !important;
             padding-bottom: 10px !important;
           }
+            .reward-2 img,.reward-3 img{
+              height: 35vh;
+            }
         }
       `}</style>
     </section>

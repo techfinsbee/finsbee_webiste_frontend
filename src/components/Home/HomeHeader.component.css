@@ -22,7 +22,7 @@
   width: 100%;
   z-index: 9999; /* Increased z-index to ensure it's above other content */
   padding-top: 1rem;
-  padding-left: 6rem;
+  padding-left: 4.5rem;
   padding-right: 2rem;
 }
 
@@ -127,6 +127,12 @@
   transition: transform var(--transition-standard);
 }
 
+@media (max-width: 1024px), (max-height: 600px) {
+  .header{
+    padding-left: 1rem;
+  }
+
+}
 /* Mobile Styles */
 @media (max-width: 958px), (max-height: 600px) {
   .header {

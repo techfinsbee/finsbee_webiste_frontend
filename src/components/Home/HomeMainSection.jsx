@@ -11,7 +11,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
     <section id="home-home">
       <div
         ref={ref}
-        className="w-full relative flex items-center justify-between px-8 lg:px-16 HomeMain overflow-hidden"
+        className="w-full relative flex items-center justify-between px-8 lg:px-8 HomeMain overflow-hidden"
         style={{
           background: `linear-gradient(180deg, #fff 0%,#fff 50%, ${
             COLOR ? "#69B6B2 100%" : "#b2ff8e 100%"
@@ -68,6 +68,14 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         </div>
       </div>
       <style jsx>{`
+        @media (max-width: 1024px) {
+          .home-main-div {
+            left: 1rem;
+          }
+            .home-left {
+            margin-left: 0;
+          }
+        }
         @media (max-width: 912px) {
           .home-main-div {
             left: 1.8rem;

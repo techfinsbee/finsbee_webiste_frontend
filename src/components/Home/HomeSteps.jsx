@@ -258,13 +258,13 @@ const HomeSteps = ({ StepColor, stepImage }) => {
           }
         }
 
-        @media screen and (min-width: 933px) {
+        @media screen and (min-width: 1025px) {
           .mobile-step {
             display: none !important;
           }
         }
 
-        @media screen and (max-width: 933px) {
+        @media screen and (max-width: 1025px) {
           .flex-row {
             flex-direction: column;
           }

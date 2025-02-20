@@ -11,7 +11,7 @@ const LoanBox = ({
   isActive,
   isHighlighted,
   TIMG,
-  COLOR
+  COLOR,
 }) => {
   const [isAnimated, setIsAnimated] = useState(false);
 
@@ -38,27 +38,43 @@ const LoanBox = ({
 
     const positions = {
       leftTop: `${isAnimated ? "-translate-x-64" : "translate-x-0"} top-0 ${
-        window.innerWidth > 1400 ? "-left-56" : "-left-36"
+        window.innerWidth > 1400
+          ? "-left-56"
+          : `${window.innerWidth < 1025 ? "-left-12" : "-left-36"}`
       }`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
       } top-1/2 -translate-y-1/2 ${
-        window.innerWidth > 1400 ? "-left-56" : "-left-36"
+        window.innerWidth > 1400
+          ? "-left-56"
+          : `${window.innerWidth < 1025 ? "-left-12" : "-left-36"}`
       }`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 ${window.innerWidth > 1400 ? "-left-56" : "-left-36"}`,
+      } bottom-0 ${
+        window.innerWidth > 1400
+          ? "-left-56"
+          : `${window.innerWidth < 1025 ? "-left-12" : "-left-36"}`
+      }`,
       rightTop: `${isAnimated ? "translate-x-64" : "translate-x-0"} top-0 ${
-        window.innerWidth > 1400 ? "-right-56" : "-right-36"
+        window.innerWidth > 1400
+          ? "-right-56"
+          : `${window.innerWidth < 1025 ? "-right-12" : "-right-36"}`
       }`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
       } top-1/2 -translate-y-1/2 ${
-        window.innerWidth > 1400 ? "-right-56" : "-right-36"
+        window.innerWidth > 1400
+          ? "-right-56"
+          : `${window.innerWidth < 1025 ? "-right-12" : "-right-36"}`
       }`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 ${window.innerWidth > 1400 ? "-right-56" : "-right-36"}`,
+      } bottom-0 ${
+        window.innerWidth > 1400
+          ? "-right-56"
+          : `${window.innerWidth < 1025 ? "-right-12" : "-right-36"}`
+      }`,
     };
 
     return `${baseClasses} ${positions[position]} ${
@@ -89,7 +105,10 @@ const LoanBox = ({
         <img src={TIMG} alt="" className="w-12" />
         <h3
           className="text-xl mb-2 coolvetica"
-          style={{ fontWeight: "750", color:`${COLOR?"#09615D":"#112A00"}` }}
+          style={{
+            fontWeight: "750",
+            color: `${COLOR ? "#09615D" : "#112A00"}`,
+          }}
         >
           {title}
         </h3>
@@ -220,7 +239,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               justifyContent: "center",
               gap: "10px",
               fontWeight: "700",
-              color:`${COLOR?"#09615D":"#163312"}`,
+              color: `${COLOR ? "#09615D" : "#163312"}`,
               fontFamily: "Helvetica",
             }}
           >
@@ -300,17 +319,17 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
           </div>
 
           <div className="loan-mobile">
-            {
-              COLOR?
-            <HomeMobileLoanCarousel loans={loans} images={images} COLOR="#"/>:
-            <HomeMobileLoanCarousel loans={loans} images={images} />
-            }
+            {COLOR ? (
+              <HomeMobileLoanCarousel loans={loans} images={images} COLOR="#" />
+            ) : (
+              <HomeMobileLoanCarousel loans={loans} images={images} />
+            )}
           </div>
         </div>
         <style jsx>{`
-          @media screen and (max-width: 1000px) {
+          @media screen and (max-width: 1024px) {
             .loan-image-container {
-              width: 300px !important;
+              width: 380px !important;
             }
           }
           @media screen and (max-height: 780px) {
@@ -330,7 +349,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
             .loan-mobile {
               display: block !important;
             }
-            
+
             .loan-headers-home {
               font-size: 50px !important;
               font-weight: 700 !important;

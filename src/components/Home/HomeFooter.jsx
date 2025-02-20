@@ -1,11 +1,14 @@
 import React from "react";
 
-const HomeFooter = ({COLOR}) => {
+const HomeFooter = ({ COLOR }) => {
   return (
     <section id="contact-us-home">
       <footer
         className="w-full text-white-800 border-t border-gray-200 coolvetica"
-        style={{ boxShadow: "200px 200px 200px #000000" ,background:`${COLOR?'#09615D':'#163312'} `}}
+        style={{
+          boxShadow: "200px 200px 200px #000000",
+          background: `${COLOR ? "#09615D" : "#163312"} `,
+        }}
       >
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -122,6 +125,14 @@ const HomeFooter = ({COLOR}) => {
 
         {/* Sign Up Section */}
       </footer>
+      <style jsx>{`
+        @media (max-height: 512px) {
+          li, li a{
+            font-size: 0.9rem !important;
+            line-height: 1rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
