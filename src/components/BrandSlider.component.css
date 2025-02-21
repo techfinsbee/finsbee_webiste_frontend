@@ -26,7 +26,7 @@
 @media screen and (max-width: 512px) {
 	.brand-slider{
 		margin-bottom: 50px;
-		gap: 10px !important;
+		gap: 2px !important;
 	}
 	.brand-image{
 		height: 90px !important;

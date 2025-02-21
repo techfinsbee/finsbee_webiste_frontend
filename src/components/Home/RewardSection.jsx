@@ -5,7 +5,7 @@ const RewardsSection = ({ COLOR }) => {
     <section className="w-full py-10 px-4 lg:px-4 reward-section">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 rewards coolvetica">
         {/* Left box - FMCoins */}
-        <div className="bg-[#FEFFC5] h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col">
+        <div className={`${COLOR?"bg-[#18ADA5B2]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col`}>
           <div>
             <h2
               className="text-2xl color-[#323300] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
@@ -36,7 +36,7 @@ const RewardsSection = ({ COLOR }) => {
         {/* Right column - split into two boxes */}
         <div className="flex flex-col justify-between">
           {/* Top box - Mamamart */}
-          <div className="bg-[#FFE8D4] reward-2 rounded-2xl px-4 py-0 flex justify-between items-center">
+          <div className={`${COLOR?"bg-[#18ADA56E]":"bg-[#FFE8D4]"} reward-2 rounded-2xl px-4 py-0 flex justify-between items-center`}>
             <div>
               <h2
                 className="text-2xl text-[#331800]  lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
@@ -58,7 +58,7 @@ const RewardsSection = ({ COLOR }) => {
           </div>
 
           {/* Bottom box - Payment Options */}
-          <div className="bg-[#CAFFDC] reward-3 rounded-2xl overflow-hidden pl-4 flex justify-between items-center">
+          <div className={`${COLOR?"bg-[#03A29517]":"bg-[#CAFFDC]"} reward-3 rounded-2xl overflow-hidden pl-4 flex justify-between items-center`}>
             <div>
               <h2
                 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"

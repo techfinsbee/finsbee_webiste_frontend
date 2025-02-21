@@ -21,8 +21,8 @@ const HomeFeatureCardsCarousel = ({ COLOR }) => {
           </div>
         </div>
       ),
-      bgColor: "bg-[#FEFFC5]",
-      txtColor: "bg-[#FEFFC5]",
+      bgColor: `${COLOR?'bg-[#18ADA5B2]':'bg-[#FEFFC5]'}`,
+      txtColor: "text-[#323300]",
     },
     {
       title: "Discover Mamamart",
@@ -32,7 +32,7 @@ const HomeFeatureCardsCarousel = ({ COLOR }) => {
           <img src="/reward2.png" alt="Categories" className="w-full h-64" />
         </div>
       ),
-      bgColor: "bg-[#FFF1F0]",
+      bgColor: `${COLOR?'bg-[#18ADA56E]':'bg-[#FFF1F0]'}`,
       txtColor: "text-[#331800]",
     },
     {
@@ -48,7 +48,7 @@ const HomeFeatureCardsCarousel = ({ COLOR }) => {
           />
         </div>
       ),
-      bgColor: "bg-[#CAFFDC]",
+      bgColor: `${COLOR?'bg-[#03A29517]':'bg-[#CAFFDC]'}`,
       txtColor: "text-[#003813]",
     },
   ];

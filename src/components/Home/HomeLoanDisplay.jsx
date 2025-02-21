@@ -38,42 +38,42 @@ const LoanBox = ({
 
     const positions = {
       leftTop: `${isAnimated ? "-translate-x-64" : "translate-x-0"} top-0 ${
-        window.innerWidth > 1400
+        window.innerWidth > 1600
           ? "-left-56"
-          : `${window.innerWidth < 1025 ? "-left-12" : "-left-36"}`
+          : `${window.innerWidth > 1400 ? "-left-44" : `${window.innerWidth < 1025?'-left-12':'-left-36'}`}`
       }`,
       leftMiddle: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
       } top-1/2 -translate-y-1/2 ${
-        window.innerWidth > 1400
+        window.innerWidth > 1600
           ? "-left-56"
-          : `${window.innerWidth < 1025 ? "-left-12" : "-left-36"}`
+          : `${window.innerWidth > 1400 ? "-left-44" : `${window.innerWidth < 1025?'-left-12':'-left-36'}`}`
       }`,
       leftBottom: `${
         isAnimated ? "-translate-x-64" : "translate-x-0"
       } bottom-0 ${
-        window.innerWidth > 1400
+        window.innerWidth > 1600
           ? "-left-56"
-          : `${window.innerWidth < 1025 ? "-left-12" : "-left-36"}`
+          : `${window.innerWidth > 1400 ? "-left-44" : `${window.innerWidth < 1025?'-left-12':'-left-36'}`}`
       }`,
       rightTop: `${isAnimated ? "translate-x-64" : "translate-x-0"} top-0 ${
-        window.innerWidth > 1400
+        window.innerWidth > 1600
           ? "-right-56"
-          : `${window.innerWidth < 1025 ? "-right-12" : "-right-36"}`
+          : `${window.innerWidth > 1400 ? "-right-44" : `${window.innerWidth < 1025?'-right-12':'-right-36'}`}`
       }`,
       rightMiddle: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
       } top-1/2 -translate-y-1/2 ${
-        window.innerWidth > 1400
+        window.innerWidth > 1600
           ? "-right-56"
-          : `${window.innerWidth < 1025 ? "-right-12" : "-right-36"}`
+          : `${window.innerWidth > 1400 ? "-right-44" : `${window.innerWidth < 1025?'-right-12':'-right-36'}`}`
       }`,
       rightBottom: `${
         isAnimated ? "translate-x-64" : "translate-x-0"
       } bottom-0 ${
-        window.innerWidth > 1400
+        window.innerWidth > 1600
           ? "-right-56"
-          : `${window.innerWidth < 1025 ? "-right-12" : "-right-36"}`
+          : `${window.innerWidth > 1400 ? "-right-44" : `${window.innerWidth < 1025?'-right-12':'-right-36'}`}`
       }`,
     };
 
@@ -92,7 +92,7 @@ const LoanBox = ({
         transitionTimingFunction: "ease-in-out",
         background: "#F8F9FA",
         color: "#112A00",
-        width: "28vw",
+        width: `28vw`,
         height: "fit-content",
         display: "flex",
         flexDirection: "column",
@@ -327,7 +327,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
           </div>
         </div>
         <style jsx>{`
-          @media screen and (max-width: 1024px) {
+          @media screen and (max-width: 1224px) {
             .loan-image-container {
               width: 380px !important;
             }

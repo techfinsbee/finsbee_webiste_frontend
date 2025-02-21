@@ -131,6 +131,11 @@
   .header-home{
     padding-left: 1rem;
   }
+  .logo-img{
+    width: 120px;
+    left:10px;
+    top: 15px
+  }
 
 }
 /* Mobile Styles */
@@ -138,6 +143,18 @@
   .header-home {
     justify-content: space-around;
     padding: 1rem 1rem;
+  }
+  .logo-img{
+    width: 120px;
+    left:10px;
+    top: 15px
+  }
+
+  .logo-head{
+    font-size: 1.5rem;
+    position: relative;
+    left:-30px;
+    top: 10px;
   }
   
   .head-fund {
@@ -200,6 +217,30 @@
   }
   .header-fundmama{
     font-size: 2rem;
+  }
+}
+
+
+@media screen and (max-width: 512px) {
+  .logo-img{
+    width: 90px;
+    left:10px;
+    top: 15px
+  }
+
+  .logo-head{
+    font-size: 1.5rem;
+    left: -30px;
+    top: 0px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logo-head{
+    font-size: 1.3rem !important;
+   
+    left: -30px;
+   
   }
 }
 

@@ -55,14 +55,14 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
         overflowX: "hidden",
         borderTopLeftRadius: "50px",
         borderTopRightRadius: "50px",
-        background: `${COLOR ? "#09615D" : "#112B00"}`,
+        background: `${COLOR ? "#69B6B2" : "rgb(178, 255, 142)"}`,
       }}
     >
       <div className="text-center mt-10 flex flex-col gap-4">
-        <h1 className="text-[#fff] text-3xl font-bold">
+        <h1 className={`${COLOR ? 'text-[#09615D]':'text-[#112B00]'} text-3xl font-bold`}>
           Loan Application Steps
         </h1>
-        <p className="text-md text-white">
+        <p className={`text-md ${COLOR ? 'text-[#09615D]':'text-[#112B00]'}`}>
           With Fundsmama you unlock loans at lower prices
         </p>
       </div>
@@ -99,15 +99,15 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
               transition-all duration-500 ease-in-out
                hover:scale-[1.02]
             "
-            style={{ background: `${COLOR?'#69B6B2':'rgb(178, 255, 142) '}` }}
+            style={{ background: `${COLOR?'#09615D':'#112B00 '}` }}
           >
             <h3 className="text-lg sm:text-xl font-bold mb-2"
-            style={{ color: `${COLOR?'#09615D':'#112B00'}` }}
+            style={{ color: `${COLOR?'#fff':'#fff'}` }}
             >
               {steps[currentIndex].title}
             </h3> 
             <p className="text-sm sm:text-md text-black"
-            style={{ color: `${COLOR?'#09615D':'#112B00'}` }}
+            style={{ color: `${COLOR?'#fff':'#fff'}` }}
             >
               {steps[currentIndex].content}
             </p>
@@ -122,7 +122,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? `${COLOR?'bg-[#69B6B2]':'bg-[#b2ff8e]'}` : "bg-gray-300"}
+              ${index === currentIndex ? `${COLOR?'bg-[#09615D]':'bg-[#112B00]'}` : "bg-gray-300"}
             `}
           />
         ))}

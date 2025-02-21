@@ -1,6 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import AnimatedMain from "../AnimatedMain";
+import DownloadNowButton from "./DownloadNowButton";
 const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
   const { ref, inView } = useInView({
     threshold: 0.3,
@@ -23,11 +24,11 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
       >
         {/* Left content */}
         <div
-          className="flex flex-col ml-12 gap-4 lg:gap-12 w-full lg:w-1/2 pt-4 lg:pt-0 home-left coolvetica"
+          className="flex flex-col ml-12 gap-4 lg:gap-12 w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
           style={{ color: `${COLOR ? "#09615D" : "#163312"}` }}
         >
           <h1
-            className="text-3xl lg:text-5xl font-bold leading-tight"
+            className="text-3xl lg:text-[3.2rem] font-bold leading-tight"
             style={{ fontWeight: "bold" }}
           >
             Jab Zaroorat Ho Loan Ki,
@@ -46,22 +47,23 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           </h1>
 
           {/* Download button */}
-          <div className="flex items-center gap-4 w-fit" style={{}}>
+          <DownloadNowButton COLOR={COLOR}></DownloadNowButton>
+          {/* <div className="flex items-center gap-4 w-fit" style={{}}>
             <button className="py-3 rounded-full font-semibold flex items-center gap-2">
               <img
                 src={`${downloadImage ? downloadImage : "/download.svg"}`}
                 alt=""
               />
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Right content - Phone mockup */}
-        <div className="lg:block w-1/2 relative HomeImage">
-          <div className="relative home-main-div -bottom-40 h-full left-20 w-96 mx-auto">
+        <div className="lg:block w-full lg:w-[40%] relative HomeImage">
+          <div className="relative home-main-div -bottom-36 h-full flex justify-end w-full">
             <img
               src="/image1.png"
-              className="w-full home-main-image h-full"
+              className="w-[100%] home-main-image h-[100%]"
               alt=""
             />
           </div>

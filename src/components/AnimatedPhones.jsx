@@ -47,7 +47,7 @@ const AnimatedPhones = ({ Home }) => {
         if (isXXSmall) {
           maxSpread = 100;
           zScaleFactor = 15;
-          verticalDistance = -60;
+          verticalDistance = -50;
         } else if (isXSmall) {
           maxSpread = 120;
           zScaleFactor = 20;
@@ -55,7 +55,7 @@ const AnimatedPhones = ({ Home }) => {
         } else if (isMobile) {
           maxSpread = 150;
           zScaleFactor = 25;
-          verticalDistance = -100;
+          verticalDistance = -90;
         } else if (isTablet) {
           maxSpread = 250;
           zScaleFactor = 12.5;
@@ -63,7 +63,7 @@ const AnimatedPhones = ({ Home }) => {
         } else {
           maxSpread = 300;
           zScaleFactor = 50;
-          verticalDistance = -100;
+          verticalDistance = -70;
         }
       } else {
         // Original spread values for SVG with no vertical movement
@@ -131,7 +131,7 @@ const AnimatedPhones = ({ Home }) => {
   return (
     <div
       className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: `${Home?"60vh":"110vh"}`, padding: "0" }}
+      style={{ height: `${Home?"80vh":"110vh"}`, padding: "0" }}
     >
       <div
         ref={containerRef}

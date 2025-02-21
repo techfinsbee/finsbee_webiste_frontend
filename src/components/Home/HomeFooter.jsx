@@ -16,12 +16,12 @@ const HomeFooter = ({ COLOR }) => {
           <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
             <div className="flex">
               <img
-                src="/fundsmama-logo.svg"
-                className="w-[100px] ml-0"
+                src="/logo2.svg"
+                className=" relative -left-8 w-[120px] ml-0"
                 alt="FUNDSMAMA"
               />{" "}
               <span
-                className="text-4xl text-[#fff] header-fundmama flex juistify-center items-center"
+                className="text-4xl relative -left-14 text-[#fff] header-fundmama flex juistify-center items-center"
                 style={{
                   fontWeight: "800",
                   fontFamily: "Helvetica",

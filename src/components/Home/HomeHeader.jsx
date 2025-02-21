@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./HomeHeader.component.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
+const HomeHeader = ({ dropdownData = [], COLOR, Hover }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -35,7 +35,7 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
       location.pathname === "/blog" ||
       location.pathname === "/sitemap" ||
       location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && (!sectionId.startsWith("/")))
+      (location.pathname === "/customer-care" && !sectionId.startsWith("/"))
     ) {
       navigate("/home", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
@@ -56,7 +56,7 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
       location.pathname === "/sitemap" ||
       location.pathname === "/home/blue" ||
       location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && (!sectionId.startsWith("/home")))
+      (location.pathname === "/customer-care" && !sectionId.startsWith("/home"))
     ) {
       navigate("/home", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
@@ -131,17 +131,24 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
   };
 
   return (
-    <header className="header-home manrope" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
+    <header
+      className="header-home manrope"
+      style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
+    >
       <a href="/" className="head-fund">
         <div className="flex">
-          <img
-            src="/fundsmama-logo.svg"
-            className="w-[100px]"
-            alt="FUNDSMAMA"
-          /> <span className="text-4xl header-fundmama flex juistify-center items-center" style={{
-            fontWeight:"800",
-            fontFamily:"Helvetica"
-          }}>FUNDSMAMA</span>
+          <div className="w-[100px] object-cover">
+            <img src="/logo2.svg" className="logo-img w-[135px] top-2 left-0 lg:left-14 absolute object-cover" alt="FUNDSMAMA" />
+          </div>
+          <span
+            className="text-4xl logo-head header-fundmama flex juistify-center items-center"
+            style={{
+              fontWeight: "800",
+              fontFamily: "Helvetica",
+            }}
+          >
+            FUNDSMAMA
+          </span>
         </div>
       </a>
 
