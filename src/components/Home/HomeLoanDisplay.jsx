@@ -28,58 +28,24 @@ const LoanBox = ({
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white rounded-xl shadow-md 
       transition-all duration-300 transform opacity-0
-      w-[30vw] h-[130px] hidden md:block cursor-pointer manrope
+      w-[28vw] h-fit hidden md:block cursor-pointer manrope
     `;
 
-    // Separate scaling classes for automatic and hover effect
     const scaleClasses = isHighlighted
       ? "scale-105 shadow-lg bg-[#725839] ring-4 ring-white ring-opacity-50"
       : "scale-95 hover:scale-105 hover:shadow-md hover:bg-[#725839]";
 
+    // Define responsive positioning using CSS calculations
     const positions = {
-      leftTop: `${isAnimated ? "-translate-x-64" : "translate-x-0"} top-0 ${
-        window.innerWidth > 1600
-          ? "-left-56"
-          : `${window.innerWidth > 1400 ? "-left-44" : `${window.innerWidth < 1025?'-left-12':'-left-36'}`}`
-      }`,
-      leftMiddle: `${
-        isAnimated ? "-translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${
-        window.innerWidth > 1600
-          ? "-left-56"
-          : `${window.innerWidth > 1400 ? "-left-44" : `${window.innerWidth < 1025?'-left-12':'-left-36'}`}`
-      }`,
-      leftBottom: `${
-        isAnimated ? "-translate-x-64" : "translate-x-0"
-      } bottom-0 ${
-        window.innerWidth > 1600
-          ? "-left-56"
-          : `${window.innerWidth > 1400 ? "-left-44" : `${window.innerWidth < 1025?'-left-12':'-left-36'}`}`
-      }`,
-      rightTop: `${isAnimated ? "translate-x-64" : "translate-x-0"} top-0 ${
-        window.innerWidth > 1600
-          ? "-right-56"
-          : `${window.innerWidth > 1400 ? "-right-44" : `${window.innerWidth < 1025?'-right-12':'-right-36'}`}`
-      }`,
-      rightMiddle: `${
-        isAnimated ? "translate-x-64" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${
-        window.innerWidth > 1600
-          ? "-right-56"
-          : `${window.innerWidth > 1400 ? "-right-44" : `${window.innerWidth < 1025?'-right-12':'-right-36'}`}`
-      }`,
-      rightBottom: `${
-        isAnimated ? "translate-x-64" : "translate-x-0"
-      } bottom-0 ${
-        window.innerWidth > 1600
-          ? "-right-56"
-          : `${window.innerWidth > 1400 ? "-right-44" : `${window.innerWidth < 1025?'-right-12':'-right-36'}`}`
-      }`,
+      leftTop: `${isAnimated ? "translate-x-[-15vw]" : "translate-x-0"} top-0 left-[-15vw]`,
+      leftMiddle: `${isAnimated ? "translate-x-[-15vw]" : "translate-x-0"} top-1/2 -translate-y-1/2 left-[-15vw]`,
+      leftBottom: `${isAnimated ? "translate-x-[-15vw]" : "translate-x-0"} bottom-0 left-[-15vw]`,
+      rightTop: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} top-0 right-[-15vw]`,
+      rightMiddle: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} top-1/2 -translate-y-1/2 right-[-15vw]`,
+      rightBottom: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} bottom-0 right-[-15vw]`,
     };
 
-    return `${baseClasses} ${positions[position]} ${
-      isAnimated ? "opacity-100" : ""
-    } ${scaleClasses}`;
+    return `${baseClasses} ${positions[position]} ${isAnimated ? "opacity-100" : ""} ${scaleClasses}`;
   };
 
   return (
@@ -92,8 +58,6 @@ const LoanBox = ({
         transitionTimingFunction: "ease-in-out",
         background: "#F8F9FA",
         color: "#112A00",
-        width: `28vw`,
-        height: "fit-content",
         display: "flex",
         flexDirection: "column",
         gap: "10px",
@@ -101,7 +65,7 @@ const LoanBox = ({
       }}
       onClick={onClick}
     >
-      <div className="flex gap-2 items-center mb-2 ">
+      <div className="flex gap-2 items-center mb-2">
         <img src={TIMG} alt="" className="w-12" />
         <h3
           className="text-xl mb-2 coolvetica"
@@ -249,7 +213,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
         <div className="relative min-h-fit flex flex-col items-center p-4 mobile">
           <div
             ref={ref}
-            className="relative w-[450px] images h-[600px] ml-12 mr-12 loan-image-container"
+            className="relative w-[90%] max-w-[30vw] images h-[600px] mx-auto ml-12 mr-12 loan-image-container"
             style={{
               background: `${
                 COLOR
@@ -320,9 +284,9 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
 
           <div className="loan-mobile">
             {COLOR ? (
-              <HomeMobileLoanCarousel loans={loans} images={images} COLOR="#" />
+              <HomeMobileLoanCarousel loans={loans} images={images} COLOR="#" loanImage={loanImages}/>
             ) : (
-              <HomeMobileLoanCarousel loans={loans} images={images} />
+              <HomeMobileLoanCarousel loans={loans} images={images} loanImage={loanImages}/>
             )}
           </div>
         </div>

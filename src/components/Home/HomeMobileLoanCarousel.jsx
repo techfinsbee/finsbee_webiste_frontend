@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const HomeMobileLoanCarousel = ({ loans, images, COLOR }) => {
+const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
@@ -34,7 +34,6 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR }) => {
     setAutoPlay(false);
     setTimeout(() => setAutoPlay(true), 3000);
   };
-
   const handleDragEnd = (event, info) => {
     const threshold = 100;
     setDragDirection(info.offset.x);
@@ -91,16 +90,23 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR }) => {
               bg-[#F8F9FA] p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
-              hover:bg-[#F8F9FA] hover:scale-[1.02]
+              hover:bg-[#F8F9FA] hover:scale-[1.02] flex flex-col gap-2
             "
             style={{ color: `${COLOR ? "#09615D" : "#163312"}` }}
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-2">
-              {loans[currentIndex].title}
-            </h3>
-            <p className="text-sm sm:text-md leading-tight">
-              {loans[currentIndex].description}
-            </p>
+            <div className="flex h-fit gap-2">
+              <img src={`${loans[currentIndex].TImg}`} alt="" />
+              <div className="flex justify-center items-center">
+                <h3 className="text-lg sm:text-xl font-bold mb-2">
+                  {loans[currentIndex].title}
+                </h3>
+              </div>
+            </div>
+            <div>
+              <p className="text-sm sm:text-md leading-tight">
+                {loans[currentIndex].description}
+              </p>
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -112,7 +118,11 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? `${COLOR?'bg-[#09615D]':'bg-[#112B00]'}` : "bg-gray-300"}
+              ${
+                index === currentIndex
+                  ? `${COLOR ? "bg-[#09615D]" : "bg-[#112B00]"}`
+                  : "bg-gray-300"
+              }
             `}
           />
         ))}

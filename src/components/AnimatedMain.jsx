@@ -10,14 +10,13 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
 
     return () => clearInterval(interval);
   }, []);
-
+  
   return (
     <div className="w-full max-w-2xl px-1 mt-5">
-      <div className="flex  sm:text-left gap-2 sm:gap-0">
+      <div className="flex  sm:text-left gap-4 sm:gap-0">
         <div className="relative h-8">
           <div
-            className="relative overflow-hidden animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]"
-            style={{ height: "80px" }}
+            className="relative overflow-hidden h-[50px] sm:h-[80px] animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]"
           >
             {benefits.map((benefit, index) => (
               <div
@@ -34,7 +33,7 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                 }}
               >
                 <span
-                  className="block h-[400px]"
+                  className={`block ${Color?'h-[250px]':'h-[250px]'} animate-height`}
                   style={{
                     fontFamily: Color ? "Helvetica" : "roboto-slab",
                   }}
@@ -117,6 +116,9 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
           .animated-text {
             font-size: 2rem !important;
           }
+            .animate-height{
+              height: 20px !important;
+            }
         }
       `}</style>
     </div>

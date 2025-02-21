@@ -20,7 +20,7 @@ const DownloadNowButton = ({COLOR}) => {
       </div>
       <style jsx>{`
         .download:hover{
-          transform: scale(1.1);
+          transform: scale(1.3);
           transition: all 0.3s ease-in-out;
         }
       `}</style>

@@ -83,7 +83,7 @@ function App() {
     image3: "/cibil3.png",
     image4: "/cibil4.png",
     image5: "/cibil5.png",
-    image6: "/cibil6.png",
+    image6: "/cibil7.png",
   }
 
   const stepImage = "/step.png"

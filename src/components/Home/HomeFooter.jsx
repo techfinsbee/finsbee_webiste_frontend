@@ -13,7 +13,7 @@ const HomeFooter = ({ COLOR }) => {
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Top section with logo and sign up button */}
-          <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+          <div className="flex sm:flex-row justify-between items-center mb-8">
             <div className="flex">
               <img
                 src="/logo2.svg"
@@ -21,7 +21,7 @@ const HomeFooter = ({ COLOR }) => {
                 alt="FUNDSMAMA"
               />{" "}
               <span
-                className="text-4xl relative -left-14 text-[#fff] header-fundmama flex juistify-center items-center"
+                className="text-xl sm:text-4xl relative -left-14 text-[#fff] flex juistify-center items-center"
                 style={{
                   fontWeight: "800",
                   fontFamily: "Helvetica",
@@ -30,7 +30,7 @@ const HomeFooter = ({ COLOR }) => {
                 FUNDSMAMA
               </span>
             </div>
-            <button className="bg-white text-black px-6 py-2 rounded-[50px] transition-colors">
+            <button className="bg-white sm:w-fit text-[14px] w-[40vw] text-black px-2 md:px-6 py-2 rounded-[50px] transition-colors">
               Sign up for Updates
             </button>
           </div>
@@ -127,7 +127,8 @@ const HomeFooter = ({ COLOR }) => {
       </footer>
       <style jsx>{`
         @media (max-height: 512px) {
-          li, li a{
+          li,
+          li a {
             font-size: 0.9rem !important;
             line-height: 1rem !important;
           }

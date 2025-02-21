@@ -14,9 +14,14 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         ref={ref}
         className="w-full relative flex items-center justify-between px-8 lg:px-8 HomeMain overflow-hidden"
         style={{
-          background: `linear-gradient(180deg, #fff 0%,#fff 50%, ${
-            COLOR ? "#69B6B2 100%" : "#b2ff8e 100%"
-          })`,
+          background: `${
+            COLOR
+              ? `linear-gradient(to top, #69B6B2 0%, transparent 50%, transparent 80%),
+           radial-gradient(ellipse 120% 80% at bottom center, transparent 0%, white 40%)`
+              : `linear-gradient(to top, #b2ff8e 0%, transparent 60%, transparent 100%),
+           radial-gradient(ellipse 120% 80% at bottom center, transparent 60%, white 61%)`
+          }`,
+          backgroundColor: "white",
           borderBottomLeftRadius: "90px",
           borderBottomRightRadius: "90px",
           height: "90vh",
@@ -24,8 +29,8 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
       >
         {/* Left content */}
         <div
-          className="flex flex-col ml-12 gap-4 lg:gap-12 w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
-          style={{ color: `${COLOR ? "#09615D" : "#163312"}` }}
+          className="flex flex-col ml-12 gap-6 lg:gap-20   w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
+          style={{ color: `${COLOR ? "#09615D" : "#163312"}`, zIndex: "1000" }}
         >
           <h1
             className="text-3xl lg:text-[3.2rem] font-bold leading-tight"
@@ -59,8 +64,11 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         </div>
 
         {/* Right content - Phone mockup */}
-        <div className="lg:block w-full lg:w-[40%] relative HomeImage">
-          <div className="relative home-main-div -bottom-36 h-full flex justify-end w-full">
+        <div
+          className="lg:block w-full lg:w-[35%] relative HomeImage"
+          style={{ zIndex: "1000" }}
+        >
+          <div className="relative home-main-div -bottom-40 h-full flex justify-end w-full">
             <img
               src="/image1.png"
               className="w-[100%] home-main-image h-[100%]"
@@ -69,12 +77,13 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           </div>
         </div>
       </div>
+
       <style jsx>{`
         @media (max-width: 1024px) {
           .home-main-div {
             left: 1rem;
           }
-            .home-left {
+          .home-left {
             margin-left: 0;
           }
         }

@@ -107,7 +107,6 @@ const HomeSteps = ({ StepColor, stepImage }) => {
       setIntervalId(newInterval);
     }, 150);
   };
-  const BG = "/bg-loan.png";
   return (
     <section
       className=" p-0 min-h-fit"
@@ -122,6 +121,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
             style={{
               background: `${StepColor.left ? StepColor.left : "#97F15D"}`,
               borderTopLeftRadius: "50px",
+              height:`${window.innerHeight>1022?'80vh':''}`
             }}
           >
             <div
@@ -145,12 +145,12 @@ const HomeSteps = ({ StepColor, stepImage }) => {
             <div className="absolute object-cover bottom-0 bg-[]">
               <img src="/BLUR.png" alt="" />
             </div>
-            <div className="flex w-full absolute bottom-0 justify-center  items-center">
-              <div className={`${window.innerWidth > 1400?'h-[50vh]':'h-[60vh]'} relative w-[80%] overflow-hidden coin-image`}>
+            <div className="w-full h-full absolute">
+              <div className="flex absolute bottom-0 justify-center w-full">
                 <img
-                  src="/bg-loan.png"
+                  src="/step-coin.png"
                   alt="Coin background"
-                  className={`w-[100%] ${window.innerWidth > 1400?'h-[59%]':'h-[66%]'} object-cover object-center transform relative -left-12 translate-y-[95%]`}
+                  className={`object-cover w-[70%] relative object-center  relative `}
                 />
               </div>
             </div>
@@ -167,7 +167,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400 ? "-70px" : "-80px"}`,
+                  bottom: `${window.innerWidth > 1400 ? "-60px" : "-80px"}`,
                   position: "relative",
                 }}
               />
@@ -238,9 +238,14 @@ const HomeSteps = ({ StepColor, stepImage }) => {
         </div>
         <div className="mobile-step">
           {StepColor ? (
-            <HomeMobileStepsCarousel steps={steps_content} images={images} COLOR = "#"/>
+            <HomeMobileStepsCarousel
+              steps={steps_content}
+              images={images}
+              COLOR="#"
+              stepImage={stepImage}
+            />
           ) : (
-            <HomeMobileStepsCarousel steps={steps_content} images={images} />
+            <HomeMobileStepsCarousel steps={steps_content} images={images} stepImage={stepImage}/>
           )}
         </div>
       </div>

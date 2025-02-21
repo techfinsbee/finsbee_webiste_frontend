@@ -46,17 +46,10 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
   // Carousel items data
   const carouselItems = [
     {
-      icon: `${cibilImgaes ? cibilImgaes.image6 : "/CAD.png"}`,
-      title: "Correct Any Discrepancies",
-      description:
-        "Contact the lender or the concerned credit bureau to correct any discrepancies",
-    },
-    {
-      icon: `${cibilImgaes ? cibilImgaes.image3 : "/CH.png"}`,
+      icon: `${cibilImgaes ? cibilImgaes.image1 : "/CHM.png"}`,
 
-      title: "Monitor Your Credit Health",
-      description:
-        "Check your credit score and report regularly to track your credit health",
+      title: "Your Credit Health Matters",
+      description: "Credit health is one of the most Important Factors",
     },
     {
       icon: `${cibilImgaes ? cibilImgaes.image4 : "/FD.png"}`,
@@ -66,24 +59,33 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
         "Learn about your credit history, credit health, and various other factors",
     },
     {
+      icon: `${cibilImgaes ? cibilImgaes.image2 : "/BLR.png"}`,
+
+      title: "Get Better Loan Rates",
+      description:
+        "A good Credit Score will help you get better interest rates and credit Limits",
+    },
+    {
       icon: `${cibilImgaes ? cibilImgaes.image5 : "/KI.png"}`,
 
       title: "Learn About Key Insights",
       description:
         "Make better decisions to grow your savings and improve your Finances",
     },
-    {
-      icon: `${cibilImgaes ? cibilImgaes.image1 : "/CHM.png"}`,
 
-      title: "Your Credit Health Matters",
-      description: "Credit health is one of the most Important Factors",
-    },
     {
-      icon: `${cibilImgaes ? cibilImgaes.image2 : "/BLR.png"}`,
+      icon: `${cibilImgaes ? cibilImgaes.image3 : "/CH.png"}`,
 
-      title: "Get Better Loan Rates",
+      title: "Monitor Your Credit Health",
       description:
-        "A good Credit Score will help you get better interest rates and credit Limits",
+        "Check your credit score and report regularly to track your credit health",
+    },
+
+    {
+      icon: `${cibilImgaes ? cibilImgaes.image6 : "/CAD.png"}`,
+      title: "Correct Any Discrepancies",
+      description:
+        "Contact the lender or the concerned credit bureau to correct any discrepancies",
     },
   ];
 
@@ -136,7 +138,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
       <div
         className="cibil-w p-8"
         style={{
-          width: "86%",
+          width: "93%",
           borderRadius: "30px",
           background: `${COLOR ? "#09615D" : "#163312"}`,
         }}
@@ -146,7 +148,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
           className="flex cibil-header pt-8"
           style={{ justifyContent: "space-between" }}
         >
-          <h1 className="text-3xl md:text-[70px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">
+          <h1 className="text-3xl md:text-[60px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">
             Check Your Cibil Score
           </h1>
           <button
@@ -182,18 +184,20 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
                 style={{ padding: "0 auto" }}
               >
                 <div className="flex gap-2 cibil-container w-80">
-                  <div className="flex" style={{ marginTop:"20px" }}>
-                    <img
-                      src={item.icon}
-                      className="w-20 h-12 text-green-500"
-                      alt=""
-                    />
+                  <div className="flex w-[20%]  relative left-0 overflow-hidden object-cover">
+                    <div className="relative top-6 w-[100%] left-0 object-cover overflow-hidden">
+                      <img
+                        src={item.icon}
+                        className="w-[90%] h-[50px]"
+                        alt=""
+                      />
+                    </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold text-white coolvetica">
+                    <h2 className="text-[18px] font-bold text-white coolvetica">
                       {item.title}
                     </h2>
-                    <p className="desc text-white coolvetica">
+                    <p className="desc text-[14px] text-white coolvetica">
                       {item.description}
                     </p>
                   </div>
@@ -221,25 +225,11 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
         <div className="hidden md:grid grid-cols-2 md:grid-cols-2 gap-4 mb-12 ">
           {carouselItems.map((item, index) => (
             <div key={index} className="space-y-1">
-              <div className="flex gap-6">
-                <div className="flex justify-center items-center ">
-                  {item.icon ? (
-                    item.title === "Your Credit Health Matters" ? (
-                      <img
-                        src={item.icon}
-                        className="w-14 h-fit mt-1 text-green-500 object-cover"
-                        alt=""
-                      />
-                    ) : (
-                      <img
-                        src={item.icon}
-                        className="w-16 h-fit text-green-500 object-cover"
-                        alt=""
-                      />
-                    )
-                  ) : (
-                    item.svg
-                  )}
+              <div className="flex gap-3">
+                <div className="flex justify-center items-center relative left-0 overflow-hidden object-cover">
+                  <div className="relative w-[100%] left-0 object-cover overflow-hidden">
+                    <img src={item.icon} className="w-[90%] h-[70px]" alt="" />
+                  </div>
                 </div>
                 <div>
                   <h2 className="text-2xl text-white font-bold coolvetica">
@@ -263,7 +253,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
           }
         }
         @media (max-width: 1024px) {
-        .check {
+          .check {
             font-size: 2.8rem !important;
           }
         }

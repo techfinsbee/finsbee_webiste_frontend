@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
+const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
@@ -58,11 +58,24 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
         background: `${COLOR ? "#69B6B2" : "rgb(178, 255, 142)"}`,
       }}
     >
+      <div className="w-full h-full absolute">
+        <div className="flex absolute bottom-[30%] justify-center w-full">
+          <img
+            src="/step-coin.png"
+            alt="Coin background"
+            className={`object-cover w-[70%] relative object-center  relative `}
+          />
+        </div>
+      </div>
       <div className="text-center mt-10 flex flex-col gap-4">
-        <h1 className={`${COLOR ? 'text-[#09615D]':'text-[#112B00]'} text-3xl font-bold`}>
+        <h1
+          className={`${
+            COLOR ? "text-[#09615D]" : "text-[#112B00]"
+          } text-3xl font-bold`}
+        >
           Loan Application Steps
         </h1>
-        <p className={`text-md ${COLOR ? 'text-[#09615D]':'text-[#112B00]'}`}>
+        <p className={`text-md ${COLOR ? "text-[#09615D]" : "text-[#112B00]"}`}>
           With Fundsmama you unlock loans at lower prices
         </p>
       </div>
@@ -95,22 +108,35 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
           <div
             className="
                text-white p-4 rounded-xl shadow-lg 
-              w-[90%] max-w-[350px] cursor-pointer
+              w-[100%] max-w-[90vw] cursor-pointer
               transition-all duration-500 ease-in-out
-               hover:scale-[1.02]
+               hover:scale-[1.02] flex gap-4
             "
-            style={{ background: `${COLOR?'#09615D':'#112B00 '}` }}
+            style={{ background: `${COLOR ? "#09615D" : "#112B00 "}` }}
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-2"
-            style={{ color: `${COLOR?'#fff':'#fff'}` }}
+            <div className="relative top-2">
+              <div>
+                <img
+                  src={`${stepImage ? stepImage : "Rectangle.png"}`}
+                  alt=""
+                />
+              </div>
+            </div>
+            <div>
+            <h3
+              className="text-lg sm:text-xl font-bold mb-2"
+              style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
             >
               {steps[currentIndex].title}
-            </h3> 
-            <p className="text-sm sm:text-md text-black"
-            style={{ color: `${COLOR?'#fff':'#fff'}` }}
+            </h3>
+            <p
+              className="text-sm sm:text-md text-black"
+              style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
             >
               {steps[currentIndex].content}
             </p>
+            </div>
+            
           </div>
         </motion.div>
       </AnimatePresence>
@@ -122,7 +148,11 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR }) => {
             key={index}
             className={`
               h-2 w-2 rounded-full 
-              ${index === currentIndex ? `${COLOR?'bg-[#09615D]':'bg-[#112B00]'}` : "bg-gray-300"}
+              ${
+                index === currentIndex
+                  ? `${COLOR ? "bg-[#09615D]" : "bg-[#112B00]"}`
+                  : "bg-gray-300"
+              }
             `}
           />
         ))}
