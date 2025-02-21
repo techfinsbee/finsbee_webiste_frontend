@@ -113,7 +113,8 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             height: 50%;
           }
           .home-main-div {
-            bottom: -7rem;
+            bottom: -8rem;
+            left: 5rem;
           }
         }
       `}</style>

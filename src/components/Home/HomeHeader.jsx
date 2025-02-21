@@ -131,7 +131,7 @@ const HomeHeader = ({dropdownData =[], COLOR, Hover}) => {
   };
 
   return (
-    <header className="header manrope" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
+    <header className="header-home manrope" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
       <a href="/" className="head-fund">
         <div className="flex">
           <img

@@ -9,7 +9,7 @@
 }
 
 /* Base Layout */
-.header {
+.header-home {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -128,14 +128,14 @@
 }
 
 @media (max-width: 1024px), (max-height: 600px) {
-  .header{
+  .header-home{
     padding-left: 1rem;
   }
 
 }
 /* Mobile Styles */
 @media (max-width: 958px), (max-height: 600px) {
-  .header {
+  .header-home {
     justify-content: space-around;
     padding: 1rem 1rem;
   }
