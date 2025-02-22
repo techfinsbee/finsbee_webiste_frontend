@@ -50,7 +50,7 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             margin-top: 0px !important;
           }
           .main-title-home {
-            font-size: 60px !important;
+            font-size: 120px !important;
           }
         }
         

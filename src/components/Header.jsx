@@ -25,7 +25,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 //   },
 // ];
 
-const Header = ({dropdownData =[], COLOR, Hover}) => {
+const Header = ({ dropdownData = [], COLOR, Hover }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -35,6 +35,31 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
   const [currentSubItems, setCurrentSubItems] = useState(null);
   const menuRef = useRef(null);
   const burgerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const controlHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show header when scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsVisible(true);
+      }
+      // Hide header when scrolling down and not at the top
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", controlHeader);
+
+    return () => {
+      window.removeEventListener("scroll", controlHeader);
+    };
+  }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
     // Check if it's the about-us route
@@ -62,7 +87,7 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
       location.pathname === "/blog" ||
       location.pathname === "/sitemap" ||
       location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && (!sectionId.startsWith("/")))
+      (location.pathname === "/customer-care" && !sectionId.startsWith("/"))
     ) {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
@@ -82,7 +107,7 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
       location.pathname === "/blog" ||
       location.pathname === "/sitemap" ||
       location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && (!sectionId.startsWith("/home")))
+      (location.pathname === "/customer-care" && !sectionId.startsWith("/home"))
     ) {
       navigate("/home", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
@@ -157,17 +182,26 @@ const Header = ({dropdownData =[], COLOR, Hover}) => {
   };
 
   return (
-    <header className="header" style={{backgroundColor:`${COLOR?'#fff':'rgb(255, 252, 247)'}`}}>
+    <header
+      className={`header ${!isVisible ? "hidden" : ""}`}
+      style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
+    >
       <a href="/" className="head">
-      <div className="flex">
+        <div className="flex">
           <img
             src="/fundsmama-logo.svg"
             className="w-[100px]"
             alt="FUNDSMAMA"
-          /> <span className="text-4xl header-fundmama flex juistify-center items-center" style={{
-            fontWeight:"800",
-            fontFamily:"Helvetica"
-          }}>FUNDSMAMA</span>
+          />{" "}
+          <span
+            className="text-4xl header-fundmama flex juistify-center items-center"
+            style={{
+              fontWeight: "800",
+              fontFamily: "Helvetica",
+            }}
+          >
+            FUNDSMAMA
+          </span>
         </div>
       </a>
 

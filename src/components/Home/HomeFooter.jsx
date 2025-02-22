@@ -17,11 +17,11 @@ const HomeFooter = ({ COLOR }) => {
             <div className="flex">
               <img
                 src="/logo2.svg"
-                className=" relative -left-8 w-[120px] ml-0"
+                className=" relative -left-8 w-[100px] sm:w-[120px] ml-0"
                 alt="FUNDSMAMA"
               />{" "}
               <span
-                className="text-xl sm:text-4xl relative -left-14 text-[#fff] flex juistify-center items-center"
+                className="text-lg sm:text-4xl relative -left-14 text-[#fff] flex juistify-center items-center"
                 style={{
                   fontWeight: "800",
                   fontFamily: "Helvetica",

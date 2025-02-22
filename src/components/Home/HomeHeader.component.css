@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: rgb(255, 252, 247);
-  position: sticky; /* Changed from -webkit-sticky to fixed */
+  position: fixed; /* Changed from -webkit-sticky to fixed */
   top: 0;
   left: 0; /* Added to ensure full width coverage */
   right: 0; /* Added to ensure full width coverage */
@@ -24,8 +24,12 @@
   padding-top: 1rem;
   padding-left: 4.5rem;
   padding-right: 2rem;
+  transition: transform 0.3s ease-in-out;
 }
 
+.header-home.hidden {
+  transform: translateY(-100%);
+}
 /* Logo */
 
 

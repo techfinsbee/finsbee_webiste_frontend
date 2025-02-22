@@ -90,7 +90,7 @@ function App() {
   const downloadImage = "/download1.svg"
   return (
     <>
-      <HomeHeader dropdownData={dropdownData} COLOR="#fff" Hover="home" ></HomeHeader>
+      <HomeHeader dropdownData={dropdownData} COLOR="#fff" Hover="home" TXTCOLOR="#"></HomeHeader>
       <Outlet />
       <HomeMainSection COLOR="#18ADA5BF" downloadImage={downloadImage} TXTCOLOR="#"></HomeMainSection>
       <HomeAnimatedCounter COLOR="#18ADA5"></HomeAnimatedCounter>

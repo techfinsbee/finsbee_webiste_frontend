@@ -136,7 +136,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
   return (
     <div className="flex justify-center px-4 cibil-score">
       <div
-        className="cibil-w p-8"
+        className="cibil-w px-2 py-8 md:p-8"
         style={{
           width: "93%",
           borderRadius: "30px",
@@ -148,7 +148,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
           className="flex cibil-header pt-8"
           style={{ justifyContent: "space-between" }}
         >
-          <h1 className="text-3xl md:text-[60px] text-white gap-2 flex justify-center font-bold mb-12 check coolvetica">
+          <h1 className="text-3xl md:text-[60px] text-white gap-2 flex justify-center font-bold mb-6 md:mb-12 check coolvetica">
             Check Your Cibil Score
           </h1>
           <button
@@ -174,18 +174,18 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
             className="flex transition-transform duration-300 ease-in-out"
             style={{
               transform: `translateX(-${currentSlide * 100}%)`,
-              width: `${carouselItems.length * 20}%`,
+              width: `${carouselItems.length * 25}%`,
             }}
           >
             {carouselItems.map((item, index) => (
               <div
                 key={index}
-                className="w-full cibil-card flex flex-shrink-0 space-y-1 overflow-hidden"
+                className="w-full cibil-card flex flex-shrink-0 space-y-0 overflow-hidden"
                 style={{ padding: "0 auto" }}
               >
-                <div className="flex gap-2 cibil-container w-80">
+                <div className="flex gap-2 cibil-container w-full">
                   <div className="flex w-[20%]  relative left-0 overflow-hidden object-cover">
-                    <div className="relative top-6 w-[100%] left-0 object-cover overflow-hidden">
+                    <div className="relative top-2 w-[100%] left-0 object-cover overflow-hidden">
                       <img
                         src={item.icon}
                         className="w-[90%] h-[50px]"
@@ -193,11 +193,11 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
                       />
                     </div>
                   </div>
-                  <div>
-                    <h2 className="text-[18px] font-bold text-white coolvetica">
+                  <div className="w-full">
+                    <h2 className="text-[16px]  font-bold text-white coolvetica w-full">
                       {item.title}
                     </h2>
-                    <p className="desc text-[14px] text-white coolvetica">
+                    <p className="desc text-[12px] text-white coolvetica w-full">
                       {item.description}
                     </p>
                   </div>
@@ -225,17 +225,17 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
         <div className="hidden md:grid grid-cols-2 md:grid-cols-2 gap-4 mb-12 ">
           {carouselItems.map((item, index) => (
             <div key={index} className="space-y-1">
-              <div className="flex gap-3">
-                <div className="flex justify-center items-center relative left-0 overflow-hidden object-cover">
-                  <div className="relative w-[100%] left-0 object-cover overflow-hidden">
-                    <img src={item.icon} className="w-[90%] h-[70px]" alt="" />
+              <div className="flex gap-1">
+                <div className="flex justify-center items-center h-full relative left-0 overflow-hidden object-cover">
+                  <div className="relative w-[8vw] left-0 object-cover h-full overflow-hidden">
+                    <img src={item.icon} className="w-[70%] relative h-[10vh]" alt="" />
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-2xl text-white font-bold coolvetica">
+                  <h2 className="text-2xl desc-title text-white font-bold coolvetica">
                     {item.title}
                   </h2>
-                  <p className="text-gray-300 manrope">{item.description}</p>
+                  <p className="text-gray-300 desc-cont manrope">{item.description}</p>
                 </div>
               </div>
             </div>
@@ -263,6 +263,12 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
             justify-content: center !important;
             align-items: center;
             margin-bottom: 20px;
+          }
+          .desc-cont {
+            font-size: 10px ;
+          }
+          .desc-title {
+            font-size: 15px;
           }
           .cibil-button {
             width: 50% !important;
@@ -294,8 +300,8 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
             margin-right: 0px;
           }
           .cibil-container {
-            width: 80vw !important;
-            text-align: center;
+            width: 95vw !important;
+            text-align: left;
           }
           .cibil-container h2 {
             font-size: 1.3rem;

@@ -59,7 +59,7 @@ const AnimatedPhones = ({ Home }) => {
         } else if (isTablet) {
           maxSpread = 250;
           zScaleFactor = 12.5;
-          verticalDistance = -150;
+          verticalDistance = -100;
         } else {
           maxSpread = 300;
           zScaleFactor = 50;

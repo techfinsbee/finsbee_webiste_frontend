@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./HomeHeader.component.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const HomeHeader = ({ dropdownData = [], COLOR, Hover }) => {
+const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -12,6 +12,31 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover }) => {
   const [currentSubItems, setCurrentSubItems] = useState(null);
   const menuRef = useRef(null);
   const burgerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const controlHeader = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show header when scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setIsVisible(true);
+      } 
+      // Hide header when scrolling down and not at the top
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', controlHeader);
+    
+    return () => {
+      window.removeEventListener('scroll', controlHeader);
+    };
+  }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
     // Check if it's the about-us route
@@ -132,7 +157,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover }) => {
 
   return (
     <header
-      className="header-home manrope"
+    className={`header-home manrope ${!isVisible ? 'hidden' : ''}`}
       style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
     >
       <a href="/" className="head-fund">
@@ -145,6 +170,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover }) => {
             style={{
               fontWeight: "800",
               fontFamily: "Helvetica",
+              color:`${TXTCOLOR?'#09615D':'#163312'}`
             }}
           >
             FUNDSMAMA

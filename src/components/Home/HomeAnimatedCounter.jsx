@@ -50,7 +50,7 @@ const AnimatedCounter = ({
 
   return (
     <div
-      className={`rounded-xl p-4 gap-24 flex flex-col min-w-[30vw] h-fit
+      className={`rounded-xl p-4 gap-24 flex flex-col min-w-[29vw] h-fit
                   shadow-md transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
