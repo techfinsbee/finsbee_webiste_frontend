@@ -1,6 +1,5 @@
 import React from "react";
 import "../AnimatedTitle.component.css";
-import { filter } from "framer-motion/client";
 const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
   return (
     <section id="mart-home" className="mart-home mt-20">
@@ -24,7 +23,7 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             style={{
               borderRadius: "50%",
               backgroundColor: `${DIVCOLOR ? DIVCOLOR : "rgb(178, 255, 142)"}`,
-              filter: "blur(50px)",
+              filter: `${COLOR ? "blur(150px)" : "blur(50px)"}`,
               zIndex: "-100000",
               top: "-30px",
             }}
@@ -53,7 +52,14 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             font-size: 120px !important;
           }
         }
-        
+        @media (max-width: 512px) {
+          .mart-home {
+            margin-top: 0px !important;
+          }
+          .main-title-home {
+            font-size: 60px !important;
+          }
+        }
       `}</style>
     </section>
   );

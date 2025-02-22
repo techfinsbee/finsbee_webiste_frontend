@@ -226,16 +226,26 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
           {carouselItems.map((item, index) => (
             <div key={index} className="space-y-1">
               <div className="flex gap-1">
-                <div className="flex justify-center items-center h-full relative left-0 overflow-hidden object-cover">
-                  <div className="relative w-[8vw] left-0 object-cover h-full overflow-hidden">
-                    <img src={item.icon} className="w-[70%] relative h-[10vh]" alt="" />
+                <div className="flex justify-center h-[80px] md:h-[100px] lg:h-[100px]">
+                  {" "}
+                  {/* Responsive container */}
+                  <div className="w-[60px] h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] flex items-center justify-center">
+                    {" "}
+                    {/* Responsive wrapper */}
+                    <img
+                      src={item.icon}
+                      className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] lg:w-[80px] lg:h-[80px]"
+                      alt=""
+                    />
                   </div>
                 </div>
-                <div>
+                <div className="flex flex-col justify-center">
                   <h2 className="text-2xl desc-title text-white font-bold coolvetica">
                     {item.title}
                   </h2>
-                  <p className="text-gray-300 desc-cont manrope">{item.description}</p>
+                  <p className="text-gray-300 desc-cont manrope">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             </div>
@@ -265,7 +275,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
             margin-bottom: 20px;
           }
           .desc-cont {
-            font-size: 10px ;
+            font-size: 10px;
           }
           .desc-title {
             font-size: 15px;

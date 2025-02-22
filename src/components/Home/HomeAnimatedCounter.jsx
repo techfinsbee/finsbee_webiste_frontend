@@ -9,9 +9,13 @@ const AnimatedCounter = ({
   suffix = "+",
   shouldAnimate,
   bgColor,
-  COLOR
+  COLOR,
 }) => {
   const [count, setCount] = useState(0);
+  const { ref: labelRef, inView: labelInView } = useInView({
+    threshold: 0.3,
+    triggerOnce: false,
+  });
 
   useEffect(() => {
     if (!shouldAnimate) {
@@ -54,17 +58,32 @@ const AnimatedCounter = ({
                   shadow-md transition-transform duration-300 hover:scale-105 mobile-box`}
       style={{ backgroundColor: bgColor }}
     >
-      <div className="text-[3.5rem] prefix text-left coolvetica" style={{fontWeight:"bolder",color:`${COLOR?"#09615D":"#1D3800"}`}}>
+      <div
+        className="text-[3.5rem] prefix text-left coolvetica"
+        style={{
+          fontWeight: "bolder",
+          color: `${COLOR ? "#09615D" : "#1D3800"}`,
+        }}
+      >
         {prefix}
         {formatNumber(count)}
         {suffix}
       </div>
-      <div className={`text-gray-600 suffix text-right ${typeof window !== 'undefined' && window.innerWidth > 1400 ? "text-xl" : "text-[1.6rem]"} manrope`}>{label}</div>
+      <div
+        ref={labelRef}
+        className={`text-gray-600 suffix text-right ${
+          typeof window !== "undefined" && window.innerWidth > 1400
+            ? "text-xl"
+            : "text-[1.6rem]"
+        } manrope label-animate ${labelInView ? "label-visible" : ""}`}
+      >
+        {label}
+      </div>
     </div>
   );
 };
 
-const HomeAnimatedCounter = ({COLOR}) => {
+const HomeAnimatedCounter = ({ COLOR }) => {
   const stats = [
     {
       end: 60,
@@ -77,7 +96,7 @@ const HomeAnimatedCounter = ({COLOR}) => {
       end: 1000000,
       label: "App downloads",
       prefix: "",
-      bgColor: `${COLOR?"#18ADA5":"#97F15D"}`,
+      bgColor: `${COLOR ? "#18ADA5" : "#97F15D"}`,
     },
     {
       end: 40000,
@@ -107,12 +126,12 @@ const HomeAnimatedCounter = ({COLOR}) => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 512);
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
+    window.addEventListener("resize", checkMobile);
+
     return () => {
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener("resize", checkMobile);
     };
   }, []);
 
@@ -120,10 +139,10 @@ const HomeAnimatedCounter = ({COLOR}) => {
   useEffect(() => {
     if (isMobile && !isPaused) {
       autoSlideInterval.current = setInterval(() => {
-        setCurrentSlide(prev => (prev === stats.length - 1 ? 0 : prev + 1));
+        setCurrentSlide((prev) => (prev === stats.length - 1 ? 0 : prev + 1));
       }, 4000); // Change slide every 3 seconds
     }
-    
+
     // Clean up interval when component unmounts or when not needed
     return () => {
       if (autoSlideInterval.current) {
@@ -138,12 +157,12 @@ const HomeAnimatedCounter = ({COLOR}) => {
       if (autoSlideInterval.current) {
         clearInterval(autoSlideInterval.current);
       }
-      
+
       autoSlideInterval.current = setInterval(() => {
-        setCurrentSlide(prev => (prev === stats.length - 1 ? 0 : prev + 1));
+        setCurrentSlide((prev) => (prev === stats.length - 1 ? 0 : prev + 1));
       }, 3000);
     }
-    
+
     return () => {
       if (autoSlideInterval.current) {
         clearInterval(autoSlideInterval.current);
@@ -176,7 +195,7 @@ const HomeAnimatedCounter = ({COLOR}) => {
       // Swipe right, go to previous slide
       prevSlide();
     }
-    
+
     // Resume auto-sliding after a delay
     setTimeout(() => {
       setIsPaused(false);
@@ -184,11 +203,11 @@ const HomeAnimatedCounter = ({COLOR}) => {
   };
 
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev === stats.length - 1 ? 0 : prev + 1));
+    setCurrentSlide((prev) => (prev === stats.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentSlide(prev => (prev === 0 ? stats.length - 1 : prev - 1));
+    setCurrentSlide((prev) => (prev === 0 ? stats.length - 1 : prev - 1));
   };
   // Mobile carousel indicators
   const renderIndicators = (COLOR) => {
@@ -197,7 +216,11 @@ const HomeAnimatedCounter = ({COLOR}) => {
         {stats.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full ${currentSlide === index ? `${COLOR?'bg-[#09615D]':'bg-[#112B00]'}` : 'bg-gray-300'}`}
+            className={`w-2 h-2 rounded-full ${
+              currentSlide === index
+                ? `${COLOR ? "bg-[#09615D]" : "bg-[#112B00]"}`
+                : "bg-gray-300"
+            }`}
             onClick={() => {
               setCurrentSlide(index);
               setIsPaused(true);
@@ -213,15 +236,15 @@ const HomeAnimatedCounter = ({COLOR}) => {
   return (
     <div ref={ref} className="mt-20">
       {isMobile ? (
-        <div 
+        <div
           className="carousel-container"
           ref={carouselRef}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <div 
-            className="carousel-slider" 
+          <div
+            className="carousel-slider"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {stats.map((stat, index) => (
@@ -260,25 +283,57 @@ const HomeAnimatedCounter = ({COLOR}) => {
       )}
 
       <style jsx>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .counter-animate {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .counter-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .label-animate {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s; /* Added delay for label */
+        }
+
+        .label-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
         .carousel-container {
           width: 100%;
           overflow: hidden;
           position: relative;
         }
-        
+
         .carousel-slider {
           display: flex;
           transition: transform 0.5s ease-out;
           width: 100%;
         }
-        
+
         .carousel-slide {
           min-width: 100%;
           display: flex;
           justify-content: center;
           padding: 0 10px;
         }
-        
+
         @media screen and (max-width: 1000px) {
           .counters {
             gap: 1rem !important;
@@ -301,7 +356,7 @@ const HomeAnimatedCounter = ({COLOR}) => {
             min-width: 30vw !important;
           }
         }
-        
+
         @media screen and (max-width: 655px) {
           .counters {
             gap: 10px !important;
@@ -311,14 +366,26 @@ const HomeAnimatedCounter = ({COLOR}) => {
             font-size: 1.6rem;
           }
           .suffix {
-            font-size: 0.6rem
+            font-size: 0.6rem;
           }
           .mobile-box {
             min-width: 30vw !important;
           }
         }
-        
+
         @media screen and (max-width: 510px) {
+          .counter-animate,
+          .label-animate {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+
+          .counter-visible,
+          .label-visible {
+            opacity: 1;
+            transform: none;
+          }
           .counters {
             flex-direction: column;
           }

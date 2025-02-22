@@ -16,7 +16,7 @@ const HomeFooter = ({ COLOR }) => {
           <div className="flex sm:flex-row justify-between items-center mb-8">
             <div className="flex">
               <img
-                src="/logo2.svg"
+                src="/white-logo.svg"
                 className=" relative -left-8 w-[100px] sm:w-[120px] ml-0"
                 alt="FUNDSMAMA"
               />{" "}

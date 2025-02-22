@@ -28,7 +28,7 @@ const LoanBox = ({
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white rounded-xl shadow-md 
       transition-all duration-300 transform opacity-0
-      w-[28vw] h-fit hidden md:block cursor-pointer manrope
+      w-[29vw] h-fit hidden md:block cursor-pointer manrope
     `;
 
     const scaleClasses = isHighlighted
@@ -141,7 +141,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
       description:
         "Quick Cash When You Need It Most. Get instant loans upto INR 2 Lakhs in minutes.",
       position: "rightMiddle",
-      delay: 0,
+      delay: 200,
       image: images[0],
       TImg: `${loanImages ? loanImages.image5 : "/PL.png"}`,
     },
@@ -213,7 +213,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
         <div className="relative min-h-fit flex flex-col items-center p-4 mobile">
           <div
             ref={ref}
-            className="relative w-[90%] max-w-[30vw] images h-[600px] mx-auto ml-12 mr-12 loan-image-container"
+            className="relative w-[100%] max-w-[30vw] images h-[600px] mx-auto ml-12 mr-12 loan-image-container"
             style={{
               background: `${
                 COLOR

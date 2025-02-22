@@ -5,7 +5,7 @@ const RewardsSection = ({ COLOR }) => {
     <section className="w-full py-10 px-4 lg:px-4 reward-section">
       <div className="grid grid-cols-1 md:grid-cols-2 rewards coolvetica">
         {/* Left box - FMCoins */}
-        <div className={`${COLOR?"bg-[#18ADA5B2]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col w-[90%] ml-2`}>
+        <div className={`${COLOR?"bg-[#18ADA5B2]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col w-[96%] ml-2`}>
           <div className="">
             <h2
               className="text-2xl color-[#323300] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"

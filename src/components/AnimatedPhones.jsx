@@ -159,7 +159,7 @@ const AnimatedPhones = ({ Home }) => {
               alt="Main Screen"
               className={
                 Home
-                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[230px] object-contain svg-2"
+                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[260px] object-contain svg-2"
                   : "w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
               }
             />
