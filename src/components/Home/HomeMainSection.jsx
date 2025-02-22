@@ -21,7 +21,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             COLOR
               ? `radial-gradient(100% 100% at 0% 0%, white 20%, transparent 100%),
                  radial-gradient(120% 120% at 100% 100%, rgba(105, 182, 178, 0.3) 0%, transparent 10%),
-                 radial-gradient(100% 100% at 40% 100%,rgba(24, 177, 169, 0.75) 0%, transparent 70%)`
+                 radial-gradient(100% 100% at 40% 100%,rgba(24, 177, 169, 0.7) 0%, transparent 70%)`
               : `linear-gradient(to top, #b2ff8e 0%, transparent 60%, transparent 100%),
            radial-gradient(ellipse 120% 80% at bottom center, transparent 60%, white 61%)`
           }`,
