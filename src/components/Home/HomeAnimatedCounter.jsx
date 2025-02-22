@@ -352,9 +352,7 @@ const HomeAnimatedCounter = ({ COLOR }) => {
           .suffix {
             font-size: 0.7rem;
           }
-          .mobile-box {
-            min-width: 30vw !important;
-          }
+          
         }
 
         @media screen and (max-width: 655px) {
@@ -368,9 +366,7 @@ const HomeAnimatedCounter = ({ COLOR }) => {
           .suffix {
             font-size: 0.6rem;
           }
-          .mobile-box {
-            min-width: 30vw !important;
-          }
+          
         }
 
         @media screen and (max-width: 510px) {

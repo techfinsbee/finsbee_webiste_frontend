@@ -213,7 +213,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
         <div className="relative min-h-fit flex flex-col items-center p-4 mobile">
           <div
             ref={ref}
-            className="relative w-[100%] max-w-[30vw] images h-[600px] mx-auto ml-12 mr-12 loan-image-container"
+            className="relative w-[100%] max-w-[29vw] images h-[600px] mx-auto ml-12 mr-12 loan-image-container"
             style={{
               background: `${
                 COLOR
@@ -291,11 +291,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
           </div>
         </div>
         <style jsx>{`
-          @media screen and (max-width: 1224px) {
-            .loan-image-container {
-              width: 380px !important;
-            }
-          }
+          
           @media screen and (max-height: 780px) {
             .loan-section-home {
               margin-top: 100px !important;
