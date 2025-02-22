@@ -109,12 +109,12 @@ const HomeSteps = ({ StepColor, stepImage }) => {
   };
   return (
     <section
-      className=" p-0 min-h-fit"
+      className="step-section p-0 min-h-fit"
       style={{
         borderRadius: "50px",
       }}
     >
-      <div className="flex flex-col w-full m-0">
+      <div className="flex flex-col first-div w-full m-0">
         <div className="flex flex-row justify-start w-full steps">
           <div
             className="w-1/2 relative steps-content overflow-hidden step-image flex justify-center"
@@ -156,7 +156,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
             </div>
 
             <div
-              className={`absolute w-fit h-fit transition-all duration-150 ease-in-out ${
+              className={`absolute w-fit h-fit transition-all duration-150 image-cont ease-in-out ${
                 isAnimating
                   ? "translate-x-full opacity-0"
                   : "translate-x-0 opacity-100"
@@ -251,6 +251,12 @@ const HomeSteps = ({ StepColor, stepImage }) => {
       </div>
 
       <style jsx>{`
+      
+      @media(min-height:900px){
+        .step-section, .first-div, .image-cont,.steps-content{
+          min-height:100vh;
+        }
+      }
         .animate-ping {
           animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
         }

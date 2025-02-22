@@ -2,12 +2,15 @@ import React from "react";
 import { useInView } from "react-intersection-observer";
 import AnimatedMain from "../AnimatedMain";
 import DownloadNowButton from "./DownloadNowButton";
+
 const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: false,
   });
+  
   const benefits = ["Borrow Easy", "Shop Smart", "Get Rewarded"];
+  
   return (
     <section id="home-home">
       <div
@@ -16,8 +19,9 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         style={{
           background: `${
             COLOR
-              ? `linear-gradient(to top, #69B6B2 0%, transparent 50%, transparent 80%),
-           radial-gradient(ellipse 120% 80% at bottom center, transparent 0%, white 40%)`
+              ? `radial-gradient(100% 100% at 0% 0%, white 20%, transparent 100%),
+                 radial-gradient(120% 120% at 100% 100%, rgba(105, 182, 178, 0.3) 0%, transparent 10%),
+                 radial-gradient(100% 100% at 40% 100%,rgba(24, 177, 169, 0.75) 0%, transparent 70%)`
               : `linear-gradient(to top, #b2ff8e 0%, transparent 60%, transparent 100%),
            radial-gradient(ellipse 120% 80% at bottom center, transparent 60%, white 61%)`
           }`,
@@ -29,7 +33,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
       >
         {/* Left content */}
         <div
-          className="flex flex-col ml-12 gap-6 lg:gap-20   w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
+          className="flex flex-col ml-12 gap-6 lg:gap-20 w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
           style={{ color: `${COLOR ? "#09615D" : "#163312"}`, zIndex: "1000" }}
         >
           <h1
@@ -45,22 +49,13 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
                 benefits={benefits}
                 Color="#09615D"
                 TXTCOLOR={TXTCOLOR}
-              ></AnimatedMain>
+              />
             ) : (
-              <AnimatedMain benefits={benefits} Color="#163312"></AnimatedMain>
+              <AnimatedMain benefits={benefits} Color="#163312" />
             )}
           </h1>
 
-          {/* Download button */}
-          <DownloadNowButton COLOR={COLOR}></DownloadNowButton>
-          {/* <div className="flex items-center gap-4 w-fit" style={{}}>
-            <button className="py-3 rounded-full font-semibold flex items-center gap-2">
-              <img
-                src={`${downloadImage ? downloadImage : "/download.svg"}`}
-                alt=""
-              />
-            </button>
-          </div> */}
+          <DownloadNowButton COLOR={COLOR} />
         </div>
 
         {/* Right content - Phone mockup */}
@@ -91,8 +86,6 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           .home-main-div {
             left: 1.8rem;
           }
-        }
-        @media (max-width: 912px) {
           .home-left {
             margin-left: 0;
           }
@@ -117,7 +110,6 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             top: 5% !important;
           }
         }
-
         @media (max-height: 512px) {
           .home-main-image {
             width: 80%;

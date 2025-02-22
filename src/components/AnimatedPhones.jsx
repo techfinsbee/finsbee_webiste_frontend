@@ -91,7 +91,7 @@ const AnimatedPhones = ({ Home }) => {
       }
 
       const spread = clampedProgress * maxSpread;
-      
+
       // Calculate vertical translation based on scroll progress (only for Home)
       const verticalTranslate = Home ? clampedProgress * verticalDistance : 0;
 
@@ -102,7 +102,7 @@ const AnimatedPhones = ({ Home }) => {
           phone.style.transform = `
             scale(${scale})
             translateZ(${clampedProgress * zScaleFactor}px)
-            ${Home ? `translateY(${verticalTranslate}px)` : ''}
+            ${Home ? `translateY(${verticalTranslate}px)` : ""}
           `;
           phone.style.zIndex = "20";
         } else {
@@ -112,7 +112,7 @@ const AnimatedPhones = ({ Home }) => {
             scale(${scale})
             translateX(${spread * direction}px)
             translateZ(${-25 + clampedProgress * zScaleFactor}px)
-            ${Home ? `translateY(${verticalTranslate}px)` : ''}
+            ${Home ? `translateY(${verticalTranslate}px)` : ""}
           `;
           phone.style.zIndex = "10";
         }
@@ -131,7 +131,7 @@ const AnimatedPhones = ({ Home }) => {
   return (
     <div
       className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: `${Home?"80vh":"110vh"}`, padding: "0" }}
+      style={{ height: `${Home ? "80vh" : "110vh"}`, padding: "0" }}
     >
       <div
         ref={containerRef}
@@ -181,6 +181,11 @@ const AnimatedPhones = ({ Home }) => {
       </div>
 
       <style jsx>{`
+        @media (min-height: 900px) {
+          .main-context {
+            height: 50vh !important;
+          }
+        }
         .phone {
           will-change: transform;
           transform-style: preserve-3d;

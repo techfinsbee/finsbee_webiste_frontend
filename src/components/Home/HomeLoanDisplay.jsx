@@ -37,15 +37,29 @@ const LoanBox = ({
 
     // Define responsive positioning using CSS calculations
     const positions = {
-      leftTop: `${isAnimated ? "translate-x-[-15vw]" : "translate-x-0"} top-0 left-[-15vw]`,
-      leftMiddle: `${isAnimated ? "translate-x-[-15vw]" : "translate-x-0"} top-1/2 -translate-y-1/2 left-[-15vw]`,
-      leftBottom: `${isAnimated ? "translate-x-[-15vw]" : "translate-x-0"} bottom-0 left-[-15vw]`,
-      rightTop: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} top-0 right-[-15vw]`,
-      rightMiddle: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} top-1/2 -translate-y-1/2 right-[-15vw]`,
-      rightBottom: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} bottom-0 right-[-15vw]`,
+      leftTop: `${
+        isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
+      } top-0 left-[-15vw]`,
+      leftMiddle: `${
+        isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
+      } top-1/2 -translate-y-1/2 left-[-15vw]`,
+      leftBottom: `${
+        isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
+      } bottom-0 left-[-15vw]`,
+      rightTop: `${
+        isAnimated ? "translate-x-[15vw]" : "translate-x-0"
+      } top-0 right-[-15vw]`,
+      rightMiddle: `${
+        isAnimated ? "translate-x-[15vw]" : "translate-x-0"
+      } top-1/2 -translate-y-1/2 right-[-15vw]`,
+      rightBottom: `${
+        isAnimated ? "translate-x-[15vw]" : "translate-x-0"
+      } bottom-0 right-[-15vw]`,
     };
 
-    return `${baseClasses} ${positions[position]} ${isAnimated ? "opacity-100" : ""} ${scaleClasses}`;
+    return `${baseClasses} ${positions[position]} ${
+      isAnimated ? "opacity-100" : ""
+    } ${scaleClasses}`;
   };
 
   return (
@@ -284,14 +298,22 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
 
           <div className="loan-mobile">
             {COLOR ? (
-              <HomeMobileLoanCarousel loans={loans} images={images} COLOR="#" loanImage={loanImages}/>
+              <HomeMobileLoanCarousel
+                loans={loans}
+                images={images}
+                COLOR="#"
+                loanImage={loanImages}
+              />
             ) : (
-              <HomeMobileLoanCarousel loans={loans} images={images} loanImage={loanImages}/>
+              <HomeMobileLoanCarousel
+                loans={loans}
+                images={images}
+                loanImage={loanImages}
+              />
             )}
           </div>
         </div>
         <style jsx>{`
-          
           @media screen and (max-height: 780px) {
             .loan-section-home {
               margin-top: 100px !important;
