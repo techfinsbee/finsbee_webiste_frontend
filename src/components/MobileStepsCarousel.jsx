@@ -65,7 +65,7 @@ const MobileStepsCarousel = ({ steps, images }) => {
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
           className="flex flex-col items-center w-full"
-          style={{ overflowX: "hidden" }}
+          style={{ overflow: "hidden" }}
         >
           {/* Image */}
           <div className="w-full flex justify-center mb-4">
@@ -82,7 +82,7 @@ const MobileStepsCarousel = ({ steps, images }) => {
           <div
             className="
               bg-[#d09c75] text-white p-4 rounded-xl shadow-lg 
-              w-[90%] max-w-[350px] cursor-pointer
+              w-[100%] max-w-[90vw] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#725839] hover:scale-[1.02]
             "

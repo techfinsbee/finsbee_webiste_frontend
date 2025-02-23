@@ -184,11 +184,15 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
                 style={{ padding: "0 auto" }}
               >
                 <div className="flex gap-2 cibil-container w-full">
-                  <div className="flex w-[20%]  relative left-0 overflow-hidden object-cover">
-                    <div className="relative top-2 w-[100%] left-0 object-cover overflow-hidden">
+                  <div className="flex justify-center h-[80px] md:h-[100px] lg:h-[100px]">
+                    {" "}
+                    {/* Responsive container */}
+                    <div className="w-[60px] h-[70px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] flex items-center justify-center">
+                      {" "}
+                      {/* Responsive wrapper */}
                       <img
                         src={item.icon}
-                        className="w-[90%] h-[50px]"
+                        className="w-[45px] h-[45px] md:w-[60px] md:h-[60px] lg:w-[80px] lg:h-[80px]"
                         alt=""
                       />
                     </div>

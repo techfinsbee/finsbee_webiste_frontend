@@ -6,6 +6,8 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   useEffect(() => {
     // Preload images before rendering
     const preloadImages = () => {
@@ -27,30 +29,44 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
     return () => clearInterval(interval);
   }, [autoPlay, steps.length]);
 
-  const handleTouchStart = () => {
+  const handleTouchStart = (e) => {
     setAutoPlay(false);
-    setTimeout(() => setAutoPlay(true), 3000);
+    setTouchStart(e.touches[0].clientX);
   };
 
-  const handleDragEnd = (event, info) => {
-    const threshold = 100;
-    setDragDirection(info.offset.x);
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.touches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
 
-    if (info.offset.x > threshold) {
-      // Swiped right
-      setCurrentIndex(
-        (prevIndex) => (prevIndex - 1 + steps.length) % steps.length
-      );
-    } else if (info.offset.x < -threshold) {
-      // Swiped left
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % steps.length);
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      setCurrentIndex((prev) => (prev + 1) % steps.length);
+      setDragDirection(-1);
+    } else if (isRightSwipe) {
+      setCurrentIndex((prev) => (prev - 1 + steps.length) % steps.length);
+      setDragDirection(1);
     }
+
+    // Reset touch values
+    setTouchStart(0);
+    setTouchEnd(0);
+    
+    // Resume autoplay after 3 seconds
+    setTimeout(() => setAutoPlay(true), 3000);
   };
 
   return (
     <div
-      className={`relative w-full min-h-fiten overflow-hidden touch-pan-y pb-10  mb-20`}
+      className={`relative w-full min-h-fit overflow-hidden touch-pan-y pb-10  mb-20`}
       onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       style={{
         overflowX: "hidden",
         borderTopLeftRadius: "50px",
@@ -80,18 +96,14 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
         </p>
       </div>
       <AnimatePresence mode="wait">
-        <motion.div
+      <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
+          initial={{ opacity: 0, x: dragDirection > 0 ? -300 : 300 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.2}
-          onDragEnd={handleDragEnd}
+          exit={{ opacity: 0, x: dragDirection > 0 ? 300 : -300 }}
+          transition={{ type: "spring", stiffness: 200, damping: 25 }}
           className="flex flex-col items-center w-full"
-          style={{ overflowX: "hidden" }}
+          style={{ overflow: "hidden" }}
         >
           {/* Image */}
           <div className="w-full flex justify-center mb-4">
@@ -123,20 +135,19 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
               </div>
             </div>
             <div>
-            <h3
-              className="text-lg sm:text-xl font-bold mb-2"
-              style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
-            >
-              {steps[currentIndex].title}
-            </h3>
-            <p
-              className="text-sm sm:text-md text-black"
-              style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
-            >
-              {steps[currentIndex].content}
-            </p>
+              <h3
+                className="text-lg sm:text-xl font-bold mb-2"
+                style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
+              >
+                {steps[currentIndex].title}
+              </h3>
+              <p
+                className="text-sm sm:text-md text-black"
+                style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
+              >
+                {steps[currentIndex].content}
+              </p>
             </div>
-            
           </div>
         </motion.div>
       </AnimatePresence>
