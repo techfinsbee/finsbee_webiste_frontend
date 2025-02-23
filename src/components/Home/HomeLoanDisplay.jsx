@@ -265,11 +265,12 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
                       <img
                         key={index}
                         src={loan.image}
-                        className="relative -top-12"
+                        className="relative -left-[10vw]"
                         alt={`${loan.title} interface`}
                         style={{
-                          width: "100%",
+                          width: "50vw",
                           height: "100%",
+                          maxWidth:"100vw",
                           objectFit: "cover",
                         }}
                       />
