@@ -81,7 +81,7 @@ const HomeFooter = ({ COLOR }) => {
               <ul className="space-y-2">
                 <li>
                   <a
-                    href="/about-us"
+                    href="/aboutus"
                     className="text-xl font-semibold hover:text-white-600"
                   >
                     About Us

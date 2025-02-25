@@ -17,7 +17,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 //   },
 //   {
 //     title: "About Us",
-//     link: "/about-us",
+//     link: "/aboutus",
 //   },
 //   {
 //     title: "Contact Us",
@@ -62,8 +62,8 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
   }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
-    // Check if it's the about-us route
-    if (sectionId === "/about-us") {
+    // Check if it's the aboutus route
+    if (sectionId === "/aboutus") {
       navigate(sectionId);
       setIsMenuOpen(false);
       return;
@@ -73,9 +73,9 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
       setIsMenuOpen(false);
       return;
     }
-    // If we're on about-us page and clicking a section link, first navigate to home
+    // If we're on abou-us page and clicking a section link, first navigate to home
     if (
-      location.pathname === "/about-us" ||
+      location.pathname === "/aboutus" ||
       location.pathname === "/terms-and-conditions" ||
       location.pathname === "/faqs" ||
       location.pathname === "/privacy-policy" ||
@@ -95,7 +95,7 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
     }
 
     if (
-      location.pathname === "/about-us" ||
+      location.pathname === "/aboutus" ||
       location.pathname === "/terms-and-conditions" ||
       location.pathname === "/faqs" ||
       location.pathname === "/privacy-policy" ||
@@ -122,7 +122,7 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
     }
   };
 
-  // Handle scrolling after navigation from about-us page
+  // Handle scrolling after navigation from aboutus page
   useEffect(() => {
     if (location.state?.scrollTo) {
       const section = document.getElementById(location.state.scrollTo);

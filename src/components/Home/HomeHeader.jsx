@@ -39,16 +39,16 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
-    // Check if it's the about-us route
-    if (sectionId === "/about-us") {
+    // Check if it's the aboutus route
+    if (sectionId === "/aboutus") {
       navigate(sectionId);
       setIsMenuOpen(false);
       return;
     }
 
-    // If we're on about-us page and clicking a section link, first navigate to home
+    // If we're on aboutus page and clicking a section link, first navigate to home
     if (
-      location.pathname === "/about-us" ||
+      location.pathname === "/aboutus" ||
       location.pathname === "/terms-and-conditions" ||
       location.pathname === "/faqs" ||
       location.pathname === "/privacy-policy" ||
@@ -68,7 +68,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
     }
 
     if (
-      location.pathname === "/about-us" ||
+      location.pathname === "/aboutus" ||
       location.pathname === "/terms-and-conditions" ||
       location.pathname === "/faqs" ||
       location.pathname === "/privacy-policy" ||
@@ -96,7 +96,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
     }
   };
 
-  // Handle scrolling after navigation from about-us page
+  // Handle scrolling after navigation from aboutus page
   useEffect(() => {
     if (location.state?.scrollTo) {
       const section = document.getElementById(location.state.scrollTo);

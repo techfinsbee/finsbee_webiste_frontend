@@ -57,7 +57,7 @@ function App() {
     },
     {
       title: "About Us",
-      link: "/about-us",
+      link: "/aboutus",
     },
     {
       title: "Contact Us",
