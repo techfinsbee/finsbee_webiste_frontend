@@ -44,11 +44,7 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                       className="inline-block"
                       style={{
                         animation: Color
-                          ? `${
-                              TXTCOLOR
-                                ? "text-color-blue-shift"
-                                : "text-color-shift"
-                            } 5s ease infinite`
+                          ? `text-color-shift 5s ease infinite`
                           : " ",
                         animationDelay: Color ? `${index * 0.1}s` : "",
                         color: Color
