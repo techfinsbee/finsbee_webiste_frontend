@@ -56,6 +56,13 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 1100px) {
+  .header-fundmama{
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+}
+
 /* Dropdown Menus */
 .dropdown-menu {
   position: absolute;
