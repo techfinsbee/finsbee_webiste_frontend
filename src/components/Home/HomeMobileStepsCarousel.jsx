@@ -86,12 +86,12 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
       <div className="text-center mt-10 flex flex-col gap-4">
         <h1
           className={`${
-            COLOR ? "text-[#09615D]" : "text-[#112B00]"
+            COLOR ? "text-[#112A00]" : "text-[#112B00]"
           } text-3xl font-bold`}
         >
           Loan Application Steps
         </h1>
-        <p className={`text-md ${COLOR ? "text-[#09615D]" : "text-[#112B00]"}`}>
+        <p className={`text-md ${COLOR ? "text-[#112A00]" : "text-[#112B00]"}`}>
           With Fundsmama you unlock loans at lower prices
         </p>
       </div>

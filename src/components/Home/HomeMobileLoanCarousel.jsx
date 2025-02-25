@@ -92,7 +92,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
               transition-all duration-500 ease-in-out
               hover:bg-[#F8F9FA] hover:scale-[1.02] flex flex-col gap-2
             "
-            style={{ color: `${COLOR ? "#09615D" : "#163312"}` }}
+            style={{ color: `${COLOR ? "#112A00" : "#163312"}` }}
           >
             <div className="flex h-fit gap-2">
               <img src={`${loans[currentIndex].TImg}`} alt="" />

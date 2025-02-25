@@ -21,7 +21,8 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             COLOR
               ? `radial-gradient(100% 100% at 0% 0%, white 20%, transparent 100%),
                  radial-gradient(120% 120% at 100% 100%, rgba(105, 182, 178, 0.3) 0%, transparent 10%),
-                 radial-gradient(100% 100% at 40% 100%,rgba(24, 177, 169, 0.7) 0%, transparent 70%)`
+                 radial-gradient(100% 100% at 40% 100%,rgba(24, 177, 169, 0.7) 0%, transparent 70%)
+                 `
               : `linear-gradient(to top, #b2ff8e 0%, transparent 60%, transparent 100%),
            radial-gradient(ellipse 120% 80% at bottom center, transparent 60%, white 61%)`
           }`,
@@ -34,7 +35,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         {/* Left content */}
         <div
           className="flex flex-col ml-12 gap-6 lg:gap-20 w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
-          style={{ color: `${COLOR ? "#09615D" : "#163312"}`, zIndex: "1000" }}
+          style={{ color: `${COLOR ? "#163312" : "#163312"}`, zIndex: "1000" }}
         >
           <h1
             className="text-3xl lg:text-[3.2rem] font-bold leading-tight"
@@ -99,6 +100,9 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             gap: 20px;
             height: 100vh !important;
             margin-top: 0px;
+            background: radial-gradient(100% 80% at 0% 0%, white 20%, transparent 100%),
+                       radial-gradient(150% 120% at 100% 100%, rgba(105, 182, 178, 1) 0%, transparent 10%),
+                       radial-gradient(150% 120% at 40% 100%, rgba(24, 177, 169, 0.7) 0%, transparent 70%) !important;
           }
           .HomeImage {
             width: 100%;

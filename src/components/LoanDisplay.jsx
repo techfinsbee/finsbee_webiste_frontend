@@ -28,12 +28,12 @@ const LoanBox = ({ title, description, position, delay, isInView, onClick, isAct
       : 'scale-95 hover:scale-105 hover:shadow-xl hover:bg-[#725839]';
 
     const positions = {
-      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-32 left-20`,
-      leftMiddle: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 left-20`,
-      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-32 left-20`,
-      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-32 right-20`,
-      rightMiddle: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 right-20`,
-      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-32 right-20`,
+      leftTop: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-32 left-[5vw]`,
+      leftMiddle: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 left-[5vw]`,
+      leftBottom: `${isAnimated ? '-translate-x-64' : 'translate-x-0'} bottom-32 left-[5vw]`,
+      rightTop: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-32 right-[5vw]`,
+      rightMiddle: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} top-1/2 -translate-y-1/2 right-[5vw]`,
+      rightBottom: `${isAnimated ? 'translate-x-64' : 'translate-x-0'} bottom-32 right-[5vw]`,
     };
 
     return `${baseClasses} ${positions[position]} ${isAnimated ? 'opacity-100' : ''} ${scaleClasses}`;
@@ -215,7 +215,7 @@ const LoanDisplay = () => {
         </div>
       </div>
       <style jsx>{`
-       @media screen and (max-height: 780px) {
+       @media screen and (max-height: 425px) {
         .loan-section{
           margin-top: 100px !important;
         }
@@ -225,7 +225,7 @@ const LoanDisplay = () => {
             display: none !important;
           }
         }
-        @media (max-width: 912px) , (max-height: 600px) {
+        @media (max-width: 912px) , (max-height: 425px) {
         .loan-section{
           height: fit-content !important;
         }
@@ -237,7 +237,7 @@ const LoanDisplay = () => {
           display: none !important;
         }
         }
-        @media (max-height:692px ) and (max-width: 912px) {
+        @media (max-height:425px ) and (max-width: 912px) {
           .loan-section{
           height: fit-content !important;
         }
@@ -259,7 +259,7 @@ const LoanDisplay = () => {
         }
         }
 
-        @media , (max-height: 600px) {
+        @media , (max-height: 425px) {
         .loan-section{
           height: fit-content !important;
         }

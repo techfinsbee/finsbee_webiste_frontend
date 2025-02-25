@@ -28,7 +28,9 @@ const LoanBox = ({
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white rounded-xl shadow-md 
       transition-all duration-300 transform opacity-0
-      w-[29vw] h-fit hidden md:block cursor-pointer manrope
+  ${
+    window.innerWidth > 1100 ? "w-[29vw]" : "w-[30vw]"
+  } h-fit hidden md:block cursor-pointer manrope
     `;
 
     const scaleClasses = isHighlighted
@@ -39,22 +41,32 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } top-0 left-[-15vw]`,
+      } top-0 ${
+        window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"
+      }`,
       leftMiddle: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 left-[-15vw]`,
+      } top-1/2 -translate-y-1/2 ${
+        window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"
+      }`,
       leftBottom: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } bottom-0 left-[-15vw]`,
-      rightTop: `${
-        isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } top-0 right-[-15vw]`,
+      } bottom-0 ${
+        window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.7vw]"
+      }`,
+      rightTop: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} top-0 ${
+        window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
+      }`,
       rightMiddle: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 right-[-15vw]`,
+      } top-1/2 -translate-y-1/2 ${
+        window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
+      }`,
       rightBottom: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } bottom-0 right-[-15vw]`,
+      } bottom-0 ${
+        window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
+      }`,
     };
 
     return `${baseClasses} ${positions[position]} ${
@@ -85,7 +97,7 @@ const LoanBox = ({
           className="text-xl mb-2 coolvetica"
           style={{
             fontWeight: "750",
-            color: `${COLOR ? "#09615D" : "#112A00"}`,
+            color: `${COLOR ? "#112A00" : "#112A00"}`,
           }}
         >
           {title}
@@ -217,7 +229,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               justifyContent: "center",
               gap: "10px",
               fontWeight: "700",
-              color: `${COLOR ? "#09615D" : "#163312"}`,
+              color: `${COLOR ? "#163312" : "#163312"}`,
               fontFamily: "Helvetica",
             }}
           >
@@ -270,7 +282,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
                         style={{
                           width: "50vw",
                           height: "100%",
-                          maxWidth:"100vw",
+                          maxWidth: "100vw",
                           objectFit: "cover",
                         }}
                       />
@@ -315,7 +327,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
           </div>
         </div>
         <style jsx>{`
-          @media screen and (max-height: 780px) {
+          @media screen and (max-height: 425px) {
             .loan-section-home {
               margin-top: 100px !important;
             }
@@ -325,7 +337,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               display: none !important;
             }
           }
-          @media screen and (max-width: 912px), screen and (max-height: 512px) {
+          @media screen and (max-width: 912px), screen and (max-height: 425px) {
             .loan-section-home {
               height: fit-content !important;
             }
@@ -341,7 +353,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               display: none !important;
             }
           }
-          @media (max-height: 692px) and (max-width: 912px) {
+          @media (max-height: 425px) and (max-width: 912px) {
             .loan-section-home {
               height: fit-content !important;
             }
@@ -363,7 +375,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
             }
           }
 
-          @media (max-height: 600px) {
+          @media (max-height: 425px) {
             .loan-section-home {
               height: fit-content !important;
             }

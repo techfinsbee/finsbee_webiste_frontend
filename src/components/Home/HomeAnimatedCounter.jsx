@@ -62,7 +62,7 @@ const AnimatedCounter = ({
         className="text-[3.5rem] prefix text-left coolvetica"
         style={{
           fontWeight: "bolder",
-          color: `${COLOR ? "#09615D" : "#1D3800"}`,
+          color: `${COLOR ? "#112A00" : "#1D3800"}`,
         }}
       >
         {prefix}

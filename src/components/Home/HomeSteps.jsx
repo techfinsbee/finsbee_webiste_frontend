@@ -126,7 +126,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
           >
             <div
               className="text-center mt-[5rem] flex flex-col gap-4 coolvetica"
-              style={{ color: `${stepImage ? "#09615D" : "#163312"}` }}
+              style={{ color: `${stepImage ? "#163312" : "#163312"}` }}
             >
               <h1 className=" text-5xl font-bold">Loan Application Steps</h1>
               <p className="text-xl">
