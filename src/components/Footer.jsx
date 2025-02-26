@@ -2,22 +2,37 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <section id="contact-us" >
-      <footer className="w-full text-gray-800 border-t border-gray-200 " style={{ boxShadow:"200px 200px 200px #000000", backgroundColor:"rgb(255, 252, 247)"}}>
+    <section id="contact-us">
+      <footer
+        className="w-full text-gray-800 border-t border-gray-200 "
+        style={{
+          boxShadow: "200px 200px 200px #000000",
+          backgroundColor: "rgb(255, 252, 247)",
+        }}
+      >
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-4 py-8" style={{backgroundColor:"rgb(255, 252, 247)"}}>
+        <div
+          className="max-w-7xl mx-auto px-4 py-8"
+          style={{ backgroundColor: "rgb(255, 252, 247)" }}
+        >
           {/* Top section with logo and sign up button */}
           <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-          <div className="flex">
-          <img
-            src="/fundsmama-logo.svg"
-            className="w-[100px]"
-            alt="FUNDSMAMA"
-          /> <span className="text-4xl header-fundmama flex juistify-center items-center" style={{
-            fontWeight:"800",
-            fontFamily:"Helvetica"
-          }}>FUNDSMAMA</span>
-        </div>
+            <div className="flex">
+              <img
+                src="/fundsmama-logo.svg"
+                className="w-[100px]"
+                alt="FUNDSMAMA"
+              />{" "}
+              <span
+                className="text-4xl header-fundmama flex juistify-center items-center"
+                style={{
+                  fontWeight: "800",
+                  fontFamily: "Helvetica",
+                }}
+              >
+                FUNDSMAMA
+              </span>
+            </div>
             <button className="bg-[#C4957E] text-white px-6 py-2 rounded-lg hover:bg-[#B3846D] transition-colors">
               Sign up for Updates
             </button>
@@ -74,8 +89,7 @@ const Footer = () => {
 
             {/* Column 2 */}
             <div>
-            <h1 className="text-3xl font-bold">Company</h1> <br />
-
+              <h1 className="text-3xl font-bold">Company</h1> <br />
               <ul className="space-y-2">
                 <li>
                   <a
@@ -169,7 +183,7 @@ const Footer = () => {
                 </li>
                 <li className="text-xl font-semibold hover:text-gray-600"></li>
                 <li className="text-xl font-semibold hover:text-gray-600">
-                  +91-96505 53609
+                  +91-97117 11026
                 </li>
               </ul>
             </div>

@@ -35,7 +35,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         {/* Left content */}
         <div
           className="flex flex-col ml-12 gap-6 lg:gap-20 w-full lg:w-[60%] pt-4 lg:pt-0 home-left coolvetica"
-          style={{ color: `${COLOR ? "#163312" : "#163312"}`, zIndex: "1000" }}
+          style={{ color: `${COLOR ? "black" : "#163312"}`, zIndex: "1000" }}
         >
           <h1
             className="text-3xl lg:text-[3.2rem] font-bold leading-tight"

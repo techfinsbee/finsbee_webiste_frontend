@@ -44,7 +44,7 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                       className="inline-block"
                       style={{
                         animation: Color
-                          ? `text-color-shift 5s ease infinite`
+                          ? `${TXTCOLOR?'text-color-blue-shift 5s ease infinite':'text-color-shift 5s ease infinite'}`
                           : " ",
                         animationDelay: Color ? `${index * 0.1}s` : "",
                         color: Color
@@ -77,19 +77,19 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                         @keyframes text-color-blue-shift {
                           0%,
                           100% {
-                            color: #09615d;
+                            color: black;
                           }
                           20% {
-                            color: rgb(104, 230, 223);
+                            color: gray;
                           }
                           40% {
-                            color: #09615d;
+                            color: black;
                           }
                           60% {
-                            color: rgb(104, 230, 223);
+                            color: gray;
                           }
                           80% {
-                            color: rgb(104, 230, 223);
+                            color: gray;
                           }
                         }
                       `}</style>

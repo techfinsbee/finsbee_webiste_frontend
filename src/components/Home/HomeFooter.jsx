@@ -107,7 +107,7 @@ const HomeFooter = ({ COLOR }) => {
                 </li>
                 <li className="text-xl font-semibold hover:text-white-600 flex gap-2">
                   <img src="/Frame.svg" alt="" />
-                  +91-96505 53609
+                  +91-97117 11026
                 </li>
                 <li>
                   <a

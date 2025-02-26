@@ -97,7 +97,7 @@ const LoanBox = ({
           className="text-xl mb-2 coolvetica"
           style={{
             fontWeight: "750",
-            color: `${COLOR ? "#112A00" : "#112A00"}`,
+            color: `${COLOR ? "black" : "#112A00"}`,
           }}
         >
           {title}
@@ -229,7 +229,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               justifyContent: "center",
               gap: "10px",
               fontWeight: "700",
-              color: `${COLOR ? "#163312" : "#163312"}`,
+              color: `${COLOR ? "black" : "#163312"}`,
               fontFamily: "Helvetica",
             }}
           >
