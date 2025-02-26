@@ -109,19 +109,31 @@ const HomeSteps = ({ StepColor, stepImage }) => {
   };
   return (
     <section
-      className="step-section p-0 min-h-fit"
+      className={`step-section p-0  ${
+        window.innerWidth > 1400 ? "min-h-[100vh]" : "min-h-fit"
+      }`}
       style={{
         borderRadius: "50px",
       }}
     >
-      <div className="flex flex-col first-div w-full m-0">
-        <div className="flex flex-row justify-start w-full steps">
+      <div
+        className={`${
+          window.innerWidth < 1400 ? "" : `${window.innerHeight<1600?'h-[90vh]':'h-[100vh]'}`
+        } flex flex-col first-div w-full m-0`}
+      >
+        <div
+          className={`flex flex-row justify-start w-full steps ${
+            window.innerWidth < 1400 ? "" : `${window.innerHeight<1600?'h-[90vh]':'h-[100vh]'}`
+          }`}
+        >
           <div
-            className="w-1/2 relative steps-content overflow-hidden step-image flex justify-center"
+            className={`w-1/2 relative steps-content overflow-hidden step-image flex justify-center ${
+              window.innerWidth < 1400 ? "" : `${window.innerHeight<1600?'h-[90vh]':'h-[100vh]'}`
+            }`}
             style={{
               background: `${StepColor.left ? StepColor.left : "#97F15D"}`,
               borderTopLeftRadius: "50px",
-              height:`${window.innerHeight>1022?'80vh':''}`
+              height: `${window.innerHeight > 1022 ? "80vh" : "100vh"}`,
             }}
           >
             <div
@@ -167,17 +179,22 @@ const HomeSteps = ({ StepColor, stepImage }) => {
                 alt=""
                 className="h-full object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400 ? `${window.innerHeight>1000?'-150px':'-60px'}` : "-80px"}`,
+                  bottom: `${
+                    window.innerWidth > 1400
+                      ? `${window.innerHeight > 1000 ? "-150px" : "-60px"}`
+                      : "-80px"
+                  }`,
                   position: "relative",
                 }}
               />
             </div>
           </div>
           <div
-            className="w-1/2 steps-content p-10"
+            className="w-1/2 steps-content p-10 flex flex-col justify-center align-center"
             style={{
               borderTopRightRadius: "50px",
               background: `${StepColor.right ? StepColor.right : "#112B00"}`,
+              height: `${window.innerHeight > 1022 ? "80vh" : "100vh"}`,
             }}
           >
             <div className="flex flex-col">
@@ -245,18 +262,24 @@ const HomeSteps = ({ StepColor, stepImage }) => {
               stepImage={stepImage}
             />
           ) : (
-            <HomeMobileStepsCarousel steps={steps_content} images={images} stepImage={stepImage}/>
+            <HomeMobileStepsCarousel
+              steps={steps_content}
+              images={images}
+              stepImage={stepImage}
+            />
           )}
         </div>
       </div>
 
       <style jsx>{`
-      
-      @media(min-height:900px){
-        .step-section, .first-div, .image-cont,.steps-content{
-          min-height:100vh;
+        @media (min-height: 900px) {
+          .step-section,
+          .first-div,
+          .image-cont,
+          .steps-content {
+            min-height: 100vh;
+          }
         }
-      }
         .animate-ping {
           animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
         }
