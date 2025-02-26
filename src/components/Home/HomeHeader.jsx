@@ -170,7 +170,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
             style={{
               fontWeight: "800",
               fontFamily: "Helvetica",
-              color:`${TXTCOLOR?'#09615D':'#163312'}`
+              color:`${TXTCOLOR?'black':'#163312'}`
             }}
           >
             FUNDSMAMA

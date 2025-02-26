@@ -10,14 +10,12 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
 
     return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <div className="w-full max-w-2xl px-1 mt-5">
       <div className="flex  sm:text-left gap-4 sm:gap-0">
         <div className="relative h-8">
-          <div
-            className="relative overflow-hidden h-[50px] sm:h-[80px] animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]"
-          >
+          <div className="relative overflow-hidden h-[50px] sm:h-[80px] animated-text inline-block w-[400px] sm:w-[300px] lg:w-[500px]">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
@@ -33,7 +31,9 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                 }}
               >
                 <span
-                  className={`block ${Color?'h-[250px]':'h-[250px]'} animate-height`}
+                  className={`block ${
+                    Color ? "h-[250px]" : "h-[250px]"
+                  } animate-height`}
                   style={{
                     fontFamily: Color ? "Helvetica" : "roboto-slab",
                   }}
@@ -44,7 +44,11 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                       className="inline-block"
                       style={{
                         animation: Color
-                          ? `${TXTCOLOR?'text-color-blue-shift 5s ease infinite':'text-color-shift 5s ease infinite'}`
+                          ? `${
+                              TXTCOLOR
+                                ? "text-color-blue-shift 5s ease infinite"
+                                : "text-color-shift 5s ease infinite"
+                            }`
                           : " ",
                         animationDelay: Color ? `${index * 0.1}s` : "",
                         color: Color
@@ -77,19 +81,19 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                         @keyframes text-color-blue-shift {
                           0%,
                           100% {
-                            color: black;
+                            color: #09615d;
                           }
                           20% {
-                            color: gray;
+                            color: rgb(104, 230, 223);
                           }
                           40% {
-                            color: black;
+                            color: #09615d;
                           }
                           60% {
-                            color: gray;
+                            color: rgb(104, 230, 223);
                           }
                           80% {
-                            color: rgb(77, 72, 72);
+                            color: rgb(104, 230, 223);
                           }
                         }
                       `}</style>
@@ -112,9 +116,9 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
           .animated-text {
             font-size: 2rem !important;
           }
-            .animate-height{
-              height: 20px !important;
-            }
+          .animate-height {
+            height: 20px !important;
+          }
         }
       `}</style>
     </div>
