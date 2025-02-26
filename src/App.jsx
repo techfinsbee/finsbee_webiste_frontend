@@ -113,7 +113,7 @@ function App() {
           DIVCOLOR="#28B3ACA1"
         ></HomeAnimatedTitle>
         <AnimatedPhones Home="Home"></AnimatedPhones>
-        <RewardsSection COLOR="#"></RewardsSection>
+        <RewardsSection COLOR="#" TXTCOLOR="#"></RewardsSection>
         <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
         <HomeCibilScoreSection
           COLOR="#09615D"

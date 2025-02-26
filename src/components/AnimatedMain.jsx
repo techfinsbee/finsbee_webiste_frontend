@@ -89,7 +89,7 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                             color: gray;
                           }
                           80% {
-                            color: gray;
+                            color: rgb(77, 72, 72);
                           }
                         }
                       `}</style>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const HomeFeatureCardsCarousel = ({ COLOR }) => {
+const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -22,7 +22,7 @@ const HomeFeatureCardsCarousel = ({ COLOR }) => {
         </div>
       ),
       bgColor: `${COLOR?'bg-[#18ADA5B2]':'bg-[#FEFFC5]'}`,
-      txtColor: "text-[#323300]",
+      txtColor: `${TXTCOLOR?'text-black':'text-[#323300]'}`,
     },
     {
       title: "Discover Mamamart",
@@ -33,7 +33,7 @@ const HomeFeatureCardsCarousel = ({ COLOR }) => {
         </div>
       ),
       bgColor: `${COLOR?'bg-[#18ADA56E]':'bg-[#FFF1F0]'}`,
-      txtColor: "text-[#331800]",
+      txtColor: `${TXTCOLOR?'text-black':'text-[#331800]'}`,
     },
     {
       title: "Flexible payment options",
@@ -49,17 +49,17 @@ const HomeFeatureCardsCarousel = ({ COLOR }) => {
         </div>
       ),
       bgColor: `${COLOR?'bg-[#03A29517]':'bg-[#CAFFDC]'}`,
-      txtColor: "text-[#003813]",
+      txtColor: `${TXTCOLOR?'text-black':'text-[#003813]'}`,
     },
   ];
 
-  // useEffect(() => {
-  //   const autoSlide = setInterval(() => {
-  //     setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
-  //   }, 3000);
+  useEffect(() => {
+    const autoSlide = setInterval(() => {
+      setCurrentSlide((prev) => (prev === features.length - 1 ? 0 : prev + 1));
+    }, 3000);
 
-  //   return () => clearInterval(autoSlide);
-  // }, [features.length]);
+    return () => clearInterval(autoSlide);
+  }, [features.length]);
 
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);

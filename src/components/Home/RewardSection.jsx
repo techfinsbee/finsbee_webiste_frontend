@@ -1,6 +1,6 @@
 import React from "react";
 import HomeFeatureCardsCarousel from "./HomeFeatureCardsCarousel";
-const RewardsSection = ({ COLOR }) => {
+const RewardsSection = ({ COLOR, TXTCOLOR }) => {
   return (
     <section className="w-full py-10 px-4 lg:px-4 reward-section">
       <div className="grid grid-cols-1 md:grid-cols-2 rewards coolvetica">
@@ -8,8 +8,8 @@ const RewardsSection = ({ COLOR }) => {
         <div className={`${COLOR?"bg-[#18ADA5B2]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col w-[96%] ml-2`}>
           <div className="">
             <h2
-              className="text-2xl color-[#323300] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
-              style={{ color: "#323300" }}
+              className="text-2xl lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
+              style={{ color: `${TXTCOLOR?'black':"#323300"}` }}
             >
               FundsMama
               <br />
@@ -39,8 +39,8 @@ const RewardsSection = ({ COLOR }) => {
           <div className={`${COLOR?"bg-[#18ADA56E]":"bg-[#FFE8D4]"} reward-2 rounded-2xl px-4 py-0 flex justify-between items-center w-[95%]`}>
             <div>
               <h2
-                className="text-2xl text-[#331800]  lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
-                style={{ color: "#331800" }}
+                className="text-2xl  lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
+                style={{ color: `${TXTCOLOR?'black':'#331800'}` }}
               >
                 Discover
                 <br />
@@ -62,7 +62,7 @@ const RewardsSection = ({ COLOR }) => {
             <div>
               <h2
                 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
-                style={{ color: "#003813" }}
+                style={{ color: `${TXTCOLOR?'black':'#003813'}` }}
               >
                 Flexible Payment
                 <br />
@@ -83,7 +83,7 @@ const RewardsSection = ({ COLOR }) => {
         </div>
       </div>
       <div className="mobile-rewards">
-        <HomeFeatureCardsCarousel COLOR={COLOR}></HomeFeatureCardsCarousel>
+        <HomeFeatureCardsCarousel COLOR={COLOR} TXTCOLOR={TXTCOLOR}></HomeFeatureCardsCarousel>
       </div>
       <style jsx>{`
         .mobile-rewards {
