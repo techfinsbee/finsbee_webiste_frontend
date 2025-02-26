@@ -68,11 +68,13 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
       setIsMenuOpen(false);
       return;
     }
-    if (sectionId === "/home") {
-      navigate(sectionId);
+
+    if(location.pathname === "/home/landing" && sectionId === '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
     }
+    
     // If we're on abou-us page and clicking a section link, first navigate to home
     if (
       location.pathname === "/aboutus" ||
@@ -94,25 +96,6 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
       return;
     }
 
-    if (
-      location.pathname === "/aboutus" ||
-      location.pathname === "/terms-and-conditions" ||
-      location.pathname === "/faqs" ||
-      location.pathname === "/privacy-policy" ||
-      location.pathname === "/lending-partners" ||
-      location.pathname === "/mama-calculator" ||
-      location.pathname === "/mama-shoppingmall" ||
-      location.pathname === "/features" ||
-      location.pathname === "/testimonials" ||
-      location.pathname === "/blog" ||
-      location.pathname === "/sitemap" ||
-      location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && !sectionId.startsWith("/home"))
-    ) {
-      navigate("/home", { state: { scrollTo: sectionId } });
-      setIsMenuOpen(false);
-      return;
-    }
 
     // Normal section scrolling on home page
     const section = document.getElementById(sectionId);

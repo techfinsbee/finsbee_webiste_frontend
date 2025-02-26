@@ -5,15 +5,15 @@ const PressRelease = () => {
   const dropdownData = [
     {
       title: "Home",
-      link: "/home",
+      link: "/",
     },
     {
       title: "Loans",
-      link: "loan-section",
+      link: "loan-section-home",
     },
     {
       title: "Mart",
-      link: "mart",
+      link: "mart-home",
     },
     {
       title: "About Us",
@@ -21,7 +21,7 @@ const PressRelease = () => {
     },
     {
       title: "Contact Us",
-      link: "contact-us",
+      link: "contact-us-home",
     },
   ];
  return (

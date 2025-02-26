@@ -43,7 +43,7 @@ const Landing = () => {
   const dropdownData = [
     {
       title: "Home",
-      link: "/home",
+      link: "/",
     },
     {
       title: "Loans",

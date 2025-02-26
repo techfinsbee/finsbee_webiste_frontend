@@ -18,23 +18,23 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Show header when scrolling up or at the top
       if (currentScrollY < lastScrollY || currentScrollY < 100) {
         setIsVisible(true);
-      } 
+      }
       // Hide header when scrolling down and not at the top
       else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', controlHeader);
-    
+    window.addEventListener("scroll", controlHeader);
+
     return () => {
-      window.removeEventListener('scroll', controlHeader);
+      window.removeEventListener("scroll", controlHeader);
     };
   }, [lastScrollY]);
 
@@ -45,45 +45,35 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       setIsMenuOpen(false);
       return;
     }
-
-    // If we're on aboutus page and clicking a section link, first navigate to home
-    if (
-      location.pathname === "/aboutus" ||
-      location.pathname === "/terms-and-conditions" ||
-      location.pathname === "/faqs" ||
-      location.pathname === "/privacy-policy" ||
-      location.pathname === "/lending-partners" ||
-      location.pathname === "/mama-calculator" ||
-      location.pathname === "/mama-shoppingmall" ||
-      location.pathname === "/features" ||
-      location.pathname === "/testimonials" ||
-      location.pathname === "/blog" ||
-      location.pathname === "/sitemap" ||
-      location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && !sectionId.startsWith("/"))
-    ) {
-      navigate("/home", { state: { scrollTo: sectionId } });
+    if(location.pathname === "/home" && sectionId === '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
+      setIsMenuOpen(false);
+      return;
+    }
+    if(location.pathname === "/" && sectionId === '/') {
+      navigate('/', { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
     }
 
+    // If we're on aboutus page and clicking a section link, first navigate to home
     if (
-      location.pathname === "/aboutus" ||
-      location.pathname === "/terms-and-conditions" ||
-      location.pathname === "/faqs" ||
-      location.pathname === "/privacy-policy" ||
-      location.pathname === "/lending-partners" ||
-      location.pathname === "/mama-calculator" ||
-      location.pathname === "/mama-shoppingmall" ||
-      location.pathname === "/features" ||
-      location.pathname === "/testimonials" ||
-      location.pathname === "/blog" ||
-      location.pathname === "/sitemap" ||
-      // location.pathname === "/home/blue" ||
-      location.pathname === "/press-release" ||
-      (location.pathname === "/customer-care" && !sectionId.startsWith("/home"))
+      (location.pathname === "/aboutus" ||
+        location.pathname === "/terms-and-conditions" ||
+        location.pathname === "/faqs" ||
+        location.pathname === "/privacy-policy" ||
+        location.pathname === "/lending-partners" ||
+        location.pathname === "/mama-calculator" ||
+        location.pathname === "/mama-shoppingmall" ||
+        location.pathname === "/features" ||
+        location.pathname === "/testimonials" ||
+        location.pathname === "/blog" ||
+        location.pathname === "/sitemap" ||
+        location.pathname === "/press-release" ||
+        location.pathname === "/customer-care") &&
+      !sectionId.startsWith("/")
     ) {
-      navigate("/home", { state: { scrollTo: sectionId } });
+      navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       return;
     }
@@ -157,20 +147,24 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
 
   return (
     <header
-    className={`header-home manrope ${!isVisible ? 'hidden' : ''}`}
+      className={`header-home manrope ${!isVisible ? "hidden" : ""}`}
       style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
     >
       <a href="/" className="head-fund">
         <div className="flex">
           <div className="w-[100px] object-cover">
-            <img src="/logo2.svg" className="logo-img w-[135px] top-2 left-0 lg:left-14 absolute object-cover" alt="FUNDSMAMA" />
+            <img
+              src="/logo2.svg"
+              className="logo-img w-[135px] top-2 left-0 lg:left-14 absolute object-cover"
+              alt="FUNDSMAMA"
+            />
           </div>
           <span
             className="text-4xl logo-head header-fundmama flex juistify-center items-center"
             style={{
               fontWeight: "800",
               fontFamily: "Helvetica",
-              color:`${TXTCOLOR?'black':'#163312'}`
+              color: `${TXTCOLOR ? "black" : "#163312"}`,
             }}
           >
             FUNDSMAMA

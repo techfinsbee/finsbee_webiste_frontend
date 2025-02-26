@@ -20,15 +20,15 @@ import Home from "./Home.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />
+    element: <App />
   },
   {
     path:'/home',
     element: <Home />
   },
   {
-    path:'/home/blue',
-    element: <App />
+    path:'/home/landing',
+    element: <Landing />
   },
   {
     path: "/aboutus",
