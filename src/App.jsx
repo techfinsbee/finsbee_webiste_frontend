@@ -4,6 +4,7 @@ import "./App.css";
 import HomeMainSection from "./components/Home/HomeMainSection";
 import Header from "./components/Header";
 
+import DayLoan from "./components/Home/DayLoan";
 import HomeHeader from "./components/Home/HomeHeader";
 import HomeAnimatedCounter from "./components/Home/HomeAnimatedCounter";
 import HomeLoanDisplay from "./components/Home/HomeLoanDisplay";
@@ -97,6 +98,7 @@ function App() {
           TXTCOLOR="#"
         ></HomeHeader>
         <Outlet />
+        <DayLoan></DayLoan>
         <HomeMainSection
           COLOR="#18ADA5BF"
           downloadImage={downloadImage}
