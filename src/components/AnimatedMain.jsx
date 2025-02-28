@@ -51,9 +51,9 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                             }`
                           : " ",
                         animationDelay: Color ? `${index * 0.1}s` : "",
-                        color: Color
-                          ? "#163312"
-                          : `${TXTCOLOR ? "#09615D" : "#CD855F"}`,
+                        color: TXTCOLOR
+                          ? "#09615D"
+                          : `${Color ? "#163312" : "#CD855F"}`,
                         fontWeight: Color ? "700" : "bold",
                       }}
                     >
