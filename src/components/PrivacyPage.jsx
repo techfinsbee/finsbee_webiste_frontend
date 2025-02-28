@@ -1,5 +1,6 @@
 import React from 'react';
-import Header from './Header';
+// import Header from './Header';
+import HomeHeader from './Home/HomeHeader';
 const PrivacyPage = () => {
   const dropdownData = [
     {
@@ -25,7 +26,12 @@ const PrivacyPage = () => {
   ];
   return (
     <>
-          <Header dropdownData={dropdownData}></Header>
+         <HomeHeader
+          dropdownData={dropdownData}
+          COLOR="#fff"
+          Hover="home"
+          TXTCOLOR="#"
+        ></HomeHeader>
 
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Privacy Policy</h1>

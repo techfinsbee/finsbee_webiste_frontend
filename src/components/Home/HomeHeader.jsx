@@ -69,9 +69,8 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         location.pathname === "/testimonials" ||
         location.pathname === "/blog" ||
         location.pathname === "/sitemap" ||
-        location.pathname === "/press-release" ||
-        location.pathname === "/customer-care") &&
-      !sectionId.startsWith("/")
+        location.pathname === "/press-release" || 
+        location.pathname === "/customer-care")
     ) {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);

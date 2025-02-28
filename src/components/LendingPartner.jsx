@@ -1,12 +1,13 @@
-import Header from "./Header";
+// import Header from "./Header";
+import HomeHeader from "./Home/HomeHeader";
 const LendingPartner = () => {
   const LendingPartners = [
-    {partner:"Olyv", link: "http://olyv.co.in"},
-    {partner:"Meghdoot Mercantile", link:"https://meghdootmercantile.com"},
-    {partner:"Chintamani", link:"https://chintamanifinlease.com"},
-    {partner:"Girdhar Finlease", link:"#"},
-    {partner:"Payme", link:"https://paymeindia.in"},
-    {partner:"Capri Global", link:"https://capriloans.in"},
+    {partner:"Olyv", link: "http://olyv.co.in",img:'/lending_partner2.png'},
+    {partner:"Meghdoot Mercantile", link:"https://meghdootmercantile.com",img:'/lending_partner6.png'},
+    {partner:"Chintamani", link:"https://chintamanifinlease.com",img:'/lending_partner7.png'},
+    {partner:"Girdhar Finlease", link:"#",img:'/lending_partner1.png'},
+    {partner:"Payme", link:"https://paymeindia.in",img:'/lending_partner4.png'},
+    {partner:"Capri Global", link:"https://capriloans.in",img:'/lending_partner.png'},
   ];
   const dropdownData = [
     {
@@ -32,7 +33,12 @@ const LendingPartner = () => {
   ];
   return (
     <>
-          <Header dropdownData={dropdownData}></Header>
+         <HomeHeader
+          dropdownData={dropdownData}
+          COLOR="#fff"
+          Hover="home"
+          TXTCOLOR="#"
+        ></HomeHeader>
 
     <section className="py-16 px-4">
       <div className="max-w-6xl mx-auto">
@@ -49,8 +55,11 @@ const LendingPartner = () => {
               rel="noopener noreferrer"
               className="block"
             >
-              <div className="bg-white p-6 rounded-lg  hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full flex items-center justify-center group">
-                <div className="text-xl font-medium text-gray-700 group-hover:text-[#CD855F] transition-colors duration-300 text-center">
+              
+              <div className="bg-[#09615D] p-4 rounded-lg text-white hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full flex items-center justify-center group gap-2">
+              <img src={info.img} alt=""  className="w-[8vw]"/>
+                <div className="text-xl font-medium  group-hover:text-gray-200 transition-colors duration-300 text-center">
+                  
                   {info.partner}
                 </div>
               </div>

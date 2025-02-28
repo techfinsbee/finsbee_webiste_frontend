@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Header";
-
+// import Header from "./Header";
+import HomeHeader from "./Home/HomeHeader";
 const TermsAndConditions = () => {
   const dropdownData = [
     {
@@ -26,7 +26,12 @@ const TermsAndConditions = () => {
   ];
   return (
     <>
-            <Header dropdownData={dropdownData}></Header>
+            <HomeHeader
+          dropdownData={dropdownData}
+          COLOR="#fff"
+          Hover="home"
+          TXTCOLOR="#"
+        ></HomeHeader>
 
       <div className="max-w-4xl mx-auto p-6 ">
         <h1 className="text-3xl font-bold mb-8 text-center">

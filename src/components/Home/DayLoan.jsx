@@ -132,10 +132,10 @@ const DayLoan = () => {
   // Link style
   const linkStyle = {
     textDecoration: "none",
-    color: "#0066cc",
-    fontWeight: "bold",
+    color: "black",
+    fontWeight: "700",
     display: "block",
-    fontSize: "16px",
+    fontSize: "20px",
     lineHeight: "1.5",
     marginBottom: "20px",
     transition: "color 0.3s ease",
@@ -200,7 +200,7 @@ const DayLoan = () => {
             rel="noopener noreferrer"
             style={linkStyle}
             onMouseOver={(e) => e.currentTarget.style.color = "#0044aa"}
-            onMouseOut={(e) => e.currentTarget.style.color = "#0066cc"}
+            onMouseOut={(e) => e.currentTarget.style.color = "black"}
           >
             Click here to repay your loan and view your past loan inquiries with FundsMama.
           </a>

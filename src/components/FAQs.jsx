@@ -1,4 +1,5 @@
-import Header from "./Header"
+// import Header from "./Header"
+import HomeHeader from "./Home/HomeHeader";
 const FAQs = () => {
   const dropdownData = [
     {
@@ -23,7 +24,12 @@ const FAQs = () => {
     },
   ];
   return (<>
-        <Header dropdownData={dropdownData}></Header>
+        <HomeHeader
+          dropdownData={dropdownData}
+          COLOR="#fff"
+          Hover="home"
+          TXTCOLOR="#"
+        ></HomeHeader>
 
     <div className="faqs">
       <h1>FAQs</h1>

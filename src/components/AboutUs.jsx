@@ -1,6 +1,7 @@
 import React from "react";
 import { Download } from "lucide-react";
 import Header from "./Header";
+import HomeHeader from "./Home/HomeHeader";
 const AboutUs = () => {
   const loanOptions = [
     "Personal Loans",
@@ -65,17 +66,21 @@ const AboutUs = () => {
     <div
       className="min-h-screen "
       style={{
-        background:
-          "linear-gradient(to bottom, rgb(255, 252, 247), rgb(254, 245, 233))",
+        
       }}
     >
-            <Header dropdownData={dropdownData}></Header>
+          <HomeHeader
+          dropdownData={dropdownData}
+          COLOR="#fff"
+          Hover="home"
+          TXTCOLOR="#"
+        ></HomeHeader>
 
       {/* Hero Section */}
       <section className=" py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-6">
-            Welcome to <span className="text-[#CD855F]">FundsMama</span>
+            Welcome to <span className="text-[#09615D]">FundsMama</span>
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Where financial solutions meet rewarding experiences. We're not just
@@ -188,7 +193,7 @@ const AboutUs = () => {
             possibilities, and experience a platform that brings finance and
             lifestyle together.
           </p>
-          <button className="bg-[#d09c75]  px-8 py-3 rounded-full font-semibold flex items-center mx-auto hover:bg-[#eec4a4] transition-colors">
+          <button className="bg-[#09615D]  px-8 py-3 rounded-full font-semibold flex items-center mx-auto text-white transition-colors">
             <Download className="w-5 h-5 mr-2" />
             Download Our App
           </button>

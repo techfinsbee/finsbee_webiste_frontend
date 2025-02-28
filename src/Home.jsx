@@ -15,6 +15,7 @@ import RewardsSection from './components/Home/RewardSection';
 import FeaturedBrands from './components/FeaturedBrands'
 import HomeFooter from './components/Home/HomeFooter';
 import HomeCibilScoreSection from './components/Home/HomeCibilScoreSection';
+import DayLoan from './components/Home/DayLoan';
 function Home() {
 
 
@@ -70,6 +71,7 @@ function Home() {
     <>
       <HomeHeader dropdownData={dropdownData} COLOR="#fff" Hover="home"></HomeHeader>
       <Outlet />
+      <DayLoan></DayLoan>
       <HomeMainSection></HomeMainSection>
       <HomeAnimatedCounter></HomeAnimatedCounter>
       <HomeLoanDisplay loanImages=""></HomeLoanDisplay>

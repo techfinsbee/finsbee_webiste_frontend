@@ -16,6 +16,7 @@ import Blog from "./components/Blog.jsx";
 import Feature from "./components/Feature.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./Landing.jsx";
+import './App.css'
 import Home from "./Home.jsx";
 const router = createBrowserRouter([
   {
