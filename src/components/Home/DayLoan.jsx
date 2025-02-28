@@ -1,106 +1,194 @@
 import React, { useState, useEffect } from "react";
 
 const DayLoan = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  const [isVisible, setIsVisible] = useState(false);
+  const [animationState, setAnimationState] = useState("hidden"); // hidden, entering, visible, exiting
 
-  // Handle window resize
+  // Show popup after 1 second
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+      setAnimationState("entering");
 
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
+      // After entering animation completes
+      setTimeout(() => {
+        setAnimationState("visible");
+      }, 500);
+    }, 500);
+
+    return () => clearTimeout(timer);
   }, []);
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+  const closePopup = () => {
+    // Start exit animation
+    setAnimationState("exiting");
+
+    // After exit animation completes
+    setTimeout(() => {
+      setIsVisible(false);
+      setAnimationState("hidden");
+    }, 500);
   };
 
-  // Adjust sidebar width based on screen size
-  const getSidebarWidth = () => {
-    if (windowWidth < 480) return "180px";
-    if (windowWidth < 768) return "200px";
-    return "240px";
-  };
-
-  const sidebarWidth = getSidebarWidth();
-
-  const sidebarStyle = {
+  // Modal overlay style (blurred background)
+  const overlayStyle = {
     position: "fixed",
-    left: isOpen ? 0 : `-${sidebarWidth}`,
-    top: windowWidth < 768 ? "40%" : "50%", // Position higher on mobile
-    transform: "translateY(-50%)",
-    backgroundColor: "#f8f9fa",
-    padding: windowWidth < 480 ? "15px" : "20px",
-    borderRadius: "0 10px 10px 0",
-    boxShadow: "2px 0 10px rgba(0,0,0,0.1)",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor:
+      animationState === "entering"
+        ? "rgba(0, 0, 0, 0)"
+        : animationState === "exiting"
+        ? "rgba(0, 0, 0, 0)"
+        : "rgba(0, 0, 0, 0.5)",
+    backdropFilter:
+      animationState === "entering"
+        ? "blur(0px)"
+        : animationState === "exiting"
+        ? "blur(0px)"
+        : "blur(5px)",
     zIndex: 100000,
-    transition: "left 0.3s ease-in-out",
-    width: sidebarWidth,
+    display: isVisible ? "flex" : "none",
+    justifyContent: "center",
+    alignItems: "center",
+    transition: "backdrop-filter 0.5s ease, background-color 0.5s ease",
   };
 
-  const buttonStyle = {
-    position: "fixed",
+  // Modal content style
+  const modalStyle = {
+    backgroundColor: "white",
+    borderRadius: "10px",
+    padding: "30px",
+    width: "90%",
+    maxWidth: "400px",
+    boxShadow: "0 5px 15px rgba(0, 0, 0, 0.3)",
+    position: "relative",
+    textAlign: "center",
+    opacity:
+      animationState === "entering" ? 0 : animationState === "exiting" ? 0 : 1,
+    transform:
+      animationState === "entering"
+        ? "scale(0.9) translateY(20px)"
+        : animationState === "exiting"
+        ? "scale(0.9) translateY(20px)"
+        : "scale(1) translateY(0)",
+    transition:
+      "opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+  };
+
+  // Close button style
+  const closeButtonStyle = {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    backgroundColor: "transparent",
+    border: "none",
+    fontSize: "24px",
+    cursor: "pointer",
+    color: "#333",
+    width: "30px",
+    height: "30px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    left: isOpen ? sidebarWidth : windowWidth < 480 ? "5px" : "10px",
-    top: windowWidth < 768 ? "40%" : "50%", // Position higher on mobile
-    transform: "translateY(-50%)",
-    backgroundColor: "black",
-    color: "white",
-    border: "none",
     borderRadius: "50%",
-    width: windowWidth < 480 ? "40px" : "50px",
-    height: windowWidth < 480 ? "40px" : "50px",
-    cursor: "pointer",
-    zIndex: 100001,
-    fontSize: windowWidth < 480 ? "24px" : "30px",
-    fontWeight: "700",
-    transition: "left 0.3s ease-in-out",
+    transition: "background-color 0.3s ease",
   };
 
+  // Link style
   const linkStyle = {
     textDecoration: "none",
     color: "#0066cc",
     fontWeight: "bold",
     display: "block",
-    fontSize: windowWidth < 480 ? "12px" : "14px",
-    lineHeight: "1.4",
+    fontSize: "16px",
+    lineHeight: "1.5",
+    marginBottom: "20px",
+    transition: "color 0.3s ease",
+  };
+
+  // Logo container style
+  const logoContainerStyle = {
+    marginTop: "20px",
+    display: "flex",
+    justifyContent: "center",
+    opacity:
+      animationState === "entering" ? 0 : animationState === "exiting" ? 0 : 1,
+    transform:
+      animationState === "entering"
+        ? "translateY(10px)"
+        : animationState === "exiting"
+        ? "translateY(10px)"
+        : "translateY(0)",
+    transition: "opacity 0.6s ease, transform 0.6s ease",
+    transitionDelay: "0.1s",
   };
 
   return (
     <>
-      <div style={sidebarStyle}>
-        <a
-          href="https://30daysloan.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={linkStyle}
-        >
-          Click here to make repayment of your loan and access your past loan
-          inquiries with FundsMama.
-        </a>
-      </div>
-      <button
-        style={buttonStyle}
-        onClick={toggleSidebar}
-        aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
-      >
-        <div className="flex justify-center align-center">
-          <span className="relative -top-[2px]">{isOpen ? "<" : ">"}</span>
+      {/* Modal Overlay */}
+      <div style={overlayStyle} onClick={closePopup}>
+        {/* Modal Content - stopPropagation prevents closing when clicking inside */}
+        <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
+          {/* Close Button - removed rotation animation */}
+          <button
+            style={closeButtonStyle}
+            onClick={closePopup}
+            aria-label="Close popup"
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = "#f0f0f0";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+            }}
+          >
+            ×
+          </button>
+
+          {/* Loan Information */}
+          <a
+            href="https://30daysloan.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={linkStyle}
+            onMouseOver={(e) => (e.currentTarget.style.color = "#0044aa")}
+            onMouseOut={(e) => (e.currentTarget.style.color = "#0066cc")}
+          >
+            Click here to repay your loan and view your past loan inquiries with
+            FundsMama.
+          </a>
+
+          {/* Logo with link */}
+          <div style={logoContainerStyle}>
+            <a
+              href="https://30daysloan.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://30daysloan.com/static/media/logo1.73eea7b0e17697f8fa1edcabe1e98422.svg"
+                alt="FundsMama Logo"
+                style={{
+                  maxWidth: "200px",
+                  height: "auto",
+                  transition: "transform 0.3s ease",
+                  cursor: "pointer",
+                }}
+                onMouseOver={(e) =>
+                  (e.currentTarget.style.transform = "scale(1.05)")
+                }
+                onMouseOut={(e) =>
+                  (e.currentTarget.style.transform = "scale(1)")
+                }
+              />
+            </a>
+          </div>
         </div>
-      </button>
+      </div>
     </>
   );
 };
 
-export default DayLoan; 
+export default DayLoan;
