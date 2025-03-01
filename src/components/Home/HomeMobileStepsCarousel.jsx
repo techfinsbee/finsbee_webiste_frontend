@@ -119,7 +119,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: "spring",ease: "easeInOut", stiffness: 300, damping: 30 }}
           className="flex flex-col items-center w-full"
           style={{ overflow: "hidden" }}
         >

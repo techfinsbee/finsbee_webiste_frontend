@@ -45,6 +45,11 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       setIsMenuOpen(false);
       return;
     }
+    if(location.pathname === "/" && sectionId === "home-home"){
+      navigate('/', { state: { scrollTo: sectionId } });
+      setIsMenuOpen(false);
+      return;
+    }
     if(location.pathname === "/home" && sectionId === '/') {
       navigate('/', { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);

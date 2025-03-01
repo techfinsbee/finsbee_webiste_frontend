@@ -46,7 +46,7 @@ function App() {
   const dropdownData = [
     {
       title: "Home",
-      link: "/",
+      link: "home-home",
     },
     {
       title: "Loans",
