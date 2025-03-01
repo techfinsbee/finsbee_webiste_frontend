@@ -243,7 +243,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col mt-3">
                   <h2 className="text-2xl desc-title text-white font-bold coolvetica">
                     {item.title}
                   </h2>

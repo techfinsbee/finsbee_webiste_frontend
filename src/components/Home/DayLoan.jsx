@@ -89,7 +89,7 @@ const DayLoan = () => {
   const arrowButtonStyle = {
     position: "fixed",
     left: "20px",
-    top: "50%",
+    top: "50vh",
     transform: "translateY(-50%)",
     zIndex: 100000,
     backgroundColor: "black",
