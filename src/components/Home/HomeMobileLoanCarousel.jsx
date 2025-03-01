@@ -35,7 +35,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
     setTimeout(() => setAutoPlay(true), 3000);
   };
   const handleDragEnd = (event, info) => {
-    const threshold = 100;
+    const threshold = 30;
     setDragDirection(info.offset.x);
 
     if (info.offset.x > threshold) {
@@ -57,10 +57,10 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
+          initial={{ opacity: 0, x: dragDirection > 0 ? -200 : 200 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          exit={{ opacity: 0, x: dragDirection > 0 ? 200 : -200 }}
+          transition={{ type: "ease",ease: "easeInOut" , stiffness: 100, damping: 30 }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}

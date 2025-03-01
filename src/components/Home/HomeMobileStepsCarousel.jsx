@@ -43,8 +43,8 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const isLeftSwipe = distance > 10;
+    const isRightSwipe = distance < -10;
 
     if (isLeftSwipe) {
       setCurrentIndex((prev) => (prev + 1) % steps.length);
