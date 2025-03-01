@@ -66,7 +66,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
           dragElastic={0.2}
           onDragEnd={handleDragEnd}
           className="flex flex-col items-center w-full"
-          style={{ overflowX: "hidden" }}
+          style={{ overflow: "hidden" }}
         >
           {/* Image */}
           <div className="w-full flex justify-center mb-4">

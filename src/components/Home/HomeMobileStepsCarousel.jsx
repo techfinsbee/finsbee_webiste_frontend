@@ -8,6 +8,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  
   useEffect(() => {
     // Preload images before rendering
     const preloadImages = () => {
@@ -37,7 +38,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
   const handleTouchMove = (e) => {
     setTouchEnd(e.touches[0].clientX);
   };
-  
+
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
 
@@ -56,14 +57,21 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
     // Reset touch values
     setTouchStart(0);
     setTouchEnd(0);
-    
+
     // Resume autoplay after 3 seconds
     setTimeout(() => setAutoPlay(true), 3000);
   };
 
+  // Separate coin animation variants
+  const coinVariants = {
+    initial: { opacity: 0, scale: 1 },
+    animate: { opacity: 1, scale: 1, transition: { delay: 0.4, duration: 0.5 } },
+    exit: { opacity: 0, scale: 1, transition: { duration: 0.3 } }
+  };
+
   return (
     <div
-      className={`relative w-full min-h-fit overflow-hidden touch-pan-y pb-10  mb-20`}
+      className={`relative w-full min-h-fit overflow-hidden touch-pan-y pb-10 mb-20`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -74,15 +82,6 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
         background: `${COLOR ? "#69B6B2" : "rgb(178, 255, 142)"}`,
       }}
     >
-      <div className="w-full h-full absolute">
-        <div className="flex absolute bottom-[30%] justify-center w-full">
-          <img
-            src="/step-coin.png"
-            alt="Coin background"
-            className={`object-cover w-[70%] relative object-center  relative `}
-          />
-        </div>
-      </div>
       <div className="text-center mt-10 flex flex-col gap-4">
         <h1
           className={`${
@@ -95,13 +94,32 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           With Fundsmama you unlock loans at lower prices
         </p>
       </div>
+      
+      {/* Static coin container positioned outside the animated content */}
+      <div className="w-full absolute top-[calc(50%-100px)] left-0 pointer-events-none z-10">
+        <div className="flex justify-center w-full">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentIndex}
+              src="/step-coin.png"
+              alt="Coin background"
+              className="object-cover w-[70%] object-center relative -bottom-[12vh]"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={coinVariants}
+            />
+          </AnimatePresence>
+        </div>
+      </div>
+      
       <AnimatePresence mode="wait">
-      <motion.div
+        <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: dragDirection > 0 ? -300 : 300 }}
+          initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: dragDirection > 0 ? 300 : -300 }}
-          transition={{ type: "spring", stiffness: 200, damping: 25 }}
+          exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           className="flex flex-col items-center w-full"
           style={{ overflow: "hidden" }}
         >

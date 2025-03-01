@@ -23,8 +23,8 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             className="absolute h-52 w-[90vw]"
             style={{
               borderRadius: "50%",
-              backgroundColor: `${DIVCOLOR ? DIVCOLOR : "rgb(178, 255, 142)"}`,
-              filter: `${COLOR ? "blur(150px)" : "blur(50px)"}`,
+              backgroundColor: `${DIVCOLOR ? "#28B3AC4A" : "rgb(178, 255, 142)"}`,
+              filter: `${COLOR ? "blur(200px)" : "blur(50px)"}`,
               zIndex: "-100000",
               top: "-30px",
             }}
@@ -47,11 +47,11 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
         .text-gradient {
           background: linear-gradient(
             to right,
-            #09615d 0%,
+            #09615DBD 0%,
             rgb(104, 230, 223) 50%,
-            #09615d 75%,
+            #09615DBD 75%,
 
-            #09615d 100%
+            #09615DBD 100%
           );
           -webkit-background-clip: text;
           background-clip: text;
