@@ -49,7 +49,7 @@ const FAQs = () => {
         {
           id: "Q3",
           question: "Is FundsMama an NBFC or a bank?",
-          answer: (<p>No, FundsMama is not an NBFC or a bank. We are a lending aggregator that partners with registered NBFCs and banks to facilitate loans for consumers. <a href='/lending-partners'>Click Here </a> to see our lending partners.</p>)
+          answer: (<p>No, FundsMama is not an NBFC or a bank. We are a lending aggregator that partners with registered NBFCs and banks to facilitate loans for consumers. <a href='/lending-partners' style={{color:"#09615D", fontWeight:"600"}}>Click Here </a> to see our lending partners.</p>)
         }
       ]
     },
