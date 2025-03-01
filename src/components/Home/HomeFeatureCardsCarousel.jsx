@@ -213,13 +213,13 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
             style={{ minWidth: "100%", overflow: "hidden" }}
           >
             <div className={`w-96 h-full rounded-lg p-2 flex flex-col feature-div ${feature.txtColor} coolvetica`}>
-              <h3 className="text-2xl font-bold text-center h-14 flex items-center justify-center coolvetica">
+              <h3 className="text-2xl w-[85vw] font-bold text-center h-14 flex items-center justify-center coolvetica">
                 {feature.title}
               </h3>
               <div>
-                <p className="coolvetica text-xl text-center">{feature.description}</p>
+                <p className="coolvetica text-xl w-[85vw] text-center">{feature.description}</p>
               </div>
-              <div className="flex items-center justify-center">{feature.imageContent}</div>
+              <div className="flex items-center w-[85vw] justify-center">{feature.imageContent}</div>
             </div>
           </div>
         ))}
