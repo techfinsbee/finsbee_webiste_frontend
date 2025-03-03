@@ -6,28 +6,28 @@ const HomeSteps = ({ StepColor, stepImage }) => {
       {
         title: "Download & Sign-Up",
         content:
-          "Get the Fundsmama app on Google Play Store or App Store and sign up in minutes.",
+          "Get the FundsMama app from the Google Play Store or App Store and complete a quick sign-up.",
         image: "/1.).svg",
       },
       {
-        title: "Fill the Application",
-        content: "Enter basic details like name, DOB, and email to begin.",
+        title: "Set Up Your Profile",
+        content: "Provide basic details like name, date of birth, and email to get started.",
         image: "/2.) .svg",
       },
       {
-        title: "Apply for Loan",
-        content: "Submit your request with a seamless verification process.",
+        title: "Complete Your Loan Application",
+        content: "Fill in the required details based on your loan requirements.",
         image: "/3.) .svg",
       },
       {
-        title: "Upload Required Documents",
-        content: "Securely upload PAN, Aadhaar, and other required documents.",
+        title: "Upload Essential Documents",
+        content: "Securely submit your PAN card and other necessary documents for verification.",
         image: "/4.) .svg",
       },
       {
-        title: "Loan Disbursal",
+        title: "Apply & Get Disbursed",
         content:
-          "Get quick approvals and receive funds in as fast as 10 minutes.",
+          "Submit your application and receive your loan in as little as 10 minutes.",
         image: "/5.) .svg",
       },
     ],
