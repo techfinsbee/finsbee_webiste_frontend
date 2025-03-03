@@ -23,16 +23,16 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             className="absolute h-52 w-[90vw]"
             style={{
               borderRadius: "50%",
-              backgroundColor: `${DIVCOLOR ? "#28B3AC4A" : "rgb(178, 255, 142)"}`,
+              backgroundColor: `${DIVCOLOR ? "#7B549C4A" : "rgb(178, 255, 142)"}`,
               filter: `${COLOR ? "blur(200px)" : "blur(50px)"}`,
               zIndex: "-100000",
               top: "-30px",
             }}
           ></div>
           <span
-            className={`coolvetica ${COLOR ? "text-gradient" : ""}`}
+            className={`coolvetica ${COLOR ? "" : ""}`}
             style={{
-              color: `${DIVCOLOR ? "#09615D" : "#163312"}`,
+              color: `${DIVCOLOR ? "#7B549CF2" : "#163312"}`,
               backgroundSize: "200% 100%",
               animation: `${
                 DIVCOLOR ? "text-gradient-flow 5s linear infinite" : ""

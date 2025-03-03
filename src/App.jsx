@@ -117,10 +117,10 @@ function App() {
         <AnimatedPhones Home="Home"></AnimatedPhones>
         <RewardsSection COLOR="#" TXTCOLOR="#"></RewardsSection>
         <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
-        <HomeCibilScoreSection
+        {/* <HomeCibilScoreSection
           COLOR="#09615D"
           cibilImgaes={cibilImgaes}
-        ></HomeCibilScoreSection>
+        ></HomeCibilScoreSection> */}
         <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
         <HomeFooter COLOR="#09615D"></HomeFooter>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
