@@ -47,11 +47,13 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
     const isRightSwipe = distance < -10;
 
     if (isLeftSwipe) {
+      
       setCurrentIndex((prev) => (prev + 1) % steps.length);
       setDragDirection(-1);
     } else if (isRightSwipe) {
       setCurrentIndex((prev) => (prev - 1 + steps.length) % steps.length);
       setDragDirection(1);
+
     }
 
     // Reset touch values
@@ -120,15 +122,10 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: dragDirection > 0 ? -200 : 200 }}
+          initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: dragDirection > 0 ? 200 : -200 }}
-          transition={{
-            type: "ease",
-            ease: "easeInOut",
-            stiffness: 0,
-            damping: 0,
-          }}
+          exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
+          transition={{ type: "ease",ease: "easeInOut" , stiffness: 0, damping: 0 }}
           className="flex flex-col items-center w-full"
           style={{ overflow: "hidden" }}
         >
@@ -138,7 +135,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
               src={images[currentIndex]}
               alt={steps[currentIndex].title}
               className={`w-full max-w-[50%] h-auto object-contain rounded-md 
-                ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+                ${isImageLoaded ? "opacity-100" : "opacity-0"} `}
               onLoad={() => setIsImageLoaded(true)}
             />
           </div>
