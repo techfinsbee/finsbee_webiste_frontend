@@ -23,8 +23,8 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             className="absolute h-52 w-[90vw]"
             style={{
               borderRadius: "50%",
-              backgroundColor: `${DIVCOLOR ? "#7B549C4A" : "rgb(178, 255, 142)"}`,
-              filter: `${COLOR ? "blur(200px)" : "blur(50px)"}`,
+              backgroundColor: `${DIVCOLOR ? "#7B549CF2" : "rgb(178, 255, 142)"}`,
+              filter: `${COLOR ? "blur(300px)" : "blur(50px)"}`,
               zIndex: "-100000",
               top: "-30px",
             }}
