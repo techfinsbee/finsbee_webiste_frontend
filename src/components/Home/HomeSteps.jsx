@@ -167,7 +167,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
                 alt=""
                 className="h-full w-[80%] object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400 ? `${window.innerHeight>1000?'-250px':'-100px'}` : "-150px"}`,
+                  bottom: `${window.innerWidth > 1400 ? `${window.innerHeight>1000?'-300px':'-100px'}` : "-150px"}`,
                   position: "relative",
                 }}
               />

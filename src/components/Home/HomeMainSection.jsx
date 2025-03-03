@@ -121,7 +121,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           }
           .home-main-div {
             bottom: -8rem;
-            left: 5rem;
+            left: 4rem;
           }
         }
       `}</style>
