@@ -7,60 +7,60 @@ const HomeSteps = ({ StepColor, stepImage }) => {
         title: "Download & Sign-Up",
         content:
           "Get the Fundsmama app on Google Play Store or App Store and sign up in minutes.",
-        image: "/c3.svg",
+        image: "/1.).svg",
       },
       {
         title: "Fill the Application",
         content: "Enter basic details like name, DOB, and email to begin.",
-        image: "/c4.svg",
+        image: "/2.) .svg",
       },
       {
         title: "Apply for Loan",
         content: "Submit your request with a seamless verification process.",
-        image: "/c2.svg",
+        image: "/3.) .svg",
       },
       {
         title: "Upload Required Documents",
         content: "Securely upload PAN, Aadhaar, and other required documents.",
-        image: "/c1.svg",
+        image: "/4.) .svg",
       },
       {
         title: "Loan Disbursal",
         content:
           "Get quick approvals and receive funds in as fast as 10 minutes.",
-        image: "/c4.svg",
+        image: "/5.) .svg",
       },
     ],
   };
-  const images = ["/c3.svg", "/c4.svg", "/c2.svg", "/c1.svg", "/c4.svg"];
+  const images = ["/1.).svg", "/2.) .svg", "/3.) .svg", "/4.) .svg", "/5.) .svg"];
 
   const steps_content = [
     {
       title: "Download & Sign-Up",
       content:
-        "Get the Fundsmama app on Google Play Store or App Store and sign up in minutes.",
-      image: images[2],
-    },
-    {
-      title: "Fill the Application",
-      content: "Enter basic details like name, DOB, and email to begin.",
-      image: images[3],
-    },
-    {
-      title: "Apply for Loan",
-      content: "Submit your request with a seamless verification process.",
-      image: images[1],
-    },
-    {
-      title: "Upload Required Documents",
-      content: "Securely upload PAN, Aadhaar, and other required documents.",
+        "Get the FundsMama app from the Google Play Store or App Store and complete a quick sign-up.",
       image: images[0],
     },
     {
-      title: "Loan Disbursal",
-      content:
-        "Get quick approvals and receive funds in as fast as 10 minutes.",
+      title: "Set Up Your Profile",
+      content: "Provide basic details like name, date of birth, and email to get started.",
+      image: images[1],
+    },
+    {
+      title: "Complete Your Loan Application",
+      content: "Fill in the required details based on your loan requirements.",
+      image: images[2],
+    },
+    {
+      title: "Upload Essential Documents",
+      content: "Securely submit your PAN card and other necessary documents for verification.",
       image: images[3],
+    },
+    {
+      title: "Apply & Get Disbursed",
+      content:
+        "Submit your application and receive your loan in as little as 10 minutes.",
+      image: images[4],
     },
   ];
 
@@ -156,7 +156,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
             </div>
 
             <div
-              className={`absolute w-fit h-fit transition-all duration-150 image-cont ease-in-out ${
+              className={`absolute w-fit h-[85%] transition-all duration-150 image-cont ease-in-out ${
                 isAnimating
                   ? "translate-x-full opacity-0"
                   : "translate-x-0 opacity-100"
@@ -165,9 +165,9 @@ const HomeSteps = ({ StepColor, stepImage }) => {
               <img
                 src={Data.our_solutions[activeIndexList].image}
                 alt=""
-                className="h-full object-contain rounded-lg mx-auto"
+                className="h-full w-[80%] object-contain rounded-lg mx-auto"
                 style={{
-                  bottom: `${window.innerWidth > 1400 ? `${window.innerHeight>1000?'-150px':'-60px'}` : "-80px"}`,
+                  bottom: `${window.innerWidth > 1400 ? `${window.innerHeight>1000?'-250px':'-100px'}` : "-150px"}`,
                   position: "relative",
                 }}
               />

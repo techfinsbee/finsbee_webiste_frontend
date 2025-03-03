@@ -64,10 +64,10 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           className="lg:block w-full lg:w-[35%] relative HomeImage"
           style={{ zIndex: "1000" }}
         >
-          <div className="relative home-main-div -bottom-40 h-full flex justify-end w-full">
+          <div className="relative home-main-div -left-4 -bottom-40 h-full flex justify-end w-full">
             <img
-              src="/image1.png"
-              className="w-[100%] home-main-image h-[100%]"
+              src="/home.svg"
+              className="w-[90%] home-main-image h-[100%]"
               alt=""
             />
           </div>

@@ -103,7 +103,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
               key={currentIndex}
               src="/step-coin.png"
               alt="Coin background"
-              className="object-cover w-[70%] object-center relative -bottom-[12vh]"
+              className="object-cover w-[90%] object-center relative -bottom-[12vh]"
               initial="initial"
               animate="animate"
               exit="exit"
@@ -128,7 +128,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
             <img
               src={images[currentIndex]}
               alt={steps[currentIndex].title}
-              className={`w-full max-w-[100%] h-auto object-contain rounded-md 
+              className={`w-full max-w-[50%] h-auto object-contain rounded-md 
                 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
               onLoad={() => setIsImageLoaded(true)}
             />

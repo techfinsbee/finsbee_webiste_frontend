@@ -41,9 +41,7 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } top-0 ${
-        window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"
-      }`,
+      } top-10 ${window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"}`,
       leftMiddle: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
       } top-1/2 -translate-y-1/2 ${
@@ -51,10 +49,12 @@ const LoanBox = ({
       }`,
       leftBottom: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } bottom-0 ${
+      } bottom-10 ${
         window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.7vw]"
       }`,
-      rightTop: `${isAnimated ? "translate-x-[15vw]" : "translate-x-0"} top-0 ${
+      rightTop: `${
+        isAnimated ? "translate-x-[15vw]" : "translate-x-0"
+      } top-10 ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
       rightMiddle: `${
@@ -64,7 +64,7 @@ const LoanBox = ({
       }`,
       rightBottom: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } bottom-0 ${
+      } bottom-10 ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
     };
@@ -88,6 +88,7 @@ const LoanBox = ({
         flexDirection: "column",
         gap: "10px",
         padding: "1.5rem",
+        height: "30vh",
       }}
       onClick={onClick}
     >
@@ -117,14 +118,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [selectedLoan, setSelectedLoan] = useState(null);
-  const images = [
-    "/instant_loan.svg",
-    "/emi_loan.png",
-    "/solar.svg",
-    "/loan_against_property.png",
-    "/home_loan.svg",
-    "/loan_against_security.png",
-  ];
+  const images = ["/Home Loan.svg", "/LAP.svg", "/EMI Loan.svg", "/LAS.svg"];
   const loans = [
     {
       title: "Home Loan",
@@ -132,45 +126,45 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
         "Lay the foundation of your home with loans upto INR 3 Cr with minimal documentation and digital process.",
       position: "leftTop",
       delay: 200,
-      image: images[4],
+      image: images[0],
       TImg: `${loanImages ? loanImages.image1 : "/HL.png"}`,
     },
     {
       title: "Loan Against Property",
       description:
         "Leverage Your Property for a Better Tomorrow.Secure loans upto INR 25 Lakhs",
-      position: "leftMiddle",
-      delay: 200,
-      image: images[3],
-      TImg: `${loanImages ? loanImages.image2 : "/LAP.png"}`,
-    },
-    {
-      title: "Personal EMI-Based Loan",
-      description:
-        "Financial Freedom in Easy Instalments. Get loans upto INR 5 Lakhs with flexible EMIs.",
       position: "leftBottom",
       delay: 200,
       image: images[1],
-      TImg: `${loanImages ? loanImages.image3 : "/EL.png"}`,
+      TImg: `${loanImages ? loanImages.image2 : "/LAP.png"}`,
     },
     {
-      title: "Credit Cards",
+      title: "Personal Loan",
       description:
-        "Empower Your Credit Journey with Your FD. Leverage your fixed deposit to secure loans upto INR 5Cr.",
+        "Financial Freedom in Easy Instalments. Get loans upto INR 5 Lakhs with flexible EMIs.",
       position: "rightTop",
       delay: 200,
       image: images[2],
-      TImg: `${loanImages ? loanImages.image4 : "/CC.png"}`,
+      TImg: `${loanImages ? loanImages.image3 : "/EL.png"}`,
     },
-    {
-      title: "Instant Loan",
-      description:
-        "Quick Cash When You Need It Most. Get instant loans upto INR 2 Lakhs in minutes.",
-      position: "rightMiddle",
-      delay: 200,
-      image: images[0],
-      TImg: `${loanImages ? loanImages.image5 : "/PL.png"}`,
-    },
+    // {
+    //   title: "Credit Cards",
+    //   description:
+    //     "Empower Your Credit Journey with Your FD. Leverage your fixed deposit to secure loans upto INR 5Cr.",
+    //   position: "rightTop",
+    //   delay: 200,
+    //   image: images[2],
+    //   TImg: `${loanImages ? loanImages.image4 : "/CC.png"}`,
+    // },
+    // {
+    //   title: "Instant Loan",
+    //   description:
+    //     "Quick Cash When You Need It Most. Get instant loans upto INR 2 Lakhs in minutes.",
+    //   position: "rightMiddle",
+    //   delay: 200,
+    //   image: images[0],
+    //   TImg: `${loanImages ? loanImages.image5 : "/PL.png"}`,
+    // },
 
     {
       title: "Loan Against Security",
@@ -178,7 +172,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
         "Smart Loans Backed by Smart Investments. Unlock the value of your portfolio to avail loans upto INR 60 Cr at best LTVs",
       position: "rightBottom",
       delay: 200,
-      image: images[5],
+      image: images[3],
       TImg: `${loanImages ? loanImages.image6 : "/LAS.png"}`,
     },
   ];
@@ -277,13 +271,13 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
                       <img
                         key={index}
                         src={loan.image}
-                        className="relative -left-[10vw]"
+                        className="relative -left-[5vw] top-[5%]"
                         alt={`${loan.title} interface`}
                         style={{
-                          width: "50vw",
-                          height: "100%",
+                          width: "40vw",
+                          height: "90%",
                           maxWidth: "100vw",
-                          objectFit: "cover",
+                          objectFit: "contain",
                         }}
                       />
                     </div>

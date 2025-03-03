@@ -73,7 +73,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
             <img
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
-              className={`w-full max-w-[100%] h-auto object-contain rounded-md
+              className={`w-full max-w-[50%] h-auto object-contain rounded-md
       ${
         getImageType(images[currentIndex]) === "svg"
           ? "theme-image-svg"

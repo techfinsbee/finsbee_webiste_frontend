@@ -142,11 +142,11 @@ const AnimatedPhones = ({ Home }) => {
           {/* Left Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
-              src={Home ? "/mama2.png" : "/mobile2.svg"}
+              src={Home ? "/mall22.svg" : "/mobile2.svg"}
               alt="Cart Screen"
               className={
                 Home
-                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain svg-1"
+                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[250px] object-contain svg-1"
                   : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
               }
             />
@@ -155,11 +155,11 @@ const AnimatedPhones = ({ Home }) => {
           {/* Middle Phone */}
           <div className="phone transition-all duration-300 ease-out">
             <img
-              src={Home ? "/mama1.png" : "/mobile1.svg"}
+              src={Home ? "/mall33.svg" : "/mobile1.svg"}
               alt="Main Screen"
               className={
                 Home
-                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[260px] object-contain svg-2"
+                  ? "w-44 xs:w-28 sm:w-56 md:w-64 lg:w-[300px] object-contain svg-2"
                   : "w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
               }
             />
@@ -168,11 +168,11 @@ const AnimatedPhones = ({ Home }) => {
           {/* Right Phone */}
           <div className="phone absolute transition-all duration-300 ease-out">
             <img
-              src={Home ? "/mama3.png" : "/mobile3.svg"}
+              src={Home ? "/mall11.svg" : "/mobile3.svg"}
               alt="Details Screen"
               className={
                 Home
-                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[200px] object-contain svg-1"
+                  ? "w-40 xs:w-28 sm:w-52 md:w-56 lg:w-[250px] object-contain svg-1"
                   : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
               }
             />
@@ -181,6 +181,12 @@ const AnimatedPhones = ({ Home }) => {
       </div>
 
       <style jsx>{`
+        .phone {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          -webkit-font-smoothing: subpixel-antialiased;
+          will-change: transform;
+        }
         @media (min-height: 900px) {
           .main-context {
             height: 50vh !important;
