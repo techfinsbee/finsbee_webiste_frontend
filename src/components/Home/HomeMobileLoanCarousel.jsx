@@ -60,7 +60,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage }) => {
           initial={{ opacity: 0, x: dragDirection > 0 ? -200 : 200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: dragDirection > 0 ? 200 : -200 }}
-          transition={{ type: "ease",ease: "easeInOut" , stiffness: 100, damping: 30 }}
+          transition={{ type: "ease",ease: "easeInOut" , stiffness: 0, damping: 0 }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}

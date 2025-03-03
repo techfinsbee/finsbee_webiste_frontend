@@ -8,7 +8,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  
+
   useEffect(() => {
     // Preload images before rendering
     const preloadImages = () => {
@@ -59,14 +59,18 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
     setTouchEnd(0);
 
     // Resume autoplay after 3 seconds
-    setTimeout(() => setAutoPlay(true), 3000);
+    setTimeout(() => setAutoPlay(true), 2000);
   };
 
   // Separate coin animation variants
   const coinVariants = {
     initial: { opacity: 0, scale: 1 },
-    animate: { opacity: 1, scale: 1, transition: { delay: 0.4, duration: 0.5 } },
-    exit: { opacity: 0, scale: 1, transition: { duration: 0.3 } }
+    animate: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: 0.4, duration: 0.5 },
+    },
+    exit: { opacity: 0, scale: 1, transition: { duration: 0.3 } },
   };
 
   return (
@@ -94,7 +98,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           With Fundsmama you unlock loans at lower prices
         </p>
       </div>
-      
+
       {/* Static coin container positioned outside the animated content */}
       <div className="w-full absolute top-[calc(50%-100px)] left-0 pointer-events-none z-10">
         <div className="flex justify-center w-full">
@@ -112,14 +116,19 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           </AnimatePresence>
         </div>
       </div>
-      
+
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, x: dragDirection > 0 ? -100 : 100 }}
+          initial={{ opacity: 0, x: dragDirection > 0 ? -200 : 200 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
-          transition={{ type: "spring",ease: "easeInOut", stiffness: 300, damping: 30 }}
+          exit={{ opacity: 0, x: dragDirection > 0 ? 200 : -200 }}
+          transition={{
+            type: "ease",
+            ease: "easeInOut",
+            stiffness: 0,
+            damping: 0,
+          }}
           className="flex flex-col items-center w-full"
           style={{ overflow: "hidden" }}
         >
