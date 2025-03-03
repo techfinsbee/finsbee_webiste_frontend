@@ -20,13 +20,14 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
           }}
         >
           <div
-            className="absolute h-52 w-[90vw]"
+            className="absolute w-[100vw]"
             style={{
               borderRadius: "50%",
               backgroundColor: `${DIVCOLOR ? "#7b549cf2" : "rgb(178, 255, 142)"}`,
-              filter: `${COLOR ? "blur(400px)" : "blur(50px)"}`,
+              filter: `${COLOR ? "blur(200px)" : "blur(50px)"}`,
               zIndex: "-100000",
-              top: "0px",
+              top: "50px",
+              height:"10vh"
             }}
           ></div>
           <span

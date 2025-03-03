@@ -110,11 +110,13 @@ function App() {
           loanImages={loanImages}
         ></HomeLoanDisplay>
         <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
-        <HomeAnimatedTitle
-          COLOR="#09615D"
-          DIVCOLOR="#28B3ACA1"
-        ></HomeAnimatedTitle>
-        <AnimatedPhones Home="Home"></AnimatedPhones>
+        <div className="mt-56">
+          <HomeAnimatedTitle
+            COLOR="#09615D"
+            DIVCOLOR="#28B3ACA1"
+          ></HomeAnimatedTitle>
+          <AnimatedPhones Home="Home"></AnimatedPhones>
+        </div>
         <RewardsSection COLOR="#" TXTCOLOR="#"></RewardsSection>
         <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
         {/* <HomeCibilScoreSection
