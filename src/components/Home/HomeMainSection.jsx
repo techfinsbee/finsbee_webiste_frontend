@@ -110,7 +110,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             justify-content: center;
           }
           .HomeImage div {
-            left: 0 !important;
+            left: -5% !important;
             top: 5% !important;
           }
         }
