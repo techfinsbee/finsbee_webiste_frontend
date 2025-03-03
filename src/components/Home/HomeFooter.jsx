@@ -2,12 +2,12 @@ import React from "react";
 
 const HomeFooter = ({ COLOR }) => {
   return (
-    <section id="contact-us-home">
+    <section id="contact-us-home" className="mt-20">
       <footer
         className="w-full text-white-800 border-t border-gray-200 coolvetica"
         style={{
           boxShadow: "200px 200px 200px #000000",
-          background: `${COLOR ? "#09615D" : "#163312"} `,
+          background: `${COLOR ? "" : "#163312"} `,
         }}
       >
         {/* Main Footer Content */}
@@ -16,7 +16,7 @@ const HomeFooter = ({ COLOR }) => {
           <div className="flex sm:flex-row justify-between items-center mb-8">
             <div className="flex">
               <img
-                src="/white-logo.svg"
+                src="/logo2.svg"
                 className=" relative -left-8 w-[100px] sm:w-[120px] ml-0"
                 alt="FUNDSMAMA"
               />{" "}
@@ -30,13 +30,13 @@ const HomeFooter = ({ COLOR }) => {
                 FUNDSMAMA
               </span>
             </div>
-            <button className="bg-white sm:w-fit text-[14px] w-[40vw] text-black px-2 md:px-6 py-2 rounded-[50px] transition-colors">
+            <button className="bg-[#342F3E] sm:w-fit text-[14px] w-[40vw] text-white px-2 md:px-6 py-2 rounded-[50px] transition-colors">
               Sign up for Updates
             </button>
           </div>
 
           {/* Footer Links Grid */}
-          <div className="grid grid-cols-1 text-white md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 text-black md:grid-cols-3 gap-8">
             {/* Column 1 */}
             <div>
               <ul className="space-y-2">

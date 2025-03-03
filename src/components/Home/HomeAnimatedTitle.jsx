@@ -8,7 +8,7 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
         style={{
           boxSizing: "border-box",
           filter: `drop-shadow(96px 96px 96px ${
-            COLOR ? COLOR : "rgb(178, 255, 142)"
+            COLOR ? "#7b549cf2" : "rgb(178, 255, 142)"
           }`,
         }}
       >
@@ -23,14 +23,14 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             className="absolute h-52 w-[90vw]"
             style={{
               borderRadius: "50%",
-              backgroundColor: `${DIVCOLOR ? "#7B549CF2" : "rgb(178, 255, 142)"}`,
-              filter: `${COLOR ? "blur(300px)" : "blur(50px)"}`,
+              backgroundColor: `${DIVCOLOR ? "#7b549cf2" : "rgb(178, 255, 142)"}`,
+              filter: `${COLOR ? "blur(400px)" : "blur(50px)"}`,
               zIndex: "-100000",
-              top: "-30px",
+              top: "0px",
             }}
           ></div>
           <span
-            className={`coolvetica ${COLOR ? "" : ""}`}
+            className={`coolvetica ${COLOR ? "text-gradient" : ""}`}
             style={{
               color: `${DIVCOLOR ? "#7B549CF2" : "#163312"}`,
               backgroundSize: "200% 100%",
@@ -47,11 +47,13 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
         .text-gradient {
           background: linear-gradient(
             to right,
-            #09615DBD 0%,
-            rgb(104, 230, 223) 50%,
-            #09615DBD 75%,
+#7b549cf2 0%,
+            rgba(205, 156, 245, 0.95) 25%,
 
-            #09615DBD 100%
+            #7b549cf2 50%,
+            rgba(205, 156, 245, 0.95) 75%,
+
+            #7b549cf2 100%
           );
           -webkit-background-clip: text;
           background-clip: text;
