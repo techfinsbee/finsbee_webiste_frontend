@@ -85,7 +85,7 @@ const AnimatedPhones = ({ Home }) => {
           verticalDistance = 0;
         } else {
           maxSpread = 300;
-          zScaleFactor = 60;
+          zScaleFactor = 40;
           verticalDistance = 0;
         }
       }
