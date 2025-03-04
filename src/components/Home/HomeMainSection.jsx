@@ -66,7 +66,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
         >
           <div className="relative home-main-div -left-4 -bottom-40 h-full flex justify-end w-full">
             <img
-              src="/home.svg"
+              src="/Home Page.svg"
               className="w-[90%] home-main-image h-[100%]"
               alt=""
             />
