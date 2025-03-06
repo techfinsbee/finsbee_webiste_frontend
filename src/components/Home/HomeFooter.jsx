@@ -57,14 +57,14 @@ const HomeFooter = ({ COLOR }) => {
                   </a>
                 </li>
 
-                <li>
+                {/* <li>
                   <a
                     href="/lending-partners"
                     className="text-xl font-semibold hover:text-white-600"
                   >
                     Our Lending Partners
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a
                     href="/faqs"

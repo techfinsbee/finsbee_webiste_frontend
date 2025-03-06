@@ -35,10 +35,10 @@ const router = createBrowserRouter([
     path: "/aboutus",
     element: <AboutUs />
   },
-  {
-    path: "/lending-partners",
-    element: <LendingPartner />
-  },
+  // {
+  //   path: "/lending-partners",
+  //   element: <LendingPartner />
+  // },
   {
     path: "/privacy-policy",
     element: <PrivacyPage />
