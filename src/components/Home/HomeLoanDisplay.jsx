@@ -41,7 +41,7 @@ const LoanBox = ({
     const positions = {
       leftTop: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } top-10 ${window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"}`,
+      } top-0 ${window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"}`,
       leftMiddle: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
       } top-1/2 -translate-y-1/2 ${
@@ -49,12 +49,12 @@ const LoanBox = ({
       }`,
       leftBottom: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } bottom-10 ${
+      } bottom-0 ${
         window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.7vw]"
       }`,
       rightTop: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } top-10 ${
+      } top-0 ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
       rightMiddle: `${
@@ -64,7 +64,7 @@ const LoanBox = ({
       }`,
       rightBottom: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } bottom-10 ${
+      } bottom-0 ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
     };
@@ -88,7 +88,7 @@ const LoanBox = ({
         flexDirection: "column",
         gap: "10px",
         padding: "1.5rem",
-        height: "30vh",
+        height: "40%",
       }}
       onClick={onClick}
     >
@@ -121,9 +121,9 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
   const images = ["/Home Loan.svg", "/LAP.svg", "/EMI Loan.svg", "/LAS.svg"];
   const loans = [
     {
-      title: "Home Loan",
+      title: "Housing Loans",
       description:
-        "Lay the foundation of your home with loans upto INR 3 Cr with minimal documentation and digital process.",
+        "Build your dream home with ease! Get home loans up to ₹3 Cr with a seamless digital process and minimal documentation. Enjoy quick approvals, hassle-free processing, and flexible repayment options tailored to your needs.",
       position: "leftTop",
       delay: 200,
       image: images[0],
@@ -132,16 +132,16 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
     {
       title: "Loan Against Property",
       description:
-        "Leverage Your Property for a Better Tomorrow.Secure loans upto INR 25 Lakhs",
+        "Turn your property into financial support for a brighter future! Get loans up to ₹25 Lakhs with a smooth process, minimal documentation, and flexible repayment options designed to suit your needs.",
       position: "leftBottom",
       delay: 200,
       image: images[1],
       TImg: `${loanImages ? loanImages.image2 : "/LAP.png"}`,
     },
     {
-      title: "Personal Loan",
+      title: "Personal Loans",
       description:
-        "Financial Freedom in Easy Instalments. Get loans upto INR 5 Lakhs with flexible EMIs.",
+        "Get up to ₹5 Lakhs with flexible EMIs or instant cash in minutes—no collateral, no hassle. Quick approvals, easy repayment, and financial freedom made simple!",
       position: "rightTop",
       delay: 200,
       image: images[2],
@@ -169,7 +169,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
     {
       title: "Loan Against Security",
       description:
-        "Smart Loans Backed by Smart Investments. Unlock the value of your portfolio to avail loans upto INR 60 Cr at best LTVs",
+        "Maximize your investments with smart financing! Unlock loans up to ₹60 Cr against your portfolio with the best Loan-to-Value (LTV) ratios, minimal hassle, and a seamless process tailored to your financial goals.",
       position: "rightBottom",
       delay: 200,
       image: images[3],

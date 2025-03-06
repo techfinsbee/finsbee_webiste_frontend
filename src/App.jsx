@@ -110,7 +110,7 @@ function App() {
           loanImages={loanImages}
         ></HomeLoanDisplay>
         <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
-        <div className="mt-56">
+        <div className="mt-40 lg:mt-56">
           <HomeAnimatedTitle
             COLOR="#09615D"
             DIVCOLOR="#28B3ACA1"
@@ -118,12 +118,12 @@ function App() {
           <AnimatedPhones Home="Home"></AnimatedPhones>
         </div>
         <RewardsSection COLOR="#" TXTCOLOR="#"></RewardsSection>
-        <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
+        <div className="mt-32"><FeaturedBrands allLogos={lending_partners}></FeaturedBrands></div>
         {/* <HomeCibilScoreSection
           COLOR="#09615D"
           cibilImgaes={cibilImgaes}
         ></HomeCibilScoreSection> */}
-        <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
+        <div className="mt-8"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div>
         <HomeFooter COLOR="#09615D"></HomeFooter>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />

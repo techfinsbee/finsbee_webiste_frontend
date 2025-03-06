@@ -102,7 +102,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
       </div>
 
       {/* Static coin container positioned outside the animated content */}
-      <div className="w-full absolute top-[calc(50%-100px)] left-0 pointer-events-none z-10">
+      <div className="w-full absolute top-[calc(50%-100px)] mt-10 left-0 pointer-events-none z-10">
         <div className="flex justify-center w-full">
           <AnimatePresence mode="wait">
             <motion.img
@@ -126,7 +126,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
           transition={{ type: "ease",ease: "easeInOut" , stiffness: 0, damping: 0 }}
-          className="flex flex-col items-center w-full"
+          className="flex flex-col items-center w-full mt-10"
           style={{ overflow: "hidden" }}
         >
           {/* Image */}

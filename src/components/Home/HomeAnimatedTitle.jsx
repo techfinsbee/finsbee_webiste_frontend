@@ -23,11 +23,13 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             className="absolute w-[100vw]"
             style={{
               borderRadius: "50%",
-              backgroundColor: `${DIVCOLOR ? "#7b549cf2" : "rgb(178, 255, 142)"}`,
+              backgroundColor: `${
+                DIVCOLOR ? "#7b549cf2" : "rgb(178, 255, 142)"
+              }`,
               filter: `${COLOR ? "blur(200px)" : "blur(50px)"}`,
               zIndex: "-100000",
               top: "50px",
-              height:"10vh"
+              height: "10vh",
             }}
           ></div>
           <span
@@ -48,7 +50,7 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
         .text-gradient {
           background: linear-gradient(
             to right,
-#7b549cf2 0%,
+            #7b549cf2 0%,
             rgba(205, 156, 245, 0.95) 25%,
 
             #7b549cf2 50%,
@@ -88,7 +90,7 @@ const HomeAnimatedTitle = ({ COLOR, DIVCOLOR }) => {
             margin-top: 0px !important;
           }
           .main-title-home {
-            font-size: 60px !important;
+            font-size: 70px !important;
           }
         }
       `}</style>

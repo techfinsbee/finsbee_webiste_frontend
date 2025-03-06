@@ -25,7 +25,7 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
           </div>
         </div>
       ),
-      bgColor: `${COLOR ? "bg-[#18ADA5B2]" : "bg-[#FEFFC5]"}`,
+      bgColor: `${COLOR ? "bg-[#7B549CBF]" : "bg-[#FEFFC5]"}`,
       txtColor: `${TXTCOLOR ? "text-black" : "text-[#323300]"}`,
     },
     {
@@ -36,7 +36,7 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
           <img src="/reward2.png" alt="Categories" className="w-full h-64" />
         </div>
       ),
-      bgColor: `${COLOR ? "bg-[#18ADA56E]" : "bg-[#FFF1F0]"}`,
+      bgColor: `${COLOR ? "bg-[#7B549C6E]" : "bg-[#FFF1F0]"}`,
       txtColor: `${TXTCOLOR ? "text-black" : "text-[#331800]"}`,
     },
     {
@@ -52,7 +52,7 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
           />
         </div>
       ),
-      bgColor: `${COLOR ? "bg-[#03A29517]" : "bg-[#CAFFDC]"}`,
+      bgColor: `${COLOR ? "bg-[#7B549C17]" : "bg-[#CAFFDC]"}`,
       txtColor: `${TXTCOLOR ? "text-black" : "text-[#003813]"}`,
     },
   ];

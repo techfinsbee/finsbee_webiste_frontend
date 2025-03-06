@@ -113,13 +113,22 @@ const HomeAnimatedCounter = ({ COLOR }) => {
   });
 
   const [hasExited, setHasExited] = useState(true);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1); // Start at index 1 (real first slide)
   const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const carouselRef = useRef(null);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const autoSlideInterval = useRef(null);
+  
+  // Create an extended array with cloned items for infinite scrolling
+  // We add the last slide at the beginning and the first slide at the end
+  const extendedStats = [
+    { ...stats[stats.length - 1], isClone: true }, // Last slide clone at the beginning
+    ...stats, // Original slides
+    { ...stats[0], isClone: true }, // First slide clone at the end
+  ];
 
   // Check if we're on mobile
   useEffect(() => {
@@ -135,12 +144,29 @@ const HomeAnimatedCounter = ({ COLOR }) => {
     };
   }, []);
 
+  // Handle the initialization - we need to position the carousel without transition initially
+  useEffect(() => {
+    if (isMobile && carouselRef.current) {
+      // Start at the first real slide (index 1 in extendedStats)
+      carouselRef.current.style.transition = "none";
+      carouselRef.current.style.transform = `translateX(-${100}%)`;
+      
+      // Force a reflow to apply the transform immediately
+      carouselRef.current.offsetHeight;
+      
+      // Re-enable transitions after initial positioning
+      setTimeout(() => {
+        carouselRef.current.style.transition = "transform 0.5s ease-out";
+      }, 50);
+    }
+  }, [isMobile]);
+
   // Set up auto-sliding
   useEffect(() => {
-    if (isMobile && !isPaused) {
+    if (isMobile && !isPaused && !isTransitioning) {
       autoSlideInterval.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev === stats.length - 1 ? 0 : prev + 1));
-      }, 4000); // Change slide every 3 seconds
+        nextSlide();
+      }, 4000); // Change slide every 4 seconds
     }
 
     // Clean up interval when component unmounts or when not needed
@@ -149,26 +175,7 @@ const HomeAnimatedCounter = ({ COLOR }) => {
         clearInterval(autoSlideInterval.current);
       }
     };
-  }, [isMobile, isPaused, stats.length]);
-
-  // Reset the interval when currentSlide changes to prevent timer interruptions
-  useEffect(() => {
-    if (isMobile && !isPaused) {
-      if (autoSlideInterval.current) {
-        clearInterval(autoSlideInterval.current);
-      }
-
-      autoSlideInterval.current = setInterval(() => {
-        setCurrentSlide((prev) => (prev === stats.length - 1 ? 0 : prev + 1));
-      }, 3000);
-    }
-
-    return () => {
-      if (autoSlideInterval.current) {
-        clearInterval(autoSlideInterval.current);
-      }
-    };
-  }, [currentSlide, isMobile, isPaused, stats.length]);
+  }, [isMobile, isPaused, isTransitioning]);
 
   useEffect(() => {
     if (!inView) {
@@ -177,6 +184,50 @@ const HomeAnimatedCounter = ({ COLOR }) => {
   }, [inView]);
 
   const shouldAnimate = inView && hasExited;
+  
+  // Function to handle transition end
+  const handleTransitionEnd = () => {
+    // If we've reached a clone slide, we need to jump to the corresponding real slide without transition
+    if (activeIndex === 0) {
+      // We reached the first clone (which is the last slide clone)
+      // Jump to the real last slide
+      if (carouselRef.current) {
+        carouselRef.current.style.transition = "none";
+        const newIndex = stats.length; // Index of the last real slide
+        setActiveIndex(newIndex);
+        carouselRef.current.style.transform = `translateX(-${newIndex * 100}%)`;
+        
+        // Force a reflow to apply the transform immediately
+        carouselRef.current.offsetHeight;
+        
+        // Re-enable transitions
+        setTimeout(() => {
+          carouselRef.current.style.transition = "transform 0.5s ease-out";
+          setIsTransitioning(false);
+        }, 50);
+      }
+    } else if (activeIndex === extendedStats.length - 1) {
+      // We reached the last clone (which is the first slide clone)
+      // Jump to the real first slide
+      if (carouselRef.current) {
+        carouselRef.current.style.transition = "none";
+        const newIndex = 1; // Index of the first real slide
+        setActiveIndex(newIndex);
+        carouselRef.current.style.transform = `translateX(-${newIndex * 100}%)`;
+        
+        // Force a reflow to apply the transform immediately
+        carouselRef.current.offsetHeight;
+        
+        // Re-enable transitions
+        setTimeout(() => {
+          carouselRef.current.style.transition = "transform 0.5s ease-out";
+          setIsTransitioning(false);
+        }, 50);
+      }
+    } else {
+      setIsTransitioning(false);
+    }
+  };
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -203,29 +254,50 @@ const HomeAnimatedCounter = ({ COLOR }) => {
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === stats.length - 1 ? 0 : prev + 1));
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setActiveIndex(activeIndex + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? stats.length - 1 : prev - 1));
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setActiveIndex(activeIndex - 1);
   };
-  // Mobile carousel indicators
+
+  // For indicator clicks, we need to map from visible index (0, 1, 2) to extended index (1, 2, 3)
+  const goToSlide = (visibleIndex) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setActiveIndex(visibleIndex + 1); // +1 because we have a clone at the beginning
+    
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 3000);
+  };
+
+  // Mobile carousel indicators - maps from extended index to visible index
   const renderIndicators = (COLOR) => {
+    // Convert activeIndex to visible index (account for clones)
+    const visibleIndex = activeIndex === 0 
+      ? stats.length - 1 
+      : activeIndex === extendedStats.length - 1 
+        ? 0 
+        : activeIndex - 1;
+        
     return (
       <div className="flex justify-center mt-4 gap-2">
         {stats.map((_, index) => (
           <button
             key={index}
             className={`w-2 h-2 rounded-full ${
-              currentSlide === index
+              visibleIndex === index
                 ? `${COLOR ? "bg-[#09615D]" : "bg-[#112B00]"}`
                 : "bg-gray-300"
             }`}
-            onClick={() => {
-              setCurrentSlide(index);
-              setIsPaused(true);
-              setTimeout(() => setIsPaused(false), 3000);
-            }}
+            onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
@@ -233,34 +305,44 @@ const HomeAnimatedCounter = ({ COLOR }) => {
     );
   };
 
+  // Map from extended index to the actual stats index
+  const getStatsIndex = (extendedIndex) => {
+    if (extendedIndex === 0) return stats.length - 1;
+    if (extendedIndex === extendedStats.length - 1) return 0;
+    return extendedIndex - 1;
+  };
+
   return (
     <div ref={ref} className="mt-20">
       {isMobile ? (
-        <div
-          className="carousel-container"
-          ref={carouselRef}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
+        <div className="carousel-container">
           <div
             className="carousel-slider"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            ref={carouselRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onTransitionEnd={handleTransitionEnd}
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
-            {stats.map((stat, index) => (
-              <div className="carousel-slide" key={index}>
-                <AnimatedCounter
-                  end={stat.end}
-                  duration={1000}
-                  label={stat.label}
-                  prefix={stat.prefix}
-                  suffix={stat.suffix}
-                  shouldAnimate={shouldAnimate && currentSlide === index}
-                  bgColor={stat.bgColor}
-                  COLOR={COLOR}
-                />
-              </div>
-            ))}
+            {/* Extended slides with clones for infinite effect */}
+            {extendedStats.map((stat, extendedIndex) => {
+              const statsIndex = getStatsIndex(extendedIndex);
+              return (
+                <div className="carousel-slide" key={`${extendedIndex}-${stat.isClone ? 'clone' : 'original'}`}>
+                  <AnimatedCounter
+                    end={stat.end}
+                    duration={1000}
+                    label={stat.label}
+                    prefix={stat.prefix}
+                    suffix={stat.suffix}
+                    shouldAnimate={shouldAnimate && activeIndex === extendedIndex}
+                    bgColor={stat.bgColor}
+                    COLOR={COLOR}
+                  />
+                </div>
+              );
+            })}
           </div>
           {renderIndicators(COLOR)}
         </div>
@@ -308,13 +390,14 @@ const HomeAnimatedCounter = ({ COLOR }) => {
         .label-animate {
           opacity: 0;
           transform: translateY(30px);
-          transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s; /* Added delay for label */
+          transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
         }
 
         .label-visible {
           opacity: 1;
           transform: translateY(0);
         }
+
         .carousel-container {
           width: 100%;
           overflow: hidden;

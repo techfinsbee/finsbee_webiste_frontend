@@ -102,20 +102,17 @@ const HomeFooter = ({ COLOR }) => {
             <div>
               <ul className="space-y-2">
                 <li className="text-xl font-semibold hover:text-white-600 flex gap-2">
-                  <img src="/Map_Pin.png" className="h-6" alt="" />
-                  L42, Lajpat Nagar-2, New Delhi-110024
+                  <span className="text-2xl mr-2">⚲</span> L42, Lajpat Nagar-2, New Delhi-110024
                 </li>
                 <li className="text-xl font-semibold hover:text-white-600 flex gap-2">
-                  <img src="/Frame.svg" alt="" />
-                  +91-97117 11026
+                  <span className="text-2xl">✆</span> +91-97117 11026
                 </li>
                 <li>
                   <a
                     href="mailto:Customercare@fundsmama.com"
-                    className="text-lg md:text-lg flex gap-2 font-semibold hover:text-white-600 underline"
+                    className="text-lg md:text-lg flex gap-2 font-semibold hover:text-white-600"
                   >
-                    <img src="/Mail.png" alt="" />
-                    Customercare@fundsmama.com
+                    <span className="text-2xl">✉</span> Customercare@fundsmama.com
                   </a>
                 </li>
               </ul>

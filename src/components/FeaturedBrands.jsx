@@ -4,7 +4,7 @@ import "./FeaturedBrands.component.css";
 const FeaturedBrands = ({ allLogos, Color }) => {
   return (
     <div
-      className={`rounded-xl ${Color ? "mt-24 mb-12" : "mt-24 mb-2 p-0"}`}
+      className={`rounded-xl ${Color ? "mt-24 mb-0" : "p-0"}`}
       style={{ overflowX: "hidden" }}
     >
       <h2
