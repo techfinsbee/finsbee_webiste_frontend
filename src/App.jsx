@@ -123,7 +123,7 @@ function App() {
           COLOR="#09615D"
           cibilImgaes={cibilImgaes}
         ></HomeCibilScoreSection> */}
-        <div className="mt-8"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div>
+        <div className="mt-16"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div>
         <HomeFooter COLOR="#09615D"></HomeFooter>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
