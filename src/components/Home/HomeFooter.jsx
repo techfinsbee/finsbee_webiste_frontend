@@ -21,7 +21,7 @@ const HomeFooter = ({ COLOR }) => {
                 alt="FUNDSMAMA"
               />{" "}
               <span
-                className="text-lg sm:text-4xl relative -left-14 text-[#fff] flex juistify-center items-center"
+                className="text-lg sm:text-4xl relative -left-14 text-black  flex juistify-center items-center"
                 style={{
                   fontWeight: "800",
                   fontFamily: "Helvetica",
