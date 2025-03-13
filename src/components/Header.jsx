@@ -172,12 +172,12 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
       <a href="/" className="head">
         <div className="flex">
           <img
-            src="/fundsmama-logo.svg"
-            className="w-[100px]"
+            src="/Funds.svg"
+            className="w-[100px] relative -top-[1vh] sm:top-0 lg:-left-[2vw] -left-[8vw] sm:-left-[6vw] w-[150px] sm:w-[150px]"
             alt="FUNDSMAMA"
           />{" "}
           <span
-            className="text-4xl header-fundmama flex juistify-center items-center"
+            className="text-4xl header-fundmama -left-[15vw] sm:-left-[5vw] relative flex juistify-center items-center"
             style={{
               fontWeight: "800",
               fontFamily: "Helvetica",

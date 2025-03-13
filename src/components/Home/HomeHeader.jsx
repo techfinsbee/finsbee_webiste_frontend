@@ -158,8 +158,8 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         <div className="flex">
           <div className="w-[100px] object-cover">
             <img
-              src="/logo2.svg"
-              className="logo-img w-[135px] top-2 left-0 lg:left-14 absolute object-cover"
+              src="/Funds.svg"
+              className="logo-img lg:w-[220px] -top-6 -left-8 lg:left-4 absolute object-cover"
               alt="FUNDSMAMA"
             />
           </div>

@@ -14,14 +14,14 @@ const HomeFooter = ({ COLOR }) => {
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Top section with logo and sign up button */}
           <div className="flex sm:flex-row justify-between items-center mb-8">
-            <div className="flex">
+            <div className="flex w-[200px] object-cover"> 
               <img
-                src="/logo2.svg"
-                className=" relative -left-8 w-[100px] sm:w-[120px] ml-0"
+                src="/Funds.svg"
+                className="relative lg:-left-16 -left-[10vw] sm:-left-[6vw] w-[150px] sm:w-[250px] ml-0 object-cover"
                 alt="FUNDSMAMA"
               />{" "}
               <span
-                className="text-lg sm:text-4xl relative -left-14 text-black  flex juistify-center items-center"
+                className="text-lg sm:text-4xl relative sm:-left-[12vw] -left-[18vw] lg:-left-28 top-1 lg:top-2 text-black  flex juistify-center items-center"
                 style={{
                   fontWeight: "800",
                   fontFamily: "Helvetica",

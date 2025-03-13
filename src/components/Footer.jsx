@@ -19,12 +19,12 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
             <div className="flex">
               <img
-                src="/fundsmama-logo.svg"
-                className="w-[100px]"
+                src="/Funds.svg"
+                className="w-[100px] relative lg:-left-16 -left-[10vw] sm:-left-[6vw] w-[150px] sm:w-[250px] ml-0 object-cover"
                 alt="FUNDSMAMA"
               />{" "}
               <span
-                className="text-4xl header-fundmama flex juistify-center items-center"
+                className="text-4xl header-fundmama flex juistify-center items-center sm:text-4xl relative sm:-left-[12vw] -left-[18vw] lg:-left-28 top-1 lg:top-2 "
                 style={{
                   fontWeight: "800",
                   fontFamily: "Helvetica",

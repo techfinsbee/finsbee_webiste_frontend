@@ -136,9 +136,9 @@
     padding-left: 1rem;
   }
   .logo-img{
-    width: 120px;
-    left:10px;
-    top: 15px
+    width: 200px;
+    left:-3vw;
+    top: -2vh
   }
 
 }
@@ -149,9 +149,9 @@
     padding: 1rem 1rem;
   }
   .logo-img{
-    width: 120px;
-    left:10px;
-    top: 15px
+    width: 200px;
+    left:-5vw;
+    top: -2vh;
   }
 
   .logo-head{
@@ -164,8 +164,6 @@
   .head-fund {
     width: 80%;
   }
-  
- 
   
   .contact-sales {
     display: none;
@@ -227,9 +225,9 @@
 
 @media screen and (max-width: 512px) {
   .logo-img{
-    width: 90px;
-    left:10px;
-    top: 15px
+    width: 150px;
+    left:-3vw;
+    top: -1vh;
   }
 
   .logo-head{
