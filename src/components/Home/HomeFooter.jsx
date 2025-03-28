@@ -87,14 +87,14 @@ const HomeFooter = ({ COLOR }) => {
                     About Us
                   </a>
                 </li>
-                <li>
+                {/* <li>
                   <a
                     href="#contact-us"
                     className="text-xl font-semibold hover:text-white-600"
                   >
                     Contact Us
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
 

@@ -99,14 +99,7 @@ const Footer = () => {
                     About Us
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="#contact-us"
-                    className="text-xl font-semibold hover:text-gray-600"
-                  >
-                    Contact Us
-                  </a>
-                </li>
+               
                 <li>
                   <a
                     href="/features"
