@@ -157,6 +157,14 @@ const Footer = () => {
                     FAQs
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="/cancellation-and-refund"
+                    className="text-xl font-semibold hover:text-gray-600"
+                  >
+                    Cancellation & Refund Policy
+                  </a>
+                </li>
               </ul>
             </div>
 

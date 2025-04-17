@@ -14,6 +14,7 @@ import Testimonials from "./components/Testimonials.jsx";
 import CustomerCare from "./components/CustomerCare.jsx";
 import Blog from "./components/Blog.jsx";
 import Feature from "./components/Feature.jsx";
+import HomeCancellation from "./components/Home/HomeCancellation.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./Landing.jsx";
 import './App.css'
@@ -83,6 +84,9 @@ const router = createBrowserRouter([
   {
     path:"/features",
     element: <Feature />
+  },{
+    path:"/cancellation-and-refund",
+    element:<HomeCancellation/>
   }
 ])
 

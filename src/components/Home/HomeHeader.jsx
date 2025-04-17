@@ -74,6 +74,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         location.pathname === "/testimonials" ||
         location.pathname === "/blog" ||
         location.pathname === "/sitemap" ||
+        location.pathname === "/cancellation-and-refund" ||
         location.pathname === "/press-release" || 
         location.pathname === "/customer-care")
     ) {

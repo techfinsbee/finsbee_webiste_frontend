@@ -87,6 +87,7 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
       location.pathname === "/features" ||
       location.pathname === "/testimonials" ||
       location.pathname === "/blog" ||
+      location.pathname === "/cancellation-and-refund" ||
       location.pathname === "/sitemap" ||
       location.pathname === "/press-release" ||
       (location.pathname === "/customer-care" && !sectionId.startsWith("/"))
