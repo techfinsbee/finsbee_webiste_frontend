@@ -184,7 +184,7 @@ const Footer = () => {
                 </li>
                 <li className="text-xl font-semibold hover:text-gray-600"></li>
                 <li className="text-xl font-semibold hover:text-gray-600">
-                  +91-97117 11026
+                  +91-92204 68743
                 </li>
               </ul>
             </div>

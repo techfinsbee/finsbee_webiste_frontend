@@ -105,7 +105,7 @@ const HomeFooter = ({ COLOR }) => {
                   <span className="text-2xl mr-2">⚲</span> L42, Lajpat Nagar-2, New Delhi-110024
                 </li>
                 <li className="text-xl font-semibold hover:text-white-600 flex gap-2">
-                  <span className="text-2xl">✆</span> +91-97117 11026
+                  <span className="text-2xl">✆</span> +91-92204 68743
                 </li>
                 <li>
                   <a
