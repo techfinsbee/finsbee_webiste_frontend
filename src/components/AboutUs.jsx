@@ -1,6 +1,7 @@
 import React from "react";
 import { Download } from "lucide-react";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 import HomeHeader from "./Home/HomeHeader";
 const AboutUs = () => {
   const loanOptions = [
@@ -38,7 +39,8 @@ const AboutUs = () => {
       description:
         "Your personal and financial data is safe with us. FundsMama adheres to strict data security and compliance protocols to ensure your peace of mind.",
     },
-  ];const dropdownData = [
+  ];
+  const dropdownData = [
     {
       title: "Home",
       link: "/",
@@ -61,20 +63,14 @@ const AboutUs = () => {
     },
   ];
 
-
   return (
-    <div
-      className="min-h-screen "
-      style={{
-        
-      }}
-    >
-          <HomeHeader
-          dropdownData={dropdownData}
-          COLOR="#fff"
-          Hover="home"
-          TXTCOLOR="#"
-        ></HomeHeader>
+    <div className="min-h-screen " style={{}}>
+      <HomeHeader
+        dropdownData={dropdownData}
+        COLOR="#fff"
+        Hover="home"
+        TXTCOLOR="#"
+      ></HomeHeader>
 
       {/* Hero Section */}
       <section className=" py-16 px-4 sm:px-6 lg:px-8">
@@ -158,7 +154,10 @@ const AboutUs = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {whyChooseUs.map((item, index) => (
-              <div key={index} className="bg-white flex flex-col justify-center items-center p-6 rounded-lg shadow-md">
+              <div
+                key={index}
+                className="bg-white flex flex-col justify-center items-center p-6 rounded-lg shadow-md"
+              >
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {item.title}
                 </h3>
@@ -181,22 +180,27 @@ const AboutUs = () => {
         </div>
       </section>
 
-
       {/* Join Us Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Join the FundsMama Family</h2>
           <p className="text-lg mb-8">
-          At FundsMama, we believe finance should empower you, and rewards should elevate your experience. Whether you’re planning your next big purchase, meeting financial needs, or simply enjoying the thrill of shopping, we’re here to make it all happen—hassle-free and rewarding.
-          <br /> <br />
+            At FundsMama, we believe finance should empower you, and rewards
+            should elevate your experience. Whether you’re planning your next
+            big purchase, meeting financial needs, or simply enjoying the thrill
+            of shopping, we’re here to make it all happen—hassle-free and
+            rewarding.
+            <br /> <br />
             Start your journey with FundsMama today. Explore endless
             possibilities, and experience a platform that brings finance and
             lifestyle together.
           </p>
-          <button className="bg-[#09615D]  px-8 py-3 rounded-full font-semibold flex items-center mx-auto text-white transition-colors">
-            <Download className="w-5 h-5 mr-2" />
-            Download Our App
-          </button>
+          <Link to="https://play.google.com/store/apps/details?id=com.fundsmama.personalloan">
+            <button className="bg-[#09615D]  px-8 py-3 rounded-full font-semibold flex items-center mx-auto text-white transition-colors">
+              <Download className="w-5 h-5 mr-2" />
+              Download Our App
+            </button>
+          </Link>
         </div>
       </section>
     </div>
