@@ -171,7 +171,7 @@ const PrivacyPage = () => {
             <div className="ml-4">
               <p>Name: Manav Pradhan</p>
               <p>Address: L-42, Lajpat Nagar-2, New Delhi - 110024</p>
-              <p>Contact Number: +91 7428477280</p>
+              <p>Contact Number:  +91-92204 68743</p>
               <p>Email: customercare@fundsmama.com</p>
             </div>
             <p className="mt-2 italic">Note: Request You to give us 48-72 hrs. to resolve your complaint.</p>
