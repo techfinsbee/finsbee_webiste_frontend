@@ -19,6 +19,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Landing from "./Landing.jsx";
 import './App.css'
 import Home from "./Home.jsx";
+import PartnerWithUs from "./components/PartnerWithUs";
+import ReferFriend from "./components/ReferFriend";
+import Blogs from "./components/ViewBlogs";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -87,7 +91,19 @@ const router = createBrowserRouter([
   },{
     path:"/cancellation-and-refund",
     element:<HomeCancellation/>
-  }
+  },
+  {
+    path: "/partner-with-us",
+    element: <PartnerWithUs />,
+  },
+  {
+    path: "/refer-a-friend",
+    element: <ReferFriend />,
+  },
+  {
+    path: "/blogs",
+    element: <Blogs />,
+  },
 ])
 
 createRoot(document.getElementById('root')).render(

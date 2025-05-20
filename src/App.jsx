@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import HomeMainSection from "./components/Home/HomeMainSection";
 import Header from "./components/Header";
-
+import Navbar from "./components/Navbar/Navbar";
 import DayLoan from "./components/Home/DayLoan";
 import HomeHeader from "./components/Home/HomeHeader";
 import HomeAnimatedCounter from "./components/Home/HomeAnimatedCounter";
@@ -15,6 +15,11 @@ import RewardsSection from "./components/Home/RewardSection";
 import FeaturedBrands from "./components/FeaturedBrands";
 import HomeFooter from "./components/Home/HomeFooter";
 import HomeCibilScoreSection from "./components/Home/HomeCibilScoreSection";
+import WhyChooseUs from "./components/WhyChooseUs";
+import TestimonialsSection from "./components/Testimonials";
+import HomeFAQSection from "./components/HomeFAQSection";
+
+
 function App() {
   const brands_we_trust = {
     title: "Brands We Trust",
@@ -91,12 +96,12 @@ function App() {
   return (
     <>
       <div className="bg-white">
-        <HomeHeader
+        <Navbar
           dropdownData={dropdownData}
           COLOR="#fff"
           Hover="home"
           TXTCOLOR="#"
-        ></HomeHeader>
+        ></Navbar>
         <Outlet />
         <DayLoan></DayLoan>
         <HomeMainSection
@@ -110,7 +115,8 @@ function App() {
           loanImages={loanImages}
         ></HomeLoanDisplay>
         <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
-        <div className="mt-40 lg:mt-56">
+        <WhyChooseUs COLOR="#18ADA5" TXTCOLOR="#"></WhyChooseUs> {/* Add this line */}
+        <div className="mt-20 lg:mt-36">
           <HomeAnimatedTitle
             COLOR="#09615D"
             DIVCOLOR="#28B3ACA1"
@@ -123,7 +129,10 @@ function App() {
           COLOR="#09615D"
           cibilImgaes={cibilImgaes}
         ></HomeCibilScoreSection> */}
+        <TestimonialsSection COLOR="#7B549C" />
+        <HomeFAQSection COLOR="#7B549C"></HomeFAQSection>
         <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div>
+        
         <HomeFooter COLOR="#09615D"></HomeFooter>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
