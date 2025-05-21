@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
-import HomeFooter from "./Home/HomeFooter";
+import Footer from "./Footer"
 
 const PartnerWithUs = () => {
   const dropdownData = [
@@ -96,7 +96,7 @@ const PartnerWithUs = () => {
         </div>
       </div>
       
-      <HomeFooter COLOR="#09615D" />
+      <Footer COLOR="#09615D" />
     </div>
   );
 };

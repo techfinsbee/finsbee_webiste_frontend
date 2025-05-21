@@ -55,7 +55,7 @@ const LendingPartner = () => {
     <>
       <HomeHeader
         dropdownData={dropdownData}
-        COLOR="#fff"
+        COLOR="#ffffff"
         Hover="home"
         TXTCOLOR="#"
       ></HomeHeader>

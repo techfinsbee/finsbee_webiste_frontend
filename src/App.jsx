@@ -18,7 +18,8 @@ import HomeCibilScoreSection from "./components/Home/HomeCibilScoreSection";
 import WhyChooseUs from "./components/WhyChooseUs";
 import TestimonialsSection from "./components/Testimonials";
 import HomeFAQSection from "./components/HomeFAQSection";
-
+import LendingPartners from "./components/LendingPartners";
+import Footer from "./components/Footer";
 
 function App() {
   const brands_we_trust = {
@@ -50,15 +51,11 @@ function App() {
   };
   const dropdownData = [
     {
-      title: "Home",
-      link: "home-home",
-    },
-    {
       title: "Loans",
       link: "loan-section-home",
     },
     {
-      title: "Mart",
+      title: "MamaMart",
       link: "mart-home",
     },
     {
@@ -67,7 +64,7 @@ function App() {
     },
     {
       title: "Contact Us",
-      link: "contact-us-home",
+      link: "contact-us",
     },
   ];
   const StepColor = {
@@ -131,9 +128,11 @@ function App() {
         ></HomeCibilScoreSection> */}
         <TestimonialsSection COLOR="#7B549C" />
         <HomeFAQSection COLOR="#7B549C"></HomeFAQSection>
-        <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div>
-        
-        <HomeFooter COLOR="#09615D"></HomeFooter>
+        {/* <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div> */}
+        <div className="mt-16"></div>
+        <LendingPartners />
+        <div className="mt-16"></div>
+        <Footer COLOR="#09615D"></Footer>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}

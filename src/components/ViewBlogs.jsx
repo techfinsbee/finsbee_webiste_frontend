@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
-import HomeFooter from "./Home/HomeFooter";
+import Footer from "./Footer";
 
 const Blogs = () => {
   const dropdownData = [
@@ -114,7 +114,7 @@ const Blogs = () => {
         </div>
       </div>
       
-      <HomeFooter COLOR="#09615D" />
+      <Footer COLOR="#09615D" />
     </div>
   );
 };

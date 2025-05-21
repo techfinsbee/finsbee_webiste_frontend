@@ -200,24 +200,7 @@ const HomeFAQSection = ({ COLOR }) => {
           ))}
         </motion.div>
         
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-        >
-          <p className="text-gray-600 mb-4">Need more information?</p>
-          <a 
-            href="/faqs"
-            className="inline-flex items-center font-medium text-lg transition-colors duration-300"
-            style={{ color: "#7B549C" }}
-          >
-            View all FAQs
-            <svg className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
-        </motion.div>
+       
       </div>
 
       <style jsx>{`

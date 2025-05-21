@@ -53,9 +53,22 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
     }
   };
   
+  // Navigation handlers
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
+    setAutoPlay(false);
+    setTimeout(() => setAutoPlay(true), 5000);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
+    setAutoPlay(false);
+    setTimeout(() => setAutoPlay(true), 5000);
+  };
+  
   return (
     <div
-      className="relative w-full min-h-fit overflow-hidden touch-pan-y"
+      className="relative w-full min-h-fit overflow-hidden touch-pan-y pb-6"
       onTouchStart={handleTouchStart}
       style={{ overflowX: "hidden" }}
     >
@@ -74,17 +87,14 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
           style={{ overflow: "hidden" }}
         >
           {/* Image */}
-          <div className="w-full flex justify-center mb-4">
+          <div className="w-full flex justify-center mb-3">
             <img
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
-              className={`w-full max-w-[50%] h-auto object-contain rounded-md
-      ${
-        getImageType(images[currentIndex]) === "svg"
-          ? "theme-image-svg"
-          : "theme-image-png"
-      }
-      ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+              className={`w-full max-w-[45%] h-auto object-contain rounded-md
+                ${getImageType(images[currentIndex]) === "svg" ? "theme-image-svg" : "theme-image-png"}
+                ${isImageLoaded ? "opacity-100" : "opacity-0"}
+              `}
               onLoad={() => setIsImageLoaded(true)}
             />
           </div>
@@ -95,36 +105,36 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
               bg-[#EEEEEE] p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
-              hover:bg-[#F8F9FA] hover:scale-[1.02] flex flex-col gap-2
+              hover:bg-[#F8F9FA] flex flex-col gap-2
             "
             style={{ color: `${COLOR ? "#112A00" : "#163312"}` }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <div className="flex h-fit gap-2">
-              <div className="bg-[#EEEEEE] p-2 rounded-full">
+            <div className="flex h-fit gap-2 items-center">
+              <div className="bg-[#EEEEEE] p-1.5 rounded-full flex-shrink-0">
                 <img 
                   src={`${loans[currentIndex].TImg}`} 
                   alt={loans[currentIndex].title}
-                  className="w-8 h-8 object-contain" 
+                  className="w-6 h-6 object-contain" 
                 />
               </div>
-              <div className="flex justify-center items-center">
-                <h3 
-                  className="text-lg sm:text-xl font-bold mb-0 coolvetica"
+              <div className="flex items-center">
+                <h6
+                  className="text-s  mb-0 coolvetica"
                   style={{
-                    fontWeight: "750",
+                    fontWeight: "550",
                     color: COLOR ? "#09615D" : "#112A00",
                   }}
                 >
                   {loans[currentIndex].title}
-                </h3>
+                </h6>
               </div>
             </div>
             
             <div>
               <p 
-                className="text-sm sm:text-md leading-relaxed text-gray-600 mb-4"
+                className="text-xs leading-relaxed text-gray-600 mb-3"
                 style={{ fontFamily: "Helvetica", fontWeight: "500" }}
               >
                 {loans[currentIndex].description}
@@ -132,9 +142,9 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
             </div>
             
             {/* Action Buttons */}
-            <div className="action-buttons flex flex-col gap-3 mt-auto">
+            <div className="action-buttons grid grid-cols-2 gap-2 mt-auto">
               <button 
-                className="action-button primary-button py-2 px-4 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-sm font-medium"
+                className="action-button primary-button py-2 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium"
                 style={{ 
                   boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
                   transition: "all 0.3s ease"
@@ -147,7 +157,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
                 Apply Now
               </button>
               <button 
-                className="action-button secondary-button py-2 px-4 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-sm font-medium"
+                className="action-button secondary-button py-2 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium"
                 style={{ 
                   boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.15)" : "none",
                   transition: "all 0.3s ease"
@@ -164,29 +174,83 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
         </motion.div>
       </AnimatePresence>
 
-      {/* Pagination Dots */}
-      <div className="flex justify-center mt-4 space-x-2">
-        {loans.map((_, index) => (
-          <span
-            key={index}
-            className={`
-              h-2 w-2 rounded-full 
-              ${
-                index === currentIndex
-                  ? `${COLOR ? "bg-[#09615D]" : "bg-[#112B00]"}`
-                  : "bg-gray-300"
-              }
-            `}
-          />
-        ))}
+      {/* Navigation Controls (Similar to WhyChooseUs) */}
+      <div className="flex justify-between items-center mt-4 px-4 max-w-[350px] mx-auto">
+        <button
+          onClick={prevSlide}
+          className="w-9 h-9 rounded-full flex items-center justify-center shadow-md bg-white"
+          style={{
+            color: COLOR ? "#18ADA5" : "#4CAF50",
+          }}
+          aria-label="Previous loan"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M15 19l-7-7 7-7"
+            ></path>
+          </svg>
+        </button>
+
+        {/* Dots indicator */}
+        <div className="flex space-x-1.5">
+          {loans.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setCurrentIndex(index);
+                setAutoPlay(false);
+                setTimeout(() => setAutoPlay(true), 5000);
+              }}
+              className={`w-2 h-2 rounded-full transition-colors`}
+              style={{
+                backgroundColor: currentIndex === index
+                  ? COLOR ? "#18ADA5" : "#4CAF50"
+                  : COLOR ? "rgba(24, 173, 165, 0.2)" : "rgba(76, 175, 80, 0.2)",
+              }}
+              aria-label={`Go to loan ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={nextSlide}
+          className="w-9 h-9 rounded-full flex items-center justify-center shadow-md bg-white"
+          style={{
+            color: COLOR ? "#18ADA5" : "#4CAF50",
+          }}
+          aria-label="Next loan"
+        >
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+        </button>
       </div>
+
       <style jsx>{`
         .theme-image-svg {
           filter: none;
         }
 
         .dark .theme-image-svg {
-          filter: opacity(0.8) brightness(0.8); // Reduce brightness for SVGs in dark mode
+          filter: opacity(0.8) brightness(0.8);
         }
 
         .theme-image-png {
@@ -194,23 +258,20 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
         }
 
         .dark .theme-image-png {
-          filter: brightness(1.2) contrast(1.1); // Increase brightness for PNGs in dark mode
+          filter: brightness(1.2) contrast(1.1);
         }
         
-        /* Additional mobile-specific styling for buttons */
-        @media (max-width: 640px) {
+        /* Improved mobile-specific styling */
+        @media (max-width: 400px) {
           .action-button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 8px;
-            font-weight: 500;
+            padding: 8px 6px;
+            font-size: 11px;
           }
-          
+        }
+        
+        @media (max-width: 320px) {
           .action-buttons {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 12px;
+            grid-template-columns: 1fr;
           }
         }
       `}</style>

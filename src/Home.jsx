@@ -13,7 +13,7 @@ import HomeAnimatedTitle from './components/Home/HomeAnimatedTitle';
 import HomeSteps from './components/Home/HomeSteps';
 import RewardsSection from './components/Home/RewardSection';
 import FeaturedBrands from './components/FeaturedBrands'
-import HomeFooter from './components/Home/HomeFooter';
+import Footer from './components/Footer';
 import HomeCibilScoreSection from './components/Home/HomeCibilScoreSection';
 import DayLoan from './components/Home/DayLoan';
 function Home() {
@@ -82,7 +82,7 @@ function Home() {
       <FeaturedBrands allLogos={lending_partners}></FeaturedBrands>
       <HomeCibilScoreSection cibilImgaes=""></HomeCibilScoreSection>
       <FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands>
-      <HomeFooter></HomeFooter>
+      <Footer></Footer>
       {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}

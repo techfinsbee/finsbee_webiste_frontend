@@ -22,6 +22,12 @@ import Home from "./Home.jsx";
 import PartnerWithUs from "./components/PartnerWithUs";
 import ReferFriend from "./components/ReferFriend";
 import Blogs from "./components/ViewBlogs";
+import PersonalLoan from "./components/OurProducts/PersonalLoan.jsx";
+import BusinessLoan from "./components/OurProducts/BusinessLoan.jsx";
+import HomeLoan from "./components/OurProducts/HomeLoan.jsx";
+import LoanAgainstProperty from "./components/OurProducts/LoanAgainstProperty.jsx";
+import LoanAgainstSecurities from "./components/OurProducts/LoanAgainstSecurity.jsx";
+import CreditScore from "./components/OurProducts/CheckCreditScore.jsx";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +110,30 @@ const router = createBrowserRouter([
     path: "/blogs",
     element: <Blogs />,
   },
+  {
+    path: "/personal-loan",
+  element: <PersonalLoan />,
+  },
+  {
+    path: "/business-loan",
+  element: <BusinessLoan />,
+  },
+  {
+    path: "/home-loan",
+  element: <HomeLoan />,
+  },
+  {
+    path: "/loan-against-property",
+  element: <LoanAgainstProperty />,
+  },
+{
+  path: "/loan-against-securities",
+  element: <LoanAgainstSecurities />,
+},
+{
+  path: "/check-credit-score",
+  element: <CreditScore />,
+},
 ])
 
 createRoot(document.getElementById('root')).render(

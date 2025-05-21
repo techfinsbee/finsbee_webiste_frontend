@@ -4,7 +4,7 @@ const HomeFooter = ({ COLOR }) => {
   return (
     <section id="contact-us-home" className="mt-20">
       <footer
-        className="w-full text-white-800 border-t border-gray-200 coolvetica"
+        className=" w-full text-white-800 border-t border-gray-200 coolvetica"
         style={{
           boxShadow: "200px 200px 200px #000000",
           background: `${COLOR ? "" : "#163312"} `,

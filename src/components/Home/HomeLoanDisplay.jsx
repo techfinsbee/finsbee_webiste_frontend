@@ -34,41 +34,48 @@ const LoanBox = ({
     const baseClasses = `
       absolute bg-[#8B6B4E] text-white rounded-xl shadow-md 
       transition-all duration-300 transform opacity-0
-      ${window.innerWidth > 1100 ? "w-[29vw]" : "w-[30vw]"} h-fit hidden md:block cursor-pointer manrope
+      ${window.innerWidth > 1100 ? "w-[26vw]" : "w-[28vw]"} h-fit hidden md:block cursor-pointer manrope
     `;
 
     const scaleClasses = isHighlighted
       ? "scale-105 shadow-lg bg-[#725839] ring-4 ring-white ring-opacity-50"
       : "scale-95 hover:scale-105 hover:shadow-md hover:bg-[#725839]";
 
-    // Define responsive positioning using CSS calculations
+    // Fixed even spacing for all cards - exact percentages for consistent spacing
     const positions = {
+      // Left side cards - evenly spaced
       leftTop: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } top-0 ${window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"}`,
+      } top-[10%] ${window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"}`,
+      
       leftMiddle: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${
+      } top-[41%] ${
         window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.6vw]"
       }`,
+      
       leftBottom: `${
         isAnimated ? "translate-x-[-15vw]" : "translate-x-0"
-      } bottom-0 ${
+      } top-[72%] ${
         window.innerWidth > 1100 ? "left-[-15vw]" : "left-[-16.7vw]"
       }`,
+      
+      // Right side cards - evenly spaced
       rightTop: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } top-0 ${
+      } top-[10%] ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
+      
       rightMiddle: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } top-1/2 -translate-y-1/2 ${
+      } top-[41%] ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
+      
       rightBottom: `${
         isAnimated ? "translate-x-[15vw]" : "translate-x-0"
-      } bottom-0 ${
+      } top-[72%] ${
         window.innerWidth > 1100 ? "right-[-15vw]" : "right-[-16.6vw]"
       }`,
     };
@@ -90,9 +97,10 @@ const LoanBox = ({
         color: "#112A00",
         display: "flex",
         flexDirection: "column",
-        gap: "10px",
-        padding: "1.5rem",
-        height: "auto", // Changed from fixed height to auto for content
+        gap: "6px",
+        padding: "1rem",
+        height: "auto",
+        maxHeight: "31%", // Limit the height to ensure all cards fit
         boxShadow: isHighlighted ? "0 10px 25px rgba(0,0,0,0.15)" : "0 4px 12px rgba(0,0,0,0.08)",
         border: isHighlighted ? "1px solid rgba(24, 173, 165, 0.3)" : "1px solid transparent",
       }}
@@ -100,12 +108,12 @@ const LoanBox = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex gap-3 items-center mb-3">
-        <div className="bg-[#EEEEEE] p-2 rounded-full">
-          <img src={TIMG} alt={title} className="w-10 h-10 object-contain" />
+      <div className="flex gap-2 items-center mb-1">
+        <div className="bg-[#EEEEEE] p-1.5 rounded-full">
+          <img src={TIMG} alt={title} className="w-7 h-7 object-contain" />
         </div>
         <h3
-          className="text-xl mb-0 coolvetica"
+          className="text-base mb-0 coolvetica"
           style={{
             fontWeight: "750",
             color: COLOR ? "#09615D" : "#112A00",
@@ -115,16 +123,16 @@ const LoanBox = ({
         </h3>
       </div>
       <p
-        className="text-md leading-relaxed text-gray-600 mb-4"
+        className="text-xs leading-relaxed text-gray-600 mb-1.5"
         style={{ fontFamily: "Helvetica", fontWeight: "500" }}
       >
         {description}
       </p>
       
       {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+      <div className="flex flex-col sm:flex-row gap-2 mt-auto">
         <button 
-          className="py-2 px-4 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-sm font-medium flex-1"
+          className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
@@ -138,7 +146,7 @@ const LoanBox = ({
           Apply Now
         </button>
         <button 
-          className="py-2 px-4 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-sm font-medium flex-1"
+          className="py-1.5 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.15)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
@@ -164,12 +172,21 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
   const [showEligibilityCalculator, setShowEligibilityCalculator] = useState(false);
   const [selectedLoanType, setSelectedLoanType] = useState("");
   
-  const images = ["/Home Loan.svg", "/LAP.svg", "/EMI Loan.svg", "/LAS.svg"];
+  // Updated images array with 6 items instead of 4
+  const images = [
+    "/Home Loan.svg", 
+    "/LAP.svg", 
+    "/EMI Loan.svg", 
+    "/LAS.svg", 
+    "/LAS.svg", 
+    "/LAS.svg"
+  ];
+  
   const loans = [
     {
       title: "Housing Loans",
       description:
-        "Turn your dream home into reality with our tailored housing loans. Enjoy a seamless digital process, minimal documentation, and flexible repayment options designed for your financial journey.",
+        "Turn your dream home into reality with flexible repayment options and minimal documentation.",
       position: "leftTop",
       delay: 200,
       image: images[0],
@@ -178,29 +195,47 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
     {
       title: "Loan Against Property",
       description:
-        "Unlock the potential of your property investments. Our LAP solutions provide the financial leverage you need with flexible terms, competitive interest rates, and a hassle-free application process.",
-      position: "leftBottom",
-      delay: 200,
+        "Unlock your property's potential with competitive rates and hassle-free application.",
+      position: "leftMiddle",
+      delay: 300,
       image: images[1],
       TImg: `${loanImages ? loanImages.image2 : "/LAP.png"}`,
     },
     {
       title: "Personal Loans",
       description:
-        "Financial freedom when you need it most. Our personal loans offer quick approvals with flexible EMI options, no collateral requirements, and a simple digital process that puts funds in your account faster.",
-      position: "rightTop",
-      delay: 200,
+        "Quick approvals with flexible EMI options and no collateral requirements.",
+      position: "leftBottom",
+      delay: 400,
       image: images[2],
       TImg: `${loanImages ? loanImages.image3 : "/EL.png"}`,
     },
     {
       title: "Loan Against Security",
       description:
-        "Leverage your investments without liquidating them. Our LAS options provide competitive LTV ratios and favorable terms that complement your financial strategy while keeping your portfolio intact.",
-      position: "rightBottom",
+        "Leverage investments without liquidating with competitive LTV ratios and favorable terms.",
+      position: "rightTop",
       delay: 200,
       image: images[3],
       TImg: `${loanImages ? loanImages.image6 : "/LAS.png"}`,
+    },
+    {
+      title: "Business Loan",
+      description:
+        "Fuel your business growth with customized financing solutions and quick disbursement.",
+      position: "rightMiddle",
+      delay: 300,
+      image: images[4], // New image for Business Loan
+      TImg: `${loanImages ? loanImages.image4 : "/BL.png"}`,
+    },
+    {
+      title: "Free Credit Score",
+      description:
+        "Check your credit health instantly without affecting your score. Know where you stand.",
+      position: "rightBottom",
+      delay: 400,
+      image: images[5], // New image for Free Credit Score
+      TImg: `${loanImages ? loanImages.image5 : "/CS.png"}`,
     },
   ];
 
@@ -261,11 +296,11 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
       >
         <div>
           <h1
-            className="loan-headers-home mb-8"
+            className="loan-headers-home mb-6"
             style={{
               textAlign: "center",
-              fontSize: "70px",
-              marginTop: "50px",
+              fontSize: "60px",
+              marginTop: "40px",
               display: "flex",
               justifyContent: "center",
               gap: "10px",
@@ -280,7 +315,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
         <div className="relative min-h-fit flex flex-col items-center p-4 mobile">
           <div
             ref={ref}
-            className="relative w-[100%] max-w-[29vw] images h-[600px] mx-auto ml-12 mr-12 loan-image-container"
+            className="relative w-[100%] max-w-[29vw] images h-[650px] mx-auto ml-12 mr-12 loan-image-container"
             style={{
               background: `${
                 COLOR
@@ -355,8 +390,8 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
           <div className="loan-mobile">
             {COLOR ? (
               <HomeMobileLoanCarousel
-                loans={loans}
-                images={images}
+                loans={loans}  // Pass all 6 loans including new ones
+                images={images}  // Pass all 6 images including new ones
                 COLOR="#"
                 loanImage={loanImages}
                 onApplyNow={handleApplyNow}
@@ -364,8 +399,8 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               />
             ) : (
               <HomeMobileLoanCarousel
-                loans={loans}
-                images={images}
+                loans={loans}  // Pass all 6 loans including new ones
+                images={images}  // Pass all 6 images including new ones
                 loanImage={loanImages}
                 onApplyNow={handleApplyNow}
                 onCheckEligibility={handleCheckEligibility}

@@ -1,11 +1,12 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
   const { ref, inView } = useInView({
     threshold: 0.1,
-    triggerOnce: true, // This ensures animation happens only once
+    triggerOnce: true,
   });
 
   // SVG icons defined inline to avoid dependency on external files
@@ -36,8 +37,11 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         strokeLinejoin="round"
         className="w-7 h-7"
       >
-        <line x1="12" y1="1" x2="12" y2="23"></line>
-        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        {/* Improved Rupee symbol */}
+        <path d="M6 4h12" /> {/* Top horizontal line */}
+        <path d="M6 8h12" /> {/* Middle horizontal line */}
+        <path d="M9 4c4 0 4 6 0 6" /> {/* Curve of the R */}
+        <path d="M9 10l6 8" /> {/* Diagonal leg */}
       </svg>
     ),
     digital: (
@@ -177,6 +181,17 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
     },
   };
 
+  // Navigation controls for mobile slider
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % features.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + features.length) % features.length
+    );
+  };
+
   return (
     <section
       id="why-choose-us"
@@ -241,9 +256,10 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
           </p>
         </motion.div>
 
+        {/* Desktop view: Grid layout */}
         <motion.div
           ref={ref}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
@@ -299,6 +315,132 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
           ))}
         </motion.div>
 
+        {/* Mobile view: Horizontal slider */}
+        <div className="md:hidden mt-8">
+          <div className="relative px-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="bg-white rounded-xl shadow-lg overflow-hidden"
+                style={{
+                  border: `1px solid ${
+                    COLOR
+                      ? "rgba(24, 173, 165, 0.1)"
+                      : "rgba(178, 255, 142, 0.2)"
+                  }`,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+                }}
+              >
+                <div
+                  className="h-2"
+                  style={{
+                    background: `linear-gradient(to right, ${features[activeIndex].color}, ${features[activeIndex].color}30)`,
+                  }}
+                ></div>
+                <div className="p-7 relative">
+                  <div
+                    className="w-16 h-16 mb-5 rounded-full flex items-center justify-center"
+                    style={{
+                      background: `linear-gradient(135deg, ${features[activeIndex].color}20, ${features[activeIndex].color}05)`,
+                      border: `2px solid ${features[activeIndex].color}20`,
+                      color: features[activeIndex].color,
+                    }}
+                  >
+                    {icons[features[activeIndex].icon]}
+                  </div>
+                  <h3
+                    className="text-xl font-bold mb-3 coolvetica"
+                    style={{ color: COLOR ? "#09615D" : "#163312" }}
+                  >
+                    {features[activeIndex].title}
+                  </h3>
+                  <p
+                    className="text-gray-600 manrope leading-relaxed"
+                    style={{ fontWeight: "500" }}
+                  >
+                    {features[activeIndex].description}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Mobile navigation controls */}
+            <div className="flex justify-between items-center mt-6">
+              <button
+                onClick={prevSlide}
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-white"
+                style={{
+                  color: COLOR ? "#18ADA5" : "#4CAF50",
+                }}
+                aria-label="Previous feature"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 19l-7-7 7-7"
+                  ></path>
+                </svg>
+              </button>
+
+              {/* Dots indicator */}
+              <div className="flex space-x-2">
+                {features.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-colors`}
+                    style={{
+                      backgroundColor:
+                        activeIndex === index
+                          ? COLOR
+                            ? "#18ADA5"
+                            : "#4CAF50"
+                          : COLOR
+                          ? "rgba(24, 173, 165, 0.2)"
+                          : "rgba(76, 175, 80, 0.2)",
+                    }}
+                    aria-label={`Go to feature ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextSlide}
+                className="w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-white"
+                style={{
+                  color: COLOR ? "#18ADA5" : "#4CAF50",
+                }}
+                aria-label="Next feature"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5l7 7-7 7"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -316,7 +458,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 : "0 10px 20px rgba(178, 255, 142, 0.3)",
             }}
           >
-            <span class="text-sm sm:text-base md:text-lg ">
+            <span className="text-sm sm:text-base md:text-lg">
               Start Your Journey Today
             </span>
 

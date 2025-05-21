@@ -130,7 +130,7 @@ const TestimonialsSection = ({ COLOR }) => {
   return (
     <section 
       id="testimonials" 
-      className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="mt-2 py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{
         background: `linear-gradient(135deg, ${COLOR ? "rgba(123, 84, 156, 0.15)" : "rgba(123, 84, 156, 0.15)"} 0%, ${COLOR ? "rgba(24, 173, 165, 0.05)" : "rgba(123, 84, 156, 0.05)"} 100%)`
       }}

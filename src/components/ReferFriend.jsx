@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
-import HomeFooter from "./Home/HomeFooter";
+import Footer from "./Footer";
 
 const ReferFriend = () => {
   const dropdownData = [
@@ -35,7 +35,7 @@ const ReferFriend = () => {
         TXTCOLOR="#"
       />
       
-      <div className="container mx-auto pt-26 pb-20 px-4">
+      <div className="container mx-auto pt-20 pb-20 px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-[#163312]">Refer a Friend</h1>
         
         <div className="max-w-4xl mx-auto">
@@ -105,7 +105,7 @@ const ReferFriend = () => {
         </div>
       </div>
       
-      <HomeFooter COLOR="#09615D" />
+      <Footer COLOR="#09615D" />
     </div>
   );
 };
