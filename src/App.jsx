@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import "./App.css";
 import HomeMainSection from "./components/Home/HomeMainSection";
 import Header from "./components/Header";
-
+import Navbar from "./components/Navbar/Navbar";
 import DayLoan from "./components/Home/DayLoan";
 import HomeHeader from "./components/Home/HomeHeader";
 import HomeAnimatedCounter from "./components/Home/HomeAnimatedCounter";
@@ -15,6 +15,12 @@ import RewardsSection from "./components/Home/RewardSection";
 import FeaturedBrands from "./components/FeaturedBrands";
 import HomeFooter from "./components/Home/HomeFooter";
 import HomeCibilScoreSection from "./components/Home/HomeCibilScoreSection";
+import WhyChooseUs from "./components/WhyChooseUs";
+import TestimonialsSection from "./components/Testimonials";
+import HomeFAQSection from "./components/HomeFAQSection";
+import LendingPartners from "./components/LendingPartners";
+import Footer from "./components/Footer";
+
 function App() {
   const brands_we_trust = {
     title: "Brands We Trust",
@@ -45,15 +51,11 @@ function App() {
   };
   const dropdownData = [
     {
-      title: "Home",
-      link: "home-home",
-    },
-    {
       title: "Loans",
       link: "loan-section-home",
     },
     {
-      title: "Mart",
+      title: "MamaMart",
       link: "mart-home",
     },
     {
@@ -62,7 +64,7 @@ function App() {
     },
     {
       title: "Contact Us",
-      link: "contact-us-home",
+      link: "contact-us",
     },
   ];
   const StepColor = {
@@ -91,12 +93,12 @@ function App() {
   return (
     <>
       <div className="bg-white">
-        <HomeHeader
+        <Navbar
           dropdownData={dropdownData}
           COLOR="#fff"
           Hover="home"
           TXTCOLOR="#"
-        ></HomeHeader>
+        ></Navbar>
         <Outlet />
         <DayLoan></DayLoan>
         <HomeMainSection
@@ -110,7 +112,8 @@ function App() {
           loanImages={loanImages}
         ></HomeLoanDisplay>
         <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
-        <div className="mt-40 lg:mt-56">
+        <WhyChooseUs COLOR="#18ADA5" TXTCOLOR="#"></WhyChooseUs> {/* Add this line */}
+        <div className="mt-20 lg:mt-36">
           <HomeAnimatedTitle
             COLOR="#09615D"
             DIVCOLOR="#28B3ACA1"
@@ -123,8 +126,13 @@ function App() {
           COLOR="#09615D"
           cibilImgaes={cibilImgaes}
         ></HomeCibilScoreSection> */}
-        <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div>
-        <HomeFooter COLOR="#09615D"></HomeFooter>
+        <TestimonialsSection COLOR="#7B549C" />
+        <HomeFAQSection COLOR="#7B549C"></HomeFAQSection>
+        {/* <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div> */}
+        <div className="mt-16"></div>
+        <LendingPartners />
+        <div className="mt-16"></div>
+        <Footer COLOR="#09615D"></Footer>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}
