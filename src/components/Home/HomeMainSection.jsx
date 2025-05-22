@@ -1,13 +1,19 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
 import AnimatedMain from "../AnimatedMain";
-import DownloadNowButton from "./DownloadNowButton";
-
+import { useState } from "react";
+import Form from "./Form";
 const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
   const { ref, inView } = useInView({
     threshold: 0.3,
     triggerOnce: false,
   });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const toggleFormVisibility = () => {
+    console.log("Toggling Form:", !isFormVisible);
+    setIsFormVisible(!isFormVisible);
+  };
+
   
   const benefits = ["Borrow Easy", "Shop Smart", "Get Rewarded"];
   
@@ -56,7 +62,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             )}
           </h1>
 
-          <button className="text-2xl p-3 w-[30%] text-black font-bold rounded-[50px] bg-[#18ADA5]">Apply Now</button>
+          <button className="text-2xl p-3 w-[30%] text-black font-bold rounded-[50px] bg-[#18ADA5]"  onClick={toggleFormVisibility}>Apply Now</button>
         </div>
 
         {/* Right content - Phone mockup */}
@@ -73,6 +79,13 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           </div>
         </div>
       </div>
+
+      {
+        <Form
+          isFormVisible={isFormVisible}
+          onClose={() => setIsFormVisible(false)}
+        />
+      }
 
       <style jsx>{`
         @media (max-width: 1024px) {

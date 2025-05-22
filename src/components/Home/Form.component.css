@@ -1,0 +1,73 @@
+.form_bg_container {
+  display: flex;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #0000002e;
+      width: 100vw;
+      height: 100vh;
+      justify-content: end;
+      overflow: auto;
+      padding: 0px !important;
+      z-index: 100000;
+}
+
+.form-container{
+  display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 300px;
+    
+    position: relative;
+    z-index: 2000;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    gap: 20px;
+    margin-top: 50px;
+    margin: 50px auto;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+
+
+.form-group-company{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* flex-grow: 1; */
+}
+
+.form-group-company-size{
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+
+.form-group-title{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+}
+
+.form-check{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+}
+
+
+
+
+
+@media screen and (max-width:728px) {
+  .form-container{
+    margin-right: 0px;
+  }
+}

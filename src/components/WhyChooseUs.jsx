@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from 'react-router-dom';
-
+import Form from "./Home/Form";
 const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { ref, inView } = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
+
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const toggleFormVisibility = () => {
+    console.log("Toggling Form:", !isFormVisible);
+    setIsFormVisible(!isFormVisible);
+  };
 
   // SVG icons defined inline to avoid dependency on external files
   const icons = {
@@ -459,11 +465,14 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 : "0 10px 20px rgba(178, 255, 142, 0.3)",
             }}
           >
-            <Link to="/">
+            
+            <button onClick={toggleFormVisibility}>
             <span className="text-sm sm:text-base md:text-lg">
+              
               Start Your Journey Today
             </span>
-            </Link>
+            </button>
+            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1"
@@ -481,7 +490,12 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
           </button>
         </motion.div>
       </div>
-
+      {
+        <Form
+          isFormVisible={isFormVisible}
+          onClose={() => setIsFormVisible(false)}
+        />
+      }
       <style jsx>{`
         @media (max-width: 768px) {
           .coolvetica {
