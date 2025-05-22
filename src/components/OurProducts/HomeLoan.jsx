@@ -214,19 +214,6 @@ const HomeLoan = () => {
                     value={loanAmount}
                     onChange={handleLoanAmountChange}
                   />
-                  <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>₹ 5,00,000</span>
-                    <span>₹ 1,00,00,000</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="500000"
-                    max="10000000"
-                    step="100000"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
-                  />
                 </div>
 
                 <div className="mb-5">
@@ -241,12 +228,12 @@ const HomeLoan = () => {
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>7.00 %</span>
-                    <span>12.00 %</span>
+                    <span>20.00 %</span>
                   </div>
                   <input
                     type="range"
                     min="7"
-                    max="12"
+                    max="20"
                     step="0.1"
                     value={interestRate}
                     onChange={(e) =>
@@ -267,12 +254,12 @@ const HomeLoan = () => {
                     onChange={handleTenureChange}
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>5 Years (60 Months)</span>
+                    <span>1 Years (12 Months)</span>
                     <span>30 Years (360 Months)</span>
                   </div>
                   <input
                     type="range"
-                    min="60"
+                    min="12"
                     max="360"
                     step="12"
                     value={tenure}
@@ -349,7 +336,7 @@ const HomeLoan = () => {
                     Attractive Interest Rates
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    Benefit from competitive interest rates starting from 8.50% p.a. with both fixed and floating rate options.
+                    Benefit from competitive interest rates starting from 7% p.a. with both fixed and floating rate options.
                   </p>
                 </div>
               </div>

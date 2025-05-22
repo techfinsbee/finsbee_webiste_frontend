@@ -148,7 +148,7 @@ const TestimonialsSection = ({ COLOR }) => {
             transform: "translate(20%, 20%)"
           }} />
       
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl ml-14 mr-14 relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
           <motion.h2 

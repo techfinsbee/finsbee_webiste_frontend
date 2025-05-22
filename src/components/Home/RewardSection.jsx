@@ -2,7 +2,7 @@ import React from "react";
 import HomeFeatureCardsCarousel from "./HomeFeatureCardsCarousel";
 const RewardsSection = ({ COLOR, TXTCOLOR }) => {
   return (
-    <section className="w-full py-10 px-4 lg:px-4 reward-section">
+    <section className="py-10 px-4 lg:px-4 reward-section ml-10 " style={{marginRight:"50px"}}>
       <div className="grid grid-cols-1 md:grid-cols-2 rewards coolvetica">
         {/* Left box - FMCoins */}
         <div className={`${COLOR?"bg-[#7B549CBF]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col w-[96%] ml-2`}>

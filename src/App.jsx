@@ -93,12 +93,12 @@ function App() {
   return (
     <>
       <div className="bg-white">
-        <Navbar
-          dropdownData={dropdownData}
-          COLOR="#fff"
-          Hover="home"
-          TXTCOLOR="#"
-        ></Navbar>
+      <Navbar
+        dropdownData={dropdownData}
+        COLOR="#fff"
+        Hover="home"
+        TXTCOLOR="#"
+      />
         <Outlet />
         <DayLoan></DayLoan>
         <HomeMainSection
@@ -129,9 +129,7 @@ function App() {
         <TestimonialsSection COLOR="#7B549C" />
         <HomeFAQSection COLOR="#7B549C"></HomeFAQSection>
         {/* <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div> */}
-        <div className="mt-16"></div>
         <LendingPartners />
-        <div className="mt-16"></div>
         <Footer COLOR="#09615D"></Footer>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />

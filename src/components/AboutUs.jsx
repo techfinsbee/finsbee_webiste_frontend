@@ -3,14 +3,15 @@ import { Download } from "lucide-react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import HomeHeader from "./Home/HomeHeader";
+import Navbar from "./Navbar/Navbar";
 const AboutUs = () => {
   const loanOptions = [
     "Personal Loans",
-    "EMI Loans",
-    "Payday Loans",
-    "Loan Against Property/Security",
-    "Home Loans",
-    "Buy Now Pay Later",
+    "Business Loans",
+    "Homw Loans",
+    "Loan Against Property",
+    "Loan Against Security",
+    "Check Free Credit Score",
   ];
 
   const whyChooseUs = [
@@ -65,13 +66,12 @@ const AboutUs = () => {
 
   return (
     <div className="min-h-screen " style={{}}>
-      <HomeHeader
+      <Navbar
         dropdownData={dropdownData}
         COLOR="#fff"
         Hover="home"
         TXTCOLOR="#"
-      ></HomeHeader>
-
+      />
       {/* Hero Section */}
       <section className=" py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">

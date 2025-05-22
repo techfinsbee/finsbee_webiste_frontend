@@ -252,19 +252,7 @@ const BusinessLoan = () => {
                     value={loanAmount}
                     onChange={handleLoanAmountChange}
                   />
-                  <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>₹ 1,00,000</span>
-                    <span>₹ 50,00,000</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="100000"
-                    max="5000000"
-                    step="50000"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
-                  />
+                
                 </div>
 
                 <div className="mb-5">
@@ -279,12 +267,12 @@ const BusinessLoan = () => {
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>12 %</span>
-                    <span>28 %</span>
+                    <span>40 %</span>
                   </div>
                   <input
                     type="range"
                     min="12"
-                    max="28"
+                    max="40"
                     step="0.1"
                     value={interestRate}
                     onChange={(e) =>
@@ -305,12 +293,12 @@ const BusinessLoan = () => {
                     onChange={handleTenureChange}
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>12 Months</span>
+                    <span>6 Months</span>
                     <span>84 Months</span>
                   </div>
                   <input
                     type="range"
-                    min="12"
+                    min="6"
                     max="84"
                     step="6"
                     value={tenure}
@@ -364,7 +352,7 @@ const BusinessLoan = () => {
                     Higher Loan Amounts
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    Access loans between ₹1 Lakh to ₹50 Lakhs based on your
+                    Access loans from ₹1 Lakh based on your
                     business requirements and eligibility.
                   </p>
                 </div>

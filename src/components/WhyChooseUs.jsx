@@ -260,7 +260,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         {/* Desktop view: Grid layout */}
         <motion.div
           ref={ref}
-          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+          className="hidden ml-14 mr-14 md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}

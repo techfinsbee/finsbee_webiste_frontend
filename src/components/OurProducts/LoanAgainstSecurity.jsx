@@ -171,7 +171,7 @@ const LoanAgainstSecurities = () => {
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
                   <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
-                    {activeTab === "mutual-funds" ? "Interest from 12.00%" : "Interest from 12.50%"}
+                    {activeTab === "mutual-funds" ? "Interest from 8.00%" : "Interest from 12.75%"}
                   </span>
                 </div>
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
@@ -248,12 +248,12 @@ const LoanAgainstSecurities = () => {
                     onChange={handleInterestRateChange}
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>10.00 %</span>
+                    <span>8.00 %</span>
                     <span>16.00 %</span>
                   </div>
                   <input
                     type="range"
-                    min="10"
+                    min="8"
                     max="16"
                     step="0.1"
                     value={interestRate}
@@ -276,12 +276,12 @@ const LoanAgainstSecurities = () => {
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>3 Months</span>
-                    <span>36 Months</span>
+                    <span>60 Months</span>
                   </div>
                   <input
                     type="range"
                     min="3"
-                    max="36"
+                    max="60"
                     step="3"
                     value={tenure}
                     onChange={(e) => setTenure(parseInt(e.target.value))}
@@ -472,7 +472,7 @@ const LoanAgainstSecurities = () => {
                             <CheckCircle className="text-[#18ADA5] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
-                            Mutual fund investment: Minimum ₹3 lakhs market value
+                            Mutual fund investment: Minimum ₹1 lakhs market value
                           </span>
                         </li>
                         <li className="flex items-center">
@@ -754,7 +754,7 @@ const LoanAgainstSecurities = () => {
                             <CheckCircle className="text-[#18ADA5] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
-                            Stock portfolio: Minimum ₹3 lakhs market value
+                            Stock portfolio: Minimum ₹1 lakhs market value
                           </span>
                         </li>
                         <li className="flex items-center">

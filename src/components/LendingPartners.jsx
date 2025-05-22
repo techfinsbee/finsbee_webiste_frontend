@@ -65,7 +65,7 @@ const LendingPartners = () => {
   // Split partners into rows (6 partners per row for larger screens)
   const getRowPartners = () => {
     const rowsOfPartners = [];
-    const partnersPerRow = 6;
+    const partnersPerRow = 7;
     
     for (let i = 0; i < partners.length; i += partnersPerRow) {
       rowsOfPartners.push(partners.slice(i, i + partnersPerRow));

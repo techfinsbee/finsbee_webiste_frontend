@@ -148,6 +148,12 @@ const PersonalLoan = () => {
                     {activeTab === "personal" ? "Instant Approval" : "Same Day Disbursal"}
                   </span>
                 </div>
+                <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
+                  <CheckCircle className="text-[#18ADA5] mr-2 h-5 w-5" />
+                  <span className="text-base font-medium">
+                    {activeTab === "personal" ? "Paper Less" : "Paper Less"}
+                  </span>
+                </div>
               </div>
               <button className="mb-2 bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg transform hover:translate-y-[-2px]">
                 Apply Now
@@ -184,12 +190,12 @@ const PersonalLoan = () => {
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>Min ₹ 50,000</span>
-                    <span>Max ₹ 5,00,000</span>
+                    <span>{activeTab=="personal"?"Max ₹ 5,000,000":"Max ₹ 1,000,000"}</span>
                   </div>
                   <input
                     type="range"
                     min="50000"
-                    max="500000"
+                    max={activeTab=="personal"?"5000000":"1000000"}
                     step="10000"
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(parseInt(e.target.value))}
@@ -209,12 +215,12 @@ const PersonalLoan = () => {
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>Min 9 %</span>
-                    <span>Max 24 %</span>
+                    <span>Max 40 %</span>
                   </div>
                   <input
                     type="range"
                     min="9"
-                    max="24"
+                    max="40"
                     step="0.1"
                     value={interestRate}
                     onChange={(e) => setInterestRate(parseFloat(e.target.value))}
@@ -283,7 +289,7 @@ const PersonalLoan = () => {
                   </div>
                   <h3 className="text-lg font-semibold mb-3">Flexible Loan Amounts</h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    Borrow between ₹50,000 and ₹5,00,000 based on your requirements and eligibility.
+                    Borrow between ₹50,000 and ₹5,000,000 based on your requirements and eligibility.
                   </p>
                 </div>
 
@@ -303,7 +309,7 @@ const PersonalLoan = () => {
                   </div>
                   <h3 className="text-lg font-semibold mb-3">Competitive Interest Rates</h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-                    Enjoy interest rates starting from 10.99% p.a. with transparent terms and no hidden charges.
+                    Enjoy interest rates starting from 10.75% p.a. with transparent terms and no hidden charges.
                   </p>
                 </div>
               </div>
@@ -603,7 +609,7 @@ const PersonalLoan = () => {
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
                         <CreditCard className="text-[#18ADA5] h-5 w-5" />
                       </div>
-                      <h3 className="text-base sm:text-lg font-semibold">Loans up to ₹2 Lakhs</h3>
+                      <h3 className="text-base sm:text-lg font-semibold">Loans up to ₹10 Lakhs</h3>
                     </div>
                     <p className="text-gray-600 text-sm">
                       Access smaller amounts quickly for immediate needs.

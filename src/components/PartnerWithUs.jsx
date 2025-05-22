@@ -35,7 +35,7 @@ const PartnerWithUs = () => {
         TXTCOLOR="#"
       />
       
-      <div className="container mx-auto pt-26 pb-20 px-4">
+      <div className="container mx-auto pt-[5rem] pb-20 px-4">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-[#163312]">Partner With Us</h1>
         
         {/* Content similar to your existing component structure */}

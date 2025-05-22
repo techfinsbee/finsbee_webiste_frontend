@@ -4,7 +4,7 @@ const DownloadNowButton = ({ COLOR }) => {
   return (
     <>
       <div
-        className={`flex gap-2 rounded-[50px] w-fit p-3`}
+        className={`flex gap-2 rounded-[50px] w-fit p-2 ml-1`}
         style={{
           backgroundColor: COLOR ? "#18ADA5" : "#97F15D",
         }}

@@ -169,13 +169,13 @@ const LoanAgainstProperty = () => {
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
                   <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
-                    {activeTab === "lap" ? "Interest from 10.50%" : "Top-up Loan Available"}
+                    {activeTab === "lap" ? "Interest from 7.00%" : "Top-up Loan Available"}
                   </span>
                 </div>
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
                   <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
-                    {activeTab === "lap" ? "Tenure up to 20 Years" : "Simplified Process"}
+                    {activeTab === "lap" ? "Tenure up to 30 Years" : "Simplified Process"}
                   </span>
                 </div>
               </div>
@@ -215,19 +215,7 @@ const LoanAgainstProperty = () => {
                     value={loanAmount}
                     onChange={handleLoanAmountChange}
                   />
-                  <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>₹ 10,00,000</span>
-                    <span>₹ 2,50,00,000</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1000000"
-                    max="25000000"
-                    step="500000"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
-                  />
+                  
                 </div>
 
                 <div className="mb-5">
@@ -241,13 +229,13 @@ const LoanAgainstProperty = () => {
                     onChange={handleInterestRateChange}
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
-                    <span>9.00 %</span>
-                    <span>16.00 %</span>
+                    <span>7.00 %</span>
+                    <span>20.00 %</span>
                   </div>
                   <input
                     type="range"
-                    min="9"
-                    max="16"
+                    min="7"
+                    max="20"
                     step="0.1"
                     value={interestRate}
                     onChange={(e) =>
@@ -269,12 +257,12 @@ const LoanAgainstProperty = () => {
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>1 Year (12 Months)</span>
-                    <span>20 Years (240 Months)</span>
+                    <span>30 Years (360 Months)</span>
                   </div>
                   <input
                     type="range"
                     min="12"
-                    max="240"
+                    max="360"
                     step="12"
                     value={tenure}
                     onChange={(e) => setTenure(parseInt(e.target.value))}
@@ -467,7 +455,7 @@ const LoanAgainstProperty = () => {
                             <CheckCircle className="text-[#18ADA5] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
-                            Minimum monthly income: ₹40,000
+                            Minimum monthly income: ₹25,000
                           </span>
                         </li>
                         <li className="flex items-center">
@@ -483,7 +471,7 @@ const LoanAgainstProperty = () => {
                             <CheckCircle className="text-[#18ADA5] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
-                            CIBIL score: 675+
+                            CIBIL score: 625+
                           </span>
                         </li>
                       </ul>
@@ -511,7 +499,7 @@ const LoanAgainstProperty = () => {
                             <CheckCircle className="text-[#18ADA5] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
-                            Business vintage: Minimum 3 years
+                            Business vintage: Minimum 2 years
                           </span>
                         </li>
                         <li className="flex items-center">

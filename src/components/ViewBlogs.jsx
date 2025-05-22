@@ -87,6 +87,8 @@ const Blogs = () => {
           <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Home Loans</button>
           <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Business</button>
           <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Savings</button>
+          <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Shoppings</button>
+
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
