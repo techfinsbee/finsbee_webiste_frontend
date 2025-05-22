@@ -86,7 +86,7 @@ const AnimatedCounter = ({
 const HomeAnimatedCounter = ({ COLOR }) => {
   const stats = [
     {
-      end: 60,
+      end: 80,
       label: "Worth Of Loans Disbursed",
       prefix: "INR ",
       suffix: " Cr+",
@@ -99,7 +99,7 @@ const HomeAnimatedCounter = ({ COLOR }) => {
       bgColor: `${COLOR ? "#18ADA5" : "#97F15D"}`,
     },
     {
-      end: 40000,
+      end: 5000,
       label: "Loans Disbursed",
       prefix: "",
       bgColor: "#F8F9FA",

@@ -190,7 +190,7 @@ const CreditScore = () => {
               }`}
               onClick={() => setActiveTab("check")}
             >
-              Check Credit Score
+              Check Credit Score Now
             </button>
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
@@ -406,7 +406,7 @@ const CreditScore = () => {
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                           placeholder="Enter your full name"
-                          required
+                          disabled
                         />
                       </div>
                       <div>
@@ -418,6 +418,8 @@ const CreditScore = () => {
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                           placeholder="Enter email address"
+                          disabled
+
                         />
                       </div>
                     </div>
@@ -432,7 +434,8 @@ const CreditScore = () => {
                           onChange={handleInputChange}
                           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                           placeholder="Enter phone number"
-                          required
+                          disabled
+
                         />
                       </div>
                       <div>
@@ -445,7 +448,8 @@ const CreditScore = () => {
                           className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm uppercase"
                           placeholder="Enter PAN number"
                           maxLength="10"
-                          required
+                          disabled
+
                         />
                       </div>
                     </div>
@@ -528,7 +532,7 @@ const CreditScore = () => {
                           Processing Your Request...
                         </span>
                       ) : (
-                        `Check ${activeTab === "check" ? "Credit Score" : "Credit Report"} Now`
+                        `Coming Soon`
                       )}
                     </button>
                   </form>
@@ -1233,7 +1237,7 @@ const CreditScore = () => {
                   Ready to Know Your Credit Standing?
                 </h2>
                 <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
-                  Check Your Credit Score Now <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                Check Your Credit Score Free <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <p className="mt-4 text-gray-600 text-sm sm:text-base">
                   It's free, won't affect your score, and takes just 5 minutes

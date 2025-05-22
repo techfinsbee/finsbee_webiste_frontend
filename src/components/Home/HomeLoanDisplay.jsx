@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import HomeMobileLoanCarousel from "./HomeMobileLoanCarousel";
 import LoanApplicationForm from "../ApplyNowForm";
 import EligibilityCalculator from "../EligibilityCalculator";
-
+import { Link } from 'react-router-dom';
 const LoanBox = ({
   title,
   description,
@@ -128,9 +128,27 @@ const LoanBox = ({
       >
         {description}
       </p>
-      
-      {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row gap-2 mt-auto">
+
+      {
+        title?.trim() === "Free Credit Score"
+        ? 
+        (<div className="flex-col sm:flex-row mt-auto w-full">
+          <Link to="/check-credit-score">
+        <button 
+          className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] w-full hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+          style={{ 
+            boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
+            transform: isHovered ? "translateY(-2px)" : "none",
+            transition: "all 0.3s ease"
+          }}
+        >
+         Check Credit Score
+        </button>
+        </Link>
+        </div>
+        )
+      :
+      (<div className="flex flex-col sm:flex-row gap-2 mt-auto">
         <button 
           className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
@@ -159,7 +177,9 @@ const LoanBox = ({
         >
           Check Eligibility
         </button>
-      </div>
+      </div>)
+      }
+      
     </div>
   );
 };

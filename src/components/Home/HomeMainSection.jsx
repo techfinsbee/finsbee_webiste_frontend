@@ -56,7 +56,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
             )}
           </h1>
 
-          <DownloadNowButton COLOR={COLOR} />
+          <button className="text-2xl p-3 w-[30%] text-black font-bold rounded-[50px] bg-[#18ADA5]">Apply Now</button>
         </div>
 
         {/* Right content - Phone mockup */}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import DownloadNowButton from '../Home/DownloadNowButton.jsx'
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   const navigate = useNavigate();
@@ -362,7 +364,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       className={`header-home manrope ${!isVisible ? "hidden" : ""}`}
       style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
     >
-      <a href="/" className="head-fund">
+      <Link to="/">
+      <div className="head-f">
         <div className="flex">
           <div className="w-[100px] object-cover">
             <img
@@ -382,7 +385,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
             FUNDSMAMA
           </span>
         </div>
-      </a>
+      </div>
+      </Link>
 
       {/* Mobile Menu Button */}
       {isMobile && (
@@ -487,13 +491,13 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         /* Desktop Navigation */
         <nav
           ref={menuRef}
-          className={`nav ${isMobile ? (isMenuOpen ? "open" : "closed") : ""}`}
+          className={`nav ${isMobile ? (isMenuOpen ? "open" : "closed") : ""} text-3xl`}
         >
           {enhancedNavItems.map((item, index) => (
             <div
               className="nav-item-home dropdown"
               key={index}
-              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseEnter={() => handleDropdownMouseEnter(index)}
               onMouseLeave={handleDropdownMouseLeave}
             >
               <div
@@ -504,9 +508,10 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                   }
                 }}
                 aria-haspopup={item.hasDropdown ? "true" : "false"}
+                
                 aria-expanded={openDropdown === index}
               >
-                <span className="Items">{item.title}</span>
+                <span className="Items text-lg">{item.title}</span>
                 {item.hasDropdown && (
                   <ChevronDown
                     className={`inline-block ml-1 h-4 w-4 transition-transform ${
@@ -525,7 +530,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                     visibility: "visible",
                     transform: "translateY(0)",
                     zIndex: 99999,
-                    minWidth: item.title === "Our Products" ? "240px" : "200px",
+                    minWidth: item.title === "Our Products" ? "100%" : "100%",
                   }}
                   onMouseEnter={() => setOpenDropdown(index)}
                   onMouseLeave={() => setOpenDropdown(null)}
@@ -535,7 +540,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                       key={subIndex}
                       className={`dropdown-item ${
                         subItem.hasSubDropdown ? "has-submenu" : ""
-                      }`}
+                      } text-lg`}
                       onClick={() => {
                         if (!subItem.hasSubDropdown) {
                           scrollToSection(subItem.link);
@@ -554,7 +559,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                       {subItem.hasSubDropdown &&
                         openSubDropdown === subIndex && (
                           <div
-                            className="submenu"
+                            className="submenu text-lg"
                             style={{
                               position: "absolute",
                               top: "0",
@@ -562,7 +567,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                               backgroundColor: "white",
                               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                               borderRadius: "4px",
-                              width: "240px",
+                              width: "300px",
                               zIndex: 100000,
                             }}
                           >
@@ -570,7 +575,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                               (subSubItem, subSubIndex) => (
                                 <div
                                   key={subSubIndex}
-                                  className="dropdown-item"
+                                  className="dropdown-item text-lg"
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     scrollToSection(subSubItem.link);
@@ -588,6 +593,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
               )}
             </div>
           ))}
+          <DownloadNowButton COLOR={COLOR}/>
         </nav>
       )}
 
@@ -601,7 +607,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         }
 
         .main-dropdown {
-          padding: 8px 0;
+          padding: 0px 0;
         }
 
         .dropdown-item {

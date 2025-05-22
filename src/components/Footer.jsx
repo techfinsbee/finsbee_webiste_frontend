@@ -338,9 +338,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
         a {
           transition: all 0.2s ease-in-out;
         }
-        a:hover {
-          transform: translateX(2px);
-        }
+        
         .social-icon {
           transition: all 0.3s ease;
         }

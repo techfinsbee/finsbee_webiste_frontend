@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Link } from 'react-router-dom';
 
 const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -458,10 +459,11 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 : "0 10px 20px rgba(178, 255, 142, 0.3)",
             }}
           >
+            <Link to="/">
             <span className="text-sm sm:text-base md:text-lg">
               Start Your Journey Today
             </span>
-
+            </Link>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1"

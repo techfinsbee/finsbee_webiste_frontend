@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, onCheckEligibility }) => {
+const HomeMobileLoanCarousel = ({
+  loans,
+  images,
+  COLOR,
+  loanImage,
+  onApplyNow,
+  onCheckEligibility,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [dragDirection, setDragDirection] = useState(0);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const getImageType = (imagePath) => {
     return imagePath.toLowerCase().endsWith(".svg") ? "svg" : "png";
   };
-  
+
   useEffect(() => {
     // Preload images before rendering
     const preloadImages = () => {
@@ -37,7 +45,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
     setAutoPlay(false);
     setTimeout(() => setAutoPlay(true), 3000);
   };
-  
+
   const handleDragEnd = (event, info) => {
     const threshold = 30;
     setDragDirection(info.offset.x);
@@ -52,7 +60,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
       setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
     }
   };
-  
+
   // Navigation handlers
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % loans.length);
@@ -61,11 +69,13 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + loans.length) % loans.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + loans.length) % loans.length
+    );
     setAutoPlay(false);
     setTimeout(() => setAutoPlay(true), 5000);
   };
-  
+
   return (
     <div
       className="relative w-full min-h-fit overflow-hidden touch-pan-y pb-6"
@@ -78,7 +88,12 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
           initial={{ opacity: 0, x: dragDirection > 0 ? -200 : 200 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: dragDirection > 0 ? 200 : -200 }}
-          transition={{ type: "ease", ease: "easeInOut", stiffness: 0, damping: 0 }}
+          transition={{
+            type: "ease",
+            ease: "easeInOut",
+            stiffness: 0,
+            damping: 0,
+          }}
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
@@ -92,7 +107,11 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
               src={images[currentIndex]}
               alt={loans[currentIndex].title}
               className={`w-full max-w-[45%] h-auto object-contain rounded-md
-                ${getImageType(images[currentIndex]) === "svg" ? "theme-image-svg" : "theme-image-png"}
+                ${
+                  getImageType(images[currentIndex]) === "svg"
+                    ? "theme-image-svg"
+                    : "theme-image-png"
+                }
                 ${isImageLoaded ? "opacity-100" : "opacity-0"}
               `}
               onLoad={() => setIsImageLoaded(true)}
@@ -113,10 +132,10 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
           >
             <div className="flex h-fit gap-2 items-center">
               <div className="bg-[#EEEEEE] p-1.5 rounded-full flex-shrink-0">
-                <img 
-                  src={`${loans[currentIndex].TImg}`} 
+                <img
+                  src={`${loans[currentIndex].TImg}`}
                   alt={loans[currentIndex].title}
-                  className="w-6 h-6 object-contain" 
+                  className="w-6 h-6 object-contain"
                 />
               </div>
               <div className="flex items-center">
@@ -131,45 +150,73 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
                 </h6>
               </div>
             </div>
-            
+
             <div>
-              <p 
+              <p
                 className="text-xs leading-relaxed text-gray-600 mb-3"
                 style={{ fontFamily: "Helvetica", fontWeight: "500" }}
               >
                 {loans[currentIndex].description}
               </p>
             </div>
-            
-            {/* Action Buttons */}
-            <div className="action-buttons grid grid-cols-2 gap-2 mt-auto">
-              <button 
-                className="action-button primary-button py-2 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium"
-                style={{ 
-                  boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
-                  transition: "all 0.3s ease"
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onApplyNow && onApplyNow(loans[currentIndex].title);
-                }}
-              >
-                Apply Now
-              </button>
-              <button 
-                className="action-button secondary-button py-2 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium"
-                style={{ 
-                  boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.15)" : "none",
-                  transition: "all 0.3s ease"
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onCheckEligibility && onCheckEligibility(loans[currentIndex].title);
-                }}
-              >
-                Check Eligibility
-              </button>
-            </div>
+
+            {loans[currentIndex].title?.trim() === "Free Credit Score" ? (
+              <div className="flex flex-col sm:flex-row gap-2 mt-auto">
+                <Link to="/check-credit-score">
+                  <button
+                    className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+                    style={{
+                      boxShadow: isHovered
+                        ? "0 4px 12px rgba(24, 173, 165, 0.3)"
+                        : "none",
+                      transform: isHovered ? "translateY(-2px)" : "none",
+                      transition: "all 0.3s ease",
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onApplyNow();
+                    }}
+                  >
+                    Check Credit Score
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-2 mt-auto">
+                <button
+                  className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+                  style={{
+                    boxShadow: isHovered
+                      ? "0 4px 12px rgba(24, 173, 165, 0.3)"
+                      : "none",
+                    transform: isHovered ? "translateY(-2px)" : "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onApplyNow();
+                  }}
+                >
+                  Apply Now
+                </button>
+                <button
+                  className="py-1.5 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
+                  style={{
+                    boxShadow: isHovered
+                      ? "0 4px 12px rgba(24, 173, 165, 0.15)"
+                      : "none",
+                    transform: isHovered ? "translateY(-2px)" : "none",
+                    transition: "all 0.3s ease",
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onCheckEligibility();
+                  }}
+                >
+                  Check Eligibility
+                </button>
+              </div>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>
@@ -211,9 +258,14 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
               }}
               className={`w-2 h-2 rounded-full transition-colors`}
               style={{
-                backgroundColor: currentIndex === index
-                  ? COLOR ? "#18ADA5" : "#4CAF50"
-                  : COLOR ? "rgba(24, 173, 165, 0.2)" : "rgba(76, 175, 80, 0.2)",
+                backgroundColor:
+                  currentIndex === index
+                    ? COLOR
+                      ? "#18ADA5"
+                      : "#4CAF50"
+                    : COLOR
+                    ? "rgba(24, 173, 165, 0.2)"
+                    : "rgba(76, 175, 80, 0.2)",
               }}
               aria-label={`Go to loan ${index + 1}`}
             />
@@ -260,7 +312,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
         .dark .theme-image-png {
           filter: brightness(1.2) contrast(1.1);
         }
-        
+
         /* Improved mobile-specific styling */
         @media (max-width: 400px) {
           .action-button {
@@ -268,7 +320,7 @@ const HomeMobileLoanCarousel = ({ loans, images, COLOR, loanImage, onApplyNow, o
             font-size: 11px;
           }
         }
-        
+
         @media (max-width: 320px) {
           .action-buttons {
             grid-template-columns: 1fr;
