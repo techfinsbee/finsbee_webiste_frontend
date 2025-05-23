@@ -1,5 +1,9 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
+
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import AnimatedMain from "../AnimatedMain";
 import { useState } from "react";
 import Form from "./Form";
@@ -13,6 +17,20 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
     console.log("Toggling Form:", !isFormVisible);
     setIsFormVisible(!isFormVisible);
   };
+
+const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        // Delay to ensure DOM is ready
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   
   const benefits = ["Borrow Easy", "Shop Smart", "Get Rewarded"];
