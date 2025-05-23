@@ -21,7 +21,18 @@ const PersonalLoanCity = ({city}) => {
       img:"/loan1.png",
       title:"Home Loan",
       content:"Home Loan"
-    }]
+    },
+    {
+      img:"/loan1.png",
+      title:"Home Loan",
+      content:"Home Loan"
+    },
+    {
+      img:"/loan1.png",
+      title:"Home Loan",
+      content:"Home Loan"
+    }
+  ]
     const dropdownData = [
     {
       title: "Home",
