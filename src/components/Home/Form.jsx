@@ -3,16 +3,11 @@ import "./Form.component.css";
 
 function Form({ isFormVisible, onClose }) {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
+    Name: "",
+    DOB: "",
+    PANNumber: "",
     email: "",
-    companyName: "",
-    companySize: "",
-    jobTitle: "",
-    servicesRequired: [],
-    otherServices: "",
-    heardAboutUs: "",
+    phoneNumber:""
   });
 
   const [submitStatus, setSubmitStatus] = useState({
@@ -21,74 +16,16 @@ function Form({ isFormVisible, onClose }) {
     error: null,
   });
 
-  const services = [
-    "Web Development",
-    "Digital Marketing",
-    "App Development",
-    "AI/ML",
-    "Hire Developers",
-    "E-commerce Development",
-  ];
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleServiceClick = (service) => {
-    setFormData((prevState) => {
-      const isSelected = prevState.servicesRequired.includes(service);
-
-      const updatedServices = isSelected
-        ? prevState.servicesRequired.filter((s) => s !== service)
-        : [...prevState.servicesRequired, service];
-
-      return { ...prevState, servicesRequired: updatedServices };
-    });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitStatus({ isLoading: true, success: false, error: null });
-
-    try {
-      const googleSheetsScriptUrl =
-        "https://script.google.com/macros/s/AKfycbx3ZPTdWCI5XP4Gynyek1HJvhKYjAQ4o-CQbUQqe3XotlHSH7z928sPf_sex3j7ZG1dfQ/exec";
-
-      const response = await fetch(googleSheetsScriptUrl, {
-        method: "POST",
-        mode: "no-cors",
-        cache: "no-cache",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      setSubmitStatus({
-        isLoading: false,
-        success: true,
-        error: null,
-      });
-      setFormData({
-        firstName: "",
-        lastName: "",
-        phoneNumber: "",
-        email: "",
-        companyName: "",
-        companySize: "",
-        jobTitle: "",
-        servicesRequired: [],
-        otherServices: "",
-        heardAboutUs: "",
-      });
-    } catch (error) {
-      console.error("Submission error:", error);
-      setSubmitStatus({
-        isLoading: false,
-        success: false,
-        error: error.message || "Submission failed",
-      });
-    }
+    
   };
 
   if (!isFormVisible) return null;
@@ -131,8 +68,8 @@ function Form({ isFormVisible, onClose }) {
                     </label>
                     <input
                       type="text"
-                      name="firstName"
-                      value={formData.firstName}
+                      name="Name"
+                      value={formData.Name}
                       onChange={handleChange}
                       style={{border:"1px solid black"}}
                       required
@@ -148,8 +85,8 @@ function Form({ isFormVisible, onClose }) {
                     
                     <input
                       type="text"
-                      name="phoneNumber"
-                      value={formData.phoneNumber}
+                      name="DOB"
+                      value={formData.DOB}
                       onChange={handleChange}
                       style={{border:"1px solid black"}}
                       required
@@ -165,8 +102,8 @@ function Form({ isFormVisible, onClose }) {
                     </label>
                     <input
                       type="text"
-                      name="companyName"
-                      value={formData.companyName}
+                      name="PANNumber"
+                      value={formData.PANNumber}
                       onChange={handleChange}
                       style={{border:"1px solid black"}}
                       required
@@ -181,8 +118,8 @@ function Form({ isFormVisible, onClose }) {
                     </label>
                     <input
                       type="text"
-                      name="companyName"
-                      value={formData.companyName}
+                      name="email"
+                      value={formData.email}
                       onChange={handleChange}
                       style={{border:"1px solid black"}}
                       required
@@ -196,9 +133,9 @@ function Form({ isFormVisible, onClose }) {
                       Phone Number: <span style={{ color: "red" }}>*</span>
                     </label>
                     <input
-                      type="text"
-                      name="companyName"
-                      value={formData.companyName}
+                      type="number"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
                       onChange={handleChange}
                       style={{border:"1px solid black"}}
                       required
