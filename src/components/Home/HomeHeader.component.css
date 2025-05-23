@@ -222,6 +222,19 @@
   }
 }
 
+.logo-container{
+  display: flex;
+}
+
+.logo-container span{
+  flex: 3;
+}
+
+.logo-container .logo{
+  flex: 1;
+  width: 60px ;
+  padding-right:10px ;
+}
 
 @media screen and (max-width: 512px) {
   .logo-img{

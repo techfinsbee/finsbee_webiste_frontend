@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import DownloadNowButton from '../Home/DownloadNowButton.jsx'
-import { Link } from 'react-router-dom';
+import DownloadNowButton from "../Home/DownloadNowButton.jsx";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   const navigate = useNavigate();
@@ -225,7 +225,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       sectionId === "/business-loan" ||
       sectionId === "/home-loan" ||
       sectionId === "/loan-against-property" ||
-      sectionId === "/loan-against-securities"||
+      sectionId === "/loan-against-securities" ||
       sectionId === "/check-credit-score"
     ) {
       navigate(sectionId);
@@ -364,28 +364,18 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       className={`header-home manrope ${!isVisible ? "hidden" : ""}`}
       style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
     >
-      <Link to="/">
-      <div className="head-f">
-        <div className="flex">
-          <div className="w-[100px] object-cover">
-            <img
-              src="/Funds.svg"
-              className="logo-img lg:w-[220px] -top-6 -left-8 lg:left-4 absolute object-cover"
-              alt="FUNDSMAMA"
-            />
-          </div>
-          <span
-            className="text-4xl logo-head header-fundmama flex juistify-center items-center"
-            style={{
-              fontWeight: "800",
-              fontFamily: "Helvetica",
-              color: `${TXTCOLOR ? "black" : "#163312"}`,
-            }}
-          >
-            FUNDSMAMA
-          </span>
-        </div>
-      </div>
+      <Link to="/" className="logo-container">
+        <img src="/Funds.svg" className="logo" alt="FUNDSMAMA" />
+        <span
+          className="text-4xl logo-head header-fundmama flex juistify-center items-center"
+          style={{
+            fontWeight: "800",
+            fontFamily: "Helvetica",
+            color: `${TXTCOLOR ? "black" : "#163312"}`,
+          }}
+        >
+          FUNDSMAMA
+        </span>
       </Link>
 
       {/* Mobile Menu Button */}
@@ -491,7 +481,9 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         /* Desktop Navigation */
         <nav
           ref={menuRef}
-          className={`nav ${isMobile ? (isMenuOpen ? "open" : "closed") : ""} text-3xl`}
+          className={`nav ${
+            isMobile ? (isMenuOpen ? "open" : "closed") : ""
+          } text-3xl`}
         >
           {enhancedNavItems.map((item, index) => (
             <div
@@ -508,7 +500,6 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                   }
                 }}
                 aria-haspopup={item.hasDropdown ? "true" : "false"}
-                
                 aria-expanded={openDropdown === index}
               >
                 <span className="Items text-lg">{item.title}</span>
@@ -593,7 +584,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
               )}
             </div>
           ))}
-          <DownloadNowButton COLOR={COLOR}/>
+          <DownloadNowButton COLOR={COLOR} />
         </nav>
       )}
 
