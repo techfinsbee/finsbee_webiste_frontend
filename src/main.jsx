@@ -34,7 +34,7 @@ const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','
 
 
 const cityRoutes = cities.map((city) => ({
-  path: `/personal-loan/${city.toLowerCase()}`,
+  path: `/apply-loan/personal-loan/${city.toLowerCase()}`,
   element: <PersonalLoanCity city={city} />,
 }));
 
@@ -143,6 +143,7 @@ const router = createBrowserRouter([
   path: "/check-credit-score",
   element: <CreditScore />,
 },
+...cityRoutes
 ])
 
 createRoot(document.getElementById('root')).render(

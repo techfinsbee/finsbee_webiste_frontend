@@ -1,6 +1,5 @@
-const PersonalLoanCity = () => {
+const PersonalLoanCity = ({city}) => {
     
-const { city } = useParams();
 
   return <h1>Personal Loan in {city}</h1>;
 
