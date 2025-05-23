@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate} from 'react-router-dom';
 
 const Footer = ({ COLOR = "#18ADA5" }) => {
-    
+    const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
   
   const navigate = useNavigate();
   const location = useLocation();
@@ -436,84 +436,20 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
               Apply for Loan in Your City
             </h3>
             <div className="text-gray-600 text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-2 gap-x-3">
-              <Link
-                to="/apply-loan/personal-loan/bangalore"
+                {
+                    cities.map((city)=>{
+                        <Link
+                            key = {city}
+                to=`/apply-loan/personal-loan/{city}`
                 className="hover:text-[#18ADA5] transition"
               >
-                Personal Loan in Bangalore
+                Personal Loan in {city}
               </Link>
-              <Link
-                to="/apply-loan/personal-loan/kolkata"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Kolkata
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/jaipur"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Jaipur
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/coimbatore"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Coimbatore
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/ahmedabad"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Ahmedabad
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/delhi"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Delhi
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/mumbai"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Mumbai
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/chennai"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Chennai
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/hyderabad"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Hyderabad
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/pune"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Pune
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/surat"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Surat
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/indore"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Indore
-              </Link>
-              <Link
-                to="/apply-loan/personal-loan/vadodara"
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in Vadodara
-              </Link>
+                    })
+                }
+
+                
+                
             </div>
           </div>
 
