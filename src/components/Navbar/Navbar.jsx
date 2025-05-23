@@ -407,7 +407,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                 {menu.hasDropdown ? (
                   <div className="border-b border-gray-100">
                     <div
-                      className="menu-title"
+                      className="menu-title text-black"
                       onClick={() =>
                         setOpenDropdown(openDropdown === index ? null : index)
                       }
@@ -495,7 +495,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         >
           {enhancedNavItems.map((item, index) => (
             <div
-              className="nav-item-home dropdown"
+              className="nav-item-home text-black dropdown"
               key={index}
               onMouseEnter={() => handleDropdownMouseEnter(index)}
               onMouseLeave={handleDropdownMouseLeave}
