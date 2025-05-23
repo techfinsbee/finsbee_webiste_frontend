@@ -2,27 +2,29 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
 
 const Footer = ({ COLOR = "#18ADA5" }) => {
     
-  const scrollToSection = (sectionID) => {
-    if(location.pathname === "/"){
-      navigate('/', { state: { scrollTo: sectionID } });
-      return;
-    }
-  }
-    
-const location = useLocation();
+  
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  useEffect(() => {
-    if (location.state?.scrollTo) {
-      const element = document.getElementById(location.state.scrollTo);
+  const scrollToSection = (sectionID) => {
+    if (location.pathname === "/") {
+      // Already on home, use custom event or scroll directly
+      const element = document.getElementById(sectionID);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+    } else {
+      // Navigate to home and pass scroll target
+      navigate("/", { state: { scrollTo: sectionID } });
     }
-  }, [location]);
+  };
+
+    
+
 
   return (
     <section id="contact-us">
