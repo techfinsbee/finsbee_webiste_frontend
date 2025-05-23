@@ -438,13 +438,13 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
             <div className="text-gray-600 text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-2 gap-x-3">
                 {
                     cities.map((city)=>{
-                        <Link
+                       return( <Link
                             key = {city}
                 to={`/apply-loan/personal-loan/{city}`}
                 className="hover:text-[#18ADA5] transition"
               >
                 Personal Loan in {city}
-              </Link>
+              </Link>)
                     })
                 }
                 
