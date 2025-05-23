@@ -28,6 +28,15 @@ import HomeLoan from "./components/OurProducts/HomeLoan.jsx";
 import LoanAgainstProperty from "./components/OurProducts/LoanAgainstProperty.jsx";
 import LoanAgainstSecurities from "./components/OurProducts/LoanAgainstSecurity.jsx";
 import CreditScore from "./components/OurProducts/CheckCreditScore.jsx";
+import PersonalLoanCity from './components/Cities/PersonalLoanCity';
+
+const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
+
+
+const cityRoutes = cities.map((city) => ({
+  path: `/personal-loan/${city.toLowerCase()}`,
+  element: <PersonalLoanCity city={city} />,
+}));
 
 const router = createBrowserRouter([
   {
