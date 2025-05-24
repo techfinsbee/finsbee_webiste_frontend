@@ -148,9 +148,9 @@ const LoanBox = ({
         </div>
         )
       :
-      (<div className="flex flex-col sm:flex-row gap-2 mt-auto">
+      (<div className="flex flex-col w-full sm:flex-row gap-2 mt-auto">
         <button 
-          className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+          className="py-1.5 px-3 w-[50%] rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
@@ -163,20 +163,19 @@ const LoanBox = ({
         >
           Apply Now
         </button>
+        <Link to="/check-eligibility" className="w-[50%]">
         <button 
-          className="py-1.5 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
+          className="py-1.5 px-3 w-full  rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.15)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
             transition: "all 0.3s ease"
           }}
-          onClick={(e) => {
-            e.stopPropagation();
-            onCheckEligibility();
-          }}
+          
         >
           Check Eligibility
         </button>
+        </Link>
       </div>)
       }
       

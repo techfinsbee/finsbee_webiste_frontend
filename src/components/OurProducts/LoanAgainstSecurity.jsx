@@ -217,24 +217,34 @@ const LoanAgainstSecurities = () => {
                     Loan Amount
                   </label>
                   <input
-                    type="number"
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
-                    value={loanAmount}
-                    onChange={handleLoanAmountChange}
-                  />
+  type="number"
+  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+  value={loanAmount}
+  onChange={(e) => setLoanAmount(e.target.value)} // allow any typing
+  onBlur={() => {
+    const min = 200000;
+    const max = 10000000;
+    const parsed = parseInt(loanAmount) || min;
+    const clamped = Math.min(Math.max(parsed, min), max);
+    setLoanAmount(clamped);
+  }}
+/>
+
+
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>₹ 2,00,000</span>
                     <span>₹ 1,00,00,000</span>
                   </div>
                   <input
-                    type="range"
-                    min="200000"
-                    max="10000000"
-                    step="100000"
-                    value={loanAmount}
-                    onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
-                  />
+  type="range"
+  min="200000"
+  max="10000000"
+  step="100000"
+  value={Math.min(Math.max(parseInt(loanAmount) || 200000, 200000), 10000000)}
+  onChange={(e) => setLoanAmount(parseInt(e.target.value))}
+  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+/>
+
                 </div>
 
                 <div className="mb-5">

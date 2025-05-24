@@ -283,7 +283,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       name="Loan"
                       value={formData.Loan}
                       onChange={handleChange}
-                      placeholder="Up to ₹5,00,000"
+                      placeholder="Eg: ₹5,00,000"
                       className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
                     />
                   </div>
