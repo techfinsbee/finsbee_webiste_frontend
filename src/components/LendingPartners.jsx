@@ -22,7 +22,7 @@ const LendingPartners = () => {
   { name: "L&T Finance", logo: "https://tse3.mm.bing.net/th?id=OIP.ItASukBq4_HgbHZ7pn8C_QHaDq&pid=Api&P=0&h=180" },
   { name: "Tata Capital", logo: "https://tse1.mm.bing.net/th?id=OIP.zhgWcfQhX2iLw5okSo9X8gHaDt&pid=Api&P=0&h=180" },
   { name: "Yes Bank", logo: "https://tse3.mm.bing.net/th?id=OIP.RLAqL4y-ozL2geQW6JsggwHaEO&pid=Api&P=0&h=180" },
-  { name: "Clix Capital", logo: "https://tse3.mm.bing.net/th?id=OIP.2uY6NOmfRqt9ZFMMru3_vAHaE8&pid=Api&P=0&h=180" },
+  { name: "Clix Capital", logo: "https://www.clix.capital/wp-content/themes/clix/assets/resources/img/Logo.png" },
   { name: "Ram Fincorp", logo: "https://tse2.mm.bing.net/th?id=OIP.MlfK3GcPjsR8AM5NQTQNYgHaHa&pid=Api&P=0&h=180" },
   { name: "Godrej Capital", logo: "https://tse3.mm.bing.net/th?id=OIP.7Yxufp1Xv4MK2yl_i5ytLAAAAA&pid=Api&P=0&h=180" },
   { name: "ICICI Bank", logo: "https://tse2.mm.bing.net/th?id=OIP.wcM7ajR7lKE5j_jOYz4HZQHaHa&pid=Api&P=0&h=180" },

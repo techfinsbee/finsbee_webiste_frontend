@@ -3,6 +3,7 @@ import Footer from '../Footer'
 import WhyChooseUs from '../WhyChooseUs'
 import HowItWorks from './HowItWorks'
 import  Navbar from '../Navbar/Navbar'
+import { Link } from "react-router-dom";
 const PersonalLoanCity = ({ city = "Mumbai" }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +46,6 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
   ];
 
   const dropdownData = [
-    
     { title: "Loans", link: "loan-section-home" },
     { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
@@ -161,9 +161,12 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                   </h1>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <button className="px-4 py-3 bg-[#18ADA5] text-white rounded-lg font-medium hover:bg-[#16958e] transition-colors">
+                  <Link to="/check-eligibility">
+                    <button className="px-4 py-3 bg-[#18ADA5] text-white rounded-lg font-medium hover:bg-[#16958e] transition-colors">
                     Check Eligibility
                   </button>
+                  </Link>
+                  
                   <button className="px-4 py-3 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-colors">
                     Apply for Loan
                   </button>
@@ -280,7 +283,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       name="Loan"
                       value={formData.Loan}
                       onChange={handleChange}
-                      placeholder="Up to ₹10,00,000"
+                      placeholder="Up to ₹5,00,000"
                       className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
                     />
                   </div>

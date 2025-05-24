@@ -30,7 +30,7 @@ import LoanAgainstSecurities from "./components/OurProducts/LoanAgainstSecurity.
 import CreditScore from "./components/OurProducts/CheckCreditScore.jsx";
 import PersonalLoanCity from './components/Cities/PersonalLoanCity';
 import ScrollToTop from './components/ScrollToTop';
-
+import CheckEligibility from "./components/Eligibility/CheckEligibility.jsx";
 const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
 
 const cityRoutes = cities.map((city) => ({
@@ -146,6 +146,10 @@ const router = createBrowserRouter([
   {
     path: "/check-credit-score",
     element: <AppWithScrollToTop><CreditScore /></AppWithScrollToTop>,
+  },
+  {
+    path: "/check-eligibility",
+    element: <AppWithScrollToTop><CheckEligibility /></AppWithScrollToTop>,
   },
   ...cityRoutes.map(route => ({
     ...route,
