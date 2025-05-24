@@ -29,121 +29,128 @@ import LoanAgainstProperty from "./components/OurProducts/LoanAgainstProperty.js
 import LoanAgainstSecurities from "./components/OurProducts/LoanAgainstSecurity.jsx";
 import CreditScore from "./components/OurProducts/CheckCreditScore.jsx";
 import PersonalLoanCity from './components/Cities/PersonalLoanCity';
+import ScrollToTop from './components/ScrollToTop';
 
 const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
 
-
 const cityRoutes = cities.map((city) => ({
-  path: `/apply-loan/personal-loan/${city.toLowerCase()}`,
-  element: <PersonalLoanCity city={city} />,
+  path: `/apply-loan/personal-loan/${city.toLowerCase()}`,
+  element: <PersonalLoanCity city={city} />,
 }));
+
+// Wrapper component to include ScrollToTop
+const AppWithScrollToTop = ({ children }) => (
+  <>
+    <ScrollToTop />
+    {children}
+  </>
+);
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <AppWithScrollToTop><App /></AppWithScrollToTop>
   },
   {
     path:'/home',
-    element: <Home />
+    element: <AppWithScrollToTop><Home /></AppWithScrollToTop>
   },
   {
     path:'/home/landing',
-    element: <Landing />
+    element: <AppWithScrollToTop><Landing /></AppWithScrollToTop>
   },
   {
     path: "/aboutus",
-    element: <AboutUs />
+    element: <AppWithScrollToTop><AboutUs /></AppWithScrollToTop>
   },
-  // {
-  //   path: "/lending-partners",
-  //   element: <LendingPartner />
-  // },
   {
     path: "/privacy-policy",
-    element: <PrivacyPage />
+    element: <AppWithScrollToTop><PrivacyPage /></AppWithScrollToTop>
   },
   {
     path: "/terms-and-conditions",
-    element: <TermsAndConditions />
+    element: <AppWithScrollToTop><TermsAndConditions /></AppWithScrollToTop>
   },
-  
   {
     path: "/faqs",
-    element: <FAQs />
+    element: <AppWithScrollToTop><FAQs /></AppWithScrollToTop>
   },
   {
     path: "/mama-calculator",
-    element: <MamaCalculator />
+    element: <AppWithScrollToTop><MamaCalculator /></AppWithScrollToTop>
   },
   {
     path: "/mama-shoppingmall",
-    element: <MamaShoppingmall />
+    element: <AppWithScrollToTop><MamaShoppingmall /></AppWithScrollToTop>
   },
   {
     path: "/press-release",
-    element: <PressRelease />
+    element: <AppWithScrollToTop><PressRelease /></AppWithScrollToTop>
   },
   {
     path: "/sitemap",
-    element: <Sitemap />
+    element: <AppWithScrollToTop><Sitemap /></AppWithScrollToTop>
   },
   {
     path: "/testimonials",
-    element: <Testimonials />
+    element: <AppWithScrollToTop><Testimonials /></AppWithScrollToTop>
   },
   {
     path: "/blog",
-    element: <Blog />
+    element: <AppWithScrollToTop><Blog /></AppWithScrollToTop>
   },
   {
     path: "/customer-care",
-    element: <CustomerCare />
+    element: <AppWithScrollToTop><CustomerCare /></AppWithScrollToTop>
   },
   {
     path:"/features",
-    element: <Feature />
-  },{
+    element: <AppWithScrollToTop><Feature /></AppWithScrollToTop>
+  },
+  {
     path:"/cancellation-and-refund",
-    element:<HomeCancellation/>
+    element: <AppWithScrollToTop><HomeCancellation /></AppWithScrollToTop>
   },
   {
     path: "/partner-with-us",
-    element: <PartnerWithUs />,
+    element: <AppWithScrollToTop><PartnerWithUs /></AppWithScrollToTop>,
   },
   {
     path: "/refer-a-friend",
-    element: <ReferFriend />,
+    element: <AppWithScrollToTop><ReferFriend /></AppWithScrollToTop>,
   },
   {
     path: "/blogs",
-    element: <Blogs />,
+    element: <AppWithScrollToTop><Blogs /></AppWithScrollToTop>,
   },
   {
     path: "/personal-loan",
-  element: <PersonalLoan />,
+    element: <AppWithScrollToTop><PersonalLoan /></AppWithScrollToTop>,
   },
   {
     path: "/business-loan",
-  element: <BusinessLoan />,
+    element: <AppWithScrollToTop><BusinessLoan /></AppWithScrollToTop>,
   },
   {
     path: "/home-loan",
-  element: <HomeLoan />,
+    element: <AppWithScrollToTop><HomeLoan /></AppWithScrollToTop>,
   },
   {
     path: "/loan-against-property",
-  element: <LoanAgainstProperty />,
+    element: <AppWithScrollToTop><LoanAgainstProperty /></AppWithScrollToTop>,
   },
-{
-  path: "/loan-against-securities",
-  element: <LoanAgainstSecurities />,
-},
-{
-  path: "/check-credit-score",
-  element: <CreditScore />,
-},
-...cityRoutes
+  {
+    path: "/loan-against-securities",
+    element: <AppWithScrollToTop><LoanAgainstSecurities /></AppWithScrollToTop>,
+  },
+  {
+    path: "/check-credit-score",
+    element: <AppWithScrollToTop><CreditScore /></AppWithScrollToTop>,
+  },
+  ...cityRoutes.map(route => ({
+    ...route,
+    element: <AppWithScrollToTop>{route.element}</AppWithScrollToTop>
+  }))
 ])
 
 createRoot(document.getElementById('root')).render(

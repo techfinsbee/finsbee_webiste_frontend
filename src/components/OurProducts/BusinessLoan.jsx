@@ -64,7 +64,7 @@ const BusinessLoan = () => {
     {
       question: "What is the maximum business loan amount I can get?",
       answer:
-        "FundsMama offers business loans up to Rs. 50 lakhs, depending on your business revenue, credit profile, vintage, and other eligibility factors.",
+        "FundsMama offers business loans up to Rs. 1 Crore, depending on your business revenue, credit profile, vintage, and other eligibility factors.",
     },
     {
       question: "How long does it take to get a business loan approved?",
@@ -188,7 +188,7 @@ const BusinessLoan = () => {
               </h1>
               <p className="sm:mt-1 md:mt-5 lg:mt-6 text-base sm:text-lg mb-4 text-gray-700">
                 {activeTab === "business"
-                  ? "Fuel your business growth with loans up to Rs. 50 Lakhs. Quick approval, minimal documentation, and competitive interest rates."
+                  ? "Fuel your business growth with loans up to Rs. 1 Crore. Quick approval, minimal documentation, and competitive interest rates."
                   : activeTab === "working"
                   ? "Manage cash flow gaps and meet short-term operational needs with flexible working capital solutions designed for business agility."
                   : "Convert your unpaid invoices into immediate working capital. Get up to 90% of your invoice value upfront."}

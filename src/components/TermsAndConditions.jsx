@@ -1,37 +1,22 @@
 import React from "react";
 // import Header from "./Header";
-import HomeHeader from "./Home/HomeHeader";
+import Navbar from "./Navbar/Navbar";
 const TermsAndConditions = () => {
   const dropdownData = [
-    {
-      title: "Home",
-      link: "/",
-    },
-    {
-      title: "Loans",
-      link: "loan-section-home",
-    },
-    {
-      title: "Mart",
-      link: "mart-home",
-    },
-    {
-      title: "About Us",
-      link: "/aboutus",
-    },
-    {
-      title: "Contact Us",
-      link: "contact-us-home",
-    },
+    
+    { title: "Loans", link: "loan-section-home" },
+    { title: "MamaMart", link: "mart-home" },
+    { title: "About Us", link: "/aboutus" },
+    { title: "Contact Us", link: "contact-us" },
   ];
   return (
     <>
-            <HomeHeader
-          dropdownData={dropdownData}
-          COLOR="#fff"
-          Hover="home"
-          TXTCOLOR="#"
-        ></HomeHeader>
+            <Navbar
+        dropdownData={dropdownData}
+        COLOR="#fff"
+        Hover="home"
+        TXTCOLOR="#"
+      />
 
       <div className="max-w-4xl mx-auto p-6 ">
         <h1 className="text-3xl font-bold mb-8 text-center">

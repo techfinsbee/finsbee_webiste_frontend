@@ -130,7 +130,7 @@ const TestimonialsSection = ({ COLOR }) => {
   return (
     <section 
       id="testimonials" 
-      className="mt-2 py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="mt-2 py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex justify-center"
       style={{
         background: `linear-gradient(135deg, ${COLOR ? "rgba(123, 84, 156, 0.15)" : "rgba(123, 84, 156, 0.15)"} 0%, ${COLOR ? "rgba(24, 173, 165, 0.05)" : "rgba(123, 84, 156, 0.05)"} 100%)`
       }}
@@ -148,7 +148,7 @@ const TestimonialsSection = ({ COLOR }) => {
             transform: "translate(20%, 20%)"
           }} />
       
-      <div className="max-w-7xl ml-14 mr-14 relative z-10">
+      <div className="max-w-7xl lg:ml-14 lg:mr-14 relative z-10">
         {/* Section header */}
         <div className="text-center mb-16">
           <motion.h2 
@@ -251,7 +251,7 @@ const TestimonialsSection = ({ COLOR }) => {
 
         {/* Mobile testimonial carousel */}
         <div className="lg:hidden">
-          <div className="relative px-4">
+          <div className="relative px-0 ">
             <motion.div
               key={activeIndex}
               initial={{ opacity: 0, x: 100 }}
@@ -273,7 +273,7 @@ const TestimonialsSection = ({ COLOR }) => {
                   {testimonials[activeIndex].name.charAt(0)}
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-lg coolvetica" style={{ color: "#7B549C" }}>
+                  <h3 className="font-bold text-lg testi coolvetica" style={{ color: "#7B549C" }}>
                     {testimonials[activeIndex].name}
                   </h3>
                   <p className="text-gray-600 text-sm">
@@ -324,13 +324,13 @@ const TestimonialsSection = ({ COLOR }) => {
 
       <style jsx>{`
         @media (max-width: 768px) {
-          .coolvetica {
+          .testi {
             font-size: 2.25rem;
           }
         }
         
         @media (max-width: 640px) {
-          .coolvetica {
+          .testi {
             font-size: 2rem;
           }
         }

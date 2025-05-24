@@ -1,30 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { useEffect } from 'react';
-import { useLocation, useNavigate} from 'react-router-dom';
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = ({ COLOR = "#18ADA5" }) => {
-    const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
-  
-  const navigate = useNavigate();
-  const location = useLocation();
+  const cities = [
+    "Banglore",
+    "Kolkata",
+    "Jaipur",
+    "Coimbatore",
+    "Ahmedabad",
+    "Delhi",
+    "Mumbai",
+    "Chennai",
+    "Hyderabad",
+    "Pune",
+    "Surat",
+    "Indore",
+    "Vadodara",
+    "Lucknow",
+    "Varanasi",
+    "Patna",
+    "Noida",
+    "Amritsar",
+  ];
 
-  const scrollToSection = (sectionID) => {
-    if (location.pathname === "/") {
-      // Already on home, use custom event or scroll directly
-      const element = document.getElementById(sectionID);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else {
-      // Navigate to home and pass scroll target
-      navigate("/", { state: { scrollTo: sectionID } });
-    }
-  };
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    
-
+  const scrollToSection = (sectionID) => {
+    if (location.pathname === "/") {
+      // Already on home, use custom event or scroll directly
+      const element = document.getElementById(sectionID);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to home and pass scroll target
+      navigate("/", { state: { scrollTo: sectionID } });
+    }
+  };
 
   return (
     <section id="contact-us">
@@ -47,7 +63,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
               <div className="flex items-center">
                 <img
                   src="/Funds.svg"
-                  className="w-[80px] md:w-[120px] object-contain"
+                  className="w-[40px] md:w-[60px] object-contain mr-2"
                   alt="FUNDSMAMA"
                 />
                 <span
@@ -102,7 +118,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
           </div>
 
           {/* Main footer sections moved down */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Our Products Section */}
             <div>
               <h3
@@ -125,18 +141,18 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 </li>
                 <li>
                   <Link
-                    to="/flexi-personal-loan"
+                    to="/business-loan"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Flexi Personal Loan
+                    Business Loan
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/personal-loan-for-self-employed"
+                    to="/home-loan"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Personal Loan for Self-Employed
+                    Home Loan
                   </Link>
                 </li>
                 <li>
@@ -149,18 +165,27 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 </li>
                 <li>
                   <Link
-                    to="/business-loan"
+                    to="/loan-against-securities"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Business Loan
+                    Loan Against Security
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/two-wheeler-loan"
+                    to="/check-credit-score"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Two Wheeler Loan
+                    Check Credit Score
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/"
+                    state={{ scrollTo: "mart-home" }}
+                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                  >
+                    Mama Mart
                   </Link>
                 </li>
               </ul>
@@ -196,10 +221,10 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 </li>
                 <li>
                   <Link
-                    to="/lending-partners"
+                    to="/terms-and-conditions"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Digital Lending Partners
+                    Terms and Conditions
                   </Link>
                 </li>
                 <li>
@@ -212,25 +237,25 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 </li>
                 <li>
                   <Link
-                    to="/testimonials"
+                    to="/privacy-policy"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Awards
+                    Privacy Policy
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/blogs"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
                     News Board
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 
             {/* Legal Section */}
-            <div>
+            {/* <div>
               <h3
                 className="text-lg font-bold mb-4 pb-2 inline-block"
                 style={{
@@ -290,7 +315,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </Link>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
             {/* Contact Section */}
             <div>
@@ -399,7 +424,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 </a>
                 <a
                   href="#"
-                  aria-label="Twitter"
+                  aria-label="X (formerly Twitter)"
                   className="text-gray-400 hover:text-[#18ADA5] transition-colors"
                 >
                   <svg
@@ -407,7 +432,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
                   </svg>
                 </a>
                 <a
@@ -436,18 +461,17 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
               Apply for Loan in Your City
             </h3>
             <div className="text-gray-600 text-sm grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-2 gap-x-3">
-                {
-                    cities.map((city)=>{
-                       return( <Link
-                            key = {city}
-                to={`/apply-loan/personal-loan/${city}`}
-                className="hover:text-[#18ADA5] transition"
-              >
-                Personal Loan in {city}
-              </Link>)
-                    })
-                }
-                
+              {cities.map((city) => {
+                return (
+                  <Link
+                    key={city}
+                    to={`/apply-loan/personal-loan/${city}`}
+                    className="hover:text-[#18ADA5] transition"
+                  >
+                    Personal Loan in {city}
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
@@ -462,10 +486,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
             <div className="text-sm text-gray-500"></div>
 
             <div>
-              <button
-                onClick= {()=>scrollToSection("home-home")}>
-                🔼
-              </button>
+              <button onClick={() => scrollToSection("home-home")}>🔼</button>
             </div>
           </div>
         </div>

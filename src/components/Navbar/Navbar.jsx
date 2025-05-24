@@ -215,19 +215,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   }, [lastScrollY]);
 
   const scrollToSection = (sectionId) => {
-    // Check if it's the aboutus route
-    if (
-      sectionId === "/aboutus" ||
-      sectionId === "/partner-with-us" ||
-      sectionId === "/refer-a-friend" ||
-      sectionId === "/blogs" ||
-      sectionId === "/personal-loan" ||
-      sectionId === "/business-loan" ||
-      sectionId === "/home-loan" ||
-      sectionId === "/loan-against-property" ||
-      sectionId === "/loan-against-securities" ||
-      sectionId === "/check-credit-score"
-    ) {
+    // Check if it's a route navigation (starts with /)
+    if (sectionId.startsWith('/')) {
       navigate(sectionId);
       setIsMenuOpen(false);
       setOpenDropdown(null);
@@ -235,13 +224,15 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       return;
     }
 
-    if (location.pathname === "/" && sectionId === "home-home") {
+    // Handle home page navigation with scroll
+    if (location.pathname === "/" && (sectionId === "home-home" || sectionId === "mart-home")) {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
       return;
     }
+
     if (location.pathname === "/home" && sectionId === "/") {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
@@ -249,6 +240,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       setOpenSubDropdown(null);
       return;
     }
+
     if (location.pathname === "/" && sectionId === "/") {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
@@ -257,26 +249,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       return;
     }
 
-    // If we're on aboutus page and clicking a section link, first navigate to home
-    if (
-      location.pathname === "/aboutus" ||
-      location.pathname === "/terms-and-conditions" ||
-      location.pathname === "/faqs" ||
-      location.pathname === "/privacy-policy" ||
-      location.pathname === "/lending-partners" ||
-      location.pathname === "/mama-calculator" ||
-      location.pathname === "/mama-shoppingmall" ||
-      location.pathname === "/features" ||
-      location.pathname === "/testimonials" ||
-      location.pathname === "/blog" ||
-      location.pathname === "/sitemap" ||
-      location.pathname === "/cancellation-and-refund" ||
-      location.pathname === "/press-release" ||
-      location.pathname === "/customer-care" ||
-      location.pathname === "/partner-with-us" ||
-      location.pathname === "/refer-a-friend" ||
-      location.pathname === "/blogs"
-    ) {
+    // If we're NOT on home page and clicking a section link, navigate to home first
+    if (location.pathname !== "/") {
       navigate("/", { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
@@ -291,23 +265,33 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
+    } else {
+      console.warn(`Section with ID '${sectionId}' not found`);
     }
   };
 
   // Handle scrolling after navigation
   useEffect(() => {
     if (location.state?.scrollTo) {
-      const section = document.getElementById(location.state.scrollTo);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+      // Add a small delay to ensure the page has loaded
+      const timer = setTimeout(() => {
+        const section = document.getElementById(location.state.scrollTo);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        } else {
+          console.warn(`Section with ID '${location.state.scrollTo}' not found`);
+        }
+        // Clear the state
         navigate(location.pathname, { replace: true, state: {} });
-      }
+      }, 100);
+
+      return () => clearTimeout(timer);
     }
   }, [location, navigate]);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 958 || window.innerHeight <= 512);
+      setIsMobile(window.innerWidth <= 1250 || window.innerHeight <= 512);
     };
 
     const handleClickOutside = (event) => {
@@ -358,6 +342,10 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   const handleDropdownMouseEnter = (index) => {
     setOpenDropdown(index); // Keep dropdown open when hovering on it
   };
+
+  const handleDropDownOnClick = (index) => {
+    setOpenDropdown(index); // Keep dropdown open when hovering on it
+  }
 
   return (
     <header
@@ -490,6 +478,9 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
               className="nav-item-home text-black dropdown"
               key={index}
               onMouseEnter={() => handleDropdownMouseEnter(index)}
+              onClick={()=>
+                handleDropDownOnClick(index)
+              }
               onMouseLeave={handleDropdownMouseLeave}
             >
               <div

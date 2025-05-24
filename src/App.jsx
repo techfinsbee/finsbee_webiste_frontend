@@ -20,6 +20,7 @@ import TestimonialsSection from "./components/Testimonials";
 import HomeFAQSection from "./components/HomeFAQSection";
 import LendingPartners from "./components/LendingPartners";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const brands_we_trust = {
@@ -50,22 +51,11 @@ function App() {
     ],
   };
   const dropdownData = [
-    {
-      title: "Loans",
-      link: "loan-section-home",
-    },
-    {
-      title: "MamaMart",
-      link: "mart-home",
-    },
-    {
-      title: "About Us",
-      link: "/aboutus",
-    },
-    {
-      title: "Contact Us",
-      link: "contact-us",
-    },
+    
+    { title: "Loans", link: "loan-section-home" },
+    { title: "MamaMart", link: "mart-home" },
+    { title: "About Us", link: "/aboutus" },
+    { title: "Contact Us", link: "contact-us" },
   ];
   const StepColor = {
     left: "#69B6B2",

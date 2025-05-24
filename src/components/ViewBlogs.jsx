@@ -4,28 +4,12 @@ import Footer from "./Footer";
 
 const Blogs = () => {
   const dropdownData = [
-    {
-      title: "Home",
-      link: "home-home",
-    },
-    {
-      title: "Loans",
-      link: "loan-section-home",
-    },
-    {
-      title: "Mart",
-      link: "mart-home",
-    },
-    {
-      title: "About Us",
-      link: "/aboutus",
-    },
-    {
-      title: "Contact Us",
-      link: "contact-us-home",
-    },
+    
+    { title: "Loans", link: "loan-section-home" },
+    { title: "MamaMart", link: "mart-home" },
+    { title: "About Us", link: "/aboutus" },
+    { title: "Contact Us", link: "contact-us" },
   ];
-
   const blogPosts = [
     {
       id: 1,
@@ -74,7 +58,7 @@ const Blogs = () => {
         TXTCOLOR="#"
       />
       
-      <div className="container mx-auto pt-26 pb-20 px-4">
+      <div className="container mx-auto pt-26 pb-20 px-4 pt-[5rem]">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-[#163312] mb-4">FundsMama Blog</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">Expert insights on personal finance, loans, credit, and financial wellness to help you make informed decisions.</p>

@@ -17,7 +17,7 @@
 
 .partner-item {
   flex: 0 0 calc(14.285% - 2rem);
-  margin: 1rem;
+  margin: 0.5rem;
   transition: all 0.3s ease;
 }
 

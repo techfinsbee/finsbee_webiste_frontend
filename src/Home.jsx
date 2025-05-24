@@ -45,26 +45,11 @@ function Home() {
     { image: "/lending_partner9.png" },
   ]};
   const dropdownData = [
-    {
-      title: "Home",
-      link: "/",
-    },
-    {
-      title: "Loans",
-      link: "loan-section-home",
-    },
-    {
-      title: "Mart",
-      link: "mart-home",
-    },
-    {
-      title: "About Us",
-      link: "/aboutus",
-    },
-    {
-      title: "Contact Us",
-      link: "contact-us-home",
-    },
+    
+    { title: "Loans", link: "loan-section-home" },
+    { title: "MamaMart", link: "mart-home" },
+    { title: "About Us", link: "/aboutus" },
+    { title: "Contact Us", link: "contact-us" },
   ];
  
   return (

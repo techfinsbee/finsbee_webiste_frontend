@@ -51,7 +51,7 @@ const PersonalLoan = () => {
   const personalFaqs = [
     {
       question: "What is the maximum loan amount I can get?",
-      answer: "FundsMama offers personal loans up to Rs. 5 lakhs, depending on your income, credit score, and other eligibility factors."
+      answer: "FundsMama offers personal loans up to Rs. 50 lakhs, depending on your income, credit score, and other eligibility factors."
     },
     {
       question: "How long does it take to get the loan amount disbursed?",
@@ -130,7 +130,7 @@ const PersonalLoan = () => {
               </h1>
               <p className="sm:mt-1 md:mt-5 lg:mt-6 text-base sm:text-lg mb-4 text-gray-700">
                 {activeTab === "personal" 
-                  ? "Get a Personal Loan of up to Rs. 5 Lakhs to pursue your dreams. Quick approval, minimal documentation, and competitive interest rates."
+                  ? "Get a Personal Loan of up to Rs. 50 Lakhs to pursue your dreams. Quick approval, minimal documentation, and competitive interest rates."
                   : "Need funds urgently? Our Instant Loan offering provides quick access to funds with minimal documentation and same-day disbursals."}
               </p>
               <div className="flex flex-wrap gap-3 mb-8">

@@ -237,7 +237,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <h2
-            className="text-4xl md:text-5xl font-bold mb-6 coolvetica"
+            className="text-4xl md:text-5xl font-bold mb-6 why-c coolvetica"
             style={{
               color: COLOR ? "#09615D" : "#112A00",
               position: "relative",
@@ -498,13 +498,13 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       }
       <style jsx>{`
         @media (max-width: 768px) {
-          .coolvetica {
+          .why-c {
             font-size: 2.5rem;
           }
         }
 
         @media (max-width: 640px) {
-          .coolvetica {
+          .why-c {
             font-size: 2rem;
           }
         }

@@ -2,27 +2,12 @@ import React from "react";
 // import Header from "./Header";
 import HomeHeader from "./HomeHeader";
 const HomeCancellation = () => {
-  const dropdownData = [
-    {
-      title: "Home",
-      link: "/",
-    },
-    {
-      title: "Loans",
-      link: "loan-section-home",
-    },
-    {
-      title: "Mart",
-      link: "mart-home",
-    },
-    {
-      title: "About Us",
-      link: "/aboutus",
-    },
-    {
-      title: "Contact Us",
-      link: "contact-us-home",
-    },
+ const dropdownData = [
+    
+    { title: "Loans", link: "loan-section-home" },
+    { title: "MamaMart", link: "mart-home" },
+    { title: "About Us", link: "/aboutus" },
+    { title: "Contact Us", link: "contact-us" },
   ];
   return (
     <>

@@ -80,7 +80,7 @@ const location = useLocation();
             )}
           </h1>
 
-          <button className="text-2xl p-3 w-[30%] text-black font-bold rounded-[50px] bg-[#18ADA5]"  onClick={toggleFormVisibility}>Apply Now</button>
+          <button className="text-xl lg:text-2xl p-3 w-[40vw] lg:w-[20vw] text-black font-bold rounded-[50px] bg-[#18ADA5]"  onClick={toggleFormVisibility}>Apply Now</button>
         </div>
 
         {/* Right content - Phone mockup */}

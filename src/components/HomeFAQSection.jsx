@@ -86,7 +86,7 @@ const HomeFAQSection = ({ COLOR }) => {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 coolvetica"
+            className="text-4xl md:text-5xl font-bold mb-6 faq coolvetica"
             style={{ 
               color: COLOR ? "#7B549C" : "#7B549C",
               position: "relative",
@@ -205,13 +205,13 @@ const HomeFAQSection = ({ COLOR }) => {
 
       <style jsx>{`
         @media (max-width: 768px) {
-          .coolvetica {
+          .faq {
             font-size: 2.25rem;
           }
         }
         
         @media (max-width: 640px) {
-          .coolvetica {
+          .faq {
             font-size: 2rem;
           }
         }
