@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
-
+import Footer from '../Footer'
 const CheckEligibility = () => {
   const dropdownData = [
     { title: "Loans", link: "loan-section-home" },
@@ -107,7 +107,7 @@ const CheckEligibility = () => {
         Hover="home"
         TXTCOLOR="#"
       />
-      <div className="flex justify-center  w-full">
+      <div className="flex justify-center  w-full mb-10">
         <div className="w-[90vw] flex flex-col lg:flex-row lg:mt-10">
           <div className="w-[100%] lg:w-[70%] pl-0 lg:pl-4 ">
             <div className="bg-white  rounded-xl shadow-lg p-4 sm:p-6 relative transform hover:scale-[1.01] transition-transform duration-300 max-h-fit ">
@@ -308,6 +308,7 @@ const CheckEligibility = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };
