@@ -90,7 +90,7 @@ const AboutUs = () => {
             loans or purchases to shop from a wide range of products. <br />
             From quick payday loans to long-term financing and exciting shopping
             experiences, FundsMama is here to make your financial and lifestyle
-            aspirations come true.
+            aspirations come true .
           </p>
         </div>
       </section>
