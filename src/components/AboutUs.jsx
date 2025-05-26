@@ -18,7 +18,7 @@ const AboutUs = () => {
     {
       title: "All-in-One Platform",
       description:
-        "From applying for loans to shopping for the latest products, FundsMama brings everything together under one roof.",
+        "From applying for  loans to shopping for the latest products, FundsMama brings everything together under one roof.",
     },
     {
       title: "Shop & Earn Rewards",
