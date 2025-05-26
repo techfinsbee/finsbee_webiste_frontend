@@ -212,8 +212,8 @@ const PersonalLoan = () => {
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(e.target.value)} // keep raw value
                     onBlur={() => {
-                      const min = 50000;
-                      const max = activeTab === "personal" ? 5000000 : 1000000;
+                      const min = 0;
+                      const max = activeTab === "personal" ? 50000000 : 10000000;
                       const parsed = parseInt(loanAmount) || min;
                       const clamped = Math.min(Math.max(parsed, min), max);
                       setLoanAmount(clamped);
