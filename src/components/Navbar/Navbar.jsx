@@ -27,15 +27,15 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
     enhancedNavItems[loansIndex] = {
       ...enhancedNavItems[loansIndex],
       title: "Our Products",
-      hasDropdown: true,
+      hasDropdown: true, 
       dropdownItems: [
         {
           title: "Personal Loan",
           link: "personal-loan",
           hasSubDropdown: true,
           subDropdownItems: [
-            { title: "Personal Loan", link: "/personal-loan" },
-            { title: "Instant Loan", link: "/personal-loan" },
+            { title: "Personal Loan", link: "/personal-loan", sectionId:"personal" },
+            { title: "Instant Loan", link: "/personal-loan", sectionId: "instant" },
           ],
         },
         {
@@ -43,9 +43,9 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
           link: "business-loan",
           hasSubDropdown: true,
           subDropdownItems: [
-            { title: "Business Loan", link: "/business-loan" },
-            { title: "Working Capital", link: "/business-loan" },
-            { title: "Invoice Discounting", link: "/business-loan" },
+            { title: "Business Loan", link: "/business-loan", sectionId: "business" },
+            { title: "Working Capital", link: "/business-loan", sectionId: "working" },
+            { title: "Invoice Discounting", link: "/business-loan" , sectionId: "invoice"},
           ],
         },
         {
@@ -53,8 +53,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
           link: "home-loan",
           hasSubDropdown: true,
           subDropdownItems: [
-            { title: "Home Loan", link: "/home-loan" },
-            { title: "Home Loan Balance Transfer", link: "/home-loan" },
+            { title: "Home Loan", link: "/home-loan", sectionId: "home" },
+            { title: "Home Loan Balance Transfer", link: "/home-loan", sectionId: "transfer" },
           ],
         },
         {
@@ -62,8 +62,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
           link: "loan-against-property",
           hasSubDropdown: true,
           subDropdownItems: [
-            { title: "Loan Against Property", link: "/loan-against-property" },
-            { title: "LAP Balance Transfer", link: "/loan-against-property" },
+            { title: "Loan Against Property", link: "/loan-against-property", sectionId: "lap" },
+            { title: "LAP Balance Transfer", link: "/loan-against-property", sectionId: "transfer" },
           ],
         },
         {
@@ -72,14 +72,11 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
           hasSubDropdown: true,
           subDropdownItems: [
             {
-              title: "Loan Against Securities",
-              link: "/loan-against-securities",
-            },
-            {
               title: "Loan Against Mutual Funds",
-              link: "/loan-against-securities",
+              link: "/loan-against-securities"
+              , sectionId: "mutual-funds"
             },
-            { title: "Loan Against Stocks", link: "/loan-against-securities" },
+            { title: "Loan Against Stocks", link: "/loan-against-securities" , sectionId: "stocks"},
           ],
         },
         {
@@ -214,10 +211,10 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
     };
   }, [lastScrollY]);
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionLink, sectionId) => {
     // Check if it's a route navigation (starts with /)
-    if (sectionId.startsWith('/')) {
-      navigate(sectionId);
+    if (sectionLink.startsWith('/')) {
+      navigate(sectionLink, { state: { scrollTo: sectionId } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
@@ -225,24 +222,24 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
     }
 
     // Handle home page navigation with scroll
-    if (location.pathname === "/" && (sectionId === "home-home" || sectionId === "mart-home")) {
-      navigate("/", { state: { scrollTo: sectionId } });
+    if (location.pathname === "/" && (sectionLink === "home-home" || sectionLink === "mart-home")) {
+      navigate("/", { state: { scrollTo: sectionLink } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
       return;
     }
 
-    if (location.pathname === "/home" && sectionId === "/") {
-      navigate("/", { state: { scrollTo: sectionId } });
+    if (location.pathname === "/home" && sectionLink === "/") {
+      navigate("/", { state: { scrollTo: sectionLink } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
       return;
     }
 
-    if (location.pathname === "/" && sectionId === "/") {
-      navigate("/", { state: { scrollTo: sectionId } });
+    if (location.pathname === "/" && sectionLink === "/") {
+      navigate("/", { state: { scrollTo: sectionLink } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
@@ -251,7 +248,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
 
     // If we're NOT on home page and clicking a section link, navigate to home first
     if (location.pathname !== "/") {
-      navigate("/", { state: { scrollTo: sectionId } });
+      navigate("/", { state: { scrollTo: sectionLink } });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
@@ -259,14 +256,14 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
     }
 
     // Normal section scrolling on home page
-    const section = document.getElementById(sectionId);
+    const section = document.getElementById(sectionLink);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       setIsMenuOpen(false);
       setOpenDropdown(null);
       setOpenSubDropdown(null);
     } else {
-      console.warn(`Section with ID '${sectionId}' not found`);
+      console.warn(`Section with ID '${sectionLink}' not found`);
     }
   };
 
@@ -439,7 +436,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                                         key={subSubIndex}
                                         className="menu-title pl-8"
                                         onClick={() =>
-                                          scrollToSection(subSubItem.link)
+                                          scrollToSection(subSubItem.link, subSubItem.sectionId )
                                         }
                                       >
                                         {subSubItem.title}
@@ -560,7 +557,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
                                   className="dropdown-item text-lg"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    scrollToSection(subSubItem.link);
+                                    scrollToSection(subSubItem.link, subSubItem.sectionId);
                                   }}
                                 >
                                   {subSubItem.title}

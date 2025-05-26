@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer";
 import {
@@ -17,6 +18,34 @@ const PersonalLoan = () => {
   const [tenure, setTenure] = useState(24);
   const [activeTab, setActiveTab] = useState("personal");
   const [expandedFaq, setExpandedFaq] = useState(null);
+
+  
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      
+      const tabToActivate = location.state.scrollTo;
+      // Set the tab
+      setActiveTab(tabToActivate);
+
+      // Wait for the tab content to render, then scroll
+      const timer = setTimeout(() => {
+        const section = document.getElementById(tabToActivate);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        } else {
+          console.warn(`Section with ID '${tabToActivate}' not found`);
+        }
+
+        // Clear the state to avoid repeated scrolling
+        navigate(location.pathname, { replace: true, state: {} });
+      }, 200); // Slight delay to ensure DOM is updated
+
+      return () => clearTimeout(timer);
+    }
+  }, [location, navigate]);
 
   const dropdownData = [
     { title: "Loans", link: "loan-section-home" },
@@ -95,7 +124,7 @@ const PersonalLoan = () => {
       <Navbar dropdownData={dropdownData} COLOR="#fff" TXTCOLOR="#" />
 
       {/* Hero Section with Tabs */}
-      <section className="pt-5 pb-5 bg-gradient-to-br from-[#f0f9f9] to-[#ffffff]">
+      <section className="pt-5 pb-5 bg-gradient-to-br from-[#f0f9f9] to-[#ffffff]" >
         <div className="container mx-auto px-4 sm:px-6">
           {/* Loan Type Tabs */}
           <div className="flex border-b border-gray-200 mb-3 overflow-x-auto no-scrollbar">
@@ -165,13 +194,11 @@ const PersonalLoan = () => {
               {/* Image of property/real estate */}
               <div className="mt-8 relative">
                 <img
-                  src="https://img.freepik.com/free-photo/happy-young-asian-family-enjoying-new-home-parents-child-unpacking-boxes-moving-house-relocation-mortgage-property-investment-loan-concept_74952-2732.jpg"
+                  src="https://www.fincart.com/wp-content/uploads/2024/08/best-reasons-for-a-personal-loan-717x404-1.webp"
                   alt="Property with value potential"
                   className="rounded-xl shadow-md w-full max-w-md"
                 />
-                <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg text-sm font-medium text-[#18ADA5]">
-                  Unlock your property's potential
-                </div>
+                
               </div>
             </div>
 

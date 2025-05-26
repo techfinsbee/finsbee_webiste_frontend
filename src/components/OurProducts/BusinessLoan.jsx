@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer";
 import {
   CheckCircle,
@@ -18,7 +19,31 @@ const BusinessLoan = () => {
   const [tenure, setTenure] = useState(36);
   const [activeTab, setActiveTab] = useState("business");
   const [expandedFaq, setExpandedFaq] = useState(null);
+ const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      
+      const tabToActivate = location.state.scrollTo;
+      // Set the tab
+      setActiveTab(tabToActivate);
 
+      // Wait for the tab content to render, then scroll
+      const timer = setTimeout(() => {
+        const section = document.getElementById(tabToActivate);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        } else {
+          console.warn(`Section with ID '${tabToActivate}' not found`);
+        }
+
+        // Clear the state to avoid repeated scrolling
+        navigate(location.pathname, { replace: true, state: {} });
+      }, 200); // Slight delay to ensure DOM is updated
+
+      return () => clearTimeout(timer);
+    }
+  }, [location, navigate]);
   const dropdownData = [
 
     { title: "Loans", link: "loan-section-home" },
@@ -223,13 +248,11 @@ const BusinessLoan = () => {
               {/* Image of property/real estate */}
               <div className="mt-8 relative">
                 <img
-                  src="https://img.freepik.com/free-photo/business-people-discussing-documents-ideas-meeting_1150-18277.jpg"
+                  src="https://res-4.cloudinary.com/chqbook/image/upload/w_900,q_auto,f_auto/v1/staging-ghost-assets/Business-Loan_1.png"
                   alt="Property with value potential"
                   className="rounded-xl shadow-md w-full max-w-md"
                 />
-                <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg text-sm font-medium text-[#18ADA5]">
-                  Unlock your property's potential
-                </div>
+                
               </div>
             </div>
 

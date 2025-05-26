@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   CheckCircle,
   Calculator,
@@ -20,7 +21,31 @@ const LoanAgainstProperty = () => {
   const [tenure, setTenure] = useState(180);
   const [activeTab, setActiveTab] = useState("lap");
   const [expandedFaq, setExpandedFaq] = useState(null);
+   const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      
+      const tabToActivate = location.state.scrollTo;
+      // Set the tab
+      setActiveTab(tabToActivate);
 
+      // Wait for the tab content to render, then scroll
+      const timer = setTimeout(() => {
+        const section = document.getElementById(tabToActivate);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        } else {
+          console.warn(`Section with ID '${tabToActivate}' not found`);
+        }
+
+        // Clear the state to avoid repeated scrolling
+        navigate(location.pathname, { replace: true, state: {} });
+      }, 200); // Slight delay to ensure DOM is updated
+
+      return () => clearTimeout(timer);
+    }
+  }, [location, navigate]);
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
@@ -186,13 +211,11 @@ const LoanAgainstProperty = () => {
               {/* Image of property/real estate */}
               <div className="mt-8 relative">
                 <img
-                  src="https://img.freepik.com/free-photo/modern-residential-district-with-green-roof-balcony-generated-by-ai_188544-10276.jpg"
+                  src="https://www.businessleague.in/wp-content/uploads/2024/08/Loan-Against-Property.jpg"
                   alt="Property with value potential"
                   className="rounded-xl shadow-md w-full max-w-md"
                 />
-                <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg text-sm font-medium text-[#18ADA5]">
-                  Unlock your property's potential
-                </div>
+               
               </div>
             </div>
 
