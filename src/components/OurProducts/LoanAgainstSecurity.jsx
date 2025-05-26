@@ -255,11 +255,11 @@ const LoanAgainstSecurities = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={interestRate}
-                    onChange={(e) => setInterestRate(e.target.value)} // allow any typing
+                    onChange={(e) => setInterestRate(parseFloat(e.target.value))} // allow any typing
                     onBlur={() => {
                       const min = 0;
                       const max = 60;
-                      const parsed = parseInt(interestRate) || min;
+                      const parsed = parseFloat(interestRate) || min;
                       const clamped = Math.min(Math.max(parsed, min), max);
                       setInterestRate(clamped);
                     }}
