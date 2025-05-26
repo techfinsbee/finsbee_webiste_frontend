@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from 'react-router-dom';
 import Form from "./Home/Form";
+
 const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { ref, inView } = useInView({
@@ -202,7 +203,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
   return (
     <section
       id="why-choose-us"
-      className="py-20 px-4 md:px-8 relative overflow-hidden"
+      className="py-12 sm:py-16 md:py-20 px-4 md:px-8 relative overflow-hidden"
       style={{
         background: COLOR
           ? `radial-gradient(circle at top left, rgba(24, 173, 165, 0.1), transparent 70%),
@@ -230,43 +231,36 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       ></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-        >
+        {/* Fixed header section with better mobile responsiveness */}
+        <div className="text-center mb-12 md:mb-16">
           <h2
-            className="text-4xl md:text-5xl font-bold mb-6 why-c coolvetica"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 why-c px-2"
             style={{
               color: COLOR ? "#09615D" : "#112A00",
               position: "relative",
               display: "inline-block",
+              lineHeight: "1.2",
             }}
           >
             Why Choose FundsMama
-            <div
-              className="absolute h-1 w-24 rounded-full left-1/2 transform -translate-x-1/2"
-              style={{
-                bottom: "-15px",
-                background: COLOR ? "#18ADA5" : "#b2ff8e",
-              }}
-            ></div>
           </h2>
           <p
-            className="mt-8 text-lg md:text-xl max-w-3xl mx-auto manrope"
-            style={{ color: COLOR ? "#333" : "#333" }}
+            className="mt-4 md:mt-8 sm:text-lg md:text-xl max-w-3xl mx-auto manrope px-4"
+            style={{ 
+              color: COLOR ? "#333" : "#333",
+              lineHeight: "1.6"
+            }}
           >
             Your journey to financial empowerment and exclusive rewards starts
             with us. Here's why thousands of Indians choose FundsMama for their
             needs.
           </p>
-        </motion.div>
+        </div>
 
         {/* Desktop view: Grid layout */}
         <motion.div
           ref={ref}
-          className="hidden ml-14 mr-14 md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 mx-4 lg:mx-14"
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={containerVariants}
@@ -348,9 +342,9 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                     background: `linear-gradient(to right, ${features[activeIndex].color}, ${features[activeIndex].color}30)`,
                   }}
                 ></div>
-                <div className="p-7 relative">
+                <div className="p-6 sm:p-7 relative">
                   <div
-                    className="w-16 h-16 mb-5 rounded-full flex items-center justify-center"
+                    className="w-14 h-14 sm:w-16 sm:h-16 mb-4 sm:mb-5 rounded-full flex items-center justify-center"
                     style={{
                       background: `linear-gradient(135deg, ${features[activeIndex].color}20, ${features[activeIndex].color}05)`,
                       border: `2px solid ${features[activeIndex].color}20`,
@@ -360,13 +354,13 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                     {icons[features[activeIndex].icon]}
                   </div>
                   <h3
-                    className="text-xl font-bold mb-3 coolvetica"
+                    className="text-lg sm:text-xl font-bold mb-3 coolvetica"
                     style={{ color: COLOR ? "#09615D" : "#163312" }}
                   >
                     {features[activeIndex].title}
                   </h3>
                   <p
-                    className="text-gray-600 manrope leading-relaxed"
+                    className="text-gray-600 manrope leading-relaxed text-sm sm:text-base"
                     style={{ fontWeight: "500" }}
                   >
                     {features[activeIndex].description}
@@ -449,13 +443,14 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         </div>
 
         <motion.div
-          className="mt-20 text-center"
+          className="mt-16 md:mt-20 text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
         >
           <button
-            className="px-10 py-4 rounded-full text-white font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl coolvetica flex items-center justify-center mx-auto"
+            onClick={toggleFormVisibility}
+            className="px-8 sm:px-10 py-3 sm:py-4 rounded-full text-white font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl coolvetica flex items-center justify-center mx-auto"
             style={{
               background: COLOR
                 ? "linear-gradient(135deg, #18ADA5, #09615D)"
@@ -465,17 +460,12 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 : "0 10px 20px rgba(178, 255, 142, 0.3)",
             }}
           >
-            
-            <button onClick={toggleFormVisibility}>
             <span className="text-sm sm:text-base md:text-lg">
-              
               Start Your Journey Today
             </span>
-            </button>
-            
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 ml-2 transition-transform group-hover:translate-x-1"
+              className="h-4 w-4 sm:h-5 sm:w-5 ml-2 transition-transform group-hover:translate-x-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -490,23 +480,40 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
           </button>
         </motion.div>
       </div>
-      {
-        <Form
-          isFormVisible={isFormVisible}
-          onClose={() => setIsFormVisible(false)}
-        />
-      }
+      
+      <Form
+        isFormVisible={isFormVisible}
+        onClose={() => setIsFormVisible(false)}
+      />
+      
       <style jsx>{`
+        /* Enhanced mobile responsive styles */
         @media (max-width: 768px) {
           .why-c {
-            font-size: 2.5rem;
+            font-size: 2rem !important;
+            line-height: 1.2 !important;
           }
         }
 
         @media (max-width: 640px) {
           .why-c {
-            font-size: 2rem;
+            font-size: 1.75rem !important;
+            line-height: 1.2 !important;
           }
+        }
+
+        @media (max-width: 480px) {
+          .why-c {
+            font-size: 1.5rem !important;
+            line-height: 1.3 !important;
+          }
+        }
+
+        /* Ensure text is always visible */
+        .why-c {
+          opacity: 1 !important;
+          visibility: visible !important;
+          display: block !important;
         }
 
         /* Custom hover effect for card scaling */
