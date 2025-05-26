@@ -222,7 +222,7 @@ const LoanAgainstSecurities = () => {
   value={loanAmount}
   onChange={(e) => setLoanAmount(e.target.value)} // allow any typing
   onBlur={() => {
-    const min = 200000;
+    const min = 0;
     const max = 10000000;
     const parsed = parseInt(loanAmount) || min;
     const clamped = Math.min(Math.max(parsed, min), max);
