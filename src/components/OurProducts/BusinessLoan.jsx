@@ -250,7 +250,14 @@ const BusinessLoan = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={loanAmount}
-                    onChange={handleLoanAmountChange}
+                    onChange={(e) => setLoanAmount(parseInt(e.target.value))}
+                      onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "business" ? 5000000000 : 1000000000;
+                      const parsed = parseInt(loanAmount) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setLoanAmount(clamped);
+                    }}
                   />
                 
                 </div>
@@ -263,15 +270,25 @@ const BusinessLoan = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={interestRate}
-                    onChange={handleInterestRateChange}
+                    onChange={(e) => setInterestRate(parseInt(e.target.value))}
+                      onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "business" ? 40 : 40;
+                      const parsed = parseInt(interestRate) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setInterestRate(clamped);
+                    }}
                   />
+                  {
+                    interestRate > 40 && <p className="text-[red] text-sm">Loan Rate cannot exceed 40%</p>
+                  }
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>12 %</span>
                     <span>40 %</span>
                   </div>
                   <input
                     type="range"
-                    min="12"
+                    min="1"
                     max="40"
                     step="0.1"
                     value={interestRate}
@@ -280,6 +297,7 @@ const BusinessLoan = () => {
                     }
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
                   />
+                  
                 </div>
 
                 <div className="mb-5">
@@ -290,7 +308,15 @@ const BusinessLoan = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={tenure}
-                    onChange={handleTenureChange}
+                    onChange={(e) => setTenure(parseInt(e.target.value))}
+                    onBlur={() => {
+                      const min = 1;
+                      const max = activeTab === "business" ? 600 : 600;
+                      const parsed = parseInt(tenure) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setTenure(clamped);
+                    }}
+
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>6 Months</span>

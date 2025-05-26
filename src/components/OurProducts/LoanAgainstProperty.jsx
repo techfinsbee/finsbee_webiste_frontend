@@ -213,9 +213,15 @@ const LoanAgainstProperty = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={loanAmount}
-                    onChange={handleLoanAmountChange}
+                    onChange={(e) => setLoanAmount(parseInt(e.target.value))}
+                    onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "lap" ? 50000000 : 10000000;
+                      const parsed = parseInt(loanAmount) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setLoanAmount(clamped);
+                    }}
                   />
-                  
                 </div>
 
                 <div className="mb-5">
@@ -226,15 +232,25 @@ const LoanAgainstProperty = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={interestRate}
-                    onChange={handleInterestRateChange}
+                    onChange={(e) => setInterestRate(parseInt(e.target.value))}
+                    onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "lap" ? 60 : 60;
+                      const parsed = parseInt(interestRate) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setInterestRate(clamped);
+                    }}
                   />
+                  {
+                    interestRate > 40 && <p className="text-[red] text-sm">Loan Rate cannot exceed 40%</p>
+                  }
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>7.00 %</span>
                     <span>20.00 %</span>
                   </div>
                   <input
                     type="range"
-                    min="7"
+                    min="1"
                     max="20"
                     step="0.1"
                     value={interestRate}
@@ -253,7 +269,14 @@ const LoanAgainstProperty = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={tenure}
-                    onChange={handleTenureChange}
+                    onChange={(e) => setTenure(parseInt(e.target.value))}
+                    onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "home" ? 600 : 600;
+                      const parsed = parseInt(tenure) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setTenure(clamped);
+                    }}
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>1 Year (12 Months)</span>

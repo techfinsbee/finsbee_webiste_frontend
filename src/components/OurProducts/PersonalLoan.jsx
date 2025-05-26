@@ -36,24 +36,6 @@ const PersonalLoan = () => {
   const monthlyEMI = calculateEMI(loanAmount, interestRate, tenure);
   const totalInterest = monthlyEMI * tenure - loanAmount;
 
-  const handleLoanAmountChange = (e) => {
-    const value = Math.min(
-      Math.max(parseInt(e.target.value) || 50000, 50000),
-      500000
-    );
-    setLoanAmount(value);
-  };
-
-  const handleInterestRateChange = (e) => {
-    const value = Math.min(Math.max(parseFloat(e.target.value) || 9, 9), 24);
-    setInterestRate(value);
-  };
-
-  const handleTenureChange = (e) => {
-    const value = Math.min(Math.max(parseInt(e.target.value) || 12, 12), 60);
-    setTenure(value);
-  };
-
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
@@ -249,15 +231,25 @@ const PersonalLoan = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={interestRate}
-                    onChange={handleInterestRateChange}
+                    onChange={(e) => setInterestRate(parseInt(e.target.value))}
+                    onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "personal" ? 40 : 40;
+                      const parsed = parseInt(interestRate) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setInterestRate(clamped);
+                    }}
                   />
+                  {
+                    interestRate > 40 && <p className="text-[red] text-sm">Loan Rate cannot exceed 40%</p>
+                  }
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>Min 9 %</span>
                     <span>Max 40 %</span>
                   </div>
                   <input
                     type="range"
-                    min="9"
+                    min="1"
                     max="40"
                     step="0.1"
                     value={interestRate}
@@ -276,7 +268,14 @@ const PersonalLoan = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                     value={tenure}
-                    onChange={handleTenureChange}
+                    onChange={(e) => setTenure(parseInt(e.target.value))}
+                    onBlur={() => {
+                      const min = 0;
+                      const max = activeTab === "personal" ? 600 : 600;
+                      const parsed = parseInt(tenure) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setTenure(clamped);
+                    }}
                   />
                   <div className="flex justify-between mt-1 text-xs text-gray-500">
                     <span>Min 12 Months</span>

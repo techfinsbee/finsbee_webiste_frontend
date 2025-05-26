@@ -119,6 +119,7 @@ const CheckEligibility = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Age:
                 </label>
+                { (!age || !isAgeEligible) && <p className="text-sm text-[red]">Please enter age first</p>}
                 <input
                   type="date"
                   className="border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all p-1"
@@ -155,13 +156,13 @@ const CheckEligibility = () => {
                 </label>
                 <input
                   type="number"
-                  disabled={!isAgeEligible}
+                  disabled={(!age || !isAgeEligible)}
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(e.target.value)}
                   onBlur={() => {
-                    const min = 50000;
-                    const max = activeTab === "personal" ? 5000000 : 1000000;
+                    const min = 1;
+                    const max = 500000000 ;
                     const parsed = parseInt(loanAmount) || min;
                     setLoanAmount(Math.min(Math.max(parsed, min), max));
                   }}
@@ -177,8 +178,8 @@ const CheckEligibility = () => {
                 <input
                   type="range"
                   min="50000"
-                  disabled={!isAgeEligible}
-                  max={activeTab === "personal" ? "5000000" : "1000000"}
+                  disabled = {!age || !isAgeEligible}
+                  max= "500000000"
                   step="10000"
                   value={Math.min(
                     Math.max(parseInt(loanAmount) || 50000, 50000),
@@ -197,9 +198,11 @@ const CheckEligibility = () => {
                   type="number"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                   value={monthOblig}
-                  onChange={(e) => setMonthOblig(e.target.value)} // allow raw input
+                                    disabled={!age || !isAgeEligible}
+
+                  onChange={(e) => setMonthOblig(e.target.value)} 
                   onBlur={() => {
-                    const min = 50000;
+                    const min = 1;
                     const max = 1000000;
                     const parsed = parseInt(monthOblig) || min;
                     setMonthOblig(Math.min(Math.max(parsed, min), max));
@@ -215,12 +218,14 @@ const CheckEligibility = () => {
                 </div>
                 <input
                   type="range"
-                  disabled={!isAgeEligible}
-                  min="50000"
+                  
+                  min="0"
                   max="1000000"
+                  disabled={!age || !isAgeEligible}
+
                   step="10000"
                   value={Math.min(
-                    Math.max(parseInt(monthOblig) || 50000, 50000),
+                    Math.max(parseInt(monthOblig) || 0, 0),
                     1000000
                   )}
                   onChange={(e) => setMonthOblig(parseInt(e.target.value))}
@@ -242,17 +247,28 @@ const CheckEligibility = () => {
                   type="number"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                   value={interestRate}
-                  onChange={handleInterestRateChange}
+                  onChange={(e) => setInterestRate(e.target.value)} // allow any typing
+                    onBlur={() => {
+                      const min = 1;
+                      const max = 40;
+                      const parsed = parseInt(interestRate) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setInterestRate(clamped);
+                    }}
                 />
+                {
+                  interestRate > 40 && <p className="text-[red] text-sm">Loan Rate cannot exceed 40%</p>
+                }
                 <div className="flex justify-between mt-1 text-xs text-gray-500">
                   <span>Min 9 %</span>
                   <span>Max 40 %</span>
                 </div>
                 <input
                   type="range"
-                  disabled={!isAgeEligible}
                   min="9"
                   max="40"
+                  disabled={!age || !isAgeEligible}
+
                   step="0.1"
                   value={interestRate}
                   onChange={(e) => setInterestRate(parseFloat(e.target.value))}
@@ -268,7 +284,16 @@ const CheckEligibility = () => {
                   type="number"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
                   value={tenure}
-                  onChange={handleTenureChange}
+                                    disabled={!age || !isAgeEligible}
+
+                  onChange={(e) => setTenure(e.target.value)} // allow any typing
+                    onBlur={() => {
+                      const min = 1;
+                      const max = 100;
+                      const parsed = parseInt(tenure) || min;
+                      const clamped = Math.min(Math.max(parsed, min), max);
+                      setTenure(clamped);
+                    }}
                 />
                 <div className="flex justify-between mt-1 text-xs text-gray-500">
                   <span>Min 12 Months</span>
@@ -276,9 +301,10 @@ const CheckEligibility = () => {
                 </div>
                 <input
                   type="range"
-                  min="12"
+                  min="1"
                   max="60"
-                  disabled={!isAgeEligible}
+                                    disabled={!age || !isAgeEligible}
+
                   step="1"
                   value={tenure}
                   onChange={(e) => setTenure(parseInt(e.target.value))}
@@ -297,7 +323,7 @@ const CheckEligibility = () => {
               </p>
               <p className="text-xl font-bold text-[#18ADA5]">
                 ₹{" "}
-                {isNaN(eligibleLoanAmount)
+                {(isNaN(eligibleLoanAmount) || (monthOblig > (loanAmount*0.6)) || (!isAgeEligible || !age))
                   ? "0"
                   : eligibleLoanAmount.toLocaleString()}
               </p>
