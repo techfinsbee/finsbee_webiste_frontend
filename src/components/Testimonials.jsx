@@ -1,129 +1,138 @@
 import React, { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
-
 import { motion, AnimatePresence } from "framer-motion";
-
 
 const TestimonialsSection = ({ COLOR }) => {
   const MAX_VISIBLE = 3;
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for next, -1 for prev
   const { ref, inView } = useInView({
     threshold: 0.2,
     triggerOnce: false,
   });
-  const SLIDE_INTERVAL = 10000
 
-  // Define testimonials data - reduced to three
+  // Define testimonials data
   const testimonials = [
-  {
-    id: 1,
-    name: "Rohit Shah",
-    location: "Mumbai",
-    profession: "Business Owner",
-    rating: 5,
-    text: "FundsMama made my business loan process incredibly smooth. The competitive rates and quick approval saved me weeks of paperwork. The FMCoins were an amazing bonus - I used them to get a new laptop from Mama Mart!",
-    loanType: "Business Loan"
-  },
-  {
-    id: 2,
-    name: "Priya Desai",
-    location: "Pune",
-    profession: "Software Engineer",
-    rating: 4.5,
-    text: "I needed a personal loan urgently for a family emergency. FundsMama processed my application within hours, and their user-friendly app made tracking repayments effortless. Plus, the rewards system actually makes repaying loans rewarding!",
-    loanType: "Personal Loan"
-  },
-  {
-    id: 3,
-    name: "Arjun Mehta",
-    location: "Bangalore",
-    profession: "Marketing Professional",
-    rating: 5,
-    text: "After comparing multiple platforms, I chose FundsMama for my home loan. Their interest rates were the best, and the entire process was paperless! The customer service team was available 24/7 to address my concerns.",
-    loanType: "Home Loan"
-  },
-  {
-    id: 4,
-    name: "Neha Kapoor",
-    location: "Delhi",
-    profession: "Interior Designer",
-    rating: 4.8,
-    text: "I opted for a Loan Against Property with FundsMama to expand my studio. The valuation was fair, and the disbursal was quick. Their transparency and support made the entire experience stress-free.",
-    loanType: "Loan Against Property"
-  },
-  {
-    id: 5,
-    name: "Siddharth Iyer",
-    location: "Chennai",
-    profession: "Stock Trader",
-    rating: 4.7,
-    text: "FundsMama's Loan Against Securities helped me unlock liquidity without selling my investments. The process was seamless and the interest rates were surprisingly low.",
-    loanType: "Loan Against Securities"
-  },
-  {
-    id: 6,
-    name: "Anjali Verma",
-    location: "Hyderabad",
-    profession: "Entrepreneur",
-    rating: 5,
-    text: "FundsMama supported my startup with a business loan when others hesitated. Their flexible repayment options and FMCoins rewards made it a win-win!",
-    loanType: "Business Loan"
-  },
-  {
-    id: 7,
-    name: "Karan Malhotra",
-    location: "Ahmedabad",
-    profession: "Civil Engineer",
-    rating: 4.6,
-    text: "I used FundsMama for a home loan and was impressed by their digital-first approach. No paperwork, no delays – just fast, efficient service.",
-    loanType: "Home Loan"
-  },
-  {
-    id: 8,
-    name: "Meera Joshi",
-    location: "Kolkata",
-    profession: "Teacher",
-    rating: 4.9,
-    text: "When I needed a personal loan for my daughter’s education, FundsMama came through. The process was simple, and I even earned FMCoins for timely repayments!",
-    loanType: "Personal Loan"
-  }
-];
+    {
+      id: 1,
+      name: "Rohit Shah",
+      location: "Mumbai",
+      profession: "Business Owner",
+      rating: 5,
+      text: "FundsMama made my business loan process incredibly smooth. The competitive rates and quick approval saved me weeks of paperwork. The FMCoins were an amazing bonus - I used them to get a new laptop from Mama Mart!",
+      loanType: "Business Loan"
+    },
+    {
+      id: 2,
+      name: "Priya Desai",
+      location: "Pune",
+      profession: "Software Engineer",
+      rating: 4.5,
+      text: "I needed a personal loan urgently for a family emergency. FundsMama processed my application within hours, and their user-friendly app made tracking repayments effortless. Plus, the rewards system actually makes repaying loans rewarding!",
+      loanType: "Personal Loan"
+    },
+    {
+      id: 3,
+      name: "Arjun Mehta",
+      location: "Bangalore",
+      profession: "Marketing Professional",
+      rating: 5,
+      text: "After comparing multiple platforms, I chose FundsMama for my home loan. Their interest rates were the best, and the entire process was paperless! The customer service team was available 24/7 to address my concerns.",
+      loanType: "Home Loan"
+    },
+    {
+      id: 4,
+      name: "Neha Kapoor",
+      location: "Delhi",
+      profession: "Interior Designer",
+      rating: 4.8,
+      text: "I opted for a Loan Against Property with FundsMama to expand my studio. The valuation was fair, and the disbursal was quick. Their transparency and support made the entire experience stress-free.",
+      loanType: "Loan Against Property"
+    },
+    {
+      id: 5,
+      name: "Siddharth Iyer",
+      location: "Chennai",
+      profession: "Stock Trader",
+      rating: 4.7,
+      text: "FundsMama's Loan Against Securities helped me unlock liquidity without selling my investments. The process was seamless and the interest rates were surprisingly low.",
+      loanType: "Loan Against Securities"
+    },
+    {
+      id: 6,
+      name: "Anjali Verma",
+      location: "Hyderabad",
+      profession: "Entrepreneur",
+      rating: 5,
+      text: "FundsMama supported my startup with a business loan when others hesitated. Their flexible repayment options and FMCoins rewards made it a win-win!",
+      loanType: "Business Loan"
+    },
+    {
+      id: 7,
+      name: "Karan Malhotra",
+      location: "Ahmedabad",
+      profession: "Civil Engineer",
+      rating: 4.6,
+      text: "I used FundsMama for a home loan and was impressed by their digital-first approach. No paperwork, no delays – just fast, efficient service.",
+      loanType: "Home Loan"
+    },
+    {
+      id: 8,
+      name: "Meera Joshi",
+      location: "Kolkata",
+      profession: "Teacher",
+      rating: 4.9,
+      text: "When I needed a personal loan for my daughter's education, FundsMama came through. The process was simple, and I even earned FMCoins for timely repayments!",
+      loanType: "Personal Loan"
+    }
+  ];
 
+  // Calculate maximum index for desktop carousel
+  const maxDesktopIndex = Math.max(0, testimonials.length - MAX_VISIBLE);
+  
+  const nextSlide = () => {
+    setDirection(1);
+    setActiveIndex((prev) => {
+      if (window.innerWidth >= 1024) {
+        // Desktop: cycle through groups of 3
+        return prev >= maxDesktopIndex ? 0 : prev + 1;
+      } else {
+        // Mobile: cycle through individual testimonials
+        return (prev + 1) % testimonials.length;
+      }
+    });
+  };
 
-//   const [activeIndex, setActiveIndex] = useState(0);
-
-  
-  const nextSlide = () => {
-    setActiveIndex((prev) =>
-      prev + 1 >= testimonials.length - (MAX_VISIBLE - 1) ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setActiveIndex((prev) =>
-      prev - 1 < 0 ? testimonials.length - MAX_VISIBLE : prev - 1
-    );
-  };
-
-
-  
-useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-
+  const prevSlide = () => {
+    setDirection(-1);
+    setActiveIndex((prev) => {
+      if (window.innerWidth >= 1024) {
+        // Desktop: cycle through groups of 3
+        return prev <= 0 ? maxDesktopIndex : prev - 1;
+      } else {
+        // Mobile: cycle through individual testimonials
+        return prev <= 0 ? testimonials.length - 1 : prev - 1;
+      }
+    });
+  };
 
   // Auto-rotate testimonials
   useEffect(() => {
     if (!inView) return;
     
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      setDirection(1);
+      setActiveIndex((prev) => {
+        if (window.innerWidth >= 1024) {
+          return prev >= maxDesktopIndex ? 0 : prev + 1;
+        } else {
+          return (prev + 1) % testimonials.length;
+        }
+      });
     }, 5000);
     
     return () => clearInterval(interval);
-  }, [inView, testimonials.length]);
+  }, [inView, maxDesktopIndex]);
 
   // Function to get avatar background color based on name
   const getAvatarColor = (name) => {
@@ -133,7 +142,6 @@ useEffect(() => {
       "#664481", // Dark purple
     ];
     
-    // Use name's first character code to determine color index
     const index = name.charCodeAt(0) % colors.length;
     return colors[index];
   };
@@ -179,28 +187,6 @@ useEffect(() => {
     return stars;
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { 
-        type: "spring",
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
   return (
     <section 
       id="testimonials" 
@@ -210,9 +196,6 @@ useEffect(() => {
       }}
       ref={ref}
     >
-
-      
-
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 rounded-full opacity-20" 
           style={{ 
@@ -229,7 +212,7 @@ useEffect(() => {
         {/* Section header */}
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold mb-6 coolvetica"
+            className="text-4xl md:text-5xl font-bold mb-6"
             style={{ 
               color: COLOR ? "#7B549C" : "#7B549C",
               position: "relative",
@@ -249,7 +232,7 @@ useEffect(() => {
             ></div>
           </motion.h2>
           <motion.p 
-            className="mt-8 text-lg md:text-xl max-w-3xl mx-auto manrope"
+            className="mt-8 text-lg md:text-xl max-w-3xl mx-auto"
             style={{ color: "#555" }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -260,156 +243,172 @@ useEffect(() => {
         </div>
 
         {/* Desktop testimonials */}
-       
-<div className="hidden lg:block">
-      <div className="relative px-0">
-        <div className="flex space-x-6 transition-all duration-500 ease-in-out">
-          {testimonials.slice(activeIndex, activeIndex + MAX_VISIBLE).map((testimonial)  => (
-            <motion.div
-              
-key={testimonial.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="bg-white rounded-2xl p-6 shadow-lg w-1/3"
-              style={{ borderTop: "4px solid #7B549C" }}
-  
-            >
-              <div className="flex items-start mb-4">
-                <div
-                  className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
-                  style={{
-                    backgroundColor: getAvatarColor(testimonial.name),
-                    boxShadow: "0 4px 10px rgba(123, 84, 156, 0.3)",
-                  }}
-                >
-                  {testimonial.name.charAt(0)}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg testi coolvetica" style={{ color: "#7B549C" }}>
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {testimonial.location} • {testimonial.profession}
-                  </p>
-                  <div className="flex mt-1">
-                    {renderStars(testimonial.rating)}
-                  </div>
-                </div>
-              </div>
+        <div className="hidden lg:block">
+          <div className="relative px-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: direction * 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction * -100 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="flex space-x-6"
+              >
+                {testimonials.slice(activeIndex, activeIndex + MAX_VISIBLE).map((testimonial) => (
+                  <div
+                    key={testimonial.id}
+                    className="bg-white rounded-2xl p-6 shadow-lg flex-1"
+                    style={{ borderTop: "4px solid #7B549C" }}
+                  >
+                    <div className="flex items-start mb-4">
+                      <div
+                        className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
+                        style={{
+                          backgroundColor: getAvatarColor(testimonial.name),
+                          boxShadow: "0 4px 10px rgba(123, 84, 156, 0.3)",
+                        }}
+                      >
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-bold text-lg" style={{ color: "#7B549C" }}>
+                          {testimonial.name}
+                        </h3>
+                        <p className="text-gray-600 text-sm">
+                          {testimonial.location} • {testimonial.profession}
+                        </p>
+                        <div className="flex mt-1">
+                          {renderStars(testimonial.rating)}
+                        </div>
+                      </div>
+                    </div>
 
-              <div className="relative">
-                <div className="absolute -left-2 -top-2 text-4xl text-purple-200">"</div>
-                <p className="relative z-10 text-gray-700 manrope leading-relaxed pl-4">
-                  {testimonial.text}
-                </p>
-                <div className="absolute -bottom-5 -right-2 text-4xl text-purple-200 transform rotate-180">"</div>
-              </div>
+                    <div className="relative">
+                      <div className="absolute -left-2 -top-2 text-4xl text-purple-200">"</div>
+                      <p className="relative z-10 text-gray-700 leading-relaxed pl-4">
+                        {testimonial.text}
+                      </p>
+                      <div className="absolute -bottom-5 -right-2 text-4xl text-purple-200 transform rotate-180">"</div>
+                    </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
-                <span className="text-sm font-medium px-3 py-1 rounded-full"
-                  style={{ background: "rgba(123, 84, 156, 0.15)", color: "#7B549C" }}>
-                  {testimonial.loanType}
-                </span>
-                <span className="text-sm text-gray-500 italic">Verified Customer</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                    <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                      <span className="text-sm font-medium px-3 py-1 rounded-full"
+                        style={{ background: "rgba(123, 84, 156, 0.15)", color: "#7B549C" }}>
+                        {testimonial.loanType}
+                      </span>
+                      <span className="text-sm text-gray-500 italic">Verified Customer</span>
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
 
-        {/* Controls */}
-        <div className="flex justify-between items-center mt-6 px-4">
-          <button
-            onClick={prevSlide}
-            className="text-purple-700 hover:text-purple-900 font-bold text-xl"
-          >
-            ‹
-          </button>
-          <div className="flex space-x-3">
-            {Array.from({ length: testimonials.length - 2 }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  activeIndex === index ? "bg-purple-700" : "bg-purple-200"
-                }`}
-                aria-label={`Go to testimonial group ${index + 1}`}
-              />
-            ))}
-          </div>
-          <button
-            onClick={nextSlide}
-            className="text-purple-700 hover:text-purple-900 font-bold text-xl"
-          >
-            ›
-          </button>
-        </div>
-      </div>
-    </div>
-
+            {/* Desktop Controls */}
+            <div className="flex justify-between items-center mt-8 px-4">
+              <button
+                onClick={prevSlide}
+                className="text-purple-700 hover:text-purple-900 font-bold text-3xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                aria-label="Previous testimonials"
+              >
+                ‹
+              </button>
+              <div className="flex space-x-3">
+                {Array.from({ length: maxDesktopIndex + 1 }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setDirection(index > activeIndex ? 1 : -1);
+                      setActiveIndex(index);
+                    }}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      activeIndex === index ? "bg-purple-700" : "bg-purple-200"
+                    }`}
+                    aria-label={`Go to testimonial group ${index + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={nextSlide}
+                className="text-purple-700 hover:text-purple-900 font-bold text-3xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                aria-label="Next testimonials"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* Mobile testimonial carousel */}
         <div className="lg:hidden">
-          <div className="relative px-0 ">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="bg-white rounded-2xl p-6 shadow-lg"
-              style={{ borderTop: "4px solid #7B549C" }}
-            >
-              <div className="flex items-start mb-4">
-                {/* Letter avatar for mobile */}
-                <div 
-                  className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
-                  style={{ 
-                    backgroundColor: getAvatarColor(testimonials[activeIndex].name),
-                    boxShadow: "0 4px 10px rgba(123, 84, 156, 0.3)"
-                  }}
-                >
-                  {testimonials[activeIndex].name.charAt(0)}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg testi coolvetica" style={{ color: "#7B549C" }}>
-                    {testimonials[activeIndex].name}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {testimonials[activeIndex].location} • {testimonials[activeIndex].profession}
-                  </p>
-                  <div className="flex mt-1">
-                    {renderStars(testimonials[activeIndex].rating)}
+          <div className="relative px-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, x: direction * 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: direction * -100 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="bg-white rounded-2xl p-6 shadow-lg"
+                style={{ borderTop: "4px solid #7B549C" }}
+              >
+                <div className="flex items-start mb-4">
+                  <div 
+                    className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
+                    style={{ 
+                      backgroundColor: getAvatarColor(testimonials[activeIndex].name),
+                      boxShadow: "0 4px 10px rgba(123, 84, 156, 0.3)"
+                    }}
+                  >
+                    {testimonials[activeIndex].name.charAt(0)}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg" style={{ color: "#7B549C" }}>
+                      {testimonials[activeIndex].name}
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      {testimonials[activeIndex].location} • {testimonials[activeIndex].profession}
+                    </p>
+                    <div className="flex mt-1">
+                      {renderStars(testimonials[activeIndex].rating)}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="relative">
-                <div className="absolute -left-2 -top-2 text-4xl text-purple-200">"</div>
-                <p className="relative z-10 text-gray-700 manrope leading-relaxed pl-4">
-                  {testimonials[activeIndex].text}
-                </p>
-                <div className="absolute -bottom-5 -right-2 text-4xl text-purple-200 transform rotate-180">"</div>
-              </div>
+                <div className="relative">
+                  <div className="absolute -left-2 -top-2 text-4xl text-purple-200">"</div>
+                  <p className="relative z-10 text-gray-700 leading-relaxed pl-4">
+                    {testimonials[activeIndex].text}
+                  </p>
+                  <div className="absolute -bottom-5 -right-2 text-4xl text-purple-200 transform rotate-180">"</div>
+                </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
-                <span className="text-sm font-medium px-3 py-1 rounded-full" 
-                  style={{ background: "rgba(123, 84, 156, 0.15)", color: "#7B549C" }}>
-                  {testimonials[activeIndex].loanType}
-                </span>
-                <span className="text-sm text-gray-500 italic">Verified Customer</span>
-              </div>
-            </motion.div>
+                <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
+                  <span className="text-sm font-medium px-3 py-1 rounded-full" 
+                    style={{ background: "rgba(123, 84, 156, 0.15)", color: "#7B549C" }}>
+                    {testimonials[activeIndex].loanType}
+                  </span>
+                  <span className="text-sm text-gray-500 italic">Verified Customer</span>
+                </div>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Mobile navigation */}
-            <div className="flex justify-center items-center mt-6">
-              {/* Dots indicator */}
+            <div className="flex justify-between items-center mt-6">
+              <button
+                onClick={prevSlide}
+                className="text-purple-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                aria-label="Previous testimonial"
+              >
+                ‹
+              </button>
               <div className="flex space-x-3">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() => {
+                      setDirection(index > activeIndex ? 1 : -1);
+                      setActiveIndex(index);
+                    }}
                     className={`w-3 h-3 rounded-full transition-colors ${
                       activeIndex === index ? "bg-purple-700" : "bg-purple-200"
                     }`}
@@ -417,24 +416,17 @@ key={testimonial.id}
                   />
                 ))}
               </div>
+              <button
+                onClick={nextSlide}
+                className="text-purple-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                aria-label="Next testimonial"
+              >
+                ›
+              </button>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .testi {
-            font-size: 2.25rem;
-          }
-        }
-        
-        @media (max-width: 640px) {
-          .testi {
-            font-size: 2rem;
-          }
-        }
-      `}</style>
     </section>
   );
 };
