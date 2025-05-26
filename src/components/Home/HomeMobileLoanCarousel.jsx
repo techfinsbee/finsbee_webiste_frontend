@@ -199,6 +199,7 @@ const HomeMobileLoanCarousel = ({
                 >
                   Apply Now
                 </button>
+                <Link to="/check-eligibility">
                 <button
                   className="py-1.5 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
                   style={{
@@ -208,13 +209,10 @@ const HomeMobileLoanCarousel = ({
                     transform: isHovered ? "translateY(-2px)" : "none",
                     transition: "all 0.3s ease",
                   }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onCheckEligibility();
-                  }}
                 >
                   Check Eligibility
                 </button>
+                  </Link>
               </div>
             )}
           </div>
