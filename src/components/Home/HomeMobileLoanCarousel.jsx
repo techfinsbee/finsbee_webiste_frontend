@@ -172,10 +172,7 @@ const HomeMobileLoanCarousel = ({
                       transform: isHovered ? "translateY(-2px)" : "none",
                       transition: "all 0.3s ease",
                     }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onApplyNow();
-                    }}
+                
                   >
                     Check Credit Score
                   </button>
