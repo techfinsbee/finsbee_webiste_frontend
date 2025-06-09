@@ -349,31 +349,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
       className={`header-home manrope ${!isVisible ? "hidden" : ""}`}
       style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
     >
-      {/* Google tag (gtag.js) */}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8J1KL08B5Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8J1KL08B5Z');
-</script>
-
-
-
-Google Ads:
-
-{/* Google tag (gtag.js) */}
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17129206952"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17129206952');
-</script>
-
-
+      
       <Link to="/" className="logo-container">
         <img src="/Funds.svg" className="logo" alt="FUNDSMAMA" />
         <span
