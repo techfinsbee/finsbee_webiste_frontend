@@ -156,80 +156,80 @@ const DayLoan = () => {
     transitionDelay: "0.1s",
   };
 
-  return (
-    <>
-      {/* Arrow button (appears after closing) */}
-      <button
-        style={arrowButtonStyle}
-        onClick={openPopup}
-        aria-label="Open popup"
-        onMouseOver={(e) => {
-          e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.transform = "translateY(-50%)";
-        }}
+  // return (
+  //   <>
+  //     {/* Arrow button (appears after closing) */}
+  //     <button
+  //       style={arrowButtonStyle}
+  //       onClick={openPopup}
+  //       aria-label="Open popup"
+  //       onMouseOver={(e) => {
+  //         e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+  //       }}
+  //       onMouseOut={(e) => {
+  //         e.currentTarget.style.transform = "translateY(-50%)";
+  //       }}
         
-      >
-        <span className="relative -top-[0.2vw]">	&gt;</span>
-      </button>
+  //     >
+  //       <span className="relative -top-[0.2vw]">	&gt;</span>
+  //     </button>
     
-      {/* Modal Overlay */}
-      <div style={overlayStyle} onClick={closePopup}>
-        {/* Modal Content - stopPropagation prevents closing when clicking inside */}
-        <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
-          {/* Close Button */}
-          <button
-            style={closeButtonStyle}
-            onClick={closePopup}
-            aria-label="Close popup"
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = "#f0f0f0";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
-          >
-            ×
-          </button>
+  //     {/* Modal Overlay */}
+  //     <div style={overlayStyle} onClick={closePopup}>
+  //       {/* Modal Content - stopPropagation prevents closing when clicking inside */}
+  //       <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
+  //         {/* Close Button */}
+  //         <button
+  //           style={closeButtonStyle}
+  //           onClick={closePopup}
+  //           aria-label="Close popup"
+  //           onMouseOver={(e) => {
+  //             e.currentTarget.style.backgroundColor = "#f0f0f0";
+  //           }}
+  //           onMouseOut={(e) => {
+  //             e.currentTarget.style.backgroundColor = "transparent";
+  //           }}
+  //         >
+  //           ×
+  //         </button>
           
-          {/* Loan Information */}
-          <a
-            href="https://30daysloan.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={linkStyle}
-            onMouseOver={(e) => e.currentTarget.style.color = "#0044aa"}
-            onMouseOut={(e) => e.currentTarget.style.color = "black"}
-          >
-            Click here to repay your loan and view your past loan inquiries with FundsMama.
-          </a>
+  //         {/* Loan Information */}
+  //         <a
+  //           href="https://30daysloan.com/"
+  //           target="_blank"
+  //           rel="noopener noreferrer"
+  //           style={linkStyle}
+  //           onMouseOver={(e) => e.currentTarget.style.color = "#0044aa"}
+  //           onMouseOut={(e) => e.currentTarget.style.color = "black"}
+  //         >
+  //           Click here to repay your loan and view your past loan inquiries with FundsMama.
+  //         </a>
           
-          {/* Logo with link */}
-          <div style={logoContainerStyle}>
-            <a 
-              href="https://30daysloan.com/" 
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img 
-                src="https://30daysloan.com/static/media/logo1.73eea7b0e17697f8fa1edcabe1e98422.svg" 
-                alt="FundsMama Logo" 
-                style={{ 
-                  maxWidth: "200px", 
-                  height: "auto",
-                  transition: "transform 0.3s ease",
-                  cursor: "pointer"
-                }}
-                onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-                onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+  //         {/* Logo with link */}
+  //         <div style={logoContainerStyle}>
+  //           <a 
+  //             href="https://30daysloan.com/" 
+  //             target="_blank"
+  //             rel="noopener noreferrer"
+  //           >
+  //             <img 
+  //               src="https://30daysloan.com/static/media/logo1.73eea7b0e17697f8fa1edcabe1e98422.svg" 
+  //               alt="FundsMama Logo" 
+  //               style={{ 
+  //                 maxWidth: "200px", 
+  //                 height: "auto",
+  //                 transition: "transform 0.3s ease",
+  //                 cursor: "pointer"
+  //               }}
+  //               onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+  //               onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
+  //             />
+  //           </a>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </>
+  // );
 };
 
 export default DayLoan;
