@@ -30,7 +30,7 @@ const PrivacyPage = () => {
             and describes the information collected from you (hereinafter referred to as "You", "Your" or "User") on Your visit to the Platform(defined further)
             and use of Platform; manner and procedure of collection of such information; use, storage, and disclosure of information collected; rights and choices
             available to You with respect to the information collected; and how Stradex International Private Limited (hereinafter "FundsMama", "We", "Us")
-            including online platform(s) "store.fundsmama.com" and "FundsMama" (Mobile Application) (Collectively "Platform").
+            including online platform(s) "fundsmama.com" and "FundsMama" (Mobile Application) (Collectively "Platform").
           </p>
           <p className="text-justify">
             This Policy constitutes a legal agreement between You as the User of the Platform, and Stradex International Private Limited as the owner of the
