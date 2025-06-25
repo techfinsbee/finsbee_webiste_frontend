@@ -100,7 +100,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
               </a>
 
               <a
-                href="#"
+                href="https://apps.apple.com/in/app/fundsmama-superapp/id6746641206?platform=iphone"
                 className="flex items-center gap-2 transition-all hover:shadow-lg px-4 py-2 rounded-full"
                 style={{
                   backgroundColor: `${COLOR}15`,
@@ -179,7 +179,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     Check Credit Score
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/"
                     state={{ scrollTo: "mart-home" }}
@@ -187,7 +187,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   >
                     Mama Mart
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -227,14 +227,14 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     Terms and Conditions
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     to="/blogs"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
                     Blog
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link
                     to="/privacy-policy"
@@ -397,7 +397,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
 
               <div className="mt-5 flex space-x-4">
                 <a
-                  href="#"
+                  href="https://www.facebook.com/profile.php?id=61576851682645"
                   aria-label="Facebook"
                   className="text-gray-400 hover:text-[#18ADA5] transition-colors"
                 >
@@ -410,7 +410,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/funds-mama/"
                   aria-label="LinkedIn"
                   className="text-gray-400 hover:text-[#18ADA5] transition-colors"
                 >
@@ -423,7 +423,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/FundsMama_"
                   aria-label="X (formerly Twitter)"
                   className="text-gray-400 hover:text-[#18ADA5] transition-colors"
                 >
@@ -436,7 +436,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </svg>
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/_fundsmama/"
                   aria-label="Instagram"
                   className="text-gray-400 hover:text-[#18ADA5] transition-colors"
                 >
@@ -481,7 +481,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
             style={{ borderColor: `${COLOR}30` }}
           >
             <p className="text-sm text-gray-500 mb-2 sm:mb-0">
-              © {new Date().getFullYear()} Stradex International Private Limited. All rights reserved.
+              © {new Date().getFullYear()} FundsMama. All rights reserved.
             </p>
             <div className="text-sm text-gray-500"></div>
 
