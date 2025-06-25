@@ -481,7 +481,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
             style={{ borderColor: `${COLOR}30` }}
           >
             <p className="text-sm text-gray-500 mb-2 sm:mb-0">
-              © {new Date().getFullYear()} FundsMama. All rights reserved.
+              © {new Date().getFullYear()} Stradex International Private Limited. All rights reserved.
             </p>
             <div className="text-sm text-gray-500"></div>
 
