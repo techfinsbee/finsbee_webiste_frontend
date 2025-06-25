@@ -103,12 +103,12 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
           { title: "Refer a Friend", link: "/refer-a-friend" },
         ],
       },
-      {
-        title: "Blog",
-        link: "#",
-        hasDropdown: true,
-        dropdownItems: [{ title: "View Blogs", link: "/blogs" }],
-      }
+      // {
+      //   title: "Blog",
+      //   link: "#",
+      //   hasDropdown: true,
+      //   dropdownItems: [{ title: "View Blogs", link: "/blogs" }],
+      // }
     );
   } else {
     enhancedNavItems.push(
