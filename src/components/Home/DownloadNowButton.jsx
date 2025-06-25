@@ -18,7 +18,7 @@ const DownloadNowButton = ({ COLOR }) => {
               <img src="/play_logo.png" className="w-7 h-7 download" alt="" />
             </div>
           </Link>
-          <Link to="">
+          <Link to="https://apps.apple.com/in/app/fundsmama-superapp/id6746641206?platform=iphone">
           <div>
             <img src="/apple_logo.png" className="w-6 h-6 download" alt="" />
           </div>
