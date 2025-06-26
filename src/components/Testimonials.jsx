@@ -117,29 +117,29 @@ const TestimonialsSection = ({ COLOR }) => {
   };
 
   // Auto-rotate testimonials
-  useEffect(() => {
-    if (!inView) return;
+  // useEffect(() => {
+  //   if (!inView) return;
     
-    const interval = setInterval(() => {
-      setDirection(1);
-      setActiveIndex((prev) => {
-        if (window.innerWidth >= 1024) {
-          return prev >= maxDesktopIndex ? 0 : prev + 1;
-        } else {
-          return (prev + 1) % testimonials.length;
-        }
-      });
-    }, 5000);
+  //   const interval = setInterval(() => {
+  //     setDirection(1);
+  //     setActiveIndex((prev) => {
+  //       if (window.innerWidth >= 1024) {
+  //         return prev >= maxDesktopIndex ? 0 : prev + 1;
+  //       } else {
+  //         return (prev + 1) % testimonials.length;
+  //       }
+  //     });
+  //   }, 5000);
     
-    return () => clearInterval(interval);
-  }, [inView, maxDesktopIndex]);
+  //   return () => clearInterval(interval);
+  // }, [inView, maxDesktopIndex]);
 
   // Function to get avatar background color based on name
   const getAvatarColor = (name) => {
     const colors = [
-      "#7B549C", // Primary purple 
-      "#9966CC", // Light purple
-      "#664481", // Dark purple
+      "#09615D", // Primary purple 
+      "#09615D", // Light purple
+      "#09615D", // Dark purple
     ];
     
     const index = name.charCodeAt(0) % colors.length;
@@ -192,7 +192,7 @@ const TestimonialsSection = ({ COLOR }) => {
       id="testimonials" 
       className="mt-2 py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden flex flex-col justify-center"
       style={{
-        background: `linear-gradient(135deg, ${COLOR ? "rgba(123, 84, 156, 0.15)" : "rgba(123, 84, 156, 0.15)"} 0%, ${COLOR ? "rgba(24, 173, 165, 0.05)" : "rgba(123, 84, 156, 0.05)"} 100%)`
+        background: `linear-gradient(135deg, ${COLOR ? "rgba(177, 198, 198, 0.42)" : "rgba(123, 84, 156, 0.15)"} 0%, ${COLOR ? "rgba(24, 173, 165, 0.05)" : "rgba(123, 84, 156, 0.05)"} 100%)`
       }}
       ref={ref}
     >
@@ -214,7 +214,7 @@ const TestimonialsSection = ({ COLOR }) => {
           <motion.h2 
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ 
-              color: COLOR ? "#7B549C" : "#7B549C",
+              color: COLOR ? " #09615D" : " #09615D",
               position: "relative",
               display: "inline-block"
             }}
@@ -227,7 +227,7 @@ const TestimonialsSection = ({ COLOR }) => {
               className="absolute h-1 w-32 rounded-full left-1/2 transform -translate-x-1/2" 
               style={{ 
                 bottom: "-15px", 
-                background: "linear-gradient(to right, #9966CC, #7B549C)"
+                background: "linear-gradient(to right, #09615D,  #09615D)"
               }}
             ></div>
           </motion.h2>
@@ -258,20 +258,20 @@ const TestimonialsSection = ({ COLOR }) => {
                   <div
                     key={testimonial.id}
                     className="bg-white rounded-2xl p-6 shadow-lg flex-1"
-                    style={{ borderTop: "4px solid #7B549C" }}
+                    style={{ borderTop: "4px solid  #09615D" }}
                   >
                     <div className="flex items-start mb-4">
                       <div
                         className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
                         style={{
                           backgroundColor: getAvatarColor(testimonial.name),
-                          boxShadow: "0 4px 10px rgba(123, 84, 156, 0.3)",
+                          boxShadow: "0 4px 10px  #09615D",
                         }}
                       >
                         {testimonial.name.charAt(0)}
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-lg" style={{ color: "#7B549C" }}>
+                        <h3 className="font-bold text-lg" style={{ color: " #09615D" }}>
                           {testimonial.name}
                         </h3>
                         <p className="text-gray-600 text-sm">
@@ -284,16 +284,16 @@ const TestimonialsSection = ({ COLOR }) => {
                     </div>
 
                     <div className="relative">
-                      <div className="absolute -left-2 -top-2 text-4xl text-purple-200">"</div>
+                      <div className="absolute -left-2 -top-2 text-4xl text-teal-200">"</div>
                       <p className="relative z-10 text-gray-700 leading-relaxed pl-4">
                         {testimonial.text}
                       </p>
-                      <div className="absolute -bottom-5 -right-2 text-4xl text-purple-200 transform rotate-180">"</div>
+                      <div className="absolute -bottom-5 -right-2 text-4xl text-teal-200 transform rotate-180">"</div>
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
                       <span className="text-sm font-medium px-3 py-1 rounded-full"
-                        style={{ background: "rgba(123, 84, 156, 0.15)", color: "#7B549C" }}>
+                        style={{ background: "rgba(168, 209, 217, 0.15)", color: " #09615D" }}>
                         {testimonial.loanType}
                       </span>
                       <span className="text-sm text-gray-500 italic">Verified Customer</span>
@@ -307,7 +307,7 @@ const TestimonialsSection = ({ COLOR }) => {
             <div className="flex justify-between items-center mt-8 px-4">
               <button
                 onClick={prevSlide}
-                className="text-purple-700 hover:text-purple-900 font-bold text-3xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                className="text-teal-700 hover:text-teal-900 font-bold text-3xl p-2 rounded-full hover:bg-teal-50 transition-colors"
                 aria-label="Previous testimonials"
               >
                 ‹
@@ -321,7 +321,7 @@ const TestimonialsSection = ({ COLOR }) => {
                       setActiveIndex(index);
                     }}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      activeIndex === index ? "bg-purple-700" : "bg-purple-200"
+                      activeIndex === index ? "bg-teal-700" : "bg-teal-400"
                     }`}
                     aria-label={`Go to testimonial group ${index + 1}`}
                   />
@@ -329,7 +329,7 @@ const TestimonialsSection = ({ COLOR }) => {
               </div>
               <button
                 onClick={nextSlide}
-                className="text-purple-700 hover:text-purple-900 font-bold text-3xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                className="text-teal-700 hover:text-teal-900 font-bold text-3xl p-2 rounded-full hover:bg-teal-50 transition-colors"
                 aria-label="Next testimonials"
               >
                 ›
@@ -349,20 +349,20 @@ const TestimonialsSection = ({ COLOR }) => {
                 exit={{ opacity: 0, x: direction * -100 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="bg-white rounded-2xl p-6 shadow-lg"
-                style={{ borderTop: "4px solid #7B549C" }}
+                style={{ borderTop: "4px solid #c5ebe9" }}
               >
                 <div className="flex items-start mb-4">
                   <div 
                     className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
                     style={{ 
                       backgroundColor: getAvatarColor(testimonials[activeIndex].name),
-                      boxShadow: "0 4px 10px rgba(123, 84, 156, 0.3)"
+                      boxShadow: "0 4px 10px rgba(150, 193, 198, 0.3)"
                     }}
                   >
                     {testimonials[activeIndex].name.charAt(0)}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-lg" style={{ color: "#7B549C" }}>
+                    <h3 className="font-bold text-lg" style={{ color: "#c5ebe9" }}>
                       {testimonials[activeIndex].name}
                     </h3>
                     <p className="text-gray-600 text-sm">
@@ -384,7 +384,7 @@ const TestimonialsSection = ({ COLOR }) => {
 
                 <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
                   <span className="text-sm font-medium px-3 py-1 rounded-full" 
-                    style={{ background: "rgba(123, 84, 156, 0.15)", color: "#7B549C" }}>
+                    style={{ background: "rgba(123, 84, 156, 0.15)", color: "#c5ebe9" }}>
                     {testimonials[activeIndex].loanType}
                   </span>
                   <span className="text-sm text-gray-500 italic">Verified Customer</span>
@@ -396,7 +396,7 @@ const TestimonialsSection = ({ COLOR }) => {
             <div className="flex justify-between items-center mt-6">
               <button
                 onClick={prevSlide}
-                className="text-purple-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                className="text-purple-700 hover:text-teal-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
                 aria-label="Previous testimonial"
               >
                 ‹
@@ -410,7 +410,7 @@ const TestimonialsSection = ({ COLOR }) => {
                       setActiveIndex(index);
                     }}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      activeIndex === index ? "bg-purple-700" : "bg-purple-200"
+                      activeIndex === index ? "bg-teal-700" : "bg-teal-200"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -418,7 +418,7 @@ const TestimonialsSection = ({ COLOR }) => {
               </div>
               <button
                 onClick={nextSlide}
-                className="text-purple-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                className="text-teal-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
                 aria-label="Next testimonial"
               >
                 ›
