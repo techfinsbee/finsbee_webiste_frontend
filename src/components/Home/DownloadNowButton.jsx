@@ -1,38 +1,43 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const DownloadNowButton = ({ COLOR }) => {
+
+const DownloadNowButton = () => {
   return (
-    <>
-      <div
-        className={`flex gap-2 rounded-[50px] w-fit p-2 ml-1`}
-        style={{
-          backgroundColor: COLOR ? "#18ADA5" : "#97F15D",
-        }}
+    <div className="flex gap-4 items-center ml-1">
+      {/* Google Play Badge */}
+      <Link
+        to="https://play.google.com/store/apps/details?id=com.fundsmama.personalloan"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <div>
-          <h1 className="text-lg font-semibold">Download Now</h1>
-        </div>
-        <div className="flex gap-1">
-          <Link to="https://play.google.com/store/apps/details?id=com.fundsmama.personalloan">
-            <div>
-              <img src="/play_logo.png" className="w-7 h-7 download" alt="" />
-            </div>
-          </Link>
-          <Link to="https://apps.apple.com/in/app/fundsmama-superapp/id6746641206?platform=iphone">
-          <div>
-            <img src="/apple_logo.png" className="w-6 h-6 download" alt="" />
-          </div>
-          </Link>
-          
-        </div>
-      </div>
+        <img
+          src="/img/Play.png"
+          className="h-12 hover:scale-105 transition-transform download"
+          alt="Get it on Google Play"
+        />
+      </Link>
+
+      {/* App Store Badge */}
+      <Link
+        to=""
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src="/img/App.png"
+          className="h-12 hover:scale-105 transition-transform download"
+          alt="Download on the App Store"
+        />
+      </Link>
+
+      {/* Hover effect (optional) */}
       <style jsx>{`
         .download:hover {
-          transform: scale(1.3);
+          transform: scale(1.05);
           transition: all 0.3s ease-in-out;
         }
       `}</style>
-    </>
+    </div>
   );
 };
 
