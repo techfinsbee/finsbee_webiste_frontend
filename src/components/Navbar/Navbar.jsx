@@ -574,7 +574,7 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
               )}
             </div>
           ))}
-          <DownloadNowButton COLOR={COLOR} />
+{/*           <DownloadNowButton COLOR={COLOR} /> */}
         </nav>
       )}
 
