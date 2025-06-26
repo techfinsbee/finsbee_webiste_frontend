@@ -263,16 +263,16 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
     triggerOnce: false,
   });
 
-  useEffect(() => {
-    let interval;
-    if (autoPlay) {
-      interval = setInterval(() => {
-        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % loans.length);
-        setSelectedLoan(null);
-      }, 2000);
-    }
-    return () => clearInterval(interval);
-  }, [autoPlay, loans.length]);
+  // useEffect(() => {
+  //   let interval;
+  //   if (autoPlay) {
+  //     interval = setInterval(() => {
+  //       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % loans.length);
+  //       setSelectedLoan(null);
+  //     }, 2000);
+  //   }
+  //   return () => clearInterval(interval);
+  // }, [autoPlay, loans.length]);
 
   const handleBoxClick = (index) => {
     setAutoPlay(false);
