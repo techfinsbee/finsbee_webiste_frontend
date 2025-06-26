@@ -469,7 +469,8 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
           ref={menuRef}
           className={`nav ${
             isMobile ? (isMenuOpen ? "open" : "closed") : ""
-          } text-3xl`}
+          } text-3xl flex gap-8`}
+          style={{ marginRight: "120px" }}
         >
           {enhancedNavItems.map((item, index) => (
             <div
