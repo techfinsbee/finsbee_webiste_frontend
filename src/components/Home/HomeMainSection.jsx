@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import AnimatedMain from "../AnimatedMain";
+import DownloadNowButton from "./DownloadNowButton";
 import { useState } from "react";
 import Form from "./Form";
 const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
@@ -80,7 +81,8 @@ const location = useLocation();
             )}
           </h1>
 
-          <button className="text-xl lg:text-2xl p-3 w-[40vw] lg:w-[20vw] text-black font-bold rounded-[50px] bg-[#18ADA5]"  onClick={toggleFormVisibility}>Apply Now</button>
+{/*           <button className="text-xl lg:text-2xl p-3 w-[40vw] lg:w-[20vw] text-black font-bold rounded-[50px] bg-[#18ADA5]"  onClick={toggleFormVisibility}>Apply Now</button> */}
+          <DownloadNowButton />
         </div>
 
         {/* Right content - Phone mockup */}
