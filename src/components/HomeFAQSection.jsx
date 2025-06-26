@@ -66,20 +66,20 @@ const HomeFAQSection = ({ COLOR }) => {
     <section 
       className="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       style={{
-        background: `linear-gradient(135deg, rgba(123, 84, 156, 0.05) 0%, rgba(123, 84, 156, 0.02) 100%)`
+        background: `linear-gradient(135deg, rgba(159, 206, 204, 0.05) 0%, rgba(151, 196, 202, 0.02) 100%)`
       }}
     >
       {/* Background decoration */}
       <div 
         className="absolute -bottom-24 -left-24 w-64 h-64 rounded-full opacity-10" 
         style={{ 
-          background: "radial-gradient(circle, rgba(123, 84, 156, 0.8) 0%, transparent 70%)"
+          background: "radial-gradient(circle, rgba(143, 206, 205, 0.8) 0%, transparent 70%)"
         }}
       />
       <div 
         className="absolute top-1/2 right-0 w-32 h-32 rounded-full opacity-5" 
         style={{ 
-          background: "radial-gradient(circle, rgba(123, 84, 156, 0.8) 0%, transparent 70%)"
+          background: "radial-gradient(circle, rgba(147, 206, 203, 0.8) 0%, transparent 70%)"
         }}
       />
 
@@ -88,7 +88,7 @@ const HomeFAQSection = ({ COLOR }) => {
           <motion.h2 
             className="text-4xl md:text-5xl font-bold mb-6 faq coolvetica"
             style={{ 
-              color: COLOR ? "#7B549C" : "#7B549C",
+              color: COLOR ? " #09615D" : " #09615D",
               position: "relative",
               display: "inline-block"
             }}
@@ -101,7 +101,7 @@ const HomeFAQSection = ({ COLOR }) => {
               className="absolute h-1 w-32 rounded-full left-1/2 transform -translate-x-1/2" 
               style={{ 
                 bottom: "-15px", 
-                background: "linear-gradient(to right, #9966CC, #7B549C)"
+                background: "linear-gradient(to right, #09615D,  #09615D)"
               }}
             ></div>
           </motion.h2>
@@ -126,11 +126,11 @@ const HomeFAQSection = ({ COLOR }) => {
           {faqItems.map((item, index) => (
             <motion.div 
               key={index} 
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-purple-100"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-teal-100"
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.01,
-                boxShadow: "0 10px 30px rgba(123, 84, 156, 0.1)",
+                boxShadow: "0 10px 30px rgba(146, 191, 195, 0.1)",
                 transition: { duration: 0.2 } 
               }}
             >
@@ -138,13 +138,13 @@ const HomeFAQSection = ({ COLOR }) => {
                 className="w-full text-left p-5 flex justify-between items-center focus:outline-none"
                 onClick={() => toggleAccordion(index)}
                 style={{ 
-                  backgroundColor: activeIndex === index ? "rgba(123, 84, 156, 0.04)" : "white"
+                  backgroundColor: activeIndex === index ? "rgba(130, 189, 195, 0.04)" : "white"
                 }}
               >
                 <h3 
                   className="text-lg font-medium pr-8"
                   style={{ 
-                    color: activeIndex === index ? "#7B549C" : "#333",
+                    color: activeIndex === index ? "#264544" : "#333",
                     fontFamily: "manrope",
                     fontWeight: 600
                   }}
@@ -153,7 +153,7 @@ const HomeFAQSection = ({ COLOR }) => {
                 </h3>
                 <div 
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                    activeIndex === index ? "bg-purple-100" : "bg-gray-100"
+                    activeIndex === index ? "bg-teal-100" : "bg-teal-100"
                   }`}
                 >
                   <svg
@@ -162,7 +162,7 @@ const HomeFAQSection = ({ COLOR }) => {
                     }`}
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke={activeIndex === index ? "#7B549C" : "#666"}
+                    stroke={activeIndex === index ? "#264544" : "#666"}
                   >
                     <path
                       strokeLinecap="round"
