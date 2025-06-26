@@ -24,7 +24,7 @@ const DownloadNowButton = () => {
         rel="noopener noreferrer"
       >
         <img
-          src="/img/App.png"
+          src="/public/App.png"
           className="h-12 hover:scale-105 transition-transform download"
           alt="Download on the App Store"
         />
