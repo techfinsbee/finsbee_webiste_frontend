@@ -259,62 +259,71 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
 
         {/* Desktop view: Grid layout */}
         <motion.div
-          ref={ref}
-          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 mx-4 lg:mx-14"
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={containerVariants}
+  ref={ref}
+  className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 mx-4 lg:mx-14"
+  initial="hidden"
+  animate={inView ? "visible" : "hidden"}
+  variants={containerVariants}       // only this outer grid animates on mount
+>
+  {features.map((feature) => (
+    // ONLY this wrapper is a motion.div
+    <motion.div
+      key={feature.id}
+      className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:shadow-xl group"
+      style={{
+        border: `1px solid ${
+          COLOR ? "rgba(24, 173, 165, 0.1)" : "rgba(178, 255, 142, 0.2)"
+        }`,
+        boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+      }}
+      variants={itemVariants}         // only entrance animation
+      whileHover={{                   // only hover‐lift animation
+        y: -8,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+        transition: { duration: 0.3 },
+      }}
+    >
+      {/* static bar */}
+      <div
+        className="h-2"
+        style={{
+          background: `linear-gradient(to right, ${feature.color}, ${feature.color}30)`,
+        }}
+      />
+
+      <div className="p-7 relative">
+        {/* PLAIN DIV for icon—no motion props */}
+        <div
+          className="w-16 h-16 mb-5 rounded-full flex items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${feature.color}20, ${feature.color}05)`,
+            border: `2px solid ${feature.color}20`,
+            color: feature.color,
+          }}
         >
-          {features.map((feature) => (
-            <motion.div
-              key={feature.id}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-102 hover:shadow-xl group"
-              style={{
-                border: `1px solid ${
-                  COLOR ? "rgba(24, 173, 165, 0.1)" : "rgba(178, 255, 142, 0.2)"
-                }`,
-                boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
-              }}
-              variants={itemVariants}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-                transition: { duration: 0.3 },
-              }}
-            >
-              <div
-                className="h-2"
-                style={{
-                  background: `linear-gradient(to right, ${feature.color}, ${feature.color}30)`,
-                }}
-              ></div>
-              <div className="p-7 relative">
-                <div
-                  className="w-16 h-16 mb-5 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                  style={{
-                    background: `linear-gradient(135deg, ${feature.color}20, ${feature.color}05)`,
-                    border: `2px solid ${feature.color}20`,
-                    color: feature.color,
-                  }}
-                >
-                  {icons[feature.icon]}
-                </div>
-                <h3
-                  className="text-xl font-bold mb-3 coolvetica transition-all duration-300 group-hover:translate-x-1"
-                  style={{ color: COLOR ? "#09615D" : "#163312" }}
-                >
-                  {feature.title}
-                </h3>
-                <p
-                  className="text-gray-600 manrope leading-relaxed"
-                  style={{ fontWeight: "500" }}
-                >
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          {icons[feature.icon]}
+        </div>
+
+        {/* PLAIN H3 for title */}
+        <h3
+          className="text-xl font-bold mb-3 coolvetica"
+          style={{ color: COLOR ? "#09615D" : "#163312" }}
+        >
+          {feature.title}
+        </h3>
+
+        {/* PLAIN P for description */}
+        <p
+          className="text-gray-600 manrope leading-relaxed"
+          style={{ fontWeight: "500" }}
+        >
+          {feature.description}
+        </p>
+      </div>
+    </motion.div>
+  ))}
+</motion.div>
+
 
         {/* Mobile view: Horizontal slider */}
         <div className="md:hidden mt-8">
