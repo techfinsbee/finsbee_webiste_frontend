@@ -11,7 +11,7 @@ const DownloadNowButton = () => {
         rel="noopener noreferrer"
       >
         <img
-          src="/img/Play.png"
+          src="/Play.png"
           className="h-12 hover:scale-105 transition-transform download"
           alt="Get it on Google Play"
         />
