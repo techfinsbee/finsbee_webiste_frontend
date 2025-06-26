@@ -19,7 +19,7 @@ const DownloadNowButton = () => {
 
       {/* App Store Badge */}
       <Link
-        to=""
+        to="https://apps.apple.com/in/app/fundsmama-superapp/id6746641206"
         target="_blank"
         rel="noopener noreferrer"
       >
