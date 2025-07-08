@@ -31,6 +31,7 @@ import CreditScore from "./components/OurProducts/CheckCreditScore.jsx";
 import PersonalLoanCity from './components/Cities/PersonalLoanCity';
 import ScrollToTop from './components/ScrollToTop';
 import CheckEligibility from "./components/Eligibility/CheckEligibility.jsx";
+import Booking from "./components/Home/Booking";
 const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
 
 const cityRoutes = cities.map((city) => ({
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <AppWithScrollToTop><App /></AppWithScrollToTop>
+  },
+  {
+    path: "/booking",  // ✅ Add this
+    element: <Booking />
   },
   {
     path:'/home',
