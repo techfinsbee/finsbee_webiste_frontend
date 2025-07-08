@@ -88,7 +88,7 @@ const location = useLocation();
         {/* Right content - Phone mockup */}
         <div
           className="lg:block w-full lg:w-[35%] relative HomeImage"
-          style={{ zIndex: "1000" }}
+          style={{ zIndex: "50" }}
         >
           <div className="relative home-main-div -left-4 -bottom-40 h-full flex justify-end w-full">
             <img
