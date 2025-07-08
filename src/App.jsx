@@ -21,8 +21,13 @@ import HomeFAQSection from "./components/HomeFAQSection";
 import LendingPartners from "./components/LendingPartners";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import BottomHeader from "./components/Home/BottomHeader";
+import { useState } from "react";
+import Booking from "./components/Home/Booking";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+    const [showBooking, setShowBooking] = useState(false);
   const brands_we_trust = {
     title: "Brands We Trust",
     logos: [
@@ -80,8 +85,13 @@ function App() {
 
   const stepImage = "/step.png";
   const downloadImage = "/download1.svg";
+  
   return (
     <>
+      <Routes>
+        <Route path="/booking" element={<Booking />} />
+      </Routes>
+    
       <div className="bg-white">
       <Navbar
         dropdownData={dropdownData}
@@ -116,14 +126,16 @@ function App() {
           COLOR="#09615D"
           cibilImgaes={cibilImgaes}
         ></HomeCibilScoreSection> */}
-        <TestimonialsSection COLOR="#7B549C" />
-        <HomeFAQSection COLOR="#7B549C"></HomeFAQSection>
+        <TestimonialsSection COLOR="#c5ebe9" />
+        <HomeFAQSection COLOR="#c5ebe9"></HomeFAQSection>
         {/* <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div> */}
         <LendingPartners />
+        <BottomHeader/>
         <Footer COLOR="#09615D"></Footer>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}
+
       </div>
     </>
   );
