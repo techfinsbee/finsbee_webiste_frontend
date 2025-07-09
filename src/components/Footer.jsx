@@ -45,7 +45,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
   return (
     <section id="contact-us">
       <footer
-        className="w-full"
+        className="w-full mb-20"
         style={{
           background: "linear-gradient(to bottom, #f8fffe, #f0fffc)",
           borderTop: `1px solid ${COLOR}20`,
