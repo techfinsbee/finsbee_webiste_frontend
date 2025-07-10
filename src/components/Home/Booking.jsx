@@ -63,15 +63,40 @@ const Booking = () => {
     setCurrentStep(prev => prev - 1);
   };
 
-  const handlePayment = async () => {
-    setIsProcessing(true);
+   const handlePayment = async () => {
+  setIsProcessing(true);
+
+  try {
+    const res = await fetch(`http://localhost:8000/api/bookings/create`, {
+      
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    if (!res.ok) throw new Error('Failed to book');
+
+    const data = await res.json();
+    if (data.paymentLink) {
+      window.location.href = data.paymentLink; // 🔁 redirect to Cashfree
+    }
+  } catch (error) {
+    console.error('Booking error:', error);
+    alert('There was a problem booking your visit.');
+  } finally {
+    setIsProcessing(false);
+  }
+};
+
+  // const handlePayment = async () => {
+  //   setIsProcessing(true);
     
-    // Simulate payment processing
-    setTimeout(() => {
-      setIsProcessing(false);
-      setCurrentStep(5); // Success page
-    }, 3000);
-  };
+  //   // Simulate payment processing
+  //   setTimeout(() => {
+  //     setIsProcessing(false);
+  //     setCurrentStep(5); // Success page
+  //   }, 3000);
+  // };
 
   const selectedService = services.find(s => s.id === formData.service);
   const today = new Date().toISOString().split('T')[0];
