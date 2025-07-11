@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Clock, User, Phone, Mail, CreditCard, CheckCircle, ArrowLeft, Home } from 'lucide-react';
+import Navbar from '../Navbar/Navbar';
 
 
 const Booking = () => {
@@ -110,6 +111,11 @@ const Booking = () => {
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Book Home Visit Consultation</h1>
           <p className="text-sm sm:text-base text-gray-600 px-2">Expert consultant arrives at your home within 30 minutes</p>
         </div>
+
+             {/* Desktop Navbar */}
+         <div className="hidden sm:block">
+       <Navbar />
+         </div>
     
        
         {/* Progress Bar */}
