@@ -67,7 +67,7 @@ const Booking = () => {
   setIsProcessing(true);
 
   try {
-    const res = await fetch(`http://13.201.249.156:8081/api/bookings/create`, {
+    const res = await fetch(`https://booking.apifundstech.com/api/bookings/create`, {
       
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
