@@ -6,7 +6,11 @@ html, body{
   max-width: 100%;
 }
 
-
+@media screen and (max-width: 620px) {
+  html, body {
+    padding-top: 0px !important;
+  }
+}
 
 .roboto-serif{
   font-family: 'Roboto Serif'
