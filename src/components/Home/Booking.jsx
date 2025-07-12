@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { MapPin, Clock, User, Phone, Mail, CreditCard, CheckCircle, ArrowLeft, Home } from 'lucide-react';
 import Navbar from '../Navbar/Navbar';
 
-
 const Booking = () => {
+
+  
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -15,6 +16,23 @@ const Booking = () => {
     pincode: ''
   });
   const [isProcessing, setIsProcessing] = useState(false);
+
+  const carouselItems = [
+  "✅ Explain your best options clearly",
+  "✅ Guide you on documents and eligibility",
+  "✅ Help you apply",
+];
+
+   const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % carouselItems.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
 
   const services = [
     { id: 'loan', name: 'Loan Consultation', price: 499, description: 'Personal & Business Loan Guidance at Your Home' },
@@ -54,69 +72,134 @@ const Booking = () => {
     }
   };
 
-  const handleNext = () => {
-    if (validateStep()) {
-      setCurrentStep(prev => prev + 1);
-    }
-  };
+  const [bookingId, setBookingId] = useState(null);
+
+
+ const saveStep = async (payload) => {
+  try {
+    const res = await fetch(`https://booking.apifundstech.com//api/bookings/step`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, bookingId })
+    });
+
+    const data = await res.json();
+    if (data.bookingId) setBookingId(data.bookingId);
+  } catch (err) {
+    console.error("Error saving step data:", err);
+  }
+};
+
+
+
+
+
+
+ const handleNext = async () => {
+  if (!validateStep()) return;
+
+  if (currentStep === 1) {
+    await saveStep({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+    });
+  } else if (currentStep === 2) {
+    const priceMap = { loan: 499, insurance: 599, mutual_funds: 799 };
+    await saveStep({
+      service: formData.service,
+      price: priceMap[formData.service] || 0,
+    });
+  } else if (currentStep === 3) {
+    await saveStep({
+      address: formData.address,
+      city: formData.city,
+      pincode: formData.pincode,
+    });
+  }
+
+  setCurrentStep(prev => prev + 1);
+};
+
+
 
   const handleBack = () => {
     setCurrentStep(prev => prev - 1);
   };
 
-   const handlePayment = async () => {
+
+if (!formData.price) {
+  formData.price = services.find(s => s.id === formData.service)?.price || 0;
+}
+
+
+const handlePayment = async () => {
   setIsProcessing(true);
 
   try {
+    const payload = {
+      bookingId,
+      time: '10:00 AM' // default/final selected time
+    };
+    console.log(payload);
+
     const res = await fetch(`https://booking.apifundstech.com/api/bookings/create`, {
-      
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
     });
 
     if (!res.ok) throw new Error('Failed to book');
-
     const data = await res.json();
+
     if (data.paymentLink) {
-      window.location.href = data.paymentLink; // 🔁 redirect to Cashfree
+      window.location.href = data.paymentLink;
     }
   } catch (error) {
-    console.error('Booking error:', error);
+    console.error('❌ Booking error:', error);
     alert('There was a problem booking your visit.');
   } finally {
     setIsProcessing(false);
   }
 };
 
-  // const handlePayment = async () => {
-  //   setIsProcessing(true);
-    
-  //   // Simulate payment processing
-  //   setTimeout(() => {
-  //     setIsProcessing(false);
-  //     setCurrentStep(5); // Success page
-  //   }, 3000);
-  // };
+
+
 
   const selectedService = services.find(s => s.id === formData.service);
   const today = new Date().toISOString().split('T')[0];
 
+
+
   return (
     
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-100 py-4 sm:py-8 px-4 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-100  p-0 m-0 sm:p-0  flex items-center justify-center">
       <div className="w-full max-w-2xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-6 sm:mb-8">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Book Home Visit Consultation</h1>
-          <p className="text-sm sm:text-base text-gray-600 px-2">Expert consultant arrives at your home within 30 minutes</p>
-        </div>
+          <div className="text-center mb-6 sm:mb-8">
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+        Need a Loan, Insurance, or Investment?
+      </h1>
 
-             {/* Desktop Navbar */}
-         <div className="hidden sm:block">
-       <Navbar />
-         </div>
-    
+      <p className="text-sm sm:text-base text-gray-600 px-2 mb-4">
+        A verified FundsMama advisor will visit your home or office in 30 mins
+      </p>
+
+      <div className="w-full max-w-md mx-auto mt-6 min-h-[2.5rem]">
+        <p className="text-sm sm:text-base text-gray-700 px-4 transition-opacity duration-500 ease-in-out">
+          {carouselItems[current]}
+        </p>
+      </div>
+    </div>
+
+
+     {/* Desktop Navbar */}
+<div className="hidden sm:block">
+  <Navbar />
+</div>
+
+
+
        
         {/* Progress Bar */}
         <div className="mb-6 sm:mb-8">
