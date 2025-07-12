@@ -77,7 +77,7 @@ const Booking = () => {
 
  const saveStep = async (payload) => {
   try {
-    const res = await fetch(`https://booking.apifundstech.com//api/bookings/step`, {
+    const res = await fetch(`https://booking.apifundstech.com/api/bookings/step`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...payload, bookingId })
