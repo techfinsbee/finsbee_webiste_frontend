@@ -16,6 +16,7 @@ const Booking = () => {
     pincode: ''
   });
   const [isProcessing, setIsProcessing] = useState(false);
+  const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
 
   const carouselItems = [
   "✅ Explain your best options clearly",
@@ -111,6 +112,10 @@ const Booking = () => {
       price: priceMap[formData.service] || 0,
     });
   } else if (currentStep === 3) {
+     if (!isValidDelhiPincode(formData.pincode)) {
+      alert("📍 We're expanding soon! Currently, bookings are only accepted for Delhi (PIN codes starting with 110XXX).");
+      return;
+    }
     await saveStep({
       address: formData.address,
       city: formData.city,
