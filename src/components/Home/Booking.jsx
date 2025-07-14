@@ -46,21 +46,38 @@ const Booking = () => {
     { id: 'mutual_funds', name: 'Mutual Funds', price: 799, description: 'Investment Planning & Portfolio Review at Home' }
   ];
 
+  const [formErrors, setFormErrors] = useState({});
+   const [touchedFields, setTouchedFields] = useState({});
+
+
 
   const validateField = (field, value) => {
   let error = "";
-
   if (!value.trim()) {
     error = "This field is required";
   } else {
-    if (field === "name" && !validateName(value)) {
-      error = "Only alphabets and spaces allowed";
-    } else if (field === "phone" && !validatePhone(value)) {
-      error = "Enter valid 10-digit phone number";
-    } else if (field === "email" && !validateEmail(value)) {
-      error = "Invalid email format";
-    } else if (field === "pincode" && !validatePincode(value)) {
-      error = "PIN code must be 6 digits";
+    switch (field) {
+      case "name":
+        if (!validateName(value)) error = "Only alphabets and spaces allowed";
+        break;
+      case "phone":
+        if (!validatePhone(value)) error = "Enter valid 10-digit phone number";
+        break;
+      case "email":
+        if (!validateEmail(value)) error = "Invalid email format";
+        break;
+      case "pincode":
+        if (!/^\d{6}$/.test(value)) error = "PIN code must be 6 digits";
+        break;
+      case "city":
+        if (!validateName(value)) error = "Only alphabets and spaces allowed";
+        break;
+      case "service":
+        if (!value) error = "Please select a service";
+        break;
+      case "address":
+        if (value.trim().length < 10) error = "Address too short";
+        break;
     }
   }
 
@@ -75,19 +92,22 @@ const Booking = () => {
 
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: value
+  }));
+  setTouchedFields(prev => ({ ...prev, [name]: true }));
+  validateField(name, value);
+};
+
 
   const handleServiceSelect = (serviceId) => {
     setFormData(prev => ({
       ...prev,
       service: serviceId
     }));
-    validateField(name, value);
+    validateField("service", serviceId);
   };
 
  const BASE_API_URL = import.meta.env.VITE_BOOKING_API_URL || 'https://booking.apifundstech.com/api';
