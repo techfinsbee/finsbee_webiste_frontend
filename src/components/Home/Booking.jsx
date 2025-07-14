@@ -292,7 +292,7 @@ const handlePayment = async () => {
                     placeholder="Enter your full name"
                     required
                   />
-                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
+                 
                 </div>
 
                 <div>
@@ -306,7 +306,7 @@ const handlePayment = async () => {
                     placeholder="Enter your phone number"
                     required
                   />
-                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
+                  
                 </div>
 
                 <div>
@@ -320,7 +320,7 @@ const handlePayment = async () => {
                     placeholder="Enter your email address"
                     required
                   />
-                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
+                 
                 </div>
               </div>
 
