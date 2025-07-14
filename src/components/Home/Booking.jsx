@@ -46,10 +46,30 @@ const Booking = () => {
     { id: 'mutual_funds', name: 'Mutual Funds', price: 799, description: 'Investment Planning & Portfolio Review at Home' }
   ];
 
-  const validateName = (name) => /^[a-zA-Z\s]+$/.test(name.trim());
-const validatePhone = (phone) => /^[6-9]\d{9}$/.test(phone);
-const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-const validatePincode = (pincode) => /^\d{6}$/.test(pincode);
+
+  const validateField = (field, value) => {
+  let error = "";
+
+  if (!value.trim()) {
+    error = "This field is required";
+  } else {
+    if (field === "name" && !validateName(value)) {
+      error = "Only alphabets and spaces allowed";
+    } else if (field === "phone" && !validatePhone(value)) {
+      error = "Enter valid 10-digit phone number";
+    } else if (field === "email" && !validateEmail(value)) {
+      error = "Invalid email format";
+    } else if (field === "pincode" && !validatePincode(value)) {
+      error = "PIN code must be 6 digits";
+    }
+  }
+
+  setFormErrors(prev => ({
+    ...prev,
+    [field]: error
+  }));
+};
+
 
 
 
@@ -272,6 +292,7 @@ const handlePayment = async () => {
                     placeholder="Enter your full name"
                     required
                   />
+                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
                 </div>
 
                 <div>
@@ -285,6 +306,7 @@ const handlePayment = async () => {
                     placeholder="Enter your phone number"
                     required
                   />
+                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
                 </div>
 
                 <div>
@@ -298,6 +320,7 @@ const handlePayment = async () => {
                     placeholder="Enter your email address"
                     required
                   />
+                  {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
                 </div>
               </div>
 
