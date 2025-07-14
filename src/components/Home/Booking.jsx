@@ -114,17 +114,25 @@ const Booking = () => {
 
 
   const validateStep = () => {
-    switch(currentStep) {
-      case 1:
-        return formData.name && formData.phone && formData.email;
-      case 2:
-        return formData.service;
-      case 3:
-        return formData.address && formData.city && formData.pincode;
-      default:
-        return true;
-    }
+  const stepFields = {
+    1: ["name", "phone", "email"],
+    2: ["service"],
+    3: ["address", "city", "pincode"],
   };
+
+  const fields = stepFields[currentStep] || [];
+  let isValid = true;
+
+  fields.forEach((field) => {
+    const value = formData[field];
+    validateField(field, value);
+    if (!value || formErrors[field]) {
+      isValid = false;
+    }
+  });
+
+  return isValid;
+};
 
   const [bookingId, setBookingId] = useState(null);
 
