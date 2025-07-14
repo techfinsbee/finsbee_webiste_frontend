@@ -46,6 +46,12 @@ const Booking = () => {
     { id: 'mutual_funds', name: 'Mutual Funds', price: 799, description: 'Investment Planning & Portfolio Review at Home' }
   ];
 
+  const validateName = (name) => /^[a-zA-Z\s]+$/.test(name.trim());
+const validatePhone = (phone) => /^[6-9]\d{9}$/.test(phone);
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const validatePincode = (pincode) => /^\d{6}$/.test(pincode);
+
+
 
 
   const handleInputChange = (e) => {
