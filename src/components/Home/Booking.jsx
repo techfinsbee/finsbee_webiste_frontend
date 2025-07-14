@@ -58,7 +58,8 @@ const Booking = () => {
     }));
   };
 
- 
+ const BASE_API_URL = import.meta.env.VITE_BOOKING_API_URL || 'https://booking.apifundstech.com/api';
+
 
   const validateStep = () => {
     switch(currentStep) {
@@ -78,9 +79,10 @@ const Booking = () => {
 
  const saveStep = async (payload) => {
   try {
-    const res = await fetch(`https://booking.apifundstech.com/api/bookings/step`, {
+    const res = await fetch(`${BASE_API_URL}/api/bookings/step`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({ ...payload, bookingId })
     });
 
@@ -148,9 +150,10 @@ const handlePayment = async () => {
     };
     console.log(payload);
 
-    const res = await fetch(`https://booking.apifundstech.com/api/bookings/create`, {
+    const res = await fetch(`${BASE_API_URL}/api/bookings/create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
     });
 
@@ -173,6 +176,7 @@ const handlePayment = async () => {
 
   const selectedService = services.find(s => s.id === formData.service);
   const today = new Date().toISOString().split('T')[0];
+  
 
 
 
