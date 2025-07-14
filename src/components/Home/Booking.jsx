@@ -17,6 +17,11 @@ const Booking = () => {
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
+  const validateName = (name) => /^[a-zA-Z\s]+$/.test(name.trim());
+ const validatePhone = (phone) => /^[6-9]\d{9}$/.test(phone);
+ const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+
 
   const carouselItems = [
   "✅ Explain your best options clearly",
@@ -56,6 +61,7 @@ const Booking = () => {
       ...prev,
       service: serviceId
     }));
+    validateField(name, value);
   };
 
  const BASE_API_URL = import.meta.env.VITE_BOOKING_API_URL || 'https://booking.apifundstech.com/api';
