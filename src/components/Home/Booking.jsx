@@ -16,11 +16,8 @@ const Booking = () => {
     pincode: ''
   });
   const [isProcessing, setIsProcessing] = useState(false);
-  const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
-  const validateName = (name) => /^[a-zA-Z\s]+$/.test(name.trim());
- const validatePhone = (phone) => /^[6-9]\d{9}$/.test(phone);
- const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+  const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
 
 
   const carouselItems = [
@@ -46,103 +43,46 @@ const Booking = () => {
     { id: 'mutual_funds', name: 'Mutual Funds', price: 799, description: 'Investment Planning & Portfolio Review at Home' }
   ];
 
-  const [formErrors, setFormErrors] = useState({});
-   const [touchedFields, setTouchedFields] = useState({});
-
-
-
-  const validateField = (field, value) => {
-  let error = "";
-  if (!value.trim()) {
-    error = "This field is required";
-  } else {
-    switch (field) {
-      case "name":
-        if (!validateName(value)) error = "Only alphabets and spaces allowed";
-        break;
-      case "phone":
-        if (!validatePhone(value)) error = "Enter valid 10-digit phone number";
-        break;
-      case "email":
-        if (!validateEmail(value)) error = "Invalid email format";
-        break;
-      case "pincode":
-        if (!/^\d{6}$/.test(value)) error = "PIN code must be 6 digits";
-        break;
-      case "city":
-        if (!validateName(value)) error = "Only alphabets and spaces allowed";
-        break;
-      case "service":
-        if (!value) error = "Please select a service";
-        break;
-      case "address":
-        if (value.trim().length < 10) error = "Address too short";
-        break;
-    }
-  }
-
-  setFormErrors(prev => ({
-    ...prev,
-    [field]: error
-  }));
-};
-
-
-
 
 
   const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  setFormData(prev => ({
-    ...prev,
-    [name]: value
-  }));
-  setTouchedFields(prev => ({ ...prev, [name]: true }));
-  validateField(name, value);
-};
-
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleServiceSelect = (serviceId) => {
     setFormData(prev => ({
       ...prev,
       service: serviceId
     }));
-    validateField("service", serviceId);
   };
 
- const BASE_API_URL = import.meta.env.VITE_BOOKING_API_URL || 'https://booking.apifundstech.com/api';
-
+ 
 
   const validateStep = () => {
-  const stepFields = {
-    1: ["name", "phone", "email"],
-    2: ["service"],
-    3: ["address", "city", "pincode"],
-  };
-
-  const fields = stepFields[currentStep] || [];
-  let isValid = true;
-
-  fields.forEach((field) => {
-    const value = formData[field];
-    validateField(field, value);
-    if (!value || formErrors[field]) {
-      isValid = false;
+    switch(currentStep) {
+      case 1:
+        return formData.name && formData.phone && formData.email;
+      case 2:
+        return formData.service;
+      case 3:
+        return formData.address && formData.city && formData.pincode;
+      default:
+        return true;
     }
-  });
-
-  return isValid;
-};
+  };
 
   const [bookingId, setBookingId] = useState(null);
 
 
  const saveStep = async (payload) => {
   try {
-    const res = await fetch(`${BASE_API_URL}/api/bookings/step`, {
+    const res = await fetch(`http://localhost:8000/api/bookings/step`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
       body: JSON.stringify({ ...payload, bookingId })
     });
 
@@ -174,6 +114,7 @@ const Booking = () => {
       price: priceMap[formData.service] || 0,
     });
   } else if (currentStep === 3) {
+
      if (!isValidDelhiPincode(formData.pincode)) {
       alert("📍 We're expanding soon! Currently, bookings are only accepted for Delhi (PIN codes starting with 110XXX).");
       return;
@@ -210,10 +151,9 @@ const handlePayment = async () => {
     };
     console.log(payload);
 
-    const res = await fetch(`${BASE_API_URL}/api/bookings/create`, {
+    const res = await fetch(`http://localhost:8000/api/bookings/create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
       body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
     });
 
@@ -236,7 +176,6 @@ const handlePayment = async () => {
 
   const selectedService = services.find(s => s.id === formData.service);
   const today = new Date().toISOString().split('T')[0];
-  
 
 
 
@@ -320,7 +259,6 @@ const handlePayment = async () => {
                     placeholder="Enter your full name"
                     required
                   />
-                 
                 </div>
 
                 <div>
@@ -334,7 +272,6 @@ const handlePayment = async () => {
                     placeholder="Enter your phone number"
                     required
                   />
-                  
                 </div>
 
                 <div>
@@ -348,7 +285,6 @@ const handlePayment = async () => {
                     placeholder="Enter your email address"
                     required
                   />
-                 
                 </div>
               </div>
 
