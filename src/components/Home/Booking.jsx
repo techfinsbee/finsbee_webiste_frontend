@@ -18,6 +18,8 @@ const Booking = () => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
+  const BASE_URL = import.meta.env.VITE_API_URL || 'https://booking.apifundstech.com';
+
 
 
   const carouselItems = [
@@ -80,7 +82,7 @@ const Booking = () => {
 
  const saveStep = async (payload) => {
   try {
-    const res = await fetch(`http://localhost:8000/api/bookings/step`, {
+    const res = await fetch(`${BASE_URL}/api/bookings/step`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...payload, bookingId })
@@ -151,7 +153,7 @@ const handlePayment = async () => {
     };
     console.log(payload);
 
-    const res = await fetch(`http://localhost:8000/api/bookings/create`, {
+    const res = await fetch(`${BASE_URL}/api/bookings/create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
