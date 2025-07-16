@@ -183,7 +183,7 @@ const handlePayment = async () => {
 
   return (
     
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-100  p-0 m-0 sm:p-0  flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-100  p-0 m-0 sm:p-2  flex items-center justify-center">
       <div className="w-full max-w-2xl mx-auto">
         {/* Header */}
           <div className="text-center mb-6 sm:mb-8">
