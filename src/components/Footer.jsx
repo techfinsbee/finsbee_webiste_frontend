@@ -243,6 +243,17 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     Privacy Policy
                   </Link>
                 </li>
+                <li>
+  <a
+    href="https://fundsmama.com/cancellation-and-refund"
+    className="text-gray-600 hover:text-[#18ADA5] transition"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Refund Policy
+  </a>
+</li>
+
                 {/* <li>
                   <Link
                     to="/blogs"
