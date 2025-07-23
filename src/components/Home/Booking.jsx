@@ -172,10 +172,11 @@ const handlePayment = async () => {
     console.log("✅ Booking API Response:", data);
 
     const sessionId = data?.sessionId;
+    console.log(sessionId);
 
     if (sessionId) {
       // 🔁 Use the working Cashfree checkout URL format
-      const redirectUrl = `https://payments.cashfree.com/checkout/post/${sessionId}`;
+      const redirectUrl = `https://payments.cashfree.com/pg/orders/${sessionId}`;
       window.location.href = redirectUrl;
     } else {
       throw new Error('No session ID received');
