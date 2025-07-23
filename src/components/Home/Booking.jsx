@@ -86,6 +86,7 @@ const Booking = () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...payload, bookingId })
+      credentials: 'include'
     });
 
     const data = await res.json();
@@ -161,6 +162,7 @@ const handlePayment = async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
+      credentials: 'include'
     });
     const data = await res.json();
     console.log("✅ Booking API Response:", data); // ADD THIS
