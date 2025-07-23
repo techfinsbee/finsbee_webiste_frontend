@@ -154,7 +154,7 @@ const handlePayment = async () => {
   try {
     const payload = {
       bookingId,
-      time: '10:00 AM' // selected time
+      time: '10:00 AM'
     };
     console.log(payload);
 
@@ -165,22 +165,21 @@ const handlePayment = async () => {
       credentials: 'include'
     });
 
-    const data = await res.json(); // ✅ only once
-
+    const data = await res.json();
     if (!res.ok) throw new Error(data?.message || 'Failed to book');
 
     console.log("✅ Booking API Response:", data);
 
-    const sessionId = data?.sessionId;
-    console.log(sessionId);
+    let sessionId = data?.sessionId;
+    if (!sessionId) throw new Error('No session ID received');
 
-    if (sessionId) {
-      // 🔁 Use the working Cashfree checkout URL format
-      const redirectUrl = `https://payments.cashfree.com/pg/orders/${sessionId}`;
-      window.location.href = redirectUrl;
-    } else {
-      throw new Error('No session ID received');
-    }
+    // 🧼 Strip "payment" suffix if accidentally present
+    sessionId = sessionId.replace(/payment$/, '');
+
+    // 🔁 Correct Cashfree hosted checkout redirect
+    const redirectUrl = `https://www.cashfree.com/pg/orders/${sessionId}`;
+    console.log("➡️ Redirecting to:", redirectUrl);
+    window.location.href = redirectUrl;
 
   } catch (error) {
     console.error('❌ Booking error:', error);
@@ -189,7 +188,6 @@ const handlePayment = async () => {
     setIsProcessing(false);
   }
 };
-
 
 
 
