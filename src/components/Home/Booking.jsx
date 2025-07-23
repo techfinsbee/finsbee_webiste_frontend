@@ -85,7 +85,7 @@ const Booking = () => {
     const res = await fetch(`${BASE_URL}/api/bookings/step`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...payload, bookingId })
+      body: JSON.stringify({ ...payload, bookingId }),
       credentials: 'include'
     });
 
@@ -154,33 +154,37 @@ const handlePayment = async () => {
   try {
     const payload = {
       bookingId,
-      time: '10:00 AM' // default/final selected time
+      time: '10:00 AM' // selected time
     };
     console.log(payload);
 
     const res = await fetch(`${BASE_URL}/api/bookings/create`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
+      body: JSON.stringify(payload),
       credentials: 'include'
     });
-    const data = await res.json();
-    console.log("✅ Booking API Response:", data); // ADD THIS
 
+    const data = await res.json(); // ✅ only once
 
-    if (!res.ok) throw new Error('Failed to book');
-    const data = await res.json();
+    if (!res.ok) throw new Error(data?.message || 'Failed to book'); // use backend message
+
+    console.log("✅ Booking API Response:", data);
 
     if (data.paymentLink) {
       window.location.href = data.paymentLink;
+    } else {
+      throw new Error('No payment link received');
     }
+
   } catch (error) {
     console.error('❌ Booking error:', error);
-    alert('There was a problem booking your visit.');
+    alert(error.message || 'There was a problem booking your visit.');
   } finally {
     setIsProcessing(false);
   }
 };
+
 
 
 
