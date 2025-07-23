@@ -18,7 +18,7 @@ const Booking = () => {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
-  const BASE_URL = import.meta.env.VITE_API_URL || 'https://booking.apifundstech.com';
+  const BASE_URL ='https://booking.apifundstech.com';
 
 
 
@@ -162,6 +162,9 @@ const handlePayment = async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload) // ONLY send bookingId to rely on DB lookup
     });
+    const data = await res.json();
+    console.log("✅ Booking API Response:", data); // ADD THIS
+
 
     if (!res.ok) throw new Error('Failed to book');
     const data = await res.json();
