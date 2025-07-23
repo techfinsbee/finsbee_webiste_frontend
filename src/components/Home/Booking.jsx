@@ -167,14 +167,18 @@ const handlePayment = async () => {
 
     const data = await res.json(); // ✅ only once
 
-    if (!res.ok) throw new Error(data?.message || 'Failed to book'); // use backend message
+    if (!res.ok) throw new Error(data?.message || 'Failed to book');
 
     console.log("✅ Booking API Response:", data);
 
-    if (data.paymentLink) {
-      window.location.href = data.paymentLink;
+    const sessionId = data?.sessionId;
+
+    if (sessionId) {
+      // 🔁 Use the working Cashfree checkout URL format
+      const redirectUrl = `https://payments.cashfree.com/checkout/post/${sessionId}`;
+      window.location.href = redirectUrl;
     } else {
-      throw new Error('No payment link received');
+      throw new Error('No session ID received');
     }
 
   } catch (error) {
