@@ -216,7 +216,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     to="/partner-with-us"
                     className="text-gray-600 hover:text-[#18ADA5] transition"
                   >
-                    Partner with us
+                    Partner with us write now
                   </Link>
                 </li>
                 <li>
