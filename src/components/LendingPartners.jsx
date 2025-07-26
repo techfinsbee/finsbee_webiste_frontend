@@ -16,7 +16,7 @@ const LendingPartners = () => {
   { name: "HDFC Bank", logo: "https://tse3.mm.bing.net/th?id=OIP.wk3UBkzWGSXAQv1i-UJpSwHaJa&pid=Api&P=0&h=180" },
   { name: "Bajaj Finserv", logo: "https://tse1.mm.bing.net/th?id=OIP.4NHCI_A_JQuqbHBWH-2RaAAAAA&pid=Api&P=0&h=180" },
   { name: "Finnable", logo: "https://tse1.mm.bing.net/th?id=OIP.qYztYoSOPCd7UkII6NQ53QHaGN&pid=Api&P=0&h=180" },
-  { name: "Piramal", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Piramal_Enterprises_logo.svg/2560px-Piramal_Enterprises_logo.svg.png?v=20250723" },
+  { name: "Piramal", logo: "https://iili.io/FkzEmVs.png" },
   { name: "IndusInd Bank", logo: "https://tse4.mm.bing.net/th?id=OIP.5N-v8EBW6WnwD4UySigJvwHaCY&pid=Api&P=0&h=180" },
   { name: "Kotak Mahindra Bank", logo: "https://tse3.mm.bing.net/th?id=OIP.R5HK-mbTDB2m_jLHiUx50wHaCl&pid=Api&P=0&h=180" },
   { name: "L&T Finance", logo: "https://tse3.mm.bing.net/th?id=OIP.ItASukBq4_HgbHZ7pn8C_QHaDq&pid=Api&P=0&h=180" },
