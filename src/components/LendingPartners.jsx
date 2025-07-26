@@ -69,7 +69,7 @@ const LendingPartners = () => {
   
   return (
     <section id="lending-partners" ref={ref} className="lending-partners-section py-16 px-4">
-{/*       <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <motion.h2 
           className="text-4xl md:text-5xl font-bold mb-14 text-center"
           initial={{ opacity: 0, y: 30 }}
@@ -119,7 +119,7 @@ const LendingPartners = () => {
         >
           We partner with India's leading banks and financial institutions to offer you the best loan options
         </motion.p>
-      </div> */}
+      </div>
     </section>
   );
 };
