@@ -9,7 +9,7 @@ const LendingPartners = () => {
     triggerOnce: false,
   });
 
-  Updated partners with more reliable logo URLs
+  //Updated partners with more reliable logo URLs
     const partners = [
   { name: "Aditya Birla", logo: "src/assets/AdityaBirla.jpeg" },
   { name: "Avans", logo: "src/assets/Avans.png" },
