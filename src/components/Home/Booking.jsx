@@ -92,8 +92,6 @@ const Booking = () => {
     const data = await res.json();
     console.log("✅ Booking API Response:", data); // ADD THIS
 
-
-    const data = await res.json();
     if (data.bookingId) setBookingId(data.bookingId);
   } catch (err) {
     console.error("Error saving step data:", err);
