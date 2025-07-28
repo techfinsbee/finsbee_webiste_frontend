@@ -25,14 +25,17 @@ const LendingPartners = () => {
           Our Lending Partner
         </motion.h2>
 
-        <motion.p
-          className="text-xl md:text-2xl font-semibold text-teal-700"
+        <motion.a
+          href="https://girdharfinlease.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xl md:text-4xl font-semibold text-teal-700 hover:underline inline-block"
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
           Girdhar Finlease Private Limited
-        </motion.p>
+        </motion.a>
 
         <motion.p
           className="text-center text-gray-600 mt-6 text-base"
