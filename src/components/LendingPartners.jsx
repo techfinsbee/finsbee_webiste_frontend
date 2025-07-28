@@ -35,7 +35,7 @@ const LendingPartners = () => {
   { name: "Shriram Finance", logo: "https://tse3.mm.bing.net/th?id=OIP.ppWNoxao1V5UpbEjS0R1AQHaCd&pid=Api&P=0&h=180" },
   { name: "Poonawalla", logo: "https://tse3.mm.bing.net/th?id=OIP.NzIweLQ9xIgSeVfITHc4XQHaEH&pid=Api&P=0&h=180" },
   { name: "IIFL", logo: "https://tse1.mm.bing.net/th?id=OIP.MSHYCH8sKpEsk2M3cilIeQHaDW&pid=Api&P=0&h=180" },
-   { name: "IIFL", logo: "https://freeimage.host/i/FvX4Wfj" },
+   { name: "IIFL", logo: "https://iili.io/FvX4Wfj.png" },
 ];
 
   // Animation settings
