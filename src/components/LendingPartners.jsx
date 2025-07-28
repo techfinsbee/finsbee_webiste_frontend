@@ -30,6 +30,7 @@ const LendingPartners = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="text-xl md:text-4xl font-semibold text-teal-700 hover:underline inline-block"
+          style={{ color: '#0363A3' }}
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8 }}
