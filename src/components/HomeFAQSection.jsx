@@ -11,20 +11,20 @@ const HomeFAQSection = ({ COLOR }) => {
 
   const faqItems = [
     {
-      question: "What types of loans does FundsMama offer?",
-      answer: "FundsMama offers a variety of loan options including Personal Loans, Instant Payday Loans, Home Loans, Loan Against Property (LAP), and Loan Against Securities, all designed to meet your diverse financial needs with competitive rates."
+      question: "What types of loans does FinsBee offer?",
+      answer: "FinsBee offers a variety of loan options including Personal Loans, Instant Payday Loans, Home Loans, Loan Against Property (LAP), and Loan Against Securities, all designed to meet your diverse financial needs with competitive rates."
     },
     {
       question: "How quickly can I get my loan approved and disbursed?",
       answer: "Most loans are approved within minutes to hours, with disbursals typically completed within 24 hours of approval, depending on the loan type and verification process."
     },
     {
-      question: "What is the FMCoins reward system?",
-      answer: "FMCoins is our unique reward system where you earn coins with every loan disbursement. These coins can be redeemed at Mama Mart, our in-app marketplace, for a wide range of products and services."
+      question: "What is the FBCoins reward system?",
+      answer: "FBCoins is our unique reward system where you earn coins with every loan disbursement. These coins can be redeemed at Mama Mart, our in-app marketplace, for a wide range of products and services."
     },
     {
       question: "Do I need a high credit score to apply?",
-      answer: "While a good credit score improves your chances, FundsMama has lending partners who provide options for individuals with varying credit profiles, including those with limited credit history."
+      answer: "While a good credit score improves your chances, FinsBee has lending partners who provide options for individuals with varying credit profiles, including those with limited credit history."
     },
     {
       question: "How does the application process work?",
@@ -88,7 +88,7 @@ const HomeFAQSection = ({ COLOR }) => {
           <motion.h2 
             className="text-4xl md:text-5xl font-bold mb-6 faq coolvetica"
             style={{ 
-              color: COLOR ? " #09615D" : " #09615D",
+              color: COLOR ? " #000" : " #ffc73c",
               position: "relative",
               display: "inline-block"
             }}
@@ -101,7 +101,7 @@ const HomeFAQSection = ({ COLOR }) => {
               className="absolute h-1 w-32 rounded-full left-1/2 transform -translate-x-1/2" 
               style={{ 
                 bottom: "-15px", 
-                background: "linear-gradient(to right, #09615D,  #09615D)"
+                background: "linear-gradient(to right, #ffc73c,  #ffc73c)"
               }}
             ></div>
           </motion.h2>
@@ -126,7 +126,7 @@ const HomeFAQSection = ({ COLOR }) => {
           {faqItems.map((item, index) => (
             <motion.div 
               key={index} 
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-teal-100"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-blue-100"
               variants={itemVariants}
               whileHover={{ 
                 scale: 1.01,
@@ -153,7 +153,7 @@ const HomeFAQSection = ({ COLOR }) => {
                 </h3>
                 <div 
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                    activeIndex === index ? "bg-teal-100" : "bg-teal-100"
+                    activeIndex === index ? "bg-blue-100" : "bg-blue-100"
                   }`}
                 >
                   <svg

@@ -159,9 +159,9 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         <div className="flex">
           <div className="w-[100px] object-cover">
             <img
-              src="/Funds.svg"
+              src="/finsbee.png"
               className="logo-img lg:w-[220px] -top-6 -left-8 lg:left-4 absolute object-cover"
-              alt="FUNDSMAMA"
+              alt="FinsBee"
             />
           </div>
           <span
@@ -172,7 +172,7 @@ const HomeHeader = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
               color: `${TXTCOLOR ? "black" : "#163312"}`,
             }}
           >
-            FUNDSMAMA
+            {/* FinsBee */}
           </span>
         </div>
       </a>

@@ -173,9 +173,9 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
       <a href="/" className="head">
         <div className="flex">
           <img
-            src="/Funds.svg"
+            src="/finsbee.png"
             className="w-[100px] relative -top-[1vh] sm:top-0 lg:-left-[2vw] -left-[8vw] sm:-left-[6vw] w-[150px] sm:w-[150px]"
-            alt="FUNDSMAMA"
+            alt="FinsBee"
           />{" "}
           <span
             className="text-4xl header-fundmama -left-[15vw] sm:-left-[5vw] relative flex juistify-center items-center"
@@ -184,7 +184,7 @@ const Header = ({ dropdownData = [], COLOR, Hover }) => {
               fontFamily: "Helvetica",
             }}
           >
-            FUNDSMAMA
+            FinsBee
           </span>
         </div>
       </a>

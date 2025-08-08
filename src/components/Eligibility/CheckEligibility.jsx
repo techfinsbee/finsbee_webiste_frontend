@@ -122,7 +122,7 @@ const CheckEligibility = () => {
                 { (!age || !isAgeEligible) && <p className="text-sm text-[red]">Please enter age first</p>}
                 <input
                   type="date"
-                  className="border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all p-1"
+                  className="border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all p-1"
                   onChange={(e) => {
                     const birthDate = new Date(e.target.value);
                     const today = new Date();
@@ -157,7 +157,7 @@ const CheckEligibility = () => {
                 <input
                   type="number"
                   disabled={(!age || !isAgeEligible)}
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(e.target.value)}
                   onBlur={() => {
@@ -186,7 +186,7 @@ const CheckEligibility = () => {
                     activeTab === "personal" ? 5000000 : 1000000
                   )}
                   onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#ffc73c] mt-1"
                 />
               </div>
 
@@ -196,7 +196,7 @@ const CheckEligibility = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                   value={monthOblig}
                                     disabled={!age || !isAgeEligible}
 
@@ -229,7 +229,7 @@ const CheckEligibility = () => {
                     1000000
                   )}
                   onChange={(e) => setMonthOblig(parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#ffc73c] mt-1"
                 />
                 {monthOblig > loanAmount * 0.6 && (
                   <p className="text-red-500 text-sm mt-1">
@@ -245,7 +245,7 @@ const CheckEligibility = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                   value={interestRate}
                   onChange={(e) => setInterestRate(parseFloat(e.target.value))} // allow any typing
                     onBlur={() => {
@@ -272,7 +272,7 @@ const CheckEligibility = () => {
                   step="0.1"
                   value={interestRate}
                   onChange={(e) => setInterestRate(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#ffc73c] mt-1"
                 />
               </div>
 
@@ -282,7 +282,7 @@ const CheckEligibility = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                   value={tenure}
                                     disabled={!age || !isAgeEligible}
 
@@ -308,7 +308,7 @@ const CheckEligibility = () => {
                   step="1"
                   value={tenure}
                   onChange={(e) => setTenure(parseInt(e.target.value))}
-                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+                  className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#ffc73c] mt-1"
                 />
               </div>
             </div>
@@ -321,14 +321,14 @@ const CheckEligibility = () => {
               <p className="text-xl lg:text-3xl text-gray-600 mb-1 text-center">
                 You are Eligible for an Amount of
               </p>
-              <p className="text-xl font-bold text-[#18ADA5]">
+              <p className="text-xl font-bold text-[#ffc73c]">
                 ₹{" "}
                 {(isNaN(eligibleLoanAmount) || (monthOblig > (loanAmount*0.6)) || (!isAgeEligible || !age))
                   ? "0"
                   : eligibleLoanAmount.toLocaleString()}
               </p>
             </div>
-            <button className="w-[60%] mt-9 bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm">
+            <button className="w-[60%] mt-9 bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm">
               Apply Now
             </button>
           </div>

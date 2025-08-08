@@ -7,7 +7,7 @@ const Steps = () => {
       {
         title: "Download & Sign-Up",
         content:
-          "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
+          "Download the FinsBee app from Google Play Store or the App Store and complete a quick sign-up.",
         image: "/c3.svg",
       },
       {
@@ -42,7 +42,7 @@ const Steps = () => {
     {
       title: "Download & Sign-Up",
       content:
-        "Download the Fundsmama app from Google Play Store or the App Store and complete a quick sign-up.",
+        "Download the FinsBee app from Google Play Store or the App Store and complete a quick sign-up.",
       image: images[2],
     },
     {

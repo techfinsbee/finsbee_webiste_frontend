@@ -7,7 +7,7 @@ const FeatureCardsCarousel = () => {
 
   const features = [
     {
-      title: "FundsMama Rewards: FMCoins",
+      title: "FinsBee Rewards: FBCoins",
       description:
         "Consumers earn FM Coins with every successful loan disbursement or product purchase.",
       imageContent: (

@@ -47,7 +47,7 @@ const BusinessLoan = () => {
   const dropdownData = [
 
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -89,7 +89,7 @@ const BusinessLoan = () => {
     {
       question: "What is the maximum business loan amount I can get?",
       answer:
-        "FundsMama offers business loans up to Rs. 1 Crore, depending on your business revenue, credit profile, vintage, and other eligibility factors.",
+        "FinsBee offers business loans up to Rs. 1 Crore, depending on your business revenue, credit profile, vintage, and other eligibility factors.",
     },
     {
       question: "How long does it take to get a business loan approved?",
@@ -166,14 +166,14 @@ const BusinessLoan = () => {
       <Navbar dropdownData={dropdownData} COLOR="#fff" TXTCOLOR="#" />
 
       {/* Hero Section with Tabs */}
-      <section className="pt-10 pb-5 bg-gradient-to-br from-[#f0f9f9] to-[#ffffff]">
+      <section className="mt-2 pt-10 pb-5 bg-gradient-to-br from-[#f4f1c8] to-[#ffffff]">
         <div className="container mx-auto px-4 sm:px-6">
           {/* Loan Type Tabs */}
           <div className="flex border-b border-gray-200 mb-4 overflow-x-auto no-scrollbar">
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
                 activeTab === "business"
-                  ? "text-[#18ADA5] border-b-2 border-[#18ADA5] font-semibold"
+                  ? "text-[#ffc73c] border-b-2 border-[#ffc73c] font-semibold"
                   : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("business")}
@@ -183,7 +183,7 @@ const BusinessLoan = () => {
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
                 activeTab === "working"
-                  ? "text-[#18ADA5] border-b-2 border-[#18ADA5] font-semibold"
+                  ? "text-[#ffc73c] border-b-2 border-[#ffc73c] font-semibold"
                   : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("working")}
@@ -193,7 +193,7 @@ const BusinessLoan = () => {
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
                 activeTab === "invoice"
-                  ? "text-[#18ADA5] border-b-2 border-[#18ADA5] font-semibold"
+                  ? "text-[#ffc73c] border-b-2 border-[#ffc73c] font-semibold"
                   : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("invoice")}
@@ -220,13 +220,13 @@ const BusinessLoan = () => {
               </p>
               <div className="flex flex-wrap gap-3 mb-6">
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
-                  <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
+                  <CheckCircle className="text-[#ffc73c] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
                     Digital Application
                   </span>
                 </div>
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
-                  <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
+                  <CheckCircle className="text-[#ffc73c] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
                     {activeTab === "business"
                       ? "No Collateral Options"
@@ -234,7 +234,7 @@ const BusinessLoan = () => {
                   </span>
                 </div>
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
-                  <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
+                  <CheckCircle className="text-[#ffc73c] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
                     {activeTab === "business"
                       ? "Min. Vintage 1 Year"
@@ -242,7 +242,7 @@ const BusinessLoan = () => {
                   </span>
                 </div>
               </div>
-              <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg transform hover:translate-y-[-2px]">
+              <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg transform hover:translate-y-[-2px]">
                 Apply Now
               </button>
               {/* Image of property/real estate */}
@@ -258,7 +258,7 @@ const BusinessLoan = () => {
 
             <div className="w-full lg:w-1/2 pl-0 lg:pl-4">
               <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 relative transform hover:scale-[1.01] transition-transform duration-300 max-h-[550px] overflow-auto">
-                <div className="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 bg-[#18ADA5] rounded-lg flex items-center justify-center shadow-lg">
+                <div className="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 bg-[#ffc73c] rounded-lg flex items-center justify-center shadow-lg">
                   <BarChart className="text-white h-6 w-6 sm:h-8 sm:w-8" />
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold mb-4 mt-2 ml-10">
@@ -271,7 +271,7 @@ const BusinessLoan = () => {
                   </label>
                   <input
                     type="number"
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                     value={loanAmount}
                     onChange={(e) => setLoanAmount(parseInt(e.target.value))}
                       onBlur={() => {
@@ -291,7 +291,7 @@ const BusinessLoan = () => {
                   </label>
                   <input
                     type="number"
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                     value={interestRate}
                     onChange={(e) => setInterestRate(parseFloat(e.target.value))}
                       onBlur={() => {
@@ -318,7 +318,7 @@ const BusinessLoan = () => {
                     onChange={(e) =>
                       setInterestRate(parseFloat(e.target.value))
                     }
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#ffc73c] mt-1"
                   />
                   
                 </div>
@@ -329,7 +329,7 @@ const BusinessLoan = () => {
                   </label>
                   <input
                     type="number"
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                     value={tenure}
                     onChange={(e) => setTenure(parseInt(e.target.value))}
                     onBlur={() => {
@@ -352,14 +352,14 @@ const BusinessLoan = () => {
                     step="6"
                     value={tenure}
                     onChange={(e) => setTenure(parseInt(e.target.value))}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#18ADA5] mt-1"
+                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#ffc73c] mt-1"
                   />
                 </div>
 
                 <div className="bg-gradient-to-br from-[#f8fcfc] to-[#eef8f8] rounded-lg p-4 flex mb-4 shadow-sm">
                   <div className="w-1/2 border-r border-gray-200 pr-3">
                     <p className="text-xs text-gray-600 mb-1">Monthly EMI</p>
-                    <p className="text-xl font-bold text-[#18ADA5]">
+                    <p className="text-xl font-bold text-[#000]">
                       ₹ {isNaN(monthlyEMI) ? "0" : monthlyEMI.toLocaleString()}
                     </p>
                   </div>
@@ -367,7 +367,7 @@ const BusinessLoan = () => {
                     <p className="text-xs text-gray-600 mb-1">
                       Interest Payable
                     </p>
-                    <p className="text-xl font-bold text-[#18ADA5]">
+                    <p className="text-xl font-bold text-[#000]">
                       ₹{" "}
                       {isNaN(totalInterest)
                         ? "0"
@@ -376,7 +376,7 @@ const BusinessLoan = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm">
+                <button className="w-full bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm">
                   Apply For{" "}
                   {activeTab === "business" ? "Business" : "Working Capital"}{" "}
                   Loan
@@ -395,7 +395,7 @@ const BusinessLoan = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                   <div className="bg-[#eaf6f6] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Calculator className="text-[#18ADA5] h-6 w-6" />
+                    <Calculator className="text-[#ffc73c] h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">
                     Higher Loan Amounts
@@ -408,7 +408,7 @@ const BusinessLoan = () => {
 
                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                   <div className="bg-[#eaf6f6] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Clock className="text-[#18ADA5] h-6 w-6" />
+                    <Clock className="text-[#ffc73c] h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">
                     Fast Approval Process
@@ -421,7 +421,7 @@ const BusinessLoan = () => {
 
                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                   <div className="bg-[#eaf6f6] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Award className="text-[#18ADA5] h-6 w-6" />
+                    <Award className="text-[#ffc73c] h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">
                     Flexible Repayment Options
@@ -433,9 +433,9 @@ const BusinessLoan = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] rounded-2xl p-6 sm:p-10 mb-16 text-white shadow-xl">
+              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-black shadow-xl">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
-                  Why Choose FundsMama Business Loans?
+                  Why Choose FinsBee Business Loans?
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -514,7 +514,7 @@ const BusinessLoan = () => {
                 </div>
 
                 <div className="text-center mt-8">
-                  <button className="bg-white text-[#18ADA5] hover:bg-gray-100 font-medium px-8 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                  <button className="bg-white text-black hover:bg-gray-100 font-medium px-8 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                     Apply For Business Loan{" "}
                     <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
@@ -531,7 +531,7 @@ const BusinessLoan = () => {
                     <div className="p-5 sm:p-8 border-b md:border-b-0 md:border-r border-gray-200">
                       <div className="flex items-center mb-4">
                         <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                          <Calculator className="text-[#18ADA5] h-5 w-5" />
+                          <Calculator className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           For Proprietary/Partnership Firms
@@ -540,7 +540,7 @@ const BusinessLoan = () => {
                       <ul className="space-y-3">
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Business vintage: Minimum 1 year
@@ -548,7 +548,7 @@ const BusinessLoan = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Minimum annual turnover: ₹12 Lakhs
@@ -556,7 +556,7 @@ const BusinessLoan = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Valid GST registration (if applicable)
@@ -564,7 +564,7 @@ const BusinessLoan = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Owner's credit score: 700+
@@ -575,7 +575,7 @@ const BusinessLoan = () => {
                     <div className="p-5 sm:p-8">
                       <div className="flex items-center mb-4">
                         <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                          <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                          <CreditCard className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           For Private Limited Companies
@@ -584,7 +584,7 @@ const BusinessLoan = () => {
                       <ul className="space-y-3">
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Business vintage: Minimum 2 years
@@ -592,7 +592,7 @@ const BusinessLoan = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Minimum annual turnover: ₹24 Lakhs
@@ -600,7 +600,7 @@ const BusinessLoan = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Company and Director's KYC verification
@@ -608,7 +608,7 @@ const BusinessLoan = () => {
                         </li>
                         <li className="flex items-center">
                           <div className="bg-[#eaf6f6] p-1 rounded-full mr-2">
-                            <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                            <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                           </div>
                           <span className="text-sm sm:text-base">
                             Profitable operations in recent years
@@ -629,7 +629,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-1.5 rounded-full mr-3">
-                        <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                        <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Business Documents
@@ -637,24 +637,24 @@ const BusinessLoan = () => {
                     </div>
                     <ul className="space-y-2 ml-2">
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           Business Registration Certificate
                         </span>
                       </li>
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           GST Registration (if applicable)
                         </span>
                       </li>
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">Business Address Proof</span>
                       </li>
@@ -664,7 +664,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-1.5 rounded-full mr-3">
-                        <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                        <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Financial Documents
@@ -672,24 +672,24 @@ const BusinessLoan = () => {
                     </div>
                     <ul className="space-y-2 ml-2">
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           Last 2 years ITR with computation
                         </span>
                       </li>
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           Last 6 months business bank statements
                         </span>
                       </li>
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           Audited financial statements (if applicable)
@@ -701,7 +701,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-1.5 rounded-full mr-3">
-                        <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                        <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         KYC Documents
@@ -709,24 +709,24 @@ const BusinessLoan = () => {
                     </div>
                     <ul className="space-y-2 ml-2">
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           PAN Card of Entity and Promoters
                         </span>
                       </li>
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           Aadhaar Card of Promoters/Directors
                         </span>
                       </li>
                       <li className="flex items-center">
-                        <div className="bg-[#f0f9f9] p-1 rounded-full mr-2">
-                          <CheckCircle className="text-[#18ADA5] h-3 w-3" />
+                        <div className="bg-[#f4f1c8] p-1 rounded-full mr-2">
+                          <CheckCircle className="text-[#ffc73c] h-3 w-3" />
                         </div>
                         <span className="text-sm">
                           Latest Passport-size photographs
@@ -749,7 +749,7 @@ const BusinessLoan = () => {
                       <div
                         className={`bg-white rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border ${
                           expandedFaq === index
-                            ? "border-[#18ADA5]"
+                            ? "border-[#ffc73c]"
                             : "border-gray-100"
                         }`}
                         onClick={() => toggleFaq(index)}
@@ -758,14 +758,14 @@ const BusinessLoan = () => {
                           <h3
                             className={`text-base sm:text-lg font-semibold ${
                               expandedFaq === index
-                                ? "text-[#18ADA5]"
+                                ? "text-[#ffc73c]"
                                 : "text-gray-800"
                             }`}
                           >
                             {faq.question}
                           </h3>
                           <ChevronDown
-                            className={`transition-transform duration-300 text-[#18ADA5] h-5 w-5 ${
+                            className={`transition-transform duration-300 text-[#ffc73c] h-5 w-5 ${
                               expandedFaq === index
                                 ? "transform rotate-180"
                                 : ""
@@ -783,11 +783,11 @@ const BusinessLoan = () => {
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-br from-[#f0f9f9] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
+              <div className="text-center bg-gradient-to-br from-[#f4f1c8] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Ready to Grow Your Business?
                 </h2>
-                <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply Now{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
@@ -801,7 +801,7 @@ const BusinessLoan = () => {
           {activeTab === "working" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
                     Working Capital Solutions
                   </h2>
@@ -816,7 +816,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <Clock className="text-[#18ADA5] h-5 w-5" />
+                        <Clock className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Quick Disbursals
@@ -830,7 +830,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                        <CreditCard className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Flexible Limits
@@ -844,7 +844,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <CheckCircle className="text-[#18ADA5] h-5 w-5" />
+                        <CheckCircle className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Short-Term Financing
@@ -868,7 +868,7 @@ const BusinessLoan = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <Award className="text-[#18ADA5] h-5 w-5" />
+                          <Award className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           Overdraft Facility
@@ -884,7 +884,7 @@ const BusinessLoan = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <Clock className="text-[#18ADA5] h-5 w-5" />
+                          <Clock className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Cash Credit</h3>
                       </div>
@@ -898,7 +898,7 @@ const BusinessLoan = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <Calculator className="text-[#18ADA5] h-5 w-5" />
+                          <Calculator className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           Short-Term Loan
@@ -916,7 +916,7 @@ const BusinessLoan = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <CheckCircle className="text-[#18ADA5] h-5 w-5" />
+                          <CheckCircle className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           Invoice Financing
@@ -932,7 +932,7 @@ const BusinessLoan = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                          <CreditCard className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           Business Line of Credit
@@ -948,7 +948,7 @@ const BusinessLoan = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <Award className="text-[#18ADA5] h-5 w-5" />
+                          <Award className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
                           Purchase Order Financing
@@ -974,7 +974,7 @@ const BusinessLoan = () => {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -987,7 +987,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1000,7 +1000,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1014,7 +1014,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1027,7 +1027,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl md:col-span-2">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1045,7 +1045,7 @@ const BusinessLoan = () => {
               </div>
 
               <div className="mb-16">
-                <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] rounded-xl overflow-hidden shadow-xl">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-xl overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row items-center p-6 sm:p-8">
                     <div className="md:w-2/3 mb-6 md:mb-0 md:pr-6">
                       <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
@@ -1082,7 +1082,7 @@ const BusinessLoan = () => {
                           </span>
                         </li>
                       </ul>
-                      <button className="bg-white text-[#18ADA5] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
+                      <button className="bg-white text-[#ffc73c] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
                         Apply For Working Capital{" "}
                         <ArrowRight className="inline ml-2 h-4 w-4" />
                       </button>
@@ -1092,8 +1092,8 @@ const BusinessLoan = () => {
                         <p className="text-lg font-bold mb-2">
                           Application Process
                         </p>
-                        <div className="bg-[#f0f9f9] rounded-lg p-3 mb-4">
-                          <p className="text-3xl font-bold text-[#18ADA5] mb-0">
+                        <div className="bg-[#f4f1c8] rounded-lg p-3 mb-4">
+                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">
                             48 hrs
                           </p>
                           <p className="text-xs text-gray-500">for approval</p>
@@ -1102,8 +1102,8 @@ const BusinessLoan = () => {
                         <p className="text-lg font-bold mb-2">
                           First Disbursal
                         </p>
-                        <div className="bg-[#f0f9f9] rounded-lg p-3">
-                          <p className="text-3xl font-bold text-[#18ADA5] mb-0">
+                        <div className="bg-[#f4f1c8] rounded-lg p-3">
+                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">
                             1-2 days
                           </p>
                           <p className="text-xs text-gray-500">
@@ -1128,7 +1128,7 @@ const BusinessLoan = () => {
                       <div
                         className={`bg-white rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border ${
                           expandedFaq === index + 100
-                            ? "border-[#18ADA5]"
+                            ? "border-[#ffc73c]"
                             : "border-gray-100"
                         }`}
                         onClick={() => toggleFaq(index + 100)}
@@ -1137,14 +1137,14 @@ const BusinessLoan = () => {
                           <h3
                             className={`text-base sm:text-lg font-semibold ${
                               expandedFaq === index + 100
-                                ? "text-[#18ADA5]"
+                                ? "text-[#ffc73c]"
                                 : "text-gray-800"
                             }`}
                           >
                             {faq.question}
                           </h3>
                           <ChevronDown
-                            className={`transition-transform duration-300 text-[#18ADA5] h-5 w-5 ${
+                            className={`transition-transform duration-300 text-[#ffc73c] h-5 w-5 ${
                               expandedFaq === index + 100
                                 ? "transform rotate-180"
                                 : ""
@@ -1162,11 +1162,11 @@ const BusinessLoan = () => {
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-br from-[#f0f9f9] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
+              <div className="text-center bg-gradient-to-br from-[#f4f1c8] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Optimize Your Cash Flow Today
                 </h2>
-                <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply for Working Capital{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
@@ -1179,7 +1179,7 @@ const BusinessLoan = () => {
           {activeTab === "invoice" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
                     Invoice Discounting
                   </h2>
@@ -1194,7 +1194,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <Clock className="text-[#18ADA5] h-5 w-5" />
+                        <Clock className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Same-Day Funding
@@ -1209,7 +1209,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                        <CreditCard className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Up to 90% Advance
@@ -1223,7 +1223,7 @@ const BusinessLoan = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <CheckCircle className="text-[#18ADA5] h-5 w-5" />
+                        <CheckCircle className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">
                         Confidential Service
@@ -1245,12 +1245,12 @@ const BusinessLoan = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       1
                     </div>
                     <div className="flex items-center mb-3 pt-2">
                       <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center">
-                        <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                        <CreditCard className="text-[#ffc73c] h-5 w-5" />
                       </div>
                     </div>
                     <h3 className="text-lg font-semibold mb-2">
@@ -1263,12 +1263,12 @@ const BusinessLoan = () => {
                   </div>
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       2
                     </div>
                     <div className="flex items-center mb-3 pt-2">
                       <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center">
-                        <CheckCircle className="text-[#18ADA5] h-5 w-5" />
+                        <CheckCircle className="text-[#ffc73c] h-5 w-5" />
                       </div>
                     </div>
                     <h3 className="text-lg font-semibold mb-2">
@@ -1281,12 +1281,12 @@ const BusinessLoan = () => {
                   </div>
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       3
                     </div>
                     <div className="flex items-center mb-3 pt-2">
                       <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center">
-                        <Clock className="text-[#18ADA5] h-5 w-5" />
+                        <Clock className="text-[#ffc73c] h-5 w-5" />
                       </div>
                     </div>
                     <h3 className="text-lg font-semibold mb-2">
@@ -1299,12 +1299,12 @@ const BusinessLoan = () => {
                   </div>
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       4
                     </div>
                     <div className="flex items-center mb-3 pt-2">
                       <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center">
-                        <Award className="text-[#18ADA5] h-5 w-5" />
+                        <Award className="text-[#ffc73c] h-5 w-5" />
                       </div>
                     </div>
                     <h3 className="text-lg font-semibold mb-2">
@@ -1319,7 +1319,7 @@ const BusinessLoan = () => {
               </div>
 
               {/* Benefits Section */}
-              <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] rounded-2xl p-6 sm:p-10 mb-16 text-white shadow-xl">
+              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-white shadow-xl">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
                   Benefits of Invoice Discounting
                 </h2>
@@ -1402,7 +1402,7 @@ const BusinessLoan = () => {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1416,7 +1416,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1429,7 +1429,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1442,7 +1442,7 @@ const BusinessLoan = () => {
                       </li>
                       <li className="flex items-start bg-[#f8fcfc] p-4 rounded-xl">
                         <div className="bg-[#eaf6f6] p-1 rounded-full mr-3 mt-1">
-                          <CheckCircle className="text-[#18ADA5] h-4 w-4" />
+                          <CheckCircle className="text-[#ffc73c] h-4 w-4" />
                         </div>
                         <div>
                           <span className="font-semibold block mb-1 text-sm sm:text-base">
@@ -1471,7 +1471,7 @@ const BusinessLoan = () => {
                       <div
                         className={`bg-white rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border ${
                           expandedFaq === index + 200
-                            ? "border-[#18ADA5]"
+                            ? "border-[#ffc73c]"
                             : "border-gray-100"
                         }`}
                         onClick={() => toggleFaq(index + 200)}
@@ -1480,14 +1480,14 @@ const BusinessLoan = () => {
                           <h3
                             className={`text-base sm:text-lg font-semibold ${
                               expandedFaq === index + 200
-                                ? "text-[#18ADA5]"
+                                ? "text-[#ffc73c]"
                                 : "text-gray-800"
                             }`}
                           >
                             {faq.question}
                           </h3>
                           <ChevronDown
-                            className={`transition-transform duration-300 text-[#18ADA5] h-5 w-5 ${
+                            className={`transition-transform duration-300 text-[#ffc73c] h-5 w-5 ${
                               expandedFaq === index + 200
                                 ? "transform rotate-180"
                                 : ""
@@ -1506,11 +1506,11 @@ const BusinessLoan = () => {
               </div>
 
               {/* CTA Section */}
-              <div className="text-center bg-gradient-to-br from-[#f0f9f9] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
+              <div className="text-center bg-gradient-to-br from-[#f4f1c8] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Convert Your Invoices to Cash
                 </h2>
-                <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply for Invoice Discounting{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>

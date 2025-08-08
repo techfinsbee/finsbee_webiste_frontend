@@ -149,7 +149,7 @@ function Form({ isFormVisible, onClose }) {
                   type="submit"
                   className="submit-button center p-2 text-lg rounded-lg"
                   disabled={submitStatus.isLoading}
-                  style={{backgroundColor:"#18ADA5"}}
+                  style={{backgroundColor:"#ffc73c"}}
                 >
                   {submitStatus.isLoading ? "Submitting..." : "Submit"}
                 </button>

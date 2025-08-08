@@ -1,0 +1,64 @@
+{
+  "hash": "0788e8e1",
+  "configHash": "99e33332",
+  "lockfileHash": "d8c68432",
+  "browserHash": "9999f79b",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "f4694781",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "7e6e6908",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "beaca640",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "ad238248",
+      "needsInterop": false
+    },
+    "react-dom": {
+      "src": "../../node_modules/react-dom/index.js",
+      "file": "react-dom.js",
+      "fileHash": "b25bbb8e",
+      "needsInterop": true
+    },
+    "react-intersection-observer": {
+      "src": "../../node_modules/react-intersection-observer/dist/index.mjs",
+      "file": "react-intersection-observer.js",
+      "fileHash": "9a602a19",
+      "needsInterop": false
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "a19f80b4",
+      "needsInterop": false
+    },
+    "react-infinite-logo-slider": {
+      "src": "../../node_modules/react-infinite-logo-slider/build/index.js",
+      "file": "react-infinite-logo-slider.js",
+      "fileHash": "ea0a85fc",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-35C4W5R3": {
+      "file": "chunk-35C4W5R3.js"
+    },
+    "chunk-JRE55LYH": {
+      "file": "chunk-JRE55LYH.js"
+    }
+  }
+}

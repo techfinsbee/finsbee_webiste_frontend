@@ -202,7 +202,7 @@ const DayLoan = () => {
   //           onMouseOver={(e) => e.currentTarget.style.color = "#0044aa"}
   //           onMouseOut={(e) => e.currentTarget.style.color = "black"}
   //         >
-  //           Click here to repay your loan and view your past loan inquiries with FundsMama.
+  //           Click here to repay your loan and view your past loan inquiries with FinsBee.
   //         </a>
           
   //         {/* Logo with link */}
@@ -214,7 +214,7 @@ const DayLoan = () => {
   //           >
   //             <img 
   //               src="https://30daysloan.com/static/media/logo1.73eea7b0e17697f8fa1edcabe1e98422.svg" 
-  //               alt="FundsMama Logo" 
+  //               alt="FinsBee Logo" 
   //               style={{ 
   //                 maxWidth: "200px", 
   //                 height: "auto",

@@ -16,9 +16,9 @@ const HomeFooter = ({ COLOR }) => {
           <div className="flex sm:flex-row justify-between items-center mb-8">
             <div className="flex w-[200px] object-cover"> 
               <img
-                src="/Funds.svg"
+                src="/finsbee.png"
                 className="relative lg:-left-16 -left-[10vw] sm:-left-[6vw] w-[150px] sm:w-[250px] ml-0 object-cover"
-                alt="FUNDSMAMA"
+                alt="FinsBee"
               />{" "}
               <span
                 className="text-lg sm:text-4xl relative sm:-left-[12vw] -left-[18vw] lg:-left-28 top-1 lg:top-2 text-black  flex juistify-center items-center"
@@ -27,7 +27,7 @@ const HomeFooter = ({ COLOR }) => {
                   fontFamily: "Helvetica",
                 }}
               >
-                FUNDSMAMA
+                FinsBee
               </span>
             </div>
             <button className="bg-[#342F3E] sm:w-fit text-[14px] w-[40vw] text-white px-2 md:px-6 py-2 rounded-[50px] transition-colors">
@@ -109,10 +109,10 @@ const HomeFooter = ({ COLOR }) => {
                 </li>
                 <li>
                   <a
-                    href="mailto:Customercare@fundsmama.com"
+                    href="mailto:Customercare@finsbee.com"
                     className="text-lg md:text-lg flex gap-2 font-semibold hover:text-white-600"
                   >
-                    <span className="text-2xl">✉</span> Customercare@fundsmama.com
+                    <span className="text-2xl">✉</span> Customercare@finsbee.com
                   </a>
                 </li>
               </ul>

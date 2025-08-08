@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const BottomHeader = ({
   showContactInfo = true,
-  customText = "Book Your 30 Min Consultant",
+  customText = "Book Your 60 Min Consultant",
 }) => {
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const BottomHeader = ({
   };
  
   return (
-<div className="fixed bottom-0 left-0 right-0 z-50 bg-teal backdrop-blur-md border-t border-gray-200/50 shadow-[0_0_20px_rgba(0,0,0,0.4)] py-5">
+<div className="fixed bottom-0 left-0 right-0 z-50 bg-yellow backdrop-blur-md border-t border-gray-200/50 shadow-[0_0_20px_rgba(0,0,0,0.4)] py-5">
       <div className="max-w-screen-xl mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Left side - Company info */}
@@ -31,7 +31,7 @@ const BottomHeader = ({
           <div className="flex-1 sm:flex-none">
             <button 
                onClick={handleBookingClick}
-              className="w-full sm:w-auto bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white font-semibold py-4 px-8 rounded-full transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-3 text-lg"
+              className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-yellow-500 hover:from-yellow-600 hover:to-yellow-600 text-black font-semibold py-4 px-8 rounded-full transform hover:scale-105 transition-all duration-200 flex items-center justify-center space-x-3 text-lg"
             >
               <Clock className="w-6 h-6" />
               <span>{customText}</span>

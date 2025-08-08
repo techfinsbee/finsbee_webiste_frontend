@@ -143,7 +143,7 @@ const HomeMobileLoanCarousel = ({
                   className="text-s  mb-0 coolvetica"
                   style={{
                     fontWeight: "550",
-                    color: COLOR ? "#09615D" : "#112A00",
+                    color: COLOR ? "#ffc73c" : "#112A00",
                   }}
                 >
                   {loans[currentIndex].title}
@@ -164,7 +164,7 @@ const HomeMobileLoanCarousel = ({
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <Link to="/check-credit-score">
                   <button
-                    className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+                    className="py-1.5 px-3 rounded-md text-white bg-[#ffc73c] hover:bg-[#ffc73c] transition-colors duration-300 text-xs font-medium flex-1"
                     style={{
                       boxShadow: isHovered
                         ? "0 4px 12px rgba(24, 173, 165, 0.3)"
@@ -181,7 +181,7 @@ const HomeMobileLoanCarousel = ({
             ) : (
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <button
-                  className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+                  className="py-1.5 px-3 rounded-md text-white bg-[#ffc73c] hover:bg-[#ffc73c] transition-colors duration-300 text-xs font-medium flex-1"
                   style={{
                     boxShadow: isHovered
                       ? "0 4px 12px rgba(24, 173, 165, 0.3)"
@@ -198,7 +198,7 @@ const HomeMobileLoanCarousel = ({
                 </button>
                 <Link to="/check-eligibility">
                 <button
-                  className="py-1.5 px-3 rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
+                  className="py-1.5 px-3 rounded-md border border-[#ffc73c] text-[#ffc73c] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
                   style={{
                     boxShadow: isHovered
                       ? "0 4px 12px rgba(24, 173, 165, 0.15)"
@@ -222,7 +222,7 @@ const HomeMobileLoanCarousel = ({
           onClick={prevSlide}
           className="w-9 h-9 rounded-full flex items-center justify-center shadow-md bg-white"
           style={{
-            color: COLOR ? "#18ADA5" : "#4CAF50",
+            color: COLOR ? "#ffc73c" : "#4CAF50",
           }}
           aria-label="Previous loan"
         >
@@ -256,7 +256,7 @@ const HomeMobileLoanCarousel = ({
                 backgroundColor:
                   currentIndex === index
                     ? COLOR
-                      ? "#18ADA5"
+                      ? "#ffc73c"
                       : "#4CAF50"
                     : COLOR
                     ? "rgba(24, 173, 165, 0.2)"
@@ -271,7 +271,7 @@ const HomeMobileLoanCarousel = ({
           onClick={nextSlide}
           className="w-9 h-9 rounded-full flex items-center justify-center shadow-md bg-white"
           style={{
-            color: COLOR ? "#18ADA5" : "#4CAF50",
+            color: COLOR ? "#ffc73c" : "#4CAF50",
           }}
           aria-label="Next loan"
         >

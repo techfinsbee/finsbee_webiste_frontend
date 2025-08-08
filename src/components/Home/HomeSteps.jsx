@@ -6,7 +6,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
       {
         title: "Download & Sign-Up",
         content:
-          "Get the FundsMama app from the Google Play Store or App Store and complete a quick sign-up.",
+          "Get the FinsBee app from the Google Play Store or App Store and complete a quick sign-up.",
         image: "/1.).svg",
       },
       {
@@ -38,7 +38,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
     {
       title: "Download & Sign-Up",
       content:
-        "Get the FundsMama app from the Google Play Store or App Store and complete a quick sign-up.",
+        "Get the FinsBee app from the Google Play Store or App Store and complete a quick sign-up.",
       image: images[0],
     },
     {
@@ -130,7 +130,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
             >
               <h1 className=" text-5xl font-bold">Loan Application Steps</h1>
               <p className="text-xl">
-                With Fundsmama you unlock loans at lower prices
+                With FinsBee you unlock loans at lower prices
               </p>
             </div>
             <div className=" absolute object-cover bottom-0">
@@ -215,7 +215,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
                         className={`text-2xl font-bold coolvetica ${
                           activeIndexList === index
                             ? "text-black"
-                            : "text-white"
+                            : "text-black"
                         }`}
                       >
                         {data.title}
@@ -224,7 +224,7 @@ const HomeSteps = ({ StepColor, stepImage }) => {
                         className={`mt-2 transition-colors duration-150 manrope ${
                           activeIndexList === index
                             ? "text-black"
-                            : "text-gray-300"
+                            : "text-black"
                         }`}
                       >
                         {data.content}

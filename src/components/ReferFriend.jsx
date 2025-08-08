@@ -6,7 +6,7 @@ const ReferFriend = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -24,7 +24,7 @@ const ReferFriend = () => {
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-[#163312]">Refer a Friend</h1>
         
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-[#18ADA5] to-[#09615D] text-white rounded-t-lg p-8 text-center">
+          <div className="bg-gradient-to-br from-[#ffc73c] to-[#ffc73c] text-black rounded-t-lg p-8 text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Earn ₹500 for Every Friend You Refer!</h2>
             <p className="text-lg">When your friend gets a loan approved, both of you get rewarded.</p>
           </div>
@@ -32,24 +32,24 @@ const ReferFriend = () => {
           <div className="bg-white shadow-lg rounded-b-lg p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#f0f9f9] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#09615D] text-xl font-bold">1</span>
+                <div className="w-16 h-16 bg-[#f4f1c8] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-[#ffc73c] text-xl font-bold">1</span>
                 </div>
                 <h3 className="font-semibold mb-2">Share Your Referral Code</h3>
                 <p className="text-gray-600">Share your unique referral code with friends via WhatsApp, Email, or SMS</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#f0f9f9] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#09615D] text-xl font-bold">2</span>
+                <div className="w-16 h-16 bg-[#f4f1c8] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-[#ffc73c] text-xl font-bold">2</span>
                 </div>
                 <h3 className="font-semibold mb-2">Friend Takes a Loan</h3>
                 <p className="text-gray-600">Your friend downloads the app and gets a loan approved</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#f0f9f9] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#09615D] text-xl font-bold">3</span>
+                <div className="w-16 h-16 bg-[#f4f1c8] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-[#ffc73c] text-xl font-bold">3</span>
                 </div>
                 <h3 className="font-semibold mb-2">Both Get Rewarded</h3>
                 <p className="text-gray-600">You get ₹500 and your friend gets ₹200 as a welcome bonus</p>
@@ -63,7 +63,7 @@ const ReferFriend = () => {
                   <h3 className="text-lg font-semibold mb-1">Your Unique Referral Code</h3>
                   <div className="flex items-center">
                     <span className="bg-white border border-gray-300 px-4 py-2 rounded-l-md font-mono text-lg">FUNDS2023</span>
-                    <button className="bg-[#18ADA5] text-white px-4 py-2 rounded-r-md hover:bg-[#09615D] transition-colors">Copy</button>
+                    <button className="bg-[#ffc73c] text-white px-4 py-2 rounded-r-md hover:bg-[#ffc73c] transition-colors">Copy</button>
                   </div>
                 </div>
                 <div className="flex space-x-3">
@@ -90,7 +90,7 @@ const ReferFriend = () => {
         </div>
       </div>
       
-      <Footer COLOR="#09615D" />
+      <Footer COLOR="#ffc73c" />
     </div>
   );
 };

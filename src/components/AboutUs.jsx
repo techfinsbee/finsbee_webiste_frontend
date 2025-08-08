@@ -18,7 +18,7 @@ const AboutUs = () => {
     {
       title: "All-in-One Platform",
       description:
-        "From applying for  loans to shopping for the latest products, FundsMama brings everything together under one roof.",
+        "From applying for  loans to shopping for the latest products, FinsBee brings everything together under one roof.",
     },
     {
       title: "Shop & Earn Rewards",
@@ -38,7 +38,7 @@ const AboutUs = () => {
     {
       title: "Your Privacy Matters",
       description:
-        "Your personal and financial data is safe with us. FundsMama adheres to strict data security and compliance protocols to ensure your peace of mind.",
+        "Your personal and financial data is safe with us. FinsBee adheres to strict data security and compliance protocols to ensure your peace of mind.",
     },
   ];
   const dropdownData = [
@@ -61,13 +61,13 @@ const AboutUs = () => {
       <section className=" py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-6">
-            Welcome to <span className="text-[#09615D]">FundsMama</span>
+            Welcome to <span className="text-[#ffc73c]">FinsBee</span>
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Where financial solutions meet rewarding experiences. We're not just
             a lending platform; we're a unique ecosystem that combines easy
             access to loans with an exclusive in-app e-commerce store,
-            redefining how you think about finance and shopping. At FundsMama,
+            redefining how you think about finance and shopping. At FinsBee,
             every step of your journey—whether applying for a loan or shopping
             for your favorite products—is designed to be simple, rewarding, and
             seamless.
@@ -82,14 +82,14 @@ const AboutUs = () => {
             Who We Are
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed mb-8">
-            FundsMama is your one-stop destination for loans and rewards. We
+            FinsBee is your one-stop destination for loans and rewards. We
             simplify borrowing by connecting you to trusted NBFCs, banks, and
             lending institutions, ensuring you get the best options tailored to
             your needs. But we go beyond loans! Our platform also features a
             reward-driven e-commerce store, where you can use Coins earned from
             loans or purchases to shop from a wide range of products. <br />
             From quick payday loans to long-term financing and exciting shopping
-            experiences, FundsMama is here to make your financial and lifestyle
+            experiences, FinsBee is here to make your financial and lifestyle
             aspirations come true.
           </p>
         </div>
@@ -135,7 +135,7 @@ const AboutUs = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Why Choose FundsMama?
+            Why Choose FinsBee?
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {whyChooseUs.map((item, index) => (
@@ -168,20 +168,20 @@ const AboutUs = () => {
       {/* Join Us Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 ">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Join the FundsMama Family</h2>
+          <h2 className="text-3xl font-bold mb-6">Join the FinsBee Family</h2>
           <p className="text-lg mb-8">
-            At FundsMama, we believe finance should empower you, and rewards
+            At FinsBee, we believe finance should empower you, and rewards
             should elevate your experience. Whether you’re planning your next
             big purchase, meeting financial needs, or simply enjoying the thrill
             of shopping, we’re here to make it all happen—hassle-free and
             rewarding.
             <br /> <br />
-            Start your journey with FundsMama today. Explore endless
+            Start your journey with FinsBee today. Explore endless
             possibilities, and experience a platform that brings finance and
             lifestyle together.
           </p>
-          <Link to="https://play.google.com/store/apps/details?id=com.fundsmama.personalloan">
-            <button className="bg-[#09615D]  px-8 py-3 rounded-full font-semibold flex items-center mx-auto text-white transition-colors">
+          <Link to="https://play.google.com/store/apps/details?id=com.finsbee.personalloan">
+            <button className="bg-[#ffc73c]  px-8 py-3 rounded-full font-semibold flex items-center mx-auto text-black transition-colors">
               <Download className="w-5 h-5 mr-2" />
               Download Our App
             </button>

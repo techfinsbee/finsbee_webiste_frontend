@@ -140,7 +140,7 @@ const HomeCibilScoreSection = ({ COLOR, cibilImgaes }) => {
         style={{
           width: "93%",
           borderRadius: "30px",
-          background: `${COLOR ? "#09615D" : "#163312"}`,
+          background: `${COLOR ? "#ffc73c" : "#163312"}`,
         }}
       >
         {/* Header */}

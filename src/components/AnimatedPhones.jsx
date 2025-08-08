@@ -128,123 +128,123 @@ const AnimatedPhones = ({ Home }) => {
     };
   }, [Home]); // Added Home to dependency array
 
-  return (
-    <div
-      className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
-      style={{ height: `${Home ? "80vh" : "110vh"}`, padding: "0" }}
-    >
-      <div
-        ref={containerRef}
-        className="relative flex items-center justify-center w-full max-w-7xl mx-auto"
-        style={{ perspective: "1500px" }}
-      >
-        <div className="relative w-full h-full flex items-center justify-center">
-          {/* Left Phone */}
-          <div className="phone absolute transition-all duration-200 ease-in-out">
-            <img
-              src={Home ? "/mall22.svg" : "/mobile2.svg"}
-              alt="Cart Screen"
-              className={
-                Home
-                  ? "w-48 xs:w-28 sm:w-52 md:w-56 lg:w-[250px] object-contain svg-1"
-                  : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
-              }
-            />
-          </div>
+  // return (
+  //   // <div
+  //   //   className="flex items-center justify-center sm:p-4 md:p-6 lg:p-8 main-context"
+  //   //   style={{ height: `${Home ? "80vh" : "110vh"}`, padding: "0" }}
+  //   // >
+  //   //   <div
+  //   //     ref={containerRef}
+  //   //     className="relative flex items-center justify-center w-full max-w-7xl mx-auto"
+  //   //     style={{ perspective: "1500px" }}
+  //   //   >
+  //   //     <div className="relative w-full h-full flex items-center justify-center">
+  //   //       {/* Left Phone */}
+  //   //       <div className="phone absolute transition-all duration-200 ease-in-out">
+  //   //         <img
+  //   //           src={Home ? "/mall22.svg" : "/mobile2.svg"}
+  //   //           alt="Cart Screen"
+  //   //           className={
+  //   //             Home
+  //   //               ? "w-48 xs:w-28 sm:w-52 md:w-56 lg:w-[250px] object-contain svg-1"
+  //   //               : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
+  //   //           }
+  //   //         />
+  //   //       </div>
 
-          {/* Middle Phone */}
-          <div className="phone transition-all duration-200 ease-in-out">
-            <img
-              src={Home ? "/mall33.svg" : "/mobile1.svg"}
-              alt="Main Screen"
-              className={
-                Home
-                  ? "w-52 xs:w-28 sm:w-56 md:w-64 lg:w-[300px] object-contain svg-2"
-                  : "w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
-              }
-            />
-          </div>
+  //   //       {/* Middle Phone */}
+  //   //       <div className="phone transition-all duration-200 ease-in-out">
+  //   //         <img
+  //   //           src={Home ? "/mall33.svg" : "/mobile1.svg"}
+  //   //           alt="Main Screen"
+  //   //           className={
+  //   //             Home
+  //   //               ? "w-52 xs:w-28 sm:w-56 md:w-64 lg:w-[300px] object-contain svg-2"
+  //   //               : "w-96 xs:w-32 sm:w-40 md:w-56 lg:w-[700px] object-contain ani-img2"
+  //   //           }
+  //   //         />
+  //   //       </div>
 
-          {/* Right Phone */}
-          <div className="phone absolute transition-all duration-200 ease-out">
-            <img
-              src={Home ? "/mall11.svg" : "/mobile3.svg"}
-              alt="Details Screen"
-              className={
-                Home
-                  ? "w-44 xs:w-28 sm:w-52 md:w-56 lg:w-[250px] object-contain svg-1"
-                  : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
-              }
-            />
-          </div>
-        </div>
-      </div>
+  //   //       {/* Right Phone */}
+  //   //       <div className="phone absolute transition-all duration-200 ease-out">
+  //   //         <img
+  //   //           src={Home ? "/mall11.svg" : "/mobile3.svg"}
+  //   //           alt="Details Screen"
+  //   //           className={
+  //   //             Home
+  //   //               ? "w-44 xs:w-28 sm:w-52 md:w-56 lg:w-[250px] object-contain svg-1"
+  //   //               : "w-80 xs:w-28 sm:w-36 md:w-48 lg:w-[600px] object-contain ani-img1"
+  //   //           }
+  //   //         />
+  //   //       </div>
+  //   //     </div>
+  //   //   </div>
 
-      <style jsx>{`
+  //   //   <style jsx>{`
         
-        @media (min-height: 900px) {
-          .main-context {
-            height: 50vh !important;
-          }
-        }
-        .phone {
-          will-change: transform;
-          transform-style: preserve-3d;
-          transition: transform 0.3s ease-out;
-          transform-origin: center center;
-        }
-        @media screen and (max-width: 1023px) {
-          .ani-img1 {
-            width: 300px !important;
-          }
-          .ani-img2 {
-            width: 400px !important;
-          }
-          .main-context {
-            height: 100vh !important;
-          }
-        }
-        @media screen and (max-height: 512px) {
-          .main-context {
-            height: fit-content !important;
-          }
-        }
-        @media screen and (max-width: 820px) {
-          .ani-img1 {
-            width: 300px !important;
-          }
-          .ani-img2 {
-            width: 400px !important;
-          }
-          .main-context {
-            height: 70vh !important;
-          }
-        }
-        @media (max-width: 512px) {
-          .phone {
-            transition: transform 0.18s ease-out;
-          }
-          .main-context {
-            height: 40vh !important;
-          }
-          .svg-1 {
-            width: 35vw !important;
-          }
-          .svg-2 {
-            width: 40vw !important;
-          }
-        }
-        @media (max-width: 375px) {
-      .svg-1 {
-            width: 40vw !important;
-          }
-          .svg-2 {
-            width: 45vw !important;
-          }
-        }
-      `}</style>
-    </div>
-  );
+  //   //     @media (min-height: 900px) {
+  //   //       .main-context {
+  //   //         height: 50vh !important;
+  //   //       }
+  //   //     }
+  //   //     .phone {
+  //   //       will-change: transform;
+  //   //       transform-style: preserve-3d;
+  //   //       transition: transform 0.3s ease-out;
+  //   //       transform-origin: center center;
+  //   //     }
+  //   //     @media screen and (max-width: 1023px) {
+  //   //       .ani-img1 {
+  //   //         width: 300px !important;
+  //   //       }
+  //   //       .ani-img2 {
+  //   //         width: 400px !important;
+  //   //       }
+  //   //       .main-context {
+  //   //         height: 100vh !important;
+  //   //       }
+  //   //     }
+  //   //     @media screen and (max-height: 512px) {
+  //   //       .main-context {
+  //   //         height: fit-content !important;
+  //   //       }
+  //   //     }
+  //   //     @media screen and (max-width: 820px) {
+  //   //       .ani-img1 {
+  //   //         width: 300px !important;
+  //   //       }
+  //   //       .ani-img2 {
+  //   //         width: 400px !important;
+  //   //       }
+  //   //       .main-context {
+  //   //         height: 70vh !important;
+  //   //       }
+  //   //     }
+  //   //     @media (max-width: 512px) {
+  //   //       .phone {
+  //   //         transition: transform 0.18s ease-out;
+  //   //       }
+  //   //       .main-context {
+  //   //         height: 40vh !important;
+  //   //       }
+  //   //       .svg-1 {
+  //   //         width: 35vw !important;
+  //   //       }
+  //   //       .svg-2 {
+  //   //         width: 40vw !important;
+  //   //       }
+  //   //     }
+  //   //     @media (max-width: 375px) {
+  //   //   .svg-1 {
+  //   //         width: 40vw !important;
+  //   //       }
+  //   //       .svg-2 {
+  //   //         width: 45vw !important;
+  //   //       }
+  //   //     }
+  //   //   `}</style>
+  //   // </div>
+  // );
 };
 
 export default AnimatedPhones;

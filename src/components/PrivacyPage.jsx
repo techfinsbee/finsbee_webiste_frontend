@@ -5,7 +5,7 @@ const PrivacyPage = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -29,8 +29,8 @@ const PrivacyPage = () => {
             (Reasonable security practices and procedures and sensitive personal data or information) Rules, 2011, and applicable RBI guidelines and regulations
             and describes the information collected from you (hereinafter referred to as "You", "Your" or "User") on Your visit to the Platform(defined further)
             and use of Platform; manner and procedure of collection of such information; use, storage, and disclosure of information collected; rights and choices
-            available to You with respect to the information collected; and how Stradex International Private Limited (hereinafter "FundsMama", "We", "Us")
-            including online platform(s) "fundsmama.com" and "FundsMama" (Mobile Application) (Collectively "Platform").
+            available to You with respect to the information collected; and how Stradex International Private Limited (hereinafter "FinsBee", "We", "Us")
+            including online platform(s) "finsbee.com" and "FinsBee" (Mobile Application) (Collectively "Platform").
           </p>
           <p className="text-justify">
             This Policy constitutes a legal agreement between You as the User of the Platform, and Stradex International Private Limited as the owner of the
@@ -60,7 +60,7 @@ const PrivacyPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-3">I. Collection and Storage of Personal Information:</h2>
           <p className="text-justify">
-          Personal Information collected from the Users is securely stored at servers located in India by Stradex International Private Limited. We use reasonable safeguards to preserve the veracity and security of the information collected against loss, theft, unauthorized access, disclosure, reproduction, use or amendment. To achieve the same, we use reasonable security practices and procedures as mandated under applicable laws for the protection of your information. However, you understand and accept that there’s no guarantee that data transmission over the Internet will be completely secure and that any information that You transmit to Us is at Your own risk. We assume no liability for any disclosure of information due to transmission errors, unauthorized third-party access to our Platform and databases, or other acts of third parties, or acts or omissions beyond our reasonable control and You shall not be entitled to hold FundsMama responsible for any breach of security.
+          Personal Information collected from the Users is securely stored at servers located in India by Stradex International Private Limited. We use reasonable safeguards to preserve the veracity and security of the information collected against loss, theft, unauthorized access, disclosure, reproduction, use or amendment. To achieve the same, we use reasonable security practices and procedures as mandated under applicable laws for the protection of your information. However, you understand and accept that there’s no guarantee that data transmission over the Internet will be completely secure and that any information that You transmit to Us is at Your own risk. We assume no liability for any disclosure of information due to transmission errors, unauthorized third-party access to our Platform and databases, or other acts of third parties, or acts or omissions beyond our reasonable control and You shall not be entitled to hold FinsBee responsible for any breach of security.
           </p>
         </section>
 
@@ -74,7 +74,7 @@ const PrivacyPage = () => {
               last name, email address, date of birth, mobile number, address with PIN Code.
             </p>
             <p>
-              FundsMama is a Digital Fintech Marketplace that has partnered with verified lenders to facilitate their lending business. FundsMama helps
+              FinsBee is a Digital Fintech Marketplace that has partnered with verified lenders to facilitate their lending business. FinsBee helps
               its users to connect with these verified lenders thereby enabling You to avail products offered by the Lending Partners such as loans and
               credit cards among other financial products, which shall vary from partner to partner.
             </p>
@@ -111,7 +111,7 @@ const PrivacyPage = () => {
             <div>
               <h3 className="font-semibold mb-2">2. Marketing and Promotional Purpose:</h3>
               <p className="text-justify">
-              At the time of registering on the Platform, Users have to provide their mobile number and email address for OTP. Hence, by registering you authorize the FundsMama (including its verified lenders and affiliates) to send texts and email alerts to you with your login details and any other service requirements, including promotional mails and SMS, even if you have registered yourself under DND or DNC or NCPR services. Your authorization shall be valid salon as your account is not deactivated or unless you withdraw your consent. If You wish to withdraw your consent, please feel free to reach out to <a href="mailto:customercare@fundsmama.com">customercare@fundsmama.com</a> requesting the same.  
+              At the time of registering on the Platform, Users have to provide their mobile number and email address for OTP. Hence, by registering you authorize the FinsBee (including its verified lenders and affiliates) to send texts and email alerts to you with your login details and any other service requirements, including promotional mails and SMS, even if you have registered yourself under DND or DNC or NCPR services. Your authorization shall be valid salon as your account is not deactivated or unless you withdraw your consent. If You wish to withdraw your consent, please feel free to reach out to <a href="mailto:customercare@finsbee.com">customercare@finsbee.com</a> requesting the same.  
               </p>
             </div>
 
@@ -130,9 +130,9 @@ const PrivacyPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-3">Withdrawal of Consent:</h2>
           <p className="text-justify">
-            FundsMama respects Your rights over your Personal Information. If during any time, you feel that we do not require the retention of your
+            FinsBee respects Your rights over your Personal Information. If during any time, you feel that we do not require the retention of your
             personal information or if you ask us to delete or remove your personal information, we shall do the same without asking any further questions.
-            Please feel free to write to <a href="mailto:customercare@fundsmama.com">customercare@fundsmama.com</a>  for such withdrawal.
+            Please feel free to write to <a href="mailto:customercare@finsbee.com">customercare@finsbee.com</a>  for such withdrawal.
           </p>
         </section>
 
@@ -140,7 +140,7 @@ const PrivacyPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-3">Data Security:</h2>
           <p className="text-justify">
-          FundsMama understands the importance of one’s personal information and thereby always uses the highest applicable standard to protect the information collected from You. We have put in place appropriate security measures to deal with any suspected data security breach. However, Users are aware that no information transmitted over the internet is safe and there is always a chance of breach of such data even when the highest security is in place. Therefore, we cannot guarantee its absolute security. Further, you are responsible for maintaining the confidentiality and security of your login id and password and must refrain from sharing your credentials with any third party. 
+          FinsBee understands the importance of one’s personal information and thereby always uses the highest applicable standard to protect the information collected from You. We have put in place appropriate security measures to deal with any suspected data security breach. However, Users are aware that no information transmitted over the internet is safe and there is always a chance of breach of such data even when the highest security is in place. Therefore, we cannot guarantee its absolute security. Further, you are responsible for maintaining the confidentiality and security of your login id and password and must refrain from sharing your credentials with any third party. 
           </p>
         </section>
 
@@ -157,7 +157,7 @@ const PrivacyPage = () => {
               <p>Name: Manav Pradhan</p>
               <p>Address: L-42, Lajpat Nagar-2, New Delhi - 110024</p>
               <p>Contact Number:  +91-92204 68743</p>
-              <p>Email: customercare@fundsmama.com</p>
+              <p>Email: customercare@finsbee.com</p>
             </div>
             <p className="mt-2 italic">Note: Request You to give us 48-72 hrs. to resolve your complaint.</p>
           </div>
@@ -168,7 +168,7 @@ const PrivacyPage = () => {
           <div>
             <h2 className="text-xl font-semibold mb-3">Amendment of Privacy Policy:</h2>
             <p className="text-justify">
-              This Privacy Policy is subject to modification and/or change at the sole discretion of FundsMama. All such modifications shall be strictly
+              This Privacy Policy is subject to modification and/or change at the sole discretion of FinsBee. All such modifications shall be strictly
               in line with the RBI requirements and guidelines issued from time to time.
             </p>
           </div>
@@ -185,12 +185,12 @@ const PrivacyPage = () => {
             <h2 className="text-xl font-semibold mb-3">Change in Privacy Policy:</h2>
             <ul className="list-disc ml-8 space-y-2">
               <li>
-                FundsMama will periodically inform its users, at least once every year, of its rules and regulations, privacy policy or user agreement
+                FinsBee will periodically inform its users, at least once every year, of its rules and regulations, privacy policy or user agreement
                 or any change in this respect;
               </li>
               <li>
-                FundsMama will periodically inform its users, at least once every year, that in case of non-compliance by its users with rules and
-                regulations, privacy policy or user agreement, FundsMama reserves the right to terminate the access or usage rights of the users to its
+                FinsBee will periodically inform its users, at least once every year, that in case of non-compliance by its users with rules and
+                regulations, privacy policy or user agreement, FinsBee reserves the right to terminate the access or usage rights of the users to its
                 platform and/ or remove any information on its platform which does not comply with the Information Technology Act.
               </li>
             </ul>

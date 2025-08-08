@@ -17,7 +17,7 @@ const Booking = () => {
   });
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const isValidDelhiPincode = (pincode) => /^110\d{3}$/.test(pincode);
+ const isValidDelhiPincode = (pincode) => /^1100[0-9]{2}$/.test(pincode);
   const BASE_URL ='https://booking.apifundstech.com';
 
 
@@ -40,9 +40,9 @@ const Booking = () => {
 
 
   const services = [
-    { id: 'loan', name: 'Loan Consultation', price: 499, description: 'Personal & Business Loan Guidance at Your Home' },
-    { id: 'insurance', name: 'Insurance Advisory', price: 599, description: 'Life, Health & General Insurance at Your Doorstep' },
-    { id: 'mutual_funds', name: 'Mutual Funds', price: 799, description: 'Investment Planning & Portfolio Review at Home' }
+    { id: 'loan', name: 'Loan Consultation', price: 399, description: 'Personal & Business Loan Guidance at Your Home' },
+    { id: 'insurance', name: 'Insurance Advisory', price: 399, description: 'Life, Health & General Insurance at Your Doorstep' },
+    { id: 'mutual_funds', name: 'Mutual Funds', price: 399, description: 'Investment Planning & Portfolio Review at Home' }
   ];
 
 
@@ -113,7 +113,7 @@ const Booking = () => {
       email: formData.email,
     });
   } else if (currentStep === 2) {
-    const priceMap = { loan: 499, insurance: 599, mutual_funds: 799 };
+    const priceMap = { loan: 399, insurance: 399, mutual_funds: 399 };
     await saveStep({
       service: formData.service,
       price: priceMap[formData.service] || 0,
@@ -146,48 +146,56 @@ if (!formData.price) {
 }
 
 
-const handlePayment = async () => {
-  setIsProcessing(true);
+// const handlePayment = async () => {
+//   setIsProcessing(true);
 
-  try {
-    const payload = {
-      bookingId,
-      time: '10:00 AM'
-    };
-    console.log(payload);
+//   try {
+//     const payload = {
+//       bookingId,
+//       time: '10:00 AM'
+//     };
+//     console.log(payload);
 
-    const res = await fetch(`${BASE_URL}/api/bookings/create`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      credentials: 'include'
-    });
+//     const res = await fetch(`${BASE_URL}/api/bookings/create`, {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify(payload),
+//       credentials: 'include'
+//     });
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.message || 'Failed to book');
+//     const data = await res.json();
+//     if (!res.ok) throw new Error(data?.message || 'Failed to book');
 
-    console.log("✅ Booking API Response:", data);
+//     //console.log("✅ Booking API Response:", data);
+//     setCurrentStep(5);
 
-    let sessionId = data?.sessionId;
-    if (!sessionId) throw new Error('No session ID received');
+//     // let sessionId = data?.sessionId;
+//     // if (!sessionId) throw new Error('No session ID received');
 
-    // 🧼 Strip "payment" suffix if accidentally present
-    sessionId = sessionId.replace(/payment$/, '');
+//     // // 🧼 Strip "payment" suffix if accidentally present
+//     // sessionId = sessionId.replace(/payment$/, '');
 
-    // 🔁 Correct Cashfree hosted checkout redirect
-    const redirectUrl = `https://www.cashfree.com/pg/orders/${sessionId}`;
-    console.log("➡️ Redirecting to:", redirectUrl);
-    window.location.href = redirectUrl;
+//     // // 🔁 Correct Cashfree hosted checkout redirect
+//     // const redirectUrl = `https://www.cashfree.com/pg/orders/${sessionId}`;
+//     // console.log("➡️ Redirecting to:", redirectUrl);
+//     // window.location.href = redirectUrl;
 
-  } catch (error) {
-    console.error('❌ Booking error:', error);
-    alert(error.message || 'There was a problem booking your visit.');
-  } finally {
-    setIsProcessing(false);
-  }
+//   } catch (error) {
+//     console.error('❌ Booking error:', error);
+//     alert(error.message || 'There was a problem booking your visit.');
+//   } finally {
+//     setIsProcessing(false);
+//   }
+// };
+
+  const handlePayment = () => {
+  const rzpPaymentLink = "https://rzp.io/rzp/bvPI7AiM";
+  window.location.href = rzpPaymentLink;
 };
 
 
+ const STATIC_QR_IMAGE_URL = "/QrCode.jpeg"; // Assuming it's in /public folder
+ const WHATSAPP_NUMBER = "919999999999";
 
 
   const selectedService = services.find(s => s.id === formData.service);
@@ -196,8 +204,16 @@ const handlePayment = async () => {
 
 
   return (
-    
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 to-cyan-100  p-0 m-0 sm:p-2  flex items-center justify-center">
+
+    <>
+     <style>{`
+    @media screen and (max-width: 620px) {
+      html, body {
+        padding-top: 0px !important;
+      }
+    }
+  `}</style>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100  sm:p-2  flex items-center justify-center">
       <div className="w-full max-w-2xl mx-auto">
         {/* Header */}
           <div className="text-center mb-6 sm:mb-8">
@@ -206,7 +222,7 @@ const handlePayment = async () => {
       </h1>
 
       <p className="text-sm sm:text-base text-gray-600 px-2 mb-4">
-        A verified FundsMama advisor will visit your home or office in 30 mins
+        A verified FundsMama advisor will visit your home or office in 60 mins
       </p>
 
       <div className="w-full max-w-md mx-auto mt-6 min-h-[2.5rem]">
@@ -231,13 +247,13 @@ const handlePayment = async () => {
             {[1, 2, 3, 4].map((step) => (
               <div key={step} className={`flex items-center ${step < 4 ? 'flex-1' : ''}`}>
                 <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium ${
-                  currentStep >= step ? 'bg-teal-600 text-white' : 'bg-gray-200 text-gray-600'
+                  currentStep >= step ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
                 }`}>
                   {step}
                 </div>
                 {step < 4 && (
                   <div className={`flex-1 h-1 mx-1 sm:mx-2 ${
-                    currentStep > step ? 'bg-teal-600' : 'bg-gray-200'
+                    currentStep > step ? 'bg-blue-600' : 'bg-gray-200'
                   }`} />
                 )}
               </div>
@@ -258,7 +274,7 @@ const handlePayment = async () => {
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <User className="w-10 h-10 sm:w-12 sm:h-12 text-teal-600 mx-auto mb-2" />
+                <User className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Personal Information</h2>
                 <p className="text-sm sm:text-base text-gray-600">Tell us about yourself</p>
               </div>
@@ -271,7 +287,7 @@ const handlePayment = async () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                     placeholder="Enter your full name"
                     required
                   />
@@ -284,7 +300,7 @@ const handlePayment = async () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                     placeholder="Enter your phone number"
                     required
                   />
@@ -297,7 +313,7 @@ const handlePayment = async () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                     placeholder="Enter your email address"
                     required
                   />
@@ -307,7 +323,7 @@ const handlePayment = async () => {
               <button
                 onClick={handleNext}
                 disabled={!validateStep()}
-                className="w-full py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
               >
                 Continue
               </button>
@@ -318,7 +334,7 @@ const handlePayment = async () => {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-teal-600 mx-auto mb-2" />
+                <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Choose Your Service</h2>
                 <p className="text-sm sm:text-base text-gray-600">Select the consultation type</p>
               </div>
@@ -330,7 +346,7 @@ const handlePayment = async () => {
                     onClick={() => handleServiceSelect(service.id)}
                     className={`p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
                       formData.service === service.id
-                        ? 'border-teal-500 bg-teal-50'
+                        ? 'border-blue-500 bg-blue-50'
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
@@ -341,7 +357,7 @@ const handlePayment = async () => {
                       </div>
                       <div className="text-left sm:text-right">
                         <div className="text-lg font-bold text-gray-900">₹{service.price}</div>
-                        <div className="text-xs sm:text-sm text-gray-500">30 minutes</div>
+                        <div className="text-xs sm:text-sm text-gray-500">60 minutes</div>
                       </div>
                     </div>
                   </div>
@@ -359,7 +375,7 @@ const handlePayment = async () => {
                 <button
                   onClick={handleNext}
                   disabled={!validateStep()}
-                  className="flex-1 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+                  className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
                 >
                   Continue
                 </button>
@@ -371,7 +387,7 @@ const handlePayment = async () => {
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="text-center mb-6">
-                <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-teal-600 mx-auto mb-2" />
+                <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Your Address</h2>
                 <p className="text-sm sm:text-base text-gray-600">Where should our consultant visit you?</p>
               </div>
@@ -384,7 +400,7 @@ const handlePayment = async () => {
                     value={formData.address}
                     onChange={handleInputChange}
                     rows={3}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm sm:text-base"
+                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                     placeholder="Enter your complete address with landmarks"
                     required
                   />
@@ -398,7 +414,7 @@ const handlePayment = async () => {
                       name="city"
                       value={formData.city}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                       placeholder="Your city"
                       required
                     />
@@ -411,7 +427,7 @@ const handlePayment = async () => {
                       value={formData.pincode}
                       onChange={handleInputChange}
                       maxLength={6}
-                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm sm:text-base"
+                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
                       placeholder="PIN Code"
                       required
                     />
@@ -419,12 +435,12 @@ const handlePayment = async () => {
                 </div>
               </div>
 
-              <div className="bg-teal-50/80 backdrop-blur-sm rounded-lg p-4 border border-teal-100/50">
+              <div className="bg-blue-50/80 backdrop-blur-sm rounded-lg p-4 border border-blue-100/50">
                 <div className="flex items-start">
-                  <Clock className="w-5 h-5 text-teal-600 mr-2 mt-0.5 flex-shrink-0" />
+                  <Clock className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-teal-900">Quick Service Promise</p>
-                    <p className="text-xs sm:text-sm text-teal-700">Our consultant will reach your location within 30 minutes of booking confirmation</p>
+                    <p className="text-sm font-medium text-blue-900">Quick Service Promise</p>
+                    <p className="text-xs sm:text-sm text-blue-700">Our consultant will reach your location within 30 minutes of booking confirmation</p>
                   </div>
                 </div>
               </div>
@@ -440,7 +456,7 @@ const handlePayment = async () => {
                 <button
                   onClick={handleNext}
                   disabled={!validateStep()}
-                  className="flex-1 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+                  className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
                 >
                   Continue
                 </button>
@@ -449,73 +465,41 @@ const handlePayment = async () => {
           )}
 
           {/* Step 4: Payment */}
-          {currentStep === 4 && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-teal-600 mx-auto mb-2" />
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Payment Summary</h2>
-                <p className="text-sm sm:text-base text-gray-600">Review your home visit booking</p>
-              </div>
+    {currentStep === 4 && (
+ <div className="space-y-6 text-center">
+  <div className="mb-6">
+    <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
+    <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Proceed to Payment</h2>
+    <p className="text-sm sm:text-base text-gray-600">Click the button below to complete your payment.</p>
+  </div>
 
-              {/* Booking Summary */}
-              <div className="bg-gray-50/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 space-y-3 sm:space-y-4 border border-gray-100/50">
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="text-sm sm:text-base text-gray-600">Name:</span>
-                  <span className="font-medium text-sm sm:text-base">{formData.name}</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="text-sm sm:text-base text-gray-600">Email:</span>
-                  <span className="font-medium text-sm sm:text-base break-all">{formData.email}</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="text-sm sm:text-base text-gray-600">Phone:</span>
-                  <span className="font-medium text-sm sm:text-base">{formData.phone}</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="text-sm sm:text-base text-gray-600">Service:</span>
-                  <span className="font-medium text-sm sm:text-base">{selectedService?.name}</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="text-sm sm:text-base text-gray-600">Address:</span>
-                  <span className="font-medium text-sm sm:text-base">{formData.address}</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-0">
-                  <span className="text-sm sm:text-base text-gray-600">City:</span>
-                  <span className="font-medium text-sm sm:text-base">{formData.city}, {formData.pincode}</span>
-                </div>
-                <div className="border-t pt-3 sm:pt-4">
-                  <div className="flex justify-between text-lg font-bold">
-                    <span>Total Amount:</span>
-                    <span className="text-teal-600">₹{selectedService?.price}</span>
-                  </div>
-                </div>
-              </div>
+  <div className="bg-gray-50/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-gray-100/50 space-y-2 text-left text-sm sm:text-base text-gray-700 max-w-md mx-auto">
+    <div className="flex justify-between"><span>Name:</span><span>{formData.name}</span></div>
+    <div className="flex justify-between"><span>Email:</span><span className="break-all">{formData.email}</span></div>
+    <div className="flex justify-between"><span>Phone:</span><span>{formData.phone}</span></div>
+    <div className="flex justify-between"><span>Service:</span><span>{selectedService?.name}</span></div>
+    <div className="flex justify-between"><span>Amount:</span><span>₹{selectedService?.price}</span></div>
+  </div>
 
-              <div className="flex gap-3">
-                <button
-                  onClick={handleBack}
-                  className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
-                >
-                  <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
-                  Back
-                </button>
-                <button
-                  onClick={handlePayment}
-                  disabled={isProcessing}
-                  className="flex-1 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
-                >
-                  {isProcessing ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-white mr-2"></div>
-                      Processing...
-                    </div>
-                  ) : (
-                    'Pay Now via Cashfree'
-                  )}
-                </button>
-              </div>
-            </div>
-          )}
+  <div className="flex gap-3 mt-6">
+    <button
+      onClick={handleBack}
+      className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
+    >
+      <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
+      Back
+    </button>
+
+    <button
+      onClick={handlePayment}
+      className="flex-1 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base font-medium"
+    >
+      Pay Now
+    </button>
+  </div>
+</div>
+)}
+
 
           {/* Step 5: Success */}
           {currentStep === 5 && (
@@ -532,16 +516,16 @@ const handlePayment = async () => {
                   <p><strong>Service:</strong> {selectedService?.name}</p>
                   <p><strong>Address:</strong> {formData.address}</p>
                   <p><strong>City:</strong> {formData.city}, {formData.pincode}</p>
-                  <p><strong>Expected Arrival:</strong> Within 30 minutes</p>
+                  <p><strong>Expected Arrival:</strong> Within 60 minutes</p>
                 </div>
               </div>
 
-              <div className="bg-teal-50/80 backdrop-blur-sm rounded-lg p-4 border border-teal-100/50">
+              <div className="bg-blue-50/80 backdrop-blur-sm rounded-lg p-4 border border-blue-100/50">
                 <div className="flex items-start justify-center">
-                  <Home className="w-5 h-5 text-teal-600 mr-2 mt-0.5 flex-shrink-0" />
+                  <Home className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium text-teal-900">What to Expect</p>
-                    <p className="text-xs sm:text-sm text-teal-700">Our expert consultant will call you before arrival and bring all necessary documents</p>
+                    <p className="text-sm font-medium text-blue-900">What to Expect</p>
+                    <p className="text-xs sm:text-sm text-blue-700">Our expert consultant will call you before arrival and bring all necessary documents</p>
                   </div>
                 </div>
               </div>
@@ -564,7 +548,7 @@ const handlePayment = async () => {
                     pincode: ''
                   });
                 }}
-                className="w-full py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-sm sm:text-base font-medium"
+                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base font-medium"
               >
                 Book Another Home Visit
               </button>
@@ -573,6 +557,8 @@ const handlePayment = async () => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 

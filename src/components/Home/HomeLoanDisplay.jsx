@@ -93,7 +93,13 @@ const LoanBox = ({
         transitionProperty: "all",
         transitionDuration: "300ms",
         transitionTimingFunction: "ease-in-out",
-        background: "#EEEEEE",
+        background: COLOR
+  ? `radial-gradient(100% 100% at 0% 0%, white 20%, transparent 100%),
+     radial-gradient(120% 120% at 100% 100%, #ffe29933 0%, transparent 10%),
+     radial-gradient(100% 100% at 40% 100%, #ffe29966 0%, transparent 70%)`
+  : `linear-gradient(to top, #ffe29933 0%, transparent 60%, transparent 100%),
+     radial-gradient(ellipse 120% 80% at bottom center, transparent 60%, white 61%)`,
+
         color: "#112A00",
         display: "flex",
         flexDirection: "column",
@@ -116,7 +122,7 @@ const LoanBox = ({
           className="text-base mb-0 coolvetica"
           style={{
             fontWeight: "750",
-            color: COLOR ? "#09615D" : "#112A00",
+            color: COLOR ? "#000000" : "#112A00",
           }}
         >
           {title}
@@ -135,7 +141,7 @@ const LoanBox = ({
         (<div className="flex-col sm:flex-row mt-auto w-full">
           <Link to="/check-credit-score">
         <button 
-          className="py-1.5 px-3 rounded-md text-white bg-[#18ADA5] w-full hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+          className="py-1.5 px-3 rounded-md text-black bg-[#ffe299] w-full hover:bg-[#ffe299] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
@@ -150,7 +156,7 @@ const LoanBox = ({
       :
       (<div className="flex flex-col w-full sm:flex-row gap-2 mt-auto">
         <button 
-          className="py-1.5 px-3 w-[50%] rounded-md text-white bg-[#18ADA5] hover:bg-[#09615D] transition-colors duration-300 text-xs font-medium flex-1"
+          className="py-1.5 px-3 w-[50%] rounded-md text-black bg-[#ffe299] hover:bg-[#ffe299] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.3)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
@@ -165,7 +171,7 @@ const LoanBox = ({
         </button>
         <Link to="/check-eligibility" className="w-[50%]">
         <button 
-          className="py-1.5 px-3 w-full  rounded-md border border-[#18ADA5] text-[#18ADA5] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
+          className="py-1.5 px-3 w-full  rounded-md border border-[#ffe299] text-[#00000] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
           style={{ 
             boxShadow: isHovered ? "0 4px 12px rgba(24, 173, 165, 0.15)" : "none",
             transform: isHovered ? "translateY(-2px)" : "none",
@@ -328,7 +334,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
               fontFamily: "Helvetica",
             }}
           >
-            FundsMama Loan Offers
+            FinsBee Loan Offers
           </h1>
         </div>
         <div className="relative min-h-fit flex flex-col items-center p-4 mobile">
@@ -338,7 +344,7 @@ const HomeLoanDisplay = ({ COLOR, loanImages }) => {
             style={{
               background: `${
                 COLOR
-                  ? "linear-gradient( #18ADA5 0%, #18ADA5 20%, #fff 100%)"
+                  ? "linear-gradient( #ffe299 0%, #ffe299 20%, #fff 100%)"
                   : "rgb(178, 255, 142)"
               }`,
               objectFit: "contain",

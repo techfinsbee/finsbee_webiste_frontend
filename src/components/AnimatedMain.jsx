@@ -46,13 +46,13 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                         animation: Color
                           ? `${
                               TXTCOLOR
-                                ? "text-color-blue-shift 5s ease infinite"
+                                ? "text-color-indigo-shift 5s ease infinite"
                                 : "text-color-shift 5s ease infinite"
                             }`
                           : " ",
                         animationDelay: Color ? `${index * 0.1}s` : "",
                         color: TXTCOLOR
-                          ? "#09615D"
+                          ? "#ffc73c"
                           : `${Color ? "#163312" : "#CD855F"}`,
                         fontWeight: Color ? "700" : "bold",
                       }}
@@ -81,19 +81,19 @@ const AnimatedMain = ({ benefits, Color, TXTCOLOR }) => {
                         @keyframes text-color-blue-shift {
                           0%,
                           100% {
-                            color: #09615d;
+                            color:#592eff;
                           }
                           20% {
-                            color: rgb(104, 230, 223);
+                            color: rgb(242, 232, 255);
                           }
                           40% {
-                            color: #09615d;
+                            color: #592eff;
                           }
                           60% {
-                            color: rgb(104, 230, 223);
+                            color: rgb(242, 232, 255);
                           }
                           80% {
-                            color: rgb(104, 230, 223);
+                            color: rgb(242, 232, 255);
                           }
                         }
                       `}</style>

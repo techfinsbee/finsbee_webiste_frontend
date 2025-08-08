@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Footer = ({ COLOR = "#18ADA5" }) => {
+const Footer = ({ COLOR = "#592eff" }) => {
   const cities = [
     "Banglore",
     "Kolkata",
@@ -62,9 +62,9 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
             <Link to="/" className="flex items-center mb-6 md:mb-0">
               <div className="flex items-center">
                 <img
-                  src="/Funds.svg"
+                  src="/finsbee.png"
                   className="w-[40px] md:w-[60px] object-contain mr-2"
-                  alt="FUNDSMAMA"
+                  alt="FinsBee"
                 />
                 <span
                   className="text-xl md:text-2xl lg:text-3xl font-bold"
@@ -74,7 +74,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     color: "#163312",
                   }}
                 >
-                  FUNDSMAMA
+                  FinsBee
                 </span>
               </div>
             </Link>
@@ -82,7 +82,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
             {/* Download buttons */}
             <div className="flex gap-3">
               <a
-                href="https://play.google.com/store/apps/details?id=com.fundsmama.personalloan"
+                href="https://play.google.com/store/apps/details?id=com.finsbee.personalloan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 transition-all hover:shadow-lg px-4 py-2 rounded-full"
@@ -96,11 +96,11 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   className="w-6 h-6 transition-transform hover:scale-110"
                   alt="Google Play"
                 />
-                <span style={{ color: COLOR }}>Google Play</span>
+                <span style={{ color: 'black' }}>Google Play</span>
               </a>
 
               <a
-                href="https://apps.apple.com/in/app/fundsmama-superapp/id6746641206?platform=iphone"
+                href="https://apps.apple.com/in/app/finsbee-superapp/id6746641206?platform=iphone"
                 className="flex items-center gap-2 transition-all hover:shadow-lg px-4 py-2 rounded-full"
                 style={{
                   backgroundColor: `${COLOR}15`,
@@ -112,7 +112,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   className="w-5 h-5 transition-transform hover:scale-110"
                   alt="App Store"
                 />
-                <span style={{ color: COLOR }}>App Store</span>
+                <span style={{ color: 'black' }}>App Store</span>
               </a>
             </div>
           </div>
@@ -134,7 +134,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/personal-loan"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Personal Loan
                   </Link>
@@ -142,7 +142,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/business-loan"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Business Loan
                   </Link>
@@ -150,7 +150,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/home-loan"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Home Loan
                   </Link>
@@ -158,7 +158,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/loan-against-property"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Loan Against Property
                   </Link>
@@ -166,7 +166,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/loan-against-securities"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Loan Against Security
                   </Link>
@@ -174,7 +174,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/check-credit-score"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Check Credit Score
                   </Link>
@@ -183,7 +183,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   <Link
                     to="/"
                     state={{ scrollTo: "mart-home" }}
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Mama Mart
                   </Link>
@@ -206,7 +206,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/aboutus"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     About Us
                   </Link>
@@ -214,7 +214,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/partner-with-us"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Partner with us write now
                   </Link>
@@ -222,7 +222,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/terms-and-conditions"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Terms and Conditions
                   </Link>
@@ -230,7 +230,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 {/* <li>
                   <Link
                     to="/blogs"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Blog
                   </Link>
@@ -238,26 +238,25 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/privacy-policy"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-  <a
-    href="https://fundsmama.com/cancellation-and-refund"
-    className="text-gray-600 hover:text-[#18ADA5] transition"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Refund Policy
-  </a>
-</li>
+                  <Link
+                    to="/refund-policy"
+                    className="text-gray-600 hover:text-[#592eff] transition"
+                  >
+                    Refund Policy
+                  </Link>
+                </li>
+   
 
                 {/* <li>
                   <Link
                     to="/blogs"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     News Board
                   </Link>
@@ -280,7 +279,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/terms-and-conditions"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Terms & Conditions
                   </Link>
@@ -288,7 +287,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/privacy-policy"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Privacy Policy
                   </Link>
@@ -296,7 +295,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/faqs"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Grievance Redressal
                   </Link>
@@ -304,7 +303,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/csr"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Corporate Social Responsibility
                   </Link>
@@ -312,7 +311,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/security"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Security Centre
                   </Link>
@@ -320,7 +319,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <li>
                   <Link
                     to="/corporate"
-                    className="text-gray-600 hover:text-[#18ADA5] transition"
+                    className="text-gray-600 hover:text-[#592eff] transition"
                   >
                     Corporate Information
                   </Link>
@@ -344,7 +343,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   <svg
                     className="w-5 h-5 mr-2 mt-1 flex-shrink-0"
                     fill="none"
-                    stroke={COLOR}
+                    stroke='#592eff'
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -366,7 +365,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   <svg
                     className="w-5 h-5 mr-2 flex-shrink-0"
                     fill="none"
-                    stroke={COLOR}
+                     stroke='#592eff'
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -378,7 +377,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </svg>
                   <a
                     href="tel:+919220468743"
-                    className="hover:text-[#18ADA5] transition"
+                    className="hover:text-[#592eff] transition"
                   >
                     +91-92204 68743
                   </a>
@@ -387,7 +386,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   <svg
                     className="w-5 h-5 mr-2 flex-shrink-0"
                     fill="none"
-                    stroke={COLOR}
+                     stroke='#592eff'
                     viewBox="0 0 24 24"
                   >
                     <path
@@ -398,10 +397,10 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                     />
                   </svg>
                   <a
-                    href="mailto:Customercare@fundsmama.com"
-                    className="hover:text-[#18ADA5] transition break-words"
+                    href="mailto:Customercare@finsbee.com"
+                    className="hover:text-[#592eff] transition break-words"
                   >
-                    Customercare@fundsmama.com
+                    Customercare@finsbee.com
                   </a>
                 </p>
               </address>
@@ -410,7 +409,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <a
                   href="https://www.facebook.com/profile.php?id=61576851682645"
                   aria-label="Facebook"
-                  className="text-gray-400 hover:text-[#18ADA5] transition-colors"
+                  className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -423,7 +422,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                 <a
                   href="https://www.linkedin.com/company/funds-mama/"
                   aria-label="LinkedIn"
-                  className="text-gray-400 hover:text-[#18ADA5] transition-colors"
+                  className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -434,9 +433,9 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://x.com/FundsMama_"
+                  href="https://x.com/FinsBee_"
                   aria-label="X (formerly Twitter)"
-                  className="text-gray-400 hover:text-[#18ADA5] transition-colors"
+                  className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -447,9 +446,9 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.instagram.com/_fundsmama/"
+                  href="https://www.instagram.com/_finsbee/"
                   aria-label="Instagram"
-                  className="text-gray-400 hover:text-[#18ADA5] transition-colors"
+                  className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
                   <svg
                     className="w-5 h-5"
@@ -477,7 +476,7 @@ const Footer = ({ COLOR = "#18ADA5" }) => {
                   <Link
                     key={city}
                     to={`/apply-loan/personal-loan/${city}`}
-                    className="hover:text-[#18ADA5] transition"
+                    className="hover:text-[#592eff] transition"
                   >
                     Personal Loan in {city}
                   </Link>

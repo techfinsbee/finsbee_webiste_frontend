@@ -40,7 +40,7 @@ const CreditScore = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ]
@@ -131,7 +131,7 @@ const CreditScore = () => {
     {
       question: "Will checking my credit score affect my score negatively?",
       answer:
-        "No, checking your own credit score through FundsMama is considered a 'soft inquiry' and doesn't impact your credit score. You can check it as often as you like without any negative effects. Only 'hard inquiries', which occur when lenders check your credit report while processing your loan or credit card application, can temporarily lower your score.",
+        "No, checking your own credit score through FinsBee is considered a 'soft inquiry' and doesn't impact your credit score. You can check it as often as you like without any negative effects. Only 'hard inquiries', which occur when lenders check your credit report while processing your loan or credit card application, can temporarily lower your score.",
     },
     {
       question: "How can I improve my credit score?",
@@ -159,7 +159,7 @@ const CreditScore = () => {
     {
       question: "How can I dispute errors on my credit report?",
       answer:
-        "To dispute errors on your credit report: 1) Identify the specific error in your report, 2) Gather supporting documentation that proves the error, 3) File a dispute directly with the credit bureau through their online portal, mobile app, or by mail, 4) The bureau will investigate within 30 days and notify you of the outcome, 5) If the dispute is resolved in your favor, the bureau will update your report accordingly. Through FundsMama, we can also help you initiate and track this dispute process.",
+        "To dispute errors on your credit report: 1) Identify the specific error in your report, 2) Gather supporting documentation that proves the error, 3) File a dispute directly with the credit bureau through their online portal, mobile app, or by mail, 4) The bureau will investigate within 30 days and notify you of the outcome, 5) If the dispute is resolved in your favor, the bureau will update your report accordingly. Through FinsBee, we can also help you initiate and track this dispute process.",
     },
     {
       question: "Will closed accounts appear on my credit report?",
@@ -167,9 +167,9 @@ const CreditScore = () => {
         "Yes, closed accounts will continue to appear on your credit report for up to 10 years if they were in good standing when closed, and up to 7 years if they had negative information. This historical data helps lenders evaluate your long-term credit management and is actually beneficial if the accounts were maintained well.",
     },
     {
-      question: "How does FundsMama ensure the security of my credit information?",
+      question: "How does FinsBee ensure the security of my credit information?",
       answer:
-        "FundsMama employs bank-grade security measures including 256-bit encryption for all data transmission, secure authentication protocols, regular security audits, and strict access controls. We never store your complete credit card numbers or sensitive authentication data. Additionally, we're compliant with all relevant data protection regulations and industry best practices to ensure your financial information remains secure.",
+        "FinsBee employs bank-grade security measures including 256-bit encryption for all data transmission, secure authentication protocols, regular security audits, and strict access controls. We never store your complete credit card numbers or sensitive authentication data. Additionally, we're compliant with all relevant data protection regulations and industry best practices to ensure your financial information remains secure.",
     },
   ]
 
@@ -178,14 +178,14 @@ const CreditScore = () => {
       <Navbar dropdownData={dropdownData} COLOR="#fff" TXTCOLOR="#" />
 
       {/* Hero Section with Tabs */}
-      <section className="pt-10 pb-5 bg-gradient-to-br from-[#f0f9f9] to-[#ffffff]">
+      <section className="mt-2 pt-10 pb-5 bg-gradient-to-br from-[#f4f1c8] to-[#ffffff]">
         <div className="container mx-auto px-4 sm:px-6">
           {/* Credit Score Tabs */}
           <div className="flex border-b border-gray-200 mb-4 overflow-x-auto no-scrollbar">
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
                 activeTab === "check"
-                  ? "text-[#18ADA5] border-b-2 border-[#18ADA5] font-semibold"
+                  ? "text-[#ffc73c] border-b-2 border-[#ffc73c] font-semibold"
                   : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("check")}
@@ -195,7 +195,7 @@ const CreditScore = () => {
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
                 activeTab === "report"
-                  ? "text-[#18ADA5] border-b-2 border-[#18ADA5] font-semibold"
+                  ? "text-[#ffc73c] border-b-2 border-[#ffc73c] font-semibold"
                   : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("report")}
@@ -216,28 +216,28 @@ const CreditScore = () => {
               </p>
               <div className="flex flex-wrap gap-3 mb-6">
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
-                  <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
+                  <CheckCircle className="text-[#ffc73c] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">100% Free</span>
                 </div>
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
-                  <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
+                  <CheckCircle className="text-[#ffc73c] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">No Impact on Score</span>
                 </div>
                 <div className="flex items-center bg-white px-3 py-2 rounded-lg shadow-sm hover:shadow-md transition-all">
-                  <CheckCircle className="text-[#18ADA5] mr-2 h-4 w-4" />
+                  <CheckCircle className="text-[#ffc73c] mr-2 h-4 w-4" />
                   <span className="text-sm font-medium">
                     {activeTab === "check" ? "Instant Results" : "Detailed Analysis"}
                   </span>
                 </div>
               </div>
-              <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg transform hover:translate-y-[-2px]">
+              <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg text-base sm:text-lg transform hover:translate-y-[-2px]">
                 {activeTab === "check" ? "Check Score Now" : "Get Full Report"}
               </button>
 
               {/* Credit Score Visualization */}
               <div className="mt-8 relative">
                 <div className="bg-white rounded-xl shadow-md overflow-hidden">
-                  <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] h-3"></div>
+                  <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] h-3"></div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-gray-800 mb-3">Credit Score Range</h3>
                     <div className="relative h-12 bg-gray-200 rounded-full overflow-hidden mb-3">
@@ -287,7 +287,7 @@ const CreditScore = () => {
                   </div>
                 </div>
                 <div className="absolute -top-4 -right-4 bg-white/80 backdrop-blur-sm p-2 rounded-lg shadow-md">
-                  <div className="bg-[#18ADA5] text-white text-xs font-bold uppercase px-3 py-1 rounded">Free</div>
+                  <div className="bg-[#ffc73c] text-white text-xs font-bold uppercase px-3 py-1 rounded">Free</div>
                 </div>
               </div>
             </div>
@@ -295,7 +295,7 @@ const CreditScore = () => {
             <div className="w-full lg:w-1/2 pl-0 lg:pl-4">
               {isFormSubmitted && creditScore ? (
                 <div className="bg-white rounded-xl shadow-lg p-6 relative transform hover:scale-[1.01] transition-transform duration-300 max-h-[580px] overflow-auto">
-                  <div className="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 bg-[#18ADA5] rounded-lg flex items-center justify-center shadow-lg">
+                  <div className="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 bg-[#ffc73c] rounded-lg flex items-center justify-center shadow-lg">
                     <Award className="text-white h-6 w-6 sm:h-8 sm:w-8" />
                   </div>
 
@@ -358,11 +358,11 @@ const CreditScore = () => {
                   </div>
 
                   <div className="flex justify-between mb-6">
-                    <button className="bg-white border border-[#18ADA5] text-[#18ADA5] font-medium px-4 py-2 rounded-md transition-all duration-300 shadow-sm hover:shadow-md transform hover:translate-y-[-2px] text-sm flex items-center">
+                    <button className="bg-white border border-[#ffc73c] text-[#ffc73c] font-medium px-4 py-2 rounded-md transition-all duration-300 shadow-sm hover:shadow-md transform hover:translate-y-[-2px] text-sm flex items-center">
                       <RefreshCw className="h-4 w-4 mr-2" />
                       Refresh Score
                     </button>
-                    <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-4 py-2 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm flex items-center">
+                    <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-4 py-2 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm flex items-center">
                       <FileText className="h-4 w-4 mr-2" />
                       Full Report
                     </button>
@@ -370,25 +370,25 @@ const CreditScore = () => {
 
                   <div className="border-t border-gray-100 pt-4">
                     <h4 className="font-semibold text-base mb-2">Loan Offers Based on Your Score</h4>
-                    <div className="bg-gradient-to-r from-[#f0f9f9] to-[#eaf6f6] p-3 rounded-lg flex items-center justify-between mb-2">
+                    <div className="bg-gradient-to-r from-[#f4f1c8] to-[#eaf6f6] p-3 rounded-lg flex items-center justify-between mb-2">
                       <div>
                         <p className="font-medium text-sm">Personal Loan</p>
                         <p className="text-xs text-gray-600">Interest from 10.5%</p>
                       </div>
-                      <button className="bg-[#18ADA5] text-white text-xs font-medium px-3 py-1 rounded">Apply</button>
+                      <button className="bg-[#ffc73c] text-white text-xs font-medium px-3 py-1 rounded">Apply</button>
                     </div>
-                    <div className="bg-gradient-to-r from-[#f0f9f9] to-[#eaf6f6] p-3 rounded-lg flex items-center justify-between">
+                    <div className="bg-gradient-to-r from-[#f4f1c8] to-[#eaf6f6] p-3 rounded-lg flex items-center justify-between">
                       <div>
                         <p className="font-medium text-sm">Credit Card</p>
                         <p className="text-xs text-gray-600">Limit up to ₹5 Lakhs</p>
                       </div>
-                      <button className="bg-[#18ADA5] text-white text-xs font-medium px-3 py-1 rounded">Apply</button>
+                      <button className="bg-[#ffc73c] text-white text-xs font-medium px-3 py-1 rounded">Apply</button>
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 relative transform hover:scale-[1.01] transition-transform duration-300 max-h-[580px] overflow-auto">
-                  <div className="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 bg-[#18ADA5] rounded-lg flex items-center justify-center shadow-lg">
+                  <div className="absolute -top-3 -left-3 w-14 h-14 sm:w-16 sm:h-16 bg-[#ffc73c] rounded-lg flex items-center justify-center shadow-lg">
                     <Shield className="text-white h-6 w-6 sm:h-8 sm:w-8" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-bold mb-4 mt-2 ml-10">
@@ -404,7 +404,7 @@ const CreditScore = () => {
                           name="fullName"
                           value={userDetails.fullName}
                           onChange={handleInputChange}
-                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                           placeholder="Enter your full name"
                           disabled
                         />
@@ -416,7 +416,7 @@ const CreditScore = () => {
                           name="email"
                           value={userDetails.email}
                           onChange={handleInputChange}
-                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                           placeholder="Enter email address"
                           disabled
 
@@ -432,7 +432,7 @@ const CreditScore = () => {
                           name="phone"
                           value={userDetails.phone}
                           onChange={handleInputChange}
-                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                           placeholder="Enter phone number"
                           disabled
 
@@ -445,7 +445,7 @@ const CreditScore = () => {
                           name="panNumber"
                           value={userDetails.panNumber}
                           onChange={handleInputChange}
-                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm uppercase"
+                          className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm uppercase"
                           placeholder="Enter PAN number"
                           maxLength="10"
                           disabled
@@ -463,7 +463,7 @@ const CreditScore = () => {
                             name="dateOfBirth"
                             value={userDetails.dateOfBirth}
                             onChange={handleInputChange}
-                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                           />
                         </div>
                         <div>
@@ -473,7 +473,7 @@ const CreditScore = () => {
                             name="address"
                             value={userDetails.address}
                             onChange={handleInputChange}
-                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#18ADA5] transition-all text-sm"
+                            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#ffc73c] transition-all text-sm"
                             placeholder="Enter your address"
                           />
                         </div>
@@ -482,7 +482,7 @@ const CreditScore = () => {
 
                     <div className="bg-gradient-to-br from-[#f8fcfc] to-[#eef8f8] rounded-lg p-4 mb-6">
                       <div className="flex items-start">
-                        <Lock className="text-[#18ADA5] h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
+                        <Lock className="text-[#ffc73c] h-5 w-5 mr-3 mt-0.5 flex-shrink-0" />
                         <p className="text-sm text-gray-600">
                           Your information is secure with us. We use bank-level security measures to protect your data.
                           This check won't impact your credit score.
@@ -494,18 +494,18 @@ const CreditScore = () => {
                       <input
                         type="checkbox"
                         id="consent"
-                        className="h-4 w-4 mt-1 text-[#18ADA5] focus:ring-[#18ADA5] border-gray-300 rounded"
+                        className="h-4 w-4 mt-1 text-[#ffc73c] focus:ring-[#ffc73c] border-gray-300 rounded"
                         required
                       />
                       <label htmlFor="consent" className="ml-2 block text-sm text-gray-700">
-                        I authorize FundsMama to access my credit information from credit bureaus for the purpose of
+                        I authorize FinsBee to access my credit information from credit bureaus for the purpose of
                         providing me with my credit score and report.
                       </label>
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm"
+                      className="w-full bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium py-2.5 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm"
                     >
                       {isFormSubmitted && !creditScore ? (
                         <span className="flex items-center justify-center">
@@ -551,7 +551,7 @@ const CreditScore = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                   <div className="bg-[#eaf6f6] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Eye className="text-[#18ADA5] h-6 w-6" />
+                    <Eye className="text-[#ffc73c] h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">100% Free Score Check</h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -562,7 +562,7 @@ const CreditScore = () => {
 
                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                   <div className="bg-[#eaf6f6] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Clock className="text-[#18ADA5] h-6 w-6" />
+                    <Clock className="text-[#ffc73c] h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">Instant Results</h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -572,7 +572,7 @@ const CreditScore = () => {
 
                 <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                   <div className="bg-[#eaf6f6] p-3 rounded-full w-14 h-14 flex items-center justify-center mb-4">
-                    <Shield className="text-[#18ADA5] h-6 w-6" />
+                    <Shield className="text-[#ffc73c] h-6 w-6" />
                   </div>
                   <h3 className="text-lg font-semibold mb-3">No Impact on Score</h3>
                   <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -581,7 +581,7 @@ const CreditScore = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] rounded-2xl p-6 sm:p-10 mb-16 text-white shadow-xl">
+              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-black shadow-xl">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
                   Why Should You Check Your Credit Score?
                 </h2>
@@ -644,7 +644,7 @@ const CreditScore = () => {
                 </div>
 
                 <div className="text-center mt-8">
-                  <button className="bg-white text-[#18ADA5] hover:bg-gray-100 font-medium px-8 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                  <button className="bg-white text-black hover:bg-gray-100 font-medium px-8 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                     Check Your Score Now <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
                 </div>
@@ -660,7 +660,7 @@ const CreditScore = () => {
                     <div className="bg-white shadow-lg rounded-xl p-6 border border-gray-100">
                       <div className="flex justify-between items-center mb-6">
                         <h3 className="text-lg font-semibold text-gray-800">Score Factors</h3>
-                        <PieChart className="text-[#18ADA5] h-5 w-5" />
+                        <PieChart className="text-[#ffc73c] h-5 w-5" />
                       </div>
 
                       {/* Credit Score Components Visualization */}
@@ -671,7 +671,7 @@ const CreditScore = () => {
                             <span className="text-gray-500">35%</span>
                           </div>
                           <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#18ADA5]" style={{ width: "35%" }}></div>
+                            <div className="h-full bg-[#ffc73c]" style={{ width: "35%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -680,7 +680,7 @@ const CreditScore = () => {
                             <span className="text-gray-500">30%</span>
                           </div>
                           <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#18ADA5]" style={{ width: "30%" }}></div>
+                            <div className="h-full bg-[#ffc73c]" style={{ width: "30%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -689,7 +689,7 @@ const CreditScore = () => {
                             <span className="text-gray-500">15%</span>
                           </div>
                           <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#18ADA5]" style={{ width: "15%" }}></div>
+                            <div className="h-full bg-[#ffc73c]" style={{ width: "15%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -698,7 +698,7 @@ const CreditScore = () => {
                             <span className="text-gray-500">10%</span>
                           </div>
                           <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#18ADA5]" style={{ width: "10%" }}></div>
+                            <div className="h-full bg-[#ffc73c]" style={{ width: "10%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -707,7 +707,7 @@ const CreditScore = () => {
                             <span className="text-gray-500">10%</span>
                           </div>
                           <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#18ADA5]" style={{ width: "10%" }}></div>
+                            <div className="h-full bg-[#ffc73c]" style={{ width: "10%" }}></div>
                           </div>
                         </div>
                       </div>
@@ -718,7 +718,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
-                          <CheckCircle className="text-[#18ADA5] h-5 w-5" />
+                          <CheckCircle className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-base font-semibold">Payment History (35%)</h3>
                       </div>
@@ -731,7 +731,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
-                          <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                          <CreditCard className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-base font-semibold">Credit Utilization (30%)</h3>
                       </div>
@@ -744,7 +744,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
-                          <Clock className="text-[#18ADA5] h-5 w-5" />
+                          <Clock className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-base font-semibold">Credit Age (15%)</h3>
                       </div>
@@ -757,7 +757,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-10 h-10 flex items-center justify-center mr-3 flex-shrink-0">
-                          <TrendingUp className="text-[#18ADA5] h-5 w-5" />
+                          <TrendingUp className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-base font-semibold">New Credit & Hard Inquiries (10%)</h3>
                       </div>
@@ -778,7 +778,7 @@ const CreditScore = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="bg-[#eaf6f6] mb-4 w-12 h-12 rounded-full flex items-center justify-center">
-                      <span className="text-[#18ADA5] text-xl font-bold">1</span>
+                      <span className="text-[#ffc73c] text-xl font-bold">1</span>
                     </div>
                     <h3 className="text-lg font-semibold mb-3">Pay All Bills On Time</h3>
                     <p className="text-gray-600 text-sm">
@@ -789,7 +789,7 @@ const CreditScore = () => {
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="bg-[#eaf6f6] mb-4 w-12 h-12 rounded-full flex items-center justify-center">
-                      <span className="text-[#18ADA5] text-xl font-bold">2</span>
+                      <span className="text-[#ffc73c] text-xl font-bold">2</span>
                     </div>
                     <h3 className="text-lg font-semibold mb-3">Keep Credit Utilization Low</h3>
                     <p className="text-gray-600 text-sm">
@@ -800,7 +800,7 @@ const CreditScore = () => {
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="bg-[#eaf6f6] mb-4 w-12 h-12 rounded-full flex items-center justify-center">
-                      <span className="text-[#18ADA5] text-xl font-bold">3</span>
+                      <span className="text-[#ffc73c] text-xl font-bold">3</span>
                     </div>
                     <h3 className="text-lg font-semibold mb-3">Don't Close Old Accounts</h3>
                     <p className="text-gray-600 text-sm">
@@ -811,7 +811,7 @@ const CreditScore = () => {
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="bg-[#eaf6f6] mb-4 w-12 h-12 rounded-full flex items-center justify-center">
-                      <span className="text-[#18ADA5] text-xl font-bold">4</span>
+                      <span className="text-[#ffc73c] text-xl font-bold">4</span>
                     </div>
                     <h3 className="text-lg font-semibold mb-3">Limit Hard Inquiries</h3>
                     <p className="text-gray-600 text-sm">
@@ -822,7 +822,7 @@ const CreditScore = () => {
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="bg-[#eaf6f6] mb-4 w-12 h-12 rounded-full flex items-center justify-center">
-                      <span className="text-[#18ADA5] text-xl font-bold">5</span>
+                      <span className="text-[#ffc73c] text-xl font-bold">5</span>
                     </div>
                     <h3 className="text-lg font-semibold mb-3">Maintain a Good Credit Mix</h3>
                     <p className="text-gray-600 text-sm">
@@ -833,7 +833,7 @@ const CreditScore = () => {
 
                   <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                     <div className="bg-[#eaf6f6] mb-4 w-12 h-12 rounded-full flex items-center justify-center">
-                      <span className="text-[#18ADA5] text-xl font-bold">6</span>
+                      <span className="text-[#ffc73c] text-xl font-bold">6</span>
                     </div>
                     <h3 className="text-lg font-semibold mb-3">Regularly Monitor Your Score</h3>
                     <p className="text-gray-600 text-sm">
@@ -853,20 +853,20 @@ const CreditScore = () => {
                     <div key={index} className="mb-3">
                       <div
                         className={`bg-white rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border ${
-                          expandedFaq === index ? "border-[#18ADA5]" : "border-gray-100"
+                          expandedFaq === index ? "border-[#ffc73c]" : "border-gray-100"
                         }`}
                         onClick={() => toggleFaq(index)}
                       >
                         <div className="flex justify-between items-center p-4 sm:p-5">
                           <h3
                             className={`text-base sm:text-lg font-semibold ${
-                              expandedFaq === index ? "text-[#18ADA5]" : "text-gray-800"
+                              expandedFaq === index ? "text-[#ffc73c]" : "text-gray-800"
                             }`}
                           >
                             {faq.question}
                           </h3>
                           <ChevronDown
-                            className={`transition-transform duration-300 text-[#18ADA5] h-5 w-5 ${
+                            className={`transition-transform duration-300 text-[#ffc73c] h-5 w-5 ${
                               expandedFaq === index ? "transform rotate-180" : ""
                             }`}
                           />
@@ -882,9 +882,9 @@ const CreditScore = () => {
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-br from-[#f0f9f9] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
+              <div className="text-center bg-gradient-to-br from-[#f4f1c8] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">Know Where You Stand Today</h2>
-                <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Check Your Credit Score For Free <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <p className="mt-4 text-gray-600 text-sm sm:text-base">
@@ -897,7 +897,7 @@ const CreditScore = () => {
           {activeTab === "report" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Comprehensive Credit Report</h2>
                   <p className="text-base sm:text-lg">
                     Get a detailed view of your entire credit history with our comprehensive credit report. Understand
@@ -909,7 +909,7 @@ const CreditScore = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <FileText className="text-[#18ADA5] h-5 w-5" />
+                        <FileText className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">Complete History</h3>
                     </div>
@@ -921,7 +921,7 @@ const CreditScore = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <AlertCircle className="text-[#18ADA5] h-5 w-5" />
+                        <AlertCircle className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">Identify Issues</h3>
                     </div>
@@ -933,7 +933,7 @@ const CreditScore = () => {
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] border border-gray-100">
                     <div className="flex items-center mb-3">
                       <div className="bg-[#eaf6f6] p-2 rounded-full mr-3">
-                        <UserCheck className="text-[#18ADA5] h-5 w-5" />
+                        <UserCheck className="text-[#ffc73c] h-5 w-5" />
                       </div>
                       <h3 className="text-base sm:text-lg font-semibold">Expert Analysis</h3>
                     </div>
@@ -954,7 +954,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <UserCheck className="text-[#18ADA5] h-5 w-5" />
+                          <UserCheck className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Personal Information</h3>
                       </div>
@@ -967,7 +967,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <CreditCard className="text-[#18ADA5] h-5 w-5" />
+                          <CreditCard className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Account Details</h3>
                       </div>
@@ -980,7 +980,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <Clock className="text-[#18ADA5] h-5 w-5" />
+                          <Clock className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Payment History</h3>
                       </div>
@@ -995,7 +995,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <Eye className="text-[#18ADA5] h-5 w-5" />
+                          <Eye className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Credit Inquiries</h3>
                       </div>
@@ -1008,7 +1008,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100 mb-6">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <AlertCircle className="text-[#18ADA5] h-5 w-5" />
+                          <AlertCircle className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Public Records</h3>
                       </div>
@@ -1021,7 +1021,7 @@ const CreditScore = () => {
                     <div className="bg-white p-5 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-all border border-gray-100">
                       <div className="flex items-center mb-3">
                         <div className="bg-[#eaf6f6] p-2 rounded-full w-12 h-12 flex items-center justify-center mr-3">
-                          <BarChart2 className="text-[#18ADA5] h-5 w-5" />
+                          <BarChart2 className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">Score Analysis</h3>
                       </div>
@@ -1035,7 +1035,7 @@ const CreditScore = () => {
               </div>
 
               <div className="mb-16">
-                <div className="bg-gradient-to-r from-[#18ADA5] to-[#09615D] rounded-xl overflow-hidden shadow-xl">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-xl overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row items-center p-6 sm:p-8">
                     <div className="md:w-2/3 mb-6 md:mb-0 md:pr-6">
                       <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">Why Monitor Your Credit Score?</h2>
@@ -1064,14 +1064,14 @@ const CreditScore = () => {
                           <span className="text-sm sm:text-base">Prepare for future loan applications</span>
                         </li>
                       </ul>
-                      <button className="bg-white text-[#18ADA5] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
+                      <button className="bg-white text-[#ffc73c] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
                         Check Your Score Now <ArrowRight className="inline ml-2 h-4 w-4" />
                       </button>
                     </div>
                     <div className="md:w-1/3">
                       <div className="bg-white p-5 rounded-xl text-center text-gray-800 shadow-lg transform md:translate-x-4 hover:scale-[1.02] transition-transform">
                         <p className="text-lg font-bold mb-2">Credit Score Scale</p>
-                        <div className="bg-[#f0f9f9] rounded-lg p-4 mb-4">
+                        <div className="bg-[#f4f1c8] rounded-lg p-4 mb-4">
                           <div className="w-full h-6 bg-gradient-to-r from-red-500 via-yellow-400 to-green-500 rounded-full mb-2"></div>
                           <div className="flex justify-between text-xs">
                             <span>300</span>
@@ -1088,8 +1088,8 @@ const CreditScore = () => {
                         </div>
 
                         <p className="text-lg font-bold mb-2">Checking Time</p>
-                        <div className="bg-[#f0f9f9] rounded-lg p-3">
-                          <p className="text-3xl font-bold text-[#18ADA5] mb-0">5 minutes</p>
+                        <div className="bg-[#f4f1c8] rounded-lg p-3">
+                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">5 minutes</p>
                           <p className="text-xs text-gray-500">completely free</p>
                         </div>
                       </div>
@@ -1105,7 +1105,7 @@ const CreditScore = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
                   <div className="bg-white p-5 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       1
                     </div>
                     <div className="pt-3">
@@ -1118,7 +1118,7 @@ const CreditScore = () => {
                   </div>
 
                   <div className="bg-white p-5 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       2
                     </div>
                     <div className="pt-3">
@@ -1131,7 +1131,7 @@ const CreditScore = () => {
                   </div>
 
                   <div className="bg-white p-5 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       3
                     </div>
                     <div className="pt-3">
@@ -1144,7 +1144,7 @@ const CreditScore = () => {
                   </div>
 
                   <div className="bg-white p-5 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-all relative">
-                    <div className="bg-[#18ADA5] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
+                    <div className="bg-[#ffc73c] w-8 h-8 rounded-full flex items-center justify-center absolute -top-3 -left-3 text-white font-bold shadow-md">
                       4
                     </div>
                     <div className="pt-3">
@@ -1168,20 +1168,20 @@ const CreditScore = () => {
                         <div key={index} className="mb-3">
                           <div
                             className={`bg-white rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border ${
-                              expandedFaq === index ? "border-[#18ADA5]" : "border-gray-100"
+                              expandedFaq === index ? "border-[#ffc73c]" : "border-gray-100"
                             }`}
                             onClick={() => toggleFaq(index)}
                           >
                             <div className="flex justify-between items-center p-4 sm:p-5">
                               <h3
                                 className={`text-base sm:text-lg font-semibold ${
-                                  expandedFaq === index ? "text-[#18ADA5]" : "text-gray-800"
+                                  expandedFaq === index ? "text-[#ffc73c]" : "text-gray-800"
                                 }`}
                               >
                                 {faq.question}
                               </h3>
                               <ChevronDown
-                                className={`transition-transform duration-300 text-[#18ADA5] h-5 w-5 ${
+                                className={`transition-transform duration-300 text-[#ffc73c] h-5 w-5 ${
                                   expandedFaq === index ? "transform rotate-180" : ""
                                 }`}
                               />
@@ -1201,20 +1201,20 @@ const CreditScore = () => {
                         <div key={index} className="mb-3">
                           <div
                             className={`bg-white rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border ${
-                              expandedFaq === index + 100 ? "border-[#18ADA5]" : "border-gray-100"
+                              expandedFaq === index + 100 ? "border-[#ffc73c]" : "border-gray-100"
                             }`}
                             onClick={() => toggleFaq(index + 100)}
                           >
                             <div className="flex justify-between items-center p-4 sm:p-5">
                               <h3
                                 className={`text-base sm:text-lg font-semibold ${
-                                  expandedFaq === index + 100 ? "text-[#18ADA5]" : "text-gray-800"
+                                  expandedFaq === index + 100 ? "text-[#ffc73c]" : "text-gray-800"
                                 }`}
                               >
                                 {faq.question}
                               </h3>
                               <ChevronDown
-                                className={`transition-transform duration-300 text-[#18ADA5] h-5 w-5 ${
+                                className={`transition-transform duration-300 text-[#ffc73c] h-5 w-5 ${
                                   expandedFaq === index + 100 ? "transform rotate-180" : ""
                                 }`}
                               />
@@ -1232,11 +1232,11 @@ const CreditScore = () => {
                 </div>
               </div>
 
-              <div className="text-center bg-gradient-to-br from-[#f0f9f9] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
+              <div className="text-center bg-gradient-to-br from-[#f4f1c8] to-[#ffffff] p-8 sm:p-12 rounded-2xl shadow-sm">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Ready to Know Your Credit Standing?
                 </h2>
-                <button className="bg-[#18ADA5] hover:bg-[#09615D] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                 Check Your Credit Score Free <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <p className="mt-4 text-gray-600 text-sm sm:text-base">

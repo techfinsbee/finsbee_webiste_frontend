@@ -47,7 +47,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
 
   const dropdownData = [
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -162,7 +162,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link to="/check-eligibility">
-                    <button className="px-4 py-3 bg-[#18ADA5] text-white rounded-lg font-medium hover:bg-[#16958e] transition-colors">
+                    <button className="px-4 py-3 bg-[#ffc73c] text-white rounded-lg font-medium hover:bg-[#16958e] transition-colors">
                     Check Eligibility
                   </button>
                   </Link>
@@ -184,7 +184,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
             {Loans.map((loan, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg border border-[#18ADA5] p-4 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-lg border border-[#ffc73c] p-4 hover:shadow-lg transition-shadow"
               >
                 <div className="flex flex-col items-center text-center space-y-3">
                   <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -223,7 +223,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                 {cityData[city]?.content}
               </div>
               <div>
-                <button className="bg-[#18ADA5] hover:bg-[#16958e] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                <button className="bg-[#ffc73c] hover:bg-[#16958e] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
                   Get a Loan
                 </button>
               </div>
@@ -244,7 +244,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       value={formData.Name}
                       onChange={handleChange}
                       placeholder="Name:"
-                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
+                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ffc73c] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -254,7 +254,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Email"
-                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
+                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ffc73c] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -264,7 +264,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       value={formData.PANNumber}
                       onChange={handleChange}
                       placeholder="PAN Number:"
-                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
+                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ffc73c] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -274,7 +274,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       value={formData.phoneNumber}
                       onChange={handleChange}
                       placeholder="Phone Number:"
-                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
+                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ffc73c] focus:border-transparent"
                     />
                   </div>
                   <div>
@@ -284,14 +284,14 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                       value={formData.Loan}
                       onChange={handleChange}
                       placeholder="Eg: ₹5,00,000"
-                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#18ADA5] focus:border-transparent"
+                      className="w-full h-12 rounded-md p-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#ffc73c] focus:border-transparent"
                     />
                   </div>
 
                   <div className="flex justify-center pt-4">
                     <button
                       onClick={handleSubmit}
-                      className="bg-[#18ADA5] hover:bg-[#16958e] text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors w-full sm:w-auto"
+                      className="bg-[#ffc73c] hover:bg-[#16958e] text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors w-full sm:w-auto"
                     >
                       Submit
                     </button>
@@ -306,7 +306,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
 
       
 
-                  <WhyChooseUs COLOR="#18ADA5" TXTCOLOR="#"></WhyChooseUs> {/* Add this line */}
+                  <WhyChooseUs COLOR="#ffc73c" TXTCOLOR="#"></WhyChooseUs> {/* Add this line */}
 
       <Footer></Footer>
     </div>

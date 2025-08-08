@@ -32,7 +32,9 @@ import PersonalLoanCity from './components/Cities/PersonalLoanCity';
 import ScrollToTop from './components/ScrollToTop';
 import CheckEligibility from "./components/Eligibility/CheckEligibility.jsx";
 import Booking from "./components/Home/Booking";
+import Refund from "./components/RefundPolicy.jsx";
 const cities = ['Banglore','Kolkata','Jaipur','Coimbatore','Ahmedabad','Delhi','Mumbai','Chennai','Hyderabad','Pune','Surat','Indore','Vadodara','Lucknow','Varanasi','Patna','Noida','Amritsar']
+
 
 const cityRoutes = cities.map((city) => ({
   path: `/apply-loan/personal-loan/${city.toLowerCase()}`,
@@ -48,6 +50,10 @@ const AppWithScrollToTop = ({ children }) => (
 );
 
 const router = createBrowserRouter([
+  {
+    path:"/refund-policy",
+    element:<Refund/>
+  },
   {
     path: "/",
     element: <AppWithScrollToTop><App /></AppWithScrollToTop>

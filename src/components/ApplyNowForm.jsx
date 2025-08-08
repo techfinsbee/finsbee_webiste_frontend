@@ -154,7 +154,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="fullName"
                 value={formData.fullName}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.fullName ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.fullName ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               />
               {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
@@ -166,7 +166,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               />
               {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
@@ -178,7 +178,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               />
               {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
@@ -187,7 +187,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
               <button
                 type="button"
                 onClick={nextStep}
-                className="px-6 py-2 bg-[#18ADA5] text-white rounded-md hover:bg-[#09615D] transition-colors"
+                className="px-6 py-2 bg-[#ffc73c] text-white rounded-md hover:bg-[#ffc73c] transition-colors"
               >
                 Next
               </button>
@@ -212,7 +212,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="loanAmount"
                 value={formData.loanAmount}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.loanAmount ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.loanAmount ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               />
               {errors.loanAmount && <p className="text-red-500 text-xs mt-1">{errors.loanAmount}</p>}
@@ -223,7 +223,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="tenure"
                 value={formData.tenure}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.tenure ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.tenure ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               >
                 <option value="">Select Tenure</option>
@@ -250,7 +250,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="income"
                 value={formData.income}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.income ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.income ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               />
               {errors.income && <p className="text-red-500 text-xs mt-1">{errors.income}</p>}
@@ -261,7 +261,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="employmentType"
                 value={formData.employmentType}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                 required
               >
                 <option value="Salaried">Salaried</option>
@@ -280,7 +280,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
               <button
                 type="button"
                 onClick={nextStep}
-                className="px-6 py-2 bg-[#18ADA5] text-white rounded-md hover:bg-[#09615D] transition-colors"
+                className="px-6 py-2 bg-[#ffc73c] text-white rounded-md hover:bg-[#ffc73c] transition-colors"
               >
                 Next
               </button>
@@ -305,7 +305,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.city ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
               />
               {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city}</p>}
@@ -317,7 +317,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="pincode"
                 value={formData.pincode}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.pincode ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.pincode ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
                 maxLength={6}
               />
@@ -330,7 +330,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 name="panCard"
                 value={formData.panCard}
                 onChange={handleChange}
-                className={`w-full px-4 py-2 border ${errors.panCard ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]`}
+                className={`w-full px-4 py-2 border ${errors.panCard ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]`}
                 required
                 maxLength={10}
               />
@@ -348,7 +348,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 type="submit"
                 onClick={handleSubmit}
                 disabled={loading}
-                className="px-6 py-2 bg-[#18ADA5] text-white rounded-md hover:bg-[#09615D] transition-colors flex items-center"
+                className="px-6 py-2 bg-[#ffc73c] text-white rounded-md hover:bg-[#ffc73c] transition-colors flex items-center"
               >
                 {loading ? (
                   <>
@@ -397,7 +397,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
             <p className="mt-4 text-sm text-gray-500">Reference ID: {Math.random().toString(36).substring(2, 10).toUpperCase()}</p>
             <button
               onClick={onClose}
-              className="mt-6 px-4 py-2 bg-[#18ADA5] text-white rounded-md hover:bg-[#09615D] transition-colors"
+              className="mt-6 px-4 py-2 bg-[#ffc73c] text-white rounded-md hover:bg-[#ffc73c] transition-colors"
             >
               Close
             </button>
@@ -419,7 +419,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="bg-[#18ADA5] py-4 px-6">
+        <div className="bg-[#ffc73c] py-4 px-6">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-white">{loanType} Application</h2>
             <button 
@@ -440,7 +440,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                 <React.Fragment key={stepNumber}>
                   <div 
                     className={`w-8 h-8 flex items-center justify-center rounded-full ${
-                      step >= stepNumber ? 'bg-[#18ADA5] text-white' : 'bg-gray-200 text-gray-600'
+                      step >= stepNumber ? 'bg-[#ffc73c] text-white' : 'bg-gray-200 text-gray-600'
                     }`}
                   >
                     {stepNumber}
@@ -448,7 +448,7 @@ const LoanApplicationForm = ({ loanType, onClose }) => {
                   {stepNumber < 3 && (
                     <div 
                       className={`flex-1 h-1 mx-2 ${
-                        step > stepNumber ? 'bg-[#18ADA5]' : 'bg-gray-200'
+                        step > stepNumber ? 'bg-[#ffc73c]' : 'bg-gray-200'
                       }`}
                     ></div>
                   )}

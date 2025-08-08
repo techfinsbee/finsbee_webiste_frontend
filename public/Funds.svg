@@ -2,18 +2,18 @@
 
  <g>
   <title>Layer 1</title>
-  <path id="svg_1" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m17.5,349.03505l0,-221.32813" fill="none" stroke-linecap="round"/>
-  <path id="svg_2" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m18.12498,127.23818l194.09764,-109.73817" fill="none" stroke-linecap="round"/>
-  <path id="svg_3" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m402.32421,130.23037l-188.83588,-112.08594" fill="none" stroke-linecap="round"/>
-  <path id="svg_4" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m113.24999,403.18742l1.21484,-216.78117" fill="none" stroke-linecap="round"/>
-  <path id="svg_5" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m309.81252,403.18353l0,-126.0586" fill="none" stroke-linecap="round"/>
-  <path id="svg_6" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m404.59765,347.81242l-1.95703,-216.89465" fill="none" stroke-linecap="round"/>
-  <path id="svg_7" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m114.99997,186.22646l97.289,51.52735" fill="none" stroke-linecap="round"/>
-  <path id="svg_8" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m404.62888,349.7304l-93.30084,54.12897" fill="none" stroke-linecap="round"/>
-  <path id="svg_9" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m307.50391,181.32412l-182.94545,-104.71875" fill="none" stroke-linecap="round"/>
-  <path id="svg_10" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m112.64061,405.00772l-93.98832,-54.42187" fill="none" stroke-linecap="round"/>
-  <path id="svg_11" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m214.39061,334.3241l95.43745,-57.45316" fill="none" stroke-linecap="round"/>
-  <path id="svg_12" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m118.12502,284.91006l95.37503,49.70317" fill="none" stroke-linecap="round"/>
-  <path id="svg_13" stroke-miterlimit="4" stroke-width="35" stroke="#18ada5" d="m214.7344,237.16787l177.62884,-102.99218" fill="none" stroke-linecap="round"/>
+  <path id="svg_1" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m17.5,349.03505l0,-221.32813" fill="none" stroke-linecap="round"/>
+  <path id="svg_2" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m18.12498,127.23818l194.09764,-109.73817" fill="none" stroke-linecap="round"/>
+  <path id="svg_3" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m402.32421,130.23037l-188.83588,-112.08594" fill="none" stroke-linecap="round"/>
+  <path id="svg_4" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m113.24999,403.18742l1.21484,-216.78117" fill="none" stroke-linecap="round"/>
+  <path id="svg_5" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m309.81252,403.18353l0,-126.0586" fill="none" stroke-linecap="round"/>
+  <path id="svg_6" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m404.59765,347.81242l-1.95703,-216.89465" fill="none" stroke-linecap="round"/>
+  <path id="svg_7" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m114.99997,186.22646l97.289,51.52735" fill="none" stroke-linecap="round"/>
+  <path id="svg_8" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m404.62888,349.7304l-93.30084,54.12897" fill="none" stroke-linecap="round"/>
+  <path id="svg_9" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m307.50391,181.32412l-182.94545,-104.71875" fill="none" stroke-linecap="round"/>
+  <path id="svg_10" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m112.64061,405.00772l-93.98832,-54.42187" fill="none" stroke-linecap="round"/>
+  <path id="svg_11" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m214.39061,334.3241l95.43745,-57.45316" fill="none" stroke-linecap="round"/>
+  <path id="svg_12" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m118.12502,284.91006l95.37503,49.70317" fill="none" stroke-linecap="round"/>
+  <path id="svg_13" stroke-miterlimit="4" stroke-width="35" stroke="#ffc73c" d="m214.7344,237.16787l177.62884,-102.99218" fill="none" stroke-linecap="round"/>
  </g>
 </svg>

@@ -345,25 +345,34 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
   }
 
   return (
-    <header
-      className={`header-home manrope ${!isVisible ? "hidden" : ""}`}
-      style={{ backgroundColor: `${COLOR ? "#fff" : "rgb(255, 252, 247)"}` }}
-    >
-      
+ <header
+  className={`sticky top-0 z-50 shadow-sm header-home manrope ${!isVisible ? "" : ""}`}
+  style={{
+    background: COLOR
+      ? "#ffff"
+      : "linear-gradient(to top, rgb(255, 252, 247) 0%, #ffffff 100%)"
+  }}
+>  
       <Link to="/" className="logo-container">
-        <img src="/Funds.svg" className="logo" alt="FUNDSMAMA" />
-        <span
-          className="text-4xl logo-head header-fundmama flex juistify-center items-center"
-          style={{
-            fontWeight: "800",
-            fontFamily: "Helvetica",
-            color: `${TXTCOLOR ? "black" : "#163312"}`,
-          }}
-        >
-          FUNDSMAMA
-        </span>
-      </Link>
-
+   <div
+  className="flex items-center gap-2 bg-[#592eff] rounded-tr-[40px] rounded-br-[40px] ml-[-60px] sm:ml-[-80px] px-5 py-2"
+>
+      <img
+        src="/finsbee.png"
+        alt="Finsbee Logo"
+        style={{ width: "200px", height: "45px", objectFit: "contain" }}
+      />
+      <span
+        style={{
+          fontSize: "1.5rem",
+          fontWeight: 700,
+          fontFamily: "Helvetica, sans-serif",
+          color: "#ffc73c"
+        }}
+      >
+      </span>
+    </div>
+  </Link>
       {/* Mobile Menu Button */}
       {isMobile && (
         <button ref={burgerRef} className="burger-menu" onClick={toggleMenu}>
@@ -465,123 +474,138 @@ const Navbar = ({ dropdownData = [], COLOR, Hover, TXTCOLOR }) => {
         </nav>
       ) : (
         /* Desktop Navigation */
-        <nav
-          ref={menuRef}
-          className={`nav ${
-            isMobile ? (isMenuOpen ? "open" : "closed") : ""
-          } text-3xl flex gap-8`}
-          style={{ marginRight: "120px" }}
+     <nav
+  ref={menuRef}
+  className={`nav ${isMobile ? (isMenuOpen ? "open" : "closed") : ""}`}
+  style={{ width: "100%" }}
+>
+  <div className="w-full px-8">
+    <div className="flex items-right justify-center flex-wrap gap-10 px-12 py-3 bg-[#ebe9e9] rounded-full w-full">
+      {enhancedNavItems.map((item, index) => (
+        <div
+          key={index}
+          className="nav-item-home text-black dropdown flex items-center gap-1 cursor-pointer"
+          onMouseEnter={() => handleDropdownMouseEnter(index)}
+          onClick={() => handleDropDownOnClick(index)}
+          onMouseLeave={handleDropdownMouseLeave}
         >
-          {enhancedNavItems.map((item, index) => (
-            <div
-              className="nav-item-home text-black dropdown"
-              key={index}
-              onMouseEnter={() => handleDropdownMouseEnter(index)}
-              onClick={()=>
-                handleDropDownOnClick(index)
+          <span
+            className="text-lg font-superbold "
+              style={{
+    fontSize: "20px",
+    fontWeight:"bolder"
+  }}
+            onClick={() => {
+              if (!item.hasDropdown) {
+                scrollToSection(item.link);
               }
-              onMouseLeave={handleDropdownMouseLeave}
+            }}
+          >
+            {item.title}
+          </span>
+
+          {item.hasDropdown && (
+            <ChevronDown
+              className={`h-4 w-4 transition-transform ${
+                openDropdown === index ? "rotate-180" : ""
+              }`}
+            />
+          )}
+
+          {/* Dropdown and submenus */}
+          {item.hasDropdown && openDropdown === index && (
+            <div
+              className="dropdown-menu main-dropdown"
+              style={{
+                opacity: 1,
+                visibility: "visible",
+                transform: "translateY(0)",
+                zIndex: 99999,
+                minWidth: item.title === "Our Products" ? "100%" : "100%",
+              }}
+              onMouseEnter={() => setOpenDropdown(index)}
+              onMouseLeave={() => setOpenDropdown(null)}
             >
-              <div
-                className="content"
-                onClick={() => {
-                  if (!item.hasDropdown) {
-                    scrollToSection(item.link);
-                  }
-                }}
-                aria-haspopup={item.hasDropdown ? "true" : "false"}
-                aria-expanded={openDropdown === index}
-              >
-                <span className="Items text-lg">{item.title}</span>
-                {item.hasDropdown && (
-                  <ChevronDown
-                    className={`inline-block ml-1 h-4 w-4 transition-transform ${
-                      openDropdown === index ? "transform rotate-180" : ""
-                    }`}
-                  />
-                )}
-              </div>
-
-              {/* Dropdown Menu with nested submenus */}
-              {item.hasDropdown && openDropdown === index && (
+              {item.dropdownItems.map((subItem, subIndex) => (
                 <div
-                  className="dropdown-menu main-dropdown"
-                  style={{
-                    opacity: 1,
-                    visibility: "visible",
-                    transform: "translateY(0)",
-                    zIndex: 99999,
-                    minWidth: item.title === "Our Products" ? "100%" : "100%",
+                  key={subIndex}
+                  className={`dropdown-item ${
+                    subItem.hasSubDropdown ? "has-submenu" : ""
+                  } text-lg`}
+                  onClick={() => {
+                    if (!subItem.hasSubDropdown) {
+                      scrollToSection(subItem.link);
+                    }
                   }}
-                  onMouseEnter={() => setOpenDropdown(index)}
-                  onMouseLeave={() => setOpenDropdown(null)}
+                  onMouseEnter={() => handleSubMenuMouseEnter(subIndex)}
                 >
-                  {item.dropdownItems.map((subItem, subIndex) => (
-                    <div
-                      key={subIndex}
-                      className={`dropdown-item ${
-                        subItem.hasSubDropdown ? "has-submenu" : ""
-                      } text-lg`}
-                      onClick={() => {
-                        if (!subItem.hasSubDropdown) {
-                          scrollToSection(subItem.link);
-                        }
-                      }}
-                      onMouseEnter={() => handleSubMenuMouseEnter(subIndex)}
-                    >
-                      <div className="flex items-center justify-between w-full">
-                        <span>{subItem.title}</span>
-                        {subItem.hasSubDropdown && (
-                          <ChevronRight className="h-4 w-4" />
-                        )}
-                      </div>
+                  <div className="flex items-center justify-between w-full">
+                    <span>{subItem.title}</span>
+                    {subItem.hasSubDropdown && (
+                      <ChevronRight className="h-4 w-4" />
+                    )}
+                  </div>
 
-                      {/* Sub-submenu */}
-                      {subItem.hasSubDropdown &&
-                        openSubDropdown === subIndex && (
+                  {/* Sub-submenu */}
+                  {subItem.hasSubDropdown && openSubDropdown === subIndex && (
+                    <div
+                      className="submenu text-lg"
+                      style={{
+                        position: "absolute",
+                        top: "0",
+                        left: "100%",
+                        backgroundColor: "white",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                        borderRadius: "4px",
+                        width: "300px",
+                        zIndex: 100000,
+                      }}
+                    >
+                      {subItem.subDropdownItems.map(
+                        (subSubItem, subSubIndex) => (
                           <div
-                            className="submenu text-lg"
-                            style={{
-                              position: "absolute",
-                              top: "0",
-                              left: "100%",
-                              backgroundColor: "white",
-                              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-                              borderRadius: "4px",
-                              width: "300px",
-                              zIndex: 100000,
+                            key={subSubIndex}
+                            className="dropdown-item text-lg"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              scrollToSection(
+                                subSubItem.link,
+                                subSubItem.sectionId
+                              );
                             }}
                           >
-                            {subItem.subDropdownItems.map(
-                              (subSubItem, subSubIndex) => (
-                                <div
-                                  key={subSubIndex}
-                                  className="dropdown-item text-lg"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    scrollToSection(subSubItem.link, subSubItem.sectionId);
-                                  }}
-                                >
-                                  {subSubItem.title}
-                                </div>
-                              )
-                            )}
+                            {subSubItem.title}
                           </div>
-                        )}
+                        )
+                      )}
                     </div>
-                  ))}
+                  )}
                 </div>
-              )}
+              ))}
             </div>
-          ))}
-{/*           <DownloadNowButton COLOR={COLOR} /> */}
-        </nav>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</nav>
+
+
       )}
 
       <style jsx>{`
         .dropdown-item.has-submenu {
           position: relative;
         }
+
+        .header-home {
+  transition: transform 0.3s ease;
+}
+
+.header-home.hidden {
+  transform: translateY(-100%);
+}
+
 
         .submenu {
           padding: 8px 0;

@@ -19,7 +19,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Mumbai",
       profession: "Business Owner",
       rating: 5,
-      text: "FundsMama made my business loan process incredibly smooth. The competitive rates and quick approval saved me weeks of paperwork. The FMCoins were an amazing bonus - I used them to get a new laptop from Mama Mart!",
+      text: "FinsBee made my business loan process incredibly smooth. The competitive rates and quick approval saved me weeks of paperwork. The FBCoins were an amazing bonus - I used them to get a new laptop from Mama Mart!",
       loanType: "Business Loan"
     },
     {
@@ -28,7 +28,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Pune",
       profession: "Software Engineer",
       rating: 4.5,
-      text: "I needed a personal loan urgently for a family emergency. FundsMama processed my application within hours, and their user-friendly app made tracking repayments effortless. Plus, the rewards system actually makes repaying loans rewarding!",
+      text: "I needed a personal loan urgently for a family emergency. FinsBee processed my application within hours, and their user-friendly app made tracking repayments effortless. Plus, the rewards system actually makes repaying loans rewarding!",
       loanType: "Personal Loan"
     },
     {
@@ -37,7 +37,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Bangalore",
       profession: "Marketing Professional",
       rating: 5,
-      text: "After comparing multiple platforms, I chose FundsMama for my home loan. Their interest rates were the best, and the entire process was paperless! The customer service team was available 24/7 to address my concerns.",
+      text: "After comparing multiple platforms, I chose FinsBee for my home loan. Their interest rates were the best, and the entire process was paperless! The customer service team was available 24/7 to address my concerns.",
       loanType: "Home Loan"
     },
     {
@@ -46,7 +46,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Delhi",
       profession: "Interior Designer",
       rating: 4.8,
-      text: "I opted for a Loan Against Property with FundsMama to expand my studio. The valuation was fair, and the disbursal was quick. Their transparency and support made the entire experience stress-free.",
+      text: "I opted for a Loan Against Property with FinsBee to expand my studio. The valuation was fair, and the disbursal was quick. Their transparency and support made the entire experience stress-free.",
       loanType: "Loan Against Property"
     },
     {
@@ -55,7 +55,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Chennai",
       profession: "Stock Trader",
       rating: 4.7,
-      text: "FundsMama's Loan Against Securities helped me unlock liquidity without selling my investments. The process was seamless and the interest rates were surprisingly low.",
+      text: "FinsBee's Loan Against Securities helped me unlock liquidity without selling my investments. The process was seamless and the interest rates were surprisingly low.",
       loanType: "Loan Against Securities"
     },
     {
@@ -64,7 +64,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Hyderabad",
       profession: "Entrepreneur",
       rating: 5,
-      text: "FundsMama supported my startup with a business loan when others hesitated. Their flexible repayment options and FMCoins rewards made it a win-win!",
+      text: "FinsBee supported my startup with a business loan when others hesitated. Their flexible repayment options and FBCoins rewards made it a win-win!",
       loanType: "Business Loan"
     },
     {
@@ -73,7 +73,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Ahmedabad",
       profession: "Civil Engineer",
       rating: 4.6,
-      text: "I used FundsMama for a home loan and was impressed by their digital-first approach. No paperwork, no delays – just fast, efficient service.",
+      text: "I used FinsBee for a home loan and was impressed by their digital-first approach. No paperwork, no delays – just fast, efficient service.",
       loanType: "Home Loan"
     },
     {
@@ -82,7 +82,7 @@ const TestimonialsSection = ({ COLOR }) => {
       location: "Kolkata",
       profession: "Teacher",
       rating: 4.9,
-      text: "When I needed a personal loan for my daughter's education, FundsMama came through. The process was simple, and I even earned FMCoins for timely repayments!",
+      text: "When I needed a personal loan for my daughter's education, FinsBee came through. The process was simple, and I even earned FBCoins for timely repayments!",
       loanType: "Personal Loan"
     }
   ];
@@ -137,9 +137,9 @@ const TestimonialsSection = ({ COLOR }) => {
   // Function to get avatar background color based on name
   const getAvatarColor = (name) => {
     const colors = [
-      "#09615D", // Primary purple 
-      "#09615D", // Light purple
-      "#09615D", // Dark purple
+      "#ffc73c", // Primary purple 
+      "#ffc73c", // Light purple
+      "#ffc73c", // Dark purple
     ];
     
     const index = name.charCodeAt(0) % colors.length;
@@ -214,7 +214,7 @@ const TestimonialsSection = ({ COLOR }) => {
           <motion.h2 
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ 
-              color: COLOR ? " #09615D" : " #09615D",
+              color: COLOR ? " #000" : " #ffc73c",
               position: "relative",
               display: "inline-block"
             }}
@@ -227,7 +227,7 @@ const TestimonialsSection = ({ COLOR }) => {
               className="absolute h-1 w-32 rounded-full left-1/2 transform -translate-x-1/2" 
               style={{ 
                 bottom: "-15px", 
-                background: "linear-gradient(to right, #09615D,  #09615D)"
+                background: "linear-gradient(to right, #ffc73c,  #ffc73c)"
               }}
             ></div>
           </motion.h2>
@@ -238,7 +238,7 @@ const TestimonialsSection = ({ COLOR }) => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           >
-            Hear from our customers who've transformed their financial journey with FundsMama
+            Hear from our customers who've transformed their financial journey with FinsBee
           </motion.p>
         </div>
 
@@ -258,20 +258,20 @@ const TestimonialsSection = ({ COLOR }) => {
                   <div
                     key={testimonial.id}
                     className="bg-white rounded-2xl p-6 shadow-lg flex-1"
-                    style={{ borderTop: "4px solid  #09615D" }}
+                    style={{ borderTop: "4px solid  #592eff" }}
                   >
                     <div className="flex items-start mb-4">
                       <div
-                        className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
+                        className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-black text-2xl font-bold"
                         style={{
                           backgroundColor: getAvatarColor(testimonial.name),
-                          boxShadow: "0 4px 10px  #09615D",
+                          // boxShadow: "0 4px 10px  #ffc73c",
                         }}
                       >
                         {testimonial.name.charAt(0)}
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-lg" style={{ color: " #09615D" }}>
+                        <h3 className="font-bold text-lg" style={{ color: " #000" }}>
                           {testimonial.name}
                         </h3>
                         <p className="text-gray-600 text-sm">
@@ -284,16 +284,16 @@ const TestimonialsSection = ({ COLOR }) => {
                     </div>
 
                     <div className="relative">
-                      <div className="absolute -left-2 -top-2 text-4xl text-teal-200">"</div>
+                      <div className="absolute -left-2 -top-2 text-4xl text-blue-200">"</div>
                       <p className="relative z-10 text-gray-700 leading-relaxed pl-4">
                         {testimonial.text}
                       </p>
-                      <div className="absolute -bottom-5 -right-2 text-4xl text-teal-200 transform rotate-180">"</div>
+                      <div className="absolute -bottom-5 -right-2 text-4xl text-blue-200 transform rotate-180">"</div>
                     </div>
 
                     <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
                       <span className="text-sm font-medium px-3 py-1 rounded-full"
-                        style={{ background: "rgba(168, 209, 217, 0.15)", color: " #09615D" }}>
+                        style={{ background: "rgba(168, 209, 217, 0.15)", color: " #000" }}>
                         {testimonial.loanType}
                       </span>
                       <span className="text-sm text-gray-500 italic">Verified Customer</span>
@@ -307,7 +307,7 @@ const TestimonialsSection = ({ COLOR }) => {
             <div className="flex justify-between items-center mt-8 px-4">
               <button
                 onClick={prevSlide}
-                className="text-teal-700 hover:text-teal-900 font-bold text-3xl p-2 rounded-full hover:bg-teal-50 transition-colors"
+                className="text-blue-700 hover:text-blue-900 font-bold text-3xl p-2 rounded-full hover:bg-blue-50 transition-colors"
                 aria-label="Previous testimonials"
               >
                 ‹
@@ -321,7 +321,7 @@ const TestimonialsSection = ({ COLOR }) => {
                       setActiveIndex(index);
                     }}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      activeIndex === index ? "bg-teal-700" : "bg-teal-400"
+                      activeIndex === index ? "bg-blue-700" : "bg-blue-400"
                     }`}
                     aria-label={`Go to testimonial group ${index + 1}`}
                   />
@@ -329,7 +329,7 @@ const TestimonialsSection = ({ COLOR }) => {
               </div>
               <button
                 onClick={nextSlide}
-                className="text-teal-700 hover:text-teal-900 font-bold text-3xl p-2 rounded-full hover:bg-teal-50 transition-colors"
+                className="text-blue-700 hover:text-blue-900 font-bold text-3xl p-2 rounded-full hover:bg-blue-50 transition-colors"
                 aria-label="Next testimonials"
               >
                 ›
@@ -349,7 +349,7 @@ const TestimonialsSection = ({ COLOR }) => {
                 exit={{ opacity: 0, x: direction * -100 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="bg-white rounded-2xl p-6 shadow-lg"
-                style={{ borderTop: "4px solid #c5ebe9" }}
+                style={{ borderTop: "4px solid #754eff" }}
               >
                 <div className="flex items-start mb-4">
                   <div 
@@ -362,7 +362,7 @@ const TestimonialsSection = ({ COLOR }) => {
                     {testimonials[activeIndex].name.charAt(0)}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-lg" style={{ color: "#c5ebe9" }}>
+                    <h3 className="font-bold text-lg" style={{ color: "#754eff" }}>
                       {testimonials[activeIndex].name}
                     </h3>
                     <p className="text-gray-600 text-sm">
@@ -384,7 +384,7 @@ const TestimonialsSection = ({ COLOR }) => {
 
                 <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center">
                   <span className="text-sm font-medium px-3 py-1 rounded-full" 
-                    style={{ background: "rgba(123, 84, 156, 0.15)", color: "#c5ebe9" }}>
+                    style={{ background: "rgba(123, 84, 156, 0.15)", color: "#754eff" }}>
                     {testimonials[activeIndex].loanType}
                   </span>
                   <span className="text-sm text-gray-500 italic">Verified Customer</span>
@@ -396,7 +396,7 @@ const TestimonialsSection = ({ COLOR }) => {
             <div className="flex justify-between items-center mt-6">
               <button
                 onClick={prevSlide}
-                className="text-purple-700 hover:text-teal-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                className="text-purple-700 hover:text-blue-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
                 aria-label="Previous testimonial"
               >
                 ‹
@@ -410,7 +410,7 @@ const TestimonialsSection = ({ COLOR }) => {
                       setActiveIndex(index);
                     }}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      activeIndex === index ? "bg-teal-700" : "bg-teal-200"
+                      activeIndex === index ? "bg-blue-700" : "bg-blue-200"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -418,7 +418,7 @@ const TestimonialsSection = ({ COLOR }) => {
               </div>
               <button
                 onClick={nextSlide}
-                className="text-teal-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
+                className="text-blue-700 hover:text-purple-900 font-bold text-2xl p-2 rounded-full hover:bg-purple-50 transition-colors"
                 aria-label="Next testimonial"
               >
                 ›

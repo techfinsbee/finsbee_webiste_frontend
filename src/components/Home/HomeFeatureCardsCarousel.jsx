@@ -11,7 +11,7 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
 
   const features = [
     {
-      title: "FundsMama Rewards: FMCoins",
+      title: "FinsBee Rewards: FBCoins",
       description:
         "Consumers earn FM Coins with every successful loan disbursement or product purchase.",
       imageContent: (
@@ -233,7 +233,7 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
             onClick={() => goToSlide(index)}
             className={`h-2 w-2 rounded-full ${
               currentSlide === index + 2 // +2 because we have two clone slides at the beginning
-                ? `${COLOR ? "bg-[#09615D]" : "bg-[#163312]"}`
+                ? `${COLOR ? "bg-[#ffc73c]" : "bg-[#163312]"}`
                 : "bg-gray-300"
             }`}
           />

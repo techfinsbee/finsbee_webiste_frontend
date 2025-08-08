@@ -30,7 +30,7 @@ const HowItWorks = () => (
           <div key={index} className="relative">
             {/* Step Number Circle */}
             <div className="flex justify-center mb-4 sm:mb-6">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#18ADA5] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold shadow-lg">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#ffc73c] text-white rounded-full flex items-center justify-center text-lg sm:text-xl font-bold shadow-lg">
                 {index + 1}
               </div>
             </div>
@@ -64,7 +64,7 @@ const HowItWorks = () => (
           {steps.map((_, index) => (
             <div
               key={index}
-              className="w-2 h-2 bg-[#18ADA5] rounded-full opacity-50"
+              className="w-2 h-2 bg-[#ffc73c] rounded-full opacity-50"
             ></div>
           ))}
         </div>

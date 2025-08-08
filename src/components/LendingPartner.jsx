@@ -32,7 +32,7 @@ const LendingPartner = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -60,7 +60,7 @@ const LendingPartner = () => {
                 rel="noopener noreferrer"
                 className="block"
               >
-                <div className="bg-[#09615D] p-4 rounded-lg text-white hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full flex items-center justify-center group gap-2 flex-col md:flex-row">
+                <div className="bg-[#ffc73c] p-4 rounded-lg text-white hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full flex items-center justify-center group gap-2 flex-col md:flex-row">
                   <img src={info.img} alt="" className="w-[20vw] md:w-[8vw]" />
                   <div className="text-xl font-medium  group-hover:text-gray-200 transition-colors duration-300 text-center">
                     {info.partner}

@@ -120,7 +120,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       title: "Quick & Easy Process",
       description:
         "Get loan approvals in minutes with our streamlined digital process and minimal documentation requirements.",
-      color: COLOR ? "#18ADA5" : "#4CAF50",
+      color: COLOR ? "#ffc73c" : "#4CAF50",
     },
     {
       id: 2,
@@ -128,7 +128,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       title: "Competitive Interest Rates",
       description:
         "Access the best loan offers from multiple lenders with interest rates tailored to your profile.",
-      color: COLOR ? "#09615D" : "#388E3C",
+      color: COLOR ? "#ffc73c" : "#388E3C",
     },
     {
       id: 3,
@@ -143,8 +143,8 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       icon: "rewards",
       title: "Exclusive Rewards Program",
       description:
-        "Earn FMCoins with each loan disbursement and transaction, redeemable for exciting products.",
-      color: COLOR ? "#18ADA5" : "#4CAF50",
+        "Earn FBCoins with each loan disbursement and transaction, redeemable for exciting products.",
+      color: COLOR ? "#ffc73c" : "#4CAF50",
     },
     {
       id: 5,
@@ -152,7 +152,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       title: "Trusted Banking Partners",
       description:
         "We've partnered with India's leading banks and NBFCs to offer you reliable financial solutions.",
-      color: COLOR ? "#09615D" : "#388E3C",
+      color: COLOR ? "#ffc73c" : "#388E3C",
     },
     {
       id: 6,
@@ -217,7 +217,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         className="absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-10"
         style={{
           background: COLOR
-            ? "radial-gradient(circle, #18ADA5 0%, transparent 70%)"
+            ? "radial-gradient(circle, #ffc73c 0%, transparent 70%)"
             : "radial-gradient(circle, #4CAF50 0%, transparent 70%)",
         }}
       ></div>
@@ -225,7 +225,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full opacity-10"
         style={{
           background: COLOR
-            ? "radial-gradient(circle, #09615D 0%, transparent 70%)"
+            ? "radial-gradient(circle, #ffc73c 0%, transparent 70%)"
             : "radial-gradient(circle, #388E3C 0%, transparent 70%)",
         }}
       ></div>
@@ -236,13 +236,13 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
           <h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 why-c px-2"
             style={{
-              color: COLOR ? "#09615D" : "#112A00",
+              color: COLOR ? "#000" : "#112A00",
               position: "relative",
               display: "inline-block",
               lineHeight: "1.2",
             }}
           >
-            Why Choose FundsMama
+            Why Choose FinsBee
           </h2>
           <p
             className="mt-4 md:mt-8 sm:text-lg md:text-xl max-w-3xl mx-auto manrope px-4"
@@ -252,7 +252,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
             }}
           >
             Your journey to financial empowerment and exclusive rewards starts
-            with us. Here's why thousands of Indians choose FundsMama for their
+            with us. Here's why thousands of Indians choose FinsBee for their
             needs.
           </p>
         </div>
@@ -287,7 +287,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
       <div
         className="h-2"
         style={{
-          background: `linear-gradient(to right, ${feature.color}, ${feature.color}30)`,
+          background: `#592eff`,
         }}
       />
 
@@ -296,9 +296,9 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         <div
           className="w-16 h-16 mb-5 rounded-full flex items-center justify-center"
           style={{
-            background: `linear-gradient(135deg, ${feature.color}20, ${feature.color}05)`,
-            border: `2px solid ${feature.color}20`,
-            color: feature.color,
+            background: `fff0cc`,
+            border: `4px solid #592eff`,
+            color: '#592eff',
           }}
         >
           {icons[feature.icon]}
@@ -307,7 +307,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         {/* PLAIN H3 for title */}
         <h3
           className="text-xl font-bold mb-3 coolvetica"
-          style={{ color: COLOR ? "#09615D" : "#163312" }}
+          style={{ color: COLOR ? "#000" : "#163312" }}
         >
           {feature.title}
         </h3>
@@ -364,7 +364,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                   </div>
                   <h3
                     className="text-lg sm:text-xl font-bold mb-3 coolvetica"
-                    style={{ color: COLOR ? "#09615D" : "#163312" }}
+                    style={{ color: COLOR ? "#ffc73c" : "#163312" }}
                   >
                     {features[activeIndex].title}
                   </h3>
@@ -384,7 +384,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 onClick={prevSlide}
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-white"
                 style={{
-                  color: COLOR ? "#18ADA5" : "#4CAF50",
+                  color: COLOR ? "#ffc73c" : "#4CAF50",
                 }}
                 aria-label="Previous feature"
               >
@@ -414,7 +414,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                       backgroundColor:
                         activeIndex === index
                           ? COLOR
-                            ? "#18ADA5"
+                            ? "#ffc73c"
                             : "#4CAF50"
                           : COLOR
                           ? "rgba(24, 173, 165, 0.2)"
@@ -429,7 +429,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 onClick={nextSlide}
                 className="w-10 h-10 rounded-full flex items-center justify-center shadow-md bg-white"
                 style={{
-                  color: COLOR ? "#18ADA5" : "#4CAF50",
+                  color: COLOR ? "#ffc73c" : "#4CAF50",
                 }}
                 aria-label="Next feature"
               >
@@ -459,10 +459,10 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
         >
           <button
             onClick={toggleFormVisibility}
-            className="px-8 sm:px-10 py-3 sm:py-4 rounded-full text-white font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl coolvetica flex items-center justify-center mx-auto"
+            className="px-8 sm:px-10 py-3 sm:py-4 rounded-full text-black font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl coolvetica flex items-center justify-center mx-auto"
             style={{
               background: COLOR
-                ? "linear-gradient(135deg, #18ADA5, #09615D)"
+                ? "linear-gradient(135deg, #ffc73c, #ffc73c)"
                 : "linear-gradient(135deg, #b2ff8e, #163312)",
               boxShadow: COLOR
                 ? "0 10px 20px rgba(24, 173, 165, 0.3)"

@@ -25,6 +25,7 @@ import BottomHeader from "./components/Home/BottomHeader";
 import { useState } from "react";
 import Booking from "./components/Home/Booking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Refund from "./components/RefundPolicy";
 
 function App() {
     const [showBooking, setShowBooking] = useState(false);
@@ -58,13 +59,13 @@ function App() {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
   const StepColor = {
-    left: "#69B6B2",
-    right: "#09615D",
+    left: "#ffe299",
+    right: "#ffc73c",
   };
   const loanImages = {
     image1: "/loan1.png",
@@ -90,6 +91,7 @@ function App() {
     <>
       <Routes>
         <Route path="/booking" element={<Booking />} />
+        <Route path='/refund-policy' element={<Refund/>}/>
       </Routes>
     
       <div className="bg-white">
@@ -102,20 +104,20 @@ function App() {
         <Outlet />
         <DayLoan></DayLoan>
         <HomeMainSection
-          COLOR="#18ADA5BF"
+          COLOR="#ffc73cBF"
           downloadImage={downloadImage}
           TXTCOLOR="#"
         ></HomeMainSection>
-        <HomeAnimatedCounter COLOR="#18ADA5"></HomeAnimatedCounter>
+        <HomeAnimatedCounter COLOR="#ffc73c"></HomeAnimatedCounter>
         <HomeLoanDisplay
-          COLOR="#18ADA5"
+          COLOR="#ffc73c"
           loanImages={loanImages}
         ></HomeLoanDisplay>
         <HomeSteps StepColor={StepColor} stepImage={stepImage}></HomeSteps>
-        <WhyChooseUs COLOR="#18ADA5" TXTCOLOR="#"></WhyChooseUs> {/* Add this line */}
+        <WhyChooseUs COLOR="#ffc73c" TXTCOLOR="#"></WhyChooseUs> {/* Add this line */}
         <div className="mt-20 lg:mt-36">
           <HomeAnimatedTitle
-            COLOR="#09615D"
+            COLOR="#ffc73c"
             DIVCOLOR="#28B3ACA1"
           ></HomeAnimatedTitle>
           <AnimatedPhones Home="Home"></AnimatedPhones>
@@ -123,19 +125,19 @@ function App() {
         <RewardsSection COLOR="#" TXTCOLOR="#"></RewardsSection>
         {/* <div className="mt-32"><FeaturedBrands allLogos={lending_partners}></FeaturedBrands></div> */}
         {/* <HomeCibilScoreSection
-          COLOR="#09615D"
+          COLOR="#ffc73c"
           cibilImgaes={cibilImgaes}
         ></HomeCibilScoreSection> */}
-        <TestimonialsSection COLOR="#c5ebe9" />
-        <HomeFAQSection COLOR="#c5ebe9"></HomeFAQSection>
+        <TestimonialsSection COLOR="#754eff" />
+        <HomeFAQSection COLOR="#754eff"></HomeFAQSection>
         {/* <div className="mt-32"><FeaturedBrands allLogos={brands_we_trust}></FeaturedBrands></div> */}
         <LendingPartners />
         <BottomHeader/>
-        <Footer COLOR="#09615D"></Footer>
+        <Footer COLOR="#ffc73c"></Footer>
         {/* <div style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}>
       <MobileFrame imageSrc="https://via.placeholder.com/350x700" />
     </div> */}
-
+      
       </div>
     </>
   );

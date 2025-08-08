@@ -62,7 +62,7 @@ const AnimatedCounter = ({
         className="text-[3.5rem] prefix text-left coolvetica"
         style={{
           fontWeight: "bolder",
-          color: `${COLOR ? "black" : "#1D3800"}`,
+          color: `${COLOR ? "black" : "#ffff"}`,
         }}
       >
         {prefix}
@@ -96,7 +96,7 @@ const HomeAnimatedCounter = ({ COLOR }) => {
       end: 1000000,
       label: "App downloads",
       prefix: "",
-      bgColor: `${COLOR ? "#18ADA5" : "#97F15D"}`,
+      bgColor: `${COLOR ? "#ffe299" : "#97F15D"}`,
     },
     {
       end: 5000,
@@ -294,7 +294,7 @@ const HomeAnimatedCounter = ({ COLOR }) => {
             key={index}
             className={`w-2 h-2 rounded-full ${
               visibleIndex === index
-                ? `${COLOR ? "bg-[#09615D]" : "bg-[#112B00]"}`
+                ? `${COLOR ? "bg-[#ffc73c]" : "bg-[#112B00]"}`
                 : "bg-gray-300"
             }`}
             onClick={() => goToSlide(index)}

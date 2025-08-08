@@ -4,16 +4,16 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
   return (
     <section className="py-10 px-4 lg:px-4 reward-section lg:ml-10 lg:mr-[50px] ">
       <div className="grid grid-cols-1 md:grid-cols-2 rewards " style={{}}>
-        {/* Left box - FMCoins */}
-        <div className={`${COLOR?"bg-[#13807b]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col w-[96%] ml-2`}>
+        {/* Left box - FBCoins */}
+        <div className={`${COLOR?"bg-[#ffc73c]":"bg-[#FEFFC5]"} h-[500px] rounded-2xl px-8 pt-8 object-cover overflow-hidden box-1 flex flex-col w-[96%] ml-2`}>
           <div className="">
             <h2
               className="text-xl lg:text-3xl font-bold text-gray-800 mb-2 "
               style={{ color: `${TXTCOLOR?'black':"#323300"}` }}
             >
-              FundsMama
+              FinsBee
               <br />
-              Rewards: FMCoins
+              Rewards: FBCoins
             </h2>
             <p className="text-black-600 reward-content">
               Consumers earn FM Coins with every successful loan disbursement or
@@ -24,7 +24,7 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
             <img
               src="/reward1.png"
               className="relative img1 h-fit w-fit"
-              alt="FMCoins Rewards"
+              alt="FBCoins Rewards"
               style={{
                 objectFit: "cover",
                 overflow: "hidden",
@@ -36,7 +36,7 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
         {/* Right column - split into two boxes */}
         <div className="flex flex-col justify-between">
           {/* Top box - Mamamart */}
-          <div className={`${COLOR?"bg-[#69B6B2]":"bg-[#FFE8D4]"} reward-2 rounded-2xl px-4 py-0 flex justify-between items-center w-[95%]`}>
+          <div className={`${COLOR?"bg-[#ffe299]":"bg-[#FFE8D4]"} reward-2 rounded-2xl px-4 py-0 flex justify-between items-center w-[95%]`}>
             <div>
               <h2
                 className="text-xl  lg:text-3xl font-bold text-gray-800 mb-2 reward-title"
@@ -58,7 +58,7 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
           </div>
 
           {/* Bottom box - Payment Options */}
-          <div className={`${COLOR?"bg-[#c5ebe9]":"bg-[#CAFFDC]"} reward-3 rounded-2xl overflow-hidden pl-4 flex justify-between items-center w-[95%]`}>
+          <div className={`${COLOR?"bg-[#fff0cc]":"bg-[#CAFFDC]"} reward-3 rounded-2xl overflow-hidden pl-4 flex justify-between items-center w-[95%]`}>
             <div>
               <h2
                 className="text-2xl text-[#003813] lg:text-3xl font-bold text-gray-800 mb-2 reward-title"

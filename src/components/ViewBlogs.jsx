@@ -6,7 +6,7 @@ const Blogs = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    { title: "MamaMart", link: "mart-home" },
+    // { title: "MamaMart", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -60,12 +60,12 @@ const Blogs = () => {
       
       <div className="container mx-auto pt-26 pb-20 px-4 pt-[5rem]">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#163312] mb-4">FundsMama Blog</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#163312] mb-4">FinsBee Blog</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">Expert insights on personal finance, loans, credit, and financial wellness to help you make informed decisions.</p>
         </div>
         
         <div className="flex flex-wrap mb-10">
-          <button className="bg-[#18ADA5] text-white px-4 py-2 rounded-md mr-2 mb-2">All</button>
+          <button className="bg-[#ffc73c] text-white px-4 py-2 rounded-md mr-2 mb-2">All</button>
           <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Personal Finance</button>
           <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Credit</button>
           <button className="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md mr-2 mb-2">Home Loans</button>
@@ -81,14 +81,14 @@ const Blogs = () => {
               <img src={post.image} alt={post.title} className="w-full h-48 object-cover" />
               <div className="p-6">
                 <div className="flex items-center mb-4">
-                  <span className="bg-[#f0f9f9] text-[#09615D] text-xs px-3 py-1 rounded-full">{post.category}</span>
+                  <span className="bg-[#f4f1c8] text-[#ffc73c] text-xs px-3 py-1 rounded-full">{post.category}</span>
                   <span className="text-gray-500 text-sm ml-auto">{post.date}</span>
                 </div>
                 <h2 className="text-xl font-semibold mb-3">{post.title}</h2>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">By {post.author}</span>
-                  <button className="text-[#18ADA5] font-medium hover:underline">Read More</button>
+                  <button className="text-[#ffc73c] font-medium hover:underline">Read More</button>
                 </div>
               </div>
             </div>
@@ -96,11 +96,11 @@ const Blogs = () => {
         </div>
         
         <div className="mt-12 flex justify-center">
-          <button className="bg-[#18ADA5] text-white px-8 py-3 rounded-md hover:bg-[#09615D] transition-colors">Load More Articles</button>
+          <button className="bg-[#ffc73c] text-white px-8 py-3 rounded-md hover:bg-[#ffc73c] transition-colors">Load More Articles</button>
         </div>
       </div>
       
-      <Footer COLOR="#09615D" />
+      <Footer COLOR="#ffc73c" />
     </div>
   );
 };

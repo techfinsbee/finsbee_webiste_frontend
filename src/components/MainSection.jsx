@@ -83,7 +83,7 @@ const MainSection = () => {
               className="text-gray-800 whitespace-nowrap h-fit font-medium text-2xl earn roboto-serif"
               style={{ textAlign: "center" }}
             >
-              Earn FMCoins on <br /> each transaction via <br /> App
+              Earn FBCoins on <br /> each transaction via <br /> App
             </p>
           </div>
         </div>

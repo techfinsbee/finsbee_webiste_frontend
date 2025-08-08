@@ -169,7 +169,7 @@ const LoanDisplay = () => {
           gap: "10px",
           fontWeight:"700"
         }}>
-          Check Out<h1 style={{color:"#8B6B4E"}}>FundsMama</h1> Loan
+          Check Out<h1 style={{color:"#8B6B4E"}}>FinsBee</h1> Loan
         </h1>
       </div>
       <AnimatedBenefits></AnimatedBenefits>

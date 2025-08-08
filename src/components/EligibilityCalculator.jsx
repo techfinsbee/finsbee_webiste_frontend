@@ -143,7 +143,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="bg-[#18ADA5] py-4 px-6 sticky top-0 z-10">
+        <div className="bg-[#ffc73c] py-4 px-6 sticky top-0 z-10">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-white">{loanType} Eligibility Calculator</h2>
             <button 
@@ -167,7 +167,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   name="income"
                   value={formData.income}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                   required
                 />
               </div>
@@ -178,7 +178,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   name="employmentType"
                   value={formData.employmentType}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                   required
                 >
                   <option value="Salaried">Salaried</option>
@@ -196,7 +196,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   onChange={handleChange}
                   min="21"
                   max="65"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                   required
                 />
               </div>
@@ -208,7 +208,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   name="existingEmi"
                   value={formData.existingEmi}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                 />
               </div>
               
@@ -221,7 +221,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   onChange={handleChange}
                   min="300"
                   max="900"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                   required
                 />
                 <p className="text-xs text-gray-500 mt-1">Enter a value between 300-900</p>
@@ -234,7 +234,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   name="loanAmount"
                   value={formData.loanAmount}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                   required
                 />
               </div>
@@ -245,7 +245,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                   name="tenure"
                   value={formData.tenure}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#18ADA5]"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#ffc73c]"
                   required
                 >
                   <option value="12">12 months</option>
@@ -267,7 +267,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full px-6 py-2 bg-[#18ADA5] text-white rounded-md hover:bg-[#09615D] transition-colors flex items-center justify-center"
+                  className="w-full px-6 py-2 bg-[#ffc73c] text-white rounded-md hover:bg-[#ffc73c] transition-colors flex items-center justify-center"
                 >
                   {loading ? (
                     <>
@@ -368,7 +368,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
               <div className="flex gap-4">
                 <button
                   onClick={resetForm}
-                  className="flex-1 px-4 py-2 border border-[#18ADA5] text-[#18ADA5] rounded-md hover:bg-gray-50 transition-colors"
+                  className="flex-1 px-4 py-2 border border-[#ffc73c] text-[#ffc73c] rounded-md hover:bg-gray-50 transition-colors"
                 >
                   Recalculate
                 </button>
@@ -379,7 +379,7 @@ const EligibilityCalculator = ({ loanType, onClose }) => {
                       onClose();
                       // Here you could trigger the loan application form to open
                     }}
-                    className="flex-1 px-4 py-2 bg-[#18ADA5] text-white rounded-md hover:bg-[#09615D] transition-colors"
+                    className="flex-1 px-4 py-2 bg-[#ffc73c] text-white rounded-md hover:bg-[#ffc73c] transition-colors"
                   >
                     Apply Now
                   </button>

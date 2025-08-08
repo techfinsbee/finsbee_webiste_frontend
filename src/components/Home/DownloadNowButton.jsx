@@ -6,7 +6,7 @@ const DownloadNowButton = () => {
     <div className="flex gap-4 items-center ml-1">
       {/* Google Play Badge */}
       <Link
-        to="https://play.google.com/store/apps/details?id=com.fundsmama.personalloan"
+        to="https://play.google.com/store/apps/details?id=com.finsbee.personalloan"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -19,7 +19,7 @@ const DownloadNowButton = () => {
 
       {/* App Store Badge */}
       <Link
-        to="https://apps.apple.com/in/app/fundsmama-superapp/id6746641206"
+        to="https://apps.apple.com/in/app/finsbee-superapp/id6746641206"
         target="_blank"
         rel="noopener noreferrer"
       >
