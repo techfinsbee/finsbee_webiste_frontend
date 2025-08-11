@@ -692,7 +692,7 @@ const LoanAgainstSecurities = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-white shadow-xl">
+              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-black shadow-xl">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
                   Why Choose FinsBee for Loan Against Stocks?
                 </h2>
@@ -767,7 +767,7 @@ const LoanAgainstSecurities = () => {
                 </div>
 
                 <div className="text-center mt-8">
-                  <button className="bg-white text-[#ffc73c] hover:bg-gray-100 font-medium px-8 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                  <button className="bg-white text-[#000] hover:bg-gray-100 font-medium px-8 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                     Apply For Loan Against Stocks{" "}
                     <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
@@ -923,7 +923,7 @@ const LoanAgainstSecurities = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Unlock the Value of Your Stock Portfolio
                 </h2>
-                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply Now{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>

@@ -753,7 +753,7 @@ const LoanAgainstProperty = () => {
           {activeTab === "transfer" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-black">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
                     LAP Balance Transfer
                   </h2>
@@ -959,14 +959,14 @@ const LoanAgainstProperty = () => {
                 <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-xl overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row items-center p-6 sm:p-8">
                     <div className="md:w-2/3 mb-6 md:mb-0 md:pr-6">
-                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
+                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-black">
                         Paying Too Much Interest?
                       </h2>
-                      <p className="text-white/90 mb-5 text-sm sm:text-base">
+                      <p className="text-black/90 mb-5 text-sm sm:text-base">
                         Switch your Loan Against Property to FinsBee and save significantly on interest payments. Our competitive rates can reduce your EMI burden and help you save lakhs over your loan tenure.
                       </p>
                       <ul className="space-y-3 mb-6">
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
@@ -974,7 +974,7 @@ const LoanAgainstProperty = () => {
                             Interest rates starting at 10.50% p.a.
                           </span>
                         </li>
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
@@ -982,7 +982,7 @@ const LoanAgainstProperty = () => {
                             Top-up loans for additional funding
                           </span>
                         </li>
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
@@ -991,7 +991,7 @@ const LoanAgainstProperty = () => {
                           </span>
                         </li>
                       </ul>
-                      <button className="bg-white text-[#ffc73c] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
+                      <button className="bg-white text-[#000] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
                         Calculate Your Savings{" "}
                         <ArrowRight className="inline ml-2 h-4 w-4" />
                       </button>
@@ -1002,7 +1002,7 @@ const LoanAgainstProperty = () => {
                           Potential Savings
                         </p>
                         <div className="bg-[#f4f1c8] rounded-lg p-3 mb-4">
-                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">
+                          <p className="text-3xl font-bold text-[#000] mb-0">
                             ₹10+ Lakhs
                           </p>
                           <p className="text-xs text-gray-500">on a ₹50 Lakh loan</p>
@@ -1012,7 +1012,7 @@ const LoanAgainstProperty = () => {
                           Processing Time
                         </p>
                         <div className="bg-[#f4f1c8] rounded-lg p-3">
-                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">
+                          <p className="text-3xl font-bold text-[#000] mb-0">
                             10-15 days
                           </p>
                           <p className="text-xs text-gray-500">
@@ -1075,7 +1075,7 @@ const LoanAgainstProperty = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Ready to Save on Your Loan Against Property?
                 </h2>
-                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply for LAP Balance Transfer{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>

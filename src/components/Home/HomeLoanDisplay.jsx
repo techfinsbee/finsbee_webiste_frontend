@@ -115,7 +115,7 @@ const LoanBox = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="flex gap-2 items-center mb-1">
-        <div className="bg-[#EEEEEE] p-1.5 rounded-full">
+        <div className="">
           <img src={TIMG} alt={title} className="w-7 h-7 object-contain" />
         </div>
         <h3

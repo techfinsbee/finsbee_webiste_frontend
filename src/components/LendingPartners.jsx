@@ -39,13 +39,17 @@ const LendingPartners = () => {
         </motion.a>
 
         <motion.p
-          className="text-center text-gray-600 mt-6 text-base"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-        >
-          We proudly collaborate with Girdhar Finlease to provide tailored financial solutions.
-        </motion.p>
+  className="text-center text-gray-600 mt-4 sm:mt-6 px-4 sm:px-6 md:px-12
+             !leading-relaxed
+             !text-[clamp(0.95rem,1.2vw+0.6rem,1.25rem)]"
+  initial={{ opacity: 0 }}
+  animate={inView ? { opacity: 1 } : { opacity: 0 }}
+  transition={{ delay: 0.4, duration: 0.7 }}
+>
+  We proudly collaborate with Girdhar Finlease to provide tailored financial solutions.
+</motion.p>
+
+
       </div>
     </section>
   );

@@ -193,7 +193,7 @@ const BusinessLoan = () => {
             <button
               className={`py-2 px-6 sm:px-8 font-medium text-lg transition-all ${
                 activeTab === "invoice"
-                  ? "text-[#ffc73c] border-b-2 border-[#ffc73c] font-semibold"
+                  ? "text-[#000] border-b-2 border-[#ffc73c] font-semibold"
                   : "text-gray-500 hover:text-gray-700"
               }`}
               onClick={() => setActiveTab("invoice")}
@@ -801,7 +801,7 @@ const BusinessLoan = () => {
           {activeTab === "working" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-black">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
                     Working Capital Solutions
                   </h2>
@@ -1048,16 +1048,16 @@ const BusinessLoan = () => {
                 <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-xl overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row items-center p-6 sm:p-8">
                     <div className="md:w-2/3 mb-6 md:mb-0 md:pr-6">
-                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">
+                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-black">
                         Cash Flow Problems?
                       </h2>
-                      <p className="text-white/90 mb-5 text-sm sm:text-base">
+                      <p className="text-black/90 mb-5 text-sm sm:text-base">
                         Don't let cash flow gaps hamper your business growth.
                         Our working capital solutions provide the flexibility
                         you need to manage operations smoothly.
                       </p>
                       <ul className="space-y-3 mb-6">
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
@@ -1065,7 +1065,7 @@ const BusinessLoan = () => {
                             Customized to your business cycle
                           </span>
                         </li>
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
@@ -1073,7 +1073,7 @@ const BusinessLoan = () => {
                             Quick access to funds when needed
                           </span>
                         </li>
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
@@ -1082,7 +1082,7 @@ const BusinessLoan = () => {
                           </span>
                         </li>
                       </ul>
-                      <button className="bg-white text-[#ffc73c] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
+                      <button className="bg-white text-[#000] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
                         Apply For Working Capital{" "}
                         <ArrowRight className="inline ml-2 h-4 w-4" />
                       </button>
@@ -1093,7 +1093,7 @@ const BusinessLoan = () => {
                           Application Process
                         </p>
                         <div className="bg-[#f4f1c8] rounded-lg p-3 mb-4">
-                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">
+                          <p className="text-3xl font-bold text-[#000] mb-0">
                             48 hrs
                           </p>
                           <p className="text-xs text-gray-500">for approval</p>
@@ -1103,7 +1103,7 @@ const BusinessLoan = () => {
                           First Disbursal
                         </p>
                         <div className="bg-[#f4f1c8] rounded-lg p-3">
-                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">
+                          <p className="text-3xl font-bold text-[#000] mb-0">
                             1-2 days
                           </p>
                           <p className="text-xs text-gray-500">
@@ -1166,7 +1166,7 @@ const BusinessLoan = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Optimize Your Cash Flow Today
                 </h2>
-                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply for Working Capital{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
@@ -1179,7 +1179,7 @@ const BusinessLoan = () => {
           {activeTab === "invoice" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-black">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
                     Invoice Discounting
                   </h2>
@@ -1319,7 +1319,7 @@ const BusinessLoan = () => {
               </div>
 
               {/* Benefits Section */}
-              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-white shadow-xl">
+              <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-2xl p-6 sm:p-10 mb-16 text-black shadow-xl">
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">
                   Benefits of Invoice Discounting
                 </h2>
@@ -1510,7 +1510,7 @@ const BusinessLoan = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Convert Your Invoices to Cash
                 </h2>
-                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                   Apply for Invoice Discounting{" "}
                   <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>

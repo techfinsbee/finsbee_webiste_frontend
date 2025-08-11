@@ -63,7 +63,7 @@ const ReferFriend = () => {
                   <h3 className="text-lg font-semibold mb-1">Your Unique Referral Code</h3>
                   <div className="flex items-center">
                     <span className="bg-white border border-gray-300 px-4 py-2 rounded-l-md font-mono text-lg">FUNDS2023</span>
-                    <button className="bg-[#ffc73c] text-white px-4 py-2 rounded-r-md hover:bg-[#ffc73c] transition-colors">Copy</button>
+                    <button className="bg-[#ffc73c] text-black px-4 py-2 rounded-r-md hover:bg-[#ffc73c] transition-colors">Copy</button>
                   </div>
                 </div>
                 <div className="flex space-x-3">

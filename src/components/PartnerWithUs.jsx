@@ -25,7 +25,7 @@ const PartnerWithUs = () => {
         
         {/* Content similar to your existing component structure */}
         <div className="bg-[#f9f9f9] rounded-lg shadow-md p-6 md:p-10 max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-[#ffc73c]">Join Our Affiliate Network</h2>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-[#000]">Join Our Affiliate Network</h2>
           
           {/* Partner content */}
           <div className="mb-8">

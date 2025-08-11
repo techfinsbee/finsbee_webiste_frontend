@@ -897,7 +897,7 @@ const CreditScore = () => {
           {activeTab === "report" && (
             <div>
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-white">
+                <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] p-6 sm:p-10 text-black">
                   <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Comprehensive Credit Report</h2>
                   <p className="text-base sm:text-lg">
                     Get a detailed view of your entire credit history with our comprehensive credit report. Understand
@@ -1038,33 +1038,33 @@ const CreditScore = () => {
                 <div className="bg-gradient-to-r from-[#ffc73c] to-[#ffc73c] rounded-xl overflow-hidden shadow-xl">
                   <div className="flex flex-col md:flex-row items-center p-6 sm:p-8">
                     <div className="md:w-2/3 mb-6 md:mb-0 md:pr-6">
-                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-white">Why Monitor Your Credit Score?</h2>
-                      <p className="text-white/90 mb-5 text-sm sm:text-base">
+                      <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-black">Why Monitor Your Credit Score?</h2>
+                      <p className="text-black/90 mb-5 text-sm sm:text-base">
                         Your credit score is a key factor in loan approvals and interest rates. Regular monitoring helps
                         you identify opportunities for improvement and catch errors before they affect your financial
                         plans.
                       </p>
                       <ul className="space-y-3 mb-6">
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
                           <span className="text-sm sm:text-base">Identify opportunities to improve your score</span>
                         </li>
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
                           <span className="text-sm sm:text-base">Spot suspicious activities or errors early</span>
                         </li>
-                        <li className="flex items-center text-white">
+                        <li className="flex items-center text-black">
                           <div className="bg-white/20 p-1.5 rounded-full mr-3">
                             <CheckCircle className="h-4 w-4" />
                           </div>
                           <span className="text-sm sm:text-base">Prepare for future loan applications</span>
                         </li>
                       </ul>
-                      <button className="bg-white text-[#ffc73c] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
+                      <button className="bg-white text-[#000] hover:bg-gray-50 font-medium px-6 py-3 rounded-md transition-all duration-300 shadow-md hover:shadow-lg transform hover:translate-y-[-2px] text-sm sm:text-base">
                         Check Your Score Now <ArrowRight className="inline ml-2 h-4 w-4" />
                       </button>
                     </div>
@@ -1089,7 +1089,7 @@ const CreditScore = () => {
 
                         <p className="text-lg font-bold mb-2">Checking Time</p>
                         <div className="bg-[#f4f1c8] rounded-lg p-3">
-                          <p className="text-3xl font-bold text-[#ffc73c] mb-0">5 minutes</p>
+                          <p className="text-3xl font-bold text-[#000] mb-0">5 minutes</p>
                           <p className="text-xs text-gray-500">completely free</p>
                         </div>
                       </div>
@@ -1236,7 +1236,7 @@ const CreditScore = () => {
                 <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-[#163312]">
                   Ready to Know Your Credit Standing?
                 </h2>
-                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-white font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
+                <button className="bg-[#ffc73c] hover:bg-[#ffc73c] text-black font-medium px-8 sm:px-12 py-3 sm:py-4 rounded-md transition-all duration-300 shadow-md hover:shadow-xl text-base sm:text-lg transform hover:translate-y-[-2px]">
                 Check Your Credit Score Free <ArrowRight className="inline ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <p className="mt-4 text-gray-600 text-sm sm:text-base">

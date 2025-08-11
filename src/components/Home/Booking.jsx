@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { MapPin, Clock, User, Phone, Mail, CreditCard, CheckCircle, ArrowLeft, Home } from 'lucide-react';
+import { MapPin, Clock, User,CreditCard, CheckCircle, ArrowLeft, Home } from 'lucide-react';
 import Navbar from '../Navbar/Navbar';
 
 const Booking = () => {
@@ -79,7 +79,6 @@ const Booking = () => {
 
   const [bookingId, setBookingId] = useState(null);
 
-
  const saveStep = async (payload) => {
   try {
     const res = await fetch(`${BASE_URL}/api/bookings/step`, {
@@ -97,9 +96,6 @@ const Booking = () => {
     console.error("Error saving step data:", err);
   }
 };
-
-
-
 
 
 

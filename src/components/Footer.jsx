@@ -53,6 +53,7 @@ const Footer = ({ COLOR = "#592eff" }) => {
       >
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-10">
+          
           {/* Top row with logo and download buttons */}
           <div
             className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 pb-6 border-b"
@@ -63,7 +64,7 @@ const Footer = ({ COLOR = "#592eff" }) => {
               <div className="flex items-center">
                 <img
                   src="/finsbee.png"
-                  className="w-[40px] md:w-[60px] object-contain mr-2"
+                  className="w-[200px] md:w-[200px] object-contain mr-2"
                   alt="FinsBee"
                 />
                 <span
@@ -74,7 +75,7 @@ const Footer = ({ COLOR = "#592eff" }) => {
                     color: "#163312",
                   }}
                 >
-                  FinsBee
+                 
                 </span>
               </div>
             </Link>
@@ -407,7 +408,7 @@ const Footer = ({ COLOR = "#592eff" }) => {
 
               <div className="mt-5 flex space-x-4">
                 <a
-                  href="https://www.facebook.com/profile.php?id=61576851682645"
+                  href="https://www.facebook.com/profile.php?id=61577055301810"
                   aria-label="Facebook"
                   className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
@@ -420,7 +421,7 @@ const Footer = ({ COLOR = "#592eff" }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/funds-mama/"
+                  href="https://www.linkedin.com/company/finsbee/posts/?feedView=all"
                   aria-label="LinkedIn"
                   className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
@@ -446,7 +447,7 @@ const Footer = ({ COLOR = "#592eff" }) => {
                   </svg>
                 </a>
                 <a
-                  href="https://www.instagram.com/_finsbee/"
+                  href="https://www.instagram.com/finsbee.official/"
                   aria-label="Instagram"
                   className="text-gray-400 hover:text-[#592eff] transition-colors"
                 >
