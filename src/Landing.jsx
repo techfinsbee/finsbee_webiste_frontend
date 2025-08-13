@@ -43,7 +43,7 @@ const Landing = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    // { title: "MamaMart", link: "mart-home" },
+    // { title: " ", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];

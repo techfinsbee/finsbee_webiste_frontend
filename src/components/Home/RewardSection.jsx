@@ -35,7 +35,7 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
 
         {/* Right column - split into two boxes */}
         <div className="flex flex-col justify-between">
-          {/* Top box - Mamamart */}
+          {/* Top box -   */}
           <div className={`${COLOR?"bg-[#ffe299]":"bg-[#FFE8D4]"} reward-2 rounded-2xl px-4 py-0 flex justify-between items-center w-[95%]`}>
             <div>
               <h2
@@ -44,7 +44,7 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
               >
                 Discover
                 <br />
-                Mamamart
+                 
               </h2>
               <p className="text-black-600 reward-content">
                 Access 30+ products across 10+ categories
@@ -52,7 +52,7 @@ const RewardsSection = ({ COLOR, TXTCOLOR }) => {
             </div>
             <img
               src="/reward2.png"
-              alt="Mamamart Shopping"
+              alt="  Shopping"
               className="w-[300px] h-fit object-contain relative left-12 img2"
             />
           </div>

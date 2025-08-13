@@ -29,7 +29,7 @@ const HomeFeatureCardsCarousel = ({ COLOR, TXTCOLOR }) => {
       txtColor: `${TXTCOLOR ? "text-black" : "text-[#323300]"}`,
     },
     {
-      title: "Discover Mamamart",
+      title: "Discover  ",
       description: "Access 30+ products across 20+ categories",
       imageContent: (
         <div className="flex items-center justify-center">

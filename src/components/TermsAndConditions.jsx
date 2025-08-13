@@ -5,7 +5,7 @@ const TermsAndConditions = () => {
   const dropdownData = [
     
     { title: "Loans", link: "loan-section-home" },
-    // { title: "MamaMart", link: "mart-home" },
+    // { title: " ", link: "mart-home" },
     { title: "About Us", link: "/aboutus" },
     { title: "Contact Us", link: "contact-us" },
   ];
@@ -699,7 +699,7 @@ const TermsAndConditions = () => {
                 Stradex International Private Limited provide the variety of
                 products and services to our valuable users. It goes as follows:{" "}
                 <br />
-                MamaMart - MamaMart is an electronic platform which acts as a
+                  -   is an electronic platform which acts as a
                 communication bridge to connect our users with the sellers on
                 the interested products promoted in the App. Stradex
                 International Private Limited shall collect the applicable
