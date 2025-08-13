@@ -88,7 +88,7 @@ const MobileLoanCarousel = ({ loans, images }) => {
           {/* Loan Box */}
           <div
             className="
-              bg-[#8B6B4E] text-white p-4 rounded-xl shadow-lg 
+              bg-[#8B6B4E] text-black p-4 rounded-xl shadow-lg 
               w-[90%] max-w-[350px] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#725839] hover:scale-[1.02]

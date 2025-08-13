@@ -21,6 +21,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
   }, [images]);
 
   useEffect(() => {
+
     let interval;
     if (autoPlay) {
       interval = setInterval(() => {
@@ -37,6 +38,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
 
   const handleTouchMove = (e) => {
     setTouchEnd(e.touches[0].clientX);
+    
   };
 
   const handleTouchEnd = () => {
@@ -103,6 +105,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
 
       {/* Static coin container positioned outside the animated content */}
       <div className="w-full absolute top-[calc(50%-100px)] mt-10 left-0 pointer-events-none z-10">
+      
         <div className="flex justify-center w-full">
           <AnimatePresence mode="wait">
             <motion.img
@@ -127,6 +130,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           exit={{ opacity: 0, x: dragDirection > 0 ? 100 : -100 }}
           transition={{ type: "ease",ease: "easeInOut" , stiffness: 0, damping: 0 }}
           className="flex flex-col items-center w-full mt-10"
+          
           style={{ overflow: "hidden" }}
         >
           {/* Image */}
@@ -143,7 +147,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           {/* Step Box */}
           <div
             className="
-               text-white p-4 rounded-xl shadow-lg 
+               text-black p-4 rounded-xl shadow-lg 
               w-[100%] max-w-[90vw] cursor-pointer
               transition-all duration-500 ease-in-out
                hover:scale-[1.02] flex gap-4
@@ -161,13 +165,13 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
             <div>
               <h3
                 className="text-lg sm:text-xl font-bold mb-2"
-                style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
+                style={{ color: `${COLOR ? "#000" : "#fff"}` }}
               >
                 {steps[currentIndex].title}
               </h3>
               <p
                 className="text-sm sm:text-md text-black"
-                style={{ color: `${COLOR ? "#fff" : "#fff"}` }}
+                style={{ color: `${COLOR ? "#000" : "#fff"}` }}
               >
                 {steps[currentIndex].content}
               </p>
@@ -182,7 +186,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
           <span
             key={index}
             className={`
-              h-2 w-2 rounded-full 
+              h-2 w-2 rounded-full
               ${
                 index === currentIndex
                   ? `${COLOR ? "bg-[#ffc73c]" : "bg-[#112B00]"}`
@@ -190,6 +194,7 @@ const HomeMobileStepsCarousel = ({ steps, images, COLOR, stepImage }) => {
               }
             `}
           />
+        
         ))}
       </div>
     </div>

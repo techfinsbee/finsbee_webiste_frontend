@@ -81,7 +81,7 @@ const MobileStepsCarousel = ({ steps, images }) => {
           {/* Step Box */}
           <div
             className="
-              bg-[#d09c75] text-white p-4 rounded-xl shadow-lg 
+              bg-[#d09c75] text-black p-4 rounded-xl shadow-lg 
               w-[100%] max-w-[90vw] cursor-pointer
               transition-all duration-500 ease-in-out
               hover:bg-[#725839] hover:scale-[1.02]

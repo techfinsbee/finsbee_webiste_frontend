@@ -348,15 +348,15 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                 <div
                   className="h-2"
                   style={{
-                    background: `linear-gradient(to right, ${features[activeIndex].color}, ${features[activeIndex].color}30)`,
+                    background: `#592eff`,
                   }}
                 ></div>
                 <div className="p-6 sm:p-7 relative">
                   <div
                     className="w-14 h-14 sm:w-16 sm:h-16 mb-4 sm:mb-5 rounded-full flex items-center justify-center"
                     style={{
-                      background: `linear-gradient(135deg, ${features[activeIndex].color}20, ${features[activeIndex].color}05)`,
-                      border: `2px solid ${features[activeIndex].color}20`,
+                      background: `#592eff`,
+                      border: `#592eff`,
                       color: features[activeIndex].color,
                     }}
                   >
@@ -364,7 +364,7 @@ const WhyChooseUs = ({ COLOR, TXTCOLOR }) => {
                   </div>
                   <h3
                     className="text-lg sm:text-xl font-bold mb-3 coolvetica"
-                    style={{ color: COLOR ? "#ffc73c" : "#163312" }}
+                    style={{ color: COLOR ? "#592eff" : "#163312" }}
                   >
                     {features[activeIndex].title}
                   </h3>

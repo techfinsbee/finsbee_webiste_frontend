@@ -143,7 +143,7 @@ const HomeMobileLoanCarousel = ({
                   className="text-s  mb-0 coolvetica"
                   style={{
                     fontWeight: "550",
-                    color: COLOR ? "#ffc73c" : "#112A00",
+                    color: COLOR ? "#000" : "#112A00",
                   }}
                 >
                   {loans[currentIndex].title}
@@ -164,7 +164,7 @@ const HomeMobileLoanCarousel = ({
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <Link to="/check-credit-score">
                   <button
-                    className="py-1.5 px-3 rounded-md text-white bg-[#ffc73c] hover:bg-[#ffc73c] transition-colors duration-300 text-xs font-medium flex-1"
+                    className="py-1.5 px-3 rounded-md text-black bg-[#ffc73c] hover:bg-[#ffc73c] transition-colors duration-300 text-xs font-medium flex-1"
                     style={{
                       boxShadow: isHovered
                         ? "0 4px 12px rgba(24, 173, 165, 0.3)"
@@ -181,7 +181,7 @@ const HomeMobileLoanCarousel = ({
             ) : (
               <div className="flex flex-col sm:flex-row gap-2 mt-auto">
                 <button
-                  className="py-1.5 px-3 rounded-md text-white bg-[#ffc73c] hover:bg-[#ffc73c] transition-colors duration-300 text-xs font-medium flex-1"
+                  className="py-1.5 px-3 rounded-md text-black bg-[#ffc73c] hover:bg-[#ffc73c] transition-colors duration-300 text-xs font-medium flex-1"
                   style={{
                     boxShadow: isHovered
                       ? "0 4px 12px rgba(24, 173, 165, 0.3)"
@@ -198,7 +198,7 @@ const HomeMobileLoanCarousel = ({
                 </button>
                 <Link to="/check-eligibility">
                 <button
-                  className="py-1.5 px-3 rounded-md border border-[#ffc73c] text-[#ffc73c] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
+                  className="py-1.5 px-3 rounded-md border border-[#ffc73c] text-[#000] hover:bg-[#ffffff] transition-colors duration-300 text-xs font-medium flex-1"
                   style={{
                     boxShadow: isHovered
                       ? "0 4px 12px rgba(24, 173, 165, 0.15)"

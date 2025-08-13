@@ -162,7 +162,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link to="/check-eligibility">
-                    <button className="px-4 py-3 bg-[#ffc73c] text-white rounded-lg font-medium hover:bg-[#16958e] transition-colors">
+                    <button className="px-4 py-3 bg-[#ffc73c] text-black rounded-lg font-medium hover:bg-[#16958e] transition-colors">
                     Check Eligibility
                   </button>
                   </Link>
@@ -223,7 +223,7 @@ const PersonalLoanCity = ({ city = "Mumbai" }) => {
                 {cityData[city]?.content}
               </div>
               <div>
-                <button className="bg-[#ffc73c] hover:bg-[#16958e] text-white px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
+                <button className="bg-[#ffc73c] hover:bg-[#16958e] text-black px-8 py-3 rounded-lg text-lg font-semibold transition-colors">
                   Get a Loan
                 </button>
               </div>

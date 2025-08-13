@@ -33,7 +33,7 @@ const ReferFriend = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#f4f1c8] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#ffc73c] text-xl font-bold">1</span>
+                  <span className="text-[#000] text-xl font-bold">1</span>
                 </div>
                 <h3 className="font-semibold mb-2">Share Your Referral Code</h3>
                 <p className="text-gray-600">Share your unique referral code with friends via WhatsApp, Email, or SMS</p>
@@ -41,7 +41,7 @@ const ReferFriend = () => {
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#f4f1c8] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#ffc73c] text-xl font-bold">2</span>
+                  <span className="text-[#000] text-xl font-bold">2</span>
                 </div>
                 <h3 className="font-semibold mb-2">Friend Takes a Loan</h3>
                 <p className="text-gray-600">Your friend downloads the app and gets a loan approved</p>
@@ -49,7 +49,7 @@ const ReferFriend = () => {
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#f4f1c8] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#ffc73c] text-xl font-bold">3</span>
+                  <span className="text-[#000] text-xl font-bold">3</span>
                 </div>
                 <h3 className="font-semibold mb-2">Both Get Rewarded</h3>
                 <p className="text-gray-600">You get ₹500 and your friend gets ₹200 as a welcome bonus</p>

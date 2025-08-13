@@ -353,7 +353,7 @@ const TestimonialsSection = ({ COLOR }) => {
               >
                 <div className="flex items-start mb-4">
                   <div 
-                    className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-white text-2xl font-bold"
+                    className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mr-4 text-black text-2xl font-bold"
                     style={{ 
                       backgroundColor: getAvatarColor(testimonials[activeIndex].name),
                       boxShadow: "0 4px 10px rgba(150, 193, 198, 0.3)"
