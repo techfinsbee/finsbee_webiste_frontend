@@ -912,7 +912,7 @@ const LoanAgainstProperty = () => {
                   <div className="p-5 sm:p-8">
                     <div className="flex flex-col space-y-8">
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">1</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">1</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Initial Application & Document Submission</h3>
                           <p className="text-gray-600 text-sm">
@@ -922,7 +922,7 @@ const LoanAgainstProperty = () => {
                       </div>
 
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">2</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">2</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Property Valuation & Eligibility Assessment</h3>
                           <p className="text-gray-600 text-sm">
@@ -932,7 +932,7 @@ const LoanAgainstProperty = () => {
                       </div>
 
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">3</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">3</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Loan Approval & Offer</h3>
                           <p className="text-gray-600 text-sm">
@@ -942,7 +942,7 @@ const LoanAgainstProperty = () => {
                       </div>
 
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">4</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">4</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Documentation & Disbursement</h3>
                           <p className="text-gray-600 text-sm">

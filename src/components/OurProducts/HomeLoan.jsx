@@ -334,6 +334,7 @@ const HomeLoan = () => {
                         ? "0"
                         : totalInterest.toLocaleString()}
                     </p>
+                  
                   </div>
                 </div>
 
@@ -423,6 +424,7 @@ const HomeLoan = () => {
                     <div>
                       <h3 className="font-semibold mb-1">
                         Flexible Loan Options
+                        
                       </h3>
                       <p className="text-xs sm:text-sm">
                         Choose from ready property, under-construction, plot purchase, or home improvement loans
@@ -438,6 +440,7 @@ const HomeLoan = () => {
                       <p className="text-xs sm:text-sm">
                         Simple paperwork requirements with digital document submission options
                       </p>
+
                     </div>
                   </div>
                   <div className="flex items-start bg-white/10 p-4 sm:p-6 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all">
@@ -473,7 +476,7 @@ const HomeLoan = () => {
               </div>
 
               <div className="mb-16">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-[#163312] text-center">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-[#163312] text-center"> 
                   Eligibility Criteria
                 </h2>
 
@@ -485,6 +488,7 @@ const HomeLoan = () => {
                           <Calculator className="text-[#ffc73c] h-5 w-5" />
                         </div>
                         <h3 className="text-lg font-semibold">
+
                           For Salaried Individuals
                         </h3>
                       </div>
@@ -913,7 +917,7 @@ const HomeLoan = () => {
                   <div className="p-5 sm:p-8">
                     <div className="flex flex-col space-y-8">
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">1</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">1</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Application & Document Submission</h3>
                           <p className="text-gray-600 text-sm">
@@ -933,7 +937,7 @@ const HomeLoan = () => {
                       </div>
 
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">3</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">3</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Loan Approval & Offer</h3>
                           <p className="text-gray-600 text-sm">
@@ -943,7 +947,7 @@ const HomeLoan = () => {
                       </div>
 
                       <div className="flex items-start">
-                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-white font-bold mr-4 mt-1 flex-shrink-0">4</div>
+                        <div className="bg-[#ffc73c] rounded-full h-8 w-8 flex items-center justify-center text-black font-bold mr-4 mt-1 flex-shrink-0">4</div>
                         <div>
                           <h3 className="font-semibold text-lg mb-2">Documentation & Disbursal</h3>
                           <p className="text-gray-600 text-sm">

@@ -1,5 +1,3 @@
-import React from "react";
-// import Header from "./Header";
 import HomeHeader from "./HomeHeader";
 const HomeCancellation = () => {
  const dropdownData = [
@@ -25,6 +23,7 @@ const HomeCancellation = () => {
 
         <div className="space-y-6">
           <p className="text-sm text-gray-600 font-bold">
+           
           Last updated on 17-04-2025 14:06:19
           </p>
 
@@ -67,7 +66,8 @@ const HomeCancellation = () => {
                 warranty from manufacturers, please refer the issue to them. In
                 case of any Refunds approved by the STRADEX INTERNATIONAL
                 PRIVATE LIMITED, it’ll take 9-15 Days days for the refund to be
-                processed to the end customer.
+                processed to the end customer. 
+
               </li>
             </ul>
           </div>

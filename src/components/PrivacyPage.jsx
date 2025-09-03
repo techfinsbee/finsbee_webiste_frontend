@@ -1,5 +1,4 @@
-import React from 'react';
-// import Header from './Header';
+
 import Navbar from './Navbar/Navbar';
 const PrivacyPage = () => {
   const dropdownData = [
@@ -196,6 +195,36 @@ const PrivacyPage = () => {
             </ul>
           </div>
         </section>
+
+         <section className="bg-gray-50 p-6 rounded-lg border mt-8">
+            <h2 className="text-2xl font-bold mb-4">Loan Service & Data Sharing Disclosure</h2>
+            <p className="text-justify mb-4">
+              Finsbee is a digital lending platform owned and operated by <strong>Stradex International Private Limited</strong>, a company registered under the Companies Act, 2013, India.
+            </p>
+            <p className="mb-2">All loan services provided through the Finsbee app or website are facilitated in partnership with:</p>
+            <p className="ml-4 font-medium">
+              R.K. Bansal Finance Private Limited <br />
+              <a href="https://rkbfinance.in/" className="text-blue-600 underline">Website Url</a><br/>
+              A Non-Banking Financial Company (NBFC) registered with the Reserve Bank of India (RBI) <br />
+              RBI Registration Number: <strong>B-14.00700</strong>
+            </p>
+            <p className="text-justify mt-4">
+              We do not issue loans directly. Instead, we collect certain user data—such as name, phone number, identity details, and financial information—to process and forward loan applications to our authorized NBFC partner.
+            </p>
+            <p className="text-justify mt-2">
+              Your data is shared securely and exclusively with <strong>R.K. Bansal Finance Pvt. Ltd.</strong> only for the purpose of credit assessment, application processing, underwriting, and loan disbursal, in full compliance with applicable RBI regulations and Indian data privacy laws.
+            </p>
+            <p className="text-justify mt-2">
+              We do not sell or share your personal information with any unrelated third parties for advertising or marketing purposes.
+            </p>
+            <p className="text-justify mt-2">
+              By using our platform, you consent to this data sharing solely for the facilitation of loan services.
+            </p>
+            <p className="mt-4">
+              For more information on how your data is handled, or to request access or deletion, you may contact us at:{" "}
+              <a href="mailto:support@finsbee.com" className="text-blue-600 underline">support@finsbee.com</a>
+            </p>
+          </section>
       </div>
     </div>
     </>

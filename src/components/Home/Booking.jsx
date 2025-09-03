@@ -1,561 +1,877 @@
-import React, { useState,useEffect } from 'react';
-import { MapPin, Clock, User,CreditCard, CheckCircle, ArrowLeft, Home } from 'lucide-react';
-import Navbar from '../Navbar/Navbar';
+// import React, { useState,useEffect } from 'react';
+// import { MapPin, Clock, User,CreditCard, CheckCircle, ArrowLeft, Home } from 'lucide-react';
+// import Navbar from '../Navbar/Navbar';
 
-const Booking = () => {
+// const Booking = () => {
 
   
-  const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service: '',
-    address: '',
-    city: '',
-    pincode: ''
-  });
-  const [isProcessing, setIsProcessing] = useState(false);
+//   const [currentStep, setCurrentStep] = useState(1);
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     phone: '',
+//     email: '',
+//     service: '',
+//     address: '',
+//     city: '',
+//     pincode: ''
+//   });
+//   const [isProcessing, setIsProcessing] = useState(false);
 
- const isValidDelhiPincode = (pincode) => /^1100[0-9]{2}$/.test(pincode);
-  const BASE_URL ='https://booking.apifundstech.com';
-
-
-
-  const carouselItems = [
-  "✅ Explain your best options clearly",
-  "✅ Guide you on documents and eligibility",
-  "✅ Help you apply",
-];
-
-   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % carouselItems.length);
-    }, 3000); // Change slide every 3 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
-
-  const services = [
-    { id: 'loan', name: 'Loan Consultation', price: 399, description: 'Personal & Business Loan Guidance at Your Home' },
-    { id: 'insurance', name: 'Insurance Advisory', price: 399, description: 'Life, Health & General Insurance at Your Doorstep' },
-    { id: 'mutual_funds', name: 'Mutual Funds', price: 399, description: 'Investment Planning & Portfolio Review at Home' }
-  ];
+//  const isValidDelhiPincode = (pincode) => /^1100[0-9]{2}$/.test(pincode);
+//   const BASE_URL ='https://booking.apifundstech.com';
 
 
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+//   const carouselItems = [
+//   "✅ Explain your best options clearly",
+//   "✅ Guide you on documents and eligibility",
+//   "✅ Help you apply",
+// ];
 
-  const handleServiceSelect = (serviceId) => {
-    setFormData(prev => ({
-      ...prev,
-      service: serviceId
-    }));
-  };
+//    const [current, setCurrent] = useState(0);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrent((prev) => (prev + 1) % carouselItems.length);
+//     }, 3000); // Change slide every 3 seconds
+
+//     return () => clearInterval(interval); // Cleanup on unmount
+//   }, []);
+
+
+//   const services = [
+//     { id: 'loan', name: 'Loan Consultation', price: 399, description: 'Personal & Business Loan Guidance at Your Home' },
+//     { id: 'insurance', name: 'Insurance Advisory', price: 399, description: 'Life, Health & General Insurance at Your Doorstep' },
+//     { id: 'mutual_funds', name: 'Mutual Funds', price: 399, description: 'Investment Planning & Portfolio Review at Home' }
+//   ];
+
+
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({
+//       ...prev,
+//       [name]: value
+//     }));
+//   };
+
+//   const handleServiceSelect = (serviceId) => {
+//     setFormData(prev => ({
+//       ...prev,
+//       service: serviceId
+//     }));
+//   };
 
  
 
-  const validateStep = () => {
-    switch(currentStep) {
-      case 1:
-        return formData.name && formData.phone && formData.email;
-      case 2:
-        return formData.service;
-      case 3:
-        return formData.address && formData.city && formData.pincode;
-      default:
-        return true;
-    }
-  };
+//   const validateStep = () => {
+//     switch(currentStep) {
+//       case 1:
+//         return formData.name && formData.phone && formData.email;
+//       case 2:
+//         return formData.service;
+//       case 3:
+//         return formData.address && formData.city && formData.pincode;
+//       default:
+//         return true;
+//     }
+//   };
 
-  const [bookingId, setBookingId] = useState(null);
+//   const [bookingId, setBookingId] = useState(null);
 
- const saveStep = async (payload) => {
-  try {
-    const res = await fetch(`${BASE_URL}/api/bookings/step`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...payload, bookingId }),
-      credentials: 'include'
-    });
-
-    const data = await res.json();
-    console.log("✅ Booking API Response:", data); // ADD THIS
-
-    if (data.bookingId) setBookingId(data.bookingId);
-  } catch (err) {
-    console.error("Error saving step data:", err);
-  }
-};
-
-
-
- const handleNext = async () => {
-  if (!validateStep()) return;
-
-  if (currentStep === 1) {
-    await saveStep({
-      name: formData.name,
-      phone: formData.phone,
-      email: formData.email,
-    });
-  } else if (currentStep === 2) {
-    const priceMap = { loan: 399, insurance: 399, mutual_funds: 399 };
-    await saveStep({
-      service: formData.service,
-      price: priceMap[formData.service] || 0,
-    });
-  } else if (currentStep === 3) {
-
-     if (!isValidDelhiPincode(formData.pincode)) {
-      alert("📍 We're expanding soon! Currently, bookings are only accepted for Delhi (PIN codes starting with 110XXX).");
-      return;
-    }
-    await saveStep({
-      address: formData.address,
-      city: formData.city,
-      pincode: formData.pincode,
-    });
-  }
-
-  setCurrentStep(prev => prev + 1);
-};
-
-
-
-  const handleBack = () => {
-    setCurrentStep(prev => prev - 1);
-  };
-
-
-if (!formData.price) {
-  formData.price = services.find(s => s.id === formData.service)?.price || 0;
-}
-
-
-// const handlePayment = async () => {
-//   setIsProcessing(true);
-
+//  const saveStep = async (payload) => {
 //   try {
-//     const payload = {
-//       bookingId,
-//       time: '10:00 AM'
-//     };
-//     console.log(payload);
-
-//     const res = await fetch(`${BASE_URL}/api/bookings/create`, {
+//     const res = await fetch(`${BASE_URL}/api/bookings/step`, {
 //       method: 'POST',
 //       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(payload),
+//       body: JSON.stringify({ ...payload, bookingId }),
 //       credentials: 'include'
 //     });
 
 //     const data = await res.json();
-//     if (!res.ok) throw new Error(data?.message || 'Failed to book');
+//     console.log("✅ Booking API Response:", data); // ADD THIS
 
-//     //console.log("✅ Booking API Response:", data);
-//     setCurrentStep(5);
-
-//     // let sessionId = data?.sessionId;
-//     // if (!sessionId) throw new Error('No session ID received');
-
-//     // // 🧼 Strip "payment" suffix if accidentally present
-//     // sessionId = sessionId.replace(/payment$/, '');
-
-//     // // 🔁 Correct Cashfree hosted checkout redirect
-//     // const redirectUrl = `https://www.cashfree.com/pg/orders/${sessionId}`;
-//     // console.log("➡️ Redirecting to:", redirectUrl);
-//     // window.location.href = redirectUrl;
-
-//   } catch (error) {
-//     console.error('❌ Booking error:', error);
-//     alert(error.message || 'There was a problem booking your visit.');
-//   } finally {
-//     setIsProcessing(false);
+//     if (data.bookingId) setBookingId(data.bookingId);
+//   } catch (err) {
+//     console.error("Error saving step data:", err);
 //   }
 // };
 
-  const handlePayment = () => {
-  const rzpPaymentLink = "https://rzp.io/rzp/bvPI7AiM";
-  window.location.href = rzpPaymentLink;
+
+
+//  const handleNext = async () => {
+//   if (!validateStep()) return;
+
+//   if (currentStep === 1) {
+//     await saveStep({
+//       name: formData.name,
+//       phone: formData.phone,
+//       email: formData.email,
+//     });
+//   } else if (currentStep === 2) {
+//     const priceMap = { loan: 399, insurance: 399, mutual_funds: 399 };
+//     await saveStep({
+//       service: formData.service,
+//       price: priceMap[formData.service] || 0,
+//     });
+//   } else if (currentStep === 3) {
+
+//      if (!isValidDelhiPincode(formData.pincode)) {
+//       alert("📍 We're expanding soon! Currently, bookings are only accepted for Delhi (PIN codes starting with 110XXX).");
+//       return;
+//     }
+//     await saveStep({
+//       address: formData.address,
+//       city: formData.city,
+//       pincode: formData.pincode,
+//     });
+//   }
+
+//   setCurrentStep(prev => prev + 1);
+// };
+
+
+
+//   const handleBack = () => {
+//     setCurrentStep(prev => prev - 1);
+//   };
+
+
+// if (!formData.price) {
+//   formData.price = services.find(s => s.id === formData.service)?.price || 0;
+// }
+
+
+// // const handlePayment = async () => {
+// //   setIsProcessing(true);
+
+// //   try {
+// //     const payload = {
+// //       bookingId,
+// //       time: '10:00 AM'
+// //     };
+// //     console.log(payload);
+
+// //     const res = await fetch(`${BASE_URL}/api/bookings/create`, {
+// //       method: 'POST',
+// //       headers: { 'Content-Type': 'application/json' },
+// //       body: JSON.stringify(payload),
+// //       credentials: 'include'
+// //     });
+
+// //     const data = await res.json();
+// //     if (!res.ok) throw new Error(data?.message || 'Failed to book');
+
+// //     //console.log("✅ Booking API Response:", data);
+// //     setCurrentStep(5);
+
+// //     // let sessionId = data?.sessionId;
+// //     // if (!sessionId) throw new Error('No session ID received');
+
+// //     // // 🧼 Strip "payment" suffix if accidentally present
+// //     // sessionId = sessionId.replace(/payment$/, '');
+
+// //     // // 🔁 Correct Cashfree hosted checkout redirect
+// //     // const redirectUrl = `https://www.cashfree.com/pg/orders/${sessionId}`;
+// //     // console.log("➡️ Redirecting to:", redirectUrl);
+// //     // window.location.href = redirectUrl;
+
+// //   } catch (error) {
+// //     console.error('❌ Booking error:', error);
+// //     alert(error.message || 'There was a problem booking your visit.');
+// //   } finally {
+// //     setIsProcessing(false);
+// //   }
+// // };
+
+//   const handlePayment = () => {
+//   const rzpPaymentLink = "https://rzp.io/rzp/bvPI7AiM";
+//   window.location.href = rzpPaymentLink;
+// };
+
+
+//  const STATIC_QR_IMAGE_URL = "/QrCode.jpeg"; // Assuming it's in /public folder
+//  const WHATSAPP_NUMBER = "919999999999";
+
+
+//   const selectedService = services.find(s => s.id === formData.service);
+//   const today = new Date().toISOString().split('T')[0];
+
+
+
+//   return (
+
+//     <>
+//      <style>{`
+//     @media screen and (max-width: 620px) {
+//       html, body {
+//         padding-top: 0px !important;
+//       }
+//     }
+//   `}</style>
+//     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100  sm:p-2  flex items-center justify-center">
+//       <div className="w-full max-w-2xl mx-auto">
+//         {/* Header */}
+//           <div className="text-center mb-6 sm:mb-8">
+//       <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+//         Need a Loan, Insurance, or Investment?
+//       </h1>
+
+//       <p className="text-sm sm:text-base text-gray-600 px-2 mb-4">
+//         A verified FundsMama advisor will visit your home or office in 60 mins
+//       </p>
+
+//       <div className="w-full max-w-md mx-auto mt-6 min-h-[2.5rem]">
+//         <p className="text-sm sm:text-base text-gray-700 px-4 transition-opacity duration-500 ease-in-out">
+//           {carouselItems[current]}
+//         </p>
+//       </div>
+//     </div>
+
+
+//      {/* Desktop Navbar */}
+// <div className="hidden sm:block">
+//   <Navbar />
+// </div>
+
+
+
+       
+//         {/* Progress Bar */}
+//         <div className="mb-6 sm:mb-8">
+//           <div className="flex justify-between items-center">
+//             {[1, 2, 3, 4].map((step) => (
+//               <div key={step} className={`flex items-center ${step < 4 ? 'flex-1' : ''}`}>
+//                 <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium ${
+//                   currentStep >= step ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
+//                 }`}>
+//                   {step}
+//                 </div>
+//                 {step < 4 && (
+//                   <div className={`flex-1 h-1 mx-1 sm:mx-2 ${
+//                     currentStep > step ? 'bg-blue-600' : 'bg-gray-200'
+//                   }`} />
+//                 )}
+//               </div>
+//             ))}
+//           </div>
+//           <div className="flex justify-between text-xs text-gray-500 mt-2 px-1">
+//             <span>Details</span>
+//             <span>Service</span>
+//             <span>Address</span>
+//             <span>Payment</span>
+//           </div>
+//         </div>
+        
+
+//         {/* Form Card */}
+//         <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-xl border border-white/20 p-4 sm:p-8">
+//           {/* Step 1: Personal Details */}
+//           {currentStep === 1 && (
+//             <div className="space-y-6">
+//               <div className="text-center mb-6">
+//                 <User className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
+//                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Personal Information</h2>
+//                 <p className="text-sm sm:text-base text-gray-600">Tell us about yourself</p>
+//               </div>
+
+//               <div className="space-y-4">
+//                 <div>
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+//                   <input
+//                     type="text"
+//                     name="name"
+//                     value={formData.name}
+//                     onChange={handleInputChange}
+//                     className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+//                     placeholder="Enter your full name"
+//                     required
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+//                   <input
+//                     type="tel"
+//                     name="phone"
+//                     value={formData.phone}
+//                     onChange={handleInputChange}
+//                     className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+//                     placeholder="Enter your phone number"
+//                     required
+//                   />
+//                 </div>
+
+//                 <div>
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+//                   <input
+//                     type="email"
+//                     name="email"
+//                     value={formData.email}
+//                     onChange={handleInputChange}
+//                     className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+//                     placeholder="Enter your email address"
+//                     required
+//                   />
+//                 </div>
+//               </div>
+
+//               <button
+//                 onClick={handleNext}
+//                 disabled={!validateStep()}
+//                 className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+//               >
+//                 Continue
+//               </button>
+//             </div>
+//           )}
+
+//           {/* Step 2: Service Selection */}
+//           {currentStep === 2 && (
+//             <div className="space-y-6">
+//               <div className="text-center mb-6">
+//                 <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
+//                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Choose Your Service</h2>
+//                 <p className="text-sm sm:text-base text-gray-600">Select the consultation type</p>
+//               </div>
+
+//               <div className="space-y-3">
+//                 {services.map((service) => (
+//                   <div
+//                     key={service.id}
+//                     onClick={() => handleServiceSelect(service.id)}
+//                     className={`p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
+//                       formData.service === service.id
+//                         ? 'border-blue-500 bg-blue-50'
+//                         : 'border-gray-200 hover:border-gray-300'
+//                     }`}
+//                   >
+//                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+//                       <div className="flex-1">
+//                         <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{service.name}</h3>
+//                         <p className="text-xs sm:text-sm text-gray-600">{service.description}</p>
+//                       </div>
+//                       <div className="text-left sm:text-right">
+//                         <div className="text-lg font-bold text-gray-900">₹{service.price}</div>
+//                         <div className="text-xs sm:text-sm text-gray-500">60 minutes</div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                 ))}
+//               </div>
+
+//               <div className="flex gap-3">
+//                 <button
+//                   onClick={handleBack}
+//                   className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
+//                 >
+//                   <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
+//                   Back
+//                 </button>
+//                 <button
+//                   onClick={handleNext}
+//                   disabled={!validateStep()}
+//                   className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+//                 >
+//                   Continue
+//                 </button>
+//               </div>
+//             </div>
+//           )}
+
+//           {/* Step 3: Address Details */}
+//           {currentStep === 3 && (
+//             <div className="space-y-6">
+//               <div className="text-center mb-6">
+//                 <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
+//                 <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Your Address</h2>
+//                 <p className="text-sm sm:text-base text-gray-600">Where should our consultant visit you?</p>
+//               </div>
+
+//               <div className="space-y-4">
+//                 <div>
+//                   <label className="block text-sm font-medium text-gray-700 mb-2">Complete Address</label>
+//                   <textarea
+//                     name="address"
+//                     value={formData.address}
+//                     onChange={handleInputChange}
+//                     rows={3}
+//                     className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+//                     placeholder="Enter your complete address with landmarks"
+//                     required
+//                   />
+//                 </div>
+
+//                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+//                   <div>
+//                     <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
+//                     <input
+//                       type="text"
+//                       name="city"
+//                       value={formData.city}
+//                       onChange={handleInputChange}
+//                       className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+//                       placeholder="Your city"
+//                       required
+//                     />
+//                   </div>
+//                   <div>
+//                     <label className="block text-sm font-medium text-gray-700 mb-2">PIN Code</label>
+//                     <input
+//                       type="text"
+//                       name="pincode"
+//                       value={formData.pincode}
+//                       onChange={handleInputChange}
+//                       maxLength={6}
+//                       className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
+//                       placeholder="PIN Code"
+//                       required
+//                     />
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="bg-blue-50/80 backdrop-blur-sm rounded-lg p-4 border border-blue-100/50">
+//                 <div className="flex items-start">
+//                   <Clock className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+//                   <div>
+//                     <p className="text-sm font-medium text-blue-900">Quick Service Promise</p>
+//                     <p className="text-xs sm:text-sm text-blue-700">Our consultant will reach your location within 30 minutes of booking confirmation</p>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="flex gap-3">
+//                 <button
+//                   onClick={handleBack}
+//                   className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
+//                 >
+//                   <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
+//                   Back
+//                 </button>
+//                 <button
+//                   onClick={handleNext}
+//                   disabled={!validateStep()}
+//                   className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+//                 >
+//                   Continue
+//                 </button>
+//               </div>
+//             </div>
+//           )}
+
+//           {/* Step 4: Payment */}
+//     {currentStep === 4 && (
+//  <div className="space-y-6 text-center">
+//   <div className="mb-6">
+//     <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
+//     <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Proceed to Payment</h2>
+//     <p className="text-sm sm:text-base text-gray-600">Click the button below to complete your payment.</p>
+//   </div>
+
+//   <div className="bg-gray-50/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-gray-100/50 space-y-2 text-left text-sm sm:text-base text-gray-700 max-w-md mx-auto">
+//     <div className="flex justify-between"><span>Name:</span><span>{formData.name}</span></div>
+//     <div className="flex justify-between"><span>Email:</span><span className="break-all">{formData.email}</span></div>
+//     <div className="flex justify-between"><span>Phone:</span><span>{formData.phone}</span></div>
+//     <div className="flex justify-between"><span>Service:</span><span>{selectedService?.name}</span></div>
+//     <div className="flex justify-between"><span>Amount:</span><span>₹{selectedService?.price}</span></div>
+//   </div>
+
+//   <div className="flex gap-3 mt-6">
+//     <button
+//       onClick={handleBack}
+//       className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
+//     >
+//       <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
+//       Back
+//     </button>
+
+//     <button
+//       onClick={handlePayment}
+//       className="flex-1 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base font-medium"
+//     >
+//       Pay Now
+//     </button>
+//   </div>
+// </div>
+// )}
+
+
+//           {/* Step 5: Success */}
+//           {currentStep === 5 && (
+//             <div className="text-center space-y-6">
+//               <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto" />
+//               <div>
+//                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Home Visit Booked!</h2>
+//                 <p className="text-sm sm:text-base text-gray-600">Your consultant will arrive within 30 minutes.</p>
+//               </div>
+
+//               <div className="bg-green-50/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-green-100/50">
+//                 <h3 className="font-semibold text-green-800 mb-2 text-sm sm:text-base">Booking Details</h3>
+//                 <div className="text-xs sm:text-sm text-green-700 space-y-1">
+//                   <p><strong>Service:</strong> {selectedService?.name}</p>
+//                   <p><strong>Address:</strong> {formData.address}</p>
+//                   <p><strong>City:</strong> {formData.city}, {formData.pincode}</p>
+//                   <p><strong>Expected Arrival:</strong> Within 60 minutes</p>
+//                 </div>
+//               </div>
+
+//               <div className="bg-blue-50/80 backdrop-blur-sm rounded-lg p-4 border border-blue-100/50">
+//                 <div className="flex items-start justify-center">
+//                   <Home className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
+//                   <div>
+//                     <p className="text-sm font-medium text-blue-900">What to Expect</p>
+//                     <p className="text-xs sm:text-sm text-blue-700">Our expert consultant will call you before arrival and bring all necessary documents</p>
+//                   </div>
+//                 </div>
+//               </div>
+
+//               <div className="text-xs sm:text-sm text-gray-600 space-y-1">
+//                 <p>A confirmation message has been sent to <strong className="break-all">{formData.email}</strong></p>
+//                 <p>Our consultant will call you at <strong>{formData.phone}</strong> before arrival.</p>
+//               </div>
+
+//               <button
+//                 onClick={() => {
+//                   setCurrentStep(1);
+//                   setFormData({
+//                     name: '',
+//                     phone: '',
+//                     email: '',
+//                     service: '',
+//                     address: '',
+//                     city: '',
+//                     pincode: ''
+//                   });
+//                 }}
+//                 className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base font-medium"
+//               >
+//                 Book Another Home Visit
+//               </button>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//     </>
+    
+//   );
+// };
+
+// export default Booking;
+
+import React, { useEffect, useRef, useState } from "react";
+import PlansSection from "./PlansSection";
+import BookingHero from "./BookingHero";
+import FaqSection from "./FaqSection";
+import SupportBar from "./SupportBar";
+import HowItWorksSection from "./HowItWorksSection";
+import WhyFinsbee from "./WhyFinsbee";
+
+/* ========= rotating gold text ========= */
+function RotatingGoldText({ items, delay = 2200, className = "" }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((p) => (p + 1) % items.length), delay);
+    return () => clearInterval(id);
+  }, [items.length, delay]);
+  return (
+    <span className="relative inline-block">
+      <span key={i} className={`animated-gold-text fade-in ${className}`}>
+        {items[i]}
+      </span>
+    </span>
+  );
+}
+
+
+function useGateSnapForSection(sectionId) {
+  useEffect(() => {
+    const root = document.scrollingElement || document.documentElement;
+
+    const prev = root.style.scrollSnapType;
+    const enable = () => { root.style.scrollSnapType = 'y mandatory'; };
+    const disable = () => { root.style.scrollSnapType = 'none'; };
+
+    // enable snap by default
+    enable();
+
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        // when HIW is meaningfully visible, turn snap off
+        if (entry.isIntersecting) disable();
+        else enable();
+      },
+      { threshold: [0.2, 0.5, 0.8] }
+    );
+
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      root.style.scrollSnapType = prev;
+    };
+  }, [sectionId]);
+}
+
+
+/* ========= tiny CSS (shimmer + fade) ========= */
+const GoldTextStyles = () => (
+  <style>{`
+    .animated-gold-text{
+      background-image: linear-gradient(90deg, #ffc73c 100%, #fff1a6 100%, #ffc73c 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gold-run 2.8s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes gold-run{
+      0% { background-position: 0% 50%; }
+      100% { background-position: -200% 50%; }
+    }
+    .fade-in{ animation: fadeIn .55s ease both; }
+    @keyframes fadeIn{ from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:translateY(0)} }
+  `}</style>
+);
+
+/* ========= image-skinned buttons ========= */
+const ImgButtonShell = ({ src, as = "button", className = "", style, children, ...rest }) => {
+  const Comp = as;
+  return (
+    <Comp
+      {...rest}
+      className={`relative inline-flex items-center justify-center select-none ${className}`}
+      style={{ aspectRatio: style?.aspectRatio, ...style }}
+    >
+      <img
+        src={src}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-contain pointer-events-none"
+        draggable="false"
+      />
+      <span className="relative z-10">{children}</span>
+    </Comp>
+  );
 };
 
+const TextLinkButton = ({ href = "/" }) => (
+  <ImgButtonShell
+    as="a"
+    href={href}
+    src="/text-button.svg"
+    className="w-[130px] sm:w-[155px]"
+    style={{ aspectRatio: "155/26" }}
+  />
+);
 
- const STATIC_QR_IMAGE_URL = "/QrCode.jpeg"; // Assuming it's in /public folder
- const WHATSAPP_NUMBER = "919999999999";
+const PrimaryButton = ({ children, ...props }) => (
+  <ImgButtonShell
+    as="button"
+    src="/primary-button.svg"
+    className="w-[210px] sm:w-[285px]"
+    style={{ aspectRatio: "285/58" }}
+    {...props}
+  >
+    {children ? <span className="text-black text-sm sm:text-base font-medium px-3">{children}</span> : null}
+  </ImgButtonShell>
+);
 
 
-  const selectedService = services.find(s => s.id === formData.service);
-  const today = new Date().toISOString().split('T')[0];
+function goToBooking() {
+  const el = document.getElementById("booking");
+  if (!el) {
+    // If the section is on this page but not yet in DOM, try a tiny delay,
+    // OR if it's on a different route, fall back to a hash jump:
+    window.location.hash = "#booking";
+    return;
+  }
+
+  const root = document.scrollingElement || document.documentElement;
+  const prevSnap = root.style.scrollSnapType;
+  root.style.scrollSnapType = "none";       // disable snap during the scroll
+
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  // restore snap after the scroll completes
+  setTimeout(() => {
+    root.style.scrollSnapType = prevSnap || "";
+  }, 700);
+
+  // optional: focus a field after arriving
+  setTimeout(() => {
+    const firstFocusable = el.querySelector(
+      'input, select, textarea, button, [tabindex]:not([tabindex="-1"])'
+    );
+    firstFocusable?.focus({ preventScroll: true });
+  }, 750);
+}
 
 
 
+/* ========= HERO ========= */
+function ConsultantHero() {
   return (
-
-    <>
-     <style>{`
+    <section className="relative min-h-screen overflow-visible">
+        <style>{`
     @media screen and (max-width: 620px) {
       html, body {
         padding-top: 0px !important;
       }
     }
-  `}</style>
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-100  sm:p-2  flex items-center justify-center">
-      <div className="w-full max-w-2xl mx-auto">
-        {/* Header */}
-          <div className="text-center mb-6 sm:mb-8">
-      <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-        Need a Loan, Insurance, or Investment?
-      </h1>
+   `}</style>
+      <GoldTextStyles />
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: 'url("/background.jpg")' }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0"
+        // style={{
+        //   background:
+        //     "radial-gradient(1200px 800px at 15% 30%, rgba(10,0,70,0.45) 0%, rgba(10,0,70,0.65) 50%, rgba(10,0,70,0.8) 100%)",
+        // }}
+        aria-hidden="true"
+      />
 
-      <p className="text-sm sm:text-base text-gray-600 px-2 mb-4">
-        A verified FundsMama advisor will visit your home or office in 60 mins
-      </p>
-
-      <div className="w-full max-w-md mx-auto mt-6 min-h-[2.5rem]">
-        <p className="text-sm sm:text-base text-gray-700 px-4 transition-opacity duration-500 ease-in-out">
-          {carouselItems[current]}
-        </p>
-      </div>
-    </div>
-
-
-     {/* Desktop Navbar */}
-<div className="hidden sm:block">
-  <Navbar />
-</div>
-
-
-
-       
-        {/* Progress Bar */}
-        <div className="mb-6 sm:mb-8">
-          <div className="flex justify-between items-center">
-            {[1, 2, 3, 4].map((step) => (
-              <div key={step} className={`flex items-center ${step < 4 ? 'flex-1' : ''}`}>
-                <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium ${
-                  currentStep >= step ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-600'
-                }`}>
-                  {step}
-                </div>
-                {step < 4 && (
-                  <div className={`flex-1 h-1 mx-1 sm:mx-2 ${
-                    currentStep > step ? 'bg-blue-600' : 'bg-gray-200'
-                  }`} />
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-between text-xs text-gray-500 mt-2 px-1">
-            <span>Details</span>
-            <span>Service</span>
-            <span>Address</span>
-            <span>Payment</span>
-          </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="flex items-center justify-between">
+          <span className="hidden sm:inline-block">
+         <TextLinkButton href="/" />
+         </span>
+         <PrimaryButton onClick={goToBooking} />
         </div>
-        
 
-        {/* Form Card */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-lg shadow-xl border border-white/20 p-4 sm:p-8">
-          {/* Step 1: Personal Details */}
-          {currentStep === 1 && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <User className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Personal Information</h2>
-                <p className="text-sm sm:text-base text-gray-600">Tell us about yourself</p>
-              </div>
+        {/* keep your visual overlap if you want; snapping will still work */}
+        <div className="relative pb-24 lg:pb-28 -mb-24 lg:-mb-28">
+          <div className="mt-10 sm:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+           <div className="text-white mb-0 lg:mb-28">
+              <h1 className="font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.2] sm:leading-[1.2] lg:leading-[1.15]">
+                <span className="block">Behind every</span>
+                <span className="block mt-2 sm:mt-3">rupee you earn is</span>
+                <span className="block mt-2 sm:mt-3">
+                  <RotatingGoldText items={["your sweat", "your time", "your family's hopes"]} delay={2200} />
+                </span>
+              </h1>
 
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                    placeholder="Enter your full name"
-                    required
-                  />
-                </div>
+              <p className="mt-6 text-[32px] text-white/90 max-w-xl">We’ll protect it like our own–</p>
+              <p className="mt-1 text-[24px] text-white/80 max-w-xl">
+                Buy our plan today and secure every rupee you’ve worked for
+              </p>
+            </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                    placeholder="Enter your phone number"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                    placeholder="Enter your email address"
-                    required
-                  />
-                </div>
-              </div>
-
-              <button
-                onClick={handleNext}
-                disabled={!validateStep()}
-                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
+            <div className="relative mt-10 ">
+              <div
+                className="
+                  ml-auto w-full max-w-[436px] rounded-[28px] overflow-hidden bg-white shadow-xl
+                  ring-1 ring-black/5 translate-y-8 lg:translate-y-12 relative z-20
+                "
               >
-                Continue
-              </button>
-            </div>
-          )}
-
-          {/* Step 2: Service Selection */}
-          {currentStep === 2 && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Choose Your Service</h2>
-                <p className="text-sm sm:text-base text-gray-600">Select the consultation type</p>
+                <img src="/main.svg" alt="Happy customers talking with consultant" className="w-[436px] h-[630px] object-cover" />
               </div>
 
-              <div className="space-y-3">
-                {services.map((service) => (
-                  <div
-                    key={service.id}
-                    onClick={() => handleServiceSelect(service.id)}
-                    className={`p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                      formData.service === service.id
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
-                  >
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{service.name}</h3>
-                        <p className="text-xs sm:text-sm text-gray-600">{service.description}</p>
-                      </div>
-                      <div className="text-left sm:text-right">
-                        <div className="text-lg font-bold text-gray-900">₹{service.price}</div>
-                        <div className="text-xs sm:text-sm text-gray-500">60 minutes</div>
-                      </div>
-                    </div>
+              {/* badges */}
+              <div className="absolute -left-4 mt-28 top-16 z-30 ml-0 sm:ml-40 sm:-left-10">
+                <div className="flex items-center gap-3 rounded-2xl bg-white/50 backdrop-blur px-8 py-6 shadow-lg border border-black/5 ">
+                  <div className="flex -space-x-2">
+                    <img src="/av1.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" />
+                    <img src="/av2.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" />
+                    <img src="/av3.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" />
                   </div>
-                ))}
+                  <div className="leading-tight">
+                    <div className="text-[#592eff] font-semibold text-sm">2k+</div>
+                    <div className="text-black/70 text-[12px]">Already Benefit</div>
+                  </div>
+                </div>
               </div>
 
-              <div className="flex gap-3">
-                <button
-                  onClick={handleBack}
-                  className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
-                >
-                  <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
-                  Back
-                </button>
-                <button
-                  onClick={handleNext}
-                  disabled={!validateStep()}
-                  className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
-                >
-                  Continue
-                </button>
+              <div className="absolute right-0  mb-32 sm:-right-6 bottom-6 z-30">
+                <div className="rounded-2xl bg-white/50 backdrop-blur px-8 py-6 shadow-lg border border-black/5">
+                  <div className="text-[#592eff] font-semibold text-sm">99%</div>
+                  <div className="text-black/70 text-[12px] -mt-0.5">Customer Satisfaction</div>
+                </div>
               </div>
             </div>
-          )}
-
-          {/* Step 3: Address Details */}
-          {currentStep === 3 && (
-            <div className="space-y-6">
-              <div className="text-center mb-6">
-                <MapPin className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
-                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Your Address</h2>
-                <p className="text-sm sm:text-base text-gray-600">Where should our consultant visit you?</p>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Complete Address</label>
-                  <textarea
-                    name="address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    rows={3}
-                    className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                    placeholder="Enter your complete address with landmarks"
-                    required
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">City</label>
-                    <input
-                      type="text"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                      placeholder="Your city"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">PIN Code</label>
-                    <input
-                      type="text"
-                      name="pincode"
-                      value={formData.pincode}
-                      onChange={handleInputChange}
-                      maxLength={6}
-                      className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
-                      placeholder="PIN Code"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-50/80 backdrop-blur-sm rounded-lg p-4 border border-blue-100/50">
-                <div className="flex items-start">
-                  <Clock className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium text-blue-900">Quick Service Promise</p>
-                    <p className="text-xs sm:text-sm text-blue-700">Our consultant will reach your location within 30 minutes of booking confirmation</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <button
-                  onClick={handleBack}
-                  className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
-                >
-                  <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
-                  Back
-                </button>
-                <button
-                  onClick={handleNext}
-                  disabled={!validateStep()}
-                  className="flex-1 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm sm:text-base font-medium"
-                >
-                  Continue
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 4: Payment */}
-    {currentStep === 4 && (
- <div className="space-y-6 text-center">
-  <div className="mb-6">
-    <CreditCard className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mx-auto mb-2" />
-    <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Proceed to Payment</h2>
-    <p className="text-sm sm:text-base text-gray-600">Click the button below to complete your payment.</p>
-  </div>
-
-  <div className="bg-gray-50/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-gray-100/50 space-y-2 text-left text-sm sm:text-base text-gray-700 max-w-md mx-auto">
-    <div className="flex justify-between"><span>Name:</span><span>{formData.name}</span></div>
-    <div className="flex justify-between"><span>Email:</span><span className="break-all">{formData.email}</span></div>
-    <div className="flex justify-between"><span>Phone:</span><span>{formData.phone}</span></div>
-    <div className="flex justify-between"><span>Service:</span><span>{selectedService?.name}</span></div>
-    <div className="flex justify-between"><span>Amount:</span><span>₹{selectedService?.price}</span></div>
-  </div>
-
-  <div className="flex gap-3 mt-6">
-    <button
-      onClick={handleBack}
-      className="flex-1 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
-    >
-      <ArrowLeft className="w-4 h-4 inline mr-1 sm:mr-2" />
-      Back
-    </button>
-
-    <button
-      onClick={handlePayment}
-      className="flex-1 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base font-medium"
-    >
-      Pay Now
-    </button>
-  </div>
-</div>
-)}
-
-
-          {/* Step 5: Success */}
-          {currentStep === 5 && (
-            <div className="text-center space-y-6">
-              <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto" />
-              <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Home Visit Booked!</h2>
-                <p className="text-sm sm:text-base text-gray-600">Your consultant will arrive within 30 minutes.</p>
-              </div>
-
-              <div className="bg-green-50/80 backdrop-blur-sm rounded-lg p-4 sm:p-6 border border-green-100/50">
-                <h3 className="font-semibold text-green-800 mb-2 text-sm sm:text-base">Booking Details</h3>
-                <div className="text-xs sm:text-sm text-green-700 space-y-1">
-                  <p><strong>Service:</strong> {selectedService?.name}</p>
-                  <p><strong>Address:</strong> {formData.address}</p>
-                  <p><strong>City:</strong> {formData.city}, {formData.pincode}</p>
-                  <p><strong>Expected Arrival:</strong> Within 60 minutes</p>
-                </div>
-              </div>
-
-              <div className="bg-blue-50/80 backdrop-blur-sm rounded-lg p-4 border border-blue-100/50">
-                <div className="flex items-start justify-center">
-                  <Home className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-sm font-medium text-blue-900">What to Expect</p>
-                    <p className="text-xs sm:text-sm text-blue-700">Our expert consultant will call you before arrival and bring all necessary documents</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-xs sm:text-sm text-gray-600 space-y-1">
-                <p>A confirmation message has been sent to <strong className="break-all">{formData.email}</strong></p>
-                <p>Our consultant will call you at <strong>{formData.phone}</strong> before arrival.</p>
-              </div>
-
-              <button
-                onClick={() => {
-                  setCurrentStep(1);
-                  setFormData({
-                    name: '',
-                    phone: '',
-                    email: '',
-                    service: '',
-                    address: '',
-                    city: '',
-                    pincode: ''
-                  });
-                }}
-                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base font-medium"
-              >
-                Book Another Home Visit
-              </button>
-            </div>
-          )}
-        </div>
+          </div>
+        </div>{/* /overlap */}
       </div>
-    </div>
-    </>
-    
+    </section>
   );
-};
+}
 
-export default Booking;
+/* ========= Enable snap on the REAL scroll container ========= */
+function useEnableViewportSnap(type = "y mandatory") {
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+    const scroller = document.scrollingElement || html;
+
+    const prevHtml = html.style.scrollSnapType;
+    const prevBody = body.style.scrollSnapType;
+    const prevScroller = scroller.style.scrollSnapType;
+
+    html.style.scrollSnapType = type;
+    body.style.scrollSnapType = type;       // Safari/Edge
+    scroller.style.scrollSnapType = type;   // actual scrolling element
+
+    // optional: if you have a fixed header, adjust padding here
+    // html.style.scrollPaddingTop = "0px";
+
+    return () => {
+      html.style.scrollSnapType = prevHtml;
+      body.style.scrollSnapType = prevBody;
+      scroller.style.scrollSnapType = prevScroller;
+      // html.style.scrollPaddingTop = "";
+    };
+  }, [type]);
+}
+
+/* ========= PARENT ========= */
+export default function ConsultantLandingPage() {
+  useGateSnapForSection('hiw-snap');
+
+  return (
+    <main className="snap-y snap-mandatory">
+      <section className="snap-start">
+        <ConsultantHero />
+      </section>
+
+      <section className="snap-start">
+        <PlansSection />
+      </section>
+
+      <section id="booking" className="snap-start">
+      <BookingHero />
+       </section>
+
+      {/* How It Works: page stops snapping here; parallax handles its own scroll */}
+      <section
+        id="hiw-snap"
+        className="snap-start"
+        style={{
+          minHeight: '100vh',
+          overscrollBehaviorY: 'contain',
+          position: 'relative',
+        }}
+      >
+        <HowItWorksSection />
+      </section>
+
+      <section className="snap-start">
+        <WhyFinsbee />
+      </section>
+
+      <section className="snap-start">
+        <FaqSection />
+      </section>
+
+      <SupportBar />
+    </main>
+  );
+}
+

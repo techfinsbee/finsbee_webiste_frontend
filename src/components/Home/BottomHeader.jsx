@@ -9,6 +9,7 @@ const BottomHeader = ({
   const navigate = useNavigate();
 
   const handleBookingClick = () => {
+    
     navigate("/booking");
   };
  

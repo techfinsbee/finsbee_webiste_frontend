@@ -26,6 +26,7 @@ import { useState } from "react";
 import Booking from "./components/Home/Booking";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Refund from "./components/RefundPolicy";
+import PlansSection from "./components/Home/PlansSection";
 
 function App() {
     const [showBooking, setShowBooking] = useState(false);
