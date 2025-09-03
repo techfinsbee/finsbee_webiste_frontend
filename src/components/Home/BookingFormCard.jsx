@@ -3,7 +3,9 @@ import {
   UserRound, Phone, Mail, Calendar as CalIcon, MapPin, Map, ChevronDown,
   X, Check, Search, ChevronLeft, ChevronRight
 } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+
+import { Toaster, toast } from "react-hot-toast";
+
 
 /* ================== DEBUG UTILS ================== */
 const DEBUG = typeof window !== "undefined" && (window.__BOOKING_DEBUG__ ?? (process.env.NODE_ENV !== "production"));
