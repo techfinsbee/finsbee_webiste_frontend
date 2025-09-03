@@ -1,11 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+// src/components/Home/BookingFormCard.jsx
+import React, { useEffect, useState } from "react";
 import {
   UserRound, Phone, Mail, Calendar as CalIcon, MapPin, Map, ChevronDown,
   X, Check, Search, ChevronLeft, ChevronRight
 } from "lucide-react";
-
-import { Toaster, toast } from "react-hot-toast";
-
 
 /* ================== DEBUG UTILS ================== */
 const DEBUG = typeof window !== "undefined" && (window.__BOOKING_DEBUG__ ?? (process.env.NODE_ENV !== "production"));
@@ -69,6 +67,44 @@ const ASSETS = {
 const cn = (...a) => a.filter(Boolean).join(" ");
 const Img = ({ src, alt = "", className = "" }) =>
   <img src={src} alt={alt} className={cn("w-4 h-4 object-contain", className)} />;
+
+/* ---------- Tiny zero-dep toast ---------- */
+function useToastStack() {
+  const [toasts, setToasts] = useState([]);
+  function push(type, message) {
+    const id = Date.now() + Math.random();
+    setToasts(t => [...t, { id, type, message }]);
+    setTimeout(() => setToasts(t => t.filter(x => x.id !== id)), 3200);
+  }
+  function remove(id){ setToasts(t => t.filter(x => x.id !== id)); }
+  return { toasts, push, remove };
+}
+function ToastStack({ toasts, onClose }) {
+  return (
+    <div className="fixed top-4 right-4 z-[100] space-y-2">
+      {toasts.map(t => (
+        <div
+          key={t.id}
+          className={cn(
+            "min-w-[240px] max-w-[320px] px-4 py-3 rounded-lg shadow-lg ring-1 text-sm flex items-start gap-3 animate-[fadeIn_.2s_ease]",
+            t.type === "error" ? "bg-red-600 text-white ring-red-700" : "bg-emerald-600 text-white ring-emerald-700"
+          )}
+        >
+          <span className="mt-0.5 font-medium">{t.type === "error" ? "Error" : "Success"}</span>
+          <span className="opacity-90">{t.message}</span>
+          <button
+            onClick={() => onClose(t.id)}
+            className="ml-auto opacity-80 hover:opacity-100"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+      ))}
+      <style>{`@keyframes fadeIn{from{opacity:.5;transform:translateY(-4px)}to{opacity:1;transform:none}}`}</style>
+    </div>
+  );
+}
 
 /* Base fields (56px height) */
 const BaseInput = ({ className = "", leftIcon, leftImg, ...props }) => (
@@ -180,7 +216,6 @@ function PlanModal({ open, onClose, value, onChange }) {
   return (
     <ModalShell title="Choose Your Plan" onClose={onClose} width="w-[560px]">
       <div className="space-y-3">
-        {/* Placeholder option so user can clear selection */}
         <button
           onClick={() => { onChange(null); onClose(); }}
           className={cn(
@@ -365,12 +400,19 @@ export default function BookingFormCard() {
   const [calOpen, setCalOpen] = useState(false);
   const [pinOpen, setPinOpen] = useState(false);
 
+  // Toasts
+  const { toasts, push, remove } = useToastStack();
+  const toast = {
+    success: (m) => push("success", m),
+    error:   (m) => push("error", m),
+  };
+
   // Controlled form fields
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [city] = useState(""); // optional for now
+  const [city] = useState("");
 
   const [plan, setPlan] = useState(null);
   const [service, setService] = useState(null);
@@ -385,9 +427,6 @@ export default function BookingFormCard() {
   const [phoneErr, setPhoneErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
 
-  const showService = Boolean(plan);
-
-  // ---------- helpers ----------
   const planPrice = plan ? PLAN_OPTIONS.find(p=>p.id===plan.id)?.price ?? 0 : 0;
 
   const payloadBase = () => ({
@@ -412,7 +451,6 @@ export default function BookingFormCard() {
     }catch(e){ err("saveStep failed", e); }
   }
 
-  // Auto-save on key milestones
   useEffect(()=>{ if (plan) saveStep("plan"); }, [plan?.id]);
   useEffect(()=>{ if (service) saveStep("service"); }, [service?.id]);
   useEffect(()=>{ if (slotDate) saveStep("slot"); }, [slotDate]);
@@ -460,31 +498,15 @@ export default function BookingFormCard() {
     if (!emailRegex.test(v)) setEmailErr("Email must be a valid .com address");
   }
 
-  // Reset form after successful payment verification
   function resetForm(){
-    setName("");
-    setPhone("");
-    setEmail("");
-    setAddress("");
-    setPlan(null);
-    setService(null);
-    setSlotDate(null);
-    setPincode("");
+    setName(""); setPhone(""); setEmail(""); setAddress("");
+    setPlan(null); setService(null); setSlotDate(null); setPincode("");
     setBookingId(null);
-
-    setPlanOpen(false);
-    setServiceOpen(false);
-    setCalOpen(false);
-    setPinOpen(false);
-
-    setNameErr("");
-    setPhoneErr("");
-    setEmailErr("");
-
+    setPlanOpen(false); setServiceOpen(false); setCalOpen(false); setPinOpen(false);
+    setNameErr(""); setPhoneErr(""); setEmailErr("");
     document.getElementById("booking-heading")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  // ---------- submit ----------
   function validate(){
     if (!name || name.trim().length < 2) { setNameErr("Please enter your full name"); return "Please enter your full name"; }
     if (/[^a-zA-Z\s.'-]/.test(name||"")) { setNameErr("Only alphabets are allowed in name"); return "Only alphabets are allowed in name"; }
@@ -536,7 +558,7 @@ export default function BookingFormCard() {
             });
             log("payment verified", verify);
             toast.success("Payment successful! Your booking is confirmed.");
-            resetForm(); // ✅ reset everything on success
+            resetForm();
           }catch(e){
             err("verify failed", e);
             toast.error("Payment verification failed on server. Please contact support.");
@@ -567,8 +589,8 @@ export default function BookingFormCard() {
         "min-h-[594px] lg:h-[594px]"
       )}
     >
-      {/* Toast container */}
-      <Toaster position="top-right" />
+      {/* Local toast host */}
+      <ToastStack toasts={toasts} onClose={remove} />
 
       <div
         id="booking-heading"
