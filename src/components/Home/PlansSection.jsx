@@ -1,5 +1,25 @@
-// src/components/PlansSection.jsx
+// src/components/Home/PlansSection.jsx
 import { useEffect, useRef } from "react";
+
+/* --------- RUNTIME GSAP LOADER (no npm dependency) --------- */
+async function loadGsapFromCdn() {
+  if (typeof window === "undefined") return null;
+  if (window.gsap && window.ScrollTrigger) {
+    return { gsap: window.gsap, ScrollTrigger: window.ScrollTrigger };
+  }
+
+  try {
+    // @vite-ignore prevents Vite from trying to bundle/resolve these
+    await import(/* @vite-ignore */ "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js");
+    await import(/* @vite-ignore */ "https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js");
+    if (window.gsap && window.ScrollTrigger) {
+      return { gsap: window.gsap, ScrollTrigger: window.ScrollTrigger };
+    }
+  } catch {
+    // ignore – animations will simply be skipped
+  }
+  return null;
+}
 
 /* Global helpers: hide mobile scrollbar + bullet styling */
 const ExtraStyles = () => (
@@ -98,7 +118,7 @@ function Divider({ featured }) {
   );
 }
 
-/* ---------------- Card (yellow fill overlay + content-only motion) ---------------- */
+/* ---------------- Card ---------------- */
 function PlanCard({
   price,
   badge,
@@ -112,7 +132,7 @@ function PlanCard({
   className = "",
   innerRef,
 }) {
-  const isFeatured = featured || !!badge; // center card is purple
+  const isFeatured = featured || !!badge;
   const baseBg = isFeatured ? "bg-[#592eff]" : "bg-white";
   const baseText = isFeatured ? "text-white" : "text-black";
 
@@ -121,7 +141,7 @@ function PlanCard({
       ref={innerRef}
       className={[
         "plan-card w-[353px] h-[580px] shrink-0 group relative rounded-2xl",
-        "border border-purple-500/20 overflow-visible", // allow badge to pop outside
+        "border border-purple-500/20 overflow-visible",
         baseBg, baseText,
         "px-6 sm:px-7 pb-6 sm:pb-7 pt-10",
         "shadow-[0_10px_30px_-10px_rgba(0,0,0,0.25)]",
@@ -129,14 +149,10 @@ function PlanCard({
         className,
       ].join(" ")}
     >
-      {/* POP-OUT BADGE */}
       {badge && (
         <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-30">
           <div className="relative">
-            <span
-              aria-hidden
-              className="absolute left-1/2 -bottom-2 -translate-x-1/2 h-2 w-24 rounded-full bg-black/25 opacity-30 blur-md"
-            />
+            <span aria-hidden className="absolute left-1/2 -bottom-2 -translate-x-1/2 h-2 w-24 rounded-full bg-black/25 opacity-30 blur-md" />
             <span className="inline-flex items-center rounded-full bg-[#ffc73c] text-black text-xs font-semibold px-3 py-1 shadow-[0_6px_18px_rgba(0,0,0,0.25)] ring-1 ring-black/5">
               {badge}
             </span>
@@ -144,17 +160,15 @@ function PlanCard({
         </div>
       )}
 
-      {/* YELLOW FILL OVERLAY (only for non-featured cards) */}
       {!isFeatured && (
         <div
           aria-hidden
-          className="absolute inset-0 rounded-2xl z-[1] origin-bottom scale-y-0 bg-[#FFD98E] transition-transform duration-300 ease-smooth group-hover:scale-y-100"
+          className="absolute inset-0  rounded-2xl z-[1] origin-bottom scale-y-0 bg-[#FFD98E] transition-transform duration-300 ease-smooth group-hover:scale-y-100"
         />
       )}
 
-      {/* DEFAULT CONTENT (fades/moves out on hover) */}
-      <div className="relative z-10 mb-10 space-y-4 transition-all duration-[420ms] ease-smooth group-hover:opacity-0 group-hover:translate-y-2">
-        {/* price shown only in default state */}
+      {/* DEFAULT CONTENT */}
+      <div className="relative z-10  mb-10 space-y-4 transition-all duration-[420ms] ease-smooth group-hover:opacity-0 group-hover:translate-y-2">
         <div className={isFeatured ? "text-white/90" : "text-black/80"}>
           <span className="mr-1">Only@</span>
           <span className="font-semibold text-[32px]">{price}</span>
@@ -195,14 +209,14 @@ function PlanCard({
         </div>
       </div>
 
-      {/* HOVER CONTENT (slides up; price hidden) */}
+      {/* HOVER CONTENT */}
       <div
         className={[
           "absolute inset-0 rounded-2xl z-20 flex flex-col justify-end",
           "px-6 sm:px-7 pb-6 sm:pb-7 pt-10",
           "opacity-0 translate-y-3 pointer-events-none",
           "transition-all duration-[420ms] ease-smooth",
-          "group-hover:opacity-100 group-hover:translate-y-0 mb-20 group-hover:pointer-events-auto",
+          "group-hover:opacity-100 group-hover:translate-y-0  mb-20 group-hover:pointer-events-auto",
           isFeatured ? "text-white" : "text-black",
         ].join(" ")}
       >
@@ -222,20 +236,21 @@ export default function PlansSection({
   bgImage = "/planbg.png",
   overlay = "linear-gradient(0deg, rgba(255,255,255,0.45), rgba(255,255,255,0.45))",
   overlayOpacity = 1,
-  bgFit = "cover",           // "cover" | "contain" | "actual"
-  bgPosition = "center top", // tweak if you want
+  bgFit = "cover",
+  bgPosition = "center top",
 }) {
   const mobileTrackRef = useRef(null);
   const desktopRef = useRef(null);
 
-  // Desktop entrance animations (GSAP)
+  // Desktop entrance animations via CDN GSAP
   useEffect(() => {
-    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    const isDesktop = typeof window !== "undefined" && window.matchMedia("(min-width: 768px)").matches;
     if (!isDesktop) return;
 
     (async () => {
-      const { gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      const api = await loadGsapFromCdn();
+      if (!api) return; // if CDN fails, just skip animations
+      const { gsap, ScrollTrigger } = api;
       gsap.registerPlugin(ScrollTrigger);
 
       const scope = desktopRef.current;
@@ -247,29 +262,32 @@ export default function PlansSection({
       const ease = "power3.out";
 
       if (left) {
-        gsap.fromTo(left, { x: -60, autoAlpha: 0 }, {
-          x: 0, autoAlpha: 1, duration: 0.6, ease, immediateRender: false,
-          scrollTrigger: { trigger: left, start: "top 92%", once: true }
-        });
+        gsap.fromTo(
+          left, { x: -60, autoAlpha: 0 },
+          { x: 0, autoAlpha: 1, duration: 0.6, ease, immediateRender: false,
+            scrollTrigger: { trigger: left, start: "top 92%", once: true } }
+        );
       }
       if (center) {
-        gsap.fromTo(center, { y: 16, autoAlpha: 1 }, {
-          y: 0, autoAlpha: 1, duration: 0.6, ease, immediateRender: false,
-          scrollTrigger: { trigger: center, start: "top 94%", once: true }
-        });
+        gsap.fromTo(
+          center, { y: 16, autoAlpha: 1 },
+          { y: 0, autoAlpha: 1, duration: 0.6, ease, immediateRender: false,
+            scrollTrigger: { trigger: center, start: "top 94%", once: true } }
+        );
       }
       if (right) {
-        gsap.fromTo(right, { x: 60, autoAlpha: 0 }, {
-          x: 0, autoAlpha: 1, duration: 0.6, ease, immediateRender: false,
-          scrollTrigger: { trigger: right, start: "top 92%", once: true }
-        });
+        gsap.fromTo(
+          right, { x: 60, autoAlpha: 0 },
+          { x: 0, autoAlpha: 1, duration: 0.6, ease, immediateRender: false,
+            scrollTrigger: { trigger: right, start: "top 92%", once: true } }
+        );
       }
     })();
   }, []);
 
   // Mobile: gentle auto-scroll carousel
   useEffect(() => {
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
     if (!isMobile) return;
 
     const track = mobileTrackRef.current;
@@ -334,7 +352,7 @@ export default function PlansSection({
           </h2>
         </div>
 
-        {/* Mobile: auto carousel */}
+        {/* Mobile */}
         <div className="md:hidden -mx-4">
           <div
             ref={mobileTrackRef}
@@ -346,7 +364,7 @@ export default function PlansSection({
           </div>
         </div>
 
-        {/* Desktop/Tablet: fixed row with GSAP reveals */}
+        {/* Desktop/Tablet */}
         <div ref={desktopRef} className="hidden md:flex justify-center gap-5 lg:gap-7">
           {plans.map((p) => (
             <PlanCard
