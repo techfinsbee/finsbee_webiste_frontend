@@ -17,6 +17,10 @@ const PAST_CONTENT_OPACITY = 0.45;
 // Delay before a new card starts entering (fraction of its slice)
 const PAUSE_FRAC = 0.38;
 
+// Mobile text sizing (scroll-driven)
+const MOBILE_TEXT_MAX_PX = 28;
+const MOBILE_TEXT_MIN_PX = 20;
+
 const STEPS = [
   { tag: "Understand your goals", tiny: "(call or visit)", text: "Housing, Education, Car, Emergency fund, Retirement, or Debt reduction." },
   { tag: "Map your current profile", tiny: "(income, credit, existing loans)", text: "We assess your eligibility and surface quick wins to strengthen your file." },
@@ -149,8 +153,15 @@ export default function HowItWorksScroll() {
       <div
         ref={scrollerRef}
         onWheel={handleWheel}
-        className="absolute inset-0 overflow-y-auto overscroll-y-contain"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+        // Allow chaining on mobile; keep contain on ≥sm
+        className="absolute inset-0 overflow-y-auto overscroll-y-auto sm:overscroll-y-contain"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+          touchAction: "pan-y",
+          overscrollBehaviorY: "auto",
+        }}
       >
         <style>{`[data-hiw]::-webkit-scrollbar{display:none}`}</style>
 
@@ -249,6 +260,19 @@ export default function HowItWorksScroll() {
                         const stackDx = lerp(0, stackDxFull, pastLocal);
                         const stackDy = lerp(0, stackDyFull, pastLocal);
 
+                        // Mobile text shrink factor per card
+                        // 0 = no shrink (max size), 1 = fully shrunk (min size)
+                        let shrinkT = 0;
+                        if (isMobile) {
+                          if (isFuture) shrinkT = 0;
+                          else if (isActive) shrinkT = effectiveLocal; // shrink across its slice
+                          else shrinkT = 1; // past cards stay shrunk
+                        }
+
+                        const mainFontSizePx = isMobile
+                          ? Math.round(lerp(MOBILE_TEXT_MAX_PX, MOBILE_TEXT_MIN_PX, shrinkT))
+                          : 40;
+
                         // Pure scroll-driven transform (no transform easing)
                         const transform = isMobile
                           ? (isActive
@@ -299,7 +323,13 @@ export default function HowItWorksScroll() {
                                 {s.tag}
                               </div>
                               <div className="mt-2 text-[14px] text-black/70">{s.tiny}</div>
-                              <p className="mt-4 text-[40px] leading-[1.2] text-black/80">{s.text}</p>
+                              {/* font size is dynamic on mobile, fixed on desktop */}
+                              <p
+                                className="mt-4 leading-[1.2] text-black/80"
+                                style={{ fontSize: `${mainFontSizePx}px` }}
+                              >
+                                {s.text}
+                              </p>
                             </div>
                           </div>
                         );

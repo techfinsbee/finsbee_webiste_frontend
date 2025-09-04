@@ -5,24 +5,8 @@ html, body{
   max-width: 100%;
 }
 
-/* Add this to your global CSS file */
-/* html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  overscroll-behavior-y: contain;
-} */
 
-.scroll-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-height: 100vh;
-}
 
-.parallax-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  overscroll-behavior-y: contain;
-}
 
 /* @media screen and (max-width: 620px) {
   html, body {
