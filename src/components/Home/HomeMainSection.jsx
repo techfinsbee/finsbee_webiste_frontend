@@ -32,7 +32,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
     <section id="home-home">
       <div
         ref={ref}
-        className="w-full relative flex items-center justify-between px-8 lg:px-8 HomeMain overflow-hidden"
+        className="w-full mt-10 relative flex items-center justify-between px-8 lg:px-8 HomeMain overflow-hidden"
         style={{
           // background: COLOR
           //   ? `radial-gradient(100% 100% at 0% 0%, white 20%, transparent 100%),
@@ -68,7 +68,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
 
         {/* Right Content */}
         <div className="lg:block w-full lg:w-[35%] relative HomeImage" style={{ zIndex: "50" }}>
-          <div className="relative home-main-div -left-4 -bottom-40 h-full flex justify-end w-full">
+          <div className="relative home-main-div -left-4 -bottom-40 h-full  flex justify-end w-full">
             <img
               src="/Home Page.svg"
               className="w-[90%] home-main-image h-[100%]"
