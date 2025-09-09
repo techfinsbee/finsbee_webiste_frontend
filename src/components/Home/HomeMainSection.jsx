@@ -15,6 +15,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
     setIsFormVisible(!isFormVisible);
   };
 
+   
   useEffect(() => {
     if (location.state?.scrollTo) {
       const element = document.getElementById(location.state.scrollTo);
@@ -45,6 +46,7 @@ const HomeMainSection = ({ COLOR, downloadImage, TXTCOLOR }) => {
           borderBottomRightRadius: "90px",
           height: "90vh",
         }}
+        
       >
         {/* Left Content */}
         <div

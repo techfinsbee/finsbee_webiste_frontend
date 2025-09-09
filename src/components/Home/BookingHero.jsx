@@ -57,9 +57,9 @@ export default function BookingHero() {
               {/* Lock the visual block to 512×489 like Figma */}
               <div className="w-full max-w-[512px]">
                 {/* Pill 24px */}
-                <div className="inline-flex items-center rounded-full border border-white/60 bg-white/10 px-6 py-2 text-[24px] leading-none backdrop-blur-md shadow-[inset_0_0_0_2px_rgba(255,255,255,0.25)]">
+                {/* <div className="inline-flex items-center rounded-full border border-white/60 bg-white/10 px-6 py-2 text-[24px] leading-none backdrop-blur-md shadow-[inset_0_0_0_2px_rgba(255,255,255,0.25)]">
                   Why choose us
-                </div>
+                </div> */}
 
                 {/* Heading: Lato 700, 64px, LH 1.0 */}
                 <h2
@@ -80,8 +80,8 @@ export default function BookingHero() {
                 <div className="mt-8 grid grid-cols-3 gap-5">
                   {[
                     ["15min", "Google Meet"],
-                    ["1 Hour", "Home Visit"],
-                    ["1 Month", "Call+Home Visit"],
+                    ["Door  Step", "financial advisor"],
+                    ["1 Month ", "Call + Door Step financial advisor"],
                   ].map(([big, small]) => (
                     <div
                       key={big}

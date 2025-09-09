@@ -46,7 +46,7 @@ const plans = [
     sub: "15 minutes · Google Meet",
     booking: "same day or within 24 hours.",
     slots:
-      "Every 15 minutes between 10:00 AM – 7:00 PM IST (Mon–Sat). Example slots: 10:00 · 10:15 · 10:30 · … · 6:45 PM",
+      "Slots are available between 10:00 AM – 7:00 PM IST (Mon–Sat). Example slots: 10:00 · 10:15 · 10:30 · … · 6:45 PM",
     bestFor:
       "Quick doubts, comparing offers, understanding terms and next steps.",
     hover: {
@@ -66,10 +66,10 @@ const plans = [
     id: "home",
     price: "₹399",
     badge: "Most Popular",
-    title: "Home-Visit Consultation",
-    sub: "One-on-one at your location",
+    title: "Home-Visit",
+    sub: "Financial consultation at your doorstep. One-on-one at your location",
     booking: "11:00 AM – 6:00 PM IST (Mon–Sat).",
-    slots: "Home visits in select locations (confirm your area before booking).",
+    slots: "Home visits are available at selected locations (Delhi,Noida,Gurugram).",
     bestFor:
       "In-depth discussions, paperwork clarity, and building a plan you can execute.",
     hover: {
@@ -140,7 +140,7 @@ function PlanCard({
     <div
       ref={innerRef}
       className={[
-        "plan-card w-[353px] h-[580px] shrink-0 group relative rounded-2xl",
+        "plan-card w-[84vw] max-w-[360px] md:w-[353px] h-[580px] shrink-0 group relative rounded-2xl",
         "border border-purple-500/20 overflow-visible",
         baseBg, baseText,
         "px-6 sm:px-7 pb-6 sm:pb-7 pt-10",

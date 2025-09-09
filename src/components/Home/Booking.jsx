@@ -584,20 +584,6 @@ function RotatingGoldText({ items, delay = 2200, className = "" }) {
   );
 }
 
-/* ========= Preload critical hero BG (prevents late paint) ========= */
-function PreloadHeroBG({ href = "/background.jpg" }) {
-  useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = href;
-    document.head.appendChild(link);
-    return () => {
-      try { document.head.removeChild(link); } catch {}
-    };
-  }, [href]);
-  return null;
-}
 
 function useGateSnapForSection(sectionId) {
   useEffect(() => {
@@ -667,8 +653,6 @@ const ImgButtonShell = ({ src, as = "button", className = "", style, children, .
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-contain pointer-events-none"
         draggable="false"
-        decoding="async"
-        loading="lazy"
       />
       <span className="relative z-10">{children}</span>
     </Comp>
@@ -731,29 +715,19 @@ function goToBooking() {
 function ConsultantHero() {
   return (
     <section className="relative min-h-screen overflow-visible">
-      <PreloadHeroBG href="/background.jpg" />
-      <style>{`
-        @media screen and (max-width: 620px) {
-          html, body {
-            padding-top: 0px !important;
-          }
-        }
-      `}</style>
+        <style>{`
+    @media screen and (max-width: 620px) {
+      html, body {
+        padding-top: 0px !important;
+      }
+    }
+   `}</style>
       <GoldTextStyles />
-
-      {/* High-priority hero background (replaces CSS background) */}
-      <img
-        src="/background.jpg"
-        alt=""
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: 'url("/background.jpg")' }}
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
-        decoding="async"
-        loading="eager"
-        fetchpriority="high"
-        draggable="false"
       />
-
-      {/* Optional overlay retains your layering */}
       <div
         className="absolute inset-0"
         aria-hidden="true"
@@ -762,20 +736,20 @@ function ConsultantHero() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         <div className="flex items-center justify-between">
           <span className="hidden sm:inline-block">
-            <TextLinkButton href="/" />
-          </span>
-          <PrimaryButton onClick={goToBooking} />
+         <TextLinkButton href="/" />
+         </span>
+         <PrimaryButton onClick={goToBooking} />
         </div>
 
         {/* keep your visual overlap if you want; snapping will still work */}
         <div className="relative pb-24 lg:pb-28 -mb-24 lg:-mb-28">
           <div className="mt-10 sm:mt-14 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div className="text-white mb-0 lg:mb-28">
+           <div className="text-white mb-0 lg:mb-28">
               <h1 className="font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.2] sm:leading-[1.2] lg:leading-[1.15]">
                 <span className="block">Behind every</span>
                 <span className="block mt-2 sm:mt-3">rupee you earn is</span>
                 <span className="block mt-2 sm:mt-3">
-                  <RotatingGoldText items={["your sweat", "your time", "your family's hopes"]} delay={2200} />
+                  <RotatingGoldText items={["your hard work", "your time", "your family's hopes"]} delay={2200} />
                 </span>
               </h1>
 
@@ -792,25 +766,16 @@ function ConsultantHero() {
                   ring-1 ring-black/5 translate-y-8 lg:translate-y-12 relative z-20
                 "
               >
-                {/* Make this non-blocking so BG gets bandwidth first */}
-                <img
-                  src="/main.svg"
-                  alt="Happy customers talking with consultant"
-                  className="w-[436px] h-[630px] object-cover"
-                  decoding="async"
-                  loading="lazy"
-                  fetchpriority="low"
-                  draggable="false"
-                />
+                <img src="/main.svg" alt="Happy customers talking with consultant" className="w-[436px] h-[630px] object-cover" />
               </div>
 
               {/* badges */}
               <div className="absolute -left-4 mt-28 top-16 z-30 ml-0 sm:ml-40 sm:-left-10">
                 <div className="flex items-center gap-3 rounded-2xl bg-white/50 backdrop-blur px-8 py-6 shadow-lg border border-black/5 ">
                   <div className="flex -space-x-2">
-                    <img src="/av1.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" loading="lazy" decoding="async" />
-                    <img src="/av2.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" loading="lazy" decoding="async" />
-                    <img src="/av3.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" loading="lazy" decoding="async" />
+                    <img src="/av1.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" />
+                    <img src="/av2.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" />
+                    <img src="/av3.svg" alt="" className="w-8 h-8 rounded-full object-cover ring-2 ring-white" />
                   </div>
                   <div className="leading-tight">
                     <div className="text-[#592eff] font-semibold text-sm">2k+</div>
@@ -845,8 +810,8 @@ function useEnableViewportSnap(type = "y mandatory") {
     const prevScroller = scroller.style.scrollSnapType;
 
     html.style.scrollSnapType = type;
-    body.style.scrollSnapType = type;       // Safari/Edge
-    scroller.style.scrollSnapType = type;   // actual scrolling element
+    body.style.scrollSnapType = type;       
+    scroller.style.scrollSnapType = type;   
 
     // optional: if you have a fixed header, adjust padding here
     // html.style.scrollPaddingTop = "0px";
@@ -875,8 +840,8 @@ export default function ConsultantLandingPage() {
       </section>
 
       <section id="booking" className="snap-start">
-        <BookingHero />
-      </section>
+      <BookingHero />
+       </section>
 
       {/* How It Works: page stops snapping here; parallax handles its own scroll */}
       <section
@@ -890,6 +855,9 @@ export default function ConsultantLandingPage() {
       >
         <HowItWorksSection />
       </section>
+      {/* Desktop */}
+\
+
 
       <section className="snap-start">
         <WhyFinsbee />
@@ -903,3 +871,4 @@ export default function ConsultantLandingPage() {
     </main>
   );
 }
+

@@ -80,10 +80,10 @@ export default function WhyFinsbeeHover({
  subheading="Finsbee?",
   quote = "Financial mistakes are expensive. Good advice pays for itself",
   items = [
-    { iconSrc: "/independent.png", title: "Independent Advice", desc: "Advice grounded in your goals, risk comfort, and timelines.", hoverImage: "bg.png" },
-    { iconSrc: "/transparency.png", title: "Complete Transparency", desc: "Clear fees, clear comparisons, and no fine print.", hoverImage: "bg.png" },
-    { iconSrc: "/client.png", title: "Tailored Recommendations", desc: "Suggestions matched to your needs—not one-size-fits-all.", hoverImage: "bg.png" },
-    { iconSrc: "/action.png", title: "Action-oriented", desc: "Practical next steps you can execute immediately.", hoverImage: "bg.png" },
+    { iconSrc: "/independent.png", title: "Independent Advice", desc: "We work for you, not the banks.", hoverImage: "bg.png" },
+    { iconSrc: "/transparency.png", title: "Complete Transparency", desc: "No hidden charges or surprises.", hoverImage: "bg.png" },
+    { iconSrc: "/client.png", title: "Tailored Recommendations", desc: " Every suggestion is based on your personal needs and goals.", hoverImage: "bg.png" },
+    { iconSrc: "/action.png", title: "Action-oriented", desc: " Your hard work deserves the right guidance.", hoverImage: "bg.png" },
   ],
 }) {
   const isMobile = useIsMobile();
@@ -134,7 +134,7 @@ export default function WhyFinsbeeHover({
 
             <div className="mx-auto mt-2 h-[3px] w-40 rounded-full bg-[#ffc73c]" />
           </div>
-          <div className="inline-block rounded-md border border-dashed border-black/25 px-4 py-2 text-sm text-black/70 max-sm:mx-6">
+          <div className="inline-block rounded-md  border border-dashed border-black/25 px-4 py-2 text-[18px] text-black/70 max-sm:mx-6">
             “{quote}”
           </div>
         </div>

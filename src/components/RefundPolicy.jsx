@@ -18,7 +18,7 @@ const Refund = () => {
         TXTCOLOR="#"
       />
       <div style={{ padding: "2rem", maxWidth: "900px", margin: "auto" }}>
-        <h1>Cancellation & Refund Policy</h1>
+        <h1 className="mt-20">Cancellation & Refund Policy</h1>
         <p><strong>Last updated on 17-04-2025 14:06:19</strong></p>
         <p>
           STRADEX INTERNATIONAL PRIVATE LIMITED believes in helping its

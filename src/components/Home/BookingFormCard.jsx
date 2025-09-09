@@ -188,16 +188,44 @@ const PINCODES = [
 ];
 
 /* Modal shell (centered inside card) */
-function ModalShell({ title, onClose, width = "w-[520px]", children }) {
+// function ModalShell({ title, onClose, width = "w-[520px]", children }) {
+//   return (
+//     <div className="absolute inset-0 z-50 grid place-items-center">
+//       <button aria-hidden onClick={onClose} className="absolute inset-0 rounded-2xl bg-black/10 backdrop-blur-[1px]" />
+//       <div className={cn(
+//         "relative rounded-2xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.35)]",
+//         "ring-1 ring-black/10 max-w-[92vw]",
+//         width
+//       )}
+//       role="dialog">
+//         <div className="flex items-center justify-between px-5 pt-4">
+//           <div className="text-sm font-medium text-black/70">{title}</div>
+//           <button onClick={onClose} className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-black/5" aria-label="Close">
+//             {ASSETS.close ? <Img src={ASSETS.close} /> : <X className="w-4 h-4" />}
+//           </button>
+//         </div>
+//         <div className="px-5 pb-5">{children}</div>
+       
+//       </div>
+//     </div>
+//   );
+// }
+
+
+function ModalShell({ title, onClose, width = "max-w-[520px]", children }) {
   return (
     <div className="absolute inset-0 z-50 grid place-items-center">
       <button aria-hidden onClick={onClose} className="absolute inset-0 rounded-2xl bg-black/10 backdrop-blur-[1px]" />
-      <div className={cn(
-        "relative rounded-2xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.35)]",
-        "ring-1 ring-black/10 max-w-[92vw]",
-        width
-      )}
-      role="dialog">
+      <div
+        className={cn(
+          "relative rounded-2xl bg-white shadow-[0_30px_60px_-20px_rgba(0,0,0,0.35)]",
+          "ring-1 ring-black/10 max-w-[92vw]",
+          // ↓ Always fit within the card minus padding (p-5 -> 1.25rem, sm:p-6 -> 1.5rem)
+          "w-[calc(100%-1.25rem)] sm:w-[calc(100%-1.5rem)]",
+          width // pass a max-w-* class here to cap the size
+        )}
+        role="dialog"
+      >
         <div className="flex items-center justify-between px-5 pt-4">
           <div className="text-sm font-medium text-black/70">{title}</div>
           <button onClick={onClose} className="inline-flex h-8 w-8 items-center justify-center rounded-md hover:bg-black/5" aria-label="Close">
@@ -209,6 +237,7 @@ function ModalShell({ title, onClose, width = "w-[520px]", children }) {
     </div>
   );
 }
+
 
 /* Specific modals */
 function PlanModal({ open, onClose, value, onChange }) {
@@ -393,12 +422,87 @@ function PincodeModal({ open, onClose, value, onChange }) {
   );
 }
 
+/* ================== NEW: Policies & Notes Modals ================== */
+function PoliciesModal({ open, onClose }) {
+  if (!open) return null;
+  return (
+    <ModalShell title="Policies" onClose={onClose} width="w-[640px]">
+      <style>{`
+        .policy-scroll::-webkit-scrollbar{ width:8px }
+        .policy-scroll::-webkit-scrollbar-thumb{ background:#ffc73c;border-radius:9999px }
+        .policy-scroll::-webkit-scrollbar-track{ background:transparent }
+      `}</style>
+      <div className="policy-scroll max-h-[60vh] overflow-y-auto pr-1 space-y-5 text-sm text-black/80">
+        <section>
+          <h4 className="font-semibold text-black">Rescheduling</h4>
+          <ul className="list-disc pl-5 mt-1 space-y-1">
+            <li>Free if requested ≥ 12 hours before your slot.</li>
+            <li>If less than 12 hours’ notice, ₹50 rescheduling fee applies.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 className="font-semibold text-black">Cancellations/Refunds</h4>
+          <ul className="list-disc pl-5 mt-1 space-y-1">
+            <li>100% refund if canceled ≥ 24 hours before slot.</li>
+            <li>50% refund if canceled 12–24 hours before slot.</li>
+            <li>No refund if canceled &lt; 12 hours before slot, but session credit will be given for future booking.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 className="font-semibold text-black">Late Arrival</h4>
+          <ul className="list-disc pl-5 mt-1 space-y-1">
+            <li>If you are more than 10 minutes late, the session will end at the scheduled time (no extension).</li>
+            <li>If you are more than 15 minutes late without notice, the booking will be marked as “no-show” (no refund).</li>
+          </ul>
+        </section>
+
+        <section>
+          <h4 className="font-semibold text-black">Payments</h4>
+          <p className="mt-1">UPI, debit/credit cards, net banking.</p>
+        </section>
+
+        <section>
+          <h4 className="font-semibold text-black">Documentation</h4>
+          <p className="mt-1">Summary note and checklists shared after each session.</p>
+        </section>
+      </div>
+    </ModalShell>
+  );
+}
+
+function NotesModal({ open, onClose }) {
+  if (!open) return null;
+  return (
+    <ModalShell title="Important Notes" onClose={onClose} width="w-[640px]">
+      <style>{`
+        .notes-scroll::-webkit-scrollbar{ width:8px }
+        .notes-scroll::-webkit-scrollbar-thumb{ background:#ffc73c;border-radius:9999px }
+        .notes-scroll::-webkit-scrollbar-track{ background:transparent }
+      `}</style>
+      <div className="notes-scroll max-h-[60vh] overflow-y-auto pr-1 text-sm text-black/80">
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Finsbee offers education and guidance; we are not a lender or insurer and do not guarantee approvals or specific interest rates.</li>
+          <li>Investments involve risk. Past performance does not guarantee future results.</li>
+          <li>We do not collect or store card/UPI credentials; payments are processed via secure gateways.</li>
+        </ul>
+      </div>
+    </ModalShell>
+  );
+}
+
 /* ===== Child: BookingFormCard ===== */
 export default function BookingFormCard() {
   const [planOpen, setPlanOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
   const [calOpen, setCalOpen] = useState(false);
   const [pinOpen, setPinOpen] = useState(false);
+
+  // NEW: modals + acceptance
+  const [showPolicies, setShowPolicies] = useState(false); // NEW
+  const [showNotes, setShowNotes] = useState(false);       // NEW
+  const [accepted, setAccepted] = useState(false);         // NEW
 
   // Toasts
   const { toasts, push, remove } = useToastStack();
@@ -504,6 +608,7 @@ export default function BookingFormCard() {
     setBookingId(null);
     setPlanOpen(false); setServiceOpen(false); setCalOpen(false); setPinOpen(false);
     setNameErr(""); setPhoneErr(""); setEmailErr("");
+    setAccepted(false); // NEW
     document.getElementById("booking-heading")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -521,6 +626,7 @@ export default function BookingFormCard() {
     if (!slotDate) return "Please choose your slot date";
     if (!pincode) return "Please select your pincode";
     if (!address || address.length < 4) return "Please enter your address";
+    if (!accepted) return "Please accept the Policies & Important Notes"; // NEW
     return null;
   }
 
@@ -700,12 +806,37 @@ export default function BookingFormCard() {
           />
         </div>
 
+        {/* ================== NEW: Acceptance row ================== */}
+        <div className="mt-2 flex items-start gap-3">
+          <button
+            type="button"
+            onClick={() => setAccepted(a => !a)}
+            aria-pressed={accepted}
+            className={cn(
+              "h-5 w-5 rounded-md border grid place-items-center transition",
+              accepted ? "bg-[#ffc73c] border-[#eabb37]" : "bg-white border-black/20 hover:bg-black/5"
+            )}
+          >
+            {accepted ? (ASSETS.check ? <Img src={ASSETS.check} className="w-3 h-3" /> : <Check className="w-3 h-3 text-black" />) : null}
+          </button>
+          <div className="text-xs sm:text-sm text-black/70">
+            I have read and agree to the{" "}
+            <button type="button" onClick={() => setShowPolicies(true)} className="text-[#592eff] underline font-medium">
+              Policies
+            </button>{" "}
+            and{" "}
+            <button type="button" onClick={() => setShowNotes(true)} className="text-[#592eff] underline font-medium">
+              Important Notes
+            </button>.
+          </div>
+        </div>
+
         <button
           type="submit"
-          disabled={submitting}
+          disabled={submitting || !accepted} 
           className={cn(
             "mt-2 w-full h-12 rounded-lg text-black font-semibold transition",
-            submitting ? "bg-[#d6b34e] opacity-80 cursor-not-allowed" : "bg-[#ffc73c] hover:brightness-105 active:scale-[0.99]"
+            (submitting || !accepted) ? "bg-[#d6b34e] opacity-80 cursor-not-allowed" : "bg-[#ffc73c] hover:brightness-105 active:scale-[0.99]"
           )}
         >
           {submitting ? "Starting payment…" : `Proceed to Payment${planPrice?` · ₹${planPrice}`:""}`}
@@ -741,6 +872,10 @@ export default function BookingFormCard() {
         value={pincode}
         onChange={setPincode}
       />
+
+      {/* NEW: Policies & Notes modals */}
+      <PoliciesModal open={showPolicies} onClose={() => setShowPolicies(false)} />
+      <NotesModal open={showNotes} onClose={() => setShowNotes(false)} />
     </div>
   );
 }

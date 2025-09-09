@@ -1,26 +1,26 @@
 
 import { scrollToNoSnap } from "../../../utils/scrollToNoSnap";
-const ImageCTA = ({
-  src = "/get.svg",
-  label = "Get Consultant Now",
-  onClick,
-}) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-label={label}
-    className="relative inline-flex items-center justify-center select-none
-               w-[210px] sm:w-[285px] h-[42px] sm:h-[58px]"
-  >
-    <img
-      src={src}
-      alt=""
-      className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-      draggable="false"
-    />
-    <span className="sr-only">{label}</span>
-  </button>
-);
+// const ImageCTA = ({
+//   src = "/get.svg",
+//   label = "Get Consultant Now",
+//   onClick,
+// }) => (
+//   <button
+//     type="button"
+//     onClick={onClick}
+//     aria-label={label}
+//     className="relative inline-flex items-center justify-center select-none
+//                w-[210px] sm:w-[285px] h-[42px] sm:h-[58px]"
+//   >
+//     <img
+//       src={src}
+//       alt=""
+//       className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+//       draggable="false"
+//     />
+//     <span className="sr-only">{label}</span>
+//   </button>
+// );
 
 export default function SupportSection() {
   return (
@@ -59,7 +59,7 @@ export default function SupportSection() {
 
             {/* Custom image button → scroll to #booking without snap fighting */}
             <div className="mt-8">
-              <ImageCTA onClick={() => scrollToNoSnap("#booking")} />
+              {/* <ImageCTA onClick={() => scrollToNoSnap("#booking")} /> */}
             </div>
           </div>
 
@@ -95,6 +95,13 @@ export default function SupportSection() {
                 <div className="text-white/80 text-sm mb-2 text-center">Hours</div>
                 <div className="text-center text-2xl font-semibold">
                   Mon–Sat, 10:00–19:00 (IST)
+                </div>
+              </div>
+
+               <div className="px-8 py-10">
+                <div className="text-white/80 text-sm mb-2 text-center">Locations</div>
+                <div className="text-center text-2xl font-semibold">
+                 Delhi · Noida · Gurugram
                 </div>
               </div>
             </div>
