@@ -33,6 +33,27 @@ Premium Annual Support — ₹599/year (7 structured calls, priority follow-ups,
     q: "How do I book?",
     a: "A personalized advisory service to help you choose better loans, insurance, and investments. From quick doubts to a full financial game plan, we provide impartial guidance you can trust.",
   },
+
+  {
+    q: "When will I receive advice?",
+    a: `Quick Advice Call: within 24 hours (or your chosen time)
+Home Visit: within 48–72 hours
+Premium: priority support whenever you need it, plus pre-scheduled sessions`,
+  },
+  {
+    q: "What should I keep handy for the session?",
+    a: "Photo ID, income proofs (salary slips/ITR), existing loan details, policy documents, latest bank statements, and your CIBIL score if available.",
+  },
+  {
+    q: "What languages do you support?",
+    a: "English and Hindi (ask for availability in other languages).",
+  },
+  {
+    q: "Do you execute transactions or sell products?",
+    a: "We provide guidance and comparisons. You make the final decision and complete the purchase with the provider of your choice.",
+  },
+
+
 ];
 
 function FaqItem({ index, q, a, open, onToggle }) {
