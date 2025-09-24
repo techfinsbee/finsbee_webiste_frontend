@@ -1,6 +1,15 @@
 // tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+// /** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./src/app/**/*.{js,ts,jsx,tsx}",   // app router
+    "./src/app/components/**/*.{js,ts,jsx,tsx}", // components
+  ],
+  safelist: [
+    'text-heading-1',
+    'text-primary-500',
+    'font-lato',
+  ],
   theme: {
     extend: {
       colors: {
@@ -23,7 +32,7 @@ module.exports = {
           300: '#ffd97c',
           400: '#ffc73c',
           500: '#e8b537',
-          600: 'e8b537',
+          600: '#e8b537', // ✅ fixed
           700: '#b58d2b',
           800: '#8c6d21',
           900: '#6b5419',
@@ -43,36 +52,34 @@ module.exports = {
       },
       fontSize: {
         // Headings
-        'heading-1': ['64px', {}],  // (H1, bold)
-        'heading-2': ['48px', {}],  // (H2, regular)
-        'heading-3': ['32px', {}],  // (H3, bold)
-        'heading-4': ['32px', {}],  // (H4, regular)
+        'heading-1': ['64px', {}], 
+        'heading-2': ['48px', {}], 
+        'heading-3': ['32px', {}], 
+        'heading-4': ['32px', {}], 
         // Subheadings
-        'subheading-0': ['24px', { lineHeight: '36px' }], // (regular)
-        'subheading-1': ['24px', { lineHeight: '36px' }], // (bold)
-        'subheading-2': ['20px', {}],  // (bold)
-        'subheading-3': ['20px', {}],  // (regular)
+        'subheading-0': ['24px', { lineHeight: '36px' }],
+        'subheading-1': ['24px', { lineHeight: '36px' }],
+        'subheading-2': ['20px', {}],
+        'subheading-3': ['20px', {}],
         // Titles
-        'title-1': ['16px', {}],      // (bold, letter-spacing handled below)
-        'title-2': ['16px', {}],      // (regular)
-        'title-3': ['14px', {}],      // (bold)
-        // Body text
-        'text':      ['14px', {}],    // (regular)
-        'caption':   ['12px', {}],    // (regular)
+        'title-1': ['16px', {}],
+        'title-2': ['16px', {}],
+        'title-3': ['14px', {}],
+        // Body
+        'text':    ['14px', {}],
+        'caption': ['12px', {}],
       },
       letterSpacing: {
-        '05': '0.5px',  // for Title2, Title3, Text, Caption
-        '1':  '1px',    // for Title1
+        '05': '0.5px',
+        '1': '1px',
       },
       lineHeight: {
-        '36px': '36px', // for subheadings
+        '36px': '36px',
       },
       fontFamily: {
-        // Use the CSS variable from next/font (see app/layout.js below)
         'lato': ['var(--font-lato)', 'sans-serif'],
       },
     },
   },
-  // (include your content paths here)
   plugins: [],
 };

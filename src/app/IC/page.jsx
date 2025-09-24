@@ -1,10 +1,11 @@
+import InvestePage from '@/IC'
 import React from 'react'
-import Index from '@/Investment'
+
 
 export default function page() {
   return (
     <div>
-    <Index/>
+        <InvestePage/>
     </div>
   )
 }

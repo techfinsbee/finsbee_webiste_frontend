@@ -1,10 +1,10 @@
 import React from 'react'
-import Index from '@/Investment'
+import InvestePage from '../../Loan_Page'
 
 export default function page() {
   return (
     <div>
-    <Index/>
+        <InvestePage/>
     </div>
   )
 }
