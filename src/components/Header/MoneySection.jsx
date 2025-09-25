@@ -721,243 +721,104 @@
 //   );
 // }
 
-"use client"
-// import React, { useState, useRef, useEffect } from "react";
-// // import { features } from "./Constant";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { CheckCircle } from "lucide-react";
 
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
 
-import React, { useState, useRef, useEffect } from "react";
-import { CheckCircle, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+const moneyIcons = [
+  { src: "/brand_logo/l1.svg" },
+  { src: "/brand_logo/l2.svg" },
+  { src: "/brand_logo/l3.svg" },
+  { src: "/brand_logo/l4.svg" },
+];
 
-const Eligibility = ({ onClose }) => {
-  const eligibilityCriteria = [
-    {
-      title: "For Salaried Individuals",
-      image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
-      criteria: [
-        "Age: 21-58 years",
-        "Minimum monthly income: ₹15,000",
-        "At least 6 months in current job",
-        "Credit Score: 650+",
-      ],
-    },
-    {
-      title: "For Self-Employed Individuals",
-      image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
-      criteria: [
-        "Age: 21-65 years",
-        "Minimum monthly income: ₹20,000",
-        "Business running for 2+ years",
-        "Credit Score: 650+",
-      ],
-    },
-  ];
+const commonTransition = { duration: 0.9, ease: "easeOut" };
 
-  const modalRef = useRef(null);
-
-  // Close on outside click
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [onClose]);
-
+export default function MoneySection() {
   return (
-    <motion.div
-      className="fixed inset-0 bg-black/40 z-50 flex justify-center items-center"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <div className="flex flex-col h-[500px] sm:h-[650px] items-center justify-end relative w-full max-w-[1440px] mx-auto mb-[-200px] sm:mb-[-311.01px] overflow-hidden">
+      {/* Heading */}
       <motion.div
-        ref={modalRef}
-        initial={{ y: 50, opacity: 0, scale: 0.95 }}
-        animate={{ y: 0, opacity: 1, scale: 1 }}
-        exit={{ y: 50, opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="relative w-[90%] max-w-5xl bg-white rounded-2xl shadow-lg p-8"
+        initial={{ opacity: 0, y: 110 }}
+        animate={{ opacity: 1, y: -24 }}
+        transition={commonTransition}
+        style={{ willChange: "transform, opacity" }}
+        className="flex flex-col items-center gap-3.5 relative w-full z-20"
       >
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
-        >
-          <X size={24} />
-        </button>
+        <h1 className="w-full font-extrabold  text-gray-100 text-[100px] sm:text-[120px] md:text-[160px] text-center leading-normal relative tracking-[0]">
+          Finsbee.
+        </h1>
+      </motion.div>
 
-        {/* Header */}
-        <div className="flex flex-col items-center gap-2 text-center mb-10">
-          <p className="text-gray-600 font-bold text-sm tracking-wide uppercase">
-            The Results Speaks for Themselves
-          </p>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-800">
-            Eligibility Criteria
-          </h1>
-        </div>
-
-        {/* Content Cards */}
-        <div className="flex flex-col lg:flex-row items-start gap-0 w-full">
-          {eligibilityCriteria.map((section, index) => (
-            <div
-              key={index}
-              className={`flex-1 bg-white p-6 ${
-                index === 0
-                  ? "lg:border-r border-dashed border-gray-300 lg:rounded-r-none rounded-lg lg:rounded-l-lg"
-                  : "lg:border-l-0 lg:rounded-l-none rounded-lg lg:rounded-r-lg"
-              } ${index > 0 ? "mt-6 lg:mt-0" : ""}`}
+      {/* Money icons */}
+      <div className="flex flex-col w-full max-w-[800px] sm:max-w-[1088px] h-[200px] sm:h-[300px] items-center absolute top-0 left-4 sm:left-[10%] md:left-[212px] z-30 pointer-events-none">
+        {/* Top icons */}
+        <div className="flex w-full max-w-[400px] sm:max-w-[610px] justify-between items-center relative">
+          {moneyIcons.slice(0, 2).map((icon, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0.2, y: 110 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={commonTransition}
+              style={{ willChange: "transform, opacity" }}
+              className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
             >
-              <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
-                {/* Text Content */}
-                <div className="flex flex-col gap-6 flex-1">
-                  <h2 className="text-xl md:text-2xl font-normal text-gray-800">
-                    {section.title}
-                  </h2>
-                  <ul className="flex flex-col gap-4">
-                    {section.criteria.map((criterion, i) => (
-                      <li key={i} className="flex items-center gap-3">
-                        <CheckCircle className="w-6 h-6 text-yellow-400 flex-shrink-0" />
-                        <span className="text-gray-800 text-base">
-                          {criterion}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Image */}
-                <div className="flex items-center justify-center flex-shrink-0">
-                  <img
-                    className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-lg"
-                    alt="Professional illustration"
-                    src={section.image}
-                  />
-                </div>
-              </div>
-            </div>
+              <img
+                src={icon.src}
+                alt={`money-${idx}`}
+                className="relative w-[50px] sm:w-[77px] h-[50px] sm:h-[77px] object-cover"
+              />
+            </motion.div>
           ))}
         </div>
-      </motion.div>
-    </motion.div>
-  );
-};
 
-const App = () => {
-  const [showEligibility, setShowEligibility] = useState(false);
+        {/* Bottom icons */}
+        <div className="flex justify-between w-full items-center relative mt-2">
+          {moneyIcons.slice(2, 4).map((icon, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0.2, y: 110, x: idx === 0 ? 50 : -50 }}
+              animate={{ opacity: 1, y: 0, x: 0 }}
+              transition={commonTransition}
+              style={{ willChange: "transform, opacity" }}
+              className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
+            >
+              <img
+                src={icon.src}
+                alt={`money-bottom-${idx}`}
+                className="relative w-[50px] sm:w-[77px] h-[50px] sm:h-[77px] object-cover"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-  return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <button
-        onClick={() => setShowEligibility(true)}
-        className="px-6 py-3 bg-purple-600 text-white rounded-lg shadow hover:bg-purple-700 transition"
+      {/* Phone image */}
+      <motion.img
+        initial={{ opacity: 0, y: 160, scale: 0.985 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={commonTransition}
+        style={{ willChange: "transform, opacity" }}
+        className="relative w-[800px] sm:w-[1283px] -mt-[70px] sm:-mt-[160px] z-40"
+        alt="Bottom image"
+        src="landing_page/mobile.png"
+      />
+
+      {/* Background arrows */}
+      <motion.div
+        initial={{ opacity: 0, y: 110 }}
+        animate={{ opacity: 0.9, y: 0 }}
+        transition={commonTransition}
+        style={{ willChange: "transform, opacity" }}
+        className="absolute right-12 h-full w-[28%] overflow-hidden pointer-events-none z-10"
       >
-        Show Eligibility
-      </button>
-
-      <AnimatePresence>
-        {showEligibility && (
-          <Eligibility onClose={() => setShowEligibility(false)} />
-        )}
-      </AnimatePresence>
+        <img
+          src="landing_page/Group.svg"
+          alt="arrow-bg"
+          className="absolute right-0 bottom-30 object-cover opacity-90 mix-blend-multiply filter drop-shadow-lg"
+        />
+      </motion.div>
     </div>
   );
-};
-
-
-// ✅ Main Content
-const MainContent = () => {
-  const [showOverlay, setShowOverlay] = useState(false);
-
-  return (
-    <>
-      <main className="flex items-center gap-[120px] px-[136px] py-12 relative w-full">
-        <div className="flex flex-col items-center gap-[50px] flex-1">
-          <div className="flex items-start justify-between w-full">
-            <section className="flex flex-col w-[600px] items-start translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-              <h1 className="font-bold text-[#FFD263] text-3xl sm:text-4xl md:text-6xl text-start leading-normal">
-                Personal Loan
-              </h1>
-              <p className="text-[#FFEEC3] text-[20px]">
-                Get a Personal Loan of up to Rs. 50 Lakhs to pursue your dreams.
-                Quick approval, minimal documentation, and competitive interest
-                rates.
-              </p>
-            </section>
-
-            {/* Right Aside */}
-            <aside className="flex flex-col w-[471px] gap-3.5 py-6 translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]">
-              <div className="flex justify-between w-full">
-                <div className="flex flex-col gap-3.5 flex-1">
-                  {features.map((feature) => (
-                    <div
-                      key={feature}
-                      className="flex items-center gap-3 text-white"
-                    >
-                      <img
-                        className="w-6 h-6"
-                        alt="tick"
-                        src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-tick-square.svg"
-                      />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Right Buttons */}
-                <div className="flex flex-col justify-between flex-1">
-                  <div className="flex flex-col gap-4 pb-4">
-                    <button
-                      onClick={() => setShowOverlay(true)}
-                      className="flex flex-col h-6 px-2 py-1 w-full bg-transparent"
-                    >
-                      <div className="inline-flex items-center justify-end gap-3 border-b-2 border-[#ffc73c]">
-                        <span className="text-[#FFD263] font-bold">
-                          Check Eligibility Criteria
-                        </span>
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={() => setShowOverlay(true)}
-                      className="flex flex-col h-6 px-2 py-1 w-full bg-transparent"
-                    >
-                      <div className="inline-flex items-center justify-end gap-3 border-b-2 border-[#ffc73c]">
-                        <span className="text-[#FFD263] font-bold">
-                          Check Document Required
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-
-                  {/* Calculate EMI Button */}
-                  <div className="flex items-center justify-around">
-                    <button className="inline-flex items-center bg-[#FFD263] px-7 py-4 rounded-[28px] border border-[#ffe5a5]">
-                      <span className="font-bold">Calculate EMI</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </main>
-
-      {/* Overlay */}
-      <AnimatePresence>
-        {showOverlay && (
-          <Overlay onClose={() => setShowOverlay(false)}>
-            <Eligibility />
-          </Overlay>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
-
-export default MainContent;
+}

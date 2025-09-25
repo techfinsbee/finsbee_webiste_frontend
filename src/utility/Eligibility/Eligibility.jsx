@@ -1,7 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import React from "react";
 
-const App = () => {
+const Eligibility = () => {
   const eligibilityCriteria = [
     {
       title: "For Salaried Individuals",
@@ -88,4 +88,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Eligibility;

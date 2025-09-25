@@ -6,7 +6,7 @@ export const navigationItems = [
 
 export const features = [
   "Easy Digital Process",
-  "Minimum Salary ₹15K",
+  // "Minimum Salary ₹15K",
   "Instant Approval",
   "Paper Less",
 ];

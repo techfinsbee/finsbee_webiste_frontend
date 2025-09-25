@@ -25,16 +25,16 @@ const MainContent = () => {
     return () => clearInterval(intervalRef.current);
   }, [numbers.length]);
   return (
-    <main className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-[120px] p-6 sm:p-8 md:p-12 relative w-full max-w-[1440px] mx-auto">
+    <main className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-[120px] p-6 sm:p-8 md:p-12 relative w-full  mx-auto">
       <div className="flex flex-col w-full max-w-[1461px] items-center gap-6   relative">
         <div className="flex flex-col items-center gap-3 sm:gap-5 relative w-full">
-          <div className="flex w-full max-w-[500px] sm:max-w-[618px] justify-center items-center relative">
+          <div className="flex w-full max-w-[500px] sm:max-w-full justify-center items-center relative">
             <div className="flex flex-col w-8 sm:w-11 items-center justify-center gap-2.5 relative">
               <h1 className="relative w-full -mt-px font-bold text-gray-100 text-4xl sm:text-5xl md:text-6xl text-center tracking-[0px] leading-normal">
                 {/* {numbers[index]} */}
               </h1>
             </div>
-            <h1 className="w-[300px] sm:w-[370px] -mt-px font-bold text-gray-100 text-4xl sm:text-5xl md:text-6xl text-center leading-normal relative tracking-[0px]">
+            <h1 className="w-full  -mt-px font-bold text-gray-100 text-4xl sm:text-5xl md:text-6xl text-center leading-normal relative tracking-[0px]">
              Navigate Your Finances with Confidence
             </h1>
           </div>

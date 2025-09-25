@@ -1,90 +1,290 @@
-import React from "react";
-import { features } from "./Constant";
+"use client";
+import React, { useState } from "react";
+import { features } from "./Constant"; // Ensure this file exists and exports an array
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle } from "lucide-react";
+
+// Reusable button component for MainContent
+const ActionButton = ({ onClick, children, iconSrc }) => (
+  <button
+    onClick={onClick}
+    className="flex flex-col h-6 items-start gap-2.5 px-2 py-1 relative self-stretch w-full bg-transparent hover:bg-transparent rounded-none p-0 transition-colors"
+  >
+    <div className="inline-flex items-center justify-end gap-3 relative flex-[0_0_auto] mb-[-1.00px]">
+      <div className="inline-flex items-center justify-end gap-3 relative border-b-2 border-[#ffc73c]">
+        <span className="relative text-yellow-400 font-bold">{children}</span>
+      </div>
+      <img
+        className="absolute w-3 h-3 top-0.5 -left-5"
+        alt="Arrow"
+        src={iconSrc}
+      />
+    </div>
+  </button>
+);
+
+const Eligibility = ({ onClose }) => {
+  const eligibilityCriteria = [
+    {
+      title: "",
+      image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
+      criteria: [
+        "Age: 21-70 years",
+        "Mutual fund investment: Minimum ₹1 lakhs market value",
+      ],
+    },
+    {
+      title: "",
+      image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+      criteria: [
+        "Investment vintage: Minimum 6 months holding period",
+        "MF types: Equity, debt, hybrid, ETFs from approved AMCs",
+      ],
+    },
+  ];
+
+  return (
+    <motion.div
+      initial={{ x: "-100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100%" }}
+      transition={{ type: "tween", duration: 0.5 }}
+      className="fixed top-0 left-0 w-full h-full bg-opacity-95 z-50 flex items-center justify-center"
+    >
+      <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl"
+          aria-label="Close eligibility modal"
+        >
+          ✕
+        </button>
+        <div className="h-full">
+          <section className="flex flex-col items-center gap-12 px-6 md:px-12 py-16">
+            <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
+              <p className="text-gray-600 font-bold text-sm tracking-wide uppercase">
+                The Results Speak for Themselves
+              </p>
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-800">
+                Eligibility Criteria
+              </h1>
+            </div>
+            <div className="flex flex-col lg:flex-row items-start gap-6 w-full max-w-6xl">
+              {eligibilityCriteria.map((section) => (
+                <div
+                  key={section.title}
+                  className="flex-1 bg-white p-6 rounded-lg lg:rounded-none lg:first:rounded-l-lg lg:last:rounded-r-lg lg:[&:not(:first-child)]:border-l lg:border-dashed lg:border-gray-300"
+                >
+                  <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
+                    <div className="flex flex-col gap-6 flex-1">
+                      <h2 className="text-xl md:text-2xl font-normal text-gray-800">
+                        {section.title}
+                      </h2>
+                      <ul className="flex flex-col gap-4">
+                        {section.criteria.map((criterion, criterionIndex) => (
+                          <li
+                            key={criterionIndex}
+                            className="flex items-center gap-3"
+                          >
+                            <CheckCircle className="w-6 h-6 text-gray-800 flex-shrink-0" />
+                            <span className="text-gray-800 text-base">
+                              {criterion}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex items-center justify-center flex-shrink-0">
+                      <img
+                        className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-lg"
+                        alt={`Illustration for ${section.title}`}
+                        src={section.image}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const DocumentRequired = ({ onClose }) => {
+  // const identityProof = [
+  //   "Permanent Account Number (PAN) Card",
+  //   "Aadhaar Card",
+  //   "Passport-Size Photograph",
+  // ];
+
+  const documents1 = {
+    "": ["KYC documents (PAN, Aadhaar, address proof)",
+      "Latest mutual fund statements",
+      "Bank statements (last 3 months)"
+    ],
+    // "Address Proof": ["Aadhaar Card"],
+    // "Income Proof": [
+    //   "Salary Slips (Last 3 to 6 Months)",
+    //   "Bank Statements (Last 3 to 6 Months)",
+    //   "Employment Proof",
+    // ],
+  };
+
+  // const documents2 = {
+  //   "Identity Proof": [''],
+  //   "Business Proof": [
+  //     "Business registration certificate",
+  //     "Shop and Establishment License",
+  //     "Udyam certificate",
+  //   ],
+  //   "Income Proof": [
+  //     "Latest Income Tax Returns (ITR) for the last 2-3 years",
+  //     "Profit & Loss Statement or Balance Sheet",
+  //     "GST Returns (if registered under GST)",
+  //     "Bank Statements: Last 6 months",
+  //   ],
+  // };
+
+  const DocumentSection = ({ title, categories }) => (
+    <div>
+      <p className="text-gray-600 font-bold text-sm underline py-2 tracking-wide uppercase text-center">
+        {title}
+      </p>
+      <div className="flex flex-col lg:flex-row items-start gap-6 w-full max-w-6xl">
+        {Object.entries(categories).map(([category, items], index) => (
+          <div
+            key={category}
+            className={`flex-1 p-6 ${index > 0 ? "lg:border-l border-dashed border-gray-300" : ""}`}
+          >
+            <h2 className="text-xl font-normal text-gray-800 mb-6">{category}</h2>
+            <ul className="flex flex-col gap-4">
+              {items.map((item, itemIndex) => item && (
+                <li key={itemIndex} className="flex items-center gap-3">
+                  <span className="w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center">
+                    ✔
+                  </span>
+                  <span className="text-base text-gray-800">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <motion.div
+      initial={{ x: "-100%" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100%" }}
+      transition={{ type: "tween", duration: 0.5 }}
+      className="fixed top-0 left-0 w-full h-full  bg-opacity-95 z-50 flex items-center justify-center"
+    >
+      <div className="bg-white text-gray-800 py-10 rounded-xl shadow-xl max-w-6xl w-full relative">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl"
+          aria-label="Close document modal"
+        >
+          ✕
+        </button>
+        <div className="h-full">
+          <section className="flex flex-col items-center px-6 md:px-12 py-2">
+            <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
+              <h1 className="text-4xl font-bold text-gray-800">Document Required</h1>
+            </div>
+            <DocumentSection title="" categories={documents1} />
+            {/* <DocumentSection title="For Self-Employed Individuals" categories={documents2} /> */}
+          </section>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const MainContent = () => {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const [overlayTitle, setOverlayTitle] = useState("");
+
+  const handleOpen = (title) => {
+    if (["Eligibility Criteria", "Document Required"].includes(title)) {
+      setOverlayTitle(title);
+      setShowOverlay(true);
+    }
+  };
+
   return (
-    <main className="flex items-center gap-[120px] px-[136px] py-12 relative self-stretch w-full flex-[0_0_auto]">
-      <div className="flex flex-col items-center gap-[50px] relative flex-1 grow">
-        <div className="flex items-start justify-between relative self-stretch w-full flex-[0_0_auto]">
-          <section className="flex flex-col w-[600px] items-start  relative self-stretch translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
-            <h1 className="w-full font-bold text-[#FFD263] text-3xl sm:text-4xl md:text-6xl text-start leading-normal relative tracking-[0px]">
-              Loan Against Mutual Funds
-            </h1>
-            <div>
-            {/* <h1 className="w-full  font-bold text-[#FFD263] text-3xl sm:text-4xl md:text-6xl text-start leading-normal relative tracking-[0px]">
-              loan for you
-            </h1> */}
-            </div>
-            <p className="self-stretch text-[#FFEEC3]  text-[20px] relative ">
-             Get quick loans at low interest rates by using your mutual fund investments as security. No need to sell or withdraw your funds early.
-            </p>
-          </section>
-          <aside className="flex flex-col w-[471px] items-start gap-3.5 px-0 py-6 relative self-stretch translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]">
-            <div className="flex items-start justify-between relative flex-1 self-stretch w-full grow">
-              <div className="flex flex-col items-start gap-3.5 relative flex-1 self-stretch grow">
-                {features.map((feature) => (
-                  <div
-                    key={feature}
-                    className="flex items-center gap-3 font-extralight text-white pl-0 pr-6 py-0 relative self-stretch w-full flex-[0_0_auto]"
-                  >
-                    <img
-                      className="relative w-6 h-6"
-                      alt="Vuesax broken tick"
-                      src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-tick-square.svg"
-                    />
-                    <span className="relative flex-1 font-regular-text font-[number:var(--regular-text-font-weight)] text-primary-light text-[length:var(--regular-text-font-size)] tracking-[var(--regular-text-letter-spacing)] leading-[var(--regular-text-line-height)] [font-style:var(--regular-text-font-style)]">
-                      {feature}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col items-start justify-between relative flex-1 self-stretch grow">
-                <div className="flex flex-col items-start gap-4 pt-0 pb-4 px-0 relative flex-1 self-stretch w-full grow">
-                  <button className="flex flex-col h-6 items-start gap-2.5 px-2 py-1 relative self-stretch w-full bg-transparent hover:bg-transparent rounded-none p-0 transition-colors">
-                    <div className="inline-flex items-center justify-end gap-3 relative flex-[0_0_auto] mb-[-1.00px]">
-                      <div className="inline-flex items-center justify-end gap-3 relative flex-[0_0_auto] mt-[-2.00px] mb-[-2.00px] ml-[-2.00px] mr-[-2.00px] border-b-2 [border-bottom-style:solid] border-[#ffc73c]">
-                        <span className="relative text-[#FFD263]  w-fit font-bold-title-3 font-[number:var(--bold-title-3-font-weight)] text-foundationsecondarysecondary-500 text-[length:var(--bold-title-3-font-size)] tracking-[var(--bold-title-3-letter-spacing)] leading-[var(--bold-title-3-line-height)] [font-style:var(--bold-title-3-font-style)]">
-                          Check Eligibility Criteria
-                        </span>
-                      </div>
+    <>
+      <main className="flex flex-col lg:flex-row items-center gap-8 px-4 md:px-12 lg:px-32 py-12 relative w-full">
+        <div className="flex flex-col items-center gap-12 relative flex-1">
+          <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
+            <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+              <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
+               Loan Against Mutual Funds
+              </h1>
+              <p className="text-[#FFEEC3] text-lg md:text-xl">
+                Get quick loans at low interest rates by using your mutual fund investments as security. No need to sell or withdraw your funds early.
+              </p>
+            </section>
+
+            <aside className="flex flex-col w-full lg:w-[471px] items-start gap-3.5 py-6 relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]">
+              <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
+                <div className="flex flex-col items-start gap-3.5 relative flex-1">
+                  {features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 font-extralight text-white py-0 relative w-full"
+                    >
                       <img
-                        className="absolute w-3 h-3 top-0.5 -left-5"
-                        alt="Vuesax broken arrow"
-                        src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
+                        className="w-6 h-6"
+                        alt="Tick icon"
+                        src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-tick-square.svg"
                       />
+                      <span className="flex-1 text-[#FFEEC3]">{feature}</span>
                     </div>
-                  </button>
-                  <button className="flex flex-col h-6 items-start gap-2.5 px-2 py-1 relative self-stretch w-full bg-transparent hover:bg-transparent rounded-none p-0 transition-colors">
-                    <div className="inline-flex items-center justify-end gap-3 relative flex-[0_0_auto] mb-[-1.00px]">
-                      <div className="inline-flex items-center justify-end gap-3 relative flex-[0_0_auto] mt-[-2.00px] mb-[-2.00px] ml-[-2.00px] mr-[-2.00px] border-b-2 [border-bottom-style:solid] border-[#ffc73c]">
-                        <span className="relative w-fit text-[#FFD263]  font-bold-title-3 font-[number:var(--bold-title-3-font-weight)] text-foundationsecondarysecondary-500 text-[length:var(--bold-title-3-font-size)] tracking-[var(--bold-title-3-letter-spacing)] leading-[var(--bold-title-3-line-height)] [font-style:var(--bold-title-3-font-style)]">
-                          Check Document Required
-                        </span>
-                      </div>
-                      <img
-                        className="absolute w-3 h-3 top-0.5 -left-5"
-                        alt="Vuesax broken arrow"
-                        src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
-                      />
-                    </div>
-                  </button>
+                  ))}
                 </div>
-                <div className="flex items-center justify-around  gap-3.5 relative self-stretch w-full flex-[0_0_auto]">
-                  <div className="flex items-center gap-2.5 relative flex-1 self-stretch grow">
-                    <button className="inline-flex items-center bg-[#FFD263] justify-center gap-2.5 px-7 py-4 relative flex-[0_0_auto] mt-[-1.00px] mb-[-1.00px] ml-[-1.00px] bg-foundationsecondarysecondary-400 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-foundationsecondarysecondary-500 h-auto transition-colors">
-                      <span className="relative w-fit   font-bold-title-1 font-[number:var(--bold-title-1-font-weight)] text-foundationtertiarytertiary-500 text-[length:var(--bold-title-1-font-size)] tracking-[var(--bold-title-1-letter-spacing)] leading-[var(--bold-title-1-line-height)] whitespace-nowrap [font-style:var(--bold-title-1-font-style)]">
-                        Calculate EMI
-                      </span>
+
+                <div className="flex flex-col items-start justify-between relative flex-1">
+                  <div className="flex flex-col items-start gap-4 py-4 relative w-full">
+                    <ActionButton
+                      onClick={() => handleOpen("Eligibility Criteria")}
+                      iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
+                    >
+                      Check Eligibility Criteria
+                    </ActionButton>
+                    <ActionButton
+                      onClick={() => handleOpen("Document Required")}
+                      iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
+                    >
+                      Check Document Required
+                    </ActionButton>
+                  </div>
+
+                  <div className="flex items-center justify-around gap-3.5 relative w-full">
+                    <button className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
+                      <span className="font-bold text-gray-800">Calculate EMI</span>
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
-          </aside>
+            </aside>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+
+      <AnimatePresence>
+        {showOverlay && overlayTitle === "Eligibility Criteria" && (
+          <Eligibility onClose={() => setShowOverlay(false)} />
+        )}
+        {showOverlay && overlayTitle === "Document Required" && (
+          <DocumentRequired onClose={() => setShowOverlay(false)} />
+        )}
+      </AnimatePresence>
+    </>
   );
 };
-
 export default MainContent;

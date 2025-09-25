@@ -17,7 +17,7 @@ export default function () {
   return (
     <div>
       <TopSlide/>
-      <MobileBox/>
+      {/* <MobileBox/> */}
       <div>
         <Timeline />
       </div>
