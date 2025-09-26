@@ -34,11 +34,11 @@ const MainContent = () => {
                 {/* {numbers[index]} */}
               </h1>
             </div>
-            <h1 className="w-full  -mt-px font-bold text-gray-100 text-4xl sm:text-5xl md:text-6xl text-center leading-normal relative tracking-[0px]">
+            <h1 className="w-full  -mt-px font-bold text-gray-100 text-4xl sm:text-5xl text-center leading-normal relative tracking-[0px]">
              Navigate Your Finances with Confidence
             </h1>
           </div>
-          <h2 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-center leading-normal relative tracking-[0px]">
+          <h2 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl  text-center leading-normal relative tracking-[0px]">
             Smart Loans, Reliable Advice, and Safe Investment Opportunities
           </h2>
         </div>

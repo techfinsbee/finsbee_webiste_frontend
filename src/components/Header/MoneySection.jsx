@@ -722,6 +722,210 @@
 // }
 
 
+// "use client";
+// import React from "react";
+// import { motion } from "framer-motion";
+
+// const moneyIcons = [
+//   { src: "/brand_logo/l1.svg" },
+//   { src: "/brand_logo/l2.svg" },
+//   { src: "/brand_logo/l3.svg" },
+//   { src: "/brand_logo/l4.svg" },
+// ];
+
+// const commonTransition = { duration: 0.9, ease: "easeOut" };
+
+// export default function MoneySection() {
+//   return (
+//     <div className="flex flex-col h-[500px] sm:h-[650px] items-center justify-end relative w-full max-w-[1440px] mx-auto mb-[-200px] sm:mb-[-311.01px] overflow-hidden">
+//       {/* Heading */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 110 }}
+//         animate={{ opacity: 1, y: -24 }}
+//         transition={commonTransition}
+//         style={{ willChange: "transform, opacity" }}
+//         className="flex flex-col items-center gap-3.5 relative w-full z-20"
+//       >
+//         <h1 className="w-full font-extrabold  text-gray-100 text-[100px] sm:text-[120px] md:text-[160px] text-center leading-normal relative tracking-[0]">
+//           Finsbee.
+//         </h1>
+//       </motion.div>
+
+//       {/* Money icons */}
+//       <div className="flex flex-col w-full max-w-[800px] sm:max-w-[1088px] h-[200px] sm:h-[300px] items-center absolute top-0 left-4 sm:left-[10%] md:left-[212px] z-30 pointer-events-none">
+//         {/* Top icons */}
+//         <div className="flex w-full max-w-[400px] sm:max-w-[610px] justify-between items-center relative">
+//           {moneyIcons.slice(0, 2).map((icon, idx) => (
+//             <motion.div
+//               key={idx}
+//               initial={{ opacity: 0.2, y: 110 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={commonTransition}
+//               style={{ willChange: "transform, opacity" }}
+//               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
+//             >
+//               <img
+//                 src={icon.src}
+//                 alt={`money-${idx}`}
+//                 className="relative w-[50px] sm:w-[77px] h-[50px] sm:h-[77px] object-cover"
+//               />
+//             </motion.div>
+//           ))}
+//         </div>
+
+//         {/* Bottom icons */}
+//         <div className="flex justify-between w-full items-center relative mt-2">
+//           {moneyIcons.slice(2, 4).map((icon, idx) => (
+//             <motion.div
+//               key={idx}
+//               initial={{ opacity: 0.2, y: 110, x: idx === 0 ? 50 : -50 }}
+//               animate={{ opacity: 1, y: 0, x: 0 }}
+//               transition={commonTransition}
+//               style={{ willChange: "transform, opacity" }}
+//               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
+//             >
+//               <img
+//                 src={icon.src}
+//                 alt={`money-bottom-${idx}`}
+//                 className="relative w-[50px] sm:w-[77px] h-[50px] sm:h-[77px] object-cover"
+//               />
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Phone image */}
+//       <motion.img
+//         initial={{ opacity: 0, y: 160, scale: 0.985 }}
+//         animate={{ opacity: 1, y: 0, scale: 1 }}
+//         transition={commonTransition}
+//         style={{ willChange: "transform, opacity" }}
+//         className="relative w-[800px] sm:w-[1283px] -mt-[70px] sm:-mt-[160px] z-40"
+//         alt="Bottom image"
+//         src="landing_page/mobile.png"
+//       />
+
+//       {/* Background arrows */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 110 }}
+//         animate={{ opacity: 0.9, y: 0 }}
+//         transition={commonTransition}
+//         style={{ willChange: "transform, opacity" }}
+//         className="absolute right-12 h-full w-[28%] overflow-hidden pointer-events-none z-10"
+//       >
+//         <img
+//           src="landing_page/Group.svg"
+//           alt="arrow-bg"
+//           className="absolute right-0 bottom-30 object-cover opacity-90 mix-blend-multiply filter drop-shadow-lg"
+//         />
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+
+// "use client";
+// import React from "react";
+// import { motion } from "framer-motion";
+
+// const moneyIcons = [
+//   { src: "/brand_logo/l1.svg" },
+//   { src: "/brand_logo/l2.svg" },
+//   { src: "/brand_logo/l3.svg" },
+//   { src: "/brand_logo/l4.svg" },
+// ];
+
+// const commonTransition = { duration: 0.9, ease: "easeOut" };
+
+// export default function MoneySection() {
+//   return (
+//     <div className="flex flex-col h-[500px] sm:h-[650px] items-center justify-end relative w-full max-w-[1440px] mx-auto mb-[-200px] sm:mb-[-311.01px] overflow-hidden">
+//       {/* Heading */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 110 }}
+//         animate={{ opacity: 1, y: -24 }}
+//         transition={commonTransition}
+//         style={{ willChange: "transform, opacity" }}
+//         className="flex flex-col items-center gap-3.5 relative w-full z-20"
+//       >
+//         <h1 className="w-full font-extrabold text-gray-100 text-[64px] sm:text-[100px] md:text-[160px] text-center leading-normal relative tracking-[0]">
+//           Finsbee.
+//         </h1>
+//       </motion.div>
+
+//       {/* Money icons */}
+//       <div className="flex flex-col w-full max-w-[800px] sm:max-w-[1088px] h-[200px] sm:h-[300px] items-center absolute top-0 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+//         {/* Top icons */}
+//         <div className="flex w-full max-w-[400px] sm:max-w-[610px] justify-between items-center relative">
+//           {moneyIcons.slice(0, 2).map((icon, idx) => (
+//             <motion.div
+//               key={idx}
+//               initial={{ opacity: 0.2, y: 110 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={commonTransition}
+//               style={{ willChange: "transform, opacity" }}
+//               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
+//             >
+//               <img
+//                 src={icon.src}
+//                 alt={`money-${idx}`}
+//                 className="relative w-[50px] sm:w-[77px] h-[50px] sm:h-[77px] object-cover"
+//               />
+//             </motion.div>
+//           ))}
+//         </div>
+
+//         {/* Bottom icons */}
+//         <div className="flex justify-between w-full items-center relative mt-2">
+//           {moneyIcons.slice(2, 4).map((icon, idx) => (
+//             <motion.div
+//               key={idx}
+//               initial={{ opacity: 0.2, y: 110, x: idx === 0 ? 50 : -50 }}
+//               animate={{ opacity: 1, y: 0, x: 0 }}
+//               transition={commonTransition}
+//               style={{ willChange: "transform, opacity" }}
+//               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
+//             >
+//               <img
+//                 src={icon.src}
+//                 alt={`money-bottom-${idx}`}
+//                 className="relative w-[50px] sm:w-[77px] h-[50px] sm:h-[77px] object-cover"
+//               />
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* Phone image */}
+//       <motion.img
+//         initial={{ opacity: 0, y: 160, scale: 0.985 }}
+//         animate={{ opacity: 1, y: 0, scale: 1 }}
+//         transition={commonTransition}
+//         style={{ willChange: "transform, opacity" }}
+//         className="relative w-[90%] sm:w-[80%] md:w-[1283px] max-w-[1283px] -mt-[40px] sm:-mt-[100px] z-40"
+//         alt="Bottom image"
+//         src="landing_page/mobile.png"
+//       />
+
+//       {/* Background arrows */}
+//       <motion.div
+//         initial={{ opacity: 0, y: 110 }}
+//         animate={{ opacity: 0.9, y: 0 }}
+//         transition={commonTransition}
+//         style={{ willChange: "transform, opacity" }}
+//         className="absolute right-4 sm:right-12 h-full w-[40%] sm:w-[28%] overflow-hidden pointer-events-none z-10"
+//       >
+//         <img
+//           src="landing_page/Group.svg"
+//           alt="arrow-bg"
+//           className="absolute right-0 bottom-0 object-cover opacity-90 mix-blend-multiply filter drop-shadow-lg"
+//         />
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
@@ -735,33 +939,32 @@ const moneyIcons = [
 
 const commonTransition = { duration: 0.9, ease: "easeOut" };
 
-export default function MoneySection() {
+export default function MoneySection({ animate = false }) {
   return (
     <div className="flex flex-col h-[500px] sm:h-[650px] items-center justify-end relative w-full max-w-[1440px] mx-auto mb-[-200px] sm:mb-[-311.01px] overflow-hidden">
       {/* Heading */}
       <motion.div
-        initial={{ opacity: 0, y: 110 }}
-        animate={{ opacity: 1, y: -24 }}
+        initial={{ opacity: 0, y:  160 }}
+        animate={animate ? { opacity: 1, y: 30 } : {}}
         transition={commonTransition}
         style={{ willChange: "transform, opacity" }}
         className="flex flex-col items-center gap-3.5 relative w-full z-20"
       >
-        <h1 className="w-full font-extrabold  text-gray-100 text-[100px] sm:text-[120px] md:text-[160px] text-center leading-normal relative tracking-[0]">
+        <h1 className="w-full font-extrabold text-gray-100 text-[64px] sm:text-[100px] md:text-[160px] text-center leading-normal relative tracking-[0]">
           Finsbee.
         </h1>
       </motion.div>
 
       {/* Money icons */}
-      <div className="flex flex-col w-full max-w-[800px] sm:max-w-[1088px] h-[200px] sm:h-[300px] items-center absolute top-0 left-4 sm:left-[10%] md:left-[212px] z-30 pointer-events-none">
+      <div className="flex flex-col w-full max-w-[800px] sm:max-w-[1088px] h-[200px] sm:h-[300px] items-center absolute top-0 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
         {/* Top icons */}
         <div className="flex w-full max-w-[400px] sm:max-w-[610px] justify-between items-center relative">
           {moneyIcons.slice(0, 2).map((icon, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0.2, y: 110 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={animate ? { opacity: 1, y: 0 } : {}}
               transition={commonTransition}
-              style={{ willChange: "transform, opacity" }}
               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
             >
               <img
@@ -779,9 +982,8 @@ export default function MoneySection() {
             <motion.div
               key={idx}
               initial={{ opacity: 0.2, y: 110, x: idx === 0 ? 50 : -50 }}
-              animate={{ opacity: 1, y: 0, x: 0 }}
+              animate={animate ? { opacity: 1, y: 0, x: 0 } : {}}
               transition={commonTransition}
-              style={{ willChange: "transform, opacity" }}
               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"
             >
               <img
@@ -796,29 +998,13 @@ export default function MoneySection() {
 
       {/* Phone image */}
       <motion.img
-        initial={{ opacity: 0, y: 160, scale: 0.985 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 160, scale: 0.8 }}
+        animate={animate ? { opacity: 1, y: 0, scale: 1 } : {}}
         transition={commonTransition}
-        style={{ willChange: "transform, opacity" }}
-        className="relative w-[800px] sm:w-[1283px] -mt-[70px] sm:-mt-[160px] z-40"
+        className="relative w-[90%] sm:w-[80%] md:w-[1283px] max-w-[1283px] -mt-[40px] sm:-mt-[100px] z-40"
         alt="Bottom image"
         src="landing_page/mobile.png"
       />
-
-      {/* Background arrows */}
-      <motion.div
-        initial={{ opacity: 0, y: 110 }}
-        animate={{ opacity: 0.9, y: 0 }}
-        transition={commonTransition}
-        style={{ willChange: "transform, opacity" }}
-        className="absolute right-12 h-full w-[28%] overflow-hidden pointer-events-none z-10"
-      >
-        <img
-          src="landing_page/Group.svg"
-          alt="arrow-bg"
-          className="absolute right-0 bottom-30 object-cover opacity-90 mix-blend-multiply filter drop-shadow-lg"
-        />
-      </motion.div>
     </div>
   );
 }

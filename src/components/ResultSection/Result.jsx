@@ -31,7 +31,7 @@ export default function ResultsComponent() {
   ];
 
   return (
-    <section className="flex flex-col items-center px-4 md:px-[136px] py-24 relative rounded-2xl bg-white">
+    <section className="flex flex-col items-center px-4  py-24 relative rounded-2xl bg-white">
       {/* ---------- Header ---------- */}
       <motion.header
         className="flex flex-col items-start gap-2.5 px-4 py-0 w-full max-w-[456px] "

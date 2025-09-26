@@ -177,7 +177,7 @@ const loanCardVariants = {
     hidden: {
         x: 299, // center of phone
         y: 50,
-        opacity: 0.2, // little visibility
+        opacity: 0, // little visibility
     },
     visible: {
         x: 0,
@@ -194,7 +194,7 @@ const loanCardVariants = {
     inactive: {
         x: 299, // back to center
         y: 50,
-        opacity: 0.2, // little visibility again
+        opacity: 0, // little visibility again
         transition: {
             duration: 0.7,
             ease: "easeOut",
@@ -256,9 +256,9 @@ const leftColumnVariants = {
 
 
     return (
-        <div className="min-h-screen w-[70rem] relative overflow-hidden">
+        <div className="min-h-screen px-[10rem] w-[70rem] relative ">
             <div className="relative w-full h-[723px] pt-8">
-                <div className="relative h-[723px]">
+                <div className="relative h-[723px] w-[74rem]  overflow-hidden">
                     {/* Background Circle */}
                     <div className="absolute top-[187px] left-[140px] flex items-center justify-center p-2.5">
                         <div className="w-[840px] h-[840px] bg-purple-50 rounded-full" />
