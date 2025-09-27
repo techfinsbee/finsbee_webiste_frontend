@@ -8,6 +8,8 @@ import Frame from '@/components/footer/Fram'
 import Transparent from './Transparaent text/Transparent'
 import AnimatedTextSection from './Transparaent text/Transparent'
 import Section3 from './Section3/Section3'
+import ProductsSection from './ProductSection/ProductsSection'
+import Section5 from './Section8/Section8'
 
 export default function index() {
   return (
@@ -21,6 +23,8 @@ export default function index() {
         <WhyInvest/> 
          <HowItWork/>
          <WhyChooseFinsbee/>
+         <ProductsSection/>
+        <Section5/>
         <Frame/>  
         </div>
   )
