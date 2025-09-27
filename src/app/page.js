@@ -15,7 +15,7 @@ import ResultsComponent from "@/components/ResultSection/Result";
 import { MobileBox } from "@/components/HowToUse/mobileAnimation";
 // import TopSlide from './components/FistSections/TopSLide';
 
-export default function () {
+const HomePage =() => {
   return (
     <div>
       <TopSlide />
@@ -36,3 +36,4 @@ export default function () {
     </div>
   );
 }
+export default HomePage;
