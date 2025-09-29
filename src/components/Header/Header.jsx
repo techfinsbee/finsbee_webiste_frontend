@@ -92,7 +92,7 @@ import Link from "next/link";
 const navigationItems = [
   { label: "Loan", href: "/loan", active: true },
   { label: "Insurance", href: "/insurance", active: false },
-  { label: "Investment", href: "/Investment", active: false },
+  { label: "Investment", href: "/investment", active: false },
 ];
 
 const Header = () => {
