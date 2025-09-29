@@ -25,7 +25,7 @@ export const Navbar = () => {
       ],
     },
     { label: "Insurance", path: "/insurance" },
-    { label: "Investment", path: "/Investment" },
+    { label: "Investment", path: "/investment" },
   ];
 
  const handleNavigation = (path) => {
