@@ -119,8 +119,8 @@ const TopSlide = () => {
           />
 
           {/* Header + Content */}
-          <div className="flex flex-col items-start gap-[114px] relative self-stretch w-full flex-[0_0_auto]">
-            <Header />
+          <div className="flex flex-col items-start gap-[114px] pt-[185px] relative self-stretch w-full flex-[0_0_auto]">
+            {/* <Header /> */}
             <MainContent />
           </div>
 

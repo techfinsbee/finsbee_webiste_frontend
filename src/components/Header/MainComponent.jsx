@@ -25,7 +25,7 @@ const MainContent = () => {
     return () => clearInterval(intervalRef.current);
   }, [numbers.length]);
   return (
-    <main className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-[120px] p-6 sm:p-8 md:p-12 relative w-full  mx-auto">
+    <main className="flex items-center justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-[120px]  p-6 sm:p-8 md:p-12 relative w-full  mx-auto">
       <div className="flex flex-col w-full max-w-[1461px] items-center gap-6   relative">
         <div className="flex flex-col items-center gap-3 sm:gap-5 relative w-full">
           <div className="flex w-full max-w-[500px] sm:max-w-full justify-center items-center relative">

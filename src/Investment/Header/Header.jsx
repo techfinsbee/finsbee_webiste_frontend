@@ -16,7 +16,7 @@ export const Header = () => {
                 backgroundImage: `radial-gradient(50% 50% at 50% 100%, rgba(33,33,33,0.72) 32%, rgba(33,33,33,0.9) 100%), url(https://c.animaapp.com/mfrfs2g1ZfgUJE/img/1-section.png)`,
             }}
         >
-            <header className="flex items-start justify-around pl-0 pr-[280px] py-0 relative w-full">
+            {/* <header className="flex items-start justify-around pl-0 pr-[280px] py-0 relative w-full">
                 <div className="flex flex-col items-start gap-2.5 pt-6 pb-2.5 px-24 relative flex-1">
                     <nav className="flex items-center justify-between pl-12 pr-40 py-2 relative w-full rounded-full">
                         <div className="flex flex-col w-[155.83px] items-start gap-2.5 relative -translate-y-4 animate-fade-in opacity-0">
@@ -85,9 +85,9 @@ export const Header = () => {
                         </div>
                     </div>
                 </div>
-            </header>
+            </header> */}
 
-            <main className="flex items-center px-0 py-8 relative w-full">
+            <main className="flex items-center px-0 py-0 mt-56 relative w-full">
                 <div className="flex flex-col items-start gap-6 pl-[136px] pr-0 py-12 relative flex-1">
                     <div className="flex items-center justify-center relative w-full">
                         <h2

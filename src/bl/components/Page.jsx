@@ -1,23 +1,11 @@
 "use client";
-// import { useState } from "react";
+
 import { useState, useEffect, useRef } from "react";
 import Tabs from "./Tabs";
 import WhyFinsbeeContent from "./WhyFinsbee";
 import FaqContent from "./FaqContent";
 import Sidebar from "./Sidebar";
-// import "../styles/index.css";
-// Unsecured Funding Options
-// Get approved without pledging physical collateral based on business strength
-// Fully Digital Process
-// Complete the application to disbursal journey entirely online
-// End-Use Flexibility
-// Use funds for expansion, equipment, inventory, working capital or refinancing
-// Minimal Documentation
-// Streamlined paperwork requirements focused on essential business documents
-// Competitive Interest Rates
-// Attractive rates based on business vintage, turnover and credit history
-// Dedicated Relationship Manager
-// Personalized support throughout the application and loan tenure
+
 const whyFinsbeeFeatures = [
   {
     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar.png",

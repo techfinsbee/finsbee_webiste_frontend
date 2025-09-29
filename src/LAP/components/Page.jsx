@@ -58,7 +58,7 @@ Get better service and repayment flexibility`,
   {
     id: "item-3",
     question: "Will I need to re-mortgage the property?",
-    answer:  `Yes. What types of properties are eligible for LAP transfer? Generally accepted property types:
+    answer:  `Yes. What types of properties are eligible for LAP transfer?Generally accepted property types:
 Residential (self-occupied or rented)
 Commercial (offices, shops)
 Plots (depends on lender)`,
