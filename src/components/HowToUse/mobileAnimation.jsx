@@ -1,12 +1,14 @@
+
 "use client";
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Heading from "./MobileHeading";
 
 export const MobileBox = () => {
     const [activeSide, setActiveSide] = useState("none"); // 'none', 'left', 'right'
 
-    // Loan cards for left side (unchanged)
+    // Loan cards for left side
     const leftLoanCards = [
         {
             title: "Personal Loan",
@@ -25,7 +27,7 @@ export const MobileBox = () => {
         },
     ];
 
-    // New loan cards for right side (different content)
+    // Loan cards for right side
     const rightLoanCards = [
         {
             title: "Loan against Property",
@@ -40,8 +42,7 @@ export const MobileBox = () => {
         {
             title: "Medical Loan",
             description:
-                "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs without any delays or paperwork hassles."
-
+                "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs without any delays or paperwork hassles.",
         },
     ];
 
@@ -63,15 +64,15 @@ export const MobileBox = () => {
     // Common structure for loan card
     const LoanCard = ({ card, isActive, direction }) => (
         <motion.div
-            className={`flex flex-col h-40 ${direction} gap-2.5 w-full`}
+            className={`flex flex-col h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] ${direction} gap-2.5 w-full`}
             variants={loanCardVariants}
             initial="hidden"
             animate={isActive ? "visible" : "inactive"}
         >
             <div className="relative">
-                <div className="absolute w-[264px] h-32 top-[5px] rounded-xl shadow-lg shadow-purple-500/20" />
+                <div className="absolute w-[264px] h-[112px] sm:h-[128px] md:h-[144px] lg:h-[160px] top-[5px] rounded-xl shadow-lg shadow-purple-500/20" />
                 <div
-                    className={`w-[264px] h-32 bg-white rounded-xl shadow-lg shadow-purple-500/15 border-0 p-6 flex flex-col justify-center gap-4 ${
+                    className={`w-[264px] h-[112px] sm:h-[128px] md:h-[144px] lg:h-[160px] bg-white rounded-xl shadow-lg shadow-purple-500/15 border-0 p-6 flex flex-col justify-center gap-4 ${
                         isActive ? "opacity-100" : "opacity-10"
                     }`}
                 >
@@ -86,14 +87,14 @@ export const MobileBox = () => {
         </motion.div>
     );
 
-    const leftDirection = "items-end pl-4 pr-0 gap-30 mr-[50rem]";
-    const rightDirection = "items-start pr-4 gap-30 ml-[40rem]";
+    const leftDirection = "items-end pl-4 pr-0 gap-30";
+    const rightDirection = "items-start pr-4 gap-30";
 
     const DefaultCard = ({ isTop, isActive, onClick }) => {
         const baseClass =
             "absolute bg-gray-50/95 rounded-2xl border border-white shadow-lg shadow-black/25 p-3 cursor-pointer";
-        const topPos = "top-[154px] left-[70px] w-[312px] h-[120px]";
-        const bottomPos = "top-[344px] left-[10rem] w-[312px] h-[120px]";
+        const topPos = "top-[154px] left-[70px] w-[312px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px]";
+        const bottomPos = "top-[344px] left-[10rem] w-[312px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px]";
 
         return (
             <motion.div
@@ -110,7 +111,7 @@ export const MobileBox = () => {
                               x: 0,
                               y: 0,
                               width: "312px",
-                              height: "120px",
+                              height: isTop ? "80px sm:100px md:120px lg:140px" : "80px sm:100px md:120px lg:140px",
                               top: isTop ? "154px" : "344px",
                               left: isTop ? "70px" : "10rem",
                               boxShadow: "0 10px 15px rgba(0, 0, 0, 0.3)",
@@ -120,7 +121,7 @@ export const MobileBox = () => {
                               x: 0,
                               y: 0,
                               width: "312px",
-                              height: "120px",
+                              height: isTop ? "80px sm:100px md:120px lg:140px" : "80px sm:100px md:120px lg:140px",
                               top: isTop ? "154px" : "344px",
                               left: isTop ? "70px" : "10rem",
                               boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
@@ -149,7 +150,7 @@ export const MobileBox = () => {
                     {loanOptions.map((option, index) => (
                         <div
                             key={`${isTop ? "top" : "bottom"}-${index}`}
-                            className="flex flex-col w-24 h-[108px] items-center gap-3 p-2 rounded-2xl"
+                            className="flex flex-col w-24 h-[68px] sm:h-[88px] md:h-[108px] lg:h-[128px] items-center gap-3 p-2 rounded-2xl"
                         >
                             <div
                                 className={`border flex items-center justify-center p-3 rounded-2xl shadow-sm shadow-purple-500/5 ${
@@ -170,108 +171,106 @@ export const MobileBox = () => {
         );
     };
 
-    
-
-    // Animation variants for loan cards (no scaling)
-const loanCardVariants = {
-    hidden: {
-        x: 299, // center of phone
-        y: 50,
-        opacity: 0, // little visibility
-    },
-    visible: {
-        x: 0,
-        y: 0,
-        opacity: 1, // fully visible
-        transition: {
-            duration: 0.7,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 70,
-            damping: 20,
+    // Animation variants for loan cards
+    const loanCardVariants = {
+        hidden: {
+            x: 299,
+            y: 50,
+            opacity: 0,
         },
-    },
-    inactive: {
-        x: 299, // back to center
-        y: 50,
-        opacity: 0, // little visibility again
-        transition: {
-            duration: 0.7,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 70,
-            damping: 20,
+        visible: {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.7,
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 70,
+                damping: 20,
+            },
         },
-    },
-};
+        inactive: {
+            x: 299,
+            y: 50,
+            opacity: 0,
+            transition: {
+                duration: 0.7,
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 70,
+                damping: 20,
+            },
+        },
+    };
 
-
-
-    // Right column animation (mirrored from left)
+    // Right column animation
     const rightColumnVariants = {
-  hidden: { x: -550, y: 50, opacity: 1 }, // was -399, now shifted closer
-  right: {
-    x: 0,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-      type: "spring",
-      stiffness: 70,
-      damping: 20,
-    },
-  },
-  inactive: {
-    x: -550, // was -299, shifted closer
-    y: 50,
-    opacity: 1,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-      type: "spring",
-      stiffness: 70,
-      damping: 20,
-    },
-  },
-};
-
-    // Left column animation (no scaling)
-const leftColumnVariants = {
-    hidden: { x: 100, y: 50, opacity: 1 },
-    left: {
-        x: 0,
-        y: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.7,
-            ease: "easeOut",
-            type: "spring",
-            stiffness: 70,
-            damping: 20,
+        hidden: { x: -300, y: 50, opacity: 1 },
+        right: {
+            x: 170,
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.7,
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 70,
+                damping: 20,
+            },
         },
-    },
-    inactive: { x: 100, y: 50, opacity: 1 },
-};
+        inactive: {
+            x: -550,
+            y: 50,
+            opacity: 1,
+            transition: {
+                duration: 0.7,
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 70,
+                damping: 20,
+            },
+        },
+    };
 
+    // Left column animation
+    const leftColumnVariants = {
+        hidden: { x: 0, y: 50, opacity: 1 },
+        left: {
+            x: -170,
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.7,
+                ease: "easeOut",
+                type: "spring",
+                stiffness: 70,
+                damping: 20,
+            },
+        },
+        inactive: { x: 100, y: 50, opacity: 1 },
+    };
 
     return (
-        <div className="min-h-screen px-[10rem] w-[70rem] relative ">
-            <div className="relative w-full h-[723px] pt-8">
-                <div className="relative h-[723px] w-[74rem]  overflow-hidden">
+        <>
+        <Heading/>
+        <div className="min-h-screen px-4 sm:px-8 md:px-16 lg:px-[136px] w-full max-w-7xl mx-auto relative">
+            
+            <div className="relative w-full h-[500px] sm:h-[600px] md:h-[723px] lg:h-[800px] pt-8">
+                <div className="relative w-full h-[500px] sm:h-[600px] md:h-[723px] lg:h-[800px] ">
                     {/* Background Circle */}
-                    <div className="absolute top-[187px] left-[140px] flex items-center justify-center p-2.5">
-                        <div className="w-[840px] h-[840px] bg-purple-50 rounded-full" />
+                    <div className="absolute top-[150px] left-1/2 -translate-x-1/2 flex items-center justify-center p-2.5">
+                        <div className="w-[480px] h-[480px] sm:w-[640px] sm:h-[640px] md:w-[840px] md:h-[580px]  bg-purple-50 rounded-t-full" />
                     </div>
 
                     {/* Loan Cards Container */}
-                    <div className="absolute top-0 left-0 w-full h-[640px] flex items-center justify-center">
+                    <div className="absolute top-0 left-0 w-full h-[400px] sm:h-[500px] md:h-[640px] lg:h-[720px] flex items-center justify-center">
                         {/* Left Column */}
                         <motion.div
-                            className={`flex flex-col w-[390px] ${
+                            className={`flex flex-col w-full max-w-[390px] ${
                                 activeSide === "left"
                                     ? leftDirection
-                                    : "w-[456px] opacity-10 items-end"
+                                    : "w-full max-w-[456px] opacity-10 items-end"
                             }`}
                             variants={leftColumnVariants}
                             initial="hidden"
@@ -295,10 +294,10 @@ const leftColumnVariants = {
 
                         {/* Right Column */}
                         <motion.div
-                            className={`flex flex-col w-[390px] ${
+                            className={`flex flex-col w-full max-w-[390px] ${
                                 activeSide === "right"
                                     ? rightDirection
-                                    : "w-[456px] -ml-[430px] opacity-10 items-start"
+                                    : "w-full max-w-[456px] opacity-10 items-start"
                             }`}
                             variants={rightColumnVariants}
                             initial="hidden"
@@ -311,24 +310,24 @@ const leftColumnVariants = {
                                     isActive={activeSide === "right"}
                                     direction={
                                         index === 0
-                                            ? "items-start -ml-[3rem]"
+                                            ? "items-start"
                                             : index === 1
                                             ? "items-end -mt-20"
-                                            : "items-start pl-16 -mt-20 -ml-[7rem]"
+                                            : "items-start pl-16 -mt-20"
                                     }
                                 />
                             ))}
                         </motion.div>
 
                         {/* Center Phone Image */}
-                        <div className="absolute w-[480px] h-[601px] top-[50px] left-[299px]">
+                        <div className="absolute w-[480px] h-[400px] sm:h-[500px] md:h-[601px] lg:h-[700px] top-[50px] left-1/2 -translate-x-1/2">
                             <div
-                                className="relative h-[590px] bg-cover bg-center bg-no-repeat"
+                                className="relative h-[390px] sm:h-[490px] md:h-[590px] lg:h-[690px] bg-cover bg-center bg-no-repeat"
                                 style={{ backgroundImage: "url(/landing_page/m1.png)" }}
                             >
                                 {activeSide === "left" && (
                                     <motion.div
-                                        className="relative bg-white rounded-2xl w-[312px] h-[120px]"
+                                        className="relative bg-white rounded-2xl w-[312px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px]"
                                         initial={{ opacity: 0, left: "4.5rem", top: "11rem" }}
                                         animate={{
                                             opacity: 0.7,
@@ -345,7 +344,7 @@ const leftColumnVariants = {
 
                                 {activeSide === "right" && (
                                     <motion.div
-                                        className="relative bg-white rounded-2xl w-[312px] h-[120px]"
+                                        className="relative bg-white rounded-2xl w-[312px] h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px]"
                                         initial={{ opacity: 0, left: "11rem", top: "23rem" }}
                                         animate={{
                                             opacity: 0.7,
@@ -396,16 +395,16 @@ const leftColumnVariants = {
                                     : 452,
                             left:
                                 activeSide === "none"
-                                    ? 235
+                                    ? 200
                                     : activeSide === "right"
-                                    ? 226
-                                    : 785,
+                                    ? 172
+                                    : 750,
                         }}
                     >
                         {activeSide === "left" ? (
                             <>
                                 <img
-                                    className="w-[45px] h-[37px] z-0 object-cover -ml-[13px]"
+                                    className="w-[30px] h-[25px] sm:w-[45px] sm:h-[37px] z-0 object-cover -ml-[13px]"
                                     alt="Arrow"
                                     src="/landing_page/arrow1.svg"
                                 />
@@ -427,11 +426,11 @@ const leftColumnVariants = {
                                         : ""}
                                 </div>
                                 <img
-                                    className={`w-[45px] h-[37px] z-0 object-cover ${
+                                    className={`w-[30px] h-[25px] sm:w-[45px] sm:h-[37px] z-0 object-cover ${
                                         activeSide === "right"
-                                            ? "-ml-3.5"
+                                            ? "-ml-1"
                                             : activeSide === "none"
-                                            ? "-ml-3"
+                                            ? "-ml-2"
                                             : ""
                                     }`}
                                     alt="Arrow"
@@ -447,5 +446,6 @@ const leftColumnVariants = {
                 </div>
             </div>
         </div>
+        </>
     );
 };

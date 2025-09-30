@@ -13,7 +13,7 @@ import Section5 from './Section8/Section8'
 
 export default function index() {
   return (
-    <div>
+    <div className=''>
         <Header/>
         <div className="min-h-screen bg-white flex items-center justify-center p-8">
       <AnimatedTextSection />

@@ -5,10 +5,10 @@ export default function Heading() {
     <div className="flex flex-col items-start px-4 md:px-[136px]  ">
              <motion.header
                      className="flex flex-col items-start gap-2.5 py-0 w-full max-w-[456px]"
-                     initial={{ opacity: 1, x: 500 }}
-                     whileInView={{ opacity: 1, x: 0.1 }}
-                     transition={{ duration: 1.5, ease: "easeOut" }}
-                     viewport={{ once: true, amount: 0.1 }}
+                    //  initial={{ opacity: 1, x: 500 }}
+                    //  whileInView={{ opacity: 1, x: 0.1 }}
+                    //  transition={{ duration: 1.5, ease: "easeOut" }}
+                    //  viewport={{ once: true, amount: 0.1 }}
                    >
 
       
@@ -35,9 +35,9 @@ export default function Heading() {
                </div>
      
                <p className="font-normal text-[14px] leading-[18px] tracking-[0.5px] text-[#212121] font-['Lato',sans-serif]">
-                 {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                 minim veniam. */}
+                 minim veniam.
                </p>
              </motion.header>
              {/* Remove stray <div/> and fix structure */}

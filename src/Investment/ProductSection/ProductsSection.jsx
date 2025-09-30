@@ -29,9 +29,9 @@ export default function ProductsSection() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <section className="flex flex-col items-center gap-12 px-4 md:px-32 py-24">
-        <div className="flex flex-col items-start gap-12 w-full max-w-7xl">
+    <div className="min-h-screen px-[136px] bg-white">
+      <section className="flex flex-col items-center gap-12  py-24">
+        <div className="flex flex-col items-start gap-12 w-full ">
           
           {/* Header */}
           <h2 className="text-3xl md:text-4xl font-bold text-gray-700 leading-normal tracking-wide">

@@ -31,7 +31,7 @@ const AnimatedTextSection = () => {
 
   return (
     <motion.section
-      className="max-w-6xl mx-auto px-8 py-16 rounded-2xl"
+      className=" mx-auto px-6 md:px-[136px] py-16 rounded-2xl"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}

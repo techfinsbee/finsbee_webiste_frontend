@@ -135,7 +135,7 @@ export const HowItWork = () => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center px-4 md:px-32 py-24 bg-white min-h-screen">
+    <section className="relative flex flex-col items-center px-4 md:px-[136px] py-24 bg-white min-h-screen">
       {/* Sticky Heading */}
       <header className="sticky top-1/3 flex flex-col items-center gap-4 text-center z-10 pointer-events-none">
         <div className="z-10">
@@ -154,7 +154,7 @@ export const HowItWork = () => {
       </header>
 
       {/* Cards */}
-      <div className="flex flex-col items-start justify-center w-full max-w-6xl gap-32 mt-40 z-20">
+      <div className="flex flex-col items-start justify-center w-full gap-32 mt-40 z-20">
         {steps.map((step, index) => (
           <div
             key={step.stepNumber}

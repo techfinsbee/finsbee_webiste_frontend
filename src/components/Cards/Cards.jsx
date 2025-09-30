@@ -148,7 +148,6 @@
 //     );
 // }
 
-
 // "use client";
 
 // import React, { useState } from "react";
@@ -299,7 +298,6 @@
 //   );
 // }
 
-
 // For mobile slider
 "use client";
 
@@ -334,7 +332,8 @@ const cards = [
   {
     id: 5,
     title: "Expert Financial Advice session",
-    description: "Affordable guidance to help you make smarter money decisions.",
+    description:
+      "Affordable guidance to help you make smarter money decisions.",
   },
   {
     id: 6,
@@ -350,13 +349,13 @@ export default function ExpandingCards() {
   return (
     <>
       {/* Header */}
-      <div className="flex flex-col items-center px-4 md:px-[136px]">
+      <div className="flex flex-col items-start px-4  md:px-[136px]">
         <motion.header
-          className="flex flex-col items-start gap-2.5 px-4 py-0 w-full max-w-[456px] mb-16"
-          initial={{ opacity: 1, x: 0 }}
-          whileInView={{ opacity: 1, x: -400 }}
+          className="flex flex-col items-start gap-2.5 py-0 w-full max-w-[456px]"
+          initial={{ opacity: 1, x: 500 }}
+          whileInView={{ opacity: 1, x: 0.1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <h3 className="font-bold text-[16px] leading-[20px] tracking-[0.5px] text-[#212121]">
             The Results Speaks for Themselves
@@ -381,14 +380,14 @@ export default function ExpandingCards() {
 
           <p className="font-normal text-[14px] leading-[18px] tracking-[0.5px] text-[#212121] font-['Lato',sans-serif]">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam.
           </p>
         </motion.header>
       </div>
 
       {/* Cards Section */}
-      <div className="hidden md:flex mx-auto w-[1140.5px] h-[386px] gap-[15.3px]">
+      <div className="flex  justify-center mx-auto w-full  py-12 h-[386px] md:px-[136px] gap-[15.3px]">
         {cards.map((card) => {
           const isActive = active === card.id;
           return (
@@ -396,8 +395,8 @@ export default function ExpandingCards() {
               key={card.id}
               onMouseEnter={() => setActive(card.id)}
               layout
-              initial={{ width: 240 }}
-              animate={{ width: isActive ? 390 : 240 }}
+              initial={{ width: 180 }}
+              animate={{ width: isActive ? 363 : 180 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className={`relative cursor-pointer rounded-2xl shadow-md overflow-hidden flex flex-col justify-between ${
                 isActive ? "bg-[#ffd263] text-black" : "bg-gray-100 text-black"
@@ -416,7 +415,7 @@ export default function ExpandingCards() {
                     <motion.p
                       key={card.id}
                       initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: -250 }}
+                      animate={{ opacity: 1, y: -280 }}
                       exit={{ opacity: 0, y: 40 }}
                       transition={{ duration: 0.8, ease: "easeInOut" }}
                       className="text-lg leading-relaxed absolute top-0 left-0 p-6"

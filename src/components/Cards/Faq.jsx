@@ -2,7 +2,7 @@
 
 // import React, { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
-// import { Plus, Minus } from "lucide-react"; 
+// import { Plus, Minus } from "lucide-react";
 
 // const faqs = [
 //   {
@@ -145,7 +145,8 @@ const faqs = [
       "FinsBee offers a 1-on-1 session with certified financial experts to help you plan better—whether it’s loans, investments, savings, insurance, or budgeting.",
   },
   {
-    question: "Is FinsBee’s digital gold and silver investment regulated and trustworthy?",
+    question:
+      "Is FinsBee’s digital gold and silver investment regulated and trustworthy?",
     answer:
       "Yes. FinsBee partners with licensed and regulated digital gold providers, ensuring your gold and silver investments are 100% compliant, secure, and backed by physical assets stored in insured, certified vaults. Your investments are fully transparent and protected under trusted financial standards.",
   },
@@ -159,90 +160,87 @@ export default function FAQ() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-start h-full justify-between max-w-6xl mx-auto py-16 px-6 gap-12">
+    <section className="flex flex-col md:flex-row items-start h-full justify-between   mt-29 py-16 px-[136px] gap-12">
       {/* Left Side Heading */}
-      <div className="md:w-1/3">
-        <h2 className="text-xl font-bold mb-4">The Results Speaks for Themselves</h2>
-        {/* <h1 className="text-5xl font-bold text-black">
-          <span className="bg-yellow-400 px-3 py-1 rounded">FAQ’s</span>
-        </h1> */}
+      <div className="md:w-1/5">
+        <h2 className="text-xl font-bold mb-4">
+          The Results Speaks for Themselves
+        </h2>
+
         <span className="relative w-fit font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
-                                    {/* Animated Yellow Highlight */}
-                                    <motion.span
-                                        initial={{ scaleY: 0, opacity: 0 }}        // start invisible & collapsed
-                                        whileInView={{ scaleY: 1, opacity: 1 }}    // grow downward & fade in
-                                        exit={{ scaleY: 0, opacity: 0 }}
-                                        transition={{ duration: 0.8, ease: "easeOut" }}
-                                        viewport={{ once: false, amount: 0.8 }}
-                                        className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
-                                    />
-                                    FAQ's
-                                </span>
+          {/* Animated Yellow Highlight */}
+          <motion.span
+            initial={{ scaleY: 0, opacity: 0 }} // start invisible & collapsed
+            whileInView={{ scaleY: 1, opacity: 1 }} // grow downward & fade in
+            exit={{ scaleY: 0, opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.8 }}
+            className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
+          />
+          FAQ's
+        </span>
       </div>
 
       {/* Right Side FAQ Accordion */}
-<motion.div
-  layout
-  className="md:w-2/3 space-y-4"
-  transition={{ layout: { duration: 0.7, ease: "easeInOut" } }}
->
-  {faqs.map((faq, index) => (
-    <motion.div
-      key={index}
-      layout
-      className={`border border-purple-200 rounded-lg shadow-sm overflow-hidden transition-colors ${
-        openIndex === index ? "bg-white" : "bg-transparent"
-      }`}
-      transition={{ layout: { duration: 0.7, ease: "easeInOut" } }}
-    >
-      {/* Header */}
-      <button
-        onClick={() => toggleFAQ(index)}
-        className="w-full flex justify-between items-center px-6 py-4 text-left"
+      <motion.div
+        layout
+        className="md:w-4/5 space-y-4"
+        transition={{ layout: { duration: 0.7, ease: "easeInOut" } }}
       >
-        <span
-          className={`font-medium ${
-            openIndex === index ? "text-purple-600" : "text-gray-700"
-          }`}
-        >
-          {faq.question}
-        </span>
-
-        {/* Plus → Minus rotation */}
-        <motion.div
-          animate={{ rotate: openIndex === index ? 45 : 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
-          <Plus
-            className={`${
-              openIndex === index ? "text-purple-600" : "text-gray-500"
-            }`}
-          />
-        </motion.div>
-      </button>
-
-      {/* Answer with smooth open + close */}
-      <AnimatePresence>
-        {openIndex === index && (
+        {faqs.map((faq, index) => (
           <motion.div
-            key="answer"
+            key={index}
             layout
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="overflow-hidden"
+            className={`border border-purple-200 rounded-lg shadow-sm overflow-hidden transition-colors ${
+              openIndex === index ? "bg-white" : "bg-transparent"
+            }`}
+            transition={{ layout: { duration: 0.7, ease: "easeInOut" } }}
           >
-            <div className="px-6 pb-4 text-gray-600">
-              {faq.answer}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  ))}
-</motion.div>
+            {/* Header */}
+            <button
+              onClick={() => toggleFAQ(index)}
+              className="w-full flex justify-between items-center px-6 py-4 text-left"
+            >
+              <span
+                className={`font-medium ${
+                  openIndex === index ? "text-purple-600" : "text-gray-700"
+                }`}
+              >
+                {faq.question}
+              </span>
 
+              {/* Plus → Minus rotation */}
+              <motion.div
+                animate={{ rotate: openIndex === index ? 45 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <Plus
+                  className={`${
+                    openIndex === index ? "text-purple-600" : "text-gray-500"
+                  }`}
+                />
+              </motion.div>
+            </button>
+
+            {/* Answer with smooth open + close */}
+            <AnimatePresence>
+              {openIndex === index && (
+                <motion.div
+                  key="answer"
+                  layout
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-4 text-gray-600">{faq.answer}</div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 }

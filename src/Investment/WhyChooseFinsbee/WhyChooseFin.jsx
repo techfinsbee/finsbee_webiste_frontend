@@ -232,7 +232,7 @@ const yellowVariants = {
 
 
   return (
-    <section className="flex flex-col items-center gap-12 px-4 md:px-32 py-24 relative">
+    <section className="flex flex-col items-center gap-12 px-[136px] py-24 relative">
       {/* Header */}
       <header className="text-center max-w-xl mx-auto">
         <h2 className="text-sm font-bold text-gray-800 mb-2">

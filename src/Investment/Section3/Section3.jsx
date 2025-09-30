@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Section3() {
   return (
     <>
-      <div className="flex flex-col items-center px-4">
+      <div className="flex flex-col items-center px-[136px]">
         <motion.header
-          className="flex flex-col items-start w-full px-4"
+          className="flex flex-col items-start w-full"
           initial={{ opacity: 1, x: 800 }}
-          whileInView={{ opacity: 1, x: 120 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.2 }}
         >
