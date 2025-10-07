@@ -26,23 +26,38 @@ const ActionButton = ({ onClick, children, iconSrc }) => (
 const Eligibility = ({ onClose }) => {
   const eligibilityCriteria = [
     {
-      title: "For Salaried Individuals",
-      image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
+      title: "Business Type",
+      // image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
       criteria: [
-        "Age: 21-58 years",
-        "Minimum monthly income: ₹15,000",
-        "Employment: At least 6 months in current job",
-        "Credit Score: 650+",
+        "Proprietorship, Partnership, Private Limited Companies, or similar registered entities with legal standing.",
       ],
     },
     {
-      title: "For Self-Employed Individuals",
-      image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+      title: "Business Vintage",
+      // image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
       criteria: [
-        "Age: 25-65 years",
-        "Business vintage: Minimum 2 years",
-        "Annual income: Minimum ₹3 lakhs",
-        "Credit Score: 700+",
+        "At least 12 years of continuous business operations.",
+      ],
+    },
+    {
+      title: "Customer Credit Quality",
+      // image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+      criteria: [
+        "The invoices must be from reputable customers with good payment history and credit profiles.",
+      ],
+    },
+    {
+      title: "Minimum Turnover",
+      // image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+      criteria: [
+        "Business should have a turnover of at least ₹10 Lakhs per annum (or more depending on lender's threshold)",
+      ],
+    },
+    {
+      title: "Business Vintage",
+      // image: "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+      criteria: [
+        "At least 12 years of continuous business operations.",
       ],
     },
   ];
@@ -81,7 +96,7 @@ const Eligibility = ({ onClose }) => {
                 >
                   <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
                     <div className="flex flex-col gap-6 flex-1">
-                      <h2 className="text-xl md:text-2xl font-normal text-gray-800">
+                      <h2 className="text-xl md:text-xl font-normal text-gray-800">
                         {section.title}
                       </h2>
                       <ul className="flex flex-col gap-4">
@@ -90,7 +105,7 @@ const Eligibility = ({ onClose }) => {
                             key={criterionIndex}
                             className="flex items-center gap-3"
                           >
-                            <CheckCircle className="w-6 h-6 text-gray-800 flex-shrink-0" />
+                            {/* <CheckCircle className="w-6 h-6 text-gray-800 flex-shrink-0" /> */}
                             <span className="text-gray-800 text-base">
                               {criterion}
                             </span>
@@ -98,13 +113,13 @@ const Eligibility = ({ onClose }) => {
                         ))}
                       </ul>
                     </div>
-                    <div className="flex items-center justify-center flex-shrink-0">
+                    {/* <div className="flex items-center justify-center flex-shrink-0">
                       <img
                         className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-lg"
                         alt={`Illustration for ${section.title}`}
                         src={section.image}
                       />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               ))}
@@ -117,58 +132,76 @@ const Eligibility = ({ onClose }) => {
 };
 
 const DocumentRequired = ({ onClose }) => {
-  const identityProof = [
-    "Permanent Account Number (PAN) Card",
-    "Aadhaar Card",
-    "Passport-Size Photograph",
-  ];
+  // const identityProof = [
+  //   "Permanent Account Number (PAN) Card",
+  //   "Aadhaar Card",
+  //   "Passport-Size Photographs",
+  //   "Rent Agreement",
+  // ];
 
   const documents1 = {
-    "Identity Proof": identityProof,
-    "Address Proof": ["Aadhaar Card"],
-    "Income Proof": [
-      "Salary Slips (Last 3 to 6 Months)",
-      "Bank Statements (Last 3 to 6 Months)",
-      "Employment Proof",
+
+    "": [
+      "Valid business registration (GST, Shop & Establishment etc.)",
+      "Latest income tax returns / financial statements",
+      "Bank statements (last 36 months)",
+      "KYC documents for your business and signatories (PAN, Aadhaar, etc.)",
     ],
+   
   };
 
-  const documents2 = {
-    "Identity Proof": identityProof,
-    "Business Proof": [
-      "Business registration certificate",
-      "Shop and Establishment License",
-      "Udyam certificate",
-    ],
-    "Income Proof": [
-      "Latest Income Tax Returns (ITR) for the last 2-3 years",
-      "Profit & Loss Statement or Balance Sheet",
-      "GST Returns (if registered under GST)",
-      "Bank Statements: Last 6 months",
-    ],
-  };
+  // const documents2 = {
+  //   "Identity Proof": [ "Permanent Account Number (PAN) Card",
+  //   "Aadhaar Card",
+  //   "Passport-Size Photographs",
+  //   "Rent Agreement (if applicable)",],
+  //   "Business Proof": [
+  //     "GST Registration Certificate",
+  //     "Business Registration Certificate",
+  //     "Udyam Registration",
+  //   ],
+  //   "Income Proof": [
+  //     "Latest Income Tax Returns (ITR) for the last 2-3 years",
+  //     "Profit & Loss Statement or Balance Sheet",
+  //     "GST Returns (if registered under GST)",
+  //     "Bank Statements: Last 6 months",
+  //   ],
+  //   "Property Documents ": [
+  //     "Agreement to Sale or Allotment Letter",
+  //     "Approved Building Plan",
+  //     "GST Returns (if registered under GST)",
+  //     "Property Tax Receipts",
+  //   ],
+  // };
 
   const DocumentSection = ({ title, categories }) => (
     <div>
-      <p className="text-gray-600 font-bold text-sm underline py-2 tracking-wide uppercase text-center">
+      <p className="text-gray-600 font-bold text-sm underline  tracking-wide uppercase text-center">
         {title}
       </p>
       <div className="flex flex-col lg:flex-row items-start gap-6 w-full max-w-6xl">
         {Object.entries(categories).map(([category, items], index) => (
           <div
             key={category}
-            className={`flex-1 p-6 ${index > 0 ? "lg:border-l border-dashed border-gray-300" : ""}`}
+            className={`flex-1 p-6 ${
+              index > 0 ? "lg:border-l border-dashed border-gray-300" : ""
+            }`}
           >
-            <h2 className="text-xl font-normal text-gray-800 mb-6">{category}</h2>
-            <ul className="flex flex-col gap-4">
-              {items.map((item, itemIndex) => item && (
-                <li key={itemIndex} className="flex items-center gap-3">
-                  <span className="w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center">
-                    ✔
-                  </span>
-                  <span className="text-base text-gray-800">{item}</span>
-                </li>
-              ))}
+            <h2 className="text-xl font-normal text-gray-800 mb-6">
+              {category}
+            </h2>
+            <ul className="flex flex-col gap-3">
+              {items.map(
+                (item, itemIndex) =>
+                  item && (
+                    <li key={itemIndex} className="flex items-center gap-3">
+                      <span className="w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center">
+                        ✔
+                      </span>
+                      <span className="text-base text-gray-800">{item}</span>
+                    </li>
+                  )
+              )}
             </ul>
           </div>
         ))}
@@ -184,7 +217,7 @@ const DocumentRequired = ({ onClose }) => {
       transition={{ type: "tween", duration: 0.5 }}
       className="fixed top-0 left-0 w-full h-full  bg-opacity-95 z-50 flex items-center justify-center"
     >
-      <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
+      <div className="bg-white text-gray-800 rounded-xl py-10 shadow-xl max-w-6xl w-full relative">
         <button
           onClick={onClose}
           className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl"
@@ -195,10 +228,18 @@ const DocumentRequired = ({ onClose }) => {
         <div className="h-full">
           <section className="flex flex-col items-center px-6 md:px-12 py-2">
             <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
-              <h1 className="text-4xl font-bold text-gray-800">Document Required</h1>
+              <h1 className="text-4xl font-bold text-gray-800">
+                Document Required
+              </h1>
             </div>
-            <DocumentSection title="For Salaried Individuals" categories={documents1} />
-            <DocumentSection title="For Self-Employed Individuals" categories={documents2} />
+            <DocumentSection
+              title=""
+              categories={documents1}
+            />
+            {/* <DocumentSection
+              title=""
+              categories={documents2}
+            /> */}
           </section>
         </div>
       </div>
@@ -224,11 +265,10 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                Personal Loan Page
+                Invoice Discounting
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
-                Get a Personal Loan of up to Rs. 50 Lakhs to pursue your dreams. Quick approval, minimal documentation, and competitive interest rates.
-
+                Leverage your stock portfolio to access funds without selling your shares. Competitive interest rates and flexible repayment options.
               </p>
             </section>
 
@@ -268,7 +308,9 @@ const MainContent = () => {
 
                   <div className="flex items-center justify-around gap-3.5 relative w-full">
                     <button className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
-                      <span className="font-bold text-gray-800">Calculate EMI</span>
+                      <span className="font-bold text-gray-800">
+                        Calculate EMI
+                      </span>
                     </button>
                   </div>
                 </div>

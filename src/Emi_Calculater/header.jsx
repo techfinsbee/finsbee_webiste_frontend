@@ -34,7 +34,7 @@ const Header = () => {
         </div> 
         {/* //w-[180px] sm:w-[227px] h-[180px] sm:h-[228px] top-0 right-0 bg-transparent border-0 rounded-xl shadow z-50 */}
       </nav>
-      <div className="absolute w-[227px] h-[228px] top-[-130px] right-0 bg-transparent border-0 shadow-none translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms] rounded-xl z-0">
+      <div className="absolute w-[227px] h-[228px] top-[-130px] right-0 bg-transparent border-0 shadow-none translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:200ms] rounded-xl">
         <div className="relative h-[228px] p-0">
           <img
             className="absolute w-[227px] h-56 top-0 left-0"
@@ -44,7 +44,7 @@ const Header = () => {
           <div className="flex flex-col w-[211px] items-end gap-4 px-0 py-2.5 absolute top-4 left-px">
             <div className="inline-flex items-center justify-end gap-2.5 px-0 py-2.5 relative flex-[0_0_auto]">
               <div className="w-[187px] mt-[-1.00px] text-foundationtertiarytertiary-500 text-[length:var(--bold-subheading-1-font-size)] text-right leading-[var(--bold-subheading-1-line-height)] relative font-bold-subheading-1 font-[number:var(--bold-subheading-1-font-weight)] tracking-[var(--bold-subheading-1-letter-spacing)] [font-style:var(--bold-subheading-1-font-style)]">
-                All-in-On
+                All-in-One Finance Help
                 <br />@ your doorstep
               </div>
             </div>
@@ -56,7 +56,7 @@ const Header = () => {
               />
               <button className="inline-flex items-center justify-end gap-2 relative flex-[0_0_auto] mr-[-0.66px] -ml-3 border-b-2 [border-bottom-style:solid] border-[#212121] bg-transparent hover:bg-transparent rounded-none p-0 h-auto transition-colors">
                 <span className="relative w-fit font-bold-title-1 font-[number:var(--bold-title-1-font-weight)] text-foundationtertiarytertiary-500 text-[length:var(--bold-title-1-font-size)] tracking-[var(--bold-title-1-letter-spacing)] leading-[var(--bold-title-1-line-height)] whitespace-nowrap [font-style:var(--bold-title-1-font-style)]">
-                  Book You
+                  Book Your Slot
                 </span>
               </button>
             </div>

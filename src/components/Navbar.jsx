@@ -18,10 +18,11 @@ export const Navbar = () => {
         { label: "Home Loan", path: "/HL" },
         { label: "Business Loan", path: "/Bl" },
         { label: "Loan Against Mutual Funds", path: "/LAM" },
-        { label: "Loan Against Property", path: "/LAP" },
-        { label: "Loan Against Securities", path: "/LAS" },
-        { label: "Loan Against Property (Alt)", path: "/loanap" },
+        { label: "LAP Balance Transfer", path: "/LAP" },
+        { label: "Loan Against Stocks", path: "/LAS" },
+        { label: "Loan Against Property", path: "/loanap" },
         { label: "Working Capital", path: "/WC" },
+        { label: "Invoice Discounting", path: "/IC" },
       ],
     },
     { label: "Insurance", path: "/insurance" },
@@ -98,10 +99,10 @@ export const Navbar = () => {
 
         {/* Side Box */}
         <div
-          className="absolute right-0 bottom-[-120px] w-[227px] h-[228px] -translate-y-4 animate-fade-in opacity-0"
+          className="absolute right-0 bottom-[-120px] w-[227px] h-[228px] -translate-y-4 animate-fade-in z-[50] opacity-0"
           style={{ animationDelay: "400ms" }}
         >
-          <div className="relative w-full h-full">
+          <div className="relative w-full h-full z-[50]">
             <img
               className="absolute w-full h-[98.11%] top-0 left-0"
               alt="Rectangle"

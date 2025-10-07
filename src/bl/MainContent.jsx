@@ -61,7 +61,7 @@ const Eligibility = ({ onClose }) => {
       animate={{ x: 0 }}
       exit={{ x: "-100%" }}
       transition={{ type: "tween", duration: 0.5 }}
-      className="fixed top-0 left-0 w-full h-full bg-opacity-95 z-50 flex items-center justify-center"
+      className="fixed top-0 left-0 w-full h-full bg-opacity-95 z-[9999] flex items-center justify-center"
     >
       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
         <button
@@ -71,7 +71,7 @@ const Eligibility = ({ onClose }) => {
         >
           ✕
         </button>
-        <div className="h-full">
+        <div className="h-full z-[9999]">
           <section className="flex flex-col items-center gap-12 px-6 md:px-12 py-16">
             <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
               <p className="text-gray-600 font-bold text-sm tracking-wide uppercase">
@@ -125,11 +125,7 @@ const Eligibility = ({ onClose }) => {
 };
 
 const DocumentRequired = ({ onClose }) => {
-  // const identityProof = [
-  //   "Permanent Account Number (PAN) Card",
-  //   "Aadhaar Card",
-  //   "Passport-Size Photograph",
-  // ];
+ 
 
   const documents1 = {
     "Business Documents": [
@@ -149,23 +145,10 @@ const DocumentRequired = ({ onClose }) => {
     ],
   };
 
-  // const documents2 = {
-  //   "Identity Proof": identityProof,
-  //   "Business Proof": [
-  //     "Business registration certificate",
-  //     "Shop and Establishment License",
-  //     "Udyam certificate",
-  //   ],
-  //   "Income Proof": [
-  //     "Latest Income Tax Returns (ITR) for the last 2-3 years",
-  //     "Profit & Loss Statement or Balance Sheet",
-  //     "GST Returns (if registered under GST)",
-  //     "Bank Statements: Last 6 months",
-  //   ],
-  // };
+ 
 
   const DocumentSection = ({ title, categories }) => (
-    <div className="my-12 pt-6">
+    <div className="my-12 pt-6 z-[9999]">
       <p className="text-gray-600 font-bold text-sm underline tracking-wide uppercase text-center">
         {title}
       </p>

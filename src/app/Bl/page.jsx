@@ -1,5 +1,5 @@
 import React from "react";
-import InvestePage from "../../Loan_Page";
+import InvestePage from "@/bl";
 
 // ✅ Personal Loan Metadata (as per your provided meta tags)
 export const metadata = {
