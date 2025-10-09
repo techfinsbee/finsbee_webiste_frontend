@@ -148,7 +148,7 @@ export default function FinsbeeFooter() {
                 <Phone className="w-8 h-8 text-white" />
                 <div>
                   <div className="text-white text-sm">Call Us @</div>
-                  <div className="text-white font-bold text-sm">+91 92134 56789</div>
+                  <div className="text-white font-bold text-sm">+91 928966175</div>
                 </div>
               </div>
 
@@ -156,7 +156,7 @@ export default function FinsbeeFooter() {
                 <Mail className="w-8 h-8 text-white" />
                 <div>
                   <div className="text-white text-sm">Send mail to</div>
-                  <div className="text-white font-bold text-sm">support@finsbee.com</div>
+                  <div className="text-white font-bold text-sm">customercare@finsbee.com</div>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@ export default function FinsbeeFooter() {
           <button className="relative w-54 h-54 rounded-full border border-white/50 bg-transparent hover:bg-white/10 transition-colors cursor-pointer overflow-hidden">
             <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
               <ArrowUp className="w-25 h-25 text-white mb-2" />
-              <div className="text-white text-2xl font-bold">Connect us</div>
+              <div className="text-white text-2xl font-bold">Connect with us</div>
             </div>
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-54 h-54 bg-yellow-500 rounded-full"></div>
           </button>

@@ -260,8 +260,8 @@ const howItWorksSteps = [
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
   { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
-  { id: "how-it-works", label: "How it Works?" },
+  // { id: "what-it-is", label: "What it is?" },
+  // { id: "how-it-works", label: "How it Works?" },
 ];
 
 const FinsbeeSection = () => {
@@ -274,8 +274,8 @@ const FinsbeeSection = () => {
   const sectionRefs = {
     "why-finsbee": useRef(null),
     faqs: useRef(null),
-    "what-it-is": useRef(null),
-    "how-it-works": useRef(null),
+    // "what-it-is": useRef(null),
+    // "how-it-works": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -466,52 +466,7 @@ const FinsbeeSection = () => {
             </section>
 
             {/* What it is Section */}
-            <section
-              ref={sectionRefs["what-it-is"]}
-              data-tab-id="what-it-is"
-              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
-            >
-              <h2 className="font-bold text-xl mb-2">
-                What is Invoice Discounting?
-              </h2>
-              <p className="text-gray-500">
-                Turn your accounts receivables into cash flow. Invoice
-                Discounting lets you unlock funds locked in unpaid invoices, so
-                you don't need to wait for customer payments. It's a fast,
-                flexible way to meet short-term working capital needs.
-              </p>
-            </section>
-
-            {/* How it Works Section */}
-            <section
-              ref={sectionRefs["how-it-works"]}
-              data-tab-id="how-it-works"
-              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
-            >
-              <div className="px-4 mb-4">
-                <div className="text-xl font-normal text-gray-900 mb-2.5">
-                  How it <span className="font-bold">Works?</span>
-                </div>
-                <div
-                  className="w-11 h-px mb-[-1px]"
-                  style={{
-                    backgroundImage:
-                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
-                  }}
-                ></div>
-              </div>
-              {howItWorksSteps.map((step, i) => (
-                <div key={i} className="flex items-start gap-3 py-4">
-                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
-                    {step.number}
-                  </div>
-                  <div>
-                    <h3 className="font-bold">{step.title}</h3>
-                    <p className="text-gray-500">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </section>
+     
           </div>
         </div>
       </div>

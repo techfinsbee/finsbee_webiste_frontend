@@ -57,12 +57,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={lato.variable}>
-      <body className="relative min-h-screen">
+      <body className="relative min-h-screen ">
         {/* Global Navbar */}
         <Navbar />
 
         {/* Page content */}
-        <main className="relative z-0">{children}</main>
+        <main className="relative w-full">{children}</main>
       </body>
     </html>
   );

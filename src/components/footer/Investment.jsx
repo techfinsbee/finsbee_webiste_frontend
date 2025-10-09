@@ -188,7 +188,7 @@ export default function InvestmentOptionsSection () {
                   </div>
 
                   <div className="w-fit text-white font-bold text-sm">
-                    +91 92134 56789
+                    +91 928966175
                   </div>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function InvestmentOptionsSection () {
                   </div>
 
                   <div className="w-fit text-white font-bold text-sm">
-                    support@finsbee.com
+                    customercare@finsbee.com
                   </div>
                 </div>
               </div>
@@ -280,14 +280,14 @@ export default function InvestmentOptionsSection () {
             </motion.div>
 
             <motion.div
-              className="w-fit text-2xl font-bold text-center whitespace-nowrap"
+              className="w-fit text-xl font-bold text-center whitespace-nowrap"
               variants={{
                 initial: { color: "#ffffff" }, // white
                 hover: { color: "#000000" },   // black
               }}
               transition={{ duration: 0.3 }}
             >
-              Connect us
+              Connect with us
             </motion.div>
           </motion.div>
         </motion.button>

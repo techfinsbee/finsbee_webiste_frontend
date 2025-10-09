@@ -1,169 +1,4 @@
-// "use client";
-// // import { useState } from "react";
-// import { useState, useEffect, useRef } from "react";
-// import Tabs from "./Tabs";
-// import WhyFinsbeeContent from "./WhyFinsbee";
-// import FaqContent from "./FaqContent";
-// import Sidebar from "./Sidebar";
 
-// const whyFinsbeeFeatures = [
-//   {
-//     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar.png",
-//     title: "Substantial Interest Savings",
-//     description: "Even a 1% reduction in interest rate on a ₹50 lakh loan with 10 years remaining can save you approximately ₹10 lakhs in interest payments over the loan tenure.",
-//   },
-//   {
-//     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-1.png",
-//     title: "Lower EMI Burden",
-//     description: "Reduced interest rates translate to lower monthly installments, improving your cash flow and making loan repayment more manageable for your business or personal finances.",
-//   },
-//   {
-//     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-2.png",
-//     title: "Enhanced Service Experience",
-//     description: "Enjoy our superior customer service with a dedicated relationship manager, digital account access, and transparent communication throughout your loan tenure.",
-//   },
-//   {
-//     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-3.png",
-//     title: "Additional Funding with Top-Up",
-//     description: "Access additional funds over and above your existing loan at competitive interest rates. Use this for business expansion, education, or other financial needs without applying for a separate loan.",
-//   },
-//   {
-//     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-4.png",
-//     title: "Flexible Tenure Options",
-//     description: "Choose to reduce your EMI by maintaining the same tenure or reduce your tenure while keeping EMIs similar. Customize your loan terms based on your financial goals and capacity.",
-//   },
-//   {
-//     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-5.png",
-//     title: "Streamlined Process",
-//     description: "Most of your balance transfer can be completed with minimal physical visits. We handle coordination with your existing lender to ensure a smooth transition.",
-//   },
-  
-// ];
-
-// const faqItems = [
-//   {
-//     id: "item-1",
-//     question: "What is LAP Balance Transfer?",
-//     answer: "LAP Balance Transfer allows you to transfer your existing Loan Against Property from your current lender to FinsBee to benefit from lower interest rates, extended tenure, higher loan amounts, or better service. It helps reduce your EMI burden and overall interest outgo.",
-//   },
-//   {
-//     id: "item-2",
-//     question: "Why should I transfer my LAP to another lender?",
-//     answer: `Switching to a new lender can help you:
-// Reduce your interest rate
-// Lower your monthly EMI
-// Avail of additional funds via top-up
-// Get better service and repayment flexibility`,
-//   },
-//   {
-//     id: "item-3",
-//     question: "Will I need to re-mortgage the property?",
-//     answer:  `Yes. What types of properties are eligible for LAP transfer?Generally accepted property types:
-// Residential (self-occupied or rented)
-// Commercial (offices, shops)
-// Plots (depends on lender)`,
-//   },
-//   // {
-//   //   id: "item-4",
-//   //   question: "What is the interest rate for a Loan Against Stocks?",
-//   //   answer: "Interest rates start at 9.00% p.a. and vary based on the value and type of stocks pledged.",
-//   // },
-//   // {
-//   //   id: "item-5",
-//   //   question: "What happens if stock prices fluctuate?",
-//   //   answer: `The loan amount is secured against the value of your stocks. If market prices drop significantly, you may be required to add more collateral or repay part of the loan to maintain the required margin.`,
-//   // },
-// ];
-
-
-
-// export default function Home() {
-//   const [activeTab, setActiveTab] = useState("why-finsbee");
-//   const [expandedFaq, setExpandedFaq] = useState("item-1");
-//   const [phoneNumber, setPhoneNumber] = useState("");
-//   const [isChecked, setIsChecked] = useState(false);
-
-//   const sectionRefs = {
-//     "why-finsbee": useRef(null),
-//     faq: useRef(null),
-//   };
-
-//   const toggleFaq = (id) => {
-//     setExpandedFaq(expandedFaq === id ? null : id);
-//   };
-
-//   useEffect(() => {
-//     const options = { root: null, threshold: 0.4 };
-
-//     const observer = new IntersectionObserver((entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           const id = entry.target.getAttribute("data-tab-id");
-//           if (id && id !== activeTab) {
-//             setActiveTab(id);
-//           }
-//         }
-//       });
-//     }, options);
-
-//     Object.values(sectionRefs).forEach((ref) => {
-//       if (ref.current) observer.observe(ref.current);
-//     });
-
-//     return () => {
-//       Object.values(sectionRefs).forEach((ref) => {
-//         if (ref.current) observer.unobserve(ref.current);
-//       });
-//     };
-//   }, [activeTab]);
-
-//   return (
-//     <div className="relative flex gap-8 mx-25 py-10 bg-white  ">
-//       {/* Main Content */}
-//       <div className="w-[788px] flex-1">
-//         {/* Sticky Header at top-9 */}
-//         {/* Sticky Header */}
-// <div className="sticky top-0 pt-10 z-30 bg-white border-b border-purple-100 ">
-//   <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
-// </div>
-
-// {/* Content Wrapper */}
-// <div className="relative z-0 bg-gray-50 border border-purple-100 rounded-b-2xl pt-8 pb-4 px-4 space-y-24">
-//   <section
-//     ref={sectionRefs["why-finsbee"]}
-//     data-tab-id="why-finsbee"
-//     className=""
-//   >
-//     <WhyFinsbeeContent features={whyFinsbeeFeatures} />
-//   </section>
-
-//   <section
-//     ref={sectionRefs.faq}
-//     data-tab-id="faq"
-//     className=""
-//   >
-//     <FaqContent
-//       faqItems={faqItems}
-//       expandedFaq={expandedFaq}
-//       toggleFaq={toggleFaq}
-//     />
-//   </section>
-// </div>
-
-//       </div>
-
-//       {/* Sidebar Sticky at top-0 */}
-//       <div className="sticky top-0 pt-9 self-start h-fit">
-//         <Sidebar
-//           phoneNumber={phoneNumber}
-//           setPhoneNumber={setPhoneNumber}
-//           isChecked={isChecked}
-//           setIsChecked={setIsChecked}
-//         />
-//       </div>
-//     </div>
-//   );
-// }
 
 
 
@@ -244,35 +79,62 @@ Plots (depends on lender)`,
 const howItWorksSteps = [
   {
     number: "1",
-    title: "Upload Invoices",
+    title: "Apply & Submit Documents",
     description:
-      "Submit your customer invoices via our secure portal for verification",
+      "Fill out an application (online or in‐branch). Provide existing loan statements, foreclosure letter, property documents, and basic KYC.",
   },
   {
     number: "2",
-    title: "Quick Verification",
+    title: "Valuation & Eligibility Check",
     description:
-      "We assess the invoices and evaluate customer creditworthiness within hours.",
+      "We value your secured property, verify legal status, and assess your eligibility — including topup potential and applicable interest rate.",
   },
   {
     number: "3",
-    title: "Immediate Funding",
+    title: "Receive Offer",
     description:
-      "Receive up to 90% of the invoice value in your bank account within 24 hours.",
+      "Get a detailed offer letter with loan amount, rate, tenure, EMI schedule. Choose whether to include a topup if eligible.",
   },
   {
     number: "4",
-    title: "Settlement of Balance",
+    title: "Documentation & Disbursement",
     description:
-      "Once your customer settles the invoice, you receive the remaining amount (after deducting applicable fees).",
+      "Sign the loan agreement, complete mortgage formalities, and we'll disburse the approved amount directly to your existing lender, settling your previous loan. Any top-up amount will be credited to your account.",
+  },
+];
+const payingToMuch = [
+  {
+    number: "1",
+    title: "Rates from 7.50% p.a.",
+    // description:
+    //   "Fill out an application (online or in‐branch). Provide existing loan statements, foreclosure letter, property documents, and basic KYC.",
+  },
+  {
+    number: "2",
+    title: "Access additional funds through topup",
+    // description:
+    //   "We value your secured property, verify legal status, and assess your eligibility — including topup potential and applicable interest rate.",
+  },
+  {
+    number: "3",
+    title: "Minimal paperwork, fast processing",
+    // description:
+    //   "Get a detailed offer letter with loan amount, rate, tenure, EMI schedule. Choose whether to include a topup if eligible.",
+  },
+  {
+    number: "4",
+    title: "Documentation & Disbursement",
+    // description:
+    //   "Sign the loan agreement, complete mortgage formalities, and we'll disburse the approved amount directly to your existing lender, settling your previous loan. Any top-up amount will be credited to your account.",
   },
 ];
 
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
-  { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
-  { id: "how-it-works", label: "How it Works?" },
+ 
+  { id: "what-it-is", label: "Paying Too Much Interest?" },
+  { id: "LAP-Balance-Transfer-Process", label: "LAP Balance Transfer Process" },
+   { id: "faqs", label: "FAQ's" },
 ];
 
 const FinsbeeSection = () => {
@@ -286,7 +148,7 @@ const FinsbeeSection = () => {
     "why-finsbee": useRef(null),
     faqs: useRef(null),
     "what-it-is": useRef(null),
-    "how-it-works": useRef(null),
+    "LAP-Balance-Transfer-Process": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -366,7 +228,7 @@ const FinsbeeSection = () => {
                   <button
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
-                    className={`flex-1 h-14 px-3 py-4 font-bold text-base bg-white transition-colors duration-300 
+                    className={`flex-1 h- px-3 py-4 font-bold text-base bg-white transition-colors duration-300 
                       ${
                         activeTab === tab.id
                           ? "bg-yellow-400 text-gray-900"
@@ -425,6 +287,74 @@ const FinsbeeSection = () => {
                 ))}
               </div>
             </section>
+            
+            {/* What it is Section */}
+            <section
+              ref={sectionRefs["what-it-is"]}
+              data-tab-id="what-it-is"
+              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
+            >
+              <div className="px-4 mb-4">
+                <div className="text-xl font-normal text-gray-900 mb-2.5">
+                  Paying Too Much  <span className="font-bold">Interest?</span>
+                </div>
+                <div
+                  className="w-11 h-px mb-[-1px]"
+                  style={{
+                    backgroundImage:
+                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
+                  }}
+                ></div>
+
+                 <p className="text-gray-500 pt-5">You may be paying more than necessary. Switch your LAP to FinsBee, start saving on interest, lighten your monthly payments, and gain financial flexibility.</p>
+              </div>
+              {payingToMuch.map((step, i) => (
+                <div key={i} className="flex items-start gap-3 py-4">
+                  <div>
+                    
+                  </div>
+                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
+                    {step.number}
+                  </div>
+                  <div>
+                   
+                    <h3 className="text-gray-500">{step.title}</h3>
+                    {/* <p className="text-gray-500">{step.description}</p> */}
+                  </div>
+                </div>
+              ))}
+            </section>
+
+            {/* How it Works Section */}
+            <section
+              ref={sectionRefs["LAP-Balance-Transfer-Process"]}
+              data-tab-id="LAP-Balance-Transfer-Process"
+              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
+            >
+              <div className="px-4 mb-4">
+                <div className="text-xl font-normal text-gray-900 mb-2.5">
+                  How it <span className="font-bold">Works?</span>
+                </div>
+                <div
+                  className="w-11 h-px mb-[-1px]"
+                  style={{
+                    backgroundImage:
+                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
+                  }}
+                ></div>
+              </div>
+              {howItWorksSteps.map((step, i) => (
+                <div key={i} className="flex items-start gap-3 py-4">
+                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
+                    {step.number}
+                  </div>
+                  <div>
+                    <h3 className="font-bold">{step.title}</h3>
+                    <p className="text-gray-500">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </section>
 
             {/* FAQ Section */}
             <section
@@ -476,53 +406,7 @@ const FinsbeeSection = () => {
               ))}
             </section>
 
-            {/* What it is Section */}
-            <section
-              ref={sectionRefs["what-it-is"]}
-              data-tab-id="what-it-is"
-              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
-            >
-              <h2 className="font-bold text-xl mb-2">
-                What is Invoice Discounting?
-              </h2>
-              <p className="text-gray-500">
-                Turn your accounts receivables into cash flow. Invoice
-                Discounting lets you unlock funds locked in unpaid invoices, so
-                you don't need to wait for customer payments. It's a fast,
-                flexible way to meet short-term working capital needs.
-              </p>
-            </section>
-
-            {/* How it Works Section */}
-            <section
-              ref={sectionRefs["how-it-works"]}
-              data-tab-id="how-it-works"
-              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
-            >
-              <div className="px-4 mb-4">
-                <div className="text-xl font-normal text-gray-900 mb-2.5">
-                  How it <span className="font-bold">Works?</span>
-                </div>
-                <div
-                  className="w-11 h-px mb-[-1px]"
-                  style={{
-                    backgroundImage:
-                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
-                  }}
-                ></div>
-              </div>
-              {howItWorksSteps.map((step, i) => (
-                <div key={i} className="flex items-start gap-3 py-4">
-                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
-                    {step.number}
-                  </div>
-                  <div>
-                    <h3 className="font-bold">{step.title}</h3>
-                    <p className="text-gray-500">{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </section>
+            
           </div>
         </div>
       </div>

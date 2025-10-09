@@ -226,38 +226,38 @@ const faqItems = [
 ];
 
 
-const howItWorksSteps = [
-  {
-    number: "1",
-    title: "Upload Invoices",
-    description:
-      "Submit your customer invoices via our secure portal for verification",
-  },
-  {
-    number: "2",
-    title: "Quick Verification",
-    description:
-      "We assess the invoices and evaluate customer creditworthiness within hours.",
-  },
-  {
-    number: "3",
-    title: "Immediate Funding",
-    description:
-      "Receive up to 90% of the invoice value in your bank account within 24 hours.",
-  },
-  {
-    number: "4",
-    title: "Settlement of Balance",
-    description:
-      "Once your customer settles the invoice, you receive the remaining amount (after deducting applicable fees).",
-  },
-];
+// const howItWorksSteps = [
+//   {
+//     number: "1",
+//     title: "Upload Invoices",
+//     description:
+//       "Submit your customer invoices via our secure portal for verification",
+//   },
+//   {
+//     number: "2",
+//     title: "Quick Verification",
+//     description:
+//       "We assess the invoices and evaluate customer creditworthiness within hours.",
+//   },
+//   {
+//     number: "3",
+//     title: "Immediate Funding",
+//     description:
+//       "Receive up to 90% of the invoice value in your bank account within 24 hours.",
+//   },
+//   {
+//     number: "4",
+//     title: "Settlement of Balance",
+//     description:
+//       "Once your customer settles the invoice, you receive the remaining amount (after deducting applicable fees).",
+//   },
+// ];
 
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
   { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
-  { id: "how-it-works", label: "How it Works?" },
+  // { id: "what-it-is", label: "What it is?" },
+  // { id: "how-it-works", label: "How it Works?" },
 ];
 
 const FinsbeeSection = () => {
@@ -270,8 +270,8 @@ const FinsbeeSection = () => {
   const sectionRefs = {
     "why-finsbee": useRef(null),
     faqs: useRef(null),
-    "what-it-is": useRef(null),
-    "how-it-works": useRef(null),
+    // "what-it-is": useRef(null),
+    // "how-it-works": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -462,7 +462,7 @@ const FinsbeeSection = () => {
             </section>
 
             {/* What it is Section */}
-            <section
+            {/* <section
               ref={sectionRefs["what-it-is"]}
               data-tab-id="what-it-is"
               className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -476,10 +476,10 @@ const FinsbeeSection = () => {
                 you don't need to wait for customer payments. It's a fast,
                 flexible way to meet short-term working capital needs.
               </p>
-            </section>
+            </section> */}
 
             {/* How it Works Section */}
-            <section
+            {/* <section
               ref={sectionRefs["how-it-works"]}
               data-tab-id="how-it-works"
               className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -507,7 +507,7 @@ const FinsbeeSection = () => {
                   </div>
                 </div>
               ))}
-            </section>
+            </section> */}
           </div>
         </div>
       </div>

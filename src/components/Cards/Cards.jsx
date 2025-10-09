@@ -423,7 +423,7 @@ export default function ExpandingCards() {
                         fontFamily: "Lato, sans-serif",
                         fontWeight: 300,
                         fontStyle: "normal",
-                        fontSize: "24px",
+                        fontSize: "21px",
                         lineHeight: "30px",
                         letterSpacing: "0px",
                       }}

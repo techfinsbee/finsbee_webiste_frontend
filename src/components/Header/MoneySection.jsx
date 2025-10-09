@@ -981,7 +981,7 @@ export default function MoneySection({ animate = false }) {
           {moneyIcons.slice(2, 4).map((icon, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0.2, y: 110, x: idx === 0 ? 50 : -50 }}
+              initial={{ opacity: 0.1, y: 110, x: idx === 0 ? 50 : -50 }}
               animate={animate ? { opacity: 1, y: 0, x: 0 } : {}}
               transition={commonTransition}
               className="inline-flex items-center justify-center p-2 sm:p-3 relative bg-white/10 rounded-[20px]"

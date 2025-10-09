@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
+import { useRouter } from "next/router";
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -125,7 +126,7 @@ const DocumentRequired = ({ onClose }) => {
 
   const documents1 = {
     "Identity Proof": identityProof,
-    "Address Proof": ["Aadhaar Card"],
+    "Address Proof": ["Aadhaar Card","Utility Bills"],
     "Income Proof": [
       "Salary Slips (Last 3 to 6 Months)",
       "Bank Statements (Last 3 to 6 Months)",
@@ -224,7 +225,7 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                Personal Loan Page
+                Personal Loan 
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
                 Get a Personal Loan of up to Rs. 50 Lakhs to pursue your dreams. Quick approval, minimal documentation, and competitive interest rates.

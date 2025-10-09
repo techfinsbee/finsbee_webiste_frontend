@@ -182,7 +182,7 @@ const whyFinsbeeFeatures = [
   {
     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-2.png",
     title: "Short-Term Loan",
-    description: "PSingle disbursal with fixed repayment schedule, ideal for one-time working capital requirements with tenures up to 24 months.",
+    description: "Single disbursal with fixed repayment schedule, ideal for one-time working capital requirements with tenures up to 24 months.",
   },
   {
     icon: "https://c.animaapp.com/mfnnsr9tKgXFn5/img/user-avatar-3.png",
@@ -206,7 +206,7 @@ const faqItems = [
   {
     id: "item-1",
     question: "What is Working Capital?",
-    answer: "Working capital refers to funds that help your business cover daytoday operational expenses (payroll, inventory, utility bills) and shortterm financial gaps. It ensures smooth business operations even when revenues are delayed.",
+    answer: "Working capital refers to funds that help your business cover daytoday operational expenses (payroll, inventory, utility bills) and short term financial gaps. It ensures smooth business operations even when revenues are delayed.",
   },
   {
     id: "item-2",
@@ -227,9 +227,7 @@ const faqItems = [
     id: "item-5",
     question: "What happens if I delay repayment?",
     answer: `Delays in repayment may lead to:
-Penalties and additional interest
-Negative impact on your credit score
-Reduced chances of getting future funding`,
+Penalties and additional interest, Negative impact on your credit score, Reduced chances of getting future funding`,
   },
 ];
 
@@ -264,9 +262,10 @@ const howItWorksSteps = [
 
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
-  { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
-  { id: "how-it-works", label: "How it Works?" },
+
+  // { id: "what-it-is", label: "What it is?" },
+  // { id: "how-it-works", label: "How it Works?" },
+    { id: "faqs", label: "FAQ's" },
 ];
 
 const FinsbeeSection = () => {
@@ -279,8 +278,8 @@ const FinsbeeSection = () => {
   const sectionRefs = {
     "why-finsbee": useRef(null),
     faqs: useRef(null),
-    "what-it-is": useRef(null),
-    "how-it-works": useRef(null),
+    // "what-it-is": useRef(null),
+    // "how-it-works": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -471,7 +470,7 @@ const FinsbeeSection = () => {
             </section>
 
             {/* What it is Section */}
-            <section
+            {/* <section
               ref={sectionRefs["what-it-is"]}
               data-tab-id="what-it-is"
               className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -485,10 +484,10 @@ const FinsbeeSection = () => {
                 you don't need to wait for customer payments. It's a fast,
                 flexible way to meet short-term working capital needs.
               </p>
-            </section>
+            </section> */}
 
             {/* How it Works Section */}
-            <section
+            {/* <section
               ref={sectionRefs["how-it-works"]}
               data-tab-id="how-it-works"
               className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -516,7 +515,7 @@ const FinsbeeSection = () => {
                   </div>
                 </div>
               ))}
-            </section>
+            </section> */}
           </div>
         </div>
       </div>

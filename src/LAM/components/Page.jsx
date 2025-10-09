@@ -257,8 +257,8 @@ const howItWorksSteps = [
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
   { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
-  { id: "how-it-works", label: "How it Works?" },
+  // { id: "what-it-is", label: "What it is?" },
+  // { id: "how-it-works", label: "How it Works?" },
 ];
 
 const FinsbeeSection = () => {
@@ -271,8 +271,8 @@ const FinsbeeSection = () => {
   const sectionRefs = {
     "why-finsbee": useRef(null),
     faqs: useRef(null),
-    "what-it-is": useRef(null),
-    "how-it-works": useRef(null),
+    // "what-it-is": useRef(null),
+    // "how-it-works": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -463,7 +463,7 @@ const FinsbeeSection = () => {
             </section>
 
             {/* What it is Section */}
-            <section
+            {/* <section
               ref={sectionRefs["what-it-is"]}
               data-tab-id="what-it-is"
               className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -477,10 +477,10 @@ const FinsbeeSection = () => {
                 you don't need to wait for customer payments. It's a fast,
                 flexible way to meet short-term working capital needs.
               </p>
-            </section>
+            </section> */}
 
             {/* How it Works Section */}
-            <section
+            {/* <section
               ref={sectionRefs["how-it-works"]}
               data-tab-id="how-it-works"
               className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -508,7 +508,7 @@ const FinsbeeSection = () => {
                   </div>
                 </div>
               ))}
-            </section>
+            </section> */}
           </div>
         </div>
       </div>

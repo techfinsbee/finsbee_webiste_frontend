@@ -268,7 +268,7 @@ const MainContent = () => {
                 Invoice Discounting
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
-                Leverage your stock portfolio to access funds without selling your shares. Competitive interest rates and flexible repayment options.
+                Convert your unpaid invoices into immediate working capital. Get up to 90% of your invoice value upfront.
               </p>
             </section>
 

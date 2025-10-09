@@ -230,35 +230,63 @@ const faqItems = [
 const howItWorksSteps = [
   {
     number: "1",
-    title: "Upload Invoices",
+    title: "Apply Online",
     description:
-      "Submit your customer invoices via our secure portal for verification",
+      "Fill in your basic details and provide your demat account information.",
   },
   {
     number: "2",
-    title: "Quick Verification",
+    title: "Digital Verification",
     description:
-      "We assess the invoices and evaluate customer creditworthiness within hours.",
+      "Complete a quick KYC and portfolio evaluation.",
   },
   {
     number: "3",
-    title: "Immediate Funding",
+    title: "Online Pledge",
     description:
-      "Receive up to 90% of the invoice value in your bank account within 24 hours.",
+      "Pledge your approved stocks digitally without paperwork",
   },
   {
     number: "4",
-    title: "Settlement of Balance",
+    title: "Loan Disbursement",
     description:
-      "Once your customer settles the invoice, you receive the remaining amount (after deducting applicable fees).",
+      "Get funds transferred directly to your bank account within 24–48 hours.",
+  },
+];
+const payingToMuch = [
+  {
+    number: "1",
+    title: "Business expansion or working capital",
+    description:
+      "Fill in your basic details and provide your demat account information.",
+  },
+  {
+    number: "2",
+    title: "Home renovation or big-ticket purchases",
+    description:
+      "Complete a quick KYC and portfolio evaluation.",
+  },
+  {
+    number: "3",
+    title: "Medical emergencies",
+    description:
+      "Pledge your approved stocks digitally without paperwork",
+  },
+  {
+    number: "4",
+    title: "Education or travel expenses",
+    description:
+      "Get funds transferred directly to your bank account within 24–48 hours.",
   },
 ];
 
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
-  { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
+  
+  // { id: "what-it-is", label: "What it is?" },
   { id: "how-it-works", label: "How it Works?" },
+  { id: "Ideal-Uses", label: "Ideal Uses of Loan Against Stocks" },
+  { id: "faqs", label: "FAQ's" },
 ];
 
 const FinsbeeSection = () => {
@@ -273,6 +301,7 @@ const FinsbeeSection = () => {
     faqs: useRef(null),
     "what-it-is": useRef(null),
     "how-it-works": useRef(null),
+    "Ideal-Uses": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -352,7 +381,7 @@ const FinsbeeSection = () => {
                   <button
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
-                    className={`flex-1 h-14 px-3 py-4 font-bold text-base bg-white transition-colors duration-300 
+                    className={`flex-1  px-3 py-4 font-bold text-base bg-white transition-colors duration-300 
                       ${
                         activeTab === tab.id
                           ? "bg-yellow-400 text-gray-900"
@@ -412,7 +441,94 @@ const FinsbeeSection = () => {
               </div>
             </section>
 
-            {/* FAQ Section */}
+           
+              
+            {/* What it is Section */}
+            {/* <section
+              ref={sectionRefs["what-it-is"]}
+              data-tab-id="what-it-is"
+              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
+            >
+              <h2 className="font-bold text-xl mb-2">
+                What is Invoice Discounting?
+              </h2>
+              <p className="text-gray-500">
+                Turn your accounts receivables into cash flow. Invoice
+                Discounting lets you unlock funds locked in unpaid invoices, so
+                you don't need to wait for customer payments. It's a fast,
+                flexible way to meet short-term working capital needs.
+              </p>
+            </section> */}
+
+            {/* How it Works Section */}
+            <section
+              ref={sectionRefs["how-it-works"]}
+              data-tab-id="how-it-works"
+              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
+            >
+              <div className="px-4 mb-4">
+                <div className="text-xl font-normal text-gray-900 mb-2.5">
+                  How it <span className="font-bold">Works?</span>
+                </div>
+                <div
+                  className="w-11 h-px mb-[-1px]"
+                  style={{
+                    backgroundImage:
+                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
+                  }}
+                ></div>
+              </div>
+              {howItWorksSteps.map((step, i) => (
+                <div key={i} className="flex items-start gap-3 py-4">
+                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
+                    {step.number}
+                  </div>
+                  <div>
+                    <h3 className="text-gray-500">{step.title}</h3>
+                    {/* <p className="text-gray-500">{step.description}</p> */}
+                  </div>
+                </div>
+              ))}
+            </section>
+
+             {/* What it is Section */}
+            <section
+              ref={sectionRefs["Ideal-Uses"]}
+              data-tab-id="Ideal-Uses"
+              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
+            >
+              <div className="px-4 mb-4">
+                <div className="text-xl font-normal text-gray-900 mb-2.5">
+                  Paying Too Much  <span className="font-bold">Interest?</span>
+                </div>
+                <div
+                  className="w-11 h-px mb-[-1px]"
+                  style={{
+                    backgroundImage:
+                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
+                  }}
+                ></div>
+
+                 <p className="text-gray-500 pt-5">Use the funds for multiple purposes such as:.</p>
+              </div>
+              {payingToMuch.map((step, i) => (
+                <div key={i} className="flex items-start gap-3 py-4">
+                  <div>
+                    
+                  </div>
+                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
+                    {step.number}
+                  </div>
+                  <div>
+                   
+                    <h3 className="text-gray-500">{step.title}</h3>
+                    {/* <p className="text-gray-500">{step.description}</p> */}
+                  </div>
+                </div>
+              ))}
+            </section>
+
+             {/* FAQ Section */}
             <section
               ref={sectionRefs["faqs"]}
               data-tab-id="faqs"
@@ -458,54 +574,6 @@ const FinsbeeSection = () => {
                       <p className="text-base text-gray-500">{faq.answer}</p>
                     </div>
                   )}
-                </div>
-              ))}
-            </section>
-
-            {/* What it is Section */}
-            <section
-              ref={sectionRefs["what-it-is"]}
-              data-tab-id="what-it-is"
-              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
-            >
-              <h2 className="font-bold text-xl mb-2">
-                What is Invoice Discounting?
-              </h2>
-              <p className="text-gray-500">
-                Turn your accounts receivables into cash flow. Invoice
-                Discounting lets you unlock funds locked in unpaid invoices, so
-                you don't need to wait for customer payments. It's a fast,
-                flexible way to meet short-term working capital needs.
-              </p>
-            </section>
-
-            {/* How it Works Section */}
-            <section
-              ref={sectionRefs["how-it-works"]}
-              data-tab-id="how-it-works"
-              className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
-            >
-              <div className="px-4 mb-4">
-                <div className="text-xl font-normal text-gray-900 mb-2.5">
-                  How it <span className="font-bold">Works?</span>
-                </div>
-                <div
-                  className="w-11 h-px mb-[-1px]"
-                  style={{
-                    backgroundImage:
-                      "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
-                  }}
-                ></div>
-              </div>
-              {howItWorksSteps.map((step, i) => (
-                <div key={i} className="flex items-start gap-3 py-4">
-                  <div className="w-7 h-7 flex items-center justify-center bg-purple-600 rounded-full text-white font-bold">
-                    {step.number}
-                  </div>
-                  <div>
-                    <h3 className="font-bold">{step.title}</h3>
-                    <p className="text-gray-500">{step.description}</p>
-                  </div>
                 </div>
               ))}
             </section>

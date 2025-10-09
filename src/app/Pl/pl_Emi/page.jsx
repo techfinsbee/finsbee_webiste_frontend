@@ -1,10 +1,10 @@
+import PL_EMI from '@/Emi_Pages/PL_EMI'
 import React from 'react'
-import InvestePage from '../../Loan_Page'
 
 export default function page() {
   return (
     <div>
-        <InvestePage/>
+        <PL_EMI/>
     </div>
   )
 }

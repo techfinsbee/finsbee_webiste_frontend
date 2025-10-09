@@ -865,77 +865,57 @@ import { ChevronDown } from "lucide-react";
 const whyFinsbeeFeatures = [
   {
     icon: "https://c.animaapp.com/mgex7opoop3dGI/img/user-avatar.png",
-    title: "100% Digital Journey",
-    description: "Complete application to disbursement digitally from anywhere",
+    title: "Unsecured Funding Options",
+    description: "Get approved without pledging physical collateral based on business strength",
   },
   {
     icon: "https://c.animaapp.com/mgex7opoop3dGI/img/user-avatar-1.png",
-    title: "No Collateral Required",
-    description: "Get approved without pledging any assets as security",
+    title: "Fully Digital Process",
+    description: "Complete the application to disbursal journey entirely online",
   },
   {
     icon: "https://c.animaapp.com/mgex7opoop3dGI/img/user-avatar-2.png",
-    title: "Flexible Repayment",
-    description: "Choose repayment terms from 1-5 years that fit your budget",
+    title: "End-Use Flexibility",
+    description: "Use funds for expansion, equipment, inventory, working capital or refinancing",
   },
   {
     icon: "https://c.animaapp.com/mgex7opoop3dGI/img/user-avatar-3.png",
-    title: "No Prepayment Penalties",
-    description: "Pay off your loan early without additional charges after 6 months",
+    title: "Minimal Documentation",
+    description: "Streamlined paperwork requirements focused on essential business documents",
   },
   {
     icon: "https://c.animaapp.com/mgex7opoop3dGI/img/user-avatar-4.png",
-    title: "Minimal Documentation",
-    description: "Simple application process with basic KYC requirements",
+    title: "Competitive Interest Rates",
+    description: "Attractive rates based on business vintage, turnover and credit history",
   },
   {
     icon: "https://c.animaapp.com/mgex7opoop3dGI/img/user-avatar-5.png",
-    title: "Special Rates",
-    description: "Existing customers enjoy preferential interest rates",
+    title: "Dedicated Relationship Manager",
+    description: "Personalized support throughout the application and loan tenure",
   },
 ];
 
 const faqItems = [
   {
-    question: "What exactly is Finsbee Consultation?",
+    question: "What is a business loan and how can it help me?",
     answer:
-      "A personalized advisory service to help you choose better loans, insurance, and investments. From quick doubts to a full financial game plan, we provide impartial guidance you can trust.",
+      "A business loan is a type of financing that helps entrepreneurs and companies meet short-term or long-term capital needs. You can use it for business expansion, buying equipment, increasing inventory, covering working capital, or refinancing existing debt.",
   },
   {
-    question: "How is Finsbee different from banks or agents?",
-    answer: "Finsbee offers unbiased, tailored advice without pushing products, unlike banks or agents who may prioritize sales.",
+    question: "What is the loan amount I can get through FinsBee?",
+    answer: "You can avail business loans starting from ₹1 Lakh and up to ₹2 Crore, depending on your eligibility, business turnover, and credit profile.",
   },
   {
-    question: "What are your plans and pricing?",
-    answer: "We offer various plans tailored to your needs. Visit our website for detailed pricing information.",
+    question: "How long does it take to get a Business loan approved?",
+    answer: "With FinsBee’s fully digital process, business loan applications are typically processed within 3 to 5 working days, subject to the submission of all required documents. Upon approval, loan disbursement is completed within 24 to 48 hours.",
   },
   {
-    question: "Can you help me secure a lower interest rate?",
-    answer: "Yes, we negotiate with lenders on your behalf to secure the best possible rates.",
+    question: "Can I repay the loan early? Is there a prepayment charge?",
+    answer: "Many of our lending partners allow prepayment or foreclosure, but terms vary by lender. Some charge a small fee, while others allow early repayment after a few EMIs without penalties.",
   },
   {
-    question: "Is my information safe?",
-    answer: "We use advanced encryption and comply with data protection regulations to keep your information secure.",
-  },
-  {
-    question: "How do I book?",
-    answer: "You can book a consultation directly through our website or mobile app.",
-  },
-  {
-    question: "When will I receive advice?",
-    answer: "Advice is typically provided within 24-48 hours after your consultation session.",
-  },
-  {
-    question: "What should I keep handy for the session?",
-    answer: "Have your financial documents, goals, and any specific questions ready for the session.",
-  },
-  {
-    question: "What languages do you support?",
-    answer: "We support consultations in multiple languages, including English, Hindi, and more.",
-  },
-  {
-    question: "Do you execute transactions or sell products?",
-    answer: "No, we focus on advisory services and do not execute transactions or sell products.",
+    question: "How is the interest rate determined?",
+    answer: "Interest rates are based on several factors including: Business vintage, Annual turnover, Credit score of the owner or company, Loan amount and tenure",
   },
 ];
 
@@ -965,8 +945,8 @@ const howItWorksSteps = [
 const tabs = [
   { id: "why-finsbee", label: "Why Finsbee?" },
   { id: "faqs", label: "FAQ's" },
-  { id: "what-it-is", label: "What it is?" },
-  { id: "how-it-works", label: "How it Works?" },
+  // { id: "what-it-is", label: "What it is?" },
+  // { id: "how-it-works", label: "How it Works?" },
 ];
 
 const FinsbeeSection = () => {
@@ -979,8 +959,8 @@ const FinsbeeSection = () => {
   const sectionRefs = {
     "why-finsbee": useRef(null),
     "faqs": useRef(null),
-    "what-it-is": useRef(null),
-    "how-it-works": useRef(null),
+    // "what-it-is": useRef(null),
+    // "how-it-works": useRef(null),
   };
   const headerRef = useRef(null);
 
@@ -1168,7 +1148,7 @@ const FinsbeeSection = () => {
                ))}
              </section>
  
-             {/* What it is Section */}
+             {/* What it is Section
              <section
                ref={sectionRefs["what-it-is"]}
                data-tab-id="what-it-is"
@@ -1186,7 +1166,7 @@ const FinsbeeSection = () => {
              </section>
  
              {/* How it Works Section */}
-             <section
+             {/* <section
                ref={sectionRefs["how-it-works"]}
                data-tab-id="how-it-works"
                className="p-6 border border-[#eeeaff] rounded-2xl mb-8"
@@ -1214,7 +1194,7 @@ const FinsbeeSection = () => {
                    </div>
                  </div>
                ))}
-             </section>
+             </section>  */}
            </div>
          </div>
        </div>
