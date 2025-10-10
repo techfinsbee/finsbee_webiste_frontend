@@ -168,23 +168,24 @@ export default function ResultsComponent() {
     <section className="flex flex-col items-start px-4 sm:px-8 md:px-16 lg:px-[136px] py-24 relative rounded-2xl bg-white">
       {/* ---------- Header ---------- */}
       <motion.div
-        className="flex flex-col items-start gap-2.5 py-0 w-full max-w-[456px]"
-        initial={{ opacity: 1, x: 500 }}
+        className="flex flex-col items-start  w-full max-w-[456px]"
+        // initial={{ opacity: 1, x: 500 }}
         whileInView={{ opacity: 1, x: 0.1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.1 }}
       >
-        <h1 className="font-bold text-[16px] leading-[20px] tracking-[0.5px] text-[#212121]">
-          The Results Speak for Themselves
-        </h1>
+       
 
         <div className="flex flex-wrap w-full items-start">
-          <h1 className="w-full font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
+           <h1 className="font-bold text-[16px]  text-[#212121]">
+          The Results Speak for Themselves
+        </h1>
+          <h1 className="w-full font-bold text-[64px]  text-[#212121] ">
             The Results Speak for
           </h1>
 
           <div className="inline-flex flex-col items-center relative">
-            <span className="relative w-fit font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
+            <span className="relative w-fit font-bold text-[64px]  text-[#212121] ">
               <motion.span
                 initial={{ scaleY: 0, opacity: 0 }}
                 whileInView={{ scaleY: 1, opacity: 1 }}
@@ -198,11 +199,7 @@ export default function ResultsComponent() {
           </div>
         </div>
 
-        <p className="font-normal text-[14px] leading-[18px] tracking-[0.5px] text-[#212121] font-['Lato',sans-serif]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam.
-        </p>
+       
       </motion.div>
 
       {/* ---------- Stats Cards ---------- */}
@@ -221,7 +218,7 @@ export default function ResultsComponent() {
                 delay: index * 0.3,
                 ease: "easeOut",
               }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               {/* Background Image */}
               <Image

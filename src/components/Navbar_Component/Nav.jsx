@@ -64,7 +64,7 @@ const menuData = {
 
   "Home Loan": {
     column1: [
-      { label: "Home Loan EMI Calculator", path: "/HL/emi" },
+      { label: "Home Loan EMI Calculator", path: "/HL/hl_Emi" },
       { label: "Documents Required For Home Loan", path: "/HL" },
     ],
   },

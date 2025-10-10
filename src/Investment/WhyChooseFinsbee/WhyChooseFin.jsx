@@ -242,10 +242,10 @@ const yellowVariants = {
           Why Choose <br />
           <span className="text-yellow-500">Finsbee?</span>
         </h1>
-        <p className="mt-4 text-gray-600 text-sm">
+        {/* <p className="mt-4 text-gray-600 text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        </p> */}
       </header>
 
       {/* Cards */}
