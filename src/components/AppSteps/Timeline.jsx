@@ -307,7 +307,7 @@ export default function Timeline() {
       <Heading />
       <section ref={containerRef} className="relative py-10 bg-white h-fit">
         {/* Vertical gray track with circles at start and end */}
-        <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[12px] pointer-events-none">
+        <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[12px] pointer-events-none hidden md:block ">
           <div className="w-[12px] h-full rounded-full bg-[#f5f0ff]" />
           {/* Top circle */}
           <div className="absolute top-0 w-[12px] h-[12px] rounded-full bg-[#f5f0ff]" />
@@ -318,7 +318,7 @@ export default function Timeline() {
         {/* Animated yellow progress bar with circles at start and end */}
         <motion.div
           style={{ scaleY, transformOrigin: "top center" }}
-          className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[12px] rounded-full pointer-events-none z-10"
+          className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[12px] hidden md:block rounded-full pointer-events-none z-10"
         >
           <div className="w-[12px] h-full rounded-full bg-yellow-400" />
           {/* Top circle */}

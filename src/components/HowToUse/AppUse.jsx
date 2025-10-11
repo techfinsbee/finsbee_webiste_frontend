@@ -82,41 +82,34 @@ export default function AppUse() {
     <section className="flex flex-col items-center px-4 md:px-[136px] relative rounded-2xl">
       {/* ---------- Header ---------- */}
       <div className="flex flex-col items-center px-4 md:px-[136px]  ">
-             <motion.header
-               className="flex flex-col items-start gap-2.5 px-4 py-0 w-full max-w-[456px] mb-16"
-               initial={{ opacity: 1, x: 0 }}
-               whileInView={{ opacity: 1, x: -400 }}
-               transition={{ duration: 1.5, ease: "easeOut" }}
-               viewport={{ once: false, amount: 0.2 }}
-             >
-               <h3 className="font-bold text-[16px] leading-[20px] tracking-[0.5px] text-[#212121]">
-                 The Results Speaks for Themselves
-               </h3>
-     
-               <div className="flex flex-wrap w-full items-start gap-[10px]">
-                 <h1 className="w-full font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
-                   How to Get Started
-                 </h1>
-                 <span className="relative w-fit font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
-                                  {/* Animated Yellow Highlight */}
-                              <motion.span
-                     initial={{ scaleY: 0, opacity: 0 }}        // start invisible & collapsed
-                     whileInView={{ scaleY: 1, opacity: 1 }}    // grow downward & fade in
-                     exit={{ scaleY: 0, opacity: 0 }}
-                     transition={{ duration: 0.8, ease: "easeOut" }}
-                     viewport={{ once: false, amount: 0.8 }}
-                     className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
-                   />
-                               
-                             </span>
-               </div>
-     
-               {/* <p className="font-normal text-[14px] leading-[18px] tracking-[0.5px] text-[#212121] font-['Lato',sans-serif]">
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                 minim veniam.
-               </p> */}
-             </motion.header>
+              <motion.div
+                                 className="flex flex-col items-start w-full max-w-[400px] sm:max-w-[420px] md:max-w-[440px] lg:max-w-[456px]"
+                      whileInView={{ opacity: 1, x: 0.1 }}
+                             transition={{ duration: 1.5, ease: "easeOut" }}
+                             viewport={{ once: true, amount: 0.1 }}
+                           >
+                             <div className="flex flex-wrap w-full items-start">
+                               <h1 className="font-bold text-[12px] sm:text-[14px] md:text-[15px] lg:text-[16px] text-[#212121]">
+                                 The Results Speak for Themselves
+                               </h1>
+                               <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-[#212121]">
+                                 How to Get Started
+                               </h1>
+                     
+                               <div className="inline-flex flex-col items-center relative">
+                                 <span className="relative w-fit font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] text-[#212121]">
+                                   <motion.span
+                                     initial={{ scaleY: 0, opacity: 0 }}
+                                     whileInView={{ scaleY: 1, opacity: 1 }}
+                                     transition={{ duration: 0.8, ease: "easeOut" }}
+                                     viewport={{ once: true, amount: 0.8 }}
+                                     className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
+                                   />
+                                   Themselves
+                                 </span>
+                               </div>
+                             </div>
+                           </motion.div>
              {/* Remove stray <div/> and fix structure */}
              
            </div>

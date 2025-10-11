@@ -8,7 +8,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "c.animaapp.com",
-        pathname: "/mfnnsr9tKgXFn5/img/**",
+        pathname: "/**",
       },
     ],
   },
