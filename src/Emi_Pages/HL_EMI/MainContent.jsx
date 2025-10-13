@@ -69,7 +69,7 @@
 //       animate={{ x: 0 }}
 //       exit={{ x: "-100%" }}
 //       transition={{ type: "tween", duration: 0.5 }}
-//       className="fixed top-0 left-0 w-full h-full bg-opacity-95 z-50 flex items-center justify-center"
+//        className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
 //     >
 //       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
 //         <button
@@ -320,7 +320,7 @@
 //           </div>
 //         </div>
 //       </main>
-//       <div className="px-[156px] w-full">
+//       <div className="px-2 md:px-5 lg:px-[156px] w-full">
 //         <EmiCalculator/>
 //       </div>
      
@@ -343,7 +343,8 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import EmiCalculator from "./components/EMI_Calculator";
+import EmiCalculator from "../PL_EMI/components/EMI_Calculator";
+
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -394,7 +395,7 @@ const Eligibility = ({ onClose }) => {
       animate={{ x: 0 }}
       exit={{ x: "-100%" }}
       transition={{ type: "tween", duration: 0.5 }}
-      className="fixed top-0 left-0 w-full h-full bg-opacity-95 z-50 flex items-center justify-center"
+       className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
     >
       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
         <button
@@ -594,7 +595,7 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                Home Loan page 
+                Home Loan EMI Calculator
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
                 Turn your dream of home ownership into reality with loans up to Rs. 5 Crores. Attractive interest rates, flexible tenure options, and fast approvals.
@@ -620,7 +621,7 @@ const MainContent = () => {
                 </div>
 
                 <div className="flex flex-col items-start justify-between relative flex-1">
-                  <div className="flex flex-col items-start gap-4 py-4 relative w-full">
+                  {/* <div className="flex flex-col items-start gap-4 py-4 relative w-full">
                     <ActionButton
                       onClick={() => handleOpen("Eligibility Criteria")}
                       iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
@@ -633,7 +634,7 @@ const MainContent = () => {
                     >
                       Check Document Required
                     </ActionButton>
-                  </div>
+                  </div> */}
 
                   {/* <div className="flex items-center justify-around gap-3.5 relative w-full">
                     <button className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
@@ -648,7 +649,7 @@ const MainContent = () => {
           </div>
         </div>
       </main>
- <div className="px-[156px] w-full">
+ <div className="px-2 md:px-5 lg:px-[156px] w-full">
         <EmiCalculator/>
       </div>
       <AnimatePresence>

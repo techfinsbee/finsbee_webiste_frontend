@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import EmiCalculator from "./components/EMI_Calculator";
+
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -62,70 +62,70 @@ const Eligibility = ({ onClose }) => {
 
   return (
     <motion.div
-      initial={{ x: "-100%" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100%" }}
-      transition={{ type: "tween", duration: 0.5 }}
-      className="fixed top-0 left-0 w-full h-full bg-opacity-95 z-[9999] flex items-center justify-center"
-    >
-      <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl"
-          aria-label="Close eligibility modal"
-        >
-          ✕
-        </button>
-        <div className="h-full z-[9999]">
-          <section className="flex flex-col items-center gap-12 px-6 md:px-12 py-16">
-            <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
-              <p className="text-gray-600 font-bold text-sm tracking-wide uppercase">
-                The Results Speak for Themselves
-              </p>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-800">
-                Eligibility Criteria
-              </h1>
-            </div>
-            <div className="flex flex-col lg:flex-row items-start gap-6 w-full max-w-6xl">
-              {eligibilityCriteria.map((section) => (
-                <div
-                  key={section.title}
-                  className="flex-1 bg-white p-6 rounded-lg lg:rounded-none lg:first:rounded-l-lg lg:last:rounded-r-lg lg:[&:not(:first-child)]:border-l lg:border-dashed lg:border-gray-300"
-                >
-                  <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
-                    <div className="flex flex-col gap-6 flex-1">
-                      <h2 className="text-xl md:text-2xl font-normal text-gray-800">
-                        {section.title}
-                      </h2>
-                      <ul className="flex flex-col gap-4">
-                        {section.criteria.map((criterion, criterionIndex) => (
-                          <li
-                            key={criterionIndex}
-                            className="flex items-center gap-3"
-                          >
-                            <CheckCircle className="w-6 h-6 text-gray-800 flex-shrink-0" />
-                            <span className="text-gray-800 text-base">
-                              {criterion}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="flex items-center justify-center flex-shrink-0">
-                      <img
-                        className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-lg"
-                        alt={`Illustration for ${section.title}`}
-                        src={section.image}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
-      </div>
-    </motion.div>
+         initial={{ x: "-100%" }}
+         animate={{ x: 0 }}
+         exit={{ x: "-100%" }}
+         transition={{ type: "tween", duration: 0.5 }}
+         className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
+       >
+         <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full h-[90vh] overflow-y-auto relative">
+           <button
+             onClick={onClose}
+             className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl z-10"
+             aria-label="Close eligibility modal"
+           >
+             ✕
+           </button>
+           <div className="h-full">
+             <section className="flex flex-col items-center gap-12 px-6 md:px-12 py-16">
+               <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
+                 <p className="text-gray-600 font-bold text-sm tracking-wide uppercase">
+                   The Results Speak for Themselves
+                 </p>
+                 <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800">
+                   Eligibility Criteria
+                 </h1>
+               </div>
+               <div className="flex flex-col lg:flex-row items-start gap-6 w-full">
+                 {eligibilityCriteria.map((section) => (
+                   <div
+                     key={section.title}
+                     className="flex-1 bg-white p-6 rounded-lg lg:rounded-none lg:first:rounded-l-lg lg:last:rounded-r-lg lg:[&:not(:first-child)]:border-l lg:border-dashed lg:border-gray-300"
+                   >
+                     <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
+                       <div className="flex flex-col gap-6 flex-1">
+                         <h2 className="text-lg sm:text-xl md:text-2xl font-normal text-gray-800">
+                           {section.title}
+                         </h2>
+                         <ul className="flex flex-col gap-4">
+                           {section.criteria.map((criterion, criterionIndex) => (
+                             <li
+                               key={criterionIndex}
+                               className="flex items-center gap-3"
+                             >
+                               <CheckCircle className="w-6 h-6 text-gray-800 flex-shrink-0" />
+                               <span className="text-gray-800 text-base">
+                                 {criterion}
+                               </span>
+                             </li>
+                           ))}
+                         </ul>
+                       </div>
+                       <div className="flex items-center justify-center flex-shrink-0">
+                         <img
+                           className="w-24 h-24 sm:w-32 sm:h-32 md:w-52 md:h-52 object-cover rounded-lg"
+                           alt={`Illustration for ${section.title}`}
+                           src={section.image}
+                         />
+                       </div>
+                     </div>
+                   </div>
+                 ))}
+               </div>
+             </section>
+           </div>
+         </div>
+       </motion.div>
   );
 };
 
@@ -235,12 +235,12 @@ const MainContent = () => {
 
   return (
     <>
-      <main className="flex flex-col lg:flex-row items-center gap-8 px-4 md:px-12 lg:px-32 py-7 relative w-full">
+       <main className="flex flex-col lg:flex-row items-center gap-8 px-4 md:px-12 lg:px-32 py-4 lg:py-12 relative w-full">
         <div className="flex flex-col items-center gap-12 relative flex-1">
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                Business Loan
+                Business Loan EMI Calculator
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
                 Fuel your business growth with loans up to Rs. 1 Crore. Quick
@@ -295,7 +295,7 @@ const MainContent = () => {
           </div>
         </div>
       </main>
-      <div className="px-[156px] w-full">
+      <div className="lg:px-[156px] w-full">
         <EmiCalculator/>
       </div>
       <AnimatePresence>
@@ -310,3 +310,5 @@ const MainContent = () => {
   );
 };
 export default MainContent;
+
+

@@ -821,7 +821,7 @@ const menuData = {
   },
   "Loan Against Securities": {
     column1: [
-      { label: "Loan Against Mutual Funds", path: "/LAS" },
+      { label: "Loan Against Mutual Funds", path: "/LAM" },
       { label: "Loan Against Stocks", path: "/LAS" },
     ],
   },

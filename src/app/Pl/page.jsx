@@ -1,5 +1,6 @@
+import PL_EMI from "@/Emi_Pages/PL_EMI";
 import React from "react";
-import InvestePage from "../../Loan_Page";
+
 
 // ✅ Static metadata (works now, can be extended to dynamic later)
 export const metadata = {
@@ -35,7 +36,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div>
-      <InvestePage />
+      <PL_EMI/>
     </div>
   );
 }

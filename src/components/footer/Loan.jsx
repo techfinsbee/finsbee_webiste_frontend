@@ -128,7 +128,7 @@ export default function LoanApplicationSection() {
   ];
 
   return (
-    <section className="w-full flex flex-col items-start px-4 sm:px-6 lg:px-10 py-12 gap-8">
+    <section className="w-full flex flex-col items-start px-4 sm:px-6 lg:px-10  gap-8">
       <h2 className="w-full text-white text-3xl font-bold mb-4">
         Apply for Loan in Your City
       </h2>
@@ -138,7 +138,7 @@ export default function LoanApplicationSection() {
             {column.links.map((link, linkIndex) => (
               <a
                 key={linkIndex}
-                href="#"
+                // href="#"
                 className={`block py-2 px-5 rounded transition-colors duration-200 outline-none
                   ${
                     linkIndex === 0

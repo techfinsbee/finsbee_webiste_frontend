@@ -242,44 +242,47 @@ export default function Section8() {
       {/* Wrapper to prevent overflow */}
       <div className="relative overflow-x-hidden">
         {/* Right Side Image */}
-        <div className="absolute right-[-136px] bottom-[10rem] w-[980px] h-[620px]">
+        <div className="hidden lg:absolute right-[-136px] bottom-[10rem] w-[980px] h-[620px]">
           <img
             src="/Investment/lp.svg"
             alt="Rate chart showing gold and silver price trends"
             className="w-full h-full object-contain"
           />
         </div>
-        <section className="relative flex flex-col items-start gap-16 pt-24 pb-40 px-[136px]">
+        <section className="relative flex flex-col items-start gap-16 pt-24 pb-40 px-2 lg:px-[136px]">
           {/* Header */}
-          <motion.header className="flex flex-col items-start gap-2.5 py-0 w-full max-w-[456px]">
-            <h3 className="font-bold text-[16px] leading-[20px] tracking-[0.5px] text-[#212121]">
-              The Results Speaks for Themselves
-            </h3>
+         <motion.header className="flex flex-col items-start gap-2 sm:gap-3 py-0 w-full max-w-full sm:max-w-[400px] md:max-w-[456px] px-4 sm:px-0">
+  {/* Subheading */}
+  <h3 className="font-bold text-sm sm:text-base md:text-[16px] leading-[18px] sm:leading-[20px] tracking-[0.5px] text-[#212121]">
+    The Results Speaks for Themselves
+  </h3>
 
-            <div className="flex flex-wrap w-full items-start gap-[10px]">
-              <h1 className="w-full font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
-                Price rate of
-              </h1>
-              <span className="relative w-fit font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
-                {/* Animated Yellow Highlight */}
-                <motion.span
-                  initial={{ scaleY: 0, opacity: 0 }}
-                  whileInView={{ scaleY: 1, opacity: 1 }}
-                  exit={{ scaleY: 0, opacity: 0 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  viewport={{ once: false, amount: 0.8 }}
-                  className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
-                />
-                Gold and Silver
-              </span>
-            </div>
+  {/* Heading */}
+  <div className="flex flex-wrap w-full items-start gap-[6px] sm:gap-[10px]">
+    <h1 className="w-full font-bold text-3xl sm:text-5xl md:text-[64px] leading-snug sm:leading-tight text-[#212121] font-['Lato',sans-serif]">
+      Price rate of
+    </h1>
 
-            {/* <p className="font-normal text-[14px] leading-[18px] tracking-[0.5px] text-[#212121] font-['Lato',sans-serif]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minim veniam.
-            </p> */}
-          </motion.header>
+    <span className="relative w-fit font-bold text-3xl sm:text-5xl md:text-[64px] leading-snug sm:leading-tight text-[#212121] font-['Lato',sans-serif]">
+      {/* Animated Yellow Highlight */}
+      <motion.span
+        initial={{ scaleY: 0, opacity: 0 }}
+        whileInView={{ scaleY: 1, opacity: 1 }}
+        exit={{ scaleY: 0, opacity: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.8 }}
+        className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
+      />
+      Gold and Silver
+    </span>
+  </div>
+
+  {/* Optional paragraph (kept commented for future use) */}
+  {/* <p className="font-normal text-xs sm:text-sm md:text-[14px] leading-[18px] tracking-[0.5px] text-[#212121] font-['Lato',sans-serif]">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p> */}
+</motion.header>
+
 
           {/* Main Content */}
           <div className="flex w-full justify-between relative">

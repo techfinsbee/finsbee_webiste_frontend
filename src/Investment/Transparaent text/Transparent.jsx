@@ -31,14 +31,14 @@ const AnimatedTextSection = () => {
 
   return (
     <motion.section
-      className=" mx-auto px-6 md:px-[136px] py-16 rounded-2xl"
+      className=" mx-auto sm:px-6 md:px-[136px] md:py-16 rounded-2xl"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
       <div className="text-start">
         <div
-          className="text-5xl font-bold leading-relaxed"
+          className="md:text-5xl font-bold leading-relaxed"
           style={{ fontFamily: "Lato, sans-serif" }}
         >
           {words.map((word, index) => (

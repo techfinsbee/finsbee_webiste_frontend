@@ -237,7 +237,7 @@
 //                 <div key={index}>
 //                   <button
 //                     onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-//                     className={`w-full flex items-center justify-between gap-6 px-8 py-6 bg-primary-light rounded-xl border transition-all ${
+//                     className={`w-full flex items-center justify-between gap-6 px-4 sm:px-6 py-4 sm:py-6 bg-primary-light rounded-xl border transition-all ${
 //                       openFaq === index
 //                         ? "border-[#b39fff] shadow-md rounded-b-none"
 //                         : "border-[#592eff33]"
@@ -259,7 +259,7 @@
 //                     />
 //                   </button>
 //                   {faq.answer && openFaq === index && (
-//                     <div className="px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
+//                     <div className="px-4 sm:px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
 //                       <p className="text-base text-gray-500">{faq.answer}</p>
 //                     </div>
 //                   )}
@@ -706,7 +706,7 @@
 //                 <div key={index}>
 //                   <button
 //                     onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-//                     className={`w-full flex items-center justify-between gap-6 px-8 py-6 bg-primary-light rounded-xl border transition-all ${
+//                     className={`w-full flex items-center justify-between gap-6 px-4 sm:px-6 py-4 sm:py-6 bg-primary-light rounded-xl border transition-all ${
 //                       openFaq === index
 //                         ? "border-[#b39fff] shadow-md rounded-b-none"
 //                         : "border-[#592eff33]"
@@ -726,7 +726,7 @@
 //                     />
 //                   </button>
 //                   {faq.answer && openFaq === index && (
-//                     <div className="px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
+//                     <div className="px-4 sm:px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
 //                       <p className="text-base text-gray-500">{faq.answer}</p>
 //                     </div>
 //                   )}
@@ -1076,11 +1076,11 @@ const FinsbeeSection = () => {
                    ></div>
                  
                </div>
-               <div className="grid grid-cols-2 justify-center md:justify-start gap-4 px-4 mb-4">
+               <div className="grid grid-cols-1 sm:grid-cols-2 justify-center md:justify-start gap-4 px-4 mb-4">
                  {whyFinsbeeFeatures.map((feature, i) => (
                    <div
                      key={i}
-                     className="w-full sm:w-[48%] md:w-[45%] lg:w-[370px] h-full"
+                    className="w-full h-full"
                    >
                      <div className="flex flex-col items-start gap-2 p-4 h-full">
                        <img
@@ -1120,7 +1120,7 @@ const FinsbeeSection = () => {
                  <div key={index}>
                    <button
                      onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
-                     className={`w-full flex items-center justify-between gap-6 px-8 py-6 bg-primary-light rounded-xl border transition-all ${
+                     className={`w-full flex items-center justify-between gap-6 px-4 sm:px-6 py-4 sm:py-6 bg-primary-light rounded-xl border transition-all ${
                        openFaq === index
                          ? "border-[#b39fff] shadow-md rounded-b-none"
                          : "border-[#592eff33]"
@@ -1140,7 +1140,7 @@ const FinsbeeSection = () => {
                      />
                    </button>
                    {faq.answer && openFaq === index && (
-                     <div className="px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
+                     <div className="px-4 sm:px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
                        <p className="text-base text-gray-500">{faq.answer}</p>
                      </div>
                    )}

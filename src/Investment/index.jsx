@@ -15,12 +15,15 @@ export default function index() {
   return (
     <div className=''>
         <Header/>
-        <div className="min-h-screen bg-white flex items-center justify-center p-8">
+        <div className="pt-8 lg:pt-0 lg:min-h-screen bg-white flex items-center justify-center px-3 md:p-8">
       <AnimatedTextSection />
       
     </div>
     <Section3/>
-        <WhyInvest/> 
+    <div className='hidden lg:block'>
+      <WhyInvest /> 
+    </div>
+        
          <HowItWork/>
          <WhyChooseFinsbee/>
          <ProductsSection/>
