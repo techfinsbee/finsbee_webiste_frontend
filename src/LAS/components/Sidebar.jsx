@@ -57,9 +57,16 @@ export default function Sidebar({ phoneNumber, setPhoneNumber, isChecked, setIsC
                  Finsbee keeps your data safe
               </div>
             </div>
-            <button className="w-full px-7 py-4 bg-yellow-400 border border-yellow-200 rounded-lg text-base font-bold text-gray-900 cursor-pointer transition-colors hover:bg-yellow-500">
-              Send OTP
+                    <a
+            href="https://play.google.com/store/apps/details?id=com.finsbee.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full"
+          >
+             <button className="w-full px-7 py-4 bg-yellow-400 border border-yellow-200 rounded-lg text-base font-bold text-gray-900 cursor-pointer transition-colors hover:bg-yellow-500">
+                    Apply Now
             </button>
+          </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import PL_EMI from "@/Emi_Pages/PL_EMI";
+
+import InvestePage from "@/Loan_Page";
 import React from "react";
 
 
@@ -36,7 +37,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div>
-      <PL_EMI/>
+     <InvestePage/>
     </div>
   );
 }

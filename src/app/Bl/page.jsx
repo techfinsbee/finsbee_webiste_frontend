@@ -1,3 +1,4 @@
+import InvestePage from "@/bl";
 import BL_EMI from "@/Emi_Pages/BL_EMI ";
 import React from "react";
 
@@ -51,7 +52,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div>
-      <BL_EMI/>
+   <InvestePage/>
     </div>
   );
 }

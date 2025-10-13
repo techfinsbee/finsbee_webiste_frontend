@@ -1201,7 +1201,7 @@ const FinsbeeSection = () => {
  
        {/* ====================== RIGHT SECTION ====================== */}
        <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
-         <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
+         <div className="sticky top-0 pt-2 h-fit w-full max-w-[432px]">
            <div className="border-[6px] border-yellow-400 rounded-2xl bg-white overflow-hidden shadow-lg">
              <div className="pt-12 pb-0 px-6">
                <h2 className="text-[28px] md:text-[32px] font-bold text-gray-900 leading-normal">
@@ -1269,9 +1269,19 @@ const FinsbeeSection = () => {
                      Finsbee keeps your data safe
                    </div>
                  </div>
-                 <button className="w-full px-7 py-4 bg-yellow-400 border border-yellow-200 rounded-lg text-base font-bold text-gray-900 cursor-pointer transition-colors hover:bg-yellow-500">
-                   Send OTP
-                 </button>
+                 {/* <a className="w-full px-7 py-4 bg-yellow-400 border border-yellow-200 rounded-lg text-base font-bold text-gray-900 cursor-pointer transition-colors hover:bg-yellow-500">
+                   Apply Now
+                 </a> */}
+                    <a
+            href="https://play.google.com/store/apps/details?id=com.finsbee.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full"
+          >
+             <button className="w-full px-7 py-4 bg-yellow-400 border border-yellow-200 rounded-lg text-base font-bold text-gray-900 cursor-pointer transition-colors hover:bg-yellow-500">
+                    Apply Now
+            </button>
+          </a>
                </div>
              </div>
            </div>
