@@ -100,7 +100,7 @@ const commonTransition = { duration: 0.9, ease: "easeOut" };
 
 export default function MoneySection({ animate = false, isDesktop = false }) {
   return (
-    <div className="flex flex-col h-[400px] sm:h-[500px] md:h-[650px] items-center justify-end relative w-full max-w-[1440px] mx-auto mb-[-100px] sm:mb-[-150px] md:mb-[-311.01px] overflow-hidden">
+    <div className="flex flex-col h-[300px] sm:h-[500px] md:h-[650px] items-center justify-end relative w-full max-w-[1440px] mx-auto mb-[-100px] sm:mb-[-150px] md:mb-[-311.01px] overflow-hidden">
       {/* Heading */}
       {isDesktop ? (
         <motion.div
@@ -116,7 +116,7 @@ export default function MoneySection({ animate = false, isDesktop = false }) {
         </motion.div>
       ) : (
         <div className="flex flex-col items-center gap-3.5 relative w-full z-20">
-          <h1 className="w-full font-extrabold text-gray-100 text-[64px] sm:text-[100px] text-center leading-normal relative tracking-[0]">
+          <h1 className="w-full font-extrabold text-gray-100 text-[54px] sm:text-[100px] text-center leading-normal relative tracking-[0]">
             Finsbee.
           </h1>
         </div>
@@ -169,7 +169,7 @@ export default function MoneySection({ animate = false, isDesktop = false }) {
         />
       ) : (
         <img
-          className="relative w-[90%] sm:w-[80%] max-w-[1283px] -mt-[20px] sm:-mt-[40px] z-40"
+          className="relative w-[110%] sm:w-[80%] max-w-[1283px] -mt-[40px] sm:-mt-[40px] z-40"
           alt="Bottom image"
           src="landing_page/mobile.png"
         />

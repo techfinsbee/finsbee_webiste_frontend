@@ -1,4 +1,3 @@
-
 // "use client";
 
 // import React, { useRef, useState, useEffect } from "react";
@@ -71,7 +70,6 @@
 // };
 
 // export default TopSlide;
-
 
 // "use client";
 
@@ -149,7 +147,6 @@
 
 // export default TopSlide;
 
-
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
@@ -191,10 +188,10 @@ const TopSlide = () => {
   }, [animateMoney, isDesktop]);
 
   return (
-    <div className="flex flex-col items-start gap-8 md:gap-60 relative font-['Lato',Helvetica] overflow-x-hidden">
+    <div className="flex flex-col  gap-8 md:gap-60 relative font-['Lato',Helvetica] overflow-x-hidden">
       <section className="relative flex flex-col items-start gap-4 md:gap-10 w-full lg:rounded-b-[120px]">
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_100%,rgba(89,46,255,0.72),rgba(49,25,140,0.9))] rounded-b-4xl lg:rounded-b-[120px] overflow-hidden" />
+        <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_100%,rgba(89,46,255,0.72),rgba(49,25,140,0.9))] rounded-b-[45px] h-[35rem] sm:h-auto lg:rounded-b-[120px] overflow-hidden">
 
         {/* Background Image */}
         <Image
@@ -202,13 +199,13 @@ const TopSlide = () => {
           alt="Background"
           fill
           priority
-          className="object-cover object-center -z-10 rounded-b-4xl lg:rounded-b-[120px]"
+          className="object-cover object-center -z-10 rounded-b-[45px]  lg:rounded-b-[120px]"
         />
-
+        </div>
         {/* Header + MainContent */}
         <div
           ref={mainRef}
-          className="flex flex-col items-start gap-6 sm:gap-8 md:gap-[114px] pt-[100px] sm:pt-[120px] md:pt-[185px] relative self-stretch w-full flex-[0_0_auto]"
+          className="flex flex-col items-start gap-4 sm:gap-8 md:gap-[114px] pt-[70px] sm:pt-[150px] lg:pt-[185px] relative self-stretch w-full flex-[0_0_auto]"
         >
           <MainContent isDesktop={isDesktop} />
         </div>
@@ -225,7 +222,10 @@ const TopSlide = () => {
       </section>
 
       {/* Brand Section */}
-      <BrandSection />
+      <div className="pt-7 "> 
+        <BrandSection />
+      </div>
+     
     </div>
   );
 };
