@@ -1,5 +1,6 @@
+import BL_EMI from "@/Emi_Pages/BL_EMI ";
 import React from "react";
-import InvestePage from "@/bl";
+
 
 // ✅ Personal Loan Metadata (as per your provided meta tags)
 export const metadata = {
@@ -50,7 +51,7 @@ export const metadata = {
 export default function Page() {
   return (
     <div>
-      <InvestePage />
+      <BL_EMI/>
     </div>
   );
 }

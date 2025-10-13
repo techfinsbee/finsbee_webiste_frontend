@@ -7,6 +7,7 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
+import EmiCalculator from "../PL_EMI/components/EMI_Calculator";
 
 
 // Reusable button component for MainContent

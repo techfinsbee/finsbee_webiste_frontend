@@ -7,8 +7,7 @@ import MainContent from "./MainContent";
 
 import Frame from "@/components/footer/Fram";
 import TableSection from "./components/Table";
-import LoanPieChart from "./components/LoanPieChart";
-import EmiCalculator from "./components/EMI_Calculator";
+
 import LoanCalculatorButtons from "./Buttons";
 
 
