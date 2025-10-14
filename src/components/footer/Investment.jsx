@@ -544,8 +544,8 @@ export default function ResponsiveFooter() {
   const navigationLinks = [
     { label: "About Us", route: "/" },
     { label: "Blog", route: "/" },
-    { label: "Terms & Conditions", route: "/" },
-    { label: "Privacy Policy", route: "/" },
+    { label: "Terms & Conditions", route: "/terms-and-conditions" },
+    { label: "Privacy Policy", route: "/privacy-policy" },
   ];
 
   const loanTypes = [
