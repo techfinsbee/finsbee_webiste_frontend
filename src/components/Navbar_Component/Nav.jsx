@@ -763,7 +763,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const menuData = {
   "Personal loan": {
     column1: [
-      { label: "Personal loan Interest Rates", path: "/Pl" },
+      { label: "Personal loan Interest Rates", path: "/Pl/pl_Emi" },
       { label: "Documents Required For Personal Loan", path: "/Pl" },
       { label: "Personal Loan EMI Calculator", path: "/Pl/pl_Emi" },
       { label: "CIBIL Score for Personal Loan", path: "/Pl" },
@@ -795,7 +795,7 @@ const menuData = {
       { label: "Business Loan Eligibility", path: "/Bl" },
     ],
     column2: [
-      { label: "Business Loan Interest Rate", path: "/Bl" },
+      { label: "Business Loan Interest Rate", path: "/Bl/bl_Emi" },
       { label: "Documents Required For Business Loan", path: "/Bl" },
       { label: "Unsecured Business Loans", path: "/Bl" },
     ],
@@ -809,8 +809,8 @@ const menuData = {
       { label: "Loan Against Property Eligibility", path: "/loanap" },
       { label: "Documents Required For Loan Against Property", path: "/loanap" },
       { label: "LAP Balance transfer", path: "/LAP" },
-      { label: "Loan Against Property EMI Calculator", path: "/loanap/emi" },
-      { label: "Loan Against Property Interest Rates", path: "/loanap" },
+      { label: "Loan Against Property EMI Calculator", path: "/loanap/LoanAP_EMI" },
+      { label: "Loan Against Property Interest Rates", path: "/loanap/LoanAP_EMI" },
     ],
   },
   "Home Loan": {

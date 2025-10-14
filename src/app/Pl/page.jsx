@@ -3,7 +3,6 @@ import InvestePage from "@/Loan_Page";
 import React from "react";
 
 
-// ✅ Static metadata (works now, can be extended to dynamic later)
 export const metadata = {
   title: "Personal Loan - Finsbee",
   description:
@@ -13,11 +12,11 @@ export const metadata = {
     title: "Personal Loan - Finsbee",
     description:
       "Explore the best personal loan offers with Finsbee. Compare benefits, eligibility, and apply smartly.",
-    url: "https://new.finsbee.com/personalloan",
+    url: "https://finsbee.com/Pl",
     siteName: "Finsbee",
     images: [
       {
-        url: "https://new.finsbee.com/og-image.png",
+        url: "/favicon.svg",
         width: 800,
         height: 600,
       },

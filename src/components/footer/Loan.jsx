@@ -111,20 +111,41 @@
 import React from "react";
 
 export default function LoanApplicationSection() {
-  const loanLinks = [
+  const loanLinks1 = [
     "Personal Loan in Bangalore",
     "Business Loan in Bangalore",
     "Home Loan in Bangalore",
     "Education Loan in Bangalore",
-    "LAP in Bangalore",
-    "LAS in Bangalore",
+   
   ];
+  const loanLinks2 = [
+    "Personal Loan in Delhi",
+    "Business Loan in Delhi",
+    "Home Loan in Delhi",
+    "Education Loan in Delhi",
+   
+  ];
+  const loanLinks3 = [
+    "Personal Loan in Mumbai",
+    "Business Loan in Mumbai",
+    "Home Loan in Mumbai",
+    "Education Loan in Mumbai",
+ 
+  ];
+  const loanLinks4 = [
+    "Personal Loan in Lucknow",
+    "Business Loan in Lucknow",
+    "Home Loan in Lucknow",
+    "Education Loan in Lucknow",
+   
+  ];
+  
 
   const columns = [
-    { links: loanLinks },
-    { links: loanLinks },
-    { links: loanLinks },
-    { links: loanLinks },
+    { links: loanLinks1 },
+    { links: loanLinks2 },
+    { links: loanLinks3 },
+    { links: loanLinks4 },
   ];
 
   return (

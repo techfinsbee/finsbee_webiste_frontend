@@ -33,11 +33,11 @@ export const metadata = {
     title: "FinsBee - Personal, Business, Home Loans & LAP",
     description:
       "FinsBee - Apply online for personal loan, business loan, home loan, and loan against property. Quick approval, low interest rates, flexible EMIs & 100% digital process.",
-    url: "https://new.finsbee.com",
+    url: "https://finsbee.com",
     siteName: "Finsbee",
     images: [
       {
-        url: "https://new.finsbee.com/og-image.png",
+        url: "/favicon.svg",
         width: 800,
         height: 600,
       },

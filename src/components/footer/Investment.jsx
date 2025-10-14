@@ -307,75 +307,93 @@
 // }
 
 
+
+
+
 // "use client";
-// import { ArrowRightIcon, MailIcon, PhoneIcon } from "lucide-react";
+
 // import React from "react";
+// import { useRouter } from "next/navigation";
+// import { ArrowRightIcon, MailIcon, PhoneIcon , Instagram, Youtube, Linkedin, Facebook} from "lucide-react";
 // import Image from "next/image";
-// import { motion } from "framer-motion";
+
+
 
 // export default function ResponsiveFooter() {
+//   const router = useRouter();
+
+//   // External social network URLs
 //   const socialIcons = [
-//     { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "Instagram" },
-//     { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "Twitter" },
-//     { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "LinkedIn" },
-//     { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "Facebook" },
+//   { icon: <Instagram className="w-10 h-7" />, alt: "Instagram", url: "https://www.instagram.com/finsbee_official_?igsh=dGlveWhrZHFpd2Zt&utm_source=qr" },
+//   { icon: <Youtube className="w-7 h-7" />, alt: "Youtube", url: "https://youtube.com/@finsbeeofficial?si=Nj8H99UKbDbXmr0l" },
+//   { icon: <Linkedin className="w-7 h-7" />, alt: "LinkedIn", url: "https://www.linkedin.com/company/finsbeeofficial/posts/?feedView=all" },
+//   { icon: <Facebook className="w-7 h-7" />, alt: "Facebook", url: "https://www.facebook.com/profile.php?id=61580182081407" },
 //   ];
 
-//   const navigationLinks = ["About Us", "Blog", "Terms & Conditions", "Privacy Policy"];
-//   const loanTypes = ["Personal Loan", "Business Loan", "Education Loan", "Home Loan", "LAP", "LAS"];
+//   // Internal routes
+//   const navigationLinks = [
+//     { label: "About Us", route: "/" },
+//     { label: "Blog", route: "/" },
+//     { label: "Terms & Conditions", route: "/" },
+//     { label: "Privacy Policy", route: "/" },
+//   ];
+
+//   const loanTypes = [
+//     { label: "Personal Loan", route: "/Pl" },
+//     { label: "Business Loan", route: "/Bl" },
+//     { label: "Education Loan", route: "/Pl" },
+//     { label: "Home Loan", route: "/HL" },
+//     { label: "LAP", route: "/loanap" },
+//     { label: "LAS", route: "/LAS" },
+//   ];
+
 //   const investmentOptions = [
 //     {
 //       title: "Gold",
 //       percentage: "+34.70%",
 //       period: "p.a(3Y)",
 //       background:
-//         "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element.png) 50% 50% / cover, linear-gradient(223deg, rgba(240,199,53,1) 0%, rgba(217,143,57,1) 100%)",
+//         "url(/landing_page/category-element.png) 50% 50% / cover, linear-gradient(223deg, rgba(240,199,53,1) 0%, rgba(217,143,57,1) 100%)",
+//       route: "/investment",
 //     },
 //     {
 //       title: "Silver",
 //       percentage: "+34.70%",
 //       period: "p.a(3Y)",
 //       background:
-//         "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element-1.png) 50% 50% / cover, linear-gradient(223deg, rgba(202,201,201,1) 0%, rgba(151,151,151,1) 100%)",
+//         "url(/landing_page/category-element-1.png) 50% 50% / cover, linear-gradient(223deg, rgba(202,201,201,1) 0%, rgba(151,151,151,1) 100%)",
+//       route: "/investment",
 //     },
 //   ];
 
-//   const fadeUp = {
-//     hidden: { opacity: 0, y: 40 },
-//     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-//   };
-
 //   return (
-//     <footer className="flex flex-wrap lg:flex-nowrap  text-white w-full">
+//     <footer className="flex flex-wrap lg:flex-nowrap text-white w-full">
 //       {/* LEFT SECTION */}
-//       <motion.div
-//         initial="hidden"
-//         whileInView="visible"
-//         viewport={{ once: true }}
-//         variants={fadeUp}
-//         className="flex flex-col gap-8 p-6 sm:p-10 md:p-14 lg:p-20 flex-1 border-b border-[#b39fff] lg:border-b-0"
-//       >
+//       <div className="flex flex-col gap-8 p-6 sm:p-10 md:p-14 lg:p-20 flex-1 border-b border-[#b39fff] lg:border-b-0">
 //         {/* Socials + Button */}
 //         <div className="flex flex-wrap justify-between items-center gap-6">
 //           <div className="flex flex-wrap gap-4">
-//             {socialIcons.map((icon, i) => (
-//               <motion.div
-//                 key={i}
-//                 whileHover={{ scale: 1.1 }}
-//                 className="flex w-14 h-14 md:w-16 md:h-16 items-center justify-center rounded-2xl border border-[#9073ff]"
-//               >
-//                 <img alt={icon.alt} src={icon.src} className="w-7 md:w-8" />
-//               </motion.div>
-//             ))}
-//           </div>
+//   {socialIcons.map((icon, i) => (
+//     <div
+//       key={i}
+//       className="flex w-14 h-14 md:w-16 md:h-16 items-center justify-center rounded-2xl border border-[#9073ff] hover:bg-[#9073ff]/20 hover:shadow-lg cursor-pointer"
+//       onClick={() => window.open(icon.url, "_blank")}
+//       title={icon.alt}
+//     >
+//       {/* Directly render the Lucide icon component */}
+//       {icon.icon}
+//     </div>
+//   ))}
+// </div>
 
-//           <motion.button
-//             whileHover={{ scale: 1.05 }}
-//             className="flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg border border-[#592eff] text-[#592eff] font-bold hover:bg-[#592eff] hover:text-white transition-colors"
+
+//           <button
+//             className="flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg border border-[#592eff] text-[#592eff] font-bold hover:bg-[#592eff] hover:text-white hover:shadow-lg"
+//              onClick={() => window.open("https://partner.finsbee.com/", "_blank")}
 //           >
 //             Get Partner with us
 //             <ArrowRightIcon className="w-5 h-5" />
-//           </motion.button>
+//           </button>
 //         </div>
 
 //         {/* Navigation + Loan + Investment */}
@@ -383,21 +401,22 @@
 //           {/* Left: Logo & Nav */}
 //           <div className="flex flex-col gap-6 sm:gap-8 flex-1 min-w-[250px]">
 //             <Image
-//               src="https://c.animaapp.com/mfj8sjndzkaKcu/img/finsbee-transparent-2.png"
+//                src="https://c.animaapp.com/mfj8sjndzkaKcu/img/finsbee-transparent-2.png"
 //               width={220}
 //               height={80}
 //               alt="Finsbee Logo"
-//               className="object-contain"
+//               className="object-contain cursor-pointer"
+//               onClick={() => router.push("/")}
 //             />
 //             <nav className="flex flex-col gap-2 text-gray-300">
 //               {navigationLinks.map((link, i) => (
-//                 <motion.div
+//                 <div
 //                   key={i}
-//                   whileHover={{ x: 5 }}
 //                   className="cursor-pointer hover:text-purple-200"
+//                   onClick={() => router.push(link.route)}
 //                 >
-//                   {link}
-//                 </motion.div>
+//                   {link.label}
+//                 </div>
 //               ))}
 //             </nav>
 //             <p className="text-gray-400 text-sm">@ Copyright Finsbee</p>
@@ -408,9 +427,13 @@
 //             <h3 className="text-xl md:text-2xl font-bold">Loan</h3>
 //             <div className="flex flex-col gap-2">
 //               {loanTypes.map((loan, i) => (
-//                 <motion.div key={i} whileHover={{ x: 5 }} className="hover:text-purple-200 cursor-pointer">
-//                   {loan}
-//                 </motion.div>
+//                 <div
+//                   key={i}
+//                   className="hover:text-purple-200 cursor-pointer"
+//                   onClick={() => router.push(loan.route)}
+//                 >
+//                   {loan.label}
+//                 </div>
 //               ))}
 //             </div>
 //           </div>
@@ -420,11 +443,11 @@
 //             <h3 className="text-xl md:text-2xl font-bold">Investment</h3>
 //             <div className="flex flex-wrap gap-4">
 //               {investmentOptions.map((opt, i) => (
-//                 <motion.div
+//                 <div
 //                   key={i}
-//                   whileHover={{ scale: 1.05 }}
-//                   className="w-[140px] md:w-[156px] h-[110px] p-4 rounded-2xl shadow-md cursor-pointer text-white"
+//                   className="w-[140px] md:w-[156px] h-[110px] p-4 rounded-2xl shadow-md cursor-pointer text-white hover:shadow-lg hover:bg-opacity-90"
 //                   style={{ background: opt.background }}
+//                   onClick={() => router.push(opt.route)}
 //                 >
 //                   <div className="flex flex-col justify-between h-full">
 //                     <span className="font-bold text-lg">{opt.title}</span>
@@ -433,7 +456,7 @@
 //                       <p className="text-sm opacity-80">{opt.period}</p>
 //                     </div>
 //                   </div>
-//                 </motion.div>
+//                 </div>
 //               ))}
 //             </div>
 //           </div>
@@ -446,7 +469,10 @@
 //           </div>
 
 //           <div className="flex flex-col sm:flex-row items-center gap-8">
-//             <div className="flex items-center gap-4 cursor-pointer hover:opacity-80">
+//             <div
+//               className="flex items-center gap-4 cursor-pointer hover:opacity-80"
+//               onClick={() => window.open("tel:+91928966175")}
+//             >
 //               <PhoneIcon className="w-6 h-6" />
 //               <div>
 //                 <p className="text-sm">Call Us @</p>
@@ -454,7 +480,10 @@
 //               </div>
 //             </div>
 
-//             <div className="flex items-center gap-4 cursor-pointer hover:opacity-80">
+//             <div
+//               className="flex items-center gap-4 cursor-pointer hover:opacity-80"
+//               onClick={() => window.open("mailto:support@finsbee.com")}
+//             >
 //               <MailIcon className="w-6 h-6" />
 //               <div>
 //                 <p className="text-sm">Send mail to</p>
@@ -463,74 +492,69 @@
 //             </div>
 //           </div>
 //         </div>
-//       </motion.div>
+//       </div>
 
 //       {/* ASIDE SECTION */}
-//       <motion.aside
-//         initial={{ opacity: 0, x: 60 }}
-//         whileInView={{ opacity: 1, x: 0 }}
-//         viewport={{ once: true }}
-//         transition={{ duration: 0.7 }}
-//         className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-[#512AE8] to-[#592EFF] w-full lg:w-[380px] px-8 py-10 md:py-16"
-//       >
+//       <aside className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-[#512AE8] to-[#592EFF] w-full lg:w-[380px] px-8 py-10 md:py-16">
 //         <h2 className="text-2xl md:text-3xl font-bold text-center">
 //           Get financial help @ your doorstep
 //         </h2>
 
-//         {/* Animated Circle Button */}
-//         <motion.button
-//           whileHover="hover"
-//           initial="initial"
-//           animate="initial"
+//         {/* Connect Button */}
+//         <button
 //           className="relative inline-flex flex-col h-[180px] w-[180px] md:h-[218px] md:w-[218px] items-center justify-center rounded-full border border-white border-opacity-50 overflow-hidden"
+//           // onClick={() => router.push("/contact")}
 //         >
-//           <motion.div
-//             className="absolute w-full h-full bg-yellow-400 rounded-full"
-//             variants={{
-//               initial: { scale: 0, opacity: 0 },
-//               hover: { scale: 1.1, opacity: 1 },
-//             }}
-//             transition={{ type: "spring", stiffness: 120, damping: 10 }}
-//           />
-//           <motion.div
-//             className="z-10 flex flex-col items-center text-center"
-//             variants={{
-//               initial: { color: "#fff" },
-//               hover: { color: "#000" },
-//             }}
-//             transition={{ duration: 0.3 }}
-//           >
+//           <div className="absolute w-full h-full bg-[#2121210D]  rounded-full hover:opacity-90" />
+//           <div className="z-10 flex flex-col items-center text-center text-white hover:text-black">
 //             <Image src="/landing_page/arrow-up.svg" alt="Arrow Up" width={80} height={80} />
 //             <p className="text-base md:text-xl font-bold mt-2">Connect with us</p>
-//           </motion.div>
-//         </motion.button>
+//           </div>
+//         </button>
 
 //         <div className="text-center">
 //           <p className="text-lg md:text-2xl font-bold">10:00 A.M - 7:00 P.M (IST)</p>
 //           <p className="text-sm md:text-base opacity-80">All Day (* We do not serve on holidays)</p>
 //         </div>
-//       </motion.aside>
+//       </aside>
 //     </footer>
 //   );
 // }
-
-
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { ArrowRightIcon, MailIcon, PhoneIcon } from "lucide-react";
+import { Instagram, Youtube, Linkedin, Facebook } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function ResponsiveFooter() {
+  const router = useRouter();
+
   const socialIcons = [
-    { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "Instagram" },
-    { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "Twitter" },
-    { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "LinkedIn" },
-    { src: "https://c.animaapp.com/mfj8sjndzkaKcu/img/vuesax-broken-instagram.svg", alt: "Facebook" },
+    { icon: <Instagram className="w-6 h-6 md:w-7 md:h-7" />, alt: "Instagram", url: "https://www.instagram.com/finsbee_official_?igsh=dGlveWhrZHFpd2Zt&utm_source=qr" },
+    { icon: <Youtube className="w-6 h-6 md:w-7 md:h-7" />, alt: "Youtube", url: "https://youtube.com/@finsbeeofficial?si=Nj8H99UKbDbXmr0l" },
+    { icon: <Linkedin className="w-6 h-6 md:w-7 md:h-7" />, alt: "LinkedIn", url: "https://www.linkedin.com/company/finsbeeofficial/posts/?feedView=all" },
+    { icon: <Facebook className="w-6 h-6 md:w-7 md:h-7" />, alt: "Facebook", url: "https://www.facebook.com/profile.php?id=61580182081407" },
   ];
 
-  const navigationLinks = ["About Us", "Blog", "Terms & Conditions", "Privacy Policy"];
-  const loanTypes = ["Personal Loan", "Business Loan", "Education Loan", "Home Loan", "LAP", "LAS"];
+  const navigationLinks = [
+    { label: "About Us", route: "/" },
+    { label: "Blog", route: "/" },
+    { label: "Terms & Conditions", route: "/" },
+    { label: "Privacy Policy", route: "/" },
+  ];
+
+  const loanTypes = [
+    { label: "Personal Loan", route: "/Pl" },
+    { label: "Business Loan", route: "/Bl" },
+    { label: "Education Loan", route: "/Pl" },
+    { label: "Home Loan", route: "/HL" },
+    { label: "LAP", route: "/loanap" },
+    { label: "LAS", route: "/LAS" },
+  ];
+
   const investmentOptions = [
     {
       title: "Gold",
@@ -538,6 +562,7 @@ export default function ResponsiveFooter() {
       period: "p.a(3Y)",
       background:
         "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element.png) 50% 50% / cover, linear-gradient(223deg, rgba(240,199,53,1) 0%, rgba(217,143,57,1) 100%)",
+      route: "/investment",
     },
     {
       title: "Silver",
@@ -545,28 +570,53 @@ export default function ResponsiveFooter() {
       period: "p.a(3Y)",
       background:
         "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element-1.png) 50% 50% / cover, linear-gradient(223deg, rgba(202,201,201,1) 0%, rgba(151,151,151,1) 100%)",
+      route: "/investment",
     },
   ];
 
+  // Variants for circle animation
+  const circleVariants = {
+    initial: { x: "120%", y: "120%", scale: 0.9, opacity: 0.8 },
+    hover: { x: 0, y: 0, scale: 1, opacity: 1 },
+  };
+
+  const arrowVariants = {
+    initial: { opacity: 1 },
+    hover: { opacity: 0 },
+  };
+
+  const arrowHoverVariants = {
+    initial: { opacity: 0 },
+    hover: { opacity: 1 },
+  };
+
+  const textVariants = {
+    initial: { color: "#ffffff" },
+    hover: { color: "#000000" },
+  };
+
   return (
-    <footer className="flex flex-wrap lg:flex-nowrap text-white w-full">
+    <footer className="flex flex-col lg:flex-row w-full text-white">
       {/* LEFT SECTION */}
-      <div className="flex flex-col gap-8 p-6 sm:p-10 md:p-14 lg:p-20 flex-1 border-b border-[#b39fff] lg:border-b-0">
+      <div className="flex flex-col gap-8 p-6 sm:p-10 md:p-14 lg:p-20 flex-1 border-b lg:border-b-0 border-[#b39fff]">
         {/* Socials + Button */}
         <div className="flex flex-wrap justify-between items-center gap-6">
           <div className="flex flex-wrap gap-4">
             {socialIcons.map((icon, i) => (
               <div
                 key={i}
-                className="flex w-14 h-14 md:w-16 md:h-16 items-center justify-center rounded-2xl border border-[#9073ff] hover:bg-[#9073ff]/20 hover:shadow-lg"
+                className="flex w-14 h-14 md:w-16 md:h-16 items-center justify-center rounded-2xl border border-[#9073ff] hover:bg-[#9073ff]/20 hover:shadow-lg cursor-pointer"
+                onClick={() => window.open(icon.url, "_blank")}
+                title={icon.alt}
               >
-                <img alt={icon.alt} src={icon.src} className="w-7 md:w-8" />
+                {icon.icon}
               </div>
             ))}
           </div>
 
           <button
             className="flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg border border-[#592eff] text-[#592eff] font-bold hover:bg-[#592eff] hover:text-white hover:shadow-lg"
+            onClick={() => window.open("https://partner.finsbee.com/", "_blank")}
           >
             Get Partner with us
             <ArrowRightIcon className="w-5 h-5" />
@@ -574,30 +624,30 @@ export default function ResponsiveFooter() {
         </div>
 
         {/* Navigation + Loan + Investment */}
-        <div className="flex flex-wrap justify-between gap-10 w-full">
-          {/* Left: Logo & Nav */}
+        <div className="flex flex-col lg:flex-row justify-between gap-10 w-full">
           <div className="flex flex-col gap-6 sm:gap-8 flex-1 min-w-[250px]">
             <Image
               src="https://c.animaapp.com/mfj8sjndzkaKcu/img/finsbee-transparent-2.png"
               width={220}
               height={80}
               alt="Finsbee Logo"
-              className="object-contain"
+              className="object-contain cursor-pointer"
+              onClick={() => router.push("/")}
             />
             <nav className="flex flex-col gap-2 text-gray-300">
               {navigationLinks.map((link, i) => (
                 <div
                   key={i}
                   className="cursor-pointer hover:text-purple-200"
+                  onClick={() => router.push(link.route)}
                 >
-                  {link}
+                  {link.label}
                 </div>
               ))}
             </nav>
             <p className="text-gray-400 text-sm">@ Copyright Finsbee</p>
           </div>
 
-          {/* Middle: Loan */}
           <div className="flex flex-col gap-4 flex-1 min-w-[200px]">
             <h3 className="text-xl md:text-2xl font-bold">Loan</h3>
             <div className="flex flex-col gap-2">
@@ -605,14 +655,14 @@ export default function ResponsiveFooter() {
                 <div
                   key={i}
                   className="hover:text-purple-200 cursor-pointer"
+                  onClick={() => router.push(loan.route)}
                 >
-                  {loan}
+                  {loan.label}
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: Investment */}
           <div className="flex flex-col gap-4 flex-1 min-w-[200px]">
             <h3 className="text-xl md:text-2xl font-bold">Investment</h3>
             <div className="flex flex-wrap gap-4">
@@ -621,6 +671,7 @@ export default function ResponsiveFooter() {
                   key={i}
                   className="w-[140px] md:w-[156px] h-[110px] p-4 rounded-2xl shadow-md cursor-pointer text-white hover:shadow-lg hover:bg-opacity-90"
                   style={{ background: opt.background }}
+                  onClick={() => router.push(opt.route)}
                 >
                   <div className="flex flex-col justify-between h-full">
                     <span className="font-bold text-lg">{opt.title}</span>
@@ -635,14 +686,16 @@ export default function ResponsiveFooter() {
           </div>
         </div>
 
-        {/* Contact Section */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6 bg-[#2121210D] rounded-lg p-6 md:p-8">
           <div className="text-center sm:text-left font-bold text-lg sm:text-xl">
             Have any questions? <br /> Contact Us
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-8">
-            <div className="flex items-center gap-4 cursor-pointer hover:opacity-80">
+            <div
+              className="flex items-center gap-4 cursor-pointer hover:opacity-80"
+              onClick={() => window.open("tel:+91928966175")}
+            >
               <PhoneIcon className="w-6 h-6" />
               <div>
                 <p className="text-sm">Call Us @</p>
@@ -650,7 +703,10 @@ export default function ResponsiveFooter() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 cursor-pointer hover:opacity-80">
+            <div
+              className="flex items-center gap-4 cursor-pointer hover:opacity-80"
+              onClick={() => window.open("mailto:support@finsbee.com")}
+            >
               <MailIcon className="w-6 h-6" />
               <div>
                 <p className="text-sm">Send mail to</p>
@@ -662,18 +718,46 @@ export default function ResponsiveFooter() {
       </div>
 
       {/* ASIDE SECTION */}
-      <aside className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-[#512AE8] to-[#592EFF] w-full lg:w-[380px] px-8 py-10 md:py-16">
+      <aside className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-[#512AE8] to-[#592EFF] w-full lg:w-[380px] px-6 sm:px-8 py-10 md:py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-center">
           Get financial help @ your doorstep
         </h2>
 
-        <button className="relative inline-flex flex-col h-[180px] w-[180px] md:h-[218px] md:w-[218px] items-center justify-center rounded-full border border-white border-opacity-50 overflow-hidden">
-          <div className="absolute w-full h-full bg-yellow-400 rounded-full hover:opacity-90" />
-          <div className="z-10 flex flex-col items-center text-center text-white hover:text-black">
-            <Image src="/landing_page/arrow-up.svg" alt="Arrow Up" width={80} height={80} />
-            <p className="text-base md:text-xl font-bold mt-2">Connect with us</p>
-          </div>
-        </button>
+        {/* Connect Button with animation */}
+        <motion.button
+          className="relative inline-flex flex-col h-[180px] w-[180px] md:h-[218px] md:w-[218px] items-center justify-center rounded-full border border-white border-opacity-50 overflow-hidden"
+          initial="initial"
+          whileHover="hover"
+          whileTap="hover" // mobile tap support
+        >
+          <motion.div
+            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[216px] h-[216px] md:w-[218px] md:h-[218px] bg-yellow-500 rounded-full"
+            variants={circleVariants}
+            transition={{ type: "spring", stiffness: 150, damping: 12, mass: 0.8 }}
+          />
+
+          {/* Arrow swap */}
+          <motion.div
+            className="absolute z-10"
+            variants={arrowVariants}
+          >
+            <Image src="/landing_page/arrow-up.svg" width={102} height={102} alt="Arrow Up White" />
+          </motion.div>
+          <motion.div
+            className="absolute z-10"
+            variants={arrowHoverVariants}
+          >
+            <Image src="/landing_page/arrow-up 2.svg" width={102} height={102} alt="Arrow Up Black" />
+          </motion.div>
+
+          <motion.div
+            className="z-10 mt-25 text-center font-bold text-base md:text-xl text-white"
+            variants={textVariants}
+            transition={{ duration: 0.3 }}
+          >
+            Connect with us
+          </motion.div>
+        </motion.button>
 
         <div className="text-center">
           <p className="text-lg md:text-2xl font-bold">10:00 A.M - 7:00 P.M (IST)</p>

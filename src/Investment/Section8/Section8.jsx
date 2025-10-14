@@ -242,7 +242,7 @@ export default function Section8() {
       {/* Wrapper to prevent overflow */}
       <div className="relative overflow-x-hidden">
         {/* Right Side Image */}
-        <div className="hidden lg:absolute right-[-136px] bottom-[10rem] w-[980px] h-[620px]">
+        <div className="hidden 2xl:absolute right-[-136px] bottom-[10rem] w-[980px] h-[620px]">
           <img
             src="/Investment/lp.svg"
             alt="Rate chart showing gold and silver price trends"

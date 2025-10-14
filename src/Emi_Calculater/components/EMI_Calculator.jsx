@@ -434,11 +434,16 @@ const EmiCalculator = () => {
           />
          
         </div>
-      
-         <button className="bg-yellow-400 bottom-0 hover:bg-yellow-500 text-gray-800 font-semibold py-3 rounded-lg shadow">
+                <a
+            href="https://play.google.com/store/apps/details?id=com.finsbee.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[100%]"
+          >
+         <button className="bg-yellow-400 w-full bottom-0 hover:bg-yellow-500 text-gray-800 font-semibold py-3 rounded-lg shadow">
           Apply Now for Loan
         </button>
-        
+        </a>
       </div>
     </div>
   );

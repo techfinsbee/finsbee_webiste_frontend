@@ -22,11 +22,11 @@ export const metadata = {
     title: "Home Loan - Finsbee",
     description:
       "Turn your dream home into reality with FinsBee home loans. Enjoy low interest rates, long tenures, flexible repayment & a 100% paperless digital process. Apply now.",
-    url: "https://new.finsbee.com/homeloan",
+    url: "https://finsbee.com/HL",
     siteName: "Finsbee",
     images: [
       {
-        url: "https://new.finsbee.com/og-image.png",
+        url: "/favicon.svg",
         width: 800,
         height: 600,
       },

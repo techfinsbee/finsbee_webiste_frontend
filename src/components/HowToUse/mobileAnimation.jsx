@@ -1462,7 +1462,8 @@ export const MobileBox = () => {
                 </div>
 
                 {/* Tablet and Mobile View */}
-                <div className="block lg:hidden flex flex-col items-center p-4">
+                <div className="flex flex-col items-center p-4 lg:hidden">
+
                     <motion.div
                         className="w-full grid grid-cols-1 md:grid-cols-2 gap-6"
                         variants={containerVariants}

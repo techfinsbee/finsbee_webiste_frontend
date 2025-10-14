@@ -1,5 +1,5 @@
 import InvestePage from "@/bl";
-import BL_EMI from "@/Emi_Pages/BL_EMI ";
+
 import React from "react";
 
 
@@ -28,11 +28,11 @@ export const metadata = {
     title: "Personal Loan - FinsBee",
     description:
       "Get instant personal loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
-    url: "https://new.finsbee.com/personalloan",
+    url: "https://finsbee.com/Bl",
     siteName: "Finsbee",
     images: [
       {
-        url: "https://new.finsbee.com/og-image.png",
+        url: "/favicon.svg",
         width: 800,
         height: 600,
       },

@@ -5,79 +5,79 @@ import React from "react";
 const TableSection = () => {
   const bankData = [
   {
-    bank: "State Bank of India (SBI)",
-    interestRate: "7.50% – 9.20%",
-    loanAmount: "₹10 lakh – ₹15 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Up to 0.50% of the loan amount",
-  },
-  {
-    bank: "Bank of Baroda",
-    interestRate: "7.45% – 9.00%",
-    loanAmount: "₹2 lakh – ₹20 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Min: ₹8,500 | Max: ₹25,000",
-  },
-  {
     bank: "HDFC Bank",
-    interestRate: "7.90% – 9.25%",
-    loanAmount: "₹40 lakh – ₹10 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Approx. 0.50% of loan amount",
+    interestRate: "9.75% – 11.00%",
+    loanAmount: "₹10 lakh – ₹10 crore",
+    tenure: "Up to 15 years",
+    processingFee: "Up to 1.5% of loan amount or ₹4,500",
   },
   {
-    bank: "Canara Bank",
-    interestRate: "7.40% – 9.40%",
-    loanAmount: "₹15 lakh – ₹3 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Min: ₹1,500 + GST | Max: ₹10,000 + GST",
+    bank: "State Bank of India",
+    interestRate: "7.50% – 12.00%",
+    loanAmount: "Up to ₹7.5 crore",
+    tenure: "Up to 15 years",
+    processingFee: "₹10,000",
   },
   {
     bank: "Axis Bank",
-    interestRate: "8.35% – 9.50%",
-    loanAmount: "₹3 lakh – ₹5 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Up to 1% or min. ₹10,000 + GST",
+    interestRate: "9.25% – 10.00%",
+    loanAmount: "₹5 lakh – ₹5 crore",
+    tenure: "Up to 20 years",
+    processingFee: "Up to 1% of loan amount or ₹10,000",
+  },
+  {
+    bank: "Kotak Mahindra Bank",
+    interestRate: "9.50% – 12.50%",
+    loanAmount: "₹10 lakh – ₹5 crore",
+    tenure: "Up to 15 years",
+    processingFee: "Maximum 1% of loan amount + GST",
+  },
+  {
+    bank: "IDFC First Bank",
+    interestRate: "9.50% – 20.00%",
+    loanAmount: "₹1 crore – ₹15 crore",
+    tenure: "Up to 25 years",
+    processingFee: "Up to 3% of loan amount",
   },
 ];
 
 
-
- const nbfcData = [
+ 
+  const nbfcData = [
+  {
+    nbfc: "Shriram Finance",
+    interestRate: "12.00% – 14.00%",
+    loanAmount: "₹1 lakh – ₹10 crore",
+    tenure: "Up to 25 years",
+    processingFee: "Up to 2.5% of loan amount + GST",
+  },
   {
     nbfc: "Piramal Finance",
-    interestRate: "8.50% – 9.50%",
-    loanAmount: "₹1 lakh – ₹10 crore",
-    tenure: "Up to 25 years",
-    processingFee: "Up to 2.5% of the loan amount",
+    interestRate: "11.50% – 20.00%",
+    loanAmount: "₹10 lakh – ₹2 crore",
+    tenure: "Up to 15 years",
+    processingFee: "Up to 3% of loan amount",
   },
   {
-    nbfc: "Tata Capital Home Loans",
-    interestRate: "7.75% – 12.00%",
-    loanAmount: "₹5 lakh – ₹7.5 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Min: ₹5,000 + GST | Max: ₹10,000 + GST",
-  },
-  {
-    nbfc: "Bajaj Housing Finance",
-    interestRate: "7.45% – 10.25%",
-    loanAmount: "₹15 lakh – ₹10 crore",
-    tenure: "Up to 30 years",
-    processingFee: "Up to 4% of the loan amount + GST",
-  },
-  {
-    nbfc: "Shriram Housing Finance",
-    interestRate: "9.50% – 11.50%",
-    loanAmount: "₹1 lakh – ₹10 crore",
-    tenure: "Up to 25 years",
-    processingFee: "Up to 2.5% of the loan amount",
+    nbfc: "Tata Capital",
+    interestRate: "9.00% – 17.00%",
+    loanAmount: "₹5 lakh – ₹10 crore",
+    tenure: "Up to 15 years",
+    processingFee: "Up to 1.25% of loan amount",
   },
   {
     nbfc: "Aditya Birla Finance",
-    interestRate: "8.25% – 17.25%",
-    loanAmount: "₹50 lakh – ₹25 crore",
-    tenure: "Up to 30 years",
-    processingFee: "0.25% of the loan amount",
+    interestRate: "8.60% – 9.00%",
+    loanAmount: "₹10 lakh – ₹75 crore",
+    tenure: "Up to 20 years",
+    processingFee: "Maximum 1% of loan amount + GST",
+  },
+  {
+    nbfc: "Bajaj Finance",
+    interestRate: "8.00% – 20.00%",
+    loanAmount: "₹5 lakh – ₹10.50 crore",
+    tenure: "Up to 17 years",
+    processingFee: "3.45% of loan amount",
   },
 ];
 
@@ -87,7 +87,7 @@ const TableSection = () => {
       {/* ✅ Banks Section */}
       <section className="flex flex-col gap-8 w-full">
         <h2 className="font-bold text-[28px] md:text-[32px] tracking-[1px] leading-normal">
-          <span className="text-[#212121]">Home Loan </span>
+          <span className="text-[#212121]">Loan Against Property Loan </span>
           <span className="text-[#ffc73c]">Interest Rates – Banks</span>
         </h2>
 
@@ -140,7 +140,7 @@ const TableSection = () => {
       {/* ✅ NBFC Section */}
       <section className="flex flex-col gap-8 w-full">
         <h2 className="font-bold text-[28px] md:text-[32px] tracking-[1px] leading-normal">
-          <span className="text-[#212121]">Home Loan </span>
+          <span className="text-[#212121]">Loan Against Property Loan </span>
           <span className="text-[#592eff]">Interest Rates – NBFCs</span>
         </h2>
 

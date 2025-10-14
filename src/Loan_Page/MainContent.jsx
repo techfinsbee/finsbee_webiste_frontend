@@ -298,7 +298,7 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -505,6 +505,7 @@ const DocumentRequired = ({ onClose }) => {
 const MainContent = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [overlayTitle, setOverlayTitle] = useState("");
+  const router = useRouter();
 
   const handleOpen = (title) => {
     if (["Eligibility Criteria", "Document Required"].includes(title)) {
@@ -562,9 +563,12 @@ const MainContent = () => {
                     </ActionButton>
                   </div>
 
-                  <div className="flex items-center justify-around gap-3.5 relative w-full">
-                    <button className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
-                      <span className="font-bold text-gray-800">Calculate EMI</span>
+                 <div className="flex items-center justify-around gap-3.5 relative w-full">
+                    <button onClick={() => router.push("Pl/pl_Emi")}
+                    className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
+                      <span className="font-bold text-gray-800">
+                        Calculate EMI
+                      </span>
                     </button>
                   </div>
                 </div>

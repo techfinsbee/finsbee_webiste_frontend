@@ -169,6 +169,12 @@ export const Header = () => {
             Secure your future — discover the power of gold and silver investment
           </h1>
 
+            <a
+            href="https://play.google.com/store/apps/details?id=com.finsbee.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-[100%]"
+          >
           <button
             className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 py-3 sm:py-4 bg-yellow-400 rounded-[28px] border border-yellow-300 hover:bg-yellow-300 transition-colors animate-fade-in opacity-0 mt-4"
             style={{ animationDelay: "1000ms" }}
@@ -178,6 +184,7 @@ export const Header = () => {
             </span>
             <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
           </button>
+          </a>
         </div>
 
         {/* Right Section (Animation Bars) */}

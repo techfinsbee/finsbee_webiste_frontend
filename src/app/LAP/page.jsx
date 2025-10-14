@@ -20,11 +20,11 @@ export const metadata = {
     title: "Loan Against Property - Finsbee",
     description:
       "Get high-value funding with FinsBee Loan Against Property. Unlock funds without selling your property, with attractive interest rates & flexible EMIs. Apply online today.",
-    url: "https://new.finsbee.com/lap",
+    url: "https://finsbee.com/loanap",
     siteName: "Finsbee",
     images: [
       {
-        url: "https://new.finsbee.com/og-image.png",
+        url: "/favicon.svg",
         width: 800,
         height: 600,
       },
