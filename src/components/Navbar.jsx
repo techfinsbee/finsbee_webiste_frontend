@@ -14,7 +14,7 @@
 //   const navigationItems = [
 //     {
 //       label: "Loan",
-//       path: "/Pl",
+//       path: "/personal-loan",
 //     },
 //     // { label: "Insurance", path: "/insurance" },
 //     { label: "Investment", path: "/investment" },
@@ -138,7 +138,7 @@
 //   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 //   const navigationItems = [
-//     { label: "Loan", path: "/Pl", isMegaMenu: true },
+//     { label: "Loan", path: "/personal-loan", isMegaMenu: true },
 //     { label: "Investment", path: "/investment", isMegaMenu: false },
 //     { label: "Book Your Slot", path: "https://finsbee.com/booking/", isMegaMenu: false, external: true },
 //   ];
@@ -337,7 +337,7 @@ export const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const navigationItems = [
-    { label: "Loan", path: "/Pl", isMegaMenu: true },
+    { label: "Loan", path: "/personal-loan", isMegaMenu: true },
     { label: "Investment", path: "/investment", isMegaMenu: false },
     { label: "Book Your Slot", path: "https://finsbee.com/booking/", isMegaMenu: false, external: true },
   ];

@@ -289,7 +289,7 @@ const MainContent = () => {
 
                   <div className="flex items-center justify-around gap-3.5 relative w-full">
                     <button className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors"
-                       onClick={() => router.push("/HL/hl_Emi")} >
+                       onClick={() => router.push("/home-loan/hl_Emi")} >
                       <span className="font-bold text-gray-800">
                         Calculate EMI
                       </span>

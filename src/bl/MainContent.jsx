@@ -279,7 +279,7 @@
 //                   </div>
 
 //                   <div className="flex items-center justify-around gap-3.5 relative w-full">
-//                     <button onClick={() => router.push("/Bl/bl_Emi")}
+//                     <button onClick={() => router.push("/business-loan/bl_Emi")}
 //                     className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
 //                       <span className="font-bold text-gray-800">
 //                         Calculate EMI
@@ -587,7 +587,7 @@ const MainContent = () => {
                   </div>
 
                   <div className="flex items-center justify-around gap-3.5 relative w-full">
-                    <button onClick={() => router.push("/Bl/bl_Emi")}
+                    <button onClick={() => router.push("/business-loan/bl_Emi")}
                     className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
                       <span className="font-bold text-gray-800">
                         Calculate EMI

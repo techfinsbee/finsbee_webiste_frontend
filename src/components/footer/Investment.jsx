@@ -339,12 +339,12 @@
 //   ];
 
 //   const loanTypes = [
-//     { label: "Personal Loan", route: "/Pl" },
-//     { label: "Business Loan", route: "/Bl" },
-//     { label: "Education Loan", route: "/Pl" },
-//     { label: "Home Loan", route: "/HL" },
-//     { label: "LAP", route: "/loanap" },
-//     { label: "LAS", route: "/LAS" },
+//     { label: "Personal Loan", route: "/personal-loan" },
+//     { label: "Business Loan", route: "/business-loan" },
+//     { label: "Education Loan", route: "/personal-loan" },
+//     { label: "Home Loan", route: "/home-loan" },
+//     { label: "LAP", route: "/loan-against-property" },
+//     { label: "LAS", route: "/loan-against-securities" },
 //   ];
 
 //   const investmentOptions = [
@@ -520,6 +520,8 @@
 //     </footer>
 //   );
 // }
+
+
 "use client";
 
 import React from "react";
@@ -547,12 +549,12 @@ export default function ResponsiveFooter() {
   ];
 
   const loanTypes = [
-    { label: "Personal Loan", route: "/Pl" },
-    { label: "Business Loan", route: "/Bl" },
-    { label: "Education Loan", route: "/Pl" },
-    { label: "Home Loan", route: "/HL" },
-    { label: "LAP", route: "/loanap" },
-    { label: "LAS", route: "/LAS" },
+    { label: "Personal Loan", route: "/personal-loan" },
+    { label: "Business Loan", route: "/business-loan" },
+    { label: "Education Loan", route: "/personal-loan" },
+    { label: "Home Loan", route: "/home-loan" },
+    { label: "LAP", route: "/loan-against-property" },
+    { label: "LAS", route: "/loan-against-securities" },
   ];
 
   const investmentOptions = [

@@ -3,12 +3,12 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 const buttons = [
-  { image: "/brand_logo/coinn.svg", label: "Personal Loan Calculator", route: "/Pl/pl_Emi" },
-  { image: "/brand_logo/coinn.svg", label: "Home Loan EMI Calculator", route: "/HL/hl_Emi" },
-  { image: "/brand_logo/coinn.svg", label: "Loan Against Property EMI Calculator", route: "/LoanAP_EMI" },
+  { image: "/brand_logo/coinn.svg", label: "Personal Loan Calculator", route: "/personal-loan/pl_Emi" },
+  { image: "/brand_logo/coinn.svg", label: "Home Loan EMI Calculator", route: "/home-loan/hl_Emi" },
+  { image: "/brand_logo/coinn.svg", label: "Loan Against Property EMI Calculator", route: "/loan-against-property/LoanAP_EMI" },
    
 //   { image: "/brand_logo/coinn.svg", label: "EMI Calculator", route: "/Emi" },
-  { image: "/brand_logo/coinn.svg", label: "Business Loan EMI Calculator", route: "/Bl/bl_Emi" },
+  { image: "/brand_logo/coinn.svg", label: "Business Loan EMI Calculator", route: "/business-loan/bl_Emi" },
 ];
 
 const LoanCalculatorButtons = () => {
