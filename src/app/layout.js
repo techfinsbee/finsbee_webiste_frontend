@@ -1,7 +1,6 @@
-
 import { Lato } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
+import ClientLayout from "./ClientLayout"; // Import client layout
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -9,7 +8,6 @@ const lato = Lato({
   variable: "--font-lato",
 });
 
-// Global metadata for all pages (can be overridden per page)
 export const metadata = {
   title: "FinsBee - Personal, Business, Home Loans & LAP",
   description:
@@ -57,12 +55,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={lato.variable}>
-      <body className="relative min-h-screen ">
-        {/* Global Navbar */}
-        <Navbar />
-
-        {/* Page content */}
-        <main className="relative w-full">{children}</main>
+      <body className="relative min-h-screen">
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

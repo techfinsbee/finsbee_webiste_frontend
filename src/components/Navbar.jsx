@@ -252,7 +252,7 @@ export const Navbar = () => {
   const navigationItems = [
     { label: "Loan", path: "/personal-loan", isMegaMenu: true },
     { label: "Investment", path: "/investment", isMegaMenu: false },
-    { label: "Book Your Slot", path: "https://finsbee.com/booking/", isMegaMenu: false, external: true },
+    { label: "Book Your Slot", path: "/booking", isMegaMenu: false, external: true },
   ];
 
   const handleNavigation = (path, external) => {
