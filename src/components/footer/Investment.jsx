@@ -647,7 +647,7 @@ export default function ResponsiveFooter() {
                 </div>
               ))}
             </nav>
-            <p className="text-gray-400 text-sm">@ Copyright Finsbee</p>
+            {/* <p className="text-gray-400 text-sm">@ Copyright Finsbee A STRADEX INTERNATIONAL PVT. LTD. </p> */}
           </div>
 
           <div className="flex flex-col gap-4 flex-1 min-w-[200px]">
@@ -717,6 +717,8 @@ export default function ResponsiveFooter() {
             </div>
           </div>
         </div>
+         {/* <p className="text-gray-400 text-sm">@ Copyright 2025 Stradex International Pvt. Ltd. All Rights Reserved. </p> */}
+         <p className="text-gray-400 text-sm">@ Copyright Finsbee A STRADEX INTERNATIONAL PVT. LTD. </p>
       </div>
 
       {/* ASIDE SECTION */}
