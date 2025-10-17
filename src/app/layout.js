@@ -1,6 +1,7 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout"; // Import client layout
+import Script from "next/script"; // ✅ Import Next.js Script
 
 const lato = Lato({
   weight: ["400", "700"],
@@ -55,6 +56,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={lato.variable}>
+      <head>
+        {/* ✅ Google Tag (gtag.js) */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-WQ6D7665NN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WQ6D7665NN');
+          `}
+        </Script>
+      </head>
+
       <body className="relative min-h-screen">
         <ClientLayout>{children}</ClientLayout>
       </body>
