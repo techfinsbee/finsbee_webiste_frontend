@@ -107,12 +107,14 @@
 // };
 
 // export default nextConfig;
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://dashboard.finsbee.com';
 
     return [
+      // --- Flutter related rewrites ---
       {
         source: '/flutterapiweb/:path*',
         destination: '/flutterapi/web/:path*',
@@ -125,14 +127,24 @@ const nextConfig = {
         source: '/flutterapi/:path*',
         destination: `${backendUrl}/:path*`,
       },
+
+      // --- 2Factor Proxy (CORS Fix) ---
+      {
+        source: '/api/2factor-proxy',
+        destination: 'https://2factor.in/', // receives ?url= param from SW
+      },
       {
         source: '/api/2factor/:path*',
         destination: 'https://2factor.in/API/V1/:path*',
       },
+
+      // --- Customer APIs ---
       {
-        source: '/api/customer/:path*', // New rule for customer API
+        source: '/api/customer/:path*',
         destination: `${backendUrl}/api/customer/:path*`,
       },
+
+      // --- Flutter Web App Route ---
       {
         source: '/flutterapp/:path*',
         destination: '/flutterapp/index.html',
@@ -143,7 +155,8 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/flutterapi/:path*',
+        // Allow API routes (including proxy) to bypass CORS issues
+        source: '/api/:path*',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
@@ -159,38 +172,7 @@ const nextConfig = {
         ],
       },
       {
-        source: '/api/2factor/:path*',
-        headers: [
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:3000',
-          },
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, OPTIONS' },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value: 'X-Requested-With, Content-Type, Authorization, Cookie',
-          },
-          { key: 'Access-Control-Expose-Headers', value: 'Set-Cookie' },
-        ],
-      },
-      {
-        source: '/api/customer/:path*', // New header rule for customer API
-        headers: [
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: process.env.NEXT_PUBLIC_FRONTEND_URL || 'http://localhost:3000',
-          },
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
-          { key: 'Access-Control-Allow-Methods', value: 'GET, POST, OPTIONS' },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value: 'X-Requested-With, Content-Type, Authorization, Cookie',
-          },
-          { key: 'Access-Control-Expose-Headers', value: 'Set-Cookie' },
-        ],
-      },
-      {
+        // Allow Flutter app hosting under /flutterapp
         source: '/flutterapp/:path*',
         headers: [
           {
@@ -203,6 +185,7 @@ const nextConfig = {
     ];
   },
 
+  // --- Images (optional for your use case) ---
   images: {
     remotePatterns: [
       {
