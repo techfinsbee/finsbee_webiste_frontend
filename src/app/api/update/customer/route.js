@@ -290,6 +290,111 @@
 //   }
 // }
 
+// // app/api/update/customer/route.js
+// import { NextResponse } from "next/server";
+
+// const ODOO = "https://dashboard.finsbee.com";
+
+// const FIELD_MAP = {
+//   Email: "email",
+//   DOB: "birthday",
+//   Pincode: "zip",
+//   // gender: "gender",
+// };
+
+// export async function POST(request) {
+//   try {
+//     const body = await request.json();
+//     const params = body.params || {};
+
+//     const { CustomerId } = params;
+//     if (!CustomerId || isNaN(CustomerId)) {
+//       return NextResponse.json(
+//         { jsonrpc: "2.0", error: { code: 400, message: "Valid CustomerId required" } },
+//         { status: 400 }
+//       );
+//     }
+
+//     // GET FULL COOKIE HEADER
+//     const cookieHeader = request.headers.get("cookie") || "";
+//     if (!cookieHeader.includes("session_id=")) {
+//       return NextResponse.json(
+//         { jsonrpc: "2.0", error: { code: 401, message: "Session cookie required" } },
+//         { status: 401 }
+//       );
+//     }
+
+//     // BUILD ODOO FIELDS
+//     const odooFields = {};
+//     for (const [key, value] of Object.entries(params)) {
+//       if (key === "CustomerId") continue;
+//       if (value == null || value === "" || value === false) continue;
+
+//       const odooKey = FIELD_MAP[key] || key.toLowerCase();
+//       odooFields[odooKey] = value;
+//     }
+
+//     if (Object.keys(odooFields).length === 0) {
+//       return NextResponse.json(
+//         { jsonrpc: "2.0", error: { code: 400, message: "No fields to update" } },
+//         { status: 400 }
+//       );
+//     }
+
+//     // ODOO WRITE
+//     const payload = {
+//       jsonrpc: "2.0",
+//       method: "call",
+//       params: {
+//         model: "res.partner",
+//         method: "write",
+//         args: [[CustomerId], odooFields],
+//         kwargs: {},
+//       },
+//     };
+
+//     console.log("UPDATE PAYLOAD:", JSON.stringify(payload, null, 2));
+
+//     const res = await fetch(`${ODOO}/web/dataset/call_kw`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Cookie: cookieHeader, // PASS FULL COOKIE
+//       },
+//       body: JSON.stringify(payload),
+//     });
+
+//     const data = await res.json();
+
+//     if (data.error || !data.result) {
+//       console.error("ODOO UPDATE ERROR:", data);
+//       return NextResponse.json(
+//         { jsonrpc: "2.0", error: { code: 500, message: data.error?.message || "Update failed" } },
+//         { status: 500 }
+//       );
+//     }
+
+//     return NextResponse.json(
+//       { jsonrpc: "2.0", result: { success: "True" } },
+//       {
+//         status: 200,
+//         headers: {
+//           "Access-Control-Allow-Origin": "https://finsbee.com",
+//           "Access-Control-Allow-Credentials": "true",
+//         },
+//       }
+//     );
+
+//   } catch (err) {
+//     console.error("UPDATE FATAL ERROR:", err.message);
+//     return NextResponse.json(
+//       { jsonrpc: "2.0", error: { code: 500, message: err.message } },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
 // app/api/update/customer/route.js
 import { NextResponse } from "next/server";
 
