@@ -113,7 +113,6 @@ export async function POST(request) {
       );
     }
 
-    // USE ADMIN SESSION (NOT USER SESSION)
     const adminCookie = await getAdminSession();
 
     const payload = {
@@ -153,7 +152,7 @@ export async function POST(request) {
         result: [{
           success: "True",
           name: partner.name || "",
-          email: partner.email || `${partner.phone}@example.com`,
+          email: partner.email || "", // ← FIXED: NO FAKE EMAIL
           phone: partner.phone || "",
           CustomerId,
         }],
@@ -177,7 +176,6 @@ export async function POST(request) {
   }
 }
 
-// Allow GET too (optional)
 export async function GET(request) {
   return POST(request);
 }
