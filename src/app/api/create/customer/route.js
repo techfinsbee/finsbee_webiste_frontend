@@ -684,6 +684,181 @@
 //   }
 // }
 
+// // app/api/create/customer/route.js
+// import { NextResponse } from "next/server";
+
+// const ODOO = "https://dashboard.finsbee.com";
+// const ADMIN = {
+//   db: "finsbee",
+//   login: "finsbee@gmail.com",
+//   password: "Finsbee@123%4ujm",
+// };
+
+// async function getAdminSession() {
+//   const loginRes = await fetch(`${ODOO}/web/session/authenticate`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ jsonrpc: "2.0", method: "call", params: ADMIN }),
+//   });
+
+//   if (!loginRes.ok) throw new Error(`Login failed: ${loginRes.status}`);
+
+//   const setCookie = loginRes.headers.get("set-cookie");
+//   if (!setCookie) throw new Error("No session cookie from login");
+
+//   return setCookie;
+// }
+
+// export async function POST(request) {
+//   let adminCookie;
+//   let sessionId;
+
+//   try {
+//     const body = await request.json();
+//     const { name, phone, email } = body.params || {};
+
+//    if (!phone || !/^\d{10}$/.test(phone)) {
+//   return NextResponse.json(
+//     { jsonrpc: "2.0", error: { code: 400, message: "Valid 10-digit phone required" } },
+//     { status: 400 }
+//   );
+// }
+//     // GET ADMIN SESSION
+//     adminCookie = await getAdminSession();
+//     sessionId = adminCookie.split(";")[0].split("=")[1];
+
+//     // SEARCH
+//     const searchPayload = {
+//       jsonrpc: "2.0",
+//       method: "call",
+//       params: {
+//         model: "res.partner",
+//         method: "search_read",
+//         args: [[["phone", "=", phone]], ["id", "name", "email"]],
+//         kwargs: { limit: 1 },
+//       },
+//     };
+
+//     const searchRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Cookie: adminCookie,
+//       },
+//       body: JSON.stringify(searchPayload),
+//     });
+
+//     const searchData = await searchRes.json();
+
+//     if (searchData.error) {
+//       console.error("SEARCH ERROR:", searchData.error);
+//       throw new Error(searchData.error.message);
+//     }
+
+//     const existing = searchData.result?.[0];
+
+//     if (existing) {
+//       console.log(`REUSING CUSTOMER: ${existing.id}`);
+
+//       return NextResponse.json(
+//         {
+//           jsonrpc: "2.0",
+//           result: [{
+//             success: "True",
+//             CustomerId: existing.id,
+//             session_id: sessionId,
+//             name: existing.name || name || phone,
+//             phone,
+//             email: existing.email || `${phone}@example.com`,
+//           }],
+//         },
+//         {
+//           status: 200,
+//           headers: {
+//             "Set-Cookie": adminCookie,
+//             "Access-Control-Allow-Origin": "https://finsbee.com",
+//             "Access-Control-Allow-Credentials": "true",
+//           },
+//         }
+//       );
+//     }
+
+//     // CREATE NEW
+//     console.log(`CREATING NEW FOR: ${phone}`);
+
+//     const createPayload = {
+//       jsonrpc: "2.0",
+//       method: "call",
+//       params: {
+//         model: "res.partner",
+//         method: "create",
+//         args: [[{
+//           name: name || phone,
+//           phone,
+//           email: email || `${phone}@example.com`,
+//           customer_rank: 1,
+//         }]],
+//         kwargs: {},
+//       },
+//     };
+
+//     const createRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Cookie: adminCookie,
+//       },
+//       body: JSON.stringify(createPayload),
+//     });
+
+//     const createData = await createRes.json();
+
+//     if (createData.error) {
+//       console.error("CREATE ERROR:", createData.error);
+//       throw new Error(createData.error.message);
+//     }
+
+//     if (!Array.isArray(createData.result) || createData.result.length === 0) {
+//       throw new Error("Create failed: no ID returned");
+//     }
+
+//     const newId = createData.result[0];
+
+//     return NextResponse.json(
+//       {
+//         jsonrpc: "2.0",
+//         result: [{
+//           success: "True",
+//           CustomerId: newId,
+//           session_id: sessionId,
+//           name: name || phone,
+//           phone,
+//           email: email || `${phone}@example.com`,
+//         }],
+//       },
+//       {
+//         status: 200,
+//         headers: {
+//           "Set-Cookie": adminCookie,
+//           "Access-Control-Allow-Origin": "https://finsbee.com",
+//           "Access-Control-Allow-Credentials": "true",
+//         },
+//       }
+//     );
+
+//   } catch (err) {
+//     console.error("FATAL ERROR:", err.message);
+//     return NextResponse.json(
+//       {
+//         jsonrpc: "2.0",
+//         error: { code: 500, message: err.message || "Internal server error" },
+//       },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
 // app/api/create/customer/route.js
 import { NextResponse } from "next/server";
 
@@ -702,28 +877,25 @@ async function getAdminSession() {
   });
 
   if (!loginRes.ok) throw new Error(`Login failed: ${loginRes.status}`);
-
   const setCookie = loginRes.headers.get("set-cookie");
-  if (!setCookie) throw new Error("No session cookie from login");
-
+  if (!setCookie) throw new Error("No session cookie");
   return setCookie;
 }
 
 export async function POST(request) {
-  let adminCookie;
-  let sessionId;
+  let adminCookie, sessionId;
 
   try {
     const body = await request.json();
     const { name, phone, email } = body.params || {};
 
-   if (!phone || !/^\d{10}$/.test(phone)) {
-  return NextResponse.json(
-    { jsonrpc: "2.0", error: { code: 400, message: "Valid 10-digit phone required" } },
-    { status: 400 }
-  );
-}
-    // GET ADMIN SESSION
+    if (!phone || !/^\d{10}$/.test(phone)) {
+      return NextResponse.json(
+        { jsonrpc: "2.0", error: { code: 400, message: "Valid 10-digit phone required" } },
+        { status: 400 }
+      );
+    }
+
     adminCookie = await getAdminSession();
     sessionId = adminCookie.split(";")[0].split("=")[1];
 
@@ -741,25 +913,16 @@ export async function POST(request) {
 
     const searchRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: adminCookie,
-      },
+      headers: { "Content-Type": "application/json", Cookie: adminCookie },
       body: JSON.stringify(searchPayload),
     });
 
     const searchData = await searchRes.json();
-
-    if (searchData.error) {
-      console.error("SEARCH ERROR:", searchData.error);
-      throw new Error(searchData.error.message);
-    }
+    if (searchData.error) throw new Error(searchData.error.message);
 
     const existing = searchData.result?.[0];
-
     if (existing) {
-      console.log(`REUSING CUSTOMER: ${existing.id}`);
-
+      console.log(`REUSING: ${existing.id}`);
       return NextResponse.json(
         {
           jsonrpc: "2.0",
@@ -769,7 +932,7 @@ export async function POST(request) {
             session_id: sessionId,
             name: existing.name || name || phone,
             phone,
-            email: existing.email || `${phone}@example.com`,
+            email: existing.email || email || `${phone}@example.com`,
           }],
         },
         {
@@ -783,9 +946,8 @@ export async function POST(request) {
       );
     }
 
-    // CREATE NEW
-    console.log(`CREATING NEW FOR: ${phone}`);
-
+    // CREATE — NO customer_rank!
+    console.log(`CREATING NEW: ${phone}`);
     const createPayload = {
       jsonrpc: "2.0",
       method: "call",
@@ -796,7 +958,7 @@ export async function POST(request) {
           name: name || phone,
           phone,
           email: email || `${phone}@example.com`,
-          customer_rank: 1,
+          // customer_rank: 1 → REMOVED
         }]],
         kwargs: {},
       },
@@ -804,23 +966,17 @@ export async function POST(request) {
 
     const createRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: adminCookie,
-      },
+      headers: { "Content-Type": "application/json", Cookie: adminCookie },
       body: JSON.stringify(createPayload),
     });
 
     const createData = await createRes.json();
-
     if (createData.error) {
       console.error("CREATE ERROR:", createData.error);
       throw new Error(createData.error.message);
     }
 
-    if (!Array.isArray(createData.result) || createData.result.length === 0) {
-      throw new Error("Create failed: no ID returned");
-    }
+    if (!createData.result?.[0]) throw new Error("Create failed: no ID");
 
     const newId = createData.result[0];
 
@@ -849,10 +1005,7 @@ export async function POST(request) {
   } catch (err) {
     console.error("FATAL ERROR:", err.message);
     return NextResponse.json(
-      {
-        jsonrpc: "2.0",
-        error: { code: 500, message: err.message || "Internal server error" },
-      },
+      { jsonrpc: "2.0", error: { code: 500, message: err.message } },
       { status: 500 }
     );
   }
