@@ -957,7 +957,7 @@ export async function POST(request) {
         args: [[{
           name: name || phone,
           phone,
-          email: email || `${phone}@example.com`,
+          // email: email || `${phone}@example.com`,
           // customer_rank: 1 → REMOVED
         }]],
         kwargs: {},
