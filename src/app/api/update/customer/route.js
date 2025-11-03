@@ -395,24 +395,26 @@
 // }
 
 
-// app/api/update/customer/route.js
 import { NextResponse } from "next/server";
 
 const ODOO = "https://dashboard.finsbee.com";
 
+// Only include fields that actually exist in your Odoo `res.partner` model
 const FIELD_MAP = {
   Email: "email",
   DOB: "birthday",
   Pincode: "zip",
-  // gender: "gender",
 };
+
+const ALLOWED_FIELDS = ["name", "email", "phone", "birthday", "zip"];
 
 export async function POST(request) {
   try {
     const body = await request.json();
     const params = body.params || {};
-
     const { CustomerId } = params;
+
+    // --- Validation ---
     if (!CustomerId || isNaN(CustomerId)) {
       return NextResponse.json(
         { jsonrpc: "2.0", error: { code: 400, message: "Valid CustomerId required" } },
@@ -420,33 +422,38 @@ export async function POST(request) {
       );
     }
 
-    // GET FULL COOKIE HEADER
+    // --- Check session cookie ---
     const cookieHeader = request.headers.get("cookie") || "";
     if (!cookieHeader.includes("session_id=")) {
+      console.warn("⚠️ Missing session cookie in update request");
       return NextResponse.json(
         { jsonrpc: "2.0", error: { code: 401, message: "Session cookie required" } },
         { status: 401 }
       );
     }
 
-    // BUILD ODOO FIELDS
+    // --- Build Odoo payload ---
     const odooFields = {};
     for (const [key, value] of Object.entries(params)) {
       if (key === "CustomerId") continue;
       if (value == null || value === "" || value === false) continue;
 
       const odooKey = FIELD_MAP[key] || key.toLowerCase();
+      if (!ALLOWED_FIELDS.includes(odooKey)) {
+        console.log(`⏩ Skipped unsupported field: ${odooKey}`);
+        continue;
+      }
+
       odooFields[odooKey] = value;
     }
 
     if (Object.keys(odooFields).length === 0) {
       return NextResponse.json(
-        { jsonrpc: "2.0", error: { code: 400, message: "No fields to update" } },
+        { jsonrpc: "2.0", error: { code: 400, message: "No valid fields to update" } },
         { status: 400 }
       );
     }
 
-    // ODOO WRITE
     const payload = {
       jsonrpc: "2.0",
       method: "call",
@@ -458,27 +465,40 @@ export async function POST(request) {
       },
     };
 
-    console.log("UPDATE PAYLOAD:", JSON.stringify(payload, null, 2));
+    console.log("🟡 UPDATE PAYLOAD:", JSON.stringify(payload, null, 2));
 
+    // --- Send update request to Odoo ---
     const res = await fetch(`${ODOO}/web/dataset/call_kw`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Cookie: cookieHeader, // PASS FULL COOKIE
+        Cookie: cookieHeader,
       },
       body: JSON.stringify(payload),
     });
 
     const data = await res.json();
 
-    if (data.error || !data.result) {
-      console.error("ODOO UPDATE ERROR:", data);
+    console.log("🟢 ODOO UPDATE RESPONSE:", JSON.stringify(data, null, 2));
+
+    // --- Handle Odoo errors ---
+    if (data.error) {
+      console.error("❌ ODOO UPDATE ERROR:", data.error);
       return NextResponse.json(
-        { jsonrpc: "2.0", error: { code: 500, message: data.error?.message || "Update failed" } },
+        { jsonrpc: "2.0", error: { code: 500, message: data.error.message || "Odoo update failed" } },
         { status: 500 }
       );
     }
 
+    if (!data.result) {
+      console.error("❌ ODOO UPDATE: No result returned");
+      return NextResponse.json(
+        { jsonrpc: "2.0", error: { code: 500, message: "Unexpected Odoo response" } },
+        { status: 500 }
+      );
+    }
+
+    // --- Success ---
     return NextResponse.json(
       { jsonrpc: "2.0", result: { success: "True" } },
       {
@@ -489,11 +509,10 @@ export async function POST(request) {
         },
       }
     );
-
   } catch (err) {
-    console.error("UPDATE FATAL ERROR:", err.message);
+    console.error("🔥 UPDATE FATAL ERROR:", err);
     return NextResponse.json(
-      { jsonrpc: "2.0", error: { code: 500, message: err.message } },
+      { jsonrpc: "2.0", error: { code: 500, message: err.message || "Internal Server Error" } },
       { status: 500 }
     );
   }
