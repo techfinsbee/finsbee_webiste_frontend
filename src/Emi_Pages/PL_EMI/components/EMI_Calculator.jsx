@@ -450,6 +450,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import Link from 'next/link';
 
 const EmiCalculator = () => {
   const [loanAmount, setLoanAmount] = useState(125000);
@@ -659,16 +660,11 @@ const EmiCalculator = () => {
           />
         </div>
 
-               <a
-            href="https://play.google.com/store/apps/details?id=com.finsbee.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-[100%]"
-          >
+             <Link href="/flutterapp/index.html" className="w-full">
          <button className="bg-yellow-400 w-full bottom-0 hover:bg-yellow-500 text-gray-800 font-semibold py-3 rounded-lg shadow">
           Apply Now for Loan
         </button>
-        </a>
+       </Link>
       </div>
     </div>
   );

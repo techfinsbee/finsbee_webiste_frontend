@@ -163,6 +163,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import Link from 'next/link';
 
 const whyFinsbeeFeatures = [
   {
@@ -525,7 +526,7 @@ const FinsbeeSection = () => {
             <div className=" rounded-[60px_16px_16px_16px] p-6 md:p-8 mt-8 flex flex-col gap-16">
               <div className="flex flex-col gap-8">
                 {/* Phone Input */}
-                <div className="flex items-center gap-3 px-3 py-[18px] border border-gray-300 rounded-lg bg-white">
+                {/* <div className="flex items-center gap-3 px-3 py-[18px] border border-gray-300 rounded-lg bg-white">
                   <div className="text-base font-normal text-gray-400">+91</div>
                   <div
                     className="w-px h-5"
@@ -541,7 +542,7 @@ const FinsbeeSection = () => {
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                   />
-                </div>
+                </div> */}
 
                 {/* Terms Checkbox */}
                 <div className="flex items-start gap-3 pr-2 md:pr-6">
@@ -583,16 +584,11 @@ const FinsbeeSection = () => {
                     Finsbee keeps your data safe
                   </div>
                 </div>
-                        <a
-            href="https://play.google.com/store/apps/details?id=com.finsbee.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full"
-          >
+                       <Link href="/flutterapp/index.html" className="w-full">
              <button className="w-full px-7 py-4 bg-yellow-400 border border-yellow-200 rounded-lg text-base font-bold text-gray-900 cursor-pointer transition-colors hover:bg-yellow-500">
                     Apply Now
             </button>
-          </a>
+          </Link>
               </div>
             </div>
           </div>
