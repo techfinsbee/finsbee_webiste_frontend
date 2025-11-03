@@ -1,12 +1,110 @@
+// // app/api/customer/profile/route.js
+// import { NextResponse } from "next/server";
+
+// const ODOO = "https://dashboard.finsbee.com";
+
+// async function handle(request) {
+//   try {
+//     const { params } = await request.json();
+//     const { CustomerId } = params || {};
+
+//     if (!CustomerId) {
+//       return NextResponse.json(
+//         { jsonrpc: "2.0", error: { code: 400, message: "CustomerId required" } },
+//         { status: 400 }
+//       );
+//     }
+
+//     const cookie = request.headers.get("cookie") || "";
+//     const sessionMatch = cookie.match(/session_id=([^;]+)/);
+//     if (!sessionMatch) {
+//       return NextResponse.json(
+//         { jsonrpc: "2.0", error: { code: 401, message: "No session" } },
+//         { status: 401 }
+//       );
+//     }
+
+//     const payload = {
+//       jsonrpc: "2.0",
+//       method: "call",
+//       params: {
+//         model: "res.partner",
+//         method: "read",
+//         args: [[CustomerId], ["name", "email", "phone"]],
+//         kwargs: {}
+//       },
+//     };
+
+//     const res = await fetch(`${ODOO}/web/dataset/call_kw`, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json", Cookie: cookie },
+//       body: JSON.stringify(payload),
+//     });
+
+//     const data = await res.json();
+//     const partner = data.result?.[0];
+
+//     if (!partner) {
+//       return new Response(
+//         JSON.stringify({ jsonrpc: "2.0", result: [{ success: "False", message: "Not found" }] }),
+//         { status: 200, headers: { "Content-Type": "application/json" } }
+//       );
+//     }
+
+//     const headers = new Headers({ "Content-Type": "application/json" });
+//     const setCookie = res.headers.get("set-cookie");
+//     if (setCookie) headers.set("Set-Cookie", setCookie);
+
+//     return new Response(
+//       JSON.stringify({
+//         jsonrpc: "2.0",
+//         result: [{
+//           success: "True",
+//           name: partner.name,
+//           email: partner.email || false,
+//           phone: partner.phone,
+//           CustomerId,
+//         }],
+//       }),
+//       { status: 200, headers }
+//     );
+//   } catch (err) {
+//     console.error("PROFILE ERROR:", err.message);
+//     return NextResponse.json(
+//       { jsonrpc: "2.0", error: { code: 500, message: err.message } },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+// export async function POST(request) { return handle(request); }
+// export async function GET(request)  { return handle(request); }
+
 // app/api/customer/profile/route.js
 import { NextResponse } from "next/server";
 
 const ODOO = "https://dashboard.finsbee.com";
+const ADMIN = {
+  db: "finsbee",
+  login: "finsbee@gmail.com",
+  password: "Finsbee@123%4ujm",
+};
 
-async function handle(request) {
+async function getAdminSession() {
+  const loginRes = await fetch(`${ODOO}/web/session/authenticate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ jsonrpc: "2.0", method: "call", params: ADMIN }),
+  });
+  const cookie = loginRes.headers.get("set-cookie");
+  if (!cookie) throw new Error("Admin login failed");
+  return cookie;
+}
+
+export async function POST(request) {
   try {
-    const { params } = await request.json();
-    const { CustomerId } = params || {};
+    const body = await request.json();
+    const { CustomerId } = body.params || {};
 
     if (!CustomerId) {
       return NextResponse.json(
@@ -15,14 +113,8 @@ async function handle(request) {
       );
     }
 
-    const cookie = request.headers.get("cookie") || "";
-    const sessionMatch = cookie.match(/session_id=([^;]+)/);
-    if (!sessionMatch) {
-      return NextResponse.json(
-        { jsonrpc: "2.0", error: { code: 401, message: "No session" } },
-        { status: 401 }
-      );
-    }
+    // USE ADMIN SESSION (NOT USER SESSION)
+    const adminCookie = await getAdminSession();
 
     const payload = {
       jsonrpc: "2.0",
@@ -31,43 +123,51 @@ async function handle(request) {
         model: "res.partner",
         method: "read",
         args: [[CustomerId], ["name", "email", "phone"]],
-        kwargs: {}
+        kwargs: {},
       },
     };
 
     const res = await fetch(`${ODOO}/web/dataset/call_kw`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Cookie: cookie },
+      headers: {
+        "Content-Type": "application/json",
+        Cookie: adminCookie,
+      },
       body: JSON.stringify(payload),
     });
 
     const data = await res.json();
-    const partner = data.result?.[0];
 
-    if (!partner) {
-      return new Response(
-        JSON.stringify({ jsonrpc: "2.0", result: [{ success: "False", message: "Not found" }] }),
-        { status: 200, headers: { "Content-Type": "application/json" } }
+    if (data.error || !data.result?.[0]) {
+      return NextResponse.json(
+        { jsonrpc: "2.0", error: { code: 404, message: "Customer not found" } },
+        { status: 404 }
       );
     }
 
-    const headers = new Headers({ "Content-Type": "application/json" });
-    const setCookie = res.headers.get("set-cookie");
-    if (setCookie) headers.set("Set-Cookie", setCookie);
+    const partner = data.result[0];
 
-    return new Response(
-      JSON.stringify({
+    return NextResponse.json(
+      {
         jsonrpc: "2.0",
         result: [{
           success: "True",
-          name: partner.name,
-          email: partner.email || false,
-          phone: partner.phone,
+          name: partner.name || "",
+          email: partner.email || `${partner.phone}@example.com`,
+          phone: partner.phone || "",
           CustomerId,
         }],
-      }),
-      { status: 200, headers }
+      },
+      {
+        status: 200,
+        headers: {
+          "Set-Cookie": adminCookie,
+          "Access-Control-Allow-Origin": "https://finsbee.com",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
     );
+
   } catch (err) {
     console.error("PROFILE ERROR:", err.message);
     return NextResponse.json(
@@ -77,5 +177,7 @@ async function handle(request) {
   }
 }
 
-export async function POST(request) { return handle(request); }
-export async function GET(request)  { return handle(request); }
+// Allow GET too (optional)
+export async function GET(request) {
+  return POST(request);
+}
