@@ -1,27 +1,149 @@
-import { NextResponse } from 'next/server';
+// app/api/flutterapi/web/session/authenticate/route.js
+/// app/api/flutterapi/web/session/authenticate/route.js
+// import axios from "axios";
+
+// export async function POST(request) {
+//   try {
+//     // ✅ Try to parse body (safe for empty or invalid JSON)
+//     let body = {};
+//     try {
+//       body = await request.json();
+//     } catch {
+//       body = {};
+//     }
+
+//     // Default fallback if nothing is passed from frontend
+//     const {
+//       db = "finsbee",
+//       login = "finsbee@gmail.com",
+//       password = "Finsbee@123%4ujm",
+//     } = body;
+
+//     // ✅ Send request to Odoo
+//     const response = await axios.post(
+//       "https://dashboard.finsbee.com/web/session/authenticate",
+//       {
+//         jsonrpc: "2.0",
+//         method: "call",
+//         params: { db, login, password },
+//       },
+//       {
+//         headers: {
+//           "Content-Type": "application/json",
+//           "Cookie":
+//             "session_id=KVpf9tpUUIlyYyJ_Xm-utELJ_GyTbYIGm48KmbBmkFDZjV6V7vxfDr9VF_OUoOA01c-G_xNvFo-Kq6kOu_uQ",
+//         },
+//       }
+//     );
+
+//     // ✅ Extract cookie from Odoo response
+//     const cookie = response.headers["set-cookie"]?.[0] || null;
+
+//     return new Response(
+//       JSON.stringify({
+//         success: true,
+//         message: "Odoo authentication successful",
+//         cookie,
+//         result: response.data,
+//       }),
+//       {
+//         status: 200,
+//         headers: {
+//           "Content-Type": "application/json",
+//           ...(cookie ? { "Set-Cookie": cookie } : {}),
+//         },
+//       }
+//     );
+//   } catch (err) {
+//     console.error("❌ Authentication proxy error:", err.message);
+//     return new Response(
+//       JSON.stringify({ success: false, error: err.message }),
+//       { status: 500, headers: { "Content-Type": "application/json" } }
+//     );
+//   }
+// }
+
+
+
+// app/api/web/session/authenticate/route.js
+import axios from "axios";
 
 export async function POST(request) {
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://dashboard.finsbee.com';
-  const url = `${backendUrl}/web/session/authenticate`;
-
   try {
-    const body = await request.json();
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    // 1. Parse body safely
+    let body = {};
+    try {
+      body = await request.json();
+    } catch {
+      // keep empty
+    }
+
+    const {
+      db = "finsbee",
+      login = "finsbee@gmail.com",
+      password = "Finsbee@123%4ujm",
+    } = body;
+
+    // 2. Forward any existing cookie (important for logout-then-login)
+    const clientCookie = request.headers.get("cookie") || undefined;
+
+    // 3. Call Odoo
+    const odooRes = await axios.post(
+      "https://dashboard.finsbee.com/web/session/authenticate",
+      {
+        jsonrpc: "2.0",
+        method: "call",
+        params: { db, login, password },
       },
-      body: JSON.stringify(body),
+      {
+        headers: {
+          "Content-Type": "application/json",
+          ...(clientCookie ? { Cookie: clientCookie } : {}),
+        },
+        // Let axios return the raw set-cookie headers
+        maxRedirects: 0,
+        validateStatus: (s) => s === 200,
+      }
+    );
+
+    // 4. Extract the new session cookie
+    const setCookieHeader = odooRes.headers["set-cookie"];
+    const newSessionCookie = Array.isArray(setCookieHeader)
+      ? setCookieHeader[0]
+      : setCookieHeader || null;
+
+    // 5. Build response
+    const responseBody = {
+      success: true,
+      message: "Odoo authentication successful",
+      // expose session_id & uid for Flutter (optional, safe)
+      session_id: odooRes.data.result?.session_id,
+      uid: odooRes.data.result?.uid,
+      result: odooRes.data,
+    };
+
+    const headers = new Headers({
+      "Content-Type": "application/json",
     });
 
-    const data = await response.text();
-    // Forward Set-Cookie header if present
-    const setCookie = response.headers.get('set-cookie');
-    const headers = {};
-    if (setCookie) headers['set-cookie'] = setCookie;
+    // 6. **Overwrite** any old cookie
+    if (newSessionCookie) {
+      headers.append("Set-Cookie", newSessionCookie);
+    }
 
-    return new NextResponse(data, { status: response.status, headers });
-  } catch (error) {
-    return new NextResponse(JSON.stringify({ error: 'Failed to authenticate', details: error.message }), { status: 500 });
+    // 7. (Optional but recommended) Clear old client-side data
+    // This forces the browser to drop localStorage, IndexedDB, etc.
+    headers.append("Clear-Site-Data", '"cookies", "storage"');
+
+    return new Response(JSON.stringify(responseBody), {
+      status: 200,
+      headers,
+    });
+  } catch (err) {
+    console.error("Authentication proxy error:", err.message);
+    return new Response(
+      JSON.stringify({ success: false, error: err.message }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
   }
 }
