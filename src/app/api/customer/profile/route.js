@@ -180,93 +180,113 @@
 //   return POST(request);
 // }
 
-// app/api/customer/profile/route.js
+// /app/api/flutterapi/customer/profile/route.js
+
 import { NextResponse } from "next/server";
 
-const ODOO = "https://dashboard.finsbee.com";
-
-export async function POST(request) {
+export async function POST(req) {
   try {
-    const body = await request.json();
-    const { CustomerId } = body.params || {};
+    const body = await req.json();
+    const params = body?.params || {};
+    const { CustomerId } = params;
 
-    if (!CustomerId) {
-      return NextResponse.json(
-        { jsonrpc: "2.0", error: { code: 400, message: "CustomerId required" } },
-        { status: 400 }
-      );
-    }
+    // ✅ Extract cookie header (session)
+    const cookieHeader = req.headers.get("cookie") || "";
 
-    // GET USER SESSION FROM COOKIE
-    const cookieHeader = request.headers.get("cookie") || "";
     if (!cookieHeader.includes("session_id=")) {
       return NextResponse.json(
-        { jsonrpc: "2.0", error: { code: 401, message: "Session required" } },
+        {
+          jsonrpc: "2.0",
+          error: { code: 401, message: "No valid Odoo session cookie found" },
+        },
         { status: 401 }
       );
     }
 
-    const payload = {
-      jsonrpc: "2.0",
-      method: "call",
-      params: {
-        model: "res.partner",
-        method: "read",
-        args: [[CustomerId], ["name", "email", "phone"]],
-        kwargs: {},
-      },
-    };
-
-    const res = await fetch(`${ODOO}/web/dataset/call_kw`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Cookie: cookieHeader, // USER SESSION
-      },
-      body: JSON.stringify(payload),
-    });
-
-    const data = await res.json();
-
-    if (data.error || !data.result?.[0]) {
-      console.error("PROFILE READ ERROR:", data);
+    if (!CustomerId) {
       return NextResponse.json(
-        { jsonrpc: "2.0", error: { code: 404, message: "Customer not found" } },
+        {
+          jsonrpc: "2.0",
+          error: { code: 400, message: "Missing CustomerId" },
+        },
+        { status: 400 }
+      );
+    }
+
+    console.log("🔍 Fetching Odoo profile for CustomerId:", CustomerId);
+
+    // ✅ Call Odoo JSON-RPC for reading customer record
+    const odooResponse = await fetch(
+      "https://dashboard.finsbee.com/web/dataset/call_kw",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookieHeader,
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          method: "call",
+          params: {
+            model: "res.partner",
+            method: "read",
+            args: [[CustomerId], ["name", "email", "phone", "zip", "birthday"]],
+            kwargs: {},
+          },
+        }),
+      }
+    );
+
+    const data = await odooResponse.json();
+    console.log("🧾 Odoo profile raw response:", data);
+
+    if (!odooResponse.ok || data.error) {
+      console.error("❌ Odoo error:", data.error);
+      return NextResponse.json(
+        {
+          jsonrpc: "2.0",
+          error: { code: 500, message: "Odoo read error", details: data.error },
+        },
+        { status: 500 }
+      );
+    }
+
+    const result = data.result;
+    if (!result || result.length === 0) {
+      return NextResponse.json(
+        {
+          jsonrpc: "2.0",
+          error: { code: 404, message: "Customer not found" },
+        },
         { status: 404 }
       );
     }
 
-    const partner = data.result[0];
+    const partner = result[0];
+    console.log("✅ Found customer:", partner.name);
 
-    return NextResponse.json(
-      {
-        jsonrpc: "2.0",
-        result: [{
+    return NextResponse.json({
+      jsonrpc: "2.0",
+      result: [
+        {
           success: "True",
+          CustomerId,
           name: partner.name || "",
           email: partner.email || "",
           phone: partner.phone || "",
-          CustomerId,
-        }],
-      },
-      {
-        status: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "https://finsbee.com",
-          "Access-Control-Allow-Credentials": "true",
+          zip: partner.zip || "",
+          birthday: partner.birthday || "",
         },
-      }
-    );
-
+      ],
+    });
   } catch (err) {
-    console.error("PROFILE FATAL ERROR:", err.message);
+    console.error("🔥 Profile API Exception:", err);
     return NextResponse.json(
-      { jsonrpc: "2.0", error: { code: 500, message: err.message } },
+      {
+        jsonrpc: "2.0",
+        error: { code: 500, message: "Server Exception", details: err.message },
+      },
       { status: 500 }
     );
   }
-}
-
-export async function GET(request) {
-  return POST(request);
 }
