@@ -566,6 +566,7 @@ const nextConfig = {
       { source: "/api/flutterapi/update/customer",  destination: "/api/update/customer" },
       { source: "/api/flutterapi/customer/profile", destination: "/api/customer/profile" },
       { source: "/api/flutterapi/customer/loan",    destination: "/api/customer/loan" },
+        { source: "/api/flutterapi/check-phone",      destination: "/api/check-phone" },
       { source: "/api/flutterapi/:path*",           destination: "https://dashboard.finsbee.com/:path*" },
       { source: "/api/2factor-proxy", destination: "https://2factor.in/" },
       { source: "/api/2factor/:path*", destination: "https://2factor.in/API/V1/:path*" },
