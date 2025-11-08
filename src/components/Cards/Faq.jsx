@@ -160,7 +160,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-start h-full justify-between   lg:mt-29 lg:py-16 py-8 px-2  md:px-[136px] gap-12">
+    <section className="flex flex-col md:flex-row items-start h-full justify-between    lg:py-16 py-8 px-2  md:px-[136px] gap-12">
       {/* Left Side Heading */}
       <div className="md:w-1/5">
         <h2 className="text-xl font-bold mb-4">

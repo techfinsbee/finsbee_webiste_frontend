@@ -627,7 +627,8 @@ export default function ResponsiveFooter() {
 
         {/* Navigation + Loan + Investment */}
         <div className="flex flex-col lg:flex-row justify-between gap-10 w-full">
-          <div className="flex flex-col gap-6 sm:gap-8 flex-1 min-w-[250px]">
+           <div className="flex flex-row justify-between gap-10 w-full">
+          <div className="flex flex-col gap-6 sm:gap-8 flex-1 lg:min-w-[250px]">
             <Image
               src="https://c.animaapp.com/mfj8sjndzkaKcu/img/finsbee-transparent-2.png"
               width={220}
@@ -650,7 +651,7 @@ export default function ResponsiveFooter() {
             {/* <p className="text-gray-400 text-sm">@ Copyright Finsbee A STRADEX INTERNATIONAL PVT. LTD. </p> */}
           </div>
 
-          <div className="flex flex-col gap-4 flex-1 min-w-[200px]">
+          <div className="flex flex-col gap-4 flex-1 lg:min-w-[200px]">
             <h3 className="text-xl md:text-2xl font-bold">Loan</h3>
             <div className="flex flex-col gap-2">
               {loanTypes.map((loan, i) => (
@@ -664,10 +665,11 @@ export default function ResponsiveFooter() {
               ))}
             </div>
           </div>
+          </div>
 
-          <div className="flex flex-col gap-4 flex-1 min-w-[200px]">
+          <div className="flex flex-col gap-4 flex-1 lg:min-w-[200px]">
             <h3 className="text-xl md:text-2xl font-bold">Investment</h3>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex md:flex-wrap gap-4">
               {investmentOptions.map((opt, i) => (
                 <div
                   key={i}

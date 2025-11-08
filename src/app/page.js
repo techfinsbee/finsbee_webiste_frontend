@@ -52,6 +52,7 @@ import TopSlide from "../components/Header/TopSlide";
 import Frame from "@/components/footer/Fram";
 import ResultsComponent from "@/components/ResultSection/Result";
 import { MobileBox } from "@/components/HowToUse/mobileAnimation";
+import TestimonialsPage from "@/components/Testimonial/TestimonialsPage";
 
 const HomePage = () => {
   return (
@@ -80,7 +81,9 @@ const HomePage = () => {
 
       <div className="w-full">
         <Cards />
+        <TestimonialsPage/>
         <FAQ />
+        
       </div>
       <Frame />
     </div>

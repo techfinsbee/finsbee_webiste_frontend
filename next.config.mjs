@@ -570,6 +570,8 @@ const nextConfig = {
       { source: "/api/flutterapi/:path*",           destination: "https://dashboard.finsbee.com/:path*" },
       { source: "/api/2factor-proxy", destination: "https://2factor.in/" },
       { source: "/api/2factor/:path*", destination: "https://2factor.in/API/V1/:path*" },
+      { source: "/api/booking/:path*", destination: "https://booking.finsbee.com/api/bookings/:path*" },
+      { source: "/api/dashboard/:path*", destination: "https://dashboard.finsbee.com/api/bookings/:path*" },
     ];
   },
 
@@ -598,3 +600,58 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+
+// const nextConfig = {
+//   async rewrites() {
+//     return [
+//       // Flutter API (keep existing)
+//       { source: "/api/flutterapi/create/customer",  destination: "/api/create/customer" },
+//       { source: "/api/flutterapi/update/customer",  destination: "/api/update/customer" },
+//       { source: "/api/flutterapi/customer/profile", destination: "/api/customer/profile" },
+//       { source: "/api/flutterapi/customer/loan",    destination: "/api/customer/loan" },
+//       { source: "/api/flutterapi/check-phone",      destination: "/api/check-phone" },
+//       { source: "/api/flutterapi/:path*",           destination: "https://dashboard.finsbee.com/:path*" },
+
+//       // 2FA
+//       { source: "/api/2factor-proxy", destination: "https://2factor.in/" },
+//       { source: "/api/2factor/:path*", destination: "https://2factor.in/API/V1/:path*" },
+
+//       // === BOOKING APIs ===
+//       {
+//         source: "/api/booking/:path*",
+//         destination: "https://booking.finsbee.com/api/bookings/:path*",
+//       },
+//       {
+//         source: "/api/dashboard/:path*",
+//         destination: "https://dashboard.finsbee.com/api/bookings/:path*",
+//       },
+//     ];
+//   },
+
+//   async headers() {
+//     const origin = process.env.NEXT_PUBLIC_FRONTEND_URL || "https://finsbee.com";
+//     return [
+//       {
+//         source: "/api/:path*",
+//         headers: [
+//           { key: "Access-Control-Allow-Origin", value: origin },
+//           { key: "Access-Control-Allow-Credentials", value: "true" },
+//           { key: "Access-Control-Allow-Methods", value: "GET,POST,PUT,OPTIONS" },
+//           { key: "Access-Control-Allow-Headers", value: "Content-Type,Cookie" },
+//           { key: "Access-Control-Expose-Headers", value: "Set-Cookie" },
+//         ],
+//       },
+//     ];
+//   },
+
+//   images: {
+//     remotePatterns: [
+//       { protocol: "https", hostname: "c.animaapp.com" },
+//       { protocol: "https", hostname: "dashboard.finsbee.com" },
+//       { protocol: "https", hostname: "booking.finsbee.com" },
+//     ],
+//   },
+// };
+
+// export default nextConfig;
