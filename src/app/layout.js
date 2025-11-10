@@ -159,7 +159,7 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
-import AnalyticsScript from "./AnalyticsScript"; // ✅ new import
+import AnalyticsScript from "./AnalyticsScript"; 
 
 const lato = Lato({
   weight: ["400", "700"],
