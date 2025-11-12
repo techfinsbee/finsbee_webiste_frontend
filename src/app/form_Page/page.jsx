@@ -156,10 +156,10 @@
 //     }
 
 //     const data = await response.json();
-//     console.log('Finsbee API response:', data);
+//     //console.log('Finsbee API response:', data);
 //     return data;
 //   } catch (error) {
-//     console.error('Error submitting to Finsbee:', error);
+//     //console.error('Error submitting to Finsbee:', error);
 //     throw new Error('Failed to submit form. Please try again.');
 //   } finally {
 //     setLoading(false);
@@ -632,10 +632,10 @@
 //       }
 
 //       const data = await response.json();
-//       console.log('Finsbee API response:', data);
+//       //console.log('Finsbee API response:', data);
 //       return data;
 //     } catch (error) {
-//       console.error('Error submitting to Finsbee:', error);
+//       //console.error('Error submitting to Finsbee:', error);
 //       throw new Error('Failed to submit form. Please try again.');
 //     } finally {
 //       setLoading(false);
@@ -986,12 +986,26 @@ const vendors = [
     name: "Ram Fincorp", 
     link: "https://ramfinloan.page.link/Fundsmama" 
   },
-  { 
-    id: "credlender", 
-    name: "Credlender", 
-    link: "#" // Add the actual link for Credlender when available
-  },
+  // Removed Credlender as requested
 ];
+
+// Employment type mapping as per backend requirements
+const employmentStatusMap = {
+  "Daily Wages": "Daily-Wage",
+  "Salaried": "Salaried",
+  "Self-Employed Business": "Self-Employed-Business",
+  "Self-Employed Professional": "Self-Employed-Professional",
+  "Student": "Student",
+  "Unemployed": "Unemployed",
+};
+
+// Lender mapping for backend responses
+const lenderMapping = {
+  "credlender": "creditsea", // Map "credlender" response to "creditsea" vendor
+  "ramfincop": "ramfincop",
+  "zype": "zype",
+  "creditsea": "creditsea"
+};
 
 export default function LoanFlow() {
   const [step, setStep] = useState(1);
@@ -1006,11 +1020,13 @@ export default function LoanFlow() {
   const [employmentType, setEmploymentType] = useState("");
   const [loanAmount, setLoanAmount] = useState("");
   const [pincode, setPincode] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [employedSince, setEmployedSince] = useState("");
   const [netIncome, setNetIncome] = useState("");
-  const [salaryCreditMode, setSalaryCreditMode] = useState("Bank");
-  const [loanType, setLoanType] = useState("payday");
+
+  // Hidden fields (sent to backend but not shown in UI)
+  const [companyName] = useState("Not Provided");
+  const [employedSince] = useState("2000-01-01");
+  const [salaryCreditMode] = useState("Bank");
+  const [loanType] = useState("payday");
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -1045,8 +1061,6 @@ export default function LoanFlow() {
       /^\d{1,9}$/.test(v) && Number(v) > 0 ? "" : "Enter a valid loan amount",
     pincode: (v) =>
       /^[1-9][0-9]{5}$/.test(v) ? "" : "Enter a valid 6-digit pincode",
-    companyName: (v) => (v && v.trim().length >= 2 ? "" : "Enter company name"),
-    employedSince: (v) => (v ? "" : "Select employment date"),
     netIncome: (v) => (/^\d{1,9}$/.test(v) && Number(v) > 0 ? "" : "Enter valid net income"),
   };
 
@@ -1063,8 +1077,6 @@ export default function LoanFlow() {
       employmentType: getFieldError("employmentType", employmentType),
       loanAmount: getFieldError("loanAmount", loanAmount),
       pincode: getFieldError("pincode", pincode),
-      companyName: getFieldError("companyName", companyName),
-      employedSince: getFieldError("employedSince", employedSince),
       netIncome: getFieldError("netIncome", netIncome),
     };
     setErrors(next);
@@ -1091,8 +1103,6 @@ export default function LoanFlow() {
       case "employmentType": return employmentType;
       case "loanAmount": return loanAmount;
       case "pincode": return pincode;
-      case "companyName": return companyName;
-      case "employedSince": return employedSince;
       case "netIncome": return netIncome;
       default: return "";
     }
@@ -1114,8 +1124,6 @@ export default function LoanFlow() {
       employmentType: setEmploymentType,
       loanAmount: setLoanAmount,
       pincode: setPincode,
-      companyName: setCompanyName,
-      employedSince: setEmployedSince,
       netIncome: setNetIncome,
     };
     setFns[field](value);
@@ -1136,7 +1144,7 @@ export default function LoanFlow() {
       const day = String(date.getDate()).padStart(2, '0');
       return `${year}-${month}-${day}`;
     } catch (error) {
-      console.error('Date formatting error:', error);
+      //console.error('Date formatting error:', error);
       return '';
     }
   };
@@ -1144,12 +1152,9 @@ export default function LoanFlow() {
   // ✅ DIRECT API CALL to Finsbee using your existing proxy
   const submitToFinsbee = async () => {
     const formattedDOB = formatDateForAPI(dob);
-    const formattedEmployedSince = formatDateForAPI(employedSince);
-
-    console.log('Dates being sent:', {
-      DOB: formattedDOB,
-      Employed_since: formattedEmployedSince
-    });
+    
+    // Map the employment type to backend format
+    const backendEmploymentType = employmentStatusMap[employmentType] || employmentType;
 
     const payload = {
       jsonrpc: "2.0",
@@ -1161,18 +1166,18 @@ export default function LoanFlow() {
         phone: phone.replace(/\D/g, ""),
         DOB: formattedDOB,
         pan: pan.toUpperCase(),
-        employe_type: employmentType,
+        employe_type: backendEmploymentType,
         loan_amount: loanAmount,
         pincode: pincode,
-        Company_Name: companyName.trim(),
-        Employed_since: formattedEmployedSince,
+        Company_Name: companyName,
+        Employed_since: employedSince,
         Net_Income: netIncome,
         Salary_Credit_Mode: salaryCreditMode,
         Loan_Type: loanType
       }
     };
 
-    console.log('Full payload:', payload);
+    //console.log('Full payload:', payload);
 
     try {
       setLoading(true);
@@ -1190,95 +1195,93 @@ export default function LoanFlow() {
       }
 
       const data = await response.json();
-      console.log('Finsbee API response:', data);
+      //console.log('Finsbee API response:', data);
       return data;
     } catch (error) {
-      console.error('Error submitting to Finsbee:', error);
+      //console.error('Error submitting to Finsbee:', error);
       throw new Error('Failed to submit form. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
- // ✅ FIXED: Handle the actual API response structure
-const handleContinue = async () => {
-  setSubmitted(true);
-  if (!validateAll()) return;
+  // ✅ FIXED: Handle multiple lenders from API response
+  const handleContinue = async () => {
+    setSubmitted(true);
+    if (!validateAll()) return;
 
-  try {
-    const response = await submitToFinsbee();
-    setApiResponse(response);
+    try {
+      const response = await submitToFinsbee();
+      setApiResponse(response);
+      
+      //console.log('Full API response:', response);
+      
+      // ✅ FIXED: Get ALL valid lenders from response
+      const resultArray = response?.result || [];
+      const validLenders = [];
+      
+      for (let i = 0; i < resultArray.length; i++) {
+        if (resultArray[i] && resultArray[i].lender && resultArray[i].lender.trim() !== "") {
+          validLenders.push(resultArray[i].lender);
+        }
+      }
+      
+      //console.log('Found lenders:', validLenders);
+      
+      if (validLenders.length > 0) {
+        // Show step 2 with all recommended lenders
+        setStep(2);
+      } else {
+        // No lender found, skip to step 3
+        setStep(3);
+      }
+    } catch (error) {
+      alert(error.message || 'Failed to submit form. Please try again.');
+    }
+  };
+
+  // ✅ FIXED: Get ALL recommended vendors based on API response
+  const getRecommendedVendors = () => {
+    if (!apiResponse) return [];
     
-    console.log('Full API response:', response);
+    const resultArray = apiResponse?.result || [];
+    const lenders = [];
     
-    // ✅ FIXED: Handle the actual response structure
-    // Response has array with 3 items: [null, {lender: "ramfincop"}, {lender: "Credlender"}]
-    const resultArray = response?.result || [];
-    
-    // Find the first valid lender (skip null items)
-    let lender = null;
+    // Get all valid lenders
     for (let i = 0; i < resultArray.length; i++) {
       if (resultArray[i] && resultArray[i].lender && resultArray[i].lender.trim() !== "") {
-        lender = resultArray[i].lender;
-        break; // Take the first valid lender
+        lenders.push(resultArray[i].lender);
       }
     }
     
-    console.log('Found lender:', lender);
+    if (lenders.length === 0) return [];
     
-    if (lender) {
-      // Show step 2 with specific lender
-      setStep(2);
-    } else {
-      // No lender found, skip to step 3
-      setStep(3);
-    }
-  } catch (error) {
-    alert(error.message || 'Failed to submit form. Please try again.');
-  }
-};
+    //console.log('Looking for vendors for lenders:', lenders);
+    
+    const recommendedVendors = [];
+    
+    // Find vendors for each lender
+    lenders.forEach(lender => {
+      // Map lender name to vendor ID
+      const vendorId = lenderMapping[lender.toLowerCase()] || lender.toLowerCase();
+      
+      const foundVendor = vendors.find(vendor => 
+        vendor.id.toLowerCase() === vendorId
+      );
 
-  // ✅ FIXED: Get the recommended vendor based on API response
-const getRecommendedVendor = () => {
-  if (!apiResponse) return null;
-  
-  // ✅ FIXED: Handle the actual response structure
-  const resultArray = apiResponse?.result || [];
-  let lender = null;
-  
-  // Find the first valid lender
-  for (let i = 0; i < resultArray.length; i++) {
-    if (resultArray[i] && resultArray[i].lender && resultArray[i].lender.trim() !== "") {
-      lender = resultArray[i].lender;
-      break;
-    }
-  }
-  
-  if (!lender) return null;
-  
-  console.log('Looking for vendor for lender:', lender);
-  
-  // Find vendor by exact name match (case insensitive)
-  const foundVendor = vendors.find(vendor => 
-    vendor.name.toLowerCase() === lender.toLowerCase() ||
-    vendor.id.toLowerCase() === lender.toLowerCase()
-  );
+      //console.log(`For lender "${lender}", found vendor:`, foundVendor);
 
-  console.log('Found vendor:', foundVendor);
+      // If vendor found and not already in the list, add it
+      if (foundVendor && !recommendedVendors.find(v => v.id === foundVendor.id)) {
+        recommendedVendors.push(foundVendor);
+      }
+    });
+    
+    //console.log('Final recommended vendors:', recommendedVendors);
+    return recommendedVendors;
+  };
 
-  // If no exact match found, create a fallback vendor
-  if (!foundVendor && lender.trim() !== "") {
-    return {
-      id: lender.toLowerCase(),
-      name: lender,
-      link: "#" // Fallback link
-    };
-  }
-  
-  return foundVendor;
-};
-
-  const recommendedVendor = getRecommendedVendor();
+  const recommendedVendors = getRecommendedVendors();
 
   // ✅ Styles
   const inputClass = (field) =>
@@ -1436,47 +1439,17 @@ const getRecommendedVendor = () => {
                 onBlur={() => handleBlur("employmentType")}
               >
                 <option value="" disabled>Select employment type</option>
+                <option value="Daily Wages">Daily Wages</option>
                 <option value="Salaried">Salaried</option>
+                <option value="Self-Employed Business">Self-Employed Business</option>
+                <option value="Self-Employed Professional">Self-Employed Professional</option>
+                <option value="Student">Student</option>
+                <option value="Unemployed">Unemployed</option>
               </select>
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
                 <img src="/form_page/arrow-down.svg" alt="Dropdown Arrow" className="w-5 h-5" />
               </span>
               {errorLine("employmentType")}
-            </div>
-
-            {/* Company Name */}
-            <div className="mb-8 relative">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Enter Company Name"
-                  className={inputClass("companyName")}
-                  value={companyName}
-                  onChange={(e) => handleChange("companyName", e.target.value)}
-                  onBlur={() => handleBlur("companyName")}
-                />
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                  <img src="/form_page/user-square.svg" alt="Company Icon" className="w-5 h-5" />
-                </span>
-                {errorLine("companyName")}
-              </div>
-            </div>
-
-            {/* Employed Since */}
-            <div className="mb-8 relative">
-              <div className="relative">
-                <input
-                  type="date"
-                  className={`${inputClass("employedSince")} text-gray-700`}
-                  value={employedSince}
-                  onChange={(e) => handleChange("employedSince", e.target.value)}
-                  onBlur={() => handleBlur("employedSince")}
-                />
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
-                  <img src="/form_page/calendar.svg" alt="Employment Date Icon" className="w-5 h-5" />
-                </span>
-                {errorLine("employedSince")}
-              </div>
             </div>
 
             {/* Net Income */}
@@ -1495,23 +1468,6 @@ const getRecommendedVendor = () => {
                 </span>
                 {errorLine("netIncome")}
               </div>
-            </div>
-
-            {/* Salary Credit Mode */}
-            <div className="mb-8 relative">
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
-                <img src="/form_page/element-equal.svg" alt="Dropdown Left Icon" className="w-5 h-5" />
-              </span>
-              <select
-                className={selectClass("salaryCreditMode")}
-                value={salaryCreditMode}
-                onChange={(e) => setSalaryCreditMode(e.target.value)}
-              >
-                <option value="Bank">Bank</option>
-              </select>
-              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
-                <img src="/form_page/arrow-down.svg" alt="Dropdown Arrow" className="w-5 h-5" />
-              </span>
             </div>
 
             {/* Loan Amount */}
@@ -1561,35 +1517,43 @@ const getRecommendedVendor = () => {
           </div>
         )}
 
-        {step === 2 && recommendedVendor && (
+        {step === 2 && recommendedVendors.length > 0 && (
           <div className="bg-white w-full max-w-lg rounded-2xl shadow-lg p-8 border border-yellow-100">
             <div className="mb-6 text-2xl font-bold text-[#183153] text-center">
-              Recommended Lender for You
+              {recommendedVendors.length === 1 ? 'Recommended Lender for You' : 'Recommended Lenders for You'}
             </div>
             <div className="text-center text-gray-600 mb-6">
-              Based on your profile, we recommend this lender for the best chances of approval.
+              {recommendedVendors.length === 1 
+                ? 'Based on your profile, we recommend this lender for the best chances of approval.'
+                : 'Based on your profile, we recommend these lenders for the best chances of approval.'
+              }
             </div>
             <div className="flex flex-col gap-5">
-              <div className="flex items-center justify-between w-full bg-[#FAFAFA] rounded-lg border border-yellow-300 px-5 py-4 shadow-sm">
-                <span className="text-gray-700 font-medium">{recommendedVendor.name}</span>
-                <a
-                  href={recommendedVendor.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-yellow-400 font-bold hover:bg-yellow-50 px-4 py-2 rounded transition border border-yellow-400"
+              {recommendedVendors.map((vendor, index) => (
+                <div
+                  key={vendor.id}
+                  className="flex items-center justify-between w-full bg-[#FAFAFA] rounded-lg border border-yellow-300 px-5 py-4 shadow-sm"
                 >
-                  Apply Now
-                </a>
-              </div>
+                  <span className="text-gray-700 font-medium">{vendor.name}</span>
+                  <a
+                    href={vendor.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-yellow-400 font-bold hover:bg-yellow-50 px-4 py-2 rounded transition border border-yellow-400"
+                  >
+                    Apply Now
+                  </a>
+                </div>
+              ))}
             </div>
-            <div className="mt-6 text-center text-sm text-gray-500">
+            {/* <div className="mt-6 text-center text-sm text-gray-500">
               <button 
                 onClick={() => setStep(3)}
                 className="text-blue-600 hover:underline"
               >
                 Not interested? See other options
               </button>
-            </div>
+            </div> */}
           </div>
         )}
 
