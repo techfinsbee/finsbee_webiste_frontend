@@ -34,7 +34,7 @@ export default function ClientLayout({ children }) {
   const [showNavbar, setShowNavbar] = useState(null); // <-- start as null to delay render
 
   useEffect(() => {
-    const hideNavbarRoutes = ["/booking", "/form_Page"];
+    const hideNavbarRoutes = ["/booking", "/Instant-form"];
     setShowNavbar(!hideNavbarRoutes.includes(pathname));
   }, [pathname]);
 
