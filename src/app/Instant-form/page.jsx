@@ -395,7 +395,7 @@ export default function LoanFlow() {
       {/* Finsbee Logo with blue background */}
       <div className="w-full flex justify-start">
         <div
-          className="flex flex-col w-[130px] sm:w-[140px] md:w-[171.83px] cursor-pointer items-start gap-2 ml-4 sm:ml-8 md:ml-11 mt-2 -translate-y-4 animate-fade-in opacity-0 bg-[#301a81] rounded-xl p-2"
+          className="flex flex-col w-[130px] sm:w-[140px] md:w-[171.83px] cursor-pointer items-start gap-2 ml-4 sm:ml-8 md:ml-11 mt-2 -translate-y-4 animate-fade-in opacity-0 bg-[#592eef] rounded-xl p-2"
           onClick={() => (window.location.href = "/")}
         >
           <img
@@ -777,10 +777,10 @@ export default function LoanFlow() {
                 })}
               </div>
             </div>
-            <div className=" mt-6 md:mt-28 text-center text-sm text-gray-500">
+            <div className=" mt-6 md:mt-28 text-center  text-xl text-gray-500">
               <button
                 onClick={() => (window.location.href = "/")}
-                className="text-blue-600 hover:underline"
+                className="text-blue-600 border rounded-md p-4 hover:underline"
               >
                 Explore Finsbee for more
               </button>
@@ -792,7 +792,7 @@ export default function LoanFlow() {
           <div className="flex flex-col items-center w-full max-w-lg py-12 px-8 bg-transparent">
             <div className="mb-8">
               <img
-                src="/form_page/not_applicable.svg"
+                src="/form_page/quality.png"
                 alt="Application Submitted"
                 className="mx-auto h-50"
               />
