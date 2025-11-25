@@ -87,9 +87,10 @@ export default function Section3() {
   return (
     <>
       {/* Title Section */}
-      <div className="flex flex-col items-center px-4 sm:px-8 md:px-[100px] lg:px-[136px] mt-10 sm:mt-16 lg:mt-20">
+      <div className="flex flex-col items-start px-4 sm:px-8 md:px-[100px] lg:px-[136px] mt-10 ">
         <motion.div
-          className="flex flex-col items-start w-full max-w-full sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] mb-10 text-center md:text-left"
+          // className="flex flex-col items-start w-full max-w-full sm:max-w-[500px] md:max-w-[600px] lg:max-w-[700px] mb-10 text-center md:text-left"
+           className="flex flex-col items-start gap-2 sm:gap-3 py-0 w-full max-w-full sm:max-w-[400px] md:max-w-[456px] px-4 sm:px-0"
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.1 }}

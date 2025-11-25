@@ -135,9 +135,9 @@ export const HowItWork = () => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center px-4 md:px-[136px] py-24 bg-white min-h-screen">
+    <section className="relative flex flex-col items-center px-4 md:px-[136px] py-24 bg-white">
       {/* Sticky Heading */}
-      <header className="sticky top-1/3 flex flex-col items-center gap-4 text-center z-10 pointer-events-none">
+      {/* <header className="sticky top-1/3 flex flex-col items-center gap-4 text-center z-10 pointer-events-none">
         <div className="z-10">
           <div className="text-base font-bold text-gray-800 tracking-wide leading-5 uppercase">
             Type of
@@ -151,7 +151,25 @@ export const HowItWork = () => {
             Investments with FinsBee
           </div>
         </div>
-      </header>
+      </header> */}
+      <header className="sticky top-1/3 flex flex-col items-center gap-4 text-center z-10 pointer-events-none">
+  <div className="z-10">
+    <div className="text-base font-bold text-gray-800 tracking-wide leading-5 uppercase">
+      Type of
+    </div>
+  </div>
+
+  <div className="flex flex-col items-center">
+    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight z-10">
+      Gold &amp; Silver
+    </div>
+
+    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold  bg-yellow-400 text-gray-800 leading-tight z-10">
+      Investments with FinsBee
+    </div>
+  </div>
+</header>
+
 
       {/* Cards */}
       <div className="flex flex-col items-start justify-center w-full gap-32 mt-40 z-20">

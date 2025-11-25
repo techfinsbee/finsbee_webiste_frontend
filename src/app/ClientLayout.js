@@ -54,7 +54,7 @@ export default function ClientLayout({ children }) {
     <>
       {showNavbar && <Navbar />}
 
-      <main className="relative w-full pb-20">
+      <main className="relative w-full">
         {/* pb-20 so page content does not hide behind fixed CTA */}
         {children}
       </main>

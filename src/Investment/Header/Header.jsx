@@ -146,7 +146,7 @@ import { motion } from "framer-motion";
 export const Header = () => {
   return (
     <section
-      className="flex flex-col items-start justify-center h-auto lg:min-h-screen  relative rounded-b-[60px] lg:rounded-b-[120px] bg-gradient-to-b from-gray-800/70 via-gray-900/90 to-gray-900 bg-cover bg-center bg-no-repeat px-6 sm:px-10 md:px-16"
+      className="flex flex-col items-start justify-center h-auto   relative rounded-b-[60px] lg:rounded-b-[120px] bg-gradient-to-b from-gray-800/70 via-gray-900/90 to-gray-900 bg-cover bg-center bg-no-repeat pb-5 px-6 sm:px-10 md:px-16"
       style={{
         backgroundImage: `radial-gradient(50% 50% at 50% 100%, rgba(33,33,33,0.72) 32%, rgba(33,33,33,0.9) 100%), url(https://c.animaapp.com/mfrfs2g1ZfgUJE/img/1-section.png)`,
       }}

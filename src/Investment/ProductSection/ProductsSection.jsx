@@ -110,8 +110,8 @@ export default function ProductsSection() {
   ];
 
   return (
-    <div className="min-h-screen bg-white px-4 sm:px-8 md:px-16 lg:px-[136px]">
-      <section className="flex flex-col items-center gap-8 sm:gap-12 py-16 sm:py-20 md:py-24">
+    <div className=" bg-white px-4 sm:px-8 md:px-16 lg:px-[136px] pb-10 lg:pb-20">
+      <section className="flex flex-col items-center gap-8 sm:gap-12  ">
         {/* Header */}
         <h2 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-700 leading-relaxed tracking-wide text-center md:text-left">
           <span className="text-gray-700">Stay ahead with the latest </span>
