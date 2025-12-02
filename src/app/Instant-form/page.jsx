@@ -314,47 +314,112 @@ export default function LoanFlow() {
   //   }
   // };
 
-  const handleContinue = async () => {
-    setSubmitted(true);
-    if (!validateAll()) return;
+//   const handleContinue = async () => {
+//     setSubmitted(true);
+//     if (!validateAll()) return;
 
-    if (!loanType) {
-      alert("Please select a Loan Type");
-      return;
-    }
+//     if (!loanType) {
+//       alert("Please select a Loan Type");
+//       return;
+//     }
 
-   // If NOT Payday → go to Thank You page
-if (loanType !== "Payday") {
-  try {
-    await submitToFinsbee();
-    setStep(3);
-    return;
-  } catch (error) {
-    alert(error.message || "Failed to submit form.");
+//    // If NOT Payday → go to Thank You page
+// if (loanType !== "Payday") {
+//   try {
+//     await submitToFinsbee();
+//     setStep(3);
+//     return;
+//   } catch (error) {
+//     alert(error.message || "Failed to submit form.");
+//     return;
+//   }
+// }
+
+//     // IF payday → continue normal flow to vendors
+//     try {
+//       const response = await submitToFinsbee();
+//       setApiResponse(response);
+
+//       const resultArray = response?.result || [];
+
+//       const validLenders = resultArray
+//         .filter((r) => r?.lender && r.lender.trim() !== "")
+//         .map((r) => r.lender);
+
+//       if (validLenders.length > 0) {
+//         setStep(2); // recommended vendors
+//       } else {
+//         setStep(3);
+//       }
+//     } catch (error) {
+//       alert(error.message || "Failed to submit form.");
+//     }
+//   };
+
+
+const handleContinue = async () => {
+  setSubmitted(true);
+  if (!validateAll()) return;
+
+  if (!loanType) {
+    alert("Please select a Loan Type");
     return;
   }
-}
 
-    // IF payday → continue normal flow to vendors
+  const loanAmountNum = Number(loanAmount);
+
+  // ---------------------------------------------
+  // 1️⃣ If Loan Amount is ≥ 2 Lakhs → Always Step 3
+  // ---------------------------------------------
+  if (loanAmountNum > 200000) {
     try {
-      const response = await submitToFinsbee();
-      setApiResponse(response);
-
-      const resultArray = response?.result || [];
-
-      const validLenders = resultArray
-        .filter((r) => r?.lender && r.lender.trim() !== "")
-        .map((r) => r.lender);
-
-      if (validLenders.length > 0) {
-        setStep(2); // recommended vendors
-      } else {
-        setStep(3);
-      }
+      await submitToFinsbee();
+      setStep(3);
+      return;
     } catch (error) {
       alert(error.message || "Failed to submit form.");
+      return;
     }
-  };
+  }
+
+  // ---------------------------------------------
+  // 2️⃣ Loan < 2L → If NOT Payday → Step 3
+  // ---------------------------------------------
+  if (loanType !== "Payday") {
+    try {
+      await submitToFinsbee();
+      setStep(3);
+      return;
+    } catch (error) {
+      alert(error.message || "Failed to submit form.");
+      return;
+    }
+  }
+
+  // ---------------------------------------------
+  // 3️⃣ Loan < 2L AND Payday → Step 2 (vendors)
+  // ---------------------------------------------
+  try {
+    const response = await submitToFinsbee();
+    setApiResponse(response);
+
+    const resultArray = response?.result || [];
+    const validLenders = resultArray
+      .filter((r) => r?.lender && r.lender.trim() !== "")
+      .map((r) => r.lender);
+
+    if (validLenders.length > 0) {
+      setStep(2); // recommended vendors
+    } else {
+      setStep(3); // fallback
+    }
+  } catch (error) {
+    alert(error.message || "Failed to submit form.");
+  }
+};
+
+
+
 
   // ✅ FIXED: Get ALL recommended vendors based on API response
   const getRecommendedVendors = () => {
