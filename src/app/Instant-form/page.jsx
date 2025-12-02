@@ -60,7 +60,7 @@ export default function LoanFlow() {
   const [salaryCreditMode] = useState("Bank");
   // const [loanType] = useState("payday");
   // const [loanType, setLoanType] = useState("");
-  const [loanType, setLoanType] = useState("Personal Loan");
+  const [loanType, setLoanType] = useState("");
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -155,6 +155,8 @@ export default function LoanFlow() {
         return pincode;
       case "netIncome":
         return netIncome;
+        case "loanType":           
+      return loanType;
       default:
         return "";
     }
@@ -414,10 +416,18 @@ if (loanType !== "Payday") {
       shouldShow(field) ? "border-red-400" : "border-gray-300"
     }`;
 
+  // const selectClass = (field) =>
+  //   `w-full py-4 pl-10 pr-10 rounded-lg border focus:ring-2 focus:ring-yellow-200 focus:outline-none text-lg shadow-sm transition-all duration-200 appearance-none ${
+  //     shouldShow(field) ? "border-red-400" : "border-gray-300"
+  //   } ${getValue(field) ? "text-black" : "text-gray-400"} bg-white`;
+
   const selectClass = (field) =>
-    `w-full py-4 pl-10 pr-10 rounded-lg border focus:ring-2 focus:ring-yellow-200 focus:outline-none text-lg shadow-sm transition-all duration-200 appearance-none ${
-      shouldShow(field) ? "border-red-400" : "border-gray-300"
-    } ${getValue(field) ? "text-black" : "text-gray-400"} bg-white`;
+  `w-full py-4 pl-10 pr-10 rounded-lg border focus:ring-2 focus:ring-yellow-200 
+   focus:outline-none text-lg shadow-sm transition-all duration-200 appearance-none
+   ${shouldShow(field) ? "border-red-400" : "border-gray-300"}
+   ${getValue(field) && getValue(field) !== "" ? "text-black" : "text-gray-400"} 
+   bg-white`;
+
 
   const errorLine = (field) => (
     <div className="min-h-[18px] absolute -bottom-5 left-0">
