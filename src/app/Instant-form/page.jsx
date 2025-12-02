@@ -58,7 +58,9 @@ export default function LoanFlow() {
   const [companyName] = useState("Not Provided");
   const [employedSince] = useState("2000-01-01");
   const [salaryCreditMode] = useState("Bank");
-  const [loanType] = useState("payday");
+  // const [loanType] = useState("payday");
+  // const [loanType, setLoanType] = useState("");
+  const [loanType, setLoanType] = useState("Personal Loan");
 
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -225,6 +227,7 @@ export default function LoanFlow() {
         Net_Income: netIncome,
         Salary_Credit_Mode: salaryCreditMode,
         Loan_Type: loanType,
+        source_id: "Website Instant form",
       },
     };
 
@@ -257,55 +260,97 @@ export default function LoanFlow() {
   };
 
   // ✅ FIXED: Handle multiple lenders from API response with loan amount condition
+  // const handleContinue = async () => {
+  //   setSubmitted(true);
+  //   if (!validateAll()) return;
+
+  //   // ✅ Check if loan amount is ≥ 200000 - SILENT CONDITION
+  //   const loanAmountNum = Number(loanAmount);
+  //   if (loanAmountNum >= 200000) {
+  //     // For high loan amounts, submit form but go directly to step 3
+  //     try {
+  //       await submitToFinsbee();
+  //       setStep(3);
+  //       return;
+  //     } catch (error) {
+  //       alert(error.message || "Failed to submit form. Please try again.");
+  //       return;
+  //     }
+  //   }
+
+  //   try {
+  //     const response = await submitToFinsbee();
+  //     setApiResponse(response);
+
+  //     console.log("Full API response:", response);
+
+  //     // ✅ FIXED: Get ALL valid lenders from response
+  //     const resultArray = response?.result || [];
+  //     const validLenders = [];
+
+  //     for (let i = 0; i < resultArray.length; i++) {
+  //       if (
+  //         resultArray[i] &&
+  //         resultArray[i].lender &&
+  //         resultArray[i].lender.trim() !== ""
+  //       ) {
+  //         validLenders.push(resultArray[i].lender);
+  //       }
+  //     }
+
+  //     console.log("Found lenders:", validLenders);
+
+  //     if (validLenders.length > 0) {
+  //       // Show step 2 with all recommended lenders
+  //       setStep(2);
+  //     } else {
+  //       // No lender found, skip to step 3
+  //       setStep(3);
+  //     }
+  //   } catch (error) {
+  //     alert(error.message || "Failed to submit form. Please try again.");
+  //   }
+  // };
+
   const handleContinue = async () => {
     setSubmitted(true);
     if (!validateAll()) return;
 
-    // ✅ Check if loan amount is ≥ 200000 - SILENT CONDITION
-    const loanAmountNum = Number(loanAmount);
-    if (loanAmountNum >= 200000) {
-      // For high loan amounts, submit form but go directly to step 3
-      try {
-        await submitToFinsbee();
-        setStep(3);
-        return;
-      } catch (error) {
-        alert(error.message || "Failed to submit form. Please try again.");
-        return;
-      }
+    if (!loanType) {
+      alert("Please select a Loan Type");
+      return;
     }
 
+   // If NOT Payday → go to Thank You page
+if (loanType !== "Payday") {
+  try {
+    await submitToFinsbee();
+    setStep(3);
+    return;
+  } catch (error) {
+    alert(error.message || "Failed to submit form.");
+    return;
+  }
+}
+
+    // IF payday → continue normal flow to vendors
     try {
       const response = await submitToFinsbee();
       setApiResponse(response);
 
-      console.log("Full API response:", response);
-
-      // ✅ FIXED: Get ALL valid lenders from response
       const resultArray = response?.result || [];
-      const validLenders = [];
 
-      for (let i = 0; i < resultArray.length; i++) {
-        if (
-          resultArray[i] &&
-          resultArray[i].lender &&
-          resultArray[i].lender.trim() !== ""
-        ) {
-          validLenders.push(resultArray[i].lender);
-        }
-      }
-
-      console.log("Found lenders:", validLenders);
+      const validLenders = resultArray
+        .filter((r) => r?.lender && r.lender.trim() !== "")
+        .map((r) => r.lender);
 
       if (validLenders.length > 0) {
-        // Show step 2 with all recommended lenders
-        setStep(2);
+        setStep(2); // recommended vendors
       } else {
-        // No lender found, skip to step 3
         setStep(3);
       }
     } catch (error) {
-      alert(error.message || "Failed to submit form. Please try again.");
+      alert(error.message || "Failed to submit form.");
     }
   };
 
@@ -437,7 +482,7 @@ export default function LoanFlow() {
               />
             )}
           </div>
-          <div className="flex w-64 justify-between mt-2 text-gray-700 text-sm">
+          <div className="flex w-64 justify-center mt-2 text-gray-700 text-sm">
             <span
               className={`font-medium ${
                 step === 1 ? "text-black" : "text-gray-400"
@@ -445,13 +490,13 @@ export default function LoanFlow() {
             >
               Fill Form
             </span>
-            <span
+            {/* <span
               className={`font-medium ${
                 step === 2 ? "text-black" : "text-gray-400"
               }`}
             >
-              Select vendors
-            </span>
+              Select vendors 
+            </span> */}
           </div>
         </div>
       )}
@@ -464,7 +509,7 @@ export default function LoanFlow() {
             </div>
 
             {/* Full Name */}
-            <div className="mb-8 relative">
+            <div className="mb-5 relative">
               <div className="relative">
                 <input
                   type="text"
@@ -486,7 +531,7 @@ export default function LoanFlow() {
             </div>
 
             {/* Phone & Email */}
-            <div className="mb-8 flex gap-4">
+            <div className="mb-5 flex gap-4">
               <div className="w-1/2 relative">
                 <div className="relative">
                   <input
@@ -531,7 +576,7 @@ export default function LoanFlow() {
             </div>
 
             {/* DOB */}
-            <div className="mb-8 relative">
+            <div className="mb-5 relative">
               <div className="relative">
                 <input
                   type="date"
@@ -552,7 +597,7 @@ export default function LoanFlow() {
             </div>
 
             {/* PAN */}
-            <div className="mb-8 relative">
+            <div className="mb-5 relative">
               <div className="relative">
                 <input
                   type="text"
@@ -574,7 +619,7 @@ export default function LoanFlow() {
             </div>
 
             {/* Employment Type */}
-            <div className="mb-8 relative">
+            <div className="mb-5 relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
                 <img
                   src="/form_page/element-equal.svg"
@@ -610,7 +655,7 @@ export default function LoanFlow() {
             </div>
 
             {/* Net Income */}
-            <div className="mb-8 relative">
+            <div className="mb-5 relative">
               <div className="relative">
                 <input
                   type="text"
@@ -631,8 +676,52 @@ export default function LoanFlow() {
               </div>
             </div>
 
+            {/* Loan Type Dropdown */}
+           <div className="mb-4 text-xl  text-gray-600"> Select Loan Type </div>
+            <div className="mb-6 relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
+                <img
+                  src="/form_page/element-equal.svg"
+                  alt="Dropdown Left Icon"
+                  className="w-5 h-5"
+                />
+              </span>
+
+              <select
+                className={selectClass("loanType")}
+                value={loanType}
+                onChange={(e) => setLoanType(e.target.value)}
+                onBlur={() => handleBlur("loanType")}
+              >
+                <option value="" disabled>
+                  Select Loan Type
+                </option>
+                <option value="Payday">Payday</option>
+                <option value="Personal Loan">Personal Loan</option>
+                <option value="Home Loan">Home Loan</option>
+                <option value="Education Loan">Education Loan</option>
+                <option value="Loan-Against Property">
+                  Loan Against Property
+                </option>
+              </select>
+
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
+                <img
+                  src="/form_page/arrow-down.svg"
+                  alt="Dropdown Arrow"
+                  className="w-5 h-5"
+                />
+              </span>
+
+              {submitted && !loanType && (
+                <p className="text-red-500 text-sm mt-2">
+                  Please select a loan type
+                </p>
+              )}
+            </div>
+
             {/* Loan Amount */}
-            <div className="mb-8 relative">
+            <div className="mb-6 relative">
               <div className="relative">
                 <input
                   type="text"
@@ -740,6 +829,7 @@ export default function LoanFlow() {
                               params: {
                                 click_id: "1",
                                 lead_id: lineId,
+                                source_id: "Partner-App",
                               },
                             }),
                           }
@@ -755,8 +845,6 @@ export default function LoanFlow() {
                       console.error("Loan remark update failed:", error);
                     }
                   };
-
-                 
 
                   return (
                     <div

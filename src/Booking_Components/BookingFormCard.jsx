@@ -962,14 +962,15 @@ async function postToDashboard(payload) {
       name: payload.name,
       phone: payload.phone,
       email: payload.email,
-      planId: payload.planOdooId,        // ← INTEGER!
+      planId: payload.planOdooId,    
       planLabel: payload.planLabel,
-      service: payload.serviceOdooId,  // ← INTEGER!
+      service: payload.serviceOdooId, 
       address: payload.address,
       city: payload.city || "Delhi",
       pincode: payload.pincode,
       slotDate: payload.slotDate,
       price: payload.price,
+      source_id: "Website 60 min Booking Form",
     },
   };
 
@@ -1021,7 +1022,7 @@ function useToastStack() {
 
 function ToastStack({ toasts, onClose }) {
   return (
-    <div className="fixed top-4 right-4 z-[100] space-y-2">
+    <div className="fixed top-4 right-4 z-100 space-y-2">
       {toasts.map(t => (
         <div
           key={t.id}
@@ -1330,6 +1331,7 @@ export default function BookingFormCard() {
   city: "Delhi",
   pincode,
   slotDate: slotDate ? new Date(slotDate).toISOString().split("T")[0] : null,
+  source_id: "Website 60 min Booking Form",
 });
 
   /* Save Step */

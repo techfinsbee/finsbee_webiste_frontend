@@ -1574,17 +1574,17 @@ export const WhyChooseFinsbee = () => {
 
   <header className="left-0 max-w-xl mb-2 text-left">
     <h2 className="text-sm font-bold text-gray-800 mb-2">
-      The Results Speaks for Themselves
-    </h2>
-    <h1 className="text-4xl md:text-6xl font-bold bg-yellow-400 p-2 text-gray-800">
-      Why Choose 
-      </h1>
-      <h1 className="text-4xl md:text-6xl font-bold text-gray-800 ">
-        <span className="text-gray-800">Finsbee?</span>
-      </h1>
-      
-    
-  </header>
+          The Results Speaks for Themselves
+        </h2>
+        <h1 className="text-4xl md:text-6xl font-bold bg-yellow-400 p-2 text-gray-800">
+          Why Choose
+        </h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-gray-800 ">
+          <span className="text-gray-800">Finsbee?</span>
+        </h1>
+
+
+      </header>
 
       {!isMobile ? (
         <motion.div
@@ -1618,35 +1618,38 @@ export const WhyChooseFinsbee = () => {
               >
                 <div
                   className={`flex flex-col h-full justify-between ${
-                    isActive ? "px-4 py-6" : "px-3 py-5"
+                    isActive ? "px-3 py-5" : "px-3 py-5"
                   } w-full`}
                 >
                   {/* TOP CONTENT */}
-                  <AnimatePresence mode="sync">
-                    {isActive ? (
-                      <motion.h3
-                        key="content"
-                        variants={textVariants}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        className="flex-1 font-bold text-white text-lg md:text-3xl text-center leading-normal z-10"
-                      >
-                        {option.content}
-                      </motion.h3>
-                    ) : (
-                      <motion.img
-                        key="icon"
-                        variants={yellowVariants}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
-                        src={option.icon}
-                        alt="icon"
-                        className="w-6 h-6 mx-auto"
-                      />
-                    )}
-                  </AnimatePresence>
+                  {/* FIXED HEIGHT WRAPPER */}
+                  <div className="relative h-[180px] flex items-center justify-center w-full">
+                    <AnimatePresence mode="sync">
+                      {isActive ? (
+                        <motion.h3
+                          key="content"
+                          variants={textVariants}
+                          initial="initial"
+                          animate="animate"
+                          exit="exit"
+                          className=" font-bold text-white text-lg md:text-2xl text-center leading-normal z-10"
+                        >
+                          {option.content}
+                        </motion.h3>
+                      ) : (
+                        <motion.img
+                          key="icon"
+                          variants={yellowVariants}
+                          initial="initial"
+                          animate="animate"
+                          exit="exit"
+                          src={option.icon}
+                          alt="icon"
+                          className="w-6 h-6 mx-auto"
+                        />
+                      )}
+                    </AnimatePresence>
+                  </div>
 
                   {/* BOTTOM TITLE CARD */}
                   <AnimatePresence mode="sync">
@@ -1685,12 +1688,12 @@ export const WhyChooseFinsbee = () => {
         </motion.div>
       ) : null}
 
-       {/* MOBILE VIEW WITH ARROWS   */}
+      {/* MOBILE VIEW WITH ARROWS   */}
 
       {isMobile && (
-         <div
+        <div
     className="relative w-full"
-    style={{ height: mobileNormal.height + 80 }}  
+    style={{ height: mobileNormal.height + 80 }}
   >
 
           {/* LEFT ARROW */}
@@ -1711,7 +1714,10 @@ export const WhyChooseFinsbee = () => {
           {activeCard < investmentOptions.length - 1 && (
             <button
               onClick={() => {
-                const newIndex = Math.min(activeCard + 1, investmentOptions.length - 1);
+                const newIndex = Math.min(
+                  activeCard + 1,
+                  investmentOptions.length - 1
+                );
                 scrollToCard(newIndex);
                 setActiveCard(newIndex);
               }}
@@ -1721,10 +1727,8 @@ export const WhyChooseFinsbee = () => {
             </button>
           )}
 
-
-          {/* ORIGINAL SCROLLER (unchanged) */}
+       {/* ORIGINAL SCROLLER (unchanged) */}
           <div className="relative w-full">
-
             <div
               ref={scrollerRef}
               className="flex flex-row overflow-x-auto gap-4 pb-4 snap-x snap-mandatory scroll-smooth scrollbar-hide"
