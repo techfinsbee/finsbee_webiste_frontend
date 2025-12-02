@@ -778,6 +778,9 @@ const handleContinue = async () => {
                 <option value="Loan-Against Property">
                   Loan Against Property
                 </option>
+                <option value="Loan-Against Securities">
+                  Loan Against Securities
+                </option>
               </select>
 
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
