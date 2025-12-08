@@ -530,9 +530,11 @@ import { ArrowRightIcon, MailIcon, PhoneIcon } from "lucide-react";
 import { Instagram, Youtube, Linkedin, Facebook } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ResponsiveFooter() {
   const router = useRouter();
+  
 
   const socialIcons = [
     { icon: <Instagram className="w-6 h-6 md:w-7 md:h-7" />, alt: "Instagram", url: "https://www.instagram.com/finsbee_official_?igsh=dGlveWhrZHFpd2Zt&utm_source=qr" },
@@ -566,14 +568,14 @@ export default function ResponsiveFooter() {
         "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element.png) 50% 50% / cover, linear-gradient(223deg, rgba(240,199,53,1) 0%, rgba(217,143,57,1) 100%)",
       route: "/investment",
     },
-    {
-      title: "Silver",
-      percentage: "+34.70%",
-      period: "p.a(3Y)",
-      background:
-        "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element-1.png) 50% 50% / cover, linear-gradient(223deg, rgba(202,201,201,1) 0%, rgba(151,151,151,1) 100%)",
-      route: "/investment",
-    },
+    // {
+    //   title: "Silver",
+    //   percentage: "+34.70%",
+    //   period: "p.a(3Y)",
+    //   background:
+    //     "url(https://c.animaapp.com/mfj8sjndzkaKcu/img/category-element-1.png) 50% 50% / cover, linear-gradient(223deg, rgba(202,201,201,1) 0%, rgba(151,151,151,1) 100%)",
+    //   route: "/investment",
+    // },
   ];
 
   // Variants for circle animation
@@ -600,7 +602,7 @@ export default function ResponsiveFooter() {
   return (
     <footer className="flex flex-col lg:flex-row w-full text-white">
       {/* LEFT SECTION */}
-      <div className="flex flex-col gap-8 p-6 sm:p-10 md:p-14 lg:p-20 flex-1 border-b lg:border-b-0 border-[#b39fff]">
+      <div className="flex flex-col gap-8 pt-24 pl-3 md:pl-0 pr-8 pb-8 flex-1 border-b lg:border-b border-[#B39FFF]">
         {/* Socials + Button */}
         <div className="flex flex-wrap justify-between items-center gap-6">
           <div className="flex flex-wrap gap-4">
@@ -617,7 +619,7 @@ export default function ResponsiveFooter() {
           </div>
 
           <button
-            className="flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg border border-[#592eff] text-[#592eff] font-bold hover:bg-[#592eff] hover:text-white hover:shadow-lg"
+            className="flex items-center justify-center gap-2 px-6 py-3 bg-white rounded-lg border border-[#592eff] text-[#592eff] font-bold hover:bg-[#592eff] hover:text-white hover:shadow-lg hover:border-white"
             onClick={() => window.open("https://partner.finsbee.com/", "_blank")}
           >
             Get Partner with us
@@ -690,7 +692,10 @@ export default function ResponsiveFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 bg-[#2121210D] rounded-lg p-6 md:p-8">
+          {/* <p className="text-gray-400 text-sm">@ Copyright 2025 Stradex International Pvt. Ltd. All Rights Reserved. </p> */}
+         <p className="text-gray-400 text-sm">@ Copyright Finsbee A STRADEX INTERNATIONAL PVT. LTD. </p>
+
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-6 bg-[#2121210D]  p-6 md:p-8">
           <div className="text-center sm:text-left font-bold text-lg sm:text-xl">
             Have any questions? <br /> Contact Us
           </div>
@@ -703,35 +708,35 @@ export default function ResponsiveFooter() {
               <PhoneIcon className="w-6 h-6" />
               <div>
                 <p className="text-sm">Call Us @</p>
-                <p className="font-bold text-sm">+91 928966175</p>
+                <p className="font-bold text-sm">+91 9289966175</p>
               </div>
             </div>
 
             <div
               className="flex items-center gap-4 cursor-pointer hover:opacity-80"
-              onClick={() => window.open("mailto:support@finsbee.com")}
+              onClick={() => window.open("mailto:customercare@finsbee.com")}
             >
               <MailIcon className="w-6 h-6" />
               <div>
                 <p className="text-sm">Send mail to</p>
-                <p className="font-bold text-sm">support@finsbee.com</p>
+                <p className="font-bold text-sm">customercare@finsbee.com</p>
               </div>
             </div>
           </div>
         </div>
-         {/* <p className="text-gray-400 text-sm">@ Copyright 2025 Stradex International Pvt. Ltd. All Rights Reserved. </p> */}
-         <p className="text-gray-400 text-sm">@ Copyright Finsbee A STRADEX INTERNATIONAL PVT. LTD. </p>
+       
       </div>
 
       {/* ASIDE SECTION */}
-      <aside className="flex flex-col justify-center items-center gap-10 bg-gradient-to-r from-[#512AE8] to-[#592EFF] w-full lg:w-[380px] px-6 sm:px-8 py-10 md:py-16">
+      <aside className="flex flex-col justify-center items-center gap-10 bg-[#512AE8] w-full lg:w-[380px] px-6 sm:px-8 py-10 md:py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-center">
           Get financial help @ your doorstep
         </h2>
 
         {/* Connect Button with animation */}
+        <Link href="/booking" passHref>
         <motion.button
-          className="relative inline-flex flex-col h-[180px] w-[180px] md:h-[218px] md:w-[218px] items-center justify-center rounded-full border border-white border-opacity-50 overflow-hidden"
+          className="relative cursor-pointer inline-flex flex-col h-[180px] w-[180px] md:h-[218px] md:w-[218px] items-center justify-center rounded-full border border-white border-opacity-50 overflow-hidden"
           initial="initial"
           whileHover="hover"
           whileTap="hover" // mobile tap support
@@ -764,6 +769,7 @@ export default function ResponsiveFooter() {
             Connect with us
           </motion.div>
         </motion.button>
+        </Link>
 
         <div className="text-center">
           <p className="text-lg md:text-2xl font-bold">10:00 A.M - 7:00 P.M (IST)</p>

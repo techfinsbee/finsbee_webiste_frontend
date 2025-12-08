@@ -109,37 +109,37 @@
 
 
 import React from "react";
+import Link from "next/link";
 
 export default function LoanApplicationSection() {
-  const loanLinks1 = [
-    "Personal Loan in Bangalore",
-    "Business Loan in Bangalore",
-    "Home Loan in Bangalore",
-    "Education Loan in Bangalore",
-   
-  ];
-  const loanLinks2 = [
-    "Personal Loan in Delhi",
-    "Business Loan in Delhi",
-    "Home Loan in Delhi",
-    "Education Loan in Delhi",
-   
-  ];
-  const loanLinks3 = [
-    "Personal Loan in Mumbai",
-    "Business Loan in Mumbai",
-    "Home Loan in Mumbai",
-    "Education Loan in Mumbai",
- 
-  ];
-  const loanLinks4 = [
-    "Personal Loan in Lucknow",
-    "Business Loan in Lucknow",
-    "Home Loan in Lucknow",
-    "Education Loan in Lucknow",
-   
-  ];
-  
+const loanLinks1 = [
+  { label: "Personal Loan in Bangalore", path: "/personal-loan" },
+  { label: "Business Loan in Bangalore", path: "/business-loan" },
+  { label: "Home Loan in Bangalore", path: "/home-loan" },
+  { label: "Education Loan in Bangalore", path: "/personal-loan" },
+];
+
+const loanLinks2 = [
+  { label: "Personal Loan in Delhi", path: "/personal-loan" },
+  { label: "Business Loan in Delhi", path: "/business-loan" },
+  { label: "Home Loan in Delhi", path: "/home-loan" },
+  { label: "Education Loan in Delhi", path: "/personal-loan" },
+];
+
+const loanLinks3 = [
+  { label: "Personal Loan in Mumbai", path: "/personal-loan" },
+  { label: "Business Loan in Mumbai", path: "/business-loan" },
+  { label: "Home Loan in Mumbai", path: "/home-loan" },
+  { label: "Education Loan in Mumbai", path: "/personal-loan" },
+];
+
+const loanLinks4 = [
+  { label: "Personal Loan in Lucknow", path: "/personal-loan" },
+  { label: "Business Loan in Lucknow", path: "/business-loan" },
+  { label: "Home Loan in Lucknow", path: "/home-loan" },
+  { label: "Education Loan in Lucknow", path: "/personal-loan" },
+];
+
 
   const columns = [
     { links: loanLinks1 },
@@ -149,26 +149,26 @@ export default function LoanApplicationSection() {
   ];
 
   return (
-    <section className="w-full flex flex-col items-start px-4 sm:px-6 lg:px-10  gap-8">
+    <section className="w-full flex flex-col items-start px-4 sm:px-0 gap-8">
       <h2 className="w-full text-white text-3xl font-bold mb-4">
         Apply for Loan in Your City
       </h2>
-      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-25">
         {columns.map((column, columnIndex) => (
           <nav key={columnIndex} className="flex flex-col gap-3">
             {column.links.map((link, linkIndex) => (
-              <a
+              <Link
                 key={linkIndex}
-                // href="#"
-                className={`block py-2 px-5 rounded transition-colors duration-200 outline-none
+                href={link.path}
+                className={`block py-2  rounded transition-colors duration-200 outline-none
                   ${
                     linkIndex === 0
-                      ? "bg-purple-900 text-purple-100 font-semibold"
-                      : "bg-transparent text-purple-200 hover:bg-purple-800"
-                  } focus:bg-purple-700 focus:text-white`}
+                      ? " text-white hover:underline"
+                      : "bg-transparent text-white hover:underline"
+                  }  focus:text-white`}
               >
-                {link}
-              </a>
+                {link.label}
+              </Link>
             ))}
           </nav>
         ))}

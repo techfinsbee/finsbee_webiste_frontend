@@ -323,9 +323,9 @@ export default function MegaMenu({ isSidebar = false, onClose }) {
       } transition-all duration-300`}
     >
       {isSidebar ? (
-        <div className="flex flex-col w-full gap-4">
+        <div className="flex flex-col w-full gap-4 ">
           {loanCategories.map((category) => (
-            <div key={category} className="border-b border-gray-200 pb-4">
+            <div key={category} className="border-b  border-gray-200 pb-4">
               <button
                 className="w-full text-left px-3 py-2 text-base sm:text-lg font-semibold text-gray-800"
                 onClick={() => {
@@ -367,9 +367,9 @@ export default function MegaMenu({ isSidebar = false, onClose }) {
               <button
                 key={category}
                 onMouseEnter={() => setActiveCategory(category)}
-                className={`w-full px-3 py-3 sm:py-4 text-left text-sm sm:text-base font-medium transition-all duration-300 rounded-lg ${
+                className={`w-full px-3 py-3 sm:py-4 text-left text-sm sm:text-base font-medium  transition-all duration-300 rounded-lg ${
                   activeCategory === category
-                    ? "bg-[#ffd263] text-[#212121] font-semibold"
+                    ? "bg-[#ffd263] text-[#212121] font-semibold "
                     : "hover:bg-[#ffebaa] text-[#4a4a4a] hover:text-[#212121]"
                 }`}
               >
@@ -406,7 +406,7 @@ export default function MegaMenu({ isSidebar = false, onClose }) {
                         >
                           <button
                             onClick={() => handleNavigate(item.path)}
-                            className="text-left text-xs sm:text-sm text-[#4a4a4a] hover:text-[#212121] font-medium w-full"
+                            className="text-left text-xs sm:text-sm text-[#4a4a4a] cursor-pointer hover:text-[#212121] font-medium w-full"
                           >
                             {item.label}
                           </button>

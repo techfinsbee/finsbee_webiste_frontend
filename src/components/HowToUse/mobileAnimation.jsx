@@ -978,47 +978,53 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Heading from "./MobileHeading";
+import Link from "next/link";
 
 export const MobileBox = () => {
-    const [activeSide, setActiveSide] = useState("none"); // 'none', 'left', 'right'
+    const [activeSide, setActiveSide] = useState("left"); // 'none', 'left', 'right'
 
     // Loan cards for left side
-    const leftLoanCards = [
-        {
-            title: "Personal Loan",
-            description:
-                "Fast approvals, flexible EMI plans, and zero collateral—smart financing made simple.",
-        },
-        {
-            title: "Business Loan",
-            description:
-                "Accelerate your business growth with personalized financing and prompt disbursement you can rely on",
-        },
-        {
-            title: "Home Loan",
-            description:
-                "Make your dream home a reality—enjoy flexible repayment plans, minimal paperwork, and a hassle-free approval process!",
-        },
-    ];
+   const leftLoanCards = [
+    {
+        title: "Personal Loan",
+        description:
+            "Fast approvals, flexible EMI plans, and zero collateral—smart financing made simple.",
+        path: "/personal-loan",
+    },
+    {
+        title: "Business Loan",
+        description:
+            "Accelerate your business growth with personalized financing and prompt disbursement you can rely on",
+        path: "/business-loan",
+    },
+    {
+        title: "Home Loan",
+        description:
+            "Make your dream home a reality—enjoy flexible repayment plans, minimal paperwork, and a hassle-free approval process!",
+        path: "/home-loan",
+    },
+];
 
-    // Loan cards for right side
-    const rightLoanCards = [
-        {
-            title: "Loan against Property",
-            description:
-                "Unlock your property's true potential with competitive rates and a smooth, stress-free application process.",
-        },
-        {
-            title: "Loan Against Security",
-            description:
-                "Maximize your investments without selling—enjoy competitive LTV ratios and borrower-friendly terms.",
-        },
-        {
-            title: "Medical Loan",
-            description:
-                "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs without any delays or paperwork hassles.",
-        },
-    ];
+const rightLoanCards = [
+    {
+        title: "Loan against Property",
+        description:
+            "Unlock your property's true potential with competitive rates and a smooth, stress-free application process.",
+        path: "/loan-against-property",
+    },
+    {
+        title: "Loan Against Security",
+        description:
+            "Maximize your investments without selling—enjoy competitive LTV ratios and borrower-friendly terms.",
+        path: "/loan-against-securities",
+    },
+    {
+        title: "Medical Loan",
+        description:
+            "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs.",
+        path: "/personal-loan",
+    },
+];
 
     const loanOptions = [
         {
@@ -1056,6 +1062,8 @@ export const MobileBox = () => {
 
     // Common structure for loan card
     const LoanCard = ({ card, isActive, direction }) => (
+        
+      <Link href={card.path} className="block w-full">
         <motion.div
             className={`flex flex-col h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] ${direction} gap-2.5 w-full`}
             variants={loanCardVariants}
@@ -1078,6 +1086,8 @@ export const MobileBox = () => {
                 </div>
             </div>
         </motion.div>
+       
+      </Link>
     );
 
     const leftDirection = "items-end pl-4 pr-0 gap-30";
@@ -1471,6 +1481,7 @@ export const MobileBox = () => {
                         animate="visible"
                     >
                         {allLoanCards.map((card, index) => (
+                            <Link href={card.path} key={index} className="block">
                             <motion.div
                                 key={index}
                                 variants={itemVariants}
@@ -1496,6 +1507,7 @@ export const MobileBox = () => {
                                     {card.description}
                                 </p>
                             </motion.div>
+                            </Link>
                         ))}
                     </motion.div>
                 </div>
