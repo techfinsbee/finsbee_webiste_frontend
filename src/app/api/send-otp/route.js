@@ -47,7 +47,7 @@ export async function GET(request) {
 
     const msisdn = phone.replace(/[^0-9]/g, ""); // sanitize input
 
-    const url = `https://2factor.in/API/V1/${apiKey}/SMS/+91${msisdn}/AUTOGEN/Otp%20Verification?var1=${encodeURIComponent(
+    const url = `https://2factor.in/API/V1/${apiKey}/SMS/+91${msisdn}/AUTOGEN/OTP%20Verify?var1=${encodeURIComponent(
       msisdn
     )}`;
 

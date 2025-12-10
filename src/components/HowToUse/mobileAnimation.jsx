@@ -255,7 +255,7 @@
 //         <>
 //         <Heading/>
 //         <div className="min-h-screen px-4 sm:px-8 md:px-16 lg:px-[136px] w-full max-w-7xl mx-auto relative">
-            
+
 //             <div className="relative w-full h-[500px] sm:h-[600px] md:h-[723px] lg:h-[800px] pt-8">
 //                 <div className="relative w-full h-[500px] sm:h-[600px] md:h-[723px] lg:h-[800px] ">
 //                     {/* Background Circle */}
@@ -972,7 +972,7 @@
 
 
 
-// Grok 2 version
+
 "use client";
 
 import React, { useState } from "react";
@@ -984,47 +984,47 @@ export const MobileBox = () => {
     const [activeSide, setActiveSide] = useState("left"); // 'none', 'left', 'right'
 
     // Loan cards for left side
-   const leftLoanCards = [
-    {
-        title: "Personal Loan",
-        description:
-            "Fast approvals, flexible EMI plans, and zero collateral—smart financing made simple.",
-        path: "/personal-loan",
-    },
-    {
-        title: "Business Loan",
-        description:
-            "Accelerate your business growth with personalized financing and prompt disbursement you can rely on",
-        path: "/business-loan",
-    },
-    {
-        title: "Home Loan",
-        description:
-            "Make your dream home a reality—enjoy flexible repayment plans, minimal paperwork, and a hassle-free approval process!",
-        path: "/home-loan",
-    },
-];
+    const leftLoanCards = [
+        {
+            title: "Personal Loan",
+            description:
+                "Fast approvals, flexible EMI plans, and zero collateral—smart financing made simple.",
+            path: "/personal-loan",
+        },
+        {
+            title: "Business Loan",
+            description:
+                "Accelerate your business growth with personalized financing and prompt disbursement you can rely on",
+            path: "/business-loan",
+        },
+        {
+            title: "Home Loan",
+            description:
+                "Make your dream home a reality—enjoy flexible repayment plans, minimal paperwork, and a hassle-free approval process!",
+            path: "/home-loan",
+        },
+    ];
 
-const rightLoanCards = [
-    {
-        title: "Loan against Property",
-        description:
-            "Unlock your property's true potential with competitive rates and a smooth, stress-free application process.",
-        path: "/loan-against-property",
-    },
-    {
-        title: "Loan Against Security",
-        description:
-            "Maximize your investments without selling—enjoy competitive LTV ratios and borrower-friendly terms.",
-        path: "/loan-against-securities",
-    },
-    {
-        title: "Medical Loan",
-        description:
-            "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs.",
-        path: "/personal-loan",
-    },
-];
+    const rightLoanCards = [
+        {
+            title: "Loan against Property",
+            description:
+                "Unlock your property's true potential with competitive rates and a smooth, stress-free application process.",
+            path: "/loan-against-property",
+        },
+        {
+            title: "Loan Against Security",
+            description:
+                "Maximize your investments without selling—enjoy competitive LTV ratios and borrower-friendly terms.",
+            path: "/loan-against-securities",
+        },
+        {
+            title: "Medical Loan",
+            description:
+                "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs.",
+            path: "/personal-loan",
+        },
+    ];
 
     const loanOptions = [
         {
@@ -1062,7 +1062,7 @@ const rightLoanCards = [
 
     // Common structure for loan card
     const LoanCard = ({ card, isActive, direction }) => (
-        
+
       <Link href={card.path} className="block w-full">
         <motion.div
             className={`flex flex-col h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] ${direction} gap-2.5 w-full`}
@@ -1086,9 +1086,91 @@ const rightLoanCards = [
                 </div>
             </div>
         </motion.div>
-       
+
       </Link>
     );
+
+    // const LoanCard = ({ card, isActive, direction, side }) => {
+    //     const [isHovered, setIsHovered] = useState(false);
+
+    //     return (
+    //         <Link href={card.path} className="block w-full">
+    //             <motion.div
+    //                 className={`relative flex flex-col h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] ${direction} gap-2.5 w-full`}
+    //                 variants={loanCardVariants}
+    //                 initial="hidden"
+    //                 animate={isActive ? "visible" : "inactive"}
+    //                 onHoverStart={() => setIsHovered(true)}
+    //                 onHoverEnd={() => setIsHovered(false)}
+    //                 style={{ pointerEvents: isActive ? "auto" : "none" }} // disable hover when hidden
+    //             >
+    //                 <div className="relative">
+    //                     {/* Shadow layer */}
+    //                     <div className="absolute w-[264px] h-[112px] sm:h-[128px] md:h-[144px] lg:h-[160px] top-[5px] rounded-xl shadow-lg shadow-purple-500/20" />
+
+    //                     {/* Main Card */}
+    //                     <div
+    //                         className={`
+    //                         relative w-[264px] h-[112px] sm:h-[128px] md:h-[144px] lg:h-[160px] 
+    //                         rounded-xl shadow-lg p-6 flex flex-col justify-between
+    //                         transition-all duration-300
+    //                         ${isActive ? "bg-white" : "bg-white/10"}
+    //                         ${isHovered && isActive ? "bg-amber-50" : ""}
+    //                     `}
+    //                     >
+    //                         {/* Yellow Tab - Slides in on hover */}
+    //                         {(isHovered && isActive) && (
+    //                             <>
+    //                                 {side === "left" && (
+    //                                     <motion.div
+    //                                         className="absolute left-0 top-0 bottom-0 w-4 bg-amber-400 rounded-l-full"
+    //                                         initial={{ x: 0 }}
+    //                                         animate={{ x: -16 }}
+    //                                         exit={{ x: -16 }}
+    //                                         transition={{ duration: 0.4, ease: "easeOut" }}
+    //                                     />
+    //                                 )}
+    //                                 {side === "right" && (
+    //                                     <motion.div
+    //                                         className="absolute right-0 top-0 bottom-0 w-4  bg-amber-400 rounded-r-full"
+    //                                         initial={{ x: 0 }}
+    //                                         animate={{ x: 16 }}
+    //                                         exit={{ x: 16 }}
+    //                                         transition={{ duration: 0.4, ease: "easeOut" }}
+    //                                     />
+    //                                 )}
+    //                             </>
+    //                         )}
+
+    //                         {/* Content */}
+    //                         <div>
+    //                             <div className="font-bold text-gray-700 text-base leading-5 tracking-wide">
+    //                                 {card.title}
+    //                             </div>
+    //                             <div className="text-gray-500 text-sm leading-[18px] tracking-wide mt-2">
+    //                                 {card.description}
+    //                             </div>
+    //                         </div>
+
+    //                         {/* View Details - Only on hover */}
+    //                         <motion.div
+    //                             initial={{ opacity: 0, y: 8 }}
+    //                             animate={{
+    //                                 opacity: (isHovered && isActive) ? 1 : 0,
+    //                                 y: (isHovered && isActive) ? 0 : 8
+    //                             }}
+    //                             transition={{ duration: 0.3 }}
+    //                             className="text-amber-500 font-semibold text-sm flex items-center gap-1"
+    //                         >
+    //                             View Details
+    //                             <span className="text-amber-400 text-lg">→</span>
+    //                         </motion.div>
+    //                     </div>
+    //                 </div>
+    //             </motion.div>
+    //         </Link>
+    //     );
+    // };
 
     const leftDirection = "items-end pl-4 pr-0 gap-30";
     const rightDirection = "items-start pr-4 gap-30";
@@ -1110,25 +1192,25 @@ const rightLoanCards = [
                 animate={
                     isActive
                         ? {
-                              backgroundColor: "#fbbf24",
-                              x: 0,
-                              y: 0,
-                              width: "312px",
-                              height: isTop ? "80px sm:100px md:120px lg:140px" : "80px sm:100px md:120px lg:140px",
-                              top: isTop ? "154px" : "344px",
-                              left: isTop ? "70px" : "10rem",
-                              boxShadow: "0 10px 15px rgba(0, 0, 0, 0.3)",
-                          }
+                            backgroundColor: "#fbbf24",
+                            x: 0,
+                            y: 0,
+                            width: "312px",
+                            height: isTop ? "80px sm:100px md:120px lg:140px" : "80px sm:100px md:120px lg:140px",
+                            top: isTop ? "154px" : "344px",
+                            left: isTop ? "70px" : "10rem",
+                            boxShadow: "0 10px 15px rgba(0, 0, 0, 0.3)",
+                        }
                         : {
-                              backgroundColor: "rgba(249, 250, 251, 0.95)",
-                              x: 0,
-                              y: 0,
-                              width: "312px",
-                              height: isTop ? "80px sm:100px md:120px lg:140px" : "80px sm:100px md:120px lg:140px",
-                              top: isTop ? "154px" : "344px",
-                              left: isTop ? "70px" : "10rem",
-                              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                          }
+                            backgroundColor: "rgba(249, 250, 251, 0.95)",
+                            x: 0,
+                            y: 0,
+                            width: "312px",
+                            height: isTop ? "80px sm:100px md:120px lg:140px" : "80px sm:100px md:120px lg:140px",
+                            top: isTop ? "154px" : "344px",
+                            left: isTop ? "70px" : "10rem",
+                            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                        }
                 }
                 transition={{
                     duration: 0.7,
@@ -1156,11 +1238,10 @@ const rightLoanCards = [
                             className="flex flex-col w-24 h-[68px] sm:h-[88px] md:h-[108px] lg:h-[128px] items-center gap-3 p-2 rounded-2xl"
                         >
                             <div
-                                className={`border flex items-center justify-center p-3 rounded-2xl shadow-sm shadow-purple-500/5 ${
-                                    isActive
-                                        ? "bg-yellow-100 border-orange-100"
-                                        : "bg-white/50 border-purple-100"
-                                }`}
+                                className={`border flex items-center justify-center p-3 rounded-2xl shadow-sm shadow-purple-500/5 ${isActive
+                                    ? "bg-yellow-100 border-orange-100"
+                                    : "bg-white/50 border-purple-100"
+                                    }`}
                             >
                                 <img className="w-7 h-7" alt={card.title} src={iconMap[card.title]} />
                             </div>
@@ -1342,6 +1423,54 @@ const rightLoanCards = [
                                 ))}
                             </motion.div>
 
+                            {/* Left Column */}
+                            {/* <motion.div
+                                className={`flex flex-col w-full max-w-[390px] ${activeSide === "left" ? leftDirection : "opacity-0"}`}
+                                variants={leftColumnVariants}
+                                initial="hidden"
+                                animate={activeSide === "left" ? "left" : "inactive"}
+                            >
+                                {leftLoanCards.map((card, index) => (
+                                    <LoanCard
+                                        key={`left-${index}`}
+                                        card={card}
+                                        isActive={activeSide === "left"}
+                                        direction={
+                                            index === 0
+                                                ? "items-end"
+                                                : index === 1
+                                                    ? "items-start -mt-25"
+                                                    : "items-end -mt-20"
+                                        }
+                                        side="left"
+                                    />
+                                ))}
+                            </motion.div>
+
+                            {/* Right 
+                            <motion.div
+                                className={`flex flex-col w-full max-w-[390px] ${activeSide === "right" ? rightDirection : "opacity-0"}`}
+                                variants={rightColumnVariants}
+                                initial="hidden"
+                                animate={activeSide === "right" ? "right" : "inactive"}
+                            >
+                                {rightLoanCards.map((card, index) => (
+                                    <LoanCard
+                                        key={`right-${index}`}
+                                        card={card}
+                                        isActive={activeSide === "right"}
+                                        direction={
+                                            index === 0
+                                                ? "items-start"
+                                                : index === 1
+                                                    ? "items-end -mt-20"
+                                                    : "items-start pl-16 -mt-20"
+                                        }
+                                        side="right"
+                                    />
+                                ))}
+                            </motion.div> */}
+
                             {/* Center Phone Image */}
                             <div className="absolute w-[480px] h-[400px] sm:h-[500px] md:h-[601px] lg:h-[700px] top-[50px] left-1/2 -translate-x-1/2">
                                 <div
@@ -1416,14 +1545,14 @@ const rightLoanCards = [
                                     activeSide === "none"
                                         ? 232
                                         : activeSide === "right"
-                                        ? 224
-                                        : 452,
+                                            ? 224
+                                            : 452,
                                 left:
                                     activeSide === "none"
                                         ? 200
                                         : activeSide === "right"
-                                        ? 172
-                                        : 750,
+                                            ? 172
+                                            : 750,
                             }}
                         >
                             {activeSide === "left" ? (
@@ -1447,14 +1576,12 @@ const rightLoanCards = [
                                         {activeSide === "none"
                                             ? "Click here"
                                             : activeSide === "right"
-                                            ? "Loan Option"
-                                            : ""}
+                                                ? "Loan Option"
+                                                : ""}
                                     </div>
                                     <img
-                                        className={`w-[30px] h-[25px] sm:w-[45px] sm:h-[37px] z-0 object-cover ${
-                                            activeSide === "right"
-                                                ? "-ml-1"
-                                                : activeSide === "none"
+                                        className={`w-[30px] h-[25px] sm:w-[45px] sm:h-[37px] z-0 object-cover ${activeSide === "right"
+                                           ? "-ml-1"                                          : activeSide === "none"
                                                 ? "-ml-2"
                                                 : ""
                                         }`}
@@ -1483,30 +1610,30 @@ const rightLoanCards = [
                         {allLoanCards.map((card, index) => (
                             <Link href={card.path} key={index} className="block">
                             <motion.div
-                                key={index}
-                                variants={itemVariants}
-                                whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(128, 0, 128, 0.3)" }}
-                                whileTap={{ scale: 0.95 }}
-                                className="bg-white rounded-2xl shadow-lg shadow-purple-500/20 border border-purple-100/50 p-6 flex flex-col gap-4 cursor-pointer"
-                            >
-                                <div className="flex items-center gap-4">
-                                    {iconMap[card.title] && (
-                                        <div className="bg-purple-50 rounded-full p-3">
-                                            <img
-                                                src={iconMap[card.title]}
-                                                alt={card.title}
-                                                className="w-8 h-8"
-                                            />
-                                        </div>
-                                    )}
-                                    <h3 className="font-bold text-gray-700 text-lg leading-6 tracking-wide">
-                                        {card.title}
-                                    </h3>
-                                </div>
-                                <p className="text-gray-500 text-sm leading-5 tracking-wide">
-                                    {card.description}
-                                </p>
-                            </motion.div>
+                                    key={index}
+                                    variants={itemVariants}
+                                    whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(128, 0, 128, 0.3)" }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="bg-white rounded-2xl shadow-lg shadow-purple-500/20 border border-purple-100/50 p-6 flex flex-col gap-4 cursor-pointer"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        {iconMap[card.title] && (
+                                            <div className="bg-purple-50 rounded-full p-3">
+                                                <img
+                                                    src={iconMap[card.title]}
+                                                    alt={card.title}
+                                                    className="w-8 h-8"
+                                                />
+                                            </div>
+                                        )}
+                                        <h3 className="font-bold text-gray-700 text-lg leading-6 tracking-wide">
+                                            {card.title}
+                                        </h3>
+                                    </div>
+                                    <p className="text-gray-500 text-sm leading-5 tracking-wide">
+                                        {card.description}
+                                    </p>
+                                </motion.div>
                             </Link>
                         ))}
                     </motion.div>

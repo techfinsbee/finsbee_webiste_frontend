@@ -85,24 +85,24 @@ const CARD_ACCENT = "#7D5FFF";    // lavender outline for first card
 const DATA = [
   {
     id: 1,
-    text: `“Finsbee makes gold investment process a breeze! It’s fast, reliable, and so easy to use. Whether I’m selling or buying gold, finsbee truly simplifies my all payments process.”`,
-    name: "Priya K.",
-    title: "Small Business Owner",
+    text: `“FinsBee simplified my business loan process. The low interest rates and quick approval helped me expand my workshop without delays. The rewards were an added bonus which I used for essential purchases.”`,
+    name: "Ankit Verma",
+    title: "Delhi · Small Manufacturer",
     img: "/landing_page/image.svg", // replace with your asset
     highlight: true,             // first card outlined
   },
   {
     id: 2,
-    text: `“Finsbee makes gold investment process a breeze! It’s fast, reliable, and so easy to use. Whether I’m selling or buying gold, finsbee truly simplifies my all payments process.”`,
-    name: "Sakshi Yadav",
-    title: "Small Business Owner",
+    text: `“Mujhe ek personal loan chahiye tha family emergency ke liye. FinsBee ne sirf kuch ghanton me approval de diya. App use karna super easy hai aur repayment track karna bhi tension-free. Rewards system ne loan lene ko rewarding bana diya!"`,
+    name: "Neha Kulkarni",
+    title: "Pune · IT Professional",
     img: "/landing_page/image.svg",
   },
   {
     id: 3,
-    text: `“Finsbee makes gold investment process a breeze! It’s fast, reliable, and so easy to use. Whether I’m selling or buying gold, finsbee truly simplifies my all payments process.”`,
-    name: "Samantha R.",
-    title: "Small Business Owner",
+    text: `“After checking multiple options, I chose FinsBee for my home loan. The interest rate was the lowest I found, and the paperless process saved me weeks of effort. Their team was always available to answer my doubts patiently.”`,
+    name: "Rajesh Nair",
+    title: "Kochi · Teacher",
     img: "/landing_page/image.svg",
   },
 ];

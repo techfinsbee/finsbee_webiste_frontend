@@ -544,8 +544,8 @@ export default function ResponsiveFooter() {
   ];
 
   const navigationLinks = [
-    { label: "About Us", route: "/" },
-    { label: "Blog", route: "/" },
+    // { label: "About Us", route: "/" },
+    // { label: "Blog", route: "/" },
     { label: "Terms & Conditions", route: "/terms-and-conditions" },
     { label: "Privacy Policy", route: "/privacy-policy" },
   ];
@@ -600,9 +600,9 @@ export default function ResponsiveFooter() {
   };
 
   return (
-    <footer className="flex flex-col lg:flex-row w-full text-white">
+    <footer className="flex flex-col lg:flex-row w-full text-white ">
       {/* LEFT SECTION */}
-      <div className="flex flex-col gap-8 pt-24 pl-3 md:pl-0 pr-8 pb-8 flex-1 border-b lg:border-b border-[#B39FFF]">
+      <div className="flex flex-col gap-8 pt-24 pl-3 md:pl-0 pr-8 pb-8 flex-1 border-b lg:border-b border-[#B39FFF] ">
         {/* Socials + Button */}
         <div className="flex flex-wrap justify-between items-center gap-6">
           <div className="flex flex-wrap gap-4">
@@ -703,12 +703,12 @@ export default function ResponsiveFooter() {
           <div className="flex flex-col sm:flex-row items-center gap-8">
             <div
               className="flex items-center gap-4 cursor-pointer hover:opacity-80"
-              onClick={() => window.open("tel:+91928966175")}
+              onClick={() => window.open("tel:+919220468743")}
             >
               <PhoneIcon className="w-6 h-6" />
               <div>
                 <p className="text-sm">Call Us @</p>
-                <p className="font-bold text-sm">+91 9289966175</p>
+                <p className="font-bold text-sm">+91 9220468743</p>
               </div>
             </div>
 

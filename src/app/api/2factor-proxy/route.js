@@ -15,7 +15,7 @@ export async function GET(req) {
     // Force disable redirects so we control all CORS from Next.js
     const res = await fetch(target, {
       method: 'GET',
-      redirect: 'manual', // <-- block redirects
+      redirect: 'manual', 
       headers: {
         'User-Agent': 'Next.js-Proxy',
         'Accept': 'application/json,text/plain,*/*',
@@ -31,6 +31,7 @@ export async function GET(req) {
         nextUrl: new URL(`${req.nextUrl.origin}/api/2factor-proxy?target=${encodeURIComponent(redirectedUrl)}`),
       });
     }
+   
 
     // Read raw response (text or json)
     const contentType = res.headers.get('content-type') || 'text/plain';
