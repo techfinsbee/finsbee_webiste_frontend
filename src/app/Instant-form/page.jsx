@@ -261,101 +261,7 @@ export default function LoanFlow() {
     }
   };
 
-  // ✅ FIXED: Handle multiple lenders from API response with loan amount condition
-  // const handleContinue = async () => {
-  //   setSubmitted(true);
-  //   if (!validateAll()) return;
-
-  //   // ✅ Check if loan amount is ≥ 200000 - SILENT CONDITION
-  //   const loanAmountNum = Number(loanAmount);
-  //   if (loanAmountNum >= 200000) {
-  //     // For high loan amounts, submit form but go directly to step 3
-  //     try {
-  //       await submitToFinsbee();
-  //       setStep(3);
-  //       return;
-  //     } catch (error) {
-  //       alert(error.message || "Failed to submit form. Please try again.");
-  //       return;
-  //     }
-  //   }
-
-  //   try {
-  //     const response = await submitToFinsbee();
-  //     setApiResponse(response);
-
-  //     console.log("Full API response:", response);
-
-  //     // ✅ FIXED: Get ALL valid lenders from response
-  //     const resultArray = response?.result || [];
-  //     const validLenders = [];
-
-  //     for (let i = 0; i < resultArray.length; i++) {
-  //       if (
-  //         resultArray[i] &&
-  //         resultArray[i].lender &&
-  //         resultArray[i].lender.trim() !== ""
-  //       ) {
-  //         validLenders.push(resultArray[i].lender);
-  //       }
-  //     }
-
-  //     console.log("Found lenders:", validLenders);
-
-  //     if (validLenders.length > 0) {
-  //       // Show step 2 with all recommended lenders
-  //       setStep(2);
-  //     } else {
-  //       // No lender found, skip to step 3
-  //       setStep(3);
-  //     }
-  //   } catch (error) {
-  //     alert(error.message || "Failed to submit form. Please try again.");
-  //   }
-  // };
-
-//   const handleContinue = async () => {
-//     setSubmitted(true);
-//     if (!validateAll()) return;
-
-//     if (!loanType) {
-//       alert("Please select a Loan Type");
-//       return;
-//     }
-
-//    // If NOT Payday → go to Thank You page
-// if (loanType !== "Payday") {
-//   try {
-//     await submitToFinsbee();
-//     setStep(3);
-//     return;
-//   } catch (error) {
-//     alert(error.message || "Failed to submit form.");
-//     return;
-//   }
-// }
-
-//     // IF payday → continue normal flow to vendors
-//     try {
-//       const response = await submitToFinsbee();
-//       setApiResponse(response);
-
-//       const resultArray = response?.result || [];
-
-//       const validLenders = resultArray
-//         .filter((r) => r?.lender && r.lender.trim() !== "")
-//         .map((r) => r.lender);
-
-//       if (validLenders.length > 0) {
-//         setStep(2); // recommended vendors
-//       } else {
-//         setStep(3);
-//       }
-//     } catch (error) {
-//       alert(error.message || "Failed to submit form.");
-//     }
-//   };
-
+ 
 
 const handleContinue = async () => {
   setSubmitted(true);
@@ -368,9 +274,7 @@ const handleContinue = async () => {
 
   const loanAmountNum = Number(loanAmount);
 
-  // ---------------------------------------------
-  // 1️⃣ If Loan Amount is ≥ 2 Lakhs → Always Step 3
-  // ---------------------------------------------
+
   if (loanAmountNum > 200000) {
     try {
       await submitToFinsbee();
@@ -772,17 +676,27 @@ const handleContinue = async () => {
                   Select Loan Type
                 </option>
                 <option value="Payday">Payday</option>
-                <option value="Personal Loan">Personal Loan</option>
-                <option value="Home Loan">Home Loan</option>
-                <option value="Education Loan">Education Loan</option>
-                <option value="Loan-Against Property">
+                <option value="Personal-Loan">Personal Loan</option>
+                <option value="Home-Loan">Home Loan</option>
+                <option value="Education-Loan">Education Loan</option>
+                <option value="Loan-Against-Property">
                   Loan Against Property
                 </option>
-                <option value="Loan-Against Securities">
+                <option value="Loan-Against-Security">
                   Loan Against Securities
                 </option>
               </select>
 
+              {/* ('payday', 'PayDay'),
+                ('Personal-Loan', 'Personal Loan'),
+                ('Business-Loan', 'Business Loan'),
+                ('Home-Loan', 'Home Loan'),
+                ('Loan-Against-Property', 'Loan Against Property'),
+                ('balance-transfer-of-hl', 'Balance Transfer of HL'),
+                ('balance-transfer-lap', 'Balance Transfer LAP'),
+                ('Loan-Against-Security', 'Loan Against Security'),
+                ('Education-Loan', 'Education Loan') */}
+     
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
                 <img
                   src="/form_page/arrow-down.svg"
