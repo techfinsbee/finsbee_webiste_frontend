@@ -290,7 +290,7 @@ const handleContinue = async () => {
   // ---------------------------------------------
   // 2️⃣ Loan < 2L → If NOT Payday → Step 3
   // ---------------------------------------------
-  if (loanType !== "Payday") {
+  if (loanType !== "payday") {
     try {
       await submitToFinsbee();
       setStep(3);
@@ -676,7 +676,7 @@ const handleContinue = async () => {
                 <option value="" disabled>
                   Select Loan Type
                 </option>
-                <option value="Payday">Payday</option>
+                <option value="payday">Payday</option>
                 <option value="Personal-Loan">Personal Loan</option>
                 <option value="Home-Loan">Home Loan</option>
                 <option value="Education-Loan">Education Loan</option>
