@@ -163,9 +163,9 @@ export default function FAQ() {
     <section className="flex flex-col md:flex-row items-start h-full justify-between    lg:py-16 py-8 px-2  md:px-[136px] gap-12">
       {/* Left Side Heading */}
       <div className="md:w-1/5">
-        <h2 className="text-xl font-bold mb-4">
-          The Results Speaks for Themselves
-        </h2>
+        {/* <h2 className="text-xl font-bold mb-4">
+          {/* The Results Speaks for Themselves */}
+        {/* </h2> */} 
 
         <span className="relative w-fit font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
           {/* Animated Yellow Highlight */}

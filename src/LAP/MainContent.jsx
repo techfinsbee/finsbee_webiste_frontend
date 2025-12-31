@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -239,6 +240,10 @@ const MainContent = () => {
     }
   };
 
+  let searchParams = useSearchParams();
+  const dynamicTitle =
+    searchParams.get("title") || "LAP Balance Transfer with FinsBee";
+
   return (
     <>
       <main className="flex flex-col lg:flex-row items-center gap-8 px-4 md:px-12 lg:px-32 py-12 relative w-full">
@@ -246,7 +251,7 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                LAP Balance Transfer with FinsBee
+                {dynamicTitle}
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
                Transfer your existing Loan Against Property (LAP) to FinsBee and unlock savings. Lower your interest rate, ease your EMI burden, access topup funds, and experience superior customer service.

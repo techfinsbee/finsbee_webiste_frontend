@@ -3,32 +3,32 @@ import InvestePage from "@/bl";
 import React from "react";
 
 
-// ✅ Personal Loan Metadata (as per your provided meta tags)
+
 export const metadata = {
-  title: "Personal Loan - FinsBee",
+  title: "Business loan- FinsBee",
   description:
-    "Get instant personal loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
+    "Get instant business loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
   keywords: [
-    "personal loan",
-    "instant personal loan",
-    "personal loan apply online",
-    "low interest personal loan",
-    "personal fast loan",
-    "digital personal loan",
-    "personal loan EMI calculator",
+    "Business loan",
+    "instant business loan",
+    "business loan apply online",
+    "low interest business loan",
+    "business fast loan",
+    "digital business loan",
+    "business loan EMI calculator",
     "salary advance loan",
     "emergency loan",
-    "personal loan eligibility",
-    "personal loan in Delhi",
-    "personal loan in Mumbai",
-    "personal loan in Bangalore",
-    "personal loan in Pune",
+    "business loan eligibility",
+    "business loan in Delhi",
+    "business loan in Mumbai",
+    "business loan in Bangalore",
+    "business loan in Pune",
   ],
   openGraph: {
-    title: "Personal Loan - FinsBee",
+    title: "business Loan - FinsBee",
     description:
-      "Get instant personal loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
-    url: "https://finsbee.com/Bl",
+      "Get instant business loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
+    url: "https://finsbee.com/business-loan",
     siteName: "Finsbee",
     images: [
       {
@@ -42,9 +42,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Personal Loan - FinsBee",
+    title: "business Loan - FinsBee",
     description:
-      "Get instant personal loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
+      "Get instant business loans up to ₹50 Lakh with FinsBee. Apply online with minimal documentation, flexible repayment options, low interest rates & quick disbursal.",
     creator: "@finsbeeteam",
   },
 };

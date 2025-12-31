@@ -17,7 +17,7 @@ export default function SupportSection() {
       {/* Background image (doesn't block clicks) */}
       <div
         className="absolute inset-0 bg-cover bg-center pointer-events-none"
-        style={{ backgroundImage: 'url("/booking/support.png")' }}
+        style={{ backgroundImage: 'url("/booking/contact_bg.webp")' }}
     
         aria-hidden="true"
       />

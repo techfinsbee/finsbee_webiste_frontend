@@ -1,9 +1,10 @@
+
 // "use client";
 // import React, { useState } from "react";
-// import { features } from "./Constant"; // Ensure this file exists and exports an array
+// import { features } from "./Constant";
 // import { motion, AnimatePresence } from "framer-motion";
 // import { CheckCircle } from "lucide-react";
-// import { useRouter } from "next/router";
+// import { useRouter } from "next/navigation";
 
 // // Reusable button component for MainContent
 // const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -54,12 +55,12 @@
 //       animate={{ x: 0 }}
 //       exit={{ x: "-100%" }}
 //       transition={{ type: "tween", duration: 0.5 }}
-//        className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
+//       className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
 //     >
-//       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
+//       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full h-[90vh] overflow-y-auto relative">
 //         <button
 //           onClick={onClose}
-//           className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl"
+//           className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl z-10"
 //           aria-label="Close eligibility modal"
 //         >
 //           ✕
@@ -70,11 +71,11 @@
 //               <p className="text-gray-600 font-bold text-sm tracking-wide uppercase">
 //                 The Results Speak for Themselves
 //               </p>
-//               <h1 className="text-4xl md:text-6xl font-bold text-gray-800">
+//               <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-800">
 //                 Eligibility Criteria
 //               </h1>
 //             </div>
-//             <div className="flex flex-col lg:flex-row items-start gap-6 w-full max-w-6xl">
+//             <div className="flex flex-col lg:flex-row items-start gap-6 w-full">
 //               {eligibilityCriteria.map((section) => (
 //                 <div
 //                   key={section.title}
@@ -82,7 +83,7 @@
 //                 >
 //                   <div className="flex flex-col lg:flex-row items-start justify-between gap-6">
 //                     <div className="flex flex-col gap-6 flex-1">
-//                       <h2 className="text-xl md:text-2xl font-normal text-gray-800">
+//                       <h2 className="text-lg sm:text-xl md:text-2xl font-normal text-gray-800">
 //                         {section.title}
 //                       </h2>
 //                       <ul className="flex flex-col gap-4">
@@ -101,7 +102,7 @@
 //                     </div>
 //                     <div className="flex items-center justify-center flex-shrink-0">
 //                       <img
-//                         className="w-40 h-40 md:w-52 md:h-52 object-cover rounded-lg"
+//                         className="w-24 h-24 sm:w-32 sm:h-32 md:w-52 md:h-52 object-cover rounded-lg"
 //                         alt={`Illustration for ${section.title}`}
 //                         src={section.image}
 //                       />
@@ -151,16 +152,16 @@
 
 //   const DocumentSection = ({ title, categories }) => (
 //     <div>
-//       <p className="text-gray-600 font-bold text-sm underline py-2 tracking-wide uppercase text-center">
+//       <p className="text-gray-600 font-bold text-sm underline py-4 tracking-wide uppercase text-center">
 //         {title}
 //       </p>
-//       <div className="flex flex-col lg:flex-row items-start gap-6 w-full max-w-6xl">
+//       <div className="flex flex-col lg:flex-row items-start gap-6 w-full">
 //         {Object.entries(categories).map(([category, items], index) => (
 //           <div
 //             key={category}
-//             className={`flex-1 p-6 ${index > 0 ? "lg:border-l border-dashed border-gray-300" : ""}`}
+//             className={`flex-1 p-6 rounded-lg lg:rounded-none ${index > 0 ? "lg:border-l border-dashed border-gray-300" : ""}`}
 //           >
-//             <h2 className="text-xl font-normal text-gray-800 mb-6">{category}</h2>
+//             <h2 className="text-lg sm:text-xl font-normal text-gray-800 mb-6">{category}</h2>
 //             <ul className="flex flex-col gap-4">
 //               {items.map((item, itemIndex) => item && (
 //                 <li key={itemIndex} className="flex items-center gap-3">
@@ -183,20 +184,20 @@
 //       animate={{ x: 0 }}
 //       exit={{ x: "-100%" }}
 //       transition={{ type: "tween", duration: 0.5 }}
-//       className="fixed top-0 left-0 w-full h-full  bg-opacity-95 z-50 flex items-center justify-center"
+//       className="fixed inset-0  bg-opacity-50 z-50 flex items-center justify-center p-4"
 //     >
-//       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full relative">
+//       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full h-[90vh] overflow-y-auto relative">
 //         <button
 //           onClick={onClose}
-//           className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl"
+//           className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl z-10"
 //           aria-label="Close document modal"
 //         >
 //           ✕
 //         </button>
 //         <div className="h-full">
-//           <section className="flex flex-col items-center px-6 md:px-12 py-2">
+//           <section className="flex flex-col items-center px-6 md:px-12 py-16">
 //             <div className="flex flex-col items-center gap-2 text-center max-w-2xl">
-//               <h1 className="text-4xl font-bold text-gray-800">Document Required</h1>
+//               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800">Document Required</h1>
 //             </div>
 //             <DocumentSection title="For Salaried Individuals" categories={documents1} />
 //             <DocumentSection title="For Self-Employed Individuals" categories={documents2} />
@@ -210,6 +211,7 @@
 // const MainContent = () => {
 //   const [showOverlay, setShowOverlay] = useState(false);
 //   const [overlayTitle, setOverlayTitle] = useState("");
+//   const router = useRouter();
 
 //   const handleOpen = (title) => {
 //     if (["Eligibility Criteria", "Document Required"].includes(title)) {
@@ -267,9 +269,12 @@
 //                     </ActionButton>
 //                   </div>
 
-//                   <div className="flex items-center justify-around gap-3.5 relative w-full">
-//                     <button className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
-//                       <span className="font-bold text-gray-800">Calculate EMI</span>
+//                  <div className="flex items-center justify-around gap-3.5 relative w-full">
+//                     <button onClick={() => router.push("/personal-loan/pl_Emi")}
+//                     className="inline-flex items-center bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors">
+//                       <span className="font-bold text-gray-800">
+//                         Calculate EMI
+//                       </span>
 //                     </button>
 //                   </div>
 //                 </div>
@@ -298,7 +303,7 @@ import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation"; 
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -506,6 +511,10 @@ const MainContent = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const [overlayTitle, setOverlayTitle] = useState("");
   const router = useRouter();
+  
+  // ← NEW: Read title from URL query params
+  const searchParams = useSearchParams();
+  const dynamicTitle = searchParams.get("title") || "Personal Loan";
 
   const handleOpen = (title) => {
     if (["Eligibility Criteria", "Document Required"].includes(title)) {
@@ -520,12 +529,12 @@ const MainContent = () => {
         <div className="flex flex-col items-center gap-12 relative flex-1">
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
+             
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                Personal Loan 
+                {dynamicTitle}
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
                 Get a Personal Loan of up to Rs. 50 Lakhs to pursue your dreams. Quick approval, minimal documentation, and competitive interest rates.
-
               </p>
             </section>
 

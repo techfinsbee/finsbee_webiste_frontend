@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 // Reusable button component for MainContent
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -239,6 +240,10 @@ const MainContent = () => {
     }
   };
 
+  let searchParams = useSearchParams();
+  const dynamicTitle =
+    searchParams.get("title") || "Home Loan";
+
   return (
     <>
       <main className="flex flex-col lg:flex-row items-center gap-8 px-4 md:px-12 lg:px-32 py-12 relative w-full">
@@ -246,7 +251,7 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-start justify-between relative w-full">
             <section className="flex flex-col w-full lg:w-[600px] items-start relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:400ms]">
               <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal tracking-[0px]">
-                Home Loan
+                {dynamicTitle} 
               </h1>
               <p className="text-[#FFEEC3] text-lg md:text-xl">
                 Turn your dream of home ownership into reality with loans up to Rs. 5 Crores. Attractive interest rates, flexible tenure options, and fast approvals.

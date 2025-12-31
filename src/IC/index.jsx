@@ -24,7 +24,7 @@
 //       <BenefitCards/>
 //       <Home/>
  
-//       <Frame/>
+//      {/* // <Frame/> */}
 //     </div>
 //   );
 // };

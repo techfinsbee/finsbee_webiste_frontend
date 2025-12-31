@@ -9,7 +9,6 @@
 // import Cards from "../components/Cards/Cards";
 // import TopSlide from "../components/Header/TopSlide";
 
-
 // import Frame from "@/components/footer/Fram";
 // import ResultsComponent from "@/components/ResultSection/Result";
 // import { MobileBox } from "@/components/HowToUse/mobileAnimation";
@@ -38,11 +37,8 @@
 // }
 // export default HomePage;
 
-
-
 import React from "react";
 import Head from "next/head";
-
 
 import FAQ from "../components/Cards/Faq";
 
@@ -53,6 +49,7 @@ import Frame from "@/components/footer/Fram";
 import ResultsComponent from "@/components/ResultSection/Result";
 import { MobileBox } from "@/components/HowToUse/mobileAnimation";
 import TestimonialsPage from "@/components/Testimonial/TestimonialsPage";
+import Desktopbuttom from "@/components/footer/Desktopbuttom";
 
 const HomePage = () => {
   return (
@@ -68,11 +65,12 @@ const HomePage = () => {
           name="keywords"
           content="bank loan provider, instant personal loan, business loan, home loan, loan against property, low interest loans, NBFC loan provider, quick loans online, EMI calculator, digital personal loan, unsecured business loan, personal loan app"
         />
+       
       </Head>
 
       {/* Page content */}
       <TopSlide />
-      <ResultsComponent />
+      {/* <ResultsComponent /> */}
       <MobileBox />
 
       <div>
@@ -81,9 +79,8 @@ const HomePage = () => {
 
       <div className="w-full">
         <Cards />
-        <TestimonialsPage/>
+        <TestimonialsPage />
         <FAQ />
-        
       </div>
       <Frame />
     </div>

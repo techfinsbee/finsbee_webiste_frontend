@@ -82,10 +82,10 @@ export default function WhyFinsbeeHover({
   subheading = "Finsbee?",
   quote = "Financial mistakes are expensive. Good advice pays for itself",
   items = [
-    { iconSrc: "/booking/independent.png", title: "Independent Advice", desc: "We work for you, not the banks.", hoverImage: "/booking/bg.png" },
-    { iconSrc: "/booking/transparency.png", title: "Complete Transparency", desc: "No hidden charges or surprises.", hoverImage: "/booking/bg.png" },
-    { iconSrc: "/booking/client.png", title: "Tailored Recommendations", desc: " Every suggestion is based on your personal needs and goals.", hoverImage: "/booking/bg.png" },
-    { iconSrc: "/booking/action.png", title: "Action-oriented", desc: " Your hard work deserves the right guidance.", hoverImage: "/booking/bg.png" },
+    { iconSrc: "/booking/independent.png", title: "Independent Advice", desc: "We work for you, not the banks.", hoverImage: "/booking/advice.webp" },
+    { iconSrc: "/booking/transparency.png", title: "Complete Transparency", desc: "No hidden charges or surprises.", hoverImage: "/booking/hidden-charge.webp" },
+    { iconSrc: "/booking/client.png", title: "Tailored Recommendations", desc: " Every suggestion is based on your personal needs and goals.", hoverImage: "/booking/tailored-for-you.webp " },
+    { iconSrc: "/booking/action.png", title: "Action-oriented", desc: " Your hard work deserves the right guidance.", hoverImage: "/booking/action-oriented.webp" },
   ],
 }) {
   const isMobile = useIsMobile();

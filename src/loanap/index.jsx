@@ -38,7 +38,7 @@ export default function InvestePage(){
       <BenefitCards/>
       <Home/>
  
-      <Frame/>
+     <Frame/>
     </div>
   );
 };

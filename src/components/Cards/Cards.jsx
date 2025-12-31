@@ -882,7 +882,7 @@ export default function ExpandingCards() {
                                 viewport={{ once: true, amount: 0.8 }}
                                 className="absolute inset-0 bg-yellow-400 -z-10 origin-top"
                               />
-                              Themselves
+                              Finsbee
                             </span>
                           </div>
                         </div>

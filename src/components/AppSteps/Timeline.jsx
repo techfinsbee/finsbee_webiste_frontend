@@ -427,9 +427,9 @@ const steps = [
   },
   {
     id: "03",
-    title: "Upload Documents Securely",
+    title: "Basic Information Submission",
     description:
-      "Upload your PAN card and other required documents through our encrypted platform, ensuring your information remains protected.",
+      "Provide your basic details, such as your name, contact information, and any other required information, in the designated fields to help us process your request smoothly and accurately.",
     img: "/landing_page/timeline.png",
   },
   {

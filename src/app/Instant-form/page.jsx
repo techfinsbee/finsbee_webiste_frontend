@@ -688,7 +688,8 @@ const handleContinue = async () => {
                 </option>
               </select>
 
-              {/* ('payday', 'PayDay'),
+              {
+              /* ('payday', 'PayDay'),
                 ('Personal-Loan', 'Personal Loan'),
                 ('Business-Loan', 'Business Loan'),
                 ('Home-Loan', 'Home Loan'),
@@ -696,7 +697,8 @@ const handleContinue = async () => {
                 ('balance-transfer-of-hl', 'Balance Transfer of HL'),
                 ('balance-transfer-lap', 'Balance Transfer LAP'),
                 ('Loan-Against-Security', 'Loan Against Security'),
-                ('Education-Loan', 'Education Loan') */}
+                ('Education-Loan', 'Education Loan') */
+                }
      
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10">
                 <img

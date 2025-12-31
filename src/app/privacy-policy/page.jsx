@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import PageHero from "@/components/common/PageHero";
 // import Navbar from "@/components/Navbar/Navbar"; // adjust path if needed
 
 const PrivacyPage = () => {
@@ -11,10 +12,19 @@ const PrivacyPage = () => {
 
   return (
     <>
-      {/* <Navbar dropdownData={dropdownData} COLOR="#fff" Hover="home" TXTCOLOR="#" /> */}
-
-      <div className="max-w-4xl mx-auto px-4 py-8 text-gray-800">
-        <h1 className="text-3xl font-bold mt-16">Privacy Policy</h1>
+    <PageHero
+  title="Privacy Policy"
+  bgImage="/loan_Page/hero-bg.jpg"
+  height={{
+    base: "h-[15rem]",
+    sm: "sm:h-[20rem]",
+    md: "md:h-[25rem]",
+    lg: "lg:h-[30rem]",
+  }}
+/>
+  
+      <div className=" relative mx-4 z-20 -mt-20 sm:-mt-35 md:-mt-55 md:mx-[136px] p-3 md:p-12 text-gray-800 bg-white rounded-2xl shadow-[0_10px_10px_rgba(0,0,0,0.12)] border border-gray-100 ">
+        {/* <h1 className="text-3xl font-bold mt-16">Privacy Policy</h1> */}
 
         <div className="space-y-6">
           {/* Introduction */}

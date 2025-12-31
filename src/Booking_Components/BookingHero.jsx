@@ -39,7 +39,7 @@ export default function BookingHero() {
       {/* BG image + overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url("/booking/bg.jpg")' }}
+        style={{ backgroundImage: 'url("/booking/form-bg.webp")' }}
         aria-hidden
       />
       <div
