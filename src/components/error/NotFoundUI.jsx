@@ -1,13 +1,13 @@
-"use client";
+
 
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "../Navbar";
-import { useState } from "react";
-import FreeClassPopup from "../common/FreeClassPopup";
+
+// import FreeClassPopup from "../common/FreeClassPopup";
 
 export default function NotFoundUI() {
-    const [openPopup, setOpenPopup] = useState(false);
+   
 
     const handleLearnFinanceClick = () => {
   const isMobile = window.innerWidth < 768; // Tailwind md breakpoint
@@ -96,17 +96,13 @@ export default function NotFoundUI() {
             Learn Finance Free
           </Link> */}
           <>
-      <button
-        onClick={handleLearnFinanceClick}
-        className="underline underline-offset-4"
-      >
-        Learn Finance Free
-      </button>
+        <Link href="/webinar-form" className="underline underline-offset-4">
+             Learn Finance Free
+          </Link>
+       
+    
 
-      <FreeClassPopup
-        open={openPopup}
-        onClose={() => setOpenPopup(false)}
-      />
+      
     </>
 
           <Link href="/Instant-form" className="underline underline-offset-4">

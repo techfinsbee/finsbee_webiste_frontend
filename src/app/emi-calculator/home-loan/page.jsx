@@ -1,13 +1,13 @@
 
 import HL_EMI from '@/Emi_Pages/HL_EMI'
-import React from 'react'
+import { Suspense } from "react";
 
-function page() {
+
+
+export default function Page() {
   return (
-    <div>
-        <HL_EMI/>
-    </div>
+     <Suspense fallback={null}>
+             <HL_EMI/>
+        </Suspense>
   )
 }
-
-export default page

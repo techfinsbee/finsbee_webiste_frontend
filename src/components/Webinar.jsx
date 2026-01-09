@@ -89,13 +89,13 @@ export default function Webinar() {
         </div>
       </div>
       {/* FORM CARD */}
-      <div className="z-10 w-full flex justify-center mt-10">
+      <div className="z-10 w-full flex justify-center items-center mt-10">
         <div className="bg-white w-full max-w-lg rounded-2xl shadow-lg p-8 border border-yellow-100 relative">
             <div className="mb-6 text-2xl font-bold text-[#183153]">
               Enter Your Details
             </div>
          <div
-            className={`w-full lg:w-[420px] border-[3px] rounded-[28px] p-3 md:p-8 transition-colors duration-300
+            className={`w-full  border-[3px] rounded-[28px] p-3 md:p-8 transition-colors duration-300
               ${submitted ? "border-[#5BCB6F]" : "border-[#F8CE63]"}`}
           >
             {!submitted ? (

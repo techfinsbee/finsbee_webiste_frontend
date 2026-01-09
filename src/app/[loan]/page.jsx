@@ -1,6 +1,7 @@
 
 
 // app/[loan]/page.jsx   ← Server Component (NO "use client")
+import { Suspense } from "react";
 import DynamicLoanPage from "./DynamicLoanPage";
 import Frame from "@/components/footer/Fram";
 import { loansData } from "@/data/loansData";
@@ -9,7 +10,7 @@ import { notFound } from "next/navigation";
 
 // Dynamic metadata
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params;        // ← MUST await
+  const resolvedParams = await params;       
   const loanSlug = resolvedParams.loan;
 
   const loan = loansData[loanSlug];
@@ -81,8 +82,11 @@ export default async function LoanPage({ params }) {
 
   return (
     <>
+     <Suspense fallback={null}>
       <DynamicLoanPage loanSlug={loanSlug} />
+      </Suspense>
       <Frame />
+      
     </>
   );
 }
