@@ -40,7 +40,7 @@ export default function FreeClassPopup({ open, onClose }) {
   try {
     setSubmitting(true);
 
-    const res = await fetch("/api/flutterapi/api/crm/webinar", {
+    const res = await fetch("/api/flutterapi/crm/webinar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

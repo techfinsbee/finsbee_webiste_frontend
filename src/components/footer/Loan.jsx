@@ -294,7 +294,7 @@ export default function LoanApplicationSection() {
       <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {columns.map((column, idx) => (
           <nav key={idx} className="flex flex-col gap-3">
-            <p className="text-yellow-300 font-semibold text-lg mb-2">{column.city}</p>
+            {/* <p className="text-yellow-300 font-semibold text-lg mb-2">{column.city}</p> */}
             {column.links.map((link, i) => (
               <Link
                 key={i}
