@@ -13,7 +13,7 @@ export default function SupportSection() {
   };
 
   return (
-    <section className="relative overflow-hidden min-h-[804px]">
+    <section className="relative overflow-hidden ">
       {/* Background image (doesn't block clicks) */}
       <div
         className="absolute inset-0 bg-cover bg-center pointer-events-none"
@@ -32,7 +32,7 @@ export default function SupportSection() {
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl px-4 mt-20 sm:px-6 lg:px-8 py-12 lg:py-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8 pb-12 lg:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-4 items-center">
           {/* LEFT: Headline + CTA */}
           <div className="mt-8 text-white">

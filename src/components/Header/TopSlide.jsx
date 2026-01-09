@@ -53,7 +53,7 @@ const TopSlide = () => {
           className="object-cover object-center -z-10 rounded-b-[45px]  lg:rounded-b-[120px]"
         /> */}
           <img
-            src="/landing_page/bgg.webp"
+            src="/landing_page/home-banner.webp"
             alt="Background"
             className="absolute inset-0 w-full h-full object-cover object-center -z-10"
           />

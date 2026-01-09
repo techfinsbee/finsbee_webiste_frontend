@@ -117,7 +117,7 @@ const PageHero = ({
         )}
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-[radial-gradient(50%_50%_at_50%_100%,rgba(89,46,255,0.72)_32%,rgba(49,25,140,0.9)_100%)]" />
+        <div className="absolute inset-0  radial-gradient(100% 100% at 50% 100%, rgba(89,46,255), rgba(49,25,140,0.7) 100%)" />
 
         {/* Abstract Overlay */}
         {abstractImage && (

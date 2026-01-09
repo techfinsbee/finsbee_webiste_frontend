@@ -27,11 +27,12 @@ const plans = [
     price: "₹99",
     title: "Quick Advice Call",
     sub: "15 minutes · Google Meet",
+    bestFor:
+      "Don't risk thousands on investment blunders, loan traps, credit card pitfalls, or insurance mistakes—one wrong move could cost you big! Secure a fast 15-minute Google Meet consultation where a financial expert reviews your situation, spots dangers, and delivers fullproof next steps. Book now and boost your finances confidently! Limited spots—claim yours today.",
     booking: "same day or within 24 hours.",
     slots:
       "Slots are available between 10:00 AM – 7:00 PM IST (Mon–Sat). Example slots: 10:00 · 10:15 · 10:30 · … · 6:45 PM",
-    bestFor:
-      "Quick doubts, comparing offers, understanding terms and next steps.",
+
     hover: {
       headline: "What you get",
       points: [
@@ -54,7 +55,7 @@ const plans = [
     booking: "11:00 AM – 6:00 PM IST (Mon–Sat).",
     slots: "Home visits are available at selected locations (Delhi,Noida,Gurugram).",
     bestFor:
-      "In-depth discussions, paperwork clarity, and building a plan you can execute.",
+      "Prefer an in-person consultation? Book a certified financial advisor to visit your home at your convenient time for a personalized session. This option suits families seeking in-depth discussions on investment strategies, loans, and insurance coverage. ",
     hover: {
       headline: "Included",
       points: [
@@ -76,7 +77,7 @@ const plans = [
     booking: "same day or within 24 hours.",
     slots: null,
     bestFor:
-      "Ongoing guidance, improving credit score and loan eligibility, and maintaining a healthy financial plan year-round.",
+      "Get ongoing monthly financial planning support with a mix of calls, follow‑ups, and home visits as needed. This plan suits customers managing multiple EMIs, business loans, or investments who want regular check‑ins, portfolio reviews, and guidance on loan balance transfer, insurance optimisation, and investment strategy throughout the month.",
     hover: {
       headline: "Monthly perks",
       points: [
@@ -165,7 +166,18 @@ function PlanCard({
         </div>
 
         <Divider featured={isFeatured} />
+        {bestFor && (
+            <>
+              {/* <Divider featured={isFeatured} /> */}
+              <div className="text-sm">
+                {/* <div className="font-medium">Best for:</div> */}
+                <p className={isFeatured ? "text-white/90" : "text-black/70"}>{bestFor}</p>
 
+              </div>
+                <Divider featured={isFeatured} />
+            </>
+          )}
+       
         <div className="space-y-3 text-sm">
           <div>
             <div className="font-medium">Booking Window:</div>
@@ -182,15 +194,7 @@ function PlanCard({
             </>
           )}
 
-          {bestFor && (
-            <>
-              <Divider featured={isFeatured} />
-              <div>
-                <div className="font-medium">Best for:</div>
-                <p className={isFeatured ? "text-white/90" : "text-black/70"}>{bestFor}</p>
-              </div>
-            </>
-          )}
+          
         </div>
       </div>
 
@@ -338,8 +342,8 @@ export default function PlansSection({
               bgFit === "actual"
                 ? "auto"
                 : bgFit === "contain"
-                ? "contain"
-                : "cover",
+                  ? "contain"
+                  : "cover",
           }}
         />
         {overlayOpacity > 0 && (
@@ -353,7 +357,7 @@ export default function PlansSection({
 
       <ExtraStyles />
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-6 lg:px-8 pb-12 lg:pb-24">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl font-semibold text-black">
             <span className="relative inline-block mx-auto">

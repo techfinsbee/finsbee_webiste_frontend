@@ -1,107 +1,3 @@
-// "use client";
-
-// import React, { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { Plus, Minus } from "lucide-react";
-
-// const faqs = [
-//   {
-//     question: "What exactly is Finsbee Consultation?",
-//     answer:
-//       "A personalized advisory service to help you choose better loans, insurance, and investments. From quick doubts to a full financial game plan, we provide impartial guidance you can trust.",
-//   },
-//   {
-//     question: "How is Finsbee different from banks or agents?",
-//     answer:
-//       "We provide unbiased advice and do not push products for commission. Our focus is on your financial growth.",
-//   },
-//   {
-//     question: "What are your plans and pricing?",
-//     answer:
-//       "We offer multiple flexible plans starting at very affordable rates. Details are available upon request.",
-//   },
-//   {
-//     question: "Can you help me secure a lower interest rate?",
-//     answer:
-//       "Yes, we compare multiple lenders and negotiate to get you the best possible rate.",
-//   },
-//   {
-//     question: "Is my information safe?",
-//     answer:
-//       "Absolutely. We follow strict data privacy protocols to ensure your information is always protected.",
-//   },
-//   {
-//     question: "How do I book?",
-//     answer:
-//       "You can book a consultation through our website or mobile app in just a few steps.",
-//   },
-// ];
-
-// export default function FAQ() {
-//   const [openIndex, setOpenIndex] = useState(0); // first faq open by default
-
-//   const toggleFAQ = (index) => {
-//     setOpenIndex(openIndex === index ? null : index); // close if clicked again
-//   };
-
-//   return (
-//     <section className="flex flex-col md:flex-row items-start h-[40rem] justify-between max-w-6xl mx-auto py-16 px-6 gap-12">
-//       {/* Left Side Heading */}
-//       <div className="md:w-1/3">
-//         <h2 className="text-xl font-bold mb-4">The Results Speaks for Themselves</h2>
-//         <h1 className="text-5xl font-bold text-black">
-//           <span className="bg-yellow-400 px-3 py-1 rounded">FAQ’s</span>
-//         </h1>
-//       </div>
-
-//       {/* Right Side FAQ Accordion */}
-//       <div className="md:w-2/3 space-y-4">
-//         {faqs.map((faq, index) => (
-//           <div
-//             key={index}
-//             className={`border border-purple-200 rounded-lg shadow-sm overflow-hidden transition-all ${
-//               openIndex === index ? "bg-white" : "bg-transparent"
-//             }`}
-//           >
-//             {/* Header */}
-//             <button
-//               onClick={() => toggleFAQ(index)}
-//               className="w-full flex justify-between items-center px-6 py-4 text-left"
-//             >
-//               <span
-//                 className={`font-medium ${
-//                   openIndex === index ? "text-purple-600" : "text-gray-700"
-//                 }`}
-//               >
-//                 {faq.question}
-//               </span>
-//               {openIndex === index ? (
-//                 <Minus className="text-purple-600" />
-//               ) : (
-//                 <Plus className="text-gray-500" />
-//               )}
-//             </button>
-
-//             {/* Answer */}
-//             <AnimatePresence>
-//               {openIndex === index && (
-//                 <motion.div
-//                   initial={{ height: 0, opacity: 0 }}
-//                   animate={{ height: "auto", opacity: 1 }}
-//                   exit={{ height: 0, opacity: 0 }}
-//                   transition={{ duration: 0.4 }}
-//                   className="px-6 pb-4 text-gray-600"
-//                 >
-//                   {faq.answer}
-//                 </motion.div>
-//               )}
-//             </AnimatePresence>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
 "use client";
 
 import React, { useState } from "react";
@@ -110,45 +6,98 @@ import { Plus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How quickly can I get loan approval and disbuserd?",
+    question: "What is Finsbee?",
     answer:
-      "Loan approvals are instant, and disbursal typically happens within 24 to 48 hours, depending on the lender and your documentation.",
+      "Finsbee is a fintech platform that helps users discover and apply for financial products by connecting them with partner banks, NBFCs, and authorized investment providers.",
   },
   {
-    question: "Is the application process fully digital?",
+    question: "Is Finsbee a bank or NBFC?",
     answer:
-      "Yes, FinsBee offers a 100% paperless and digital process—apply, upload documents, and track your loan entirely online.",
+      "No. Finsbee is not a bank or NBFC. It acts as a technology platform that facilitates access to financial products offered by its partners.",
   },
   {
-    question: "What types of loan does finsbee offer?",
+    question: "Does Finsbee provide loans or investments directly?",
     answer:
-      "FinsBee offers a variety of loan options including Personal Loans, Instant Payday Loans, Home Loans, Loan Against Property (LAP), and Loan Against Securities, all designed to meet your diverse financial needs with competitive rates.",
+      "No. All loans and investments are provided by Finsbee’s partner institutions. Final approval and execution are handled by the respective partners.",
   },
   {
-    question: "Do I need a high credit score to apply?",
-    answer:
-      "While a good credit score improves your chances, FinsBee has lending partners who provide options for individuals with varying credit profiles, including those with limited credit history",
+    question: "What products are available on Finsbee?",
+    answer: {
+      intro: "Finsbee offers access to:",
+      points: [
+        "Personal Loans",
+        "Home Loans",
+        "Business Loans",
+        "Loan Against Property (LAP)",
+        "Loan Against Securities (LAS)",
+        "Digital Gold",
+        "1-on-1 Financial Consultation",
+        "Free Online Financial Classes",
+      ],
+    },
   },
   {
-    question: "How does the application process work?",
+    question: "Can I apply for multiple products on Finsbee?",
     answer:
-      "Our application process is fully digital. Simply complete the application form, upload the required documents, receive instant approval, and get the loan amount directly in your bank account—all through our user-friendly app or website.",
+      " Yes. Eligible users can apply for multiple products, subject to partner criteria.",
   },
   {
-    question: "Is my data safe with FinsBee?",
+    question: "Who can use Finsbee?",
     answer:
-      "Absolutely. FinsBee uses bank-grade encryption and security protocols to ensure your personal and financial information remains secure at all times.",
+      "Any eligible Indian resident with valid KYC details can use Finsbee to explore financial products.",
   },
   {
-    question: "What is the 60-minute financial consultation service?",
+    question: "How do I apply for a product on Finsbee?",
     answer:
-      "FinsBee offers a 1-on-1 session with certified financial experts to help you plan better—whether it’s loans, investments, savings, insurance, or budgeting.",
+      "You can apply online by submitting basic personal or business details. Finsbee shares your request with suitable partner providers.",
   },
   {
     question:
-      "Is FinsBee’s digital gold and silver investment regulated and trustworthy?",
+      "Does applying through Finsbee affect my credit score?",
     answer:
-      "Yes. FinsBee partners with licensed and regulated digital gold providers, ensuring your gold and silver investments are 100% compliant, secure, and backed by physical assets stored in insured, certified vaults. Your investments are fully transparent and protected under trusted financial standards.",
+      "Checking eligibility does not affect your credit score. However, lenders may perform credit checks during loan processing.",
+  },
+  {
+    question:
+      "Does Finsbee charge any fees to users?",
+    answer:
+      "No. Finsbee does not charge users for applying or exploring products on the platform.",
+  },
+  {
+    question:
+      "Are there any hidden charges?",
+    answer:
+      "No. Any fees or charges are levied by partner institutions and are disclosed as per their policies.",
+  },
+  {
+    question:
+      "Is my personal and financial data safe with Finsbee?",
+    answer:
+      "Yes. Finsbee uses secure technology and follows strict data protection practices.",
+  },
+  {
+    question:
+      " Does Finsbee share my data with third parties?",
+    answer:
+      "User data is shared only with authorized partner institutions after obtaining consent.",
+  },
+  {
+    question:
+      "What should I do if I face technical issues on the platform?",
+    answer:
+      "You can retry after some time or reach out to Finsbee customer support for assistance.",
+  },
+  {
+    question:
+      "Can I track my application status on Finsbee",
+    answer:
+      "Yes. You can view updates or receive communication regarding your application status. ",
+  },
+  {
+    question:
+      "Is Finsbee compliant with regulations?",
+    answer:
+      "Yes. Finsbee operates in compliance with applicable laws and works only with regulated financial institutions.",
   },
 ];
 
@@ -160,12 +109,12 @@ export default function FAQ() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row items-start h-full justify-between    lg:py-16 py-8 px-2  md:px-[136px] gap-12">
+    <section className="flex flex-col md:flex-row items-start h-full justify-between pb-12  md:pb-24   px-2  md:px-[136px] gap-12">
       {/* Left Side Heading */}
       <div className="md:w-1/5">
         {/* <h2 className="text-xl font-bold mb-4">
           {/* The Results Speaks for Themselves */}
-        {/* </h2> */} 
+        {/* </h2> */}
 
         <span className="relative w-fit font-bold text-[64px] leading-normal text-[#212121] font-['Lato',sans-serif]">
           {/* Animated Yellow Highlight */}
@@ -234,7 +183,28 @@ export default function FAQ() {
                   transition={{ duration: 0.5, ease: "easeInOut" }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-4 text-gray-600">{faq.answer}</div>
+                  {/* <div className="px-6 pb-4 text-gray-600">{faq.answer}</div> */}
+                  <div className="px-6 pb-4 text-gray-600">
+                    {typeof faq.answer === "string" ? (
+                      <p>{faq.answer}</p>
+                    ) : (
+                      <>
+                        {faq.answer.intro && (
+                          <p className="mb-2 font-medium text-gray-800">
+                            {faq.answer.intro}
+                          </p>
+                        )}
+
+                        <ul className="list-disc pl-6 space-y-1">
+                          {faq.answer.points.map((point, i) => (
+                            <li key={i} className="text-gray-700">
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>

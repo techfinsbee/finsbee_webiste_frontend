@@ -51,9 +51,9 @@ export default function BookingHero() {
         aria-hidden
       />
 
-      <div className="relative min-h-[786px] lg:h-[786px]">
+      <div className="relative min-h-[786px] lg:h-[786px] pb-12 lg:pb-21">
         <div className="mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full py-10 sm:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center h-full">
             {/* LEFT (text stack) */}
             <div
               ref={leftRef}
@@ -109,7 +109,7 @@ export default function BookingHero() {
             <div
               ref={formRef}
               className={cn(
-                "lg:justify-self-end w-full max-w-[562px]",
+                "lg:justify-self-end w-full max-w-[762px]",
                 "transform-gpu will-change-transform",
                 "transition-[transform,opacity] duration-[900ms]",
                 "ease-[cubic-bezier(0.22,1,0.36,1)]",

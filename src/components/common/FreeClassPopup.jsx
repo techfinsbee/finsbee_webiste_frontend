@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import { useState, useCallback } from "react";
@@ -14,17 +16,11 @@ export default function FreeClassPopup({ open, onClose }) {
   const validate = () => {
     const newErrors = {};
 
-    if (!form.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!/^[6-9]\d{9}$/.test(form.phone)) {
+    if (!form.name.trim()) newErrors.name = "Name is required";
+    if (!/^[6-9]\d{9}$/.test(form.phone))
       newErrors.phone = "Enter valid 10-digit mobile number";
-    }
-
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       newErrors.email = "Enter valid email address";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -35,27 +31,48 @@ export default function FreeClassPopup({ open, onClose }) {
     setErrors((prev) => ({ ...prev, [field]: "" }));
   }, []);
 
+
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
+  e.preventDefault();
+  if (!validate()) return;
 
-    try {
-      setSubmitting(true);
+  try {
+    setSubmitting(true);
 
-      // 🔹 Optional: API call here
-      // await submitForm(form);
+    const res = await fetch("/api/flutterapi/api/crm/webinar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include", 
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        method: "call",
+        params: {
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+        },
+      }),
+    });
 
-      // ✅ Open WhatsApp group directly
-      window.open("https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC", "_blank");
-
-      // Optional: close popup after redirect
-      handleClose();
-    } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setSubmitting(false);
+    if (!res.ok) {
+      throw new Error("API request failed");
     }
-  };
+
+    const data = await res.json();
+    console.log("Webinar API success:", data);
+
+    setSubmitted(true); // ✅ switch UI only on success
+  } catch (err) {
+    console.error("Submission error:", err);
+    alert("Something went wrong. Please try again.");
+  } finally {
+    setSubmitting(false);
+  }
+};
+
 
   const handleClose = () => {
     if (submitting) return;
@@ -68,50 +85,20 @@ export default function FreeClassPopup({ open, onClose }) {
   if (!open) return null;
 
   return (
-    // <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-    //   <div className="relative w-full max-w-6xl mx-4 bg-white rounded-3xl p-6 md:p-10">
-    <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm overflow-y-auto flex lg:items-center justify-center">
-      <div
-        className="
-      relative
-      w-full
-      max-w-6xl
-      mx-4
-      my-6
-      bg-white
-      rounded-3xl
-      p-6
-      md:p-10
-      max-h-[90vh]
-      overflow-y-auto
-    "
-      >
-        {/* Close Button */}
-
+    <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex lg:items-center justify-center overflow-y-auto">
+      <div className="relative w-full max-w-6xl mx-4 my-6 bg-white rounded-3xl p-6 md:p-10 max-h-[90vh] overflow-y-auto">
+        {/* Close */}
         <div className="sticky top-0 z-50 h-0">
           <button
             onClick={handleClose}
-            className="
-      absolute
-      sm:-top-5
-      sm:-right-6
-      -top-2 -right-5
-      text-3xl
-      text-gray-500
-      hover:text-gray-700
-      
-      rounded-full
-      leading-none
-    "
-            aria-label="Close popup"
+            className="absolute sm:-top-5 sm:-right-6 -top-2 -right-5 text-3xl text-gray-500 hover:text-gray-700"
           >
             ×
           </button>
         </div>
 
-        {/* {!submitted ? ( */}
         <div className="flex flex-col lg:flex-row gap-5 sm:gap-10">
-          {/* LEFT UI (UNCHANGED) */}
+          {/* ================= LEFT (UNCHANGED) ================= */}
           <div className="flex-1">
             <p className="text-sm sm:text-lg font-semibold mb-2">Free Online</p>
 
@@ -162,159 +149,145 @@ export default function FreeClassPopup({ open, onClose }) {
               *Classes will be conducted online on Zoom
             </div>
           </div>
-
-          {/* RIGHT FORM */}
-          <div className="w-full lg:w-[420px] border-[3px] border-[#F8CE63] rounded-[28px] p-3 md:p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Full Name */}
-              <div>
+          {/* ================= RIGHT FORM / SUCCESS ================= */}
+          <div
+            className={`w-full lg:w-[420px] border-[3px] rounded-[28px] p-3 md:p-8 transition-colors duration-300
+              ${submitted ? "border-[#5BCB6F]" : "border-[#F8CE63]"}`}
+          >
+            {!submitted ? (
+              /* -------- FORM (UNCHANGED) -------- */
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name */}
+                {/* Name */}
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <img
-                      src="/form_page/user-square.svg"
-                      alt=""
-                      className="w-5 h-5 opacity-60"
-                    />
-                  </span>
                   <input
-                    type="text"
                     value={form.name}
                     onChange={(e) => handleChange("name", e.target.value)}
-                    placeholder="full name (as per aadhar)"
-                    className={`w-full h-[46px] md:h-[64px] rounded-xl border px-12 text-sm outline-none
-            ${errors.name ? "border-red-400" : "border-[#F8CE63] bg-[#FFF9EC]"}
-            focus:ring-2 focus:ring-[#F8CE63]/40`}
-                  />
-                </div>
-                {errors.name && (
-                  <p className="text-xs text-red-500 mt-1">{errors.name}</p>
-                )}
-              </div>
+                    placeholder="Enter full name (as per aadhar)"
+                    className={`w-full h-[46px] md:h-[64px] rounded-xl border pl-12 pr-4
+                      focus:outline-none focus:ring-0 focus:border-[#F8CE63] focus:bg-[#FFF9EC]
 
-              {/* Mobile */}
-              <div>
+      ${errors.name ? "border-red-400" : "border-gray-300"}`}
+                  />
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                  <img
+                    src="/form_page/user-square.svg"
+                    alt="Name Icon"
+                    className="w-5 h-5"
+                  />
+                </span>
+                  {errors.name && (
+                    <p className="text-xs text-red-500 mt-1">{errors.name}</p>
+                  )}
+                </div>
+
+                {/* Phone */}
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                    <img
-                      src="/form_page/call.svg"
-                      alt=""
-                      className="w-5 h-5 opacity-60"
-                    />
-                  </span>
                   <input
-                    type="tel"
                     value={form.phone}
                     onChange={(e) => handleChange("phone", e.target.value)}
-                    placeholder="+91 | Enter mobile no."
-                    className={`w-full h-[46px] md:h-[64px] rounded-xl border px-12 text-sm outline-none
-                   ${errors.phone ? "border-red-400" : "border-gray-300 bg-white"}
-                     focus:ring-2 focus:ring-[#F8CE63]/40`}
-                   />
-                  </div>
-                {errors.phone && (
-                  <p className="text-xs text-red-500 mt-1">{errors.phone}</p>
-                )}
-              </div>
+                    placeholder="Enter mobile no."
+                    className={`w-full h-[46px] md:h-[64px] rounded-xl border pl-12 pr-4
+                       focus:outline-none focus:ring-0 focus:border-[#F8CE63] focus:bg-[#FFF9EC]
 
-              {/* Email */}
-              <div>
-                <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+      ${errors.phone ? "border-red-400" : "border-gray-300"}`}
+                  />
+                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
                     <img
-                      src="/form_page/email.png"
-                      alt=""
-                      className="w-5 h-5 opacity-60"
+                      src="/form_page/call.svg"
+                      alt="Phone Icon"
+                      className="w-5 h-5"
                     />
                   </span>
+                  {errors.phone && (
+                    <p className="text-xs text-red-500 mt-1">{errors.phone}</p>
+                  )}
+                </div>
+
+              
+                {/* Email */}
+                <div className="relative">
                   <input
-                    type="email"
                     value={form.email}
                     onChange={(e) => handleChange("email", e.target.value)}
                     placeholder="xxxxxxx@xxx.xxx"
-                    className={`w-full h-[46px] md:h-[64px] rounded-xl border px-12 text-sm outline-none
-            ${errors.email ? "border-red-400" : "border-gray-300 bg-white"}
-            focus:ring-2 focus:ring-[#F8CE63]/40`}
-                  />
-                </div>
-                {errors.email && (
-                  <p className="text-xs text-red-500 mt-1">{errors.email}</p>
-                )}
-              </div>
+                    className={`w-full h-[46px] md:h-[64px] rounded-xl border pl-12 pr-4
+                       focus:outline-none focus:ring-0 focus:border-[#F8CE63] focus:bg-[#FFF9EC]
 
-              <div className="flex flex-col items-center gap-2 mb-3 text-center">
-                <div className="flex items-center gap-2 justify-center">
-                  <img
-                    src="/form_page/security.svg"
-                    alt=""
-                    className="w-5 h-5 flex-shrink-0"
+      ${errors.email ? "border-red-400" : "border-gray-300"}`}
                   />
-                  <span className="text-sm text-gray-500">
-                    Finsbee keeps your data safe
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                    <img
+                      src="/form_page/email.png"
+                      alt="Email Icon"
+                      className="w-5 h-5"
+                    />
                   </span>
+                  {errors.email && (
+                    <p className="text-xs text-red-500 mt-1">{errors.email}</p>
+                  )}
                 </div>
+
+                <button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full h-[46px] bg-[#FFC73C] rounded-xl font-semibold text-lg"
+                >
+                  {submitting ? "Submitting..." : "Join Now"}
+                </button>
+              </form>
+            ) : (
+              /* -------- SUCCESS UI -------- */
+              <div className="flex flex-col items-center justify-center text-center gap-4 ">
+                <div
+                  className="w-20 h-20 rounded-full flex items-center justify-center"
+                  style={{
+                    background:
+                      "radial-gradient(50% 50% at 50% 50%, rgba(0, 200, 81, 0.7) 0%, #00C851 100%)",
+                    boxShadow: "0px 0px 30px 8px #00C85133",
+                  }}
+                >
+                  <svg
+                    className="w-10 h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+
+                <p className="text-gray-600 ">
+                  Application submitted successfully.
+                </p>
+                <span>
+                  <p className="text-sm  font-semibold">Scan to join</p>
+
+                  <img
+                    src="/landing_page/qr.png"
+                    alt="QR"
+                    className="w-44 h-44"
+                  />
+                </span>
+
+                <a
+                  href="https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-md underline font-medium cursor-pointer"
+                >
+                  Join our whatsapp community directly
+                </a>
               </div>
-              {/* Button */}
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full ms:h-[56px] h-[46px]  bg-[#FFC73C] rounded-xl font-semibold text-lg
-        hover:brightness-105 transition
-        disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {submitting ? "Submitting..." : "Join Now"}
-              </button>
-            </form>
+            )}
           </div>
         </div>
-        {/* ) : ( */}
-
-        {/* <div className="text-center space-y-6 py-10">
-            <h2 className="text-2xl font-bold">You are almost in!</h2>
-
-            <p className="text-gray-600">
-              Thanks, <b>{form.name}</b>. Join our WhatsApp group below.
-            </p>
-
-            <a
-              href="https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center bg-[#25D366] text-white px-6 py-3 rounded-full font-semibold"
-            >
-              Join WhatsApp Group
-            </a>
-
-            <button
-              onClick={handleClose}
-              className="block w-full border rounded-full py-2 text-gray-700"
-            >
-              Close
-            </button>
-          </div> */}
-        {/* )} */}
       </div>
-    </div>
-  );
-}
-
-/* ---------------- INPUT (UI SAME) ---------------- */
-function Input({ value, onChange, placeholder, error, highlight }) {
-  return (
-    <div>
-      <div
-        className={`px-4 py-4 rounded-xl border ${
-          highlight ? "border-[#F8CE63] bg-[#fffaf0]" : "border-gray-300"
-        }`}
-      >
-        <input
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className="w-full outline-none bg-transparent"
-        />
-      </div>
-
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
     </div>
   );
 }

@@ -165,13 +165,13 @@ export default function MoneySection({ animate = false, isDesktop = false }) {
           transition={commonTransition}
           className="relative w-[90%] sm:w-[80%] md:w-[1283px] max-w-[1283px] -mt-[40px] sm:-mt-[100px] z-40"
           alt="Bottom image"
-          src="landing_page/mobile.png"
+          src="landing_page/top-banner-mobile.webp"
         />
       ) : (
         <img
           className="relative w-[110%] sm:w-[80%] max-w-[1283px] -mt-[40px] sm:-mt-[40px] z-40"
           alt="Bottom image"
-          src="landing_page/mobile.png"
+          src="landing_page/top-banner-mobile.webp"
         />
       )}
     </div>

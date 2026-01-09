@@ -107,7 +107,7 @@ function ConsultantHero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-24">
         <div className="flex items-center justify-between">
           <a href="/" className="hidden sm:inline-block">
             <img src="/booking/text-button.svg" alt="" className="w-[155px]" />
@@ -122,7 +122,7 @@ function ConsultantHero() {
           </button>
         </div>
 
-        <div className="relative pb-24 lg:pb-28 -mb-24 lg:-mb-28">
+        <div className="relative  ">
           <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="text-white">
               <h1 className="font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.15]">
@@ -143,7 +143,7 @@ function ConsultantHero() {
                 We’ll protect it like our own–
               </p>
               <p className="mt-1 text-[24px] text-white/80">
-                Buy our plan today and secure every rupee you’ve worked for
+                Get personalized guidance on loans, insurance, and investments with Finsbee’s one‑on‑one financial consultation plans. Book a quick online loan consultation or detailed financial advisor session and speak directly with an expert who understands Indian products, RBI‑regulated lenders, and tax rules. Choose the plan that fits your budget and get clear, unbiased advice before you apply for a loan, buy insurance, or start investing. 
               </p>
             </div>
 
@@ -226,10 +226,8 @@ function ConsultantHero() {
 
 /* ========= Main Page ========= */
 export default function ConsultantLandingPage() {
-  // useEffect(() => {
-  //   console.log("ConsultantLandingPage mounted");
-  //   return () => console.log("ConsultantLandingPage unmounted");
-  // }, []);
+
+
   return (
     <main className="snap-y snap-mandatory overflow-y-auto">
       <section>
@@ -244,7 +242,7 @@ export default function ConsultantLandingPage() {
         <BookingHero />
       </section>
 
-      <section id="hiw-snap" className="snap-start min-h-screen">
+      <section id="hiw-snap" className="snap-start pb-10 md:pb-22">
         <HowItWorksScroll />
       </section>
 

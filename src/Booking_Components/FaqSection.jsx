@@ -124,7 +124,7 @@ export default function FaqSection() {
 
   return (
     <section className="relative bg-[#efeaff] min-h-[808px]">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-6 pb-12 lg:pb-24">
         {/* heading with line BELOW */}
         <div className="flex flex-col items-center mb-6">
           <h2 className="text-center text-[32px]">

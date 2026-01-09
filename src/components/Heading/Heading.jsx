@@ -14,7 +14,7 @@ export default function Heading() {
                                The Results Speak for Themselves
                              </h1> */}
                          
-                             <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] pt-4  text-[#212121] leading-[1]">
+                             <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px]  text-[#212121] leading-[1]">
                              How to Get Started with
                              </h1>
                          

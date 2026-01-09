@@ -3,7 +3,7 @@
 "use client";
 import React, { useState } from "react";
 import { features } from "./Constant"; // Ensure this file exists and exports an array
-import EmiCalculator from "../PL_EMI/components/EMI_Calculator";
+import EmiCalculator from "./components/EMI_Calculator";
 import { useSearchParams } from "next/navigation";
 
 

@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // -------------------- Tunables --------------------
-const STAGE_H = 807;          // keep your stage height
+const STAGE_H = 507;          // keep your stage height
 const CARD_W = 648;
 const CARD_H = 448;
 const CARD_H_MOBILE = 420;    // slightly shorter on mobile
@@ -145,9 +145,10 @@ export default function HowItWorksScroll() {
   return (
     <section
       ref={hostRef}
-      className="relative bg-white"
+      className="relative bg-white "
       style={{
-        minHeight: "100vh",
+        minHeight: "70vh",
+        // minHeight: "100vh",
         scrollSnapAlign: "start",
         scrollSnapStop: "always",
       }}
@@ -156,7 +157,7 @@ export default function HowItWorksScroll() {
         ref={scrollerRef}
         onWheel={handleWheel}
         // Allow chaining on mobile; keep contain on ≥sm
-        className="absolute inset-0 overflow-y-auto overscroll-y-auto sm:overscroll-y-contain"
+        className="absolute inset-0 overflow-y-auto overscroll-y-auto sm:overscroll-y-contain "
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -170,10 +171,10 @@ export default function HowItWorksScroll() {
         {/* Internal scroll area to generate 0..1 progress */}
         <div data-hiw style={{ height: STAGE_H * N, position: "relative" }}>
           <div className="sticky top-0" style={{ height: STAGE_H }}>
-            <div className="relative h-full max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="relative h-[50%] max-w-6xl mx-auto px-6 lg:px-8 pt-6">
               <div className="grid grid-rows-[auto,1fr] h-full">
                 {/* Header */}
-                <header className="pt-6 text-center">
+                <header className=" text-center">
                   <h3 className="text-[28px] sm:text-[32px] font-semibold">
                     How <span style={{ color: brand.purple }}>Finsbee Works?</span>
                   </h3>
@@ -184,6 +185,7 @@ export default function HowItWorksScroll() {
                       50% { transform: scale(1.15); }
                     }
                   `}</style>
+                  {/* <div className="mt-4 mx-auto max-w-[507px]"> */}
                   <div className="mt-4 mx-auto max-w-[940px]">
                     <div className="relative h-[2px] rounded-full" style={{ backgroundColor: brand.purpleSoft }}>
                       <div className="absolute inset-0 flex items-center justify-between px-[2px]">

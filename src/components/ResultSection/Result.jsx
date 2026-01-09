@@ -284,7 +284,7 @@ export default function ResultsComponent() {
   ];
 
   return (
-    <section className="flex flex-col items-start px-4 sm:px-6 md:px-8 lg:px-[136px] py-12 sm:py-16 md:py-16 lg:py-16 relative rounded-2xl bg-white">
+    <section className="flex flex-col items-start px-4 sm:px-6 md:px-8 lg:px-[136px] py-12 md:py-24 relative rounded-2xl bg-white">
       {/* ---------- Header ---------- */}
       {/* <motion.div
         className="flex flex-col items-start w-full max-w-[400px] sm:max-w-[420px] md:max-w-[440px] lg:max-w-[456px]"
@@ -326,7 +326,7 @@ export default function ResultsComponent() {
       The Results Speak for Themselves
     </h1> */}
 
-    <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] pt-4  text-[#212121] leading-[1]">
+    <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px]  text-[#212121] leading-[1]">
       The Results Speak for
     </h1>
 

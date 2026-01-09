@@ -39,7 +39,7 @@ function FeatureCard({
         <span className="inline-grid place-items-center w-24 h-24 rounded-full bg-[#ffc73c] shadow">
           <img src={iconSrc} alt="" className="w-10 h-10 object-contain" />
         </span>
-        <h4 className="mt-6 text-xl font-semibold text-[#0f172a]">{title}</h4>
+        <h4 className="text-xl font-semibold text-[#0f172a]">{title}</h4>
       </div>
 
       {/* hover overlay: full width on mobile, 378 on desktop */}
@@ -123,11 +123,11 @@ export default function WhyFinsbeeHover({
   };
 
   return (
-    <section className="relative bg-white overflow-hidden">
+    <section className="relative  overflow-hidden  pb-12 lg:pb-24">
       {/* section container */}
-      <div className="mx-auto w-full max-w-[1512px] px-0 py-16">
+      <div className="mx-auto w-full max-w-[1512px] px-0  ">
         {/* heading block */}
-        <div className="mx-auto w-[1140px] h-[107px] grid place-content-center gap-8 text-center max-sm:w-full">
+        <div className="mx-auto w-[1140px]  grid place-content-center gap-8 text-center max-sm:w-full">
           <div>
             <h3 className="text-[24px] sm:text-[28px] font-semibold whitespace-nowrap">
               <span className="text-[#0f172a]">{heading}</span>{" "}
@@ -168,7 +168,7 @@ export default function WhyFinsbeeHover({
           </div>
         ) : (
           // DESKTOP: original 4-column hover grid
-          <div className="mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 h-[440px]">
+          <div className="mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 h-full lg:h-[440px]">
             {items.map((it, i) => (
               <div
                 key={i}

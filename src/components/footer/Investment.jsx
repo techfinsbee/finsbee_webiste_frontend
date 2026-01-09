@@ -85,7 +85,7 @@ export default function ResponsiveFooter() {
   };
 
   return (
-    <footer className="flex flex-col lg:flex-row w-full text-white ">
+    <footer  id="contact-us" className="flex flex-col lg:flex-row w-full text-white ">
       {/* LEFT SECTION */}
       <div className="flex flex-col gap-8 pt-24 pl-3 md:pl-0 pr-8 pb-8 flex-1 border-b lg:border-b border-[#B39FFF] ">
         {/* Socials + Button */}

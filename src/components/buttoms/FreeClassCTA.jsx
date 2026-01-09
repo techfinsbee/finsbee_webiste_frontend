@@ -229,13 +229,26 @@ import FreeClassPopup from "../common/FreeClassPopup";
 
 export default function FreeClassCTA() {
   const [openPopup, setOpenPopup] = useState(false);
+  const handleLearnFinanceClick = () => {
+  const isMobile = window.innerWidth < 768; // Tailwind md breakpoint
+
+  if (isMobile) {
+    window.open(
+      "https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  } else {
+    setOpenPopup(true);
+  }
+};
 
   return (
     <>
       {/* Mobile Button */}
       <button
         type="button"
-        onClick={() => setOpenPopup(true)}
+        onClick={handleLearnFinanceClick}
         className="w-full rounded-full bg-[#FFC94B] py-3 text-lg font-semibold text-black shadow-lg transition-all duration-200 active:scale-95"
       >
         Learn Finance – Join Free Classes

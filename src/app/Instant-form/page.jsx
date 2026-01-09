@@ -67,7 +67,7 @@ export default function LoanFlow() {
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  // ✅ Validation rules
+  // Validation rules
   const validators = {
     fullName: (v) =>
       /^[A-Za-z ]{3,50}$/.test(v)
@@ -188,7 +188,7 @@ export default function LoanFlow() {
     }
   };
 
-  // ✅ FIXED: Proper date formatting function
+  // FIXED: Proper date formatting function
   const formatDateForAPI = (dateString) => {
     if (!dateString) return "";
     try {
@@ -204,7 +204,7 @@ export default function LoanFlow() {
     }
   };
 
-  // ✅ DIRECT API CALL to Finsbee using your existing proxy
+  // DIRECT API CALL to Finsbee using your existing proxy
   const submitToFinsbee = async () => {
     const formattedDOB = formatDateForAPI(dob);
 
@@ -386,10 +386,7 @@ const handleContinue = async () => {
       shouldShow(field) ? "border-red-400" : "border-gray-300"
     }`;
 
-  // const selectClass = (field) =>
-  //   `w-full py-4 pl-10 pr-10 rounded-lg border focus:ring-2 focus:ring-yellow-200 focus:outline-none text-lg shadow-sm transition-all duration-200 appearance-none ${
-  //     shouldShow(field) ? "border-red-400" : "border-gray-300"
-  //   } ${getValue(field) ? "text-black" : "text-gray-400"} bg-white`;
+  
 
   const selectClass = (field) =>
   `w-full py-4 pl-10 pr-10 rounded-lg border focus:ring-2 focus:ring-yellow-200 
@@ -433,7 +430,7 @@ const handleContinue = async () => {
         </div>
       </div>
 
-      {/* ✅ FIXED: Show Back to Home button only in step 2 and 3 */}
+      {/* FIXED: Show Back to Home button only in step 2 and 3 */}
       {step !== 1 && (
         <a
           href="#"

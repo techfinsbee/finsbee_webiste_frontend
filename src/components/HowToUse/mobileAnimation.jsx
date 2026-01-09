@@ -303,7 +303,7 @@ export const MobileBox = () => {
     return (
         <>
             <Heading />
-            <div className="min-h-screen px-4 sm:px-8 md:px-16 lg:px-[136px] w-full max-w-7xl mx-auto relative">
+            <div className="   px-4 sm:px-8 pb-12 md:pb-24 md:px-16 lg:px-[136px] w-full max-w-7xl mx-auto relative">
                 {/* Desktop View */}
                 <div className="hidden lg:block relative w-full h-[500px] sm:h-[600px] md:h-[723px] lg:h-[800px] pt-8">
                     <div className="relative w-full h-[500px] sm:h-[600px] md:h-[723px] lg:h-[800px] ">
@@ -420,7 +420,7 @@ export const MobileBox = () => {
                             <div className="absolute w-[480px] h-[400px] sm:h-[500px] md:h-[601px] lg:h-[700px] top-[50px] left-1/2 -translate-x-1/2">
                                 <div
                                     className="relative h-[390px] sm:h-[490px] md:h-[590px] lg:h-[690px] bg-cover bg-center bg-no-repeat"
-                                    style={{ backgroundImage: "url(/landing_page/m1.png)" }}
+                                    style={{ backgroundImage: "url(/landing_page/loan-options.webp)" }}
                                 >
                                     {activeSide === "left" && (
                                         <motion.div
@@ -544,7 +544,7 @@ export const MobileBox = () => {
                 </div>
 
                 {/* Tablet and Mobile View */}
-                <div className="flex flex-col items-center p-4 lg:hidden">
+                <div className="flex flex-col items-center pt-4  lg:hidden">
 
                     <motion.div
                         className="w-full grid grid-cols-1 md:grid-cols-2 gap-6"

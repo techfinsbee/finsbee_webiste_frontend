@@ -21,7 +21,7 @@ const router = useRouter();
           <button
            onClick={() => router.push("/booking")}
             type="button"
-            className="cursor-pointer rounded-lg bg-gradient-to-r from-[#A025FF] to-[#5C3BFF] px-10 py-5 text-base font-semibold text-white shadow-md transition hover:brightness-110"
+            className="rounded-lg bg-gradient-to-r from-[#A025FF] to-[#5C3BFF] px-10 py-5 text-base cursor-pointer font-semibold text-white shadow-md transition hover:brightness-110"
           >
             Get Financial Advisor in 60 Min - Book Now
           </button>
@@ -29,7 +29,7 @@ const router = useRouter();
           <button
             type="button"
             onClick={() => setOpenPopup(true)}
-            className="flex items-center gap-3 rounded-lg bg-[#FFC94B] px-10 text-base font-semibold text-[#22120B] shadow-md transition hover:brightness-105"
+            className="flex items-center gap-3 rounded-lg bg-[#FFC94B] px-10 cursor-pointer text-base font-semibold text-[#22120B] shadow-md transition hover:brightness-105 "
           >
             <span>Learn Finance - Join Free Classes</span>
             <Image

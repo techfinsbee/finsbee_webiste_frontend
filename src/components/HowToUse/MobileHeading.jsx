@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from "framer-motion";
 export default function Heading() {
   return (
-    <div className="flex flex-col items-start px-4 md:px-[136px]  ">
+    <div className="flex flex-col items-start px-4 md:px-[136px] ">
                   <motion.div
               className="flex flex-col items-start w-full max-w-[400px] sm:max-w-[420px] md:max-w-[440px] lg:max-w-[456px]"
               whileInView={{ opacity: 1, x: 0.1 }}
@@ -14,7 +14,7 @@ export default function Heading() {
                   The Results Speak for Themselves
                 </h1> */}
             
-                <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px] pt-4  text-[#212121] leading-[1]">
+                <h1 className="w-full font-bold text-[32px] sm:text-[48px] md:text-[56px] lg:text-[64px]  text-[#212121] leading-[1]">
                  What  
                 </h1>
             

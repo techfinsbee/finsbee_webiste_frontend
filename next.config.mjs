@@ -60,6 +60,7 @@
 
 
 // next.config.mjs
+
 const nextConfig = {
   async rewrites() {
     return [
