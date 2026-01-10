@@ -207,7 +207,7 @@ export default function ResponsiveFooter() {
           @ Copyright Finsbee A STRADEX INTERNATIONAL PVT. LTD.{" "}
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-between h-[76px] items-center gap-6 bg-[#2121210D]  p-6 md:p-8">
+        <div className="flex flex-col sm:flex-row justify-between md:h-[76px] items-center gap-6 bg-[#2121210D]  p-6 md:p-8">
           <div className="text-center sm:text-left font-bold text-lg sm:text-xl">
             Have any questions? <br /> Contact Us
           </div>

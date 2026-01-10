@@ -34,8 +34,8 @@ export default function Webinar() {
 
     try {
       setSubmitting(true);
-
-      const res = await fetch("/api/flutterapi/api/crm/webinar", {
+         
+      const res = await fetch("/api/flutterapi/crm/webinar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

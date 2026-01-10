@@ -261,7 +261,7 @@ const DynamicLoanPage = ({ loanSlug }) => {
   };
 
   const tabs = [
-    { id: "why-finsbee", label: "Why Finsbee?" },
+    { id: "why-finsbee", label: "Finsbee Features" },
     { id: "faqs", label: "FAQ's" },
   ];
 
@@ -437,7 +437,7 @@ const DynamicLoanPage = ({ loanSlug }) => {
               <section ref={sectionRefs["why-finsbee"]} data-tab-id="why-finsbee" className="pt-4 pb-4 px-4 border border-[#eeeaff] rounded-2xl mb-8">
                 <div className="px-4 mb-4">
                   <div className="text-xl font-normal text-gray-900 mb-2.5">
-                    Why <span className="font-bold">Finsbee?</span>
+                    Finsbee<span className="font-bold"> Features</span>
                   </div>
                   <div className="w-11 h-px mb-[-1px]" style={{ backgroundImage: "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')" }}></div>
                 </div>
