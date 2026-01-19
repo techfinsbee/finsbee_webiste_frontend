@@ -77,7 +77,7 @@ export default async function LoanPage({ params }) {
   const loanSlug = resolvedParams.loan;
 
   if (!loansData[loanSlug]) {
-    notFound(); // 🔥 THIS is what you were missing
+    notFound(); 
   }
 
   return (

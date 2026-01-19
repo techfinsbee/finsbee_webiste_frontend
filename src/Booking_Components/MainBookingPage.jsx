@@ -143,7 +143,8 @@ function ConsultantHero() {
                 We’ll protect it like our own–
               </p>
               <p className="mt-1 text-[24px] text-white/80">
-                Get personalized guidance on loans, insurance, and investments with Finsbee’s one‑on‑one financial consultation plans. Book a quick online loan consultation or detailed financial advisor session and speak directly with an expert who understands Indian products, RBI‑regulated lenders, and tax rules. Choose the plan that fits your budget and get clear, unbiased advice before you apply for a loan, buy insurance, or start investing. 
+                {/* Get personalized guidance on loans, insurance, and investments with Finsbee’s one‑on‑one financial consultation plans. Book a quick online loan consultation or detailed financial advisor session and speak directly with an expert who understands Indian products, RBI‑regulated lenders, and tax rules. Choose the plan that fits your budget and get clear, unbiased advice before you apply for a loan, buy insurance, or start investing.  */}
+                 Buy our plan today and secure every rupee you’ve worked for
               </p>
             </div>
 

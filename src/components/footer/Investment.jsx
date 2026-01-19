@@ -42,12 +42,12 @@ export default function ResponsiveFooter() {
   ];
 
   const loanTypes = [
-    { label: "Personal Loan", route: "/personal-loan" },
-    { label: "Business Loan", route: "/business-loan" },
-    { label: "Education Loan", route: "/personal-loan" },
-    { label: "Home Loan", route: "/home-loan" },
-    { label: "LAP", route: "/loan-against-property" },
-    { label: "LAS", route: "/loan-against-securities" },
+    { label: "Personal Loan", route: "/apply-for-personal-loan-online" },
+    { label: "Business Loan", route: "/apply-for-business-loan" },
+    { label: "Education Loan", route: "/education-loan" },
+    { label: "Home Loan", route: "/apply-for-home-loan" },
+    { label: "LAP", route: "/apply-for-loan-against-property" },
+    { label: "LAS", route: "/apply-for-loan-against-securities" },
   ];
 
   const investmentOptions = [

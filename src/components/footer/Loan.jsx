@@ -242,7 +242,7 @@ export default function LoanApplicationSection() {
   };
 
   const loanTypes = [
-    { name: "Personal Loan", slug: "personal-loan" },
+    { name: "Personal Loan", slug: "apply-for-personal-loan-online"},
     { name: "Business Loan", slug: "apply-for-business-loan" },
     { name: "Home Loan", slug: "apply-for-home-loan" },
     { name: "Education Loan", slug: "education-loan" },

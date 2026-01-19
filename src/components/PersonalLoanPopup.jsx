@@ -52,7 +52,7 @@ export default function PersonalLoanPopup() {
   return (
     <div   onClick={() => setOpen(false)} className="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm flex items-center justify-center ">
       <div onClick={(e) => e.stopPropagation()}
-      className="relative w-[90%] sm:w-[100%] xs:h-[46%] sm:h-[26.5rem] max-w-[420px] bg-[#591dcf] overflow-hidden p-5 ">
+      className="relative w-[90%] sm:w-[100%] xs:h-[46%] sm:h-[26.5rem] max-w-[420px] bg-[#591dcf] rounded-xl overflow-hidden p-5 ">
 
         
         <button

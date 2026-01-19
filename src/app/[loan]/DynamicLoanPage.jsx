@@ -1,6 +1,3 @@
-
-
-
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,21 +30,30 @@ const ActionButton = ({ onClick, children, iconSrc }) => (
 const DynamicEligibility = ({ onClose, loanSlug }) => {
   const rawEligibility = loanEligibilityDocuments[loanSlug]?.eligibility || {};
 
-  const eligibilityCriteria = Object.entries(rawEligibility).map(([title, criteria]) => {
-    const imageMap = {
-      "For Salaried Individuals": "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
-      "For Self-Employed Individuals": "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
-      "For Proprietary / Partnership Firms": "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
-      "For Private Limited Companies": "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
-      "Eligibility Criteria": "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
-    };
+  const eligibilityCriteria = Object.entries(rawEligibility).map(
+    ([title, criteria]) => {
+      const imageMap = {
+        "For Salaried Individuals":
+          "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
+        "For Self-Employed Individuals":
+          "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+        "For Proprietary / Partnership Firms":
+          "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager-1.png",
+        "For Private Limited Companies":
+          "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
+        "Eligibility Criteria":
+          "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
+      };
 
-    return {
-      title,
-      image: imageMap[title] || "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
-      criteria,
-    };
-  });
+      return {
+        title,
+        image:
+          imageMap[title] ||
+          "https://c.animaapp.com/mfwi9k86KhnY9k/img/manager.png",
+        criteria,
+      };
+    }
+  );
 
   if (eligibilityCriteria.length === 0) return null;
 
@@ -101,7 +107,9 @@ const DynamicEligibility = ({ onClose, loanSlug }) => {
                         {section.criteria.map((criterion, i) => (
                           <li key={i} className="flex items-center gap-3">
                             <CheckCircle className="w-6 h-6 text-gray-800 flex-shrink-0" />
-                            <span className="text-gray-800 text-base">{criterion}</span>
+                            <span className="text-gray-800 text-base">
+                              {criterion}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -150,11 +158,24 @@ const DynamicDocumentRequired = ({ onClose, loanSlug }) => {
               {category}
             </h2>
             <ul className="flex flex-col gap-4">
-              {items.map((item, i) => (
+              {/* {items.map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   <span className="w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm">
                     ✔
                   </span>
+                  <span className="text-base text-gray-800">{item}</span>
+                </li>
+              ))} */}
+              {items.map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  {/* SVG Icon */}
+                  <img
+                    src="/tick-square.svg"
+                    alt=""
+                    className="h-6 w-6 flex-shrink-0"
+                  />
+
+                  {/* Text */}
                   <span className="text-base text-gray-800">{item}</span>
                 </li>
               ))}
@@ -218,7 +239,6 @@ const DynamicDocumentRequired = ({ onClose, loanSlug }) => {
   );
 };
 
-
 const DynamicLoanPage = ({ loanSlug }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -228,19 +248,21 @@ const DynamicLoanPage = ({ loanSlug }) => {
   const displayTitle = urlTitle ? decodeURIComponent(urlTitle) : null;
 
   // Dynamic background from URL
-  const urlBg = searchParams.get("bg");  // e.g., "city/bangalore.webp"
+  const urlBg = searchParams.get("bg"); // e.g., "city/bangalore.webp"
 
   // Get base loan data
   const data = loansData[loanSlug] || loansData["personal-loan"];
   const finalTitle = displayTitle || data.title;
 
   // Determine final background image path
-  // const heroBgImage = urlBg 
-  //   ? `/${urlBg}` 
+  // const heroBgImage = urlBg
+  //   ? `/${urlBg}`
   //   : (data.backgroundImage ? `/${data.backgroundImage.replace(/^\//, '')}` : '/landing_page/bg.webp');
-  const heroBgImage = urlBg 
-  ? `/${urlBg}?v=${Date.now()}`  // forces fresh load, remove later
-  : (data.backgroundImage ? `/${data.backgroundImage.replace(/^\//, '')}` : '/landing_page/bg.webp');
+  const heroBgImage = urlBg
+    ? `/${urlBg}?v=${Date.now()}` // forces fresh load, remove later
+    : data.backgroundImage
+    ? `/${data.backgroundImage.replace(/^\//, "")}`
+    : "/landing_page/bg.webp";
 
   // Auto apply from URL
   const autoApply = searchParams.get("autoApply");
@@ -269,7 +291,10 @@ const DynamicLoanPage = ({ loanSlug }) => {
     if (autoApply === "true") {
       setShowFlutter(true);
       setTimeout(() => {
-        sidebarRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        sidebarRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }, 500);
     }
   }, [autoApply]);
@@ -277,9 +302,14 @@ const DynamicLoanPage = ({ loanSlug }) => {
   const handleTabClick = (tabId) => {
     const targetRef = sectionRefs[tabId];
     if (targetRef?.current && headerRef?.current) {
-      const headerHeight = headerRef.current.getBoundingClientRect().height || 56;
-      const elementTop = targetRef.current.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: elementTop - headerHeight - 10, behavior: "smooth" });
+      const headerHeight =
+        headerRef.current.getBoundingClientRect().height || 56;
+      const elementTop =
+        targetRef.current.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementTop - headerHeight - 10,
+        behavior: "smooth",
+      });
       setActiveTab(tabId);
       setIsTabClicked(true);
       setTimeout(() => setIsTabClicked(false), 1000);
@@ -325,23 +355,22 @@ const DynamicLoanPage = ({ loanSlug }) => {
   return (
     <>
       {/* HERO SECTION */}
-       <div
-  className="flex flex-col h-[43rem] sm:h-[40rem] md:h-[48rem] lg:h-[600px]
+      <div
+        className="flex flex-col h-[43rem] sm:h-[40rem] md:h-[48rem] lg:h-[600px]
     items-start gap-10 sm:gap-20 md:gap-[150px]
     pt-20 sm:pt-28 md:pt-40
     relative self-stretch w-full
     rounded-b-[40px] sm:rounded-b-[60px] lg:rounded-[0px_0px_120px_120px]"
-  style={{
-    backgroundImage: `
+        style={{
+          backgroundImage: `
       radial-gradient(100% 100% at 50% 100%, rgba(89,46,255), rgba(49,25,140,0.7) 100%),
       url('${heroBgImage}')
     `,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
-   
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <main className="flex flex-col lg:flex-row items-center gap-8 px-4 md:px-12 lg:px-32 py-8 lg:py-12 relative w-full">
           <div className="flex flex-col items-center gap-12 relative flex-1">
             <div className="flex flex-col  lg:flex-row items-start justify-between relative w-full">
@@ -349,15 +378,24 @@ const DynamicLoanPage = ({ loanSlug }) => {
                 <h1 className="w-full font-bold text-yellow-400 text-3xl sm:text-4xl md:text-6xl text-start leading-normal lg:leading-20 tracking-[0px] whitespace-pre-line">
                   {finalTitle}
                 </h1>
-                <p className="text-[#FFEEC3] md:pt-2 text-lg md:text-xl">{data.heroDescription}</p>
+                <p className="text-[#FFEEC3] md:pt-2 text-lg md:text-xl">
+                  {data.heroDescription}
+                </p>
               </section>
 
               <aside className="flex flex-col w-full lg:w-[471px] items-start gap-3.5 py-6 relative translate-y-[-1rem] animate-fade-in opacity-0 [--animation-delay:600ms]">
                 <div className="flex flex-col lg:flex-row flex-wrap items-start justify-between relative w-full">
                   <div className="flex flex-col items-start gap-3.5 relative flex-1">
                     {data.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-3 font-extralight text-white py-0 relative w-full">
-                        <img className="w-6 h-6" alt="Tick" src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-tick-square.svg" />
+                      <div
+                        key={i}
+                        className="flex items-center gap-3 font-extralight text-white py-0 relative w-full"
+                      >
+                        <img
+                          className="w-6 h-6"
+                          alt="Tick"
+                          src="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-tick-square.svg"
+                        />
                         <span className="flex-1 text-[#FFEEC3]">{feature}</span>
                       </div>
                     ))}
@@ -365,20 +403,30 @@ const DynamicLoanPage = ({ loanSlug }) => {
 
                   <div className="flex flex-col items-start justify-between relative flex-1">
                     <div className="flex flex-col items-start gap-4 pt-2 relative w-full">
-                      <ActionButton onClick={() => handleOpen("Eligibility Criteria")} iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg">
+                      <ActionButton
+                        onClick={() => handleOpen("Eligibility Criteria")}
+                        iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
+                      >
                         Check Eligibility Criteria
                       </ActionButton>
-                      <ActionButton onClick={() => handleOpen("Document Required")} iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg">
+                      <ActionButton
+                        onClick={() => handleOpen("Document Required")}
+                        iconSrc="https://c.animaapp.com/mfnltrcz6AQXM7/img/vuesax-broken-arrow-right.svg"
+                      >
                         Check Document Required
                       </ActionButton>
                     </div>
 
                     <div className="flex items-center justify-around p-5 relative w-full">
                       <button
-                        onClick={() => router.push(data.emiRoute || "/personal-loan/pl_Emi")}
+                        onClick={() =>
+                          router.push(data.emiRoute || "/personal-loan/pl_Emi")
+                        }
                         className="inline-flex items-center cursor-pointer bg-yellow-400 justify-center gap-2.5 px-7 py-4 rounded-[28px] border border-solid border-[#ffe5a5] hover:bg-yellow-500 transition-colors"
                       >
-                        <span className="font-bold text-gray-800 ">Calculate EMI</span>
+                        <span className="font-bold text-gray-800 ">
+                          Calculate EMI
+                        </span>
                       </button>
                     </div>
                   </div>
@@ -402,9 +450,17 @@ const DynamicLoanPage = ({ loanSlug }) => {
                     : ""
                 }`}
               >
-                <img className="w-10 h-10 sm:w-12 sm:h-12" alt={card.title} src={card.icon} />
-                <h3 className="font-bold text-[#212121] text-lg sm:text-xl">{card.title}</h3>
-                <p className="text-[#555] text-sm sm:text-base leading-snug">{card.description}</p>
+                <img
+                  className="w-10 h-10 sm:w-12 sm:h-12"
+                  alt={card.title}
+                  src={card.icon}
+                />
+                <h3 className="font-bold text-[#212121] text-lg sm:text-xl">
+                  {card.title}
+                </h3>
+                <p className="text-[#555] text-sm sm:text-base leading-snug">
+                  {card.description}
+                </p>
               </div>
             ))}
           </div>
@@ -415,14 +471,21 @@ const DynamicLoanPage = ({ loanSlug }) => {
       <div className="relative flex flex-col-reverse lg:flex-row gap-8 sm:px-8 md:px-16 lg:px-[136px] py-12 md:py-16 lg:py-24 bg-white min-h-screen">
         <div className="w-full lg:w-2/3">
           <div className="flex flex-col items-start w-full">
-            <div ref={headerRef} className="sticky top-0 z-30 w-full bg-white border-b border-[#bababa] overflow-hidden pt-2">
+            <div
+              ref={headerRef}
+              className="sticky top-0 z-30 w-full bg-white border-b border-[#bababa] overflow-hidden pt-2"
+            >
               <div className="flex w-full overflow-hidden">
                 {tabs.map((tab, index, arr) => (
                   <button
                     key={tab.id}
                     onClick={() => handleTabClick(tab.id)}
                     className={`flex-1 h-14 px-3 py-4 font-bold text-base bg-white transition-colors duration-300 
-                      ${activeTab === tab.id ? "bg-yellow-400 text-gray-900" : "text-gray-400 bg-white hover:text-gray-700"}
+                      ${
+                        activeTab === tab.id
+                          ? "bg-yellow-400 text-gray-900"
+                          : "text-gray-400 bg-white hover:text-gray-700"
+                      }
                       ${index === 0 ? "rounded-tl-[40px]" : ""}
                       ${index === arr.length - 1 ? "rounded-tr-[40px]" : ""}`}
                   >
@@ -434,20 +497,36 @@ const DynamicLoanPage = ({ loanSlug }) => {
 
             <div className="w-full pt-16">
               {/* Why Finsbee */}
-              <section ref={sectionRefs["why-finsbee"]} data-tab-id="why-finsbee" className="pt-4 pb-4 px-4 border border-[#eeeaff] rounded-2xl mb-8">
+              <section
+                ref={sectionRefs["why-finsbee"]}
+                data-tab-id="why-finsbee"
+                className="pt-4 pb-4 px-4 border border-[#eeeaff] rounded-2xl mb-8"
+              >
                 <div className="px-4 mb-4">
                   <div className="text-xl font-normal text-gray-900 mb-2.5">
                     Finsbee<span className="font-bold"> Features</span>
                   </div>
-                  <div className="w-11 h-px mb-[-1px]" style={{ backgroundImage: "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')" }}></div>
+                  <div
+                    className="w-11 h-px mb-[-1px]"
+                    style={{
+                      backgroundImage:
+                        "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
+                    }}
+                  ></div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 justify-center md:justify-start gap-4 md:px-4 mb-4">
                   {data.whyFinsbeeFeatures.map((feature, i) => (
                     <div key={i} className="w-full h-full">
                       <div className="flex flex-col items-start gap-2 p-4 h-full">
-                        <img className="w-12 h-12 object-cover" alt={feature.title} src={feature.icon} />
+                        <img
+                          className="w-12 h-12 object-cover"
+                          alt={feature.title}
+                          src={feature.icon}
+                        />
                         <h3 className="font-bold text-base">{feature.title}</h3>
-                        <p className="font-normal text-base text-gray-500">{feature.description}</p>
+                        <p className="font-normal text-base text-gray-500">
+                          {feature.description}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -455,25 +534,47 @@ const DynamicLoanPage = ({ loanSlug }) => {
               </section>
 
               {/* FAQ */}
-              <section ref={sectionRefs.faqs} data-tab-id="faqs" className="flex flex-col gap-2 pt-8 pb-4 px-4 border border-[#eeeaff] rounded-2xl mb-8">
+              <section
+                ref={sectionRefs.faqs}
+                data-tab-id="faqs"
+                className="flex flex-col gap-2 pt-8 pb-4 px-4 border border-[#eeeaff] rounded-2xl mb-8"
+              >
                 <div className="px-4 mb-4">
                   <div className="text-xl font-normal text-gray-900 mb-2.5">
                     <span className="font-bold">FAQ's</span>
                   </div>
-                  <div className="w-11 h-px mb-[-1px]" style={{ backgroundImage: "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')" }}></div>
+                  <div
+                    className="w-11 h-px mb-[-1px]"
+                    style={{
+                      backgroundImage:
+                        "url('https://c.animaapp.com/mfnnsr9tKgXFn5/img/line-7-1.svg')",
+                    }}
+                  ></div>
                 </div>
                 {data.faqItems.map((faq, index) => (
                   <div key={index}>
                     <button
                       onClick={() => setOpenFaq(openFaq === index ? -1 : index)}
                       className={`w-full flex items-center justify-between gap-6 px-4 sm:px-6 py-4 sm:py-6 bg-primary-light rounded-xl border transition-all ${
-                        openFaq === index ? "border-[#b39fff] shadow-md rounded-b-none" : "border-[#592eff33]"
+                        openFaq === index
+                          ? "border-[#b39fff] shadow-md rounded-b-none"
+                          : "border-[#592eff33]"
                       }`}
                     >
-                      <h3 className={`font-bold text-base ${openFaq === index ? "text-purple-600" : "text-gray-600"}`}>
+                      <h3
+                        className={`font-bold text-base ${
+                          openFaq === index
+                            ? "text-purple-600"
+                            : "text-gray-600"
+                        }`}
+                      >
                         {faq.question}
                       </h3>
-                      <ChevronDown className={`w-6 h-6 text-gray-400 transition-transform ${openFaq === index ? "rotate-180" : ""}`} />
+                      <ChevronDown
+                        className={`w-6 h-6 text-gray-400 transition-transform ${
+                          openFaq === index ? "rotate-180" : ""
+                        }`}
+                      />
                     </button>
                     {openFaq === index && (
                       <div className="px-4 sm:px-8 py-4 bg-primary-light border-x border-b border-[#b39fff] rounded-b-xl shadow-md">
@@ -488,11 +589,17 @@ const DynamicLoanPage = ({ loanSlug }) => {
         </div>
 
         {/* SIDEBAR - APPLY NOW */}
-        <div ref={sidebarRef} className="w-full lg:w-1/3 flex justify-center lg:justify-end">
+        <div
+          ref={sidebarRef}
+          className="w-full lg:w-1/3 flex justify-center lg:justify-end"
+        >
           <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
             {showFlutter ? (
               <div className="w-full h-[90vh] border-[6px] border-yellow-400 rounded-2xl overflow-hidden">
-                <iframe src="/flutterapp/index.html#/minified:p3" className="w-full h-full border-0" />
+                <iframe
+                  src="/flutterapp/index.html#/minified:p3"
+                  className="w-full h-full border-0"
+                />
               </div>
             ) : (
               <div className="border-[6px] border-yellow-400 rounded-2xl bg-white overflow-hidden shadow-lg">
