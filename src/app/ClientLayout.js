@@ -109,8 +109,6 @@
 //         <PersonalLoanPopup/>
 //       </main>
 
-      
-
 //       {/* Mobile CTA */}
 //       {showBottomCTA && (
 //         <div className="lg:hidden fixed bottom-0 left-0 w-full z-50">
@@ -153,6 +151,7 @@ export default function ClientLayout({ children }) {
       "/Instant-form",
       "/loan/eligibility-documents",
       "/webinar-form",
+     
     ];
 
     const isHiddenRoute = hiddenRoutes.includes(pathname);
