@@ -59,7 +59,6 @@ export default function FinanceClassCard() {
             </p>
           </div>
 
-         
           {/* Right Illustration */}
           <div className="shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] relative">
             <Image
@@ -112,13 +111,28 @@ export default function FinanceClassCard() {
 
         {/* CTA */}
         <div className="mt-8">
-          <a
+          {/* <a
             href="https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full cursor-pointer"
           >
             <button className=" w-[280px] xs:w-full sm:w-full rounded-[8px] cursor-pointer bg-[#FFD263]  h-[60px] text-[18px] sm:text-[22px] font-extrabold text-black transition hover:bg-[#f6d164]">
+              Join Class Whatsapp Community
+            </button>
+          </a> */}
+          <a
+            href="https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full cursor-pointer"
+            onClick={() => {
+              if (typeof fbq === "function") {
+                fbq("trackCustom", "whatsapp_community_join_click");
+              }
+            }}
+          >
+            <button className="w-[280px] xs:w-full sm:w-full rounded-[8px] cursor-pointer bg-[#FFD263] h-[60px] text-[18px] sm:text-[22px] font-extrabold text-black transition hover:bg-[#f6d164]">
               Join Class Whatsapp Community
             </button>
           </a>
