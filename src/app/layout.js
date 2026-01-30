@@ -62,6 +62,9 @@ const GTM_ID = "GTM-W93PH36K";
 const GA_ID = "G-VFKPBY1M68";
 const AHREFS_KEY = "awOZ8E3NVNTQM2Rdaja3mw";
 
+// const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// const AHREFS_KEY = process.env.NEXT_PUBLIC_AHREFS_KEY;
 /* =============================
    ROOT LAYOUT
 ============================= */
