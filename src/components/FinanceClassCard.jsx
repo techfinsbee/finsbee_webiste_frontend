@@ -122,19 +122,13 @@ export default function FinanceClassCard() {
             </button>
           </a> */}
           <a
-            href="https://chat.whatsapp.com/JlWVMfZCz1eCKVr8QU20PC"
+            href="https://chat.whatsapp.com/JLWWfZcZ1eCKv8QU20PC"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full cursor-pointer"
-            onClick={() => {
-              if (typeof fbq === "function") {
-                fbq("trackCustom", "whatsapp_community_join_click");
-              }
-            }}
+            className="w-[280px] xs:w-full sm:w-full rounded-[8px] cursor-pointer bg-[#FFD263] h-[60px] text-[16px] sm:text-[22px] font-extrabold text-black transition hover:bg-[#f6d164] flex items-center justify-center"
+            onClick={() => fbq('trackCustom','whatsapp_community_join_click')}
           >
-            <button className="w-[280px] xs:w-full sm:w-full rounded-[8px] cursor-pointer bg-[#FFD263] h-[60px] text-[18px] sm:text-[22px] font-extrabold text-black transition hover:bg-[#f6d164]">
-              Join Class Whatsapp Community
-            </button>
+            Join Class Whatsapp Community
           </a>
         </div>
       </div>

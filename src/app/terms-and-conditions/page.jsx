@@ -1,13 +1,9 @@
 // import Navbar from "./Navbar";
 import PageHero from "@/components/common/PageHero";
-import Link from "next/link";
 
-// const dropdownData = [
-//   { title: "Loans", link: "#loan-section-home" },
-//   // { title: " ", link: "#mart-home" },
-//   { title: "About Us", link: "/about" },
-//   { title: "Contact Us", link: "#contact-us" },
-// ];
+
+
+
 
 export const metadata = {
   title: "Terms and Conditions | FinsBee",
@@ -39,7 +35,7 @@ export default function TermsAndConditions() {
   }}
 />
   
-      <div className=" relative mx-4 z-20 -mt-20 sm:-mt-35 md:-mt-55 md:mx-[136px] p-3 md:p-12 text-gray-800 bg-white rounded-2xl shadow-[0_10px_10px_rgba(0,0,0,0.12)] border border-gray-100 ">
+      <div className=" relative mx-4 z-20 -mt-20 sm:-mt-35 md:-mt-55 md:mx-[136px] p-3 md:p-12 text-gray-800 bg-white rounded-2xl shadow-[0_10px_10px_rgba(0,0,0,0.12)] border border-gray-100 mb-30 md:mb-20">
           <p className="text-sm text-gray-600">
             In consideration of Stradex International Private Limited (hereinafter referred to as "FinsBee", which expression shall include
             where appropriate its affiliates, successors and assigns), the user
@@ -753,9 +749,11 @@ export default function TermsAndConditions() {
                 based on the eligibility. All financial institutions and banks
                 have the right to retain and use your information as required.
                 <br />
-                In this context, you agree and consent to receive all
-                information/reports/statements/announcements at the
-                communication mode given by you.
+                <span className="hyphens-auto break-words">
+                  In this context, you agree and consent to receive all
+                  information/reports/statements/announcements at the
+                  communication mode given by you.
+                </span>
               </p>
             </section>
 
