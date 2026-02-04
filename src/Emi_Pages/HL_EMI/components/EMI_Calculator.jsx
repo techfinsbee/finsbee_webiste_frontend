@@ -212,7 +212,7 @@ const EmiCalculator = () => {
           />
         </div>
 
-            <Link href="/home-loan?autoApply=true" className="w-full">
+            <Link href="/apply-for-home-loan?autoApply=true" className="w-full">
          <button className="bg-yellow-400 w-full bottom-0 hover:bg-yellow-500 text-gray-800 font-semibold py-3 rounded-lg shadow">
           Apply Now for Loan
         </button>

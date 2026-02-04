@@ -39,6 +39,7 @@ export default function ResponsiveFooter() {
     // { label: "Blog", route: "/" },
     { label: "Terms & Conditions", route: "/terms-and-conditions" },
     { label: "Privacy Policy", route: "/privacy-policy" },
+    { label: "Return and Refund Policy", route: "/return-refund-policy" },
   ];
 
   const loanTypes = [

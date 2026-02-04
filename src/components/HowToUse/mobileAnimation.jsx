@@ -14,19 +14,19 @@ export const MobileBox = () => {
             title: "Personal Loan",
             description:
                 "Fast approvals, flexible EMI plans, and zero collateral—smart financing made simple.",
-            path: "/personal-loan",
+            path: "/apply-for-personal-loan-online",
         },
         {
             title: "Business Loan",
             description:
                 "Accelerate your business growth with personalized financing and prompt disbursement you can rely on",
-            path: "/business-loan",
+            path: "/apply-for-business-loan",
         },
         {
             title: "Home Loan",
             description:
                 "Make your dream home a reality—enjoy flexible repayment plans, minimal paperwork, and a hassle-free approval process!",
-            path: "/home-loan",
+            path: "/apply-for-home-loan",
         },
     ];
 
@@ -35,19 +35,19 @@ export const MobileBox = () => {
             title: "Loan against Property",
             description:
                 "Unlock your property's true potential with competitive rates and a smooth, stress-free application process.",
-            path: "/loan-against-property",
+            path: "/apply-for-loan-against-property",
         },
         {
             title: "Loan Against Security",
             description:
                 "Maximize your investments without selling—enjoy competitive LTV ratios and borrower-friendly terms.",
-            path: "/loan-against-securities",
+            path: "/apply-for-loan-against-securities",
         },
         {
             title: "Medical Loan",
             description:
                 "At FinsBee, we offer instant Medical Loans to help you cover urgent treatments, surgeries, or hospitalization costs.",
-            path: "/personal-loan",
+            path: "/apply-for-personal-loan-online",
         },
     ];
 

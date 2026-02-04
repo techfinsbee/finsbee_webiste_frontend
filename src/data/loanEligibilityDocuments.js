@@ -1411,7 +1411,7 @@ export const loanEligibilityDocuments = {
   /* =========================
      HOME LOAN
   ========================== */
-  "apply-home-loan": {
+  "apply-for-home-loan": {
     eligibility: {
       "For Salaried Individuals": [
         "Age: Between 21 and 60 years ",

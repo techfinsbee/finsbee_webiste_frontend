@@ -23,7 +23,7 @@ const PrivacyPage = () => {
   }}
 />
   
-      <div className=" relative mx-4 z-20 -mt-20 sm:-mt-35 md:-mt-55 md:mx-[136px] p-3 md:p-12 text-gray-800 bg-white rounded-2xl shadow-[0_10px_10px_rgba(0,0,0,0.12)] border border-gray-100 ">
+      <div className=" relative mx-4 z-20 -mt-20 sm:-mt-35 md:-mt-55 md:mx-[136px] p-3 md:p-12 text-gray-800 bg-white rounded-2xl shadow-[0_10px_10px_rgba(0,0,0,0.12)] border border-gray-100 mb-30 md:mb-20">
         {/* <h1 className="text-3xl font-bold mt-16">Privacy Policy</h1> */}
 
         <div className="space-y-6">
