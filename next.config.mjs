@@ -53,6 +53,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "c.animaapp.com" },
       { protocol: "https", hostname: "dashboard.finsbee.com" },
+      { protocol: "https", hostname: "admin.finsbee.com" },
     ],
   },
 };

@@ -123,11 +123,13 @@ gtag('config', '${GA_ID}');
       </head>
 
       <body className="relative min-h-screen antialiased bg-white text-black">
+        
         <GTMNoScript />
         <MixpanelProvider>
           <ClientLayout>{children}</ClientLayout>
         </MixpanelProvider>
       </body>
+      
     </html>
   );
 }

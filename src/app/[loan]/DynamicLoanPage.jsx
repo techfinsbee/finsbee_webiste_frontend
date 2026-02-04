@@ -66,13 +66,7 @@ const DynamicEligibility = ({ onClose, loanSlug }) => {
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
     >
       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full h-[90vh] overflow-y-auto relative">
-        {/* <button
-          onClick={onClose}
-          className=" sticky top-4 right-6 text-yellow-400 font-bold text-2xl z-10"
-          aria-label="Close eligibility modal"
-        >
-          ✕
-        </button> */}
+     
         <button
           onClick={onClose}
           className="absolute top-4 right-6 text-yellow-400 font-bold text-2xl z-10"
@@ -158,14 +152,7 @@ const DynamicDocumentRequired = ({ onClose, loanSlug }) => {
               {category}
             </h2>
             <ul className="flex flex-col gap-4">
-              {/* {items.map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <span className="w-6 h-6 bg-yellow-400 text-white rounded-full flex items-center justify-center text-sm">
-                    ✔
-                  </span>
-                  <span className="text-base text-gray-800">{item}</span>
-                </li>
-              ))} */}
+             
               {items.map((item, i) => (
                 <li key={i} className="flex items-center gap-3">
                   {/* SVG Icon */}
@@ -195,13 +182,7 @@ const DynamicDocumentRequired = ({ onClose, loanSlug }) => {
       className="fixed inset-0  z-50 flex items-center justify-center p-4"
     >
       <div className="bg-white text-gray-800 rounded-xl shadow-xl max-w-6xl w-full h-[90vh] overflow-y-auto relative">
-        {/* <button
-          onClick={onClose}
-          className="sticky top-4 right-6 text-yellow-400 font-bold text-2xl z-10"
-          aria-label="Close document modal"
-        >
-          ✕
-        </button> */}
+        
 
         <button
           onClick={onClose}
@@ -254,10 +235,6 @@ const DynamicLoanPage = ({ loanSlug }) => {
   const data = loansData[loanSlug] || loansData["personal-loan"];
   const finalTitle = displayTitle || data.title;
 
-  // Determine final background image path
-  // const heroBgImage = urlBg
-  //   ? `/${urlBg}`
-  //   : (data.backgroundImage ? `/${data.backgroundImage.replace(/^\//, '')}` : '/landing_page/bg.webp');
   const heroBgImage = urlBg
     ? `/${urlBg}?v=${Date.now()}` // forces fresh load, remove later
     : data.backgroundImage

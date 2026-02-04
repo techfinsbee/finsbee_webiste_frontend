@@ -153,15 +153,26 @@ export default function ClientLayout({ children }) {
       "/Instant-form",
       "/loan/eligibility-documents",
       "/webinar-form",
+      "/book-call",
     ];
 
-    const isHiddenRoute = hiddenRoutes.includes(pathname);
+    // const isHiddenRoute = hiddenRoutes.includes(pathname);
 
-    const is404Page =
-      document.title.includes("Not Found") ||
-      document.title.includes("404");
+    // const is404Page =
+    //   document.title.includes("Not Found") ||
+    //   document.title.includes("404");
 
-    const shouldShow = !isHiddenRoute && !is404Page;
+    // const shouldShow = !isHiddenRoute && !is404Page;
+
+  const isHiddenRoute =
+    hiddenRoutes.includes(pathname) ||
+    pathname.startsWith("/blog"); // 👈 blog + blog/[slug]
+
+  const is404Page =
+    document.title.includes("Not Found") ||
+    document.title.includes("404");
+
+  const shouldShow = !isHiddenRoute && !is404Page;
 
     setShowNavbar(shouldShow);
     setShowBottomCTA(shouldShow);
@@ -175,6 +186,7 @@ export default function ClientLayout({ children }) {
       {showNavbar && <Navbar />}
 
       <main className="relative w-full">
+       
         {children}
         <PersonalLoanPopup/>
       </main>

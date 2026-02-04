@@ -40,11 +40,6 @@ export default function BL_EMI(){
              <Frame/>
         </div>
       </div>
-      
-
-     
- 
-   
     </div>
   );
 };
