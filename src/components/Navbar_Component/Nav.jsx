@@ -20,8 +20,8 @@ const dropdownData = {
         column1: [
           { label: "Apply for Personal Loan Online", path: "/apply-for-personal-loan-online" },
           { label: "Personal Loan for Self Employed", path: "/personal-loan-for-self-employed" },
-          { label: "Personal Loan for Government Employees", path: "/personal-loan-for-government-employees" },
-          { label: "Education Loan", path: "/education-loan" },
+          { label: "Personal Loan for Government Employees", path: "/personal-loan-for-government-employees"},
+          { label: "Education Loan", path: "/education-loan"},
         ],
         column2: [
           { label: "Medical Loan for Emergency", path: "/medical-loan-for-emergency" },
@@ -82,15 +82,26 @@ const dropdownData = {
       { label: "Loan Against Car", path: "/loan-against-car" },
     ],
   },
+  // emi: {
+  //   items: [
+  //     { label: "Personal Loan EMI Calculator", path: "/emi-calculator/personal-loan" },
+  //     { label: "Education Loan EMI Calculator", path: "/emi-calculator/education-loan" },
+  //     { label: "Car Loan EMI Calculator", path: "/emi-calculator/car-loan" },
+  //     { label: "Business Loan EMI Calculator", path: "/emi-calculator/business-loan" },
+  //     { label: "Home Loan EMI Calculator", path: "/emi-calculator/home-loan" },
+  //   ],
+  // },
+  
   emi: {
-    items: [
-      { label: "Personal Loan EMI Calculator", path: "/emi-calculator/personal-loan" },
-      { label: "Education Loan EMI Calculator", path: "/emi-calculator/education-loan" },
-      { label: "Car Loan EMI Calculator", path: "/emi-calculator/car-loan" },
-      { label: "Business Loan EMI Calculator", path: "/emi-calculator/business-loan" },
-      { label: "Home Loan EMI Calculator", path: "/emi-calculator/home-loan" },
-    ],
-  },
+  items: [
+    { label: "Personal Loan EMI Calculator", path: "/emi-calculator/personal-loan-emi" },
+    { label: "Education Loan EMI Calculator", path: "/emi-calculator/education-loan-emi" },
+    { label: "Car Loan EMI Calculator", path: "/emi-calculator/car-loan-emi" },
+    { label: "Business Loan EMI Calculator", path: "/emi-calculator/business-loan-emi" },
+    { label: "Home Loan EMI Calculator", path: "/emi-calculator/home-loan-emi" },
+  ],
+},
+
 };
 
 export default function MegaMenu({ sectionKey = "loans", isSidebar = false, onClose }) {

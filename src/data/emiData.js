@@ -450,8 +450,7 @@ export const emiData = {
         interestRate: "7.45% – 10.25%",
         loanAmount: "₹15 lakh – ₹10 crore",
         tenure: "Up to 30 years",
-        processingFee:
-          "Up to 4% of the loan amount + GST",
+        processingFee: "Up to 4% of the loan amount + GST",
       },
       {
         nbfc: "Shriram Housing Finance",

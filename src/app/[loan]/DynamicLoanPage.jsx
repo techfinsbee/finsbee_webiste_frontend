@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ChevronDown } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 
+
 // Import your centralized data
-import { loansData } from "@/data/loansData";
+// import { loansData } from "@/data/loansData";
+
 import { loanEligibilityDocuments } from "@/data/loanEligibilityDocuments";
 
 const ActionButton = ({ onClick, children, iconSrc }) => (
@@ -220,25 +222,19 @@ const DynamicDocumentRequired = ({ onClose, loanSlug }) => {
   );
 };
 
-const DynamicLoanPage = ({ loanSlug }) => {
+
+const DynamicLoanPage = ({ loanData, loanSlug }) => {
+
+
+
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Dynamic title
-  const urlTitle = searchParams.get("title");
-  const displayTitle = urlTitle ? decodeURIComponent(urlTitle) : null;
-
-  // Dynamic background from URL
-  const urlBg = searchParams.get("bg"); // e.g., "city/bangalore.webp"
-
-  // Get base loan data
-  const data = loansData[loanSlug] || loansData["personal-loan"];
-  const finalTitle = displayTitle || data.title;
-
-  const heroBgImage = urlBg
-    ? `/${urlBg}?v=${Date.now()}` // forces fresh load, remove later
-    : data.backgroundImage
-    ? `/${data.backgroundImage.replace(/^\//, "")}`
+  const data = loanData;
+  const finalTitle = data.title;
+  const baseurl = "https://admin.finsbee.com";
+  const heroBgImage = baseurl + data.backgroundImage
+    ? baseurl + data.backgroundImage
     : "/landing_page/bg.webp";
 
   // Auto apply from URL
@@ -420,7 +416,7 @@ const DynamicLoanPage = ({ loanSlug }) => {
           <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-6 lg:gap-8 p-6 sm:p-8 lg:p-12 w-full rounded-[20px] lg:rounded-[28px_28px_0px_0px] shadow-[0px_-12px_11px_#00000026] bg-[linear-gradient(180deg,rgba(255,238,195,1)_0%,rgba(250,250,250,0)_100%)] bg-white border-0">
             {data.benefitCards.map((card, index) => (
               <div
-                key={card.title}
+                key={card.benefit_id}
                 className={`flex flex-col items-start justify-center gap-2 p-4 sm:p-6 w-full sm:w-[48%] md:w-[45%] lg:flex-1 h-auto ${
                   index < data.benefitCards.length - 1
                     ? "lg:border-r lg:[border-right-style:solid] lg:border-[#ffd97c]"
@@ -430,7 +426,7 @@ const DynamicLoanPage = ({ loanSlug }) => {
                 <img
                   className="w-10 h-10 sm:w-12 sm:h-12"
                   alt={card.title}
-                  src={card.icon}
+                  src={baseurl + card.icon}
                 />
                 <h3 className="font-bold text-[#212121] text-lg sm:text-xl">
                   {card.title}
@@ -498,7 +494,7 @@ const DynamicLoanPage = ({ loanSlug }) => {
                         <img
                           className="w-12 h-12 object-cover"
                           alt={feature.title}
-                          src={feature.icon}
+                          src={baseurl + feature.icon}
                         />
                         <h3 className="font-bold text-base">{feature.title}</h3>
                         <p className="font-normal text-base text-gray-500">

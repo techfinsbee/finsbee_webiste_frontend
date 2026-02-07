@@ -181,10 +181,6 @@ export const loanEligibilityDocuments = {
     },
   },
 
-
-
- 
-
   "instant-cash-loan": {
     eligibility: {
       "For Salaried Individuals": [

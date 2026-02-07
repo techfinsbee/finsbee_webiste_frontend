@@ -1,14 +1,75 @@
-import { notFound } from "next/navigation";
 
-import { emiData } from "@/data/emiData";
+
+// import { notFound } from "next/navigation";
+// import { getEmiPage } from "@/app/lib/getEmiPage";
+// import { getAllEmiPages } from "@/app/lib/getAllEmiPages";
+// import EmiPage from "./EmiPage";
+
+// /* SEO */
+// export async function generateMetadata({ params }) {
+//   const resolvedParams = await params;
+//   const data = await getEmiPage(resolvedParams.emi);
+
+//   if (!data) return {};
+//   return {
+//     title: data.title,
+//     description: data.description,
+//   };
+// }
+
+// export default async function Page({ params }) {
+//   const resolvedParams = await params;
+//   const data = await getEmiPage(resolvedParams.emi);
+
+//   if (!data) notFound();
+
+//   const allPages = await getAllEmiPages();
+
+//   return <EmiPage data={data} allPages={allPages} />;
+// }
+
+
+// import { notFound } from "next/navigation";
+// import { getEmiPage } from "@/app/lib/getEmiPage";
+// import { getAllEmiPages } from "@/app/lib/getAllEmiPages";
+// import EmiPage from "./EmiPage";
+
+// export async function generateMetadata({ params }) {
+//   const { emi } = await params; 
+
+//   const data = await getEmiPage(emi);
+//   if (!data) return {};
+
+//   return {
+//     title: data.title,
+//     description: data.description,
+//   };
+// }
+
+// export default async function Page({ params }) {
+//   const { emi } = await params;
+
+//   const data = await getEmiPage(emi);
+
+//   // 🔥 THIS IS THE KEY LINE
+//   if (!data) notFound();
+
+//   const allPages = await getAllEmiPages();
+
+//   return <EmiPage data={data} allPages={allPages} />;
+// }
+
+import { notFound } from "next/navigation";
+import { getEmiPage } from "@/app/lib/getEmiPage";
+import { getAllEmiPages } from "@/app/lib/getAllEmiPages";
 import EmiPage from "./EmiPage";
 
-/* ✅ METADATA */
+/* ================= SEO ================= */
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params; // ✅ FIX
-  const emi = resolvedParams.emi;
+  const { emi } = await params; // ✅ FIX
+  console.log("🧠 generateMetadata slug:", emi);
 
-  const data = emiData[emi];
+  const data = await getEmiPage(emi);
   if (!data) return {};
 
   return {
@@ -17,12 +78,15 @@ export async function generateMetadata({ params }) {
   };
 }
 
-/* ✅ PAGE */
+/* ================= PAGE ================= */
 export default async function Page({ params }) {
-  const resolvedParams = await params; 
-  const emi = resolvedParams.emi;
+  const { emi } = await params; // ✅ FIX
+  console.log("🚀 Page slug:", emi);
 
-  if (!emiData[emi]) notFound();
+  const data = await getEmiPage(emi);
+  if (!data) notFound();
 
-  return <EmiPage emi={emi} />;
+  const allPages = await getAllEmiPages();
+
+  return <EmiPage data={data} allPages={allPages} />;
 }

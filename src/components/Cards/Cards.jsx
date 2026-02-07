@@ -195,29 +195,38 @@ export default function ExpandingCards() {
   const [active, setActive] = useState(1);
   const [cards, setCards] = useState([]);
 
-  // 🔥 CLIENT-SIDE API FETCH (same style as other components)
-  useEffect(() => {
-    const fetchHomepageBenefits = async () => {
-      try {
-        const res = await fetch(
-          "https://admin.finsbee.com/api/homepage-benefits"
-        );
-        const json = await res.json();
+useEffect(() => {
+  const fetchHomepageBenefits = async () => {
+    try {
+      const res = await fetch(
+        "https://admin.finsbee.com/api/homepage-benefits"
+      );
+      const json = await res.json();
 
-        const mappedCards = (json?.data || []).map((item, index) => ({
-          id: index + 1,
-          title: item.title,
-          description: item.description,
+      // ✅ SAFE ACCESS
+      const benefitCards =
+        json?.data?.[0]?.benefitCards || [];
+
+      const mappedCards = benefitCards
+        .sort((a, b) => a.order - b.order)
+        .map((card) => ({
+          id: card.benefit_id,
+          title: card.title,
+          description: card.description,
+          icon: card.icon
+            ? `https://admin.finsbee.com${card.icon}`
+            : null,
         }));
 
-        setCards(mappedCards);
-      } catch (error) {
-        console.error("Homepage benefits fetch failed", error);
-      }
-    };
+      setCards(mappedCards);
+    } catch (error) {
+      console.error("Homepage benefits fetch failed", error);
+    }
+  };
 
-    fetchHomepageBenefits();
-  }, []);
+  fetchHomepageBenefits();
+}, []);
+
 
   return (
     <>

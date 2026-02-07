@@ -4,12 +4,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 // Animated Text Section Component
-const AnimatedTextSection = () => {
+const AnimatedTextSection = ({text}) => {
   const [visibleWords, setVisibleWords] = useState(0);
-
-  // The text content
-  const text =
-    "At FinsBee, we recognize that wealth is more than just numbers; it represents stability, freedom, and a legacy for future generations. That is why we strive to make wealth generation simple, transparent, and accessible to all. In today's digital age, when financial prospects are growing quicker than ever, we provide a safer and more secure alternative to invest in gold and silver online.";
 
   // Split text into words
   const words = text.split(" ");

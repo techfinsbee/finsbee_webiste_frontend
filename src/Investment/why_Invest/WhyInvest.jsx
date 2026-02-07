@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 export const WhyInvest = () => {
+  // if (!features || !slides || !headers) return null;
+
   const baseFeatures = [
     {
       text: "Guaranteed Purity – 24K Gold",
@@ -257,3 +259,185 @@ export const WhyInvest = () => {
     </section>
   );
 };
+
+
+
+// "use client";
+// import React, { useState, useMemo } from "react";
+// import { motion } from "framer-motion";
+
+// const CMS_BASE_URL = "https://admin.finsbee.com";
+
+// export const WhyInvest = ({ features, slides, headers }) => {
+//   if (!features || !slides || !headers) return null;
+
+//   /* ---------------- UI CONFIG (DO NOT TOUCH) ---------------- */
+//   const baseFeaturesUI = [
+//     {
+//       className:
+//         "w-[395px] bg-[#fff9ec] border-[#ffe5a5] shadow-[-8px_8px_0px_rgba(255,199,60,0.2)]",
+//       containerClassName:
+//         "flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]",
+//     },
+//     {
+//       className:
+//         "w-[340px] bg-[#fafafa] border-[#e9e9e9] shadow-[0px_4px_8px_rgba(0,0,0,0.12)]",
+//       containerClassName:
+//         "flex flex-col items-start gap-2.5 pl-8 pr-0 py-0 relative self-stretch w-full flex-[0_0_auto]",
+//     },
+//     {
+//       className:
+//         "w-[340px] bg-[#fafafa] border-[#e9e9e9] shadow-[0px_4px_8px_rgba(0,0,0,0.12)]",
+//       containerClassName:
+//         "flex flex-col items-end gap-2.5 relative self-stretch w-full flex-[0_0_auto]",
+//     },
+//     {
+//       className:
+//         "w-[340px] bg-[#fafafa] border-[#e9e9e9] shadow-[0px_4px_8px_rgba(0,0,0,0.12)]",
+//       containerClassName:
+//         "flex flex-col items-start gap-2.5 pl-8 pr-0 py-0 relative self-stretch w-full flex-[0_0_auto]",
+//     },
+//     {
+//       className:
+//         "w-[340px] bg-[#fafafa] border-[#e9e9e9] shadow-[0px_4px_8px_rgba(0,0,0,0.12)]",
+//       containerClassName:
+//         "flex flex-col items-start gap-2.5 relative self-stretch w-full flex-[0_0_auto]",
+//     },
+//   ];
+
+//   /* ---------------- DATA MAPPING (SAFE & FUTURE-PROOF) ---------------- */
+//   const mappedFeatures = useMemo(
+//     () =>
+//       features.map((item, index) => ({
+//         text: item.text,
+//         ...baseFeaturesUI[index],
+//       })),
+//     [features]
+//   );
+
+//   const mappedSlides = useMemo(
+//     () =>
+//       slides.map((slide) => ({
+//         ...slide,
+//         leftBg: slide.leftBg?.[0]
+//           ? `${CMS_BASE_URL}${slide.leftBg[0]}`
+//           : "https://c.animaapp.com/mfrgrv40Ft7uAY/img/safe-gold-1.png",
+//         rightBg: slide.rightBg
+//           ? `${CMS_BASE_URL}${slide.rightBg}`
+//           : "/Investment/img1.svg",
+//       })),
+//     [slides]
+//   );
+
+//   /* ---------------- ANIMATION CONFIG (UNCHANGED) ---------------- */
+//   const cardConfig = {
+//     0: {
+//       yellow: { top: 67, right: -20, rotate: 0 },
+//       purple: { top: 170, left: -36, rotate: 0 },
+//     },
+//     1: {
+//       yellow: { top: 161, right: -44, rotate: 90 },
+//       purple: { top: -26.5, left: -32, rotate: 90 },
+//     },
+//     2: {
+//       yellow: { top: 161, right: 300, rotate: 180 },
+//       purple: { top: -26.5, left: 427, rotate: 180 },
+//     },
+//     3: {
+//       yellow: { top: -26.5, right: 300, rotate: 270 },
+//       purple: { top: 300, left: 427, rotate: 270 },
+//     },
+//     4: {
+//       yellow: { top: -26.5, right: 44, rotate: 360 },
+//       purple: { top: 300, left: 44, rotate: 360 },
+//     },
+//   };
+
+//   const [activeIndex, setActiveIndex] = useState(0);
+//   const current = mappedSlides[activeIndex];
+//   const { yellow, purple } = cardConfig[activeIndex];
+//   const transition = { duration: 0.3, ease: "easeInOut" };
+
+//   /* ---------------- RENDER ---------------- */
+//   return (
+//     <section className="flex flex-col items-center px-[136px] py-24 relative bg-white min-h-screen">
+//       {/* HEADER (Dynamic text, same UI) */}
+//       <header className="flex flex-col items-start gap-2.5 px-4 w-full z-[1]">
+//         <h2 className="font-bold text-[16px] tracking-[0.5px]">
+//           {headers.title1}
+//         </h2>
+//         <h1 className="font-bold text-[64px]">{headers.title2}</h1>
+//         <span className="font-bold text-[64px]">
+//           <span className="bg-yellow-400">{headers.yellowText}</span>
+//           <span className="ml-3">{headers.title4}</span>
+//         </span>
+//       </header>
+
+//       {/* CONTENT */}
+//       <main className="flex h-[509px] justify-between w-full relative">
+//         {/* LEFT FEATURES */}
+//         <div className="flex flex-col w-[400px] gap-[21px] relative">
+//           <img
+//             src={current.leftBg}
+//             className="absolute top-[-110px] left-[-510px] w-[524px] h-[548px] object-cover"
+//             alt=""
+//           />
+
+//           {mappedFeatures.map((feature, index) => {
+//             const isActive = index === activeIndex;
+//             return (
+//               <div key={index} className={feature.containerClassName}>
+//                 <div
+//                   onClick={() => setActiveIndex(index)}
+//                   className={`${feature.className} flex items-center gap-2.5 pl-6 pr-8 py-2 rounded-lg border cursor-pointer`}
+//                 >
+//                   <img
+//                     src="https://c.animaapp.com/mfrgrv40Ft7uAY/img/pngtree-3d-rendering-of-gold-bars-png-image-6258301-1-4.png"
+//                     className={isActive ? "w-[60px]" : "w-[54px]"}
+//                     alt=""
+//                   />
+//                   <span
+//                     className={`font-bold ${
+//                       isActive ? "text-[20px]" : "text-[16px]"
+//                     }`}
+//                   >
+//                     {feature.text}
+//                   </span>
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+
+//         {/* RIGHT CARDS (UNCHANGED) */}
+//         <div className="relative w-[680px]">
+//           <img
+//             src={current.rightBg}
+//             className="absolute top-[-197px] left-[37px] w-[624px] h-[420px] object-cover rounded-tr-[48px] rounded-bl-[48px]"
+//             alt=""
+//           />
+
+//           {/* Yellow Card */}
+//           <motion.div
+//             style={{ position: "absolute", width: 297, height: 267 }}
+//             animate={yellow}
+//             transition={transition}
+//           >
+//             <p className="p-6 text-center">{current.descCard}</p>
+//           </motion.div>
+
+//           {/* Purple Card */}
+//           <motion.div
+//             style={{ position: "absolute", width: 162, height: 162 }}
+//             animate={purple}
+//             transition={transition}
+//           >
+//             <div className="bg-[#592eff] rounded-[32px] p-6 text-white text-center">
+//               {current.smallCard}
+//             </div>
+//           </motion.div>
+//         </div>
+//       </main>
+//     </section>
+//   );
+// };

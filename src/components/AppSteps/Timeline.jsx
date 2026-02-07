@@ -159,32 +159,37 @@ export default function Timeline() {
 
   const [steps, setSteps] = useState([]);
 
-  // 🔥 CLIENT-SIDE API FETCH (same pattern as your other components)
+  //  CLIENT-SIDE API FETCH (same pattern as your other components)
   useEffect(() => {
-    const fetchHomepageSteps = async () => {
-      try {
-        const res = await fetch(
-          "https://admin.finsbee.com/api/homepage-steps"
-        );
-        const json = await res.json();
+  const fetchHomepageSteps = async () => {
+    try {
+      const res = await fetch(
+        "https://admin.finsbee.com/api/homepage-steps"
+      );
+      const json = await res.json();
 
-        const sortedSteps = (json?.data || [])
-          .sort((a, b) => a.order - b.order)
-          .map((step) => ({
-            id: step.step_id.padStart(2, "0"),
-            title: step.title,
-            description: step.description,
-            img: `${STRAPI_URL}${step.img}`,
-          }));
+      // ✅ SAFE ACCESS
+      const mobileSteps =
+        json?.data?.[0]?.mobile_step || [];
 
-        setSteps(sortedSteps);
-      } catch (error) {
-        console.error("Homepage steps fetch failed", error);
-      }
-    };
+      const sortedSteps = mobileSteps
+        .sort((a, b) => a.order - b.order)
+        .map((step) => ({
+          id: String(step.step_id).padStart(2, "0"),
+          title: step.title,
+          description: step.description,
+          img: `${STRAPI_URL}${step.img}`,
+        }));
 
-    fetchHomepageSteps();
-  }, []);
+      setSteps(sortedSteps);
+    } catch (error) {
+      console.error("Homepage steps fetch failed", error);
+    }
+  };
+
+  fetchHomepageSteps();
+}, []);
+
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
