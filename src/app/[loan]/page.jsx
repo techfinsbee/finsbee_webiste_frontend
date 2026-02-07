@@ -1,5 +1,5 @@
 // app/[loan]/page.jsx
-
+import { Suspense } from "react";
 import DynamicLoanPage from "./DynamicLoanPage";
 import Frame from "@/components/footer/Fram";
 import { notFound } from "next/navigation";
@@ -45,7 +45,9 @@ export default async function LoanPage({ params }) {
 
   return (
     <>
-      <DynamicLoanPage loanData={loanData} loanSlug={loanSlug} />
+      <Suspense fallback={null}>
+        <DynamicLoanPage loanData={loanData} loanSlug={loanSlug} />
+      </Suspense>
       <Frame />
     </>
   );
