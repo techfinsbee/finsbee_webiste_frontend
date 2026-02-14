@@ -1,9 +1,13 @@
 // tailwind.config.js
 // /** @type {import('tailwindcss').Config} */
+
+
+
 export default {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx}",   // app router
-    "./src/app/components/**/*.{js,ts,jsx,tsx}", // components
+content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
     'text-heading-1',
@@ -81,5 +85,7 @@ export default {
       },
     },
   },
-  plugins: [],
+ plugins: [
+  require("@tailwindcss/typography"),
+],
 };

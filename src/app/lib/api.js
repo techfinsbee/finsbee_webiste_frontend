@@ -18,7 +18,8 @@
 
 
 // lib/api.js (or wherever fetchAPI lives)
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://admin.finsbee.com";
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "https://admin.finsbee.com" || "http://localhost:1337/"
+// const STRAPI_URL =  "http://localhost:1337"
 
 export async function fetchAPI(path, options = {}) {
   const res = await fetch(`${STRAPI_URL}${path}`, {

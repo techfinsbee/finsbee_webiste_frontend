@@ -27,7 +27,7 @@ export async function POST(request) {
 
     const payload = { ...body, params };
 
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://dashboard.finsbee.com';
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'https://payday.finsbee.com';
     const targetUrl = `${backendUrl}/api/customer/loan`;
 
     const odooRes = await fetch(targetUrl, {

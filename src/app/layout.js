@@ -5,6 +5,9 @@ import ClientLayout from "./ClientLayout";
 import GTMNoScript from "./GTMNoScript";
 import MixpanelProvider from "@/components/MixpanelProvider";
 import FacebookPixel from "@/components/FacebookPixel";
+import SplashGate from "@/loanComponent/SplashGate";
+import { ToastContainer } from "react-toastify";
+import ClientProvider from "@/loanComponent/ClientProvider";
 
 /* =============================
    FONT
@@ -34,12 +37,12 @@ export const metadata = {
     "instant loan india",
     "finsbee",
   ],
-  metadataBase: new URL("https://finsbee.com"),
+  metadataBase: new URL("https://www.finsbee.com"),
   openGraph: {
     title: "FinsBee – Apply Online for Loans",
     description:
       "Fast, secure and digital loans for personal, business and home needs.",
-    url: "https://finsbee.com",
+    url: "https://www.finsbee.com",
     siteName: "FinsBee",
     images: ["/favicon.svg"],
     locale: "en_IN",
@@ -126,7 +129,12 @@ gtag('config', '${GA_ID}');
         <GTMNoScript />
         <MixpanelProvider>
            <FacebookPixel />
-          <ClientLayout>{children}</ClientLayout>
+           <ClientProvider>
+             <SplashGate>
+               <ToastContainer position="top-center" autoClose={4000} />
+               <ClientLayout>{children}</ClientLayout>
+             </SplashGate>
+           </ClientProvider>
         </MixpanelProvider>
       </body>
       

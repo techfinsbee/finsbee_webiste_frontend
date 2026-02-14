@@ -1,123 +1,33 @@
-// import Image from "next/image";
-// import { notFound } from "next/navigation";
-// import { fetchAPI } from "../../lib/api";
-// // import BlogClient from "./BlogClient";
-// import Blocks from "./Blocks";
-// import BlogClient from "../BlogClient";
-
-// export default async function BlogDetail({ params }) {
-//   const { slug } = await params;
-
-//   // 🔹 Current article
-//   const res = await fetchAPI(
-//     `/api/articles?filters[slug][$eq]=${slug}`
-//   );
-//   const article = res.data[0];
 
 
-//   if (!article) return notFound();
-
-//   // 🔹 All articles (for next recommendation)
-//   const allRes = await fetchAPI("/api/articles");
-//   const allArticles = allRes?.data || [];
-
-//   return (
-//     <BlogClient article={article} allArticles={allArticles}>
-//       <article className="max-w-3xl mx-auto px-6 py-10">
-//         <h1 className="text-4xl font-bold mb-4">
-//           {article.title}
-//         </h1>
-
-//         <p className="text-gray-500 mb-6">
-//           {article.author.name} · {article.category.name}
-//         </p>
-
-//         <Image
-//           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${article.cover}`}
-//           alt={article.title}
-//           width={900}
-//           height={500}
-//           className="rounded-lg mb-8"
-//         />
-
-//         {/* Dynamic blocks */}
-//         <Blocks blocks={article.blocks} />
-//       </article>
-//     </BlogClient>
-//   );
-// }
-
-// /* ✅ SEO stays untouched */
-// export async function generateMetadata({ params }) {
-//   const res = await fetchAPI(
-//     `/api/articles?filters[slug][$eq]=${params.slug}`
-//   );
-//   const article = res.data[0];
-
-//   return {
-//     title: article.title,
-//     description: article.description,
-//     openGraph: {
-//       images: [
-//         `${process.env.NEXT_PUBLIC_STRAPI_URL}${article.cover}`,
-//       ],
-//     },
-//   };
-// }
-
-
-// // app/blog/[slug]/page.jsx
+// // // app/blog/[slug]/page.jsx
 // import { notFound } from "next/navigation";
 // import Image from "next/image";
 // import { fetchAPI } from "../../lib/api";
 // import BlogClient from "../BlogClient";
 // import Blocks from "./Blocks";
+// import BlockContent from "./BlockContent";
 
-// export const revalidate = 3600;
-// export const dynamicParams = true;
-
-// export async function generateStaticParams() {
-//   try {
-//     const res = await fetchAPI("/api/articles?fields[0]=slug&pagination[limit]=1000");
-//     const articles = res?.data || [];
-
-//     // FIX: No .attributes.slug – slug is direct
-//     return articles.map((article) => ({
-//       slug: article.slug,
-//     }));
-//   } catch (err) {
-//     console.error("Error in generateStaticParams:", err);
-//     return [];
-//   }
-// }
+// export const dynamic = "force-dynamic";
 
 // export default async function BlogDetail({ params }) {
-//   const { slug } = await params;
+//   const { slug } = await params; // ✅ FIX (important)
 
 //   const res = await fetchAPI(
 //     `/api/articles?filters[slug][$eq]=${slug}&populate=*`
 //   );
 
 //   const article = res?.data?.[0];
-
-//   if (!article) {
-//     notFound();
-//   }
-
-//   // FIX: No .attributes – use article.title, article.author.name, etc. directly
-
-//   // All articles for next recommendation
-//   const allRes = await fetchAPI(
-//     "/api/articles?fields[0]=slug&fields[1]=title&fields[2]=description&pagination[limit]=1000"
-//   );
-//   const allArticles = allRes?.data || [];
+//   if (!article) notFound();
 
 //   return (
-//     <BlogClient article={article} allArticles={allArticles}>
-//       <article className="max-w-3xl mx-auto px-6 py-10">
+//     <BlogClient article={article}>
+//       <article className="max-w-4xl mx-auto px-6 py-10">
+
 //         <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
+
 //         <p className="text-gray-500 mb-6">
-//           {article.author?.name || "Author"} · {article.category?.name || "Category"}
+//           {article.author?.name} · {article.category?.name}
 //         </p>
 
 //         {article.cover && (
@@ -131,75 +41,148 @@
 //           />
 //         )}
 
+//         {/* ✅ NEW STRAPI BLOCK EDITOR */}
+//         <BlockContent content={article.content} />
+
+//         {/* ✅ OLD DYNAMIC ZONE */}
 //         <Blocks blocks={article.blocks || []} />
+
 //       </article>
 //     </BlogClient>
 //   );
 // }
 
 
+
 // app/blog/[slug]/page.jsx
+
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { fetchAPI } from "../../lib/api";
 import BlogClient from "../BlogClient";
 import Blocks from "./Blocks";
+import BlockContent from "./BlockContent";
 
-// This forces the route to be fully dynamic / server-rendered on every request
-// → New slugs work immediately in production
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-// Keep this for pre-rendering known slugs (performance for existing blogs)
-export async function generateStaticParams() {
-  try {
-    const res = await fetchAPI("/api/articles?fields[0]=slug&pagination[limit]=1000");
-    const articles = res?.data || [];
+/* =========================
+   SEO (Dynamic Metadata)
+========================= */
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
 
-    return articles.map((article) => ({
-      slug: article.slug,
-    }));
-  } catch (err) {
-    console.error("generateStaticParams failed:", err);
-    return [];
-  }
+  const res = await fetchAPI(
+    `/api/articles?filters[slug][$eq]=${slug}&populate=cover,seo.shareImage`
+  );
+
+  const article = res?.data?.[0];
+  if (!article) return {};
+
+  const seo = article.seo || {};
+
+  const metaTitle = seo.metaTitle || article.title;
+  const metaDescription =
+    seo.metaDescription || article.description;
+
+  const image = seo.shareImage || article.cover;
+  const imageUrl = image
+    ? `${process.env.NEXT_PUBLIC_STRAPI_URL}${image}`
+    : null;
+
+  const canonical =
+    seo.canonicalUrl ||
+    `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${article.slug}`;
+
+  return {
+    title: metaTitle,
+    description: metaDescription,
+
+    keywords: seo.metaKeywords || undefined,
+
+    alternates: {
+      canonical,
+    },
+
+    robots: seo.noIndex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
+
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      url: canonical,
+      type: "article",
+      images: imageUrl
+        ? [
+            {
+              url: imageUrl,
+              alt: seo.metaImageAlt || article.title,
+            },
+          ]
+        : [],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: metaTitle,
+      description: metaDescription,
+      images: imageUrl ? [imageUrl] : [],
+    },
+  };
 }
 
-// Optional: keep ISR fallback if you want (but dynamic=force-dynamic overrides most caching)
-// export const revalidate = 3600;
-
+/* =========================
+   Page Render
+========================= */
 export default async function BlogDetail({ params }) {
   const { slug } = await params;
 
   const res = await fetchAPI(
     `/api/articles?filters[slug][$eq]=${slug}&populate=*`
   );
-  const article = res?.data?.[0];
 
+  const article = res?.data?.[0];
   if (!article) notFound();
 
-  const allRes = await fetchAPI(
-    "/api/articles?fields[0]=slug&fields[1]=title&fields[2]=description&pagination[limit]=1000"
-  );
-  const allArticles = allRes?.data || [];
-
   return (
-    <BlogClient article={article} allArticles={allArticles}>
-      <article className="max-w-3xl mx-auto px-6 py-10">
-        <h1 className="text-4xl font-bold mb-4">{article.title}</h1>
+    <BlogClient article={article}>
+      <article className="max-w-4xl mx-auto px-6 py-10">
+
+        {/* Title */}
+        <h1 className="text-4xl font-bold mb-4">
+          {article.title}
+        </h1>
+
+        {/* Meta info */}
         <p className="text-gray-500 mb-6">
-          {article.author?.name || "Author"} · {article.category?.name || "Category"}
+          {article.author?.name}
+          {article.category?.name && (
+            <> · {article.category.name}</>
+          )}
         </p>
+
+        {/* Cover Image */}
         {article.cover && (
           <Image
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${article.cover}`}
-            alt={article.title}
+            alt={article.seo?.metaImageAlt || article.title}
             width={900}
             height={500}
             className="rounded-lg mb-8"
             priority
           />
         )}
-        <Blocks blocks={article.blocks || []} />
+
+        {/* ✅ NEW Strapi Block Editor (Rich Text Blocks) */}
+        {article.content && (
+          <BlockContent content={article.content} />
+        )}
+
+        {/* ✅ OLD Dynamic Zone */}
+        {article.blocks?.length > 0 && (
+          <Blocks blocks={article.blocks} />
+        )}
+
       </article>
     </BlogClient>
   );

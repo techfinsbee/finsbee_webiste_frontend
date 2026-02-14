@@ -29,21 +29,50 @@
 // }
 
 // app/blog/page.jsx
+import Link from "next/link";
+import Image from "next/image";
 import { fetchAPI } from "../lib/api";
-import BlogListClient from "./BlogListClient";
 
-// Remove revalidate → force fresh fetch every visit
-export const dynamic = 'force-dynamic';  // ← This is the key fix for instant new posts in list
+export const dynamic = "force-dynamic";
 
-export default async function BlogPage() {
+export default async function BlogListPage() {
   const res = await fetchAPI(
-    "/api/articles?populate=*&sort=publishedAt:desc&pagination[limit]=50"
+    "/api/articles?populate=cover,author,category&pagination[limit]=20"
   );
 
   const articles = res?.data || [];
 
-  // Optional: log for debugging in production (remove later)
-  // console.log("Fetched articles count:", articles.length);
+  return (
+    <section className="max-w-5xl mx-auto px-6 py-10">
+      <h1 className="text-4xl font-bold mb-8">Blog</h1>
 
-  return <BlogListClient articles={articles} />;
+      <div className="grid gap-8">
+        {articles.map((article) => (
+          <Link
+            key={article.slug}
+            href={`/blog/${article.slug}`}
+            className="border rounded-lg p-6 hover:shadow-md transition"
+          >
+            {article.cover && (
+              <Image
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${article.cover}`}
+                alt={article.title}
+                width={600}
+                height={300}
+                className="rounded mb-4"
+              />
+            )}
+
+            <h2 className="text-2xl font-semibold mb-2">
+              {article.title}
+            </h2>
+
+            <p className="text-gray-600">
+              {article.description}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
 }

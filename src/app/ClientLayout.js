@@ -151,8 +151,12 @@ export default function ClientLayout({ children }) {
       "/Instant-form",
       "/loan/eligibility-documents",
       "/webinar-form",
-     
       "/book-call",
+      "/blog",
+      "/my-account",
+      "/instant-cash-loan/form",
+      "/personal-loan/form",
+      "/dashboard",
     ];
 
     // const isHiddenRoute = hiddenRoutes.includes(pathname);
@@ -162,10 +166,13 @@ export default function ClientLayout({ children }) {
     //   document.title.includes("404");
 
     // const shouldShow = !isHiddenRoute && !is404Page;
+      const isLoanFormRoute =
+    pathname?.split("/").length === 3 &&
+    pathname?.endsWith("/form");
 
   const isHiddenRoute =
     hiddenRoutes.includes(pathname) ||
-    pathname.startsWith("/blog"); // 👈 blog + blog/[slug]
+    pathname.startsWith("/blog") ||  isLoanFormRoute; 
 
   const is404Page =
     document.title.includes("Not Found") ||

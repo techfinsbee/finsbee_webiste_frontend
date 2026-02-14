@@ -327,7 +327,7 @@ export async function POST(req) {
 
     // ✅ Use correct Odoo field names - remove 'birthday' which doesn't exist
     const odooResponse = await fetch(
-      "https://dashboard.finsbee.com/web/dataset/call_kw",
+      "https://payday.finsbee.com/web/dataset/call_kw",
       {
         method: "POST",
         headers: {
