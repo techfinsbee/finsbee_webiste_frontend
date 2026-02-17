@@ -35,7 +35,7 @@ const AnimatedTextSection = ({text}) => {
       <div className="text-start">
         <div
           className="md:text-5xl font-bold leading-relaxed"
-          style={{ fontFamily: "Lato, sans-serif" }}
+          style={{ fontFamily: "Inter, sans-serif" }}
         >
           {words.map((word, index) => (
             <motion.span
