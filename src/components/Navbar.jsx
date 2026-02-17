@@ -326,8 +326,9 @@ export const Navbar = () => {
     setLoading(true);
 
     try {
-      // const url = `/twofactor/API/V1/${API_KEY}/SMS/+91${trimmed}/AUTOGEN`;
-      const url = `/twofactor/API/V1/${API_KEY}/SMS/+91${msisdn}/AUTOGEN/OTP%20Verify?var1=${msisdn}`;
+      const trimmed = mobile.trim();
+      const url = `/twofactor/API/V1/${API_KEY}/SMS/+91${trimmed}/AUTOGEN/OTP%20Verify?var1=${trimmed}`;
+
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
@@ -347,74 +348,93 @@ export const Navbar = () => {
   };
 
   const verifyOtp = async () => {
-    if (!/^\d{6}$/.test(otp)) {
-      setError("Enter 6-digit OTP");
-      return;
+  if (!/^\d{6}$/.test(otp)) {
+    setError("Enter 6-digit OTP");
+    return;
+  }
+
+  if (loading) return;
+
+  setError("");
+  setLoading(true);
+
+  try {
+    // 1️⃣ VERIFY OTP
+    const verifyUrl = `/twofactor/API/V1/${API_KEY}/SMS/VERIFY/${requestId}/${otp}`;
+    const verifyRes = await fetch(verifyUrl);
+
+    if (!verifyRes.ok) throw new Error(`HTTP ${verifyRes.status}`);
+
+    const verifyData = await verifyRes.json();
+    if (verifyData.Status !== "Success") {
+      throw new Error(verifyData.Details || "Invalid OTP");
     }
 
-    setError("");
-    setLoading(true);
+    toast.success("OTP Verified!");
 
-    try {
-      const url = `/twofactor/API/V1/${API_KEY}/SMS/VERIFY/${requestId}/${otp}`;
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const phone = mobile.trim();
 
-      const data = await res.json();
-      if (data.Status !== "Success") {
-        throw new Error(data.Details || "Invalid OTP");
-      }
+    // 2️⃣ AUTHENTICATE ODOO (IMPORTANT)
+    const authRes = await fetch("/api/web/session/authenticate", {
+      method: "POST",
+      credentials: "include",
+    });
 
-      toast.success("OTP Verified!");
+    const authData = await authRes.json();
 
-      // Real customer creation (using axios)
-      const phone = mobile.trim();
+    if (!authData?.success) {
+      throw new Error("Odoo authentication failed");
+    }
 
-      const response = await axios.post(
-        "/api/create/customer",
-        {
-          jsonrpc: "2.0",
-          method: "call",
-          params: {
-            name: `User ${phone}`,
-            phone: phone,
-            source_id: "Partner-App",
-          },
+    // 3️⃣ CREATE / CHECK CUSTOMER
+    const customerRes = await fetch("/api/create/customer", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        method: "call",
+        params: {
+          name: `User ${phone}`,
+          phone: phone,
+          source_id: "Partner-App",
         },
-        {
-          withCredentials: true, // Ensure cookies are sent
-        }
-      );
+      }),
+    });
 
-      const result = response.data?.result?.[0];
-      if (!result?.CustomerId) {
-        throw new Error("Failed to get CustomerId");
-      }
+    const customerData = await customerRes.json();
+    const result = customerData?.result?.[0];
 
-      const auth = {
-        sessionId: result.session_id || `session-${Date.now()}`,
-        customerId: result.CustomerId,
-        phone,
-        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
-      };
-
-      setAuth(auth);
-      localStorage.setItem("originalCustomerId", String(result.CustomerId));
-
-      // Set cookie for consistency
-      document.cookie = `auth_session=${JSON.stringify(
-        auth
-      )}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
-
-      setIsLoginOpen(false);
-      router.push("/dashboard");
-    } catch (err) {
-      console.error("Verification / customer creation error:", err);
-      toast.error(err.message || "Login failed");
-    } finally {
-      setLoading(false);
+    if (!result?.CustomerId) {
+      throw new Error("Failed to get CustomerId");
     }
-  };
+
+    // 4️⃣ STORE AUTH
+    const auth = {
+      sessionId: authData.session_id,
+      customerId: result.CustomerId,
+      phone,
+      expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    };
+
+    setAuth(auth);
+    localStorage.setItem("originalCustomerId", String(result.CustomerId));
+    localStorage.setItem("verifiedPhone", phone);
+
+    setIsLoggedIn(true);
+    setIsLoginOpen(false);
+
+    toast.success("Login successful!");
+
+    router.push("/dashboard");
+
+  } catch (err) {
+    console.error("Login error:", err);
+    toast.error(err.message || "Login failed");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const SidebarButton = ({ item }) => (
     <button
@@ -565,7 +585,7 @@ export const Navbar = () => {
           >
             {localStorage.getItem("originalCustomerId")
               ? "dashboard"
-              : "/"}
+              : "Login"}
           </button>
         </div>
 

@@ -879,21 +879,6 @@ const [step, setStep] = useState("phone");
 
 
 
-
-  const handleSubmit = async () => {
-    const success = await verifyOtp();
-
-    if (success) {
-      const loanType = loanRouteMap[pathname];
-
-      if (loanType) {
-        router.push(`/loan/${loanType}/form`);
-      } else {
-        router.push("/loan/personal-loan/form"); // fallback
-      }
-    }
-  };
-
   const API_KEY = "ab163828-7d8d-11f0-a562-0200cd936042";
   const validateMobile = (num) => /^[6-9]\d{9}$/.test(num.trim());
   const sendOtp = async () => {
@@ -934,96 +919,7 @@ const [step, setStep] = useState("phone");
     }
   };
 
-  // const verifyOtp = async () => {
-  //   if (!/^\d{6}$/.test(otp)) {
-  //     setError("Enter 6-digit OTP");
-  //     return false;
-  //   }
-
-  //   setError("");
-  //   setLoading(true);
-
-  //   try {
-  //     // 1️⃣ VERIFY OTP
-  //     const verifyUrl = `/twofactor/API/V1/${API_KEY}/SMS/VERIFY/${requestId}/${otp}`;
-  //     const verifyRes = await fetch(verifyUrl);
-
-  //     if (!verifyRes.ok) throw new Error(`HTTP ${verifyRes.status}`);
-
-  //     const verifyData = await verifyRes.json();
-
-  //     if (verifyData.Status !== "Success") {
-  //       throw new Error(verifyData.Details || "Invalid OTP");
-  //     }
-
-  //     toast.success("OTP Verified!");
-
-  //     // 2️⃣ AUTHENTICATE ODOO (SET COOKIE SESSION)
-  //     const authRes = await fetch("/api/web/session/authenticate", {
-  //       method: "POST",
-  //       credentials: "include", // VERY IMPORTANT
-  //       headers: { "Content-Type": "application/json" },
-  //     });
-
-  //     const authData = await authRes.json();
-
-  //     if (!authData?.success) {
-  //       throw new Error("Odoo authentication failed");
-  //     }
-
-  //     // ✅ SAVE SESSION USING setAuth
-  //     // setAuth({
-  //     //   sessionId: authData.sessionId,
-  //     //   expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 1 day expiry
-  //     // });
-
-  //     setAuth({
-  //       sessionId: authData.session_id, // from Odoo authenticate response
-  //       customerId: result.CustomerId,
-  //       phone: phone,
-  //       expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24h expiry
-  //     });
-
-  //     // 3️⃣ CREATE / CHECK CUSTOMER (COOKIE AUTO USED)
-  //     const phone = mobile.trim();
-
-  //     const customerRes = await fetch("/api/create/customer", {
-  //       method: "POST",
-  //       credentials: "include", // VERY IMPORTANT
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         jsonrpc: "2.0",
-  //         method: "call",
-  //         params: {
-  //           name: `User ${phone}`,
-  //           phone: `${phone}`,
-  //           source_id: "Partner-App",
-  //         },
-  //       }),
-  //     });
-
-  //     const customerData = await customerRes.json();
-  //     const result = customerData?.result?.[0];
-
-  //     if (!result?.CustomerId) {
-  //       throw new Error("Failed to get CustomerId");
-  //     }
-
-  //     // 4️⃣ STORE ONLY CUSTOMER ID (NO SESSION STORAGE NEEDED)
-  //     localStorage.setItem("originalCustomerId", String(result.CustomerId));
-  //     localStorage.setItem("verifiedPhone", phone);
-
-  //     return true;
-  //   } catch (err) {
-  //     toast.error(err.message || "Login failed");
-  //     return false;
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
+  
   const verifyOtp = async () => {
     if (!/^\d{6}$/.test(otp)) {
       setError("Enter 6-digit OTP");

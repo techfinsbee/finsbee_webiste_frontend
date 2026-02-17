@@ -185,7 +185,7 @@ export function clearAuth() {
 ========================= */
 export function isAuthValid(auth) {
   return (
-    !!auth?.customerId &&   // 🔥 important change
+    !!auth?.customerId &&   //  important change
     (!auth?.expiresAt || Date.now() < auth.expiresAt)
   );
 }
