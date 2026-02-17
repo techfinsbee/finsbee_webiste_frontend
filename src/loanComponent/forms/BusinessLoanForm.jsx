@@ -1951,34 +1951,53 @@ import { DurationSelector } from "../ui/DurationSelector";
 import { EligibilityCheckingCard } from "../ui/EligibilityCheckingCard";
 import { EligibleSuccessCard } from "../ui/EligibleSuccessCard";
 import { NotEligibleCard } from "../ui/NotEligibleCard";
+import { getAuth } from "@/lib/authStorage";
 
-export default function BusinessLoanForm({ extraData }) {
+export default function BusinessLoanForm({ extraData, loanType }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [loanId, setLoanId] = useState(null);
   const [eligibilityResult, setEligibilityResult] = useState(null);
 
-  const sessionId =
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("auth") || "{}")?.sessionId
-      : null;
-  const partnerCustomerId =
-    typeof window !== "undefined"
-      ? localStorage.getItem("originalCustomerId")
-      : null;
-  const verifiedPhone =
-    typeof window !== "undefined"
-      ? localStorage.getItem("verifiedPhone")
-      : null;
+   //  RESET WHEN LOAN TYPE CHANGES
+ useEffect(() => {
+   setLoanId(null);
+   setStep(1);
+ }, [loanType]);
+ 
+   // const sessionId =
+   //   typeof window !== "undefined"
+   //     ? JSON.parse(localStorage.getItem("auth") || "{}")?.sessionId
+   //     : null;
+ 
+ 
+   // const partnerCustomerId =
+   //   typeof window !== "undefined"
+   //     ? localStorage.getItem("originalCustomerId")
+   //     : null;
+ 
+   // const verifiedPhone =
+   //   typeof window !== "undefined"
+   //     ? localStorage.getItem("verifiedPhone")
+   //     : null;
+   const auth = getAuth();
+ 
+ const sessionId = auth?.sessionId || null;
+ const partnerCustomerId = auth?.customerId || null;
+ const verifiedPhone = auth?.phone || null;
+ 
+ 
+   const handleChange = (e) => {
+     const { name, value, type, checked } = e.target;
+     setForm((prev) => ({
+       ...prev,
+       [name]: type === "checkbox" ? checked : value,
+     }));
+   };
+ 
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+ 
 
   const employmentTypeMap = {
     "Self-employed Professional": "Self-Employed-Professional",
@@ -2104,6 +2123,7 @@ export default function BusinessLoanForm({ extraData }) {
   }, [step]);
 
   const createLoan = async () => {
+     setLoanId(null);  
     if (!partnerCustomerId) {
       toast.error("Please login again.");
       router.push("/login");

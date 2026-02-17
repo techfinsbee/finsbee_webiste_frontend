@@ -28,5 +28,10 @@ export const loanConfig = {
     title: "LAS Loan",
     steps: 5,
     component: "LASLoanForm"
+  },
+  "instant-loan": {
+    title: "Instant Loan",
+    steps: 5,
+    component: "InstantLoanForm"
   }
 };

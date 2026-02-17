@@ -612,10 +612,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ChevronDown } from "lucide-react";
-import { useRouter, useSearchParams,  usePathname, } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { setAuth } from "@/lib/authStorage";
+
+import { getAuth, isAuthValid, clearAuth } from "@/lib/authStorage";
+
 import { loanRouteMap } from "@/config/loanRouteMap";
 
 import { loanEligibilityDocuments } from "@/data/loanEligibilityDocuments";
@@ -848,12 +851,34 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
 
   const [mobile, setMobile] = useState("");
   const [otp, setOtp] = useState("");
-  const [step, setStep] = useState("phone");
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [requestId, setRequestId] = useState("");
   const [timer, setTimer] = useState(0);
   const pathname = usePathname();
+
+const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [authChecked, setAuthChecked] = useState(false); // NEW
+const [step, setStep] = useState("phone");
+
+
+  useEffect(() => {
+  const auth = getAuth();
+  const valid = auth && isAuthValid(auth);
+
+  setIsLoggedIn(valid);
+  setAuthChecked(true); // prevent flicker
+
+  if (valid) {
+    setStep("done"); // hide phone/otp
+  } else {
+    setStep("phone");
+  }
+}, []);
+
+
+
 
   const handleSubmit = async () => {
     const success = await verifyOtp();
@@ -864,7 +889,7 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
       if (loanType) {
         router.push(`/loan/${loanType}/form`);
       } else {
-        router.push("/loan/personal/form"); // fallback
+        router.push("/loan/personal-loan/form"); // fallback
       }
     }
   };
@@ -909,6 +934,96 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
     }
   };
 
+  // const verifyOtp = async () => {
+  //   if (!/^\d{6}$/.test(otp)) {
+  //     setError("Enter 6-digit OTP");
+  //     return false;
+  //   }
+
+  //   setError("");
+  //   setLoading(true);
+
+  //   try {
+  //     // 1️⃣ VERIFY OTP
+  //     const verifyUrl = `/twofactor/API/V1/${API_KEY}/SMS/VERIFY/${requestId}/${otp}`;
+  //     const verifyRes = await fetch(verifyUrl);
+
+  //     if (!verifyRes.ok) throw new Error(`HTTP ${verifyRes.status}`);
+
+  //     const verifyData = await verifyRes.json();
+
+  //     if (verifyData.Status !== "Success") {
+  //       throw new Error(verifyData.Details || "Invalid OTP");
+  //     }
+
+  //     toast.success("OTP Verified!");
+
+  //     // 2️⃣ AUTHENTICATE ODOO (SET COOKIE SESSION)
+  //     const authRes = await fetch("/api/web/session/authenticate", {
+  //       method: "POST",
+  //       credentials: "include", // VERY IMPORTANT
+  //       headers: { "Content-Type": "application/json" },
+  //     });
+
+  //     const authData = await authRes.json();
+
+  //     if (!authData?.success) {
+  //       throw new Error("Odoo authentication failed");
+  //     }
+
+  //     // ✅ SAVE SESSION USING setAuth
+  //     // setAuth({
+  //     //   sessionId: authData.sessionId,
+  //     //   expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 1 day expiry
+  //     // });
+
+  //     setAuth({
+  //       sessionId: authData.session_id, // from Odoo authenticate response
+  //       customerId: result.CustomerId,
+  //       phone: phone,
+  //       expiresAt: Date.now() + 24 * 60 * 60 * 1000, // 24h expiry
+  //     });
+
+  //     // 3️⃣ CREATE / CHECK CUSTOMER (COOKIE AUTO USED)
+  //     const phone = mobile.trim();
+
+  //     const customerRes = await fetch("/api/create/customer", {
+  //       method: "POST",
+  //       credentials: "include", // VERY IMPORTANT
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         jsonrpc: "2.0",
+  //         method: "call",
+  //         params: {
+  //           name: `User ${phone}`,
+  //           phone: `${phone}`,
+  //           source_id: "Partner-App",
+  //         },
+  //       }),
+  //     });
+
+  //     const customerData = await customerRes.json();
+  //     const result = customerData?.result?.[0];
+
+  //     if (!result?.CustomerId) {
+  //       throw new Error("Failed to get CustomerId");
+  //     }
+
+  //     // 4️⃣ STORE ONLY CUSTOMER ID (NO SESSION STORAGE NEEDED)
+  //     localStorage.setItem("originalCustomerId", String(result.CustomerId));
+  //     localStorage.setItem("verifiedPhone", phone);
+
+  //     return true;
+  //   } catch (err) {
+  //     toast.error(err.message || "Login failed");
+  //     return false;
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const verifyOtp = async () => {
     if (!/^\d{6}$/.test(otp)) {
       setError("Enter 6-digit OTP");
@@ -933,10 +1048,10 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
 
       toast.success("OTP Verified!");
 
-      // 2️⃣ AUTHENTICATE ODOO (SET COOKIE SESSION)
+      // 2️⃣ AUTHENTICATE ODOO (COOKIE SESSION)
       const authRes = await fetch("/api/web/session/authenticate", {
         method: "POST",
-        credentials: "include", // VERY IMPORTANT
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
       });
 
@@ -946,21 +1061,19 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
         throw new Error("Odoo authentication failed");
       }
 
-      // 3️⃣ CREATE / CHECK CUSTOMER (COOKIE AUTO USED)
       const phone = mobile.trim();
 
+      // 3️⃣ CREATE / CHECK CUSTOMER
       const customerRes = await fetch("/api/create/customer", {
         method: "POST",
-        credentials: "include", // VERY IMPORTANT
-        headers: {
-          "Content-Type": "application/json",
-        },
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           jsonrpc: "2.0",
           method: "call",
           params: {
             name: `User ${phone}`,
-            phone: `${phone}`,
+            phone: phone,
             source_id: "Partner-App",
           },
         }),
@@ -973,9 +1086,18 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
         throw new Error("Failed to get CustomerId");
       }
 
-      // 4️⃣ STORE ONLY CUSTOMER ID (NO SESSION STORAGE NEEDED)
+      setAuth({
+        sessionId: authData.session_id,
+        customerId: result.CustomerId,
+        phone: phone,
+        expiresAt: Date.now() + 24 * 60 * 60 * 1000,
+      });
+
+      // Optional (if you still use these)
       localStorage.setItem("originalCustomerId", String(result.CustomerId));
       localStorage.setItem("verifiedPhone", phone);
+
+      setIsLoggedIn(true);
 
       return true;
     } catch (err) {
@@ -1310,145 +1432,141 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
         </div>
 
         {/* SIDEBAR - APPLY LOAN FLOW */}
-        <div
-          ref={sidebarRef}
-          className="w-full lg:w-1/3 flex justify-center lg:justify-end"
-        >
-          <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
-            <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg overflow-hidden">
-              {/* ================= PHONE STEP ================= */}
-              {step === "phone" && (
-                <div className="p-8">
-                  <h2 className="text-2xl font-bold mb-6">
-                    Your phone number?
-                  </h2>
+      {authChecked ? (
+  <div
+    ref={sidebarRef}
+    className="w-full lg:w-1/3 flex justify-center lg:justify-end"
+  >
+    <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
+      <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg overflow-hidden">
+        {isLoggedIn ? (
+          // Logged-in: Apply Now + Logout
+          <div className="p-8">
+            <h2 className="text-2xl font-bold mb-4">Welcome Back 👋</h2>
+            <p className="text-gray-600 mb-6">
+              Continue your loan application.
+            </p>
 
-                  <div className="border rounded-xl px-4 py-4 flex items-center mb-6">
-                    <span className="text-gray-500 mr-2">+91</span>
-                    <input
-                      type="tel"
-                      maxLength={10}
-                      value={mobile}
-                      onChange={(e) => setMobile(e.target.value)}
-                      placeholder="Enter mobile no."
-                      className="w-full outline-none"
-                    />
-                  </div>
+            <button
+              onClick={() => {
+                const loanType = loanRouteMap[pathname] || "personal-loan";
+                router.push(`/${loanType}/form`);
+              }}
+              className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
+            >
+              Apply Now
+            </button>
 
-                  <p className="text-sm text-gray-600 mb-4">
-                    By creating an account you agree to our{" "}
-                    <span className="underline cursor-pointer">
-                      Term and Conditions
-                    </span>{" "}
-                    and{" "}
-                    <span className="underline cursor-pointer">
-                      Privacy Policy
-                    </span>
-                  </p>
-
-                  <p className="text-sm text-gray-500 mb-6">
-                    Finsbee keeps your data safe
-                  </p>
-
-                  <button
-                    onClick={sendOtp}
-                    disabled={loading}
-                    className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
-                  >
-                    {loading ? "Sending..." : "Apply Loan"}
-                  </button>
-                </div>
-              )}
-
-              {/* ================= OTP STEP ================= */}
-              {step === "otp" && (
-                <div className="p-8">
-                  <div className="mb-2 text-sm text-gray-500">
-                    {mobile}{" "}
-                    <span
-                      className="underline cursor-pointer"
-                      onClick={() => setStep("phone")}
-                    >
-                      Change
-                    </span>
-                  </div>
-
-                  <h2 className="text-3xl font-bold mb-6">Verify OTP</h2>
-
-                  <div className="flex gap-3 mb-6">
-                    <input
-                      type="text"
-                      maxLength={6}
-                      value={otp}
-                      onChange={(e) => {
-                        setOtp(e.target.value);
-                        setError("");
-                      }}
-                      placeholder="Enter 6-digit OTP"
-                      className="w-full p-4 text-center text-2xl tracking-[10px] border rounded-xl outline-none"
-                    />
-                  </div>
-
-                  <p className="text-sm mb-4">
-                    {timer > 0 ? (
-                      <>
-                        Resend OTP in{" "}
-                        <span className="text-yellow-500 font-semibold">
-                          {timer} Sec
-                        </span>
-                      </>
-                    ) : (
-                      <span
-                        className="text-yellow-500 cursor-pointer"
-                        onClick={() => setTimer(60)}
-                      >
-                        Resend OTP
-                      </span>
-                    )}
-                  </p>
-
-                  <p className="text-sm text-gray-500 mb-6">
-                    Finsbee keeps your data safe
-                  </p>
-
-                  {/* <button
-                    onClick={async () => {
-                      const success = await verifyOtp();
-
-                      if (success) {
-                        router.push(`/${loanSlug}/form`);
-                      }
-                    }}
-                    disabled={loading}
-                    className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
-                  >
-                    {loading ? "Verifying..." : "Submit OTP"}
-                  </button> */}
-                  <button
-                    onClick={async () => {
-                      const success = await verifyOtp();
-
-                      if (success) {
-                        const loanType = loanRouteMap[pathname];
-
-                        if (loanType) {
-                          router.push(`/${loanType}/form`);
-                        } else {
-                          // fallback if route not mapped
-                          router.push("/personal-loan/form");
-                        }
-                      }
-                    }}
-                    disabled={loading}
-                    className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
-                  >
-                    {loading ? "Verifying..." : "Submit OTP"}
-                  </button>
-                </div>
-              )}
-            </div>
+            <button
+              onClick={() => {
+                clearAuth();
+                localStorage.removeItem("originalCustomerId");
+                localStorage.removeItem("verifiedPhone");
+                setIsLoggedIn(false);
+                setStep("phone");
+              }}
+              className="w-full mt-4 text-sm text-gray-500 underline"
+            >
+              Logout
+            </button>
           </div>
-        </div>
+        ) : (
+          // Not logged-in: Phone → OTP flow
+          <>
+            {step === "phone" && (
+              <div className="p-8">
+                <h2 className="text-2xl font-bold mb-6">
+                  Your phone number?
+                </h2>
+
+                <div className="border rounded-xl px-4 py-4 flex items-center mb-6">
+                  <span className="text-gray-500 mr-2">+91</span>
+                  <input
+                    type="tel"
+                    maxLength={10}
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
+                    placeholder="Enter mobile no."
+                    className="w-full outline-none"
+                  />
+                </div>
+
+                <p className="text-sm text-gray-600 mb-4">
+                  By creating an account you agree to our Terms and Privacy Policy
+                </p>
+
+                <p className="text-sm text-gray-500 mb-6">
+                  Finsbee keeps your data safe
+                </p>
+
+                <button
+                  onClick={sendOtp}
+                  disabled={loading}
+                  className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
+                >
+                  {loading ? "Sending..." : "Apply Loan"}
+                </button>
+              </div>
+            )}
+
+            {step === "otp" && (
+              <div className="p-8">
+                <div className="mb-2 text-sm text-gray-500">
+                  {mobile}
+                  <span
+                    className="underline cursor-pointer ml-2"
+                    onClick={() => setStep("phone")}
+                  >
+                    Change
+                  </span>
+                </div>
+
+                <h2 className="text-3xl font-bold mb-6">Verify OTP</h2>
+
+                <input
+                  type="text"
+                  maxLength={6}
+                  value={otp}
+                  onChange={(e) => {
+                    setOtp(e.target.value);
+                    setError("");
+                  }}
+                  placeholder="Enter 6-digit OTP"
+                  className="w-full p-4 text-center text-2xl tracking-[10px] border rounded-xl outline-none mb-6"
+                />
+
+                <button
+                  onClick={async () => {
+                    const success = await verifyOtp();
+                    if (success) {
+                      setIsLoggedIn(true);
+                      setStep("done");
+                    }
+                  }}
+                  disabled={loading}
+                  className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
+                >
+                  {loading ? "Verifying..." : "Submit OTP"}
+                </button>
+              </div>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+) : (
+  // Prevent flicker before auth check
+  <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
+    <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
+      <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg overflow-hidden p-8 text-center animate-pulse">
+        <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+      </div>
+    </div>
+  </div>
+)}
+
       </div>
 
       {/* MODALS */}

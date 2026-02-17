@@ -493,6 +493,7 @@ import BusinessLoanForm from "@/loanComponent/forms/BusinessLoanForm";
 import HomeLoanForm from "@/loanComponent/forms/HomeLoanForm";
 import LAPLoanForm from "@/loanComponent/forms/LAPLoanForm";
 import LasLoanForm from "@/loanComponent/forms/LASLoanForm";
+import InstantLoanForm from "@/loanComponent/forms/InstatntLoanForm";
 
 export default function DynamicLoanPage() {
   const params = useParams();
@@ -520,6 +521,8 @@ export default function DynamicLoanPage() {
         return <LasLoanForm step={step} setStep={setStep} />;
       case "LAPLoanForm":
         return <LAPLoanForm step={step} setStep={setStep} />;
+      case "InstantLoanForm":
+        return <InstantLoanForm step={step} setStep={setStep} loanType="Instant-Loan" />;
 
       default:
         return null;

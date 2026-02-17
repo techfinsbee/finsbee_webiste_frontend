@@ -1119,6 +1119,7 @@ import { EligibilityCheckingCard } from "../ui/EligibilityCheckingCard";
 import { EligibleSuccessCard } from "../ui/EligibleSuccessCard";
 import { NotEligibleCard } from "../ui/NotEligibleCard";
 import SalaryModeSelector from "../ui/SalaryModeSelector";
+import { getAuth } from "@/lib/authStorage";
 
 export default function PersonalLoanForm({ extraData, loanType }) {
   const router = useRouter();
@@ -1127,20 +1128,31 @@ export default function PersonalLoanForm({ extraData, loanType }) {
   const [loanId, setLoanId] = useState(null);
   const [eligibilityResult, setEligibilityResult] = useState(null);
 
-  const sessionId =
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("auth") || "{}")?.sessionId
-      : null;
+  //  RESET WHEN LOAN TYPE CHANGES
+  useEffect(() => {
+    setLoanId(null);
+    setStep(1);
+  }, [loanType]);
 
-  const partnerCustomerId =
-    typeof window !== "undefined"
-      ? localStorage.getItem("originalCustomerId")
-      : null;
+  // const sessionId =
+  //   typeof window !== "undefined"
+  //     ? JSON.parse(localStorage.getItem("auth") || "{}")?.sessionId
+  //     : null;
 
-  const verifiedPhone =
-    typeof window !== "undefined"
-      ? localStorage.getItem("verifiedPhone")
-      : null;
+  // const partnerCustomerId =
+  //   typeof window !== "undefined"
+  //     ? localStorage.getItem("originalCustomerId")
+  //     : null;
+
+  // const verifiedPhone =
+  //   typeof window !== "undefined"
+  //     ? localStorage.getItem("verifiedPhone")
+  //     : null;
+  const auth = getAuth();
+
+  const sessionId = auth?.sessionId || null;
+  const partnerCustomerId = auth?.customerId || null;
+  const verifiedPhone = auth?.phone || null;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -1516,10 +1528,9 @@ export default function PersonalLoanForm({ extraData, loanType }) {
       const result = data?.result?.[0];
 
       if (result?.success === true) {
-        setStep(8);
+        toast.success(result?.message || "Application submitted successfully!");
       } else {
         toast.error(result?.message || "Submission failed");
-        setStep(3);
       }
     } catch {
       toast.error("Server error");
@@ -1528,7 +1539,6 @@ export default function PersonalLoanForm({ extraData, loanType }) {
       setLoading(false);
     }
   };
-
 
   /* ================= STEP HANDLERS ================= */
   const handleStep1Submit = async () => {
@@ -1585,80 +1595,78 @@ export default function PersonalLoanForm({ extraData, loanType }) {
   return (
     <div className="">
       {/* <div className="bg-white rounded-3xl shadow-[0_30px_80px_rgba(0,0,0,0.08)] w-full max-w-md p-8"> */}
-    
-        {/* STEP 1 */}
 
-        {step === 1 && (
-          <FormCard>
-            <p className="text-[14px] text-[#7B7B7B] mb-2">
-              Takes less than 2 minutes
-            </p>
+      {/* STEP 1 */}
 
-            <h2 className="text-[30px] font-semibold text-[#111] mb-8 leading-tight">
-              Help Us Check Your Eligibility
-            </h2>
+      {step === 1 && (
+        <FormCard>
+          <p className="text-[14px] text-[#7B7B7B] mb-2">
+            Takes less than 2 minutes
+          </p>
 
-            <InputField
-              label="PAN No."
-              subLabel="(PAN helps us offer better rates. No impact on credit score)"
-              name="pan"
-              value={form.pan.toUpperCase()}
+          <h2 className="text-[30px] font-semibold text-[#111] mb-8 leading-tight">
+            Help Us Check Your Eligibility
+          </h2>
+
+          <InputField
+            label="PAN No."
+            subLabel="(PAN helps us offer better rates. No impact on credit score)"
+            name="pan"
+            value={form.pan.toUpperCase()}
+            onChange={handleChange}
+            placeholder="eg : ABCDF1203G"
+            maxLength={10}
+          />
+
+          <InputField
+            label="First Name (as per PAN)"
+            name="firstName"
+            value={form.firstName}
+            onChange={handleChange}
+            placeholder="enter first name"
+          />
+
+          <InputField
+            label="Last Name (as per PAN)"
+            name="lastName"
+            value={form.lastName}
+            onChange={handleChange}
+            placeholder="enter last name"
+          />
+
+          <GenderSelector
+            value={form.gender}
+            onChange={(val) => setForm((prev) => ({ ...prev, gender: val }))}
+          />
+
+          <InputField
+            label="Your Date of Birth"
+            name="dob"
+            type="date"
+            value={form.dob}
+            onChange={handleChange}
+          />
+
+          <InputField
+            label="Your Email Id"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="xxxxxxx@xxx.xxx"
+          />
+
+          <div className="mb-8">
+            <label className="block text-[15px] text-[#6B6B6B] mb-2">
+              Your location pincode
+            </label>
+
+            <input
+              name="pincode"
+              placeholder="xxxxxx"
+              value={form.pincode}
               onChange={handleChange}
-              placeholder="eg : ABCDF1203G"
-              maxLength={10}
-            />
-
-            <InputField
-              label="First Name (as per PAN)"
-              name="firstName"
-              value={form.firstName}
-              onChange={handleChange}
-              placeholder="enter first name"
-            />
-
-            <InputField
-              label="Last Name (as per PAN)"
-              name="lastName"
-              value={form.lastName}
-              onChange={handleChange}
-              placeholder="enter last name"
-            />
-
-            <GenderSelector
-              value={form.gender}
-              onChange={(val) => setForm((prev) => ({ ...prev, gender: val }))}
-            />
-
-            <InputField
-              label="Your Date of Birth"
-              name="dob"
-              type="date"
-              value={form.dob}
-              onChange={handleChange}
-            />
-
-            <InputField
-              label="Your Email Id"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="xxxxxxx@xxx.xxx"
-            />
-
-            
-
-            <div className="mb-8">
-              <label className="block text-[15px] text-[#6B6B6B] mb-2">
-                Your location pincode
-              </label>
-
-              <input
-                name="pincode"
-                placeholder="xxxxxx"
-                value={form.pincode}
-                onChange={handleChange}
-                maxLength={6}
-                className={`
+              maxLength={6}
+              className={`
       w-full
       rounded-[8px]
       px-6
@@ -1674,277 +1682,269 @@ export default function PersonalLoanForm({ extraData, loanType }) {
           : "border-[#D9D9D9]"
       }
     `}
-              />
-
-              {/* Location Display Like Figma */}
-              {form.district && form.state && (
-                <p className="mt-3 text-[14px] font-semibold text-[#111]">
-                  {form.district}, {form.state}
-                </p>
-              )}
-            </div>
-
-            <SecurityHint />
-
-            <PrimaryButton
-              onClick={handleStep1Submit}
-              disabled={!form.pan || !form.firstName || !form.dob}
-              loading={loading}
-            >
-              Confirm Details
-            </PrimaryButton>
-          </FormCard>
-        )}
-
-        {/* STEP 2 */}
-        {step === 2 && (
-          <FormCard>
-            <p className="text-[15px] text-[#7B7B7B] mb-3">
-              This won’t impact your credit score.
-            </p>
-
-            <h2 className="text-[32px] font-semibold text-[#111] mb-10 leading-tight">
-              How much loan do you need?
-            </h2>
-
-            <InputField
-              label="Loan Amount"
-              name="loanAmount"
-              value={form.loanAmount}
-              onChange={handleChange}
-              placeholder="enter loan amount"
             />
 
-            <div className="mb-8">
-              <label className="block text-[16px] text-[#6B6B6B] mb-4">
-                Choose Repayment Tenure (in month)
-              </label>
-
-              <div className="flex gap-5">
-                {[12, 24, 36, 60].map((month) => (
-                  <SquareOption
-                    key={month}
-                    label={month}
-                    active={form.tenure === month.toString()}
-                    onClick={() =>
-                      setForm({ ...form, tenure: month.toString() })
-                    }
-                  />
-                ))}
-              </div>
-            </div>
-
-            <InputField
-              label="Current EMI Obligation (if any)"
-              name="emi"
-              value={form.emi}
-              onChange={handleChange}
-              placeholder="enter amount if have any (optional)"
-            />
-
-            <SecurityHint />
-
-            <PrimaryButton
-              onClick={handleStep2Submit}
-              disabled={!form.loanAmount || !form.tenure}
-            >
-              Confirm Amount
-            </PrimaryButton>
-          </FormCard>
-        )}
-
-        {/* STEP 3 */}
-        {step === 3 && (
-          <FormCard>
-            <p className="text-[15px] text-[#7B7B7B] mb-3">
-              This helps us match you with the right lender.
-            </p>
-
-            <h2 className="text-[32px] font-semibold text-[#111] mb-10 leading-tight">
-              How do you earn?
-            </h2>
-
-            {["Salaried", "Self-employed Professional", "Business Owner"].map(
-              (type) => (
-                <OptionCard
-                  key={type}
-                  title={type}
-                  description={`Select this if you are ${type.toLowerCase()}`}
-                  active={form.employmentType === type}
-                  onClick={() => {
-                    setForm({ ...form, employmentType: type });
-                    setStep(type === "Salaried" ? 4 : 5);
-                  }}
-                />
-              )
+            {/* Location Display Like Figma */}
+            {form.district && form.state && (
+              <p className="mt-3 text-[14px] font-semibold text-[#111]">
+                {form.district}, {form.state}
+              </p>
             )}
-          </FormCard>
-        )}
+          </div>
 
-        {/* STEP 4 – Salaried */}
-        {step === 4 && (
-          <FormCard>
-            <p className="text-[15px] text-[#7B7B7B] mb-3">
-              Your data is secure with us
-            </p>
+          <SecurityHint />
 
-            <h2 className="text-[32px] font-semibold text-[#111] mb-8">
-              Tell Us About Your Job
-            </h2>
+          <PrimaryButton
+            onClick={handleStep1Submit}
+            disabled={!form.pan || !form.firstName || !form.dob}
+            loading={loading}
+          >
+            Confirm Details
+          </PrimaryButton>
+        </FormCard>
+      )}
 
-            <InputField
-              label="Company Name"
-              name="companyName"
-              value={form.companyName}
-              onChange={handleChange}
-              placeholder="where are you working?"
+      {/* STEP 2 */}
+      {step === 2 && (
+        <FormCard>
+          <p className="text-[15px] text-[#7B7B7B] mb-3">
+            This won’t impact your credit score.
+          </p>
+
+          <h2 className="text-[32px] font-semibold text-[#111] mb-10 leading-tight">
+            How much loan do you need?
+          </h2>
+
+          <InputField
+            label="Loan Amount"
+            name="loanAmount"
+            value={form.loanAmount}
+            onChange={handleChange}
+            placeholder="enter loan amount"
+          />
+
+          <div className="mb-8">
+            <label className="block text-[16px] text-[#6B6B6B] mb-4">
+              Choose Repayment Tenure (in month)
+            </label>
+
+            <div className="flex gap-5">
+              {[12, 24, 36, 60].map((month) => (
+                <SquareOption
+                  key={month}
+                  label={month}
+                  active={form.tenure === month.toString()}
+                  onClick={() => setForm({ ...form, tenure: month.toString() })}
+                />
+              ))}
+            </div>
+          </div>
+
+          <InputField
+            label="Current EMI Obligation (if any)"
+            name="emi"
+            value={form.emi}
+            onChange={handleChange}
+            placeholder="enter amount if have any (optional)"
+          />
+
+          <SecurityHint />
+
+          <PrimaryButton
+            onClick={handleStep2Submit}
+            disabled={!form.loanAmount || !form.tenure}
+          >
+            Confirm Amount
+          </PrimaryButton>
+        </FormCard>
+      )}
+
+      {/* STEP 3 */}
+      {step === 3 && (
+        <FormCard>
+          <p className="text-[15px] text-[#7B7B7B] mb-3">
+            This helps us match you with the right lender.
+          </p>
+
+          <h2 className="text-[32px] font-semibold text-[#111] mb-10 leading-tight">
+            How do you earn?
+          </h2>
+
+          {["Salaried", "Self-employed Professional", "Business Owner"].map(
+            (type) => (
+              <OptionCard
+                key={type}
+                title={type}
+                description={`Select this if you are ${type.toLowerCase()}`}
+                active={form.employmentType === type}
+                onClick={() => {
+                  setForm({ ...form, employmentType: type });
+                  setStep(type === "Salaried" ? 4 : 5);
+                }}
+              />
+            )
+          )}
+        </FormCard>
+      )}
+
+      {/* STEP 4 – Salaried */}
+      {step === 4 && (
+        <FormCard>
+          <p className="text-[15px] text-[#7B7B7B] mb-3">
+            Your data is secure with us
+          </p>
+
+          <h2 className="text-[32px] font-semibold text-[#111] mb-8">
+            Tell Us About Your Job
+          </h2>
+
+          <InputField
+            label="Company Name"
+            name="companyName"
+            value={form.companyName}
+            onChange={handleChange}
+            placeholder="where are you working?"
+          />
+
+          <InputField
+            label="Net Income (monthly)"
+            name="netIncome"
+            value={form.netIncome}
+            onChange={handleChange}
+            placeholder="your monthly income"
+          />
+
+          <SalaryModeSelector
+            value={form.salaryMode}
+            onChange={(val) => setForm({ ...form, salaryMode: val })}
+          />
+
+          <div className="mb-8">
+            <label className="block text-[16px] text-[#6B6B6B] mb-4">
+              Employment Duration
+            </label>
+
+            <DurationSelector
+              value={form.employmentDuration}
+              onChange={(val) => setForm({ ...form, employmentDuration: val })}
+              options={["3 mos.", "6 mos.", "12 mos.", "1 yr +"]}
             />
+          </div>
 
-            <InputField
-              label="Net Income (monthly)"
-              name="netIncome"
-              value={form.netIncome}
-              onChange={handleChange}
-              placeholder="your monthly income"
-            />
+          <InputField
+            label="Official Mail ID (optional)"
+            name="officialEmail"
+            value={form.officialEmail}
+            onChange={handleChange}
+            placeholder="your company mail ID"
+          />
 
-            
-            <SalaryModeSelector
-              value={form.salaryMode}
-              onChange={(val) => setForm({ ...form, salaryMode: val })}
-            />
+          <SecurityHint />
 
-            <div className="mb-8">
-              <label className="block text-[16px] text-[#6B6B6B] mb-4">
-                Employment Duration
-              </label>
+          <PrimaryButton
+            onClick={handleStep4Submit}
+            disabled={
+              !form.companyName ||
+              !form.netIncome ||
+              !form.salaryMode ||
+              !form.employmentDuration
+            }
+          >
+            Check My Eligibility
+          </PrimaryButton>
+        </FormCard>
+      )}
 
-              <DurationSelector
-                value={form.employmentDuration}
-                onChange={(val) =>
-                  setForm({ ...form, employmentDuration: val })
-                }
-                options={["3 mos.", "6 mos.", "12 mos.", "1 yr +"]}
+      {/* STEP 5 – Business */}
+      {step === 5 && (
+        <FormCard>
+          <p className="text-[15px] text-[#7B7B7B] mb-3">
+            Your data is secure with us
+          </p>
+
+          <h2 className="text-[32px] font-semibold text-[#111] mb-8">
+            Tell Us About Your Business
+          </h2>
+
+          <InputField
+            label="Business Name"
+            name="businessName"
+            value={form.businessName}
+            onChange={handleChange}
+            placeholder="enter your business name"
+          />
+
+          <InputField
+            label="Monthly Income"
+            name="monthlyIncome"
+            value={form.monthlyIncome}
+            onChange={handleChange}
+            placeholder="your monthly income"
+          />
+
+          <div className="bg-[#F7F7F7] rounded-[22px] p-5 border border-[#EAEAEA] mb-6">
+            <div className="flex justify-between items-center mb-5">
+              <p className="text-[16px] font-medium">Are you filing ITR?</p>
+              <input
+                type="checkbox"
+                name="itr"
+                checked={form.itr}
+                onChange={handleChange}
+                className="w-12 h-6 accent-[#E6B84E]"
               />
             </div>
 
-            <InputField
-              label="Official Mail ID (optional)"
-              name="officialEmail"
-              value={form.officialEmail}
-              onChange={handleChange}
-              placeholder="your company mail ID"
-            />
+            <hr className="my-4" />
 
-            <SecurityHint />
-
-            <PrimaryButton
-              onClick={handleStep4Submit}
-              disabled={
-                !form.companyName ||
-                !form.netIncome ||
-                !form.salaryMode ||
-                !form.employmentDuration
-              }
-            >
-              Check My Eligibility
-            </PrimaryButton>
-          </FormCard>
-        )}
-
-        {/* STEP 5 – Business */}
-        {step === 5 && (
-          <FormCard>
-            <p className="text-[15px] text-[#7B7B7B] mb-3">
-              Your data is secure with us
-            </p>
-
-            <h2 className="text-[32px] font-semibold text-[#111] mb-8">
-              Tell Us About Your Business
-            </h2>
-
-            <InputField
-              label="Business Name"
-              name="businessName"
-              value={form.businessName}
-              onChange={handleChange}
-              placeholder="enter your business name"
-            />
-
-            <InputField
-              label="Monthly Income"
-              name="monthlyIncome"
-              value={form.monthlyIncome}
-              onChange={handleChange}
-              placeholder="your monthly income"
-            />
-
-            <div className="bg-[#F7F7F7] rounded-[22px] p-5 border border-[#EAEAEA] mb-6">
-              <div className="flex justify-between items-center mb-5">
-                <p className="text-[16px] font-medium">Are you filing ITR?</p>
-                <input
-                  type="checkbox"
-                  name="itr"
-                  checked={form.itr}
-                  onChange={handleChange}
-                  className="w-12 h-6 accent-[#E6B84E]"
-                />
-              </div>
-
-              <hr className="my-4" />
-
-              <div className="flex justify-between items-center">
-                <p className="text-[16px] font-medium">Have GST?</p>
-                <input
-                  type="checkbox"
-                  name="gst"
-                  checked={form.gst}
-                  onChange={handleChange}
-                  className="w-12 h-6 accent-[#E6B84E]"
-                />
-              </div>
-            </div>
-
-            <div className="mb-10">
-              <label className="block text-[16px] text-[#6B6B6B] mb-4">
-                Business / Employment from
-              </label>
-
-              <DurationSelector
-                value={form.employmentDuration}
-                onChange={(val) =>
-                  setForm({ ...form, employmentDuration: val })
-                }
-                options={["0-1yr", "2yr +", "3yr +", "5yr +"]}
+            <div className="flex justify-between items-center">
+              <p className="text-[16px] font-medium">Have GST?</p>
+              <input
+                type="checkbox"
+                name="gst"
+                checked={form.gst}
+                onChange={handleChange}
+                className="w-12 h-6 accent-[#E6B84E]"
               />
             </div>
+          </div>
 
-            <SecurityHint />
+          <div className="mb-10">
+            <label className="block text-[16px] text-[#6B6B6B] mb-4">
+              Business / Employment from
+            </label>
 
-            <PrimaryButton
-              onClick={handleStep5Submit}
-              disabled={
-                !form.businessName ||
-                !form.monthlyIncome ||
-                !form.employmentDuration
-              }
-            >
-              Check My Eligibility
-            </PrimaryButton>
-          </FormCard>
-        )}
+            <DurationSelector
+              value={form.employmentDuration}
+              onChange={(val) => setForm({ ...form, employmentDuration: val })}
+              options={["0-1yr", "2yr +", "3yr +", "5yr +"]}
+            />
+          </div>
 
-        {/* STEP 6 – Verifying */}
-        {step === 6 && <EligibilityCheckingCard />}
+          <SecurityHint />
 
-        {/* STEP 7 – Result */}
-        {step === 7 &&
-          (eligibilityResult?.eligible ? (
-            <EligibleSuccessCard />
-          ) : (
-            <NotEligibleCard />
-          ))}
-     
+          <PrimaryButton
+            onClick={handleStep5Submit}
+            disabled={
+              !form.businessName ||
+              !form.monthlyIncome ||
+              !form.employmentDuration
+            }
+          >
+            Check My Eligibility
+          </PrimaryButton>
+        </FormCard>
+      )}
+
+      {/* STEP 6 – Verifying */}
+      {step === 6 && <EligibilityCheckingCard />}
+
+      {/* STEP 7 – Result */}
+      {step === 7 &&
+        (eligibilityResult?.eligible ? (
+          <EligibleSuccessCard />
+        ) : (
+          <NotEligibleCard />
+        ))}
     </div>
   );
 }

@@ -292,42 +292,202 @@
 // }
 
 
+// import { NextResponse } from "next/server";
+
+// export async function POST(req) {
+//   try {
+//     const body = await req.json();
+//     const params = body?.params || {};
+//     const { CustomerId } = params;
+
+//     // ✅ Extract cookie header (session)
+//     const cookieHeader = req.headers.get("cookie") || "";
+
+//     if (!cookieHeader.includes("session_id=")) {
+//       return NextResponse.json(
+//         {
+//           jsonrpc: "2.0",
+//           error: { code: 401, message: "No valid Odoo session cookie found" },
+//         },
+//         { status: 401 }
+//       );
+//     }
+
+//     if (!CustomerId) {
+//       return NextResponse.json(
+//         {
+//           jsonrpc: "2.0",
+//           error: { code: 400, message: "Missing CustomerId" },
+//         },
+//         { status: 400 }
+//       );
+//     }
+
+//     console.log("🔍 Fetching Odoo profile for CustomerId:", CustomerId);
+
+//     // ✅ Use correct Odoo field names - remove 'birthday' which doesn't exist
+//     const odooResponse = await fetch(
+//       "https://payday.finsbee.com/web/dataset/call_kw",
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Cookie: cookieHeader,
+//         },
+//         body: JSON.stringify({
+//           jsonrpc: "2.0",
+//           method: "call",
+//           params: {
+//             model: "res.partner",
+//             method: "read",
+//             args: [[CustomerId], ["name", "email", "phone", "zip"]], // Removed birthday
+//             kwargs: {},
+//           },
+//         }),
+//       }
+//     );
+
+//     const data = await odooResponse.json();
+//     console.log("🧾 Odoo profile raw response:", data);
+
+//     if (!odooResponse.ok || data.error) {
+//       console.error("❌ Odoo error:", data.error);
+      
+//       // Return empty result instead of error for Flutter compatibility
+//       return NextResponse.json({
+//         jsonrpc: "2.0",
+//         result: [{
+//           success: "True",
+//           CustomerId,
+//           name: "",
+//           email: "",
+//           phone: "",
+//           zip: "",
+//           birthday: "", // Provide empty birthday field for Flutter
+//         }],
+//       });
+//     }
+
+//     const result = data.result;
+//     if (!result || result.length === 0) {
+//       // Return empty profile instead of error
+//       return NextResponse.json({
+//         jsonrpc: "2.0",
+//         result: [{
+//           success: "True",
+//           CustomerId,
+//           name: "",
+//           email: "",
+//           phone: "",
+//           zip: "",
+//           birthday: "",
+//         }],
+//       });
+//     }
+
+//     const partner = result[0];
+//     console.log("✅ Found customer:", partner.name);
+
+//     return NextResponse.json({
+//       jsonrpc: "2.0",
+//       result: [
+//         {
+//           success: "True",
+//           CustomerId,
+//           name: partner.name || "",
+//           email: partner.email || "",
+//           phone: partner.phone || "",
+//           zip: partner.zip || "",
+//           birthday: "", // Always empty since Odoo doesn't have birthday field
+//         },
+//       ],
+//     });
+//   } catch (err) {
+//     console.error("🔥 Profile API Exception:", err);
+//     // Return empty profile instead of error
+//     return NextResponse.json({
+//       jsonrpc: "2.0",
+//       result: [{
+//         success: "True",
+//         CustomerId: params.CustomerId || 0,
+//         name: "",
+//         email: "",
+//         phone: "",
+//         zip: "",
+//         birthday: "",
+//       }],
+//     });
+//   }
+// }
+
+
+// // app/api/customer/profile/route.js
+// import { NextResponse } from "next/server";
+
+// export async function POST(req) {
+//   try {
+//     const cookieHeader = req.headers.get("cookie") || "";
+
+//     const odooResponse = await fetch(
+//       "https://payday.finsbee.com/web/dataset/call_kw",
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Cookie: cookieHeader,
+//         },
+//         body: JSON.stringify({
+//           jsonrpc: "2.0",
+//           method: "call",
+//           params: {
+//             model: "res.partner",
+//             method: "fields_get",
+//             args: [],
+//             kwargs: {},
+//           },
+//         }),
+//       }
+//     );
+
+//     const data = await odooResponse.json();
+
+//     return NextResponse.json(data);
+
+//   } catch (err) {
+//     return NextResponse.json({ error: err.message });
+//   }
+// }
+
+
+
 import { NextResponse } from "next/server";
+
+const ODOO = "https://payday.finsbee.com";
 
 export async function POST(req) {
   try {
     const body = await req.json();
-    const params = body?.params || {};
-    const { CustomerId } = params;
+    const { CustomerId } = body?.params || {};
 
-    // ✅ Extract cookie header (session)
     const cookieHeader = req.headers.get("cookie") || "";
 
     if (!cookieHeader.includes("session_id=")) {
       return NextResponse.json(
-        {
-          jsonrpc: "2.0",
-          error: { code: 401, message: "No valid Odoo session cookie found" },
-        },
+        { jsonrpc: "2.0", error: { code: 401, message: "No valid session" } },
         { status: 401 }
       );
     }
 
     if (!CustomerId) {
       return NextResponse.json(
-        {
-          jsonrpc: "2.0",
-          error: { code: 400, message: "Missing CustomerId" },
-        },
+        { jsonrpc: "2.0", error: { code: 400, message: "CustomerId missing" } },
         { status: 400 }
       );
     }
 
-    console.log("🔍 Fetching Odoo profile for CustomerId:", CustomerId);
-
-    // ✅ Use correct Odoo field names - remove 'birthday' which doesn't exist
+    // 🔥 FETCH ALL FIELDS (REAL VALUES)
     const odooResponse = await fetch(
-      "https://payday.finsbee.com/web/dataset/call_kw",
+      `${ODOO}/web/dataset/call_kw`,
       {
         method: "POST",
         headers: {
@@ -340,7 +500,7 @@ export async function POST(req) {
           params: {
             model: "res.partner",
             method: "read",
-            args: [[CustomerId], ["name", "email", "phone", "zip"]], // Removed birthday
+            args: [[CustomerId], []], // ← EMPTY ARRAY = ALL FIELDS
             kwargs: {},
           },
         }),
@@ -348,74 +508,42 @@ export async function POST(req) {
     );
 
     const data = await odooResponse.json();
-    console.log("🧾 Odoo profile raw response:", data);
 
-    if (!odooResponse.ok || data.error) {
-      console.error("❌ Odoo error:", data.error);
-      
-      // Return empty result instead of error for Flutter compatibility
+    if (!data.result || !data.result.length) {
       return NextResponse.json({
         jsonrpc: "2.0",
-        result: [{
-          success: "True",
-          CustomerId,
-          name: "",
-          email: "",
-          phone: "",
-          zip: "",
-          birthday: "", // Provide empty birthday field for Flutter
-        }],
+        result: [{ success: "False", message: "No profile found" }],
       });
     }
 
-    const result = data.result;
-    if (!result || result.length === 0) {
-      // Return empty profile instead of error
-      return NextResponse.json({
-        jsonrpc: "2.0",
-        result: [{
-          success: "True",
-          CustomerId,
-          name: "",
-          email: "",
-          phone: "",
-          zip: "",
-          birthday: "",
-        }],
-      });
-    }
+    const partner = data.result[0];
 
-    const partner = result[0];
-    console.log("✅ Found customer:", partner.name);
+    // 🎯 FILTER ONLY UI FIELDS
+    const filteredProfile = {
+      CustomerId,
+      name: partner.name || "",
+      email: partner.email || "",
+      phone: partner.phone || partner.mobile || "",
+      pan: partner.PAN || partner.pan_card || "",
+      dob: partner.DOB || "",
+      nationality: partner.Nationality || "",
+      street: partner.street || "",
+      city: partner.city || "",
+      state: partner.state_id?.[1] || "",
+      pincode: partner.zip || "",
+      gender: partner.gender || "",
+    };
 
     return NextResponse.json({
       jsonrpc: "2.0",
-      result: [
-        {
-          success: "True",
-          CustomerId,
-          name: partner.name || "",
-          email: partner.email || "",
-          phone: partner.phone || "",
-          zip: partner.zip || "",
-          birthday: "", // Always empty since Odoo doesn't have birthday field
-        },
-      ],
+      result: [{ success: "True", ...filteredProfile }],
     });
+
   } catch (err) {
-    console.error("🔥 Profile API Exception:", err);
-    // Return empty profile instead of error
-    return NextResponse.json({
-      jsonrpc: "2.0",
-      result: [{
-        success: "True",
-        CustomerId: params.CustomerId || 0,
-        name: "",
-        email: "",
-        phone: "",
-        zip: "",
-        birthday: "",
-      }],
-    });
+    console.error("Profile API error:", err);
+    return NextResponse.json(
+      { jsonrpc: "2.0", error: { code: 500, message: err.message } },
+      { status: 500 }
+    );
   }
 }

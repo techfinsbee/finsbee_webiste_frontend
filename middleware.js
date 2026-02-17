@@ -51,7 +51,7 @@
 
 // middleware.js (root of project)
 import { NextResponse } from "next/server";
-import { isAuthValid } from "@/lib/authStorage";
+
 
 export async function middleware(req) {
   const url = req.nextUrl.clone();
@@ -128,18 +128,25 @@ export async function middleware(req) {
   // ────────────────────────────────────────────────
   // 5. Read auth from cookie (set after successful login)
   // ────────────────────────────────────────────────
-  let auth = null;
-  const authCookie = req.cookies.get("auth_session")?.value;
+ let isLoggedIn = false;
 
-  if (authCookie) {
-    try {
-      auth = JSON.parse(authCookie);
-    } catch (e) {
-      console.warn("Invalid auth cookie:", e);
+const authCookie = req.cookies.get("auth_session")?.value;
+
+if (authCookie) {
+  try {
+    const auth = JSON.parse(authCookie);
+
+    if (
+      auth?.customerId &&
+      (!auth?.expiresAt || Date.now() < auth.expiresAt)
+    ) {
+      isLoggedIn = true;
     }
+  } catch (e) {
+    console.warn("Invalid auth cookie:", e);
   }
+}
 
-  const isLoggedIn = isAuthValid(auth);
 
   // ────────────────────────────────────────────────
   // 6. Protection logic

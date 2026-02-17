@@ -1,6 +1,3 @@
-
-
-
 // "use client";
 
 // import React, { useState } from "react";
@@ -232,7 +229,6 @@
 //   );
 // };
 
-
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
@@ -240,9 +236,8 @@ import { usePathname, useRouter } from "next/navigation";
 import MegaMenu from "./Navbar_Component/Nav";
 import Image from "next/image";
 import { toast } from "react-toastify";
-import axios from 'axios';  // ← FIXED: added this import
+import axios from "axios"; // ← FIXED: added this import
 import { setAuth } from "@/lib/authStorage";
-
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -251,6 +246,15 @@ export const Navbar = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeMegaKey, setActiveMegaKey] = useState(null);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const customerId = localStorage.getItem("originalCustomerId");
+      setIsLoggedIn(!!customerId);
+    }
+  }, []);
 
   // Login dropdown states
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -365,18 +369,22 @@ export const Navbar = () => {
 
       // Real customer creation (using axios)
       const phone = mobile.trim();
-      
-      const response = await axios.post("/api/create/customer", {
-        jsonrpc: "2.0",
-        method: "call",
-        params: {
-          name: `User ${phone}`,
-          phone: phone,
-          source_id: "Partner-App"
+
+      const response = await axios.post(
+        "/api/create/customer",
+        {
+          jsonrpc: "2.0",
+          method: "call",
+          params: {
+            name: `User ${phone}`,
+            phone: phone,
+            source_id: "Partner-App",
+          },
+        },
+        {
+          withCredentials: true, // Ensure cookies are sent
         }
-      }, {
-        withCredentials: true  // Ensure cookies are sent
-      });
+      );
 
       const result = response.data?.result?.[0];
       if (!result?.CustomerId) {
@@ -394,11 +402,12 @@ export const Navbar = () => {
       localStorage.setItem("originalCustomerId", String(result.CustomerId));
 
       // Set cookie for consistency
-      document.cookie = `auth_session=${JSON.stringify(auth)}; path=/; max-age=${7*24*60*60}; SameSite=Lax`;
+      document.cookie = `auth_session=${JSON.stringify(
+        auth
+      )}; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
 
       setIsLoginOpen(false);
-      router.push("/my-account");
-
+      router.push("/dashboard");
     } catch (err) {
       console.error("Verification / customer creation error:", err);
       toast.error(err.message || "Login failed");
@@ -546,32 +555,50 @@ export const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={() => {
-              if (localStorage.getItem("originalCustomerId")) {
-                router.push("/my-account");
+              if (isLoggedIn) {
+                router.push("/dashboard");
               } else {
                 setIsLoginOpen(!isLoginOpen);
               }
             }}
             className="px-6 py-3 rounded-2xl font-semibold text-white bg-gradient-to-r from-[#592eff] to-[#7c45ff] hover:brightness-110 transition-all shadow-lg hover:shadow-xl"
           >
-            {localStorage.getItem("originalCustomerId") ? "My Account" : "Login"}
+            {localStorage.getItem("originalCustomerId")
+              ? "dashboard"
+              : "/"}
           </button>
         </div>
 
         {/* Login Dropdown Card */}
         {isLoginOpen && (
-          <div ref={loginRef} className="absolute top-full right-0 mt-4 z-50 w-96">
+          <div
+            ref={loginRef}
+            className="absolute top-full right-0 mt-4 z-50 w-96"
+          >
             <div
               className="p-8 rounded-3xl shadow-2xl backdrop-blur-lg relative overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,255,0.95) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,255,0.95) 100%)",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
                 border: "1px solid rgba(255,255,255,0.4)",
               }}
             >
               {/* Ornaments */}
-              <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full opacity-20" style={{ background: 'linear-gradient(135deg, #592eff 0%, #7c45ff 100%)' }}></div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-15" style={{ background: 'linear-gradient(135deg, #ffc73c 0%, #ffd564 100%)' }}></div>
+              <div
+                className="absolute -top-10 -left-10 w-32 h-32 rounded-full opacity-20"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #592eff 0%, #7c45ff 100%)",
+                }}
+              ></div>
+              <div
+                className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-15"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #ffc73c 0%, #ffd564 100%)",
+                }}
+              ></div>
 
               {/* Close button */}
               <button
@@ -602,7 +629,11 @@ export const Navbar = () => {
                     style={{ boxShadow: "inset 0 2px 8px rgba(0,0,0,0.05)" }}
                   />
 
-                  {error && <p className="text-red-600 text-sm text-center mb-4">{error}</p>}
+                  {error && (
+                    <p className="text-red-600 text-sm text-center mb-4">
+                      {error}
+                    </p>
+                  )}
 
                   <button
                     onClick={sendOtp}
@@ -611,12 +642,24 @@ export const Navbar = () => {
                   >
                     {loading ? (
                       <span className="flex items-center justify-center">
-                        <svg className="animate-spin h-5 w-5 mr-2 text-white" viewBox="0 0 24 24">
-                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <svg
+                          className="animate-spin h-5 w-5 mr-2 text-white"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            fill="none"
+                          />
                         </svg>
                         Sending...
                       </span>
-                    ) : "Send OTP"}
+                    ) : (
+                      "Send OTP"
+                    )}
                   </button>
                 </>
               ) : (
@@ -641,7 +684,11 @@ export const Navbar = () => {
                     style={{ boxShadow: "inset 0 2px 8px rgba(0,0,0,0.05)" }}
                   />
 
-                  {error && <p className="text-red-600 text-sm text-center mb-4">{error}</p>}
+                  {error && (
+                    <p className="text-red-600 text-sm text-center mb-4">
+                      {error}
+                    </p>
+                  )}
 
                   <button
                     onClick={verifyOtp}
@@ -650,12 +697,24 @@ export const Navbar = () => {
                   >
                     {loading ? (
                       <span className="flex items-center justify-center">
-                        <svg className="animate-spin h-5 w-5 mr-2 text-white" viewBox="0 0 24 24">
-                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <svg
+                          className="animate-spin h-5 w-5 mr-2 text-white"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                            fill="none"
+                          />
                         </svg>
                         Verifying...
                       </span>
-                    ) : "Verify & Continue"}
+                    ) : (
+                      "Verify & Continue"
+                    )}
                   </button>
 
                   <button
