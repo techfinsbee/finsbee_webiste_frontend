@@ -167,13 +167,18 @@ if (step === 1) {
   if (step === 2) {
   return (
     <FormCard>
-      <p className="text-[14px] text-[#7B7B7B] mb-3">
+      {/* <p className="text-[14px] text-[#7B7B7B] mb-3">
         Current market value of your security
       </p>
 
       <h2 className="text-[30px] font-semibold text-[#111] mb-8">
         Total Investment Value
-      </h2>
+      </h2> */}
+      <StepHeader
+        title="Total Investment Value"
+        subtitle="Current market value of your security"
+        onBack={() => setStep(1)}
+      />
 
       <InputField
         label="Total Security Value"
@@ -205,6 +210,7 @@ if (step === 1) {
     return (
       <PersonalLoanForm
         loanType="Loan-Against-Security"
+        onBack={() => setStep(2)}
         extraData={{
           Security_type: form.securityType,
           Total_Securities_Values: form.totalSecurityValue,

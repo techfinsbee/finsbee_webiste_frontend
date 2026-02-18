@@ -473,10 +473,10 @@ export const Navbar = () => {
 
   return (
     <nav className="absolute top-0 w-full z-50 bg-transparent">
-      <div className="flex items-center justify-between mx-auto pt-6 sm:pt-7 md:pt-8 pb-2.5 relative">
+      <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between pt-6 sm:pt-7 md:pt-8 pb-2.5">
         {/* Logo */}
         <div
-          className="flex flex-col w-[120px] sm:w-[140px] md:w-[155.83px] cursor-pointer items-start gap-2 ml-4 sm:ml-8 md:ml-11 mt-2 -translate-y-4 animate-fade-in opacity-0"
+          className="flex-shrink-0 w-[120px] sm:w-[140px] md:w-[155px] cursor-pointer -translate-y-4 animate-fade-in opacity-0"
           onClick={() => handleNavigation("/")}
         >
           <Image
@@ -516,7 +516,7 @@ export const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div
-          className="hidden lg:flex items-center justify-center gap-4 lg:gap-6 p-2 lg:p-3 rounded-2xl -translate-y-4 animate-fade-in opacity-0 absolute left-1/2 -translate-x-1/2"
+          className="hidden lg:flex flex-1 items-center justify-center gap-6 xl:gap-8 -translate-y-4 animate-fade-in opacity-0"
           style={{ animationDelay: "200ms" }}
         >
           {navigationItems.map((item) => (

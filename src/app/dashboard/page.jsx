@@ -100,11 +100,11 @@ export default function DashboardPage() {
   {showDropdown && (
     <div className="absolute right-0 mt-4 mr-4 w-[240px] bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
       
-      <div className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition">
+      {/* <div className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition">
         <p className="text-gray-800 font-medium text-[16px]">
           My Account
         </p>
-      </div>
+      </div> */}
 
       <button
         onClick={handleLogout}

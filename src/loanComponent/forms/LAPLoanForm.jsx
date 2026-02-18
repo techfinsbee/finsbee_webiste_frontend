@@ -8,6 +8,7 @@ import InputField from "../ui/InputField";
 import PrimaryButton from "../ui/PrimaryButton";
 import { SecurityHint } from "../ui/SecurityHint";
 import LAPPropertyType from "../ui/LAPPropertyType";
+import StepHeader from "../ui/StepHeader";
 
 export default function LAPLoanForm() {
   const [step, setStep] = useState(1);
@@ -261,13 +262,13 @@ if (step === 1) {
   if (step === 2) {
   return (
     <FormCard>
-      <p className="text-[14px] text-[#7B7B7B] mb-3">
-        Unlock your best loan offer
-      </p>
+      <StepHeader
+        title="Type of property"
+        subtitle="Unlock your best loan offer"
+        onBack={() => setStep(1)}
+      />
 
-      <h2 className="text-[32px] font-semibold mb-10">
-        Type of property
-      </h2>
+      
 
       <LAPPropertyType
         value={form.propertyType}
@@ -349,13 +350,12 @@ if (step === 1) {
 if (step === 3) {
   return (
     <FormCard>
-      <p className="text-[14px] text-[#7B7B7B] mb-3">
-        Helps us calculate your eligible loan amount
-      </p>
-
-      <h2 className="text-[30px] font-semibold text-[#111] mb-8">
-        Tell us about the property
-      </h2>
+      <StepHeader
+        title="Tell us about the property"
+        subtitle="Helps us calculate your eligible loan amount"
+        onBack={() => setStep(2)}
+      />
+    
 
       <InputField
         label="Estimated Property Value (in lakh)"
@@ -408,7 +408,8 @@ if (step === 3) {
   if (step === 4) {
     return (
       <PersonalLoanForm
-        loanType={form.loanOption} // Loan-Against-Property or balance-transfer-lap
+        loanType={form.loanOption} 
+        onBack={() => setStep(3)}
         extraData={{
           Property_Type: form.propertyType,
           Property_Value: form.propertyValue,

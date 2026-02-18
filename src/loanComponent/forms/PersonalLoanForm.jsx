@@ -15,8 +15,14 @@ import { EligibleSuccessCard } from "../ui/EligibleSuccessCard";
 import { NotEligibleCard } from "../ui/NotEligibleCard";
 import SalaryModeSelector from "../ui/SalaryModeSelector";
 import { getAuth } from "@/lib/authStorage";
+import StepHeader from "../ui/StepHeader";
 
-export default function PersonalLoanForm({ extraData, loanType }) {
+export default function PersonalLoanForm({
+  extraData,
+  loanType,
+  onBack,
+ 
+}) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -26,17 +32,33 @@ export default function PersonalLoanForm({ extraData, loanType }) {
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
+  const isNestedFlow = typeof onBack === "function";
+
+  const handleBack = () => {
+    // If not first step → just go previous step
+    if (step > 1) {
+      setStep((prev) => prev - 1);
+      return;
+    }
+
+    // If first step of PersonalLoanForm
+    if (isNestedFlow) {
+      onBack(); // go back to HomeLoanForm / LASLoanForm
+    } else {
+      router.back(); // standalone → browser back
+    }
+  };
+
   const validators = {
-   pan: (v) => {
-  if (!v) return "PAN is required";
+    pan: (v) => {
+      if (!v) return "PAN is required";
 
-  const cleanValue = v.trim().toUpperCase();
+      const cleanValue = v.trim().toUpperCase();
 
-  return /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(cleanValue)
-    ? ""
-    : "Enter valid PAN (ABCDE1234F)";
-},
-
+      return /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(cleanValue)
+        ? ""
+        : "Enter valid PAN (ABCDE1234F)";
+    },
 
     firstName: (v) => (v?.trim().length >= 2 ? "" : "First name is required"),
 
@@ -234,23 +256,21 @@ export default function PersonalLoanForm({ extraData, loanType }) {
   // };
 
   const employmentTypeMap =
-  loanType === "Business-Loan"
-    ? {
-        "Self-employed Professional": "Self-Employed-Professional",
-        "Business Owner": "Self-Employed-Business",
-      }
-    : {
-        "Self-employed Professional": "Self-Employed-Professional",
-        "Business Owner": "Self-Employed-Business",
-        Salaried: "Salaried",
-      };
+    loanType === "Business-Loan"
+      ? {
+          "Self-employed Professional": "Self-Employed-Professional",
+          "Business Owner": "Self-Employed-Business",
+        }
+      : {
+          "Self-employed Professional": "Self-Employed-Professional",
+          "Business Owner": "Self-Employed-Business",
+          Salaried: "Salaried",
+        };
 
-
-const employmentOptions =
-  loanType === "Business-Loan"
-    ? ["Self-employed Professional", "Business Owner"]
-    : ["Salaried", "Self-employed Professional", "Business Owner"];
-
+  const employmentOptions =
+    loanType === "Business-Loan"
+      ? ["Self-employed Professional", "Business Owner"]
+      : ["Salaried", "Self-employed Professional", "Business Owner"];
 
   const getEmploymentDate = (value) => {
     const today = new Date();
@@ -387,16 +407,17 @@ const employmentOptions =
         "Monthly income is below ₹25,000 (required for Loan Against Property)";
     }
 
-     // 🔥 NEW LAS RULE
+    // 🔥 NEW LAS RULE
     if (loanType === "Loan-Against-Security") {
-    const securityAmount =
-      Number(extraData?.Total_Securities_Values || form.totalSecurityValue) || 0;
+      const securityAmount =
+        Number(extraData?.Total_Securities_Values || form.totalSecurityValue) ||
+        0;
 
-    if (securityAmount < 50000) {
-      rejected = true;
-      reason = "Minimum security value required is ₹50,000";
+      if (securityAmount < 50000) {
+        rejected = true;
+        reason = "Minimum security value required is ₹50,000";
+      }
     }
-  }
 
     return { eligible: !rejected, reason };
   };
@@ -435,8 +456,7 @@ const employmentOptions =
       return false;
     }
 
-
-  const panUpper = form.pan.trim().toUpperCase();
+    const panUpper = form.pan.trim().toUpperCase();
 
     const payload = {
       CustomerId: Number(partnerCustomerId),
@@ -455,7 +475,7 @@ const employmentOptions =
       Current_EMI_Obligation: form.emi.trim() ? "Yes" : "No",
       Current_EMI_Amount: form.emi.trim() || "",
       Employment_Type: employmentTypeMap[form.employmentType] || "",
-      source_id:"finsbee-website",
+      source_id: "finsbee-website",
     };
 
     try {
@@ -522,7 +542,7 @@ const employmentOptions =
       Current_EMI_Obligation: emiAmount ? "Yes" : "No",
       Current_EMI_Amount: emiAmount,
       Employment_Type: employmentKey,
-      source_id:"finsbee-website",
+      source_id: "finsbee-website",
     };
 
     let loanSpecificPayload = {};
@@ -594,8 +614,7 @@ const employmentOptions =
       eligible_for_loan: eligibilityResult?.eligible ?? false,
     };
 
-   console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
-
+    console.log("FINAL PAYLOAD:", JSON.stringify(payload, null, 2));
 
     try {
       setLoading(true);
@@ -679,10 +698,7 @@ const employmentOptions =
       return;
     }
 
-    if (
-      form.employmentType === "Business Owner" &&
-      (!form.itr || !form.gst)
-    ) {
+    if (form.employmentType === "Business Owner" && (!form.itr || !form.gst)) {
       setErrors((prev) => ({
         ...prev,
         itr: !form.itr ? "ITR is mandatory" : "",
@@ -701,13 +717,23 @@ const employmentOptions =
 
       {step === 1 && (
         <FormCard>
-          <p className="text-[14px] text-[#7B7B7B] mb-2">
-            Takes less than 2 minutes
-          </p>
+          {isNestedFlow ? (
+            <StepHeader
+              title="Help Us Check Your Eligibility"
+              subtitle="Takes less than 2 minutes"
+              onBack={handleBack}
+            />
+          ) : (
+            <>
+              <p className="text-[14px] text-[#7B7B7B] mb-2">
+                Takes less than 2 minutes
+              </p>
 
-          <h2 className="text-[30px] font-semibold text-[#111] mb-8 leading-tight">
-            Help Us Check Your Eligibility
-          </h2>
+              <h2 className="text-[30px] font-semibold text-[#111] mb-8 leading-tight">
+                Help Us Check Your Eligibility
+              </h2>
+            </>
+          )}
 
           <InputField
             label="PAN No."
@@ -827,13 +853,18 @@ const employmentOptions =
       {/* STEP 2 */}
       {step === 2 && (
         <FormCard>
-          <p className="text-[15px] text-[#7B7B7B] mb-3">
+          {/* <p className="text-[15px] text-[#7B7B7B] mb-3">
             This won’t impact your credit score.
           </p>
 
           <h2 className="text-[32px] font-semibold text-[#111] mb-10 leading-tight">
             How much loan do you need?
-          </h2>
+          </h2> */}
+          <StepHeader
+            title="How much loan do you need?"
+            subtitle="This won’t impact your credit score."
+            onBack={handleBack}
+          />
 
           <InputField
             label="Loan Amount"
@@ -896,40 +927,51 @@ const employmentOptions =
       {/* STEP 3 */}
       {step === 3 && (
         <FormCard>
-          <p className="text-[15px] text-[#7B7B7B] mb-3">
+          {/* <p className="text-[15px] text-[#7B7B7B] mb-3">
             This helps us match you with the right lender.
           </p>
 
           <h2 className="text-[32px] font-semibold text-[#111] mb-10 leading-tight">
             How do you earn?
-          </h2>
+          </h2> */}
+          <StepHeader
+            title="How do you earn?"
+            subtitle="This helps us match you with the right lender."
+            onBack={handleBack}
+          />
 
-        {employmentOptions.map((type) => (
-          <OptionCard
-            key={type}
-            title={type}
-            description={`Select this if you are ${type.toLowerCase()}`}
-            active={form.employmentType === type}
-            onClick={() => {
-              setForm({ ...form, employmentType: type });
-              setStep(type === "Salaried" ? 4 : 5);
-            }}
-              />
-            )
-          )}
+          {employmentOptions.map((type) => (
+            <OptionCard
+              key={type}
+              title={type}
+              description={`Select this if you are ${type.toLowerCase()}`}
+              active={form.employmentType === type}
+              onClick={() => {
+                setForm({ ...form, employmentType: type });
+                setStep(type === "Salaried" ? 4 : 5);
+              }}
+            />
+          ))}
         </FormCard>
       )}
 
       {/* STEP 4 – Salaried */}
       {step === 4 && (
         <FormCard>
-          <p className="text-[15px] text-[#7B7B7B] mb-3">
+          {/* <p className="text-[15px] text-[#7B7B7B] mb-3">
             Your data is secure with us
           </p>
 
           <h2 className="text-[32px] font-semibold text-[#111] mb-8">
             Tell Us About Your Job
-          </h2>
+          </h2> */}
+
+          <StepHeader
+            title="Tell Us About Your Job"
+            subtitle="Your data is secure with us"
+            onBack={handleBack}
+          />
+
           <InputField
             label="Company Name"
             name="companyName"
@@ -1015,13 +1057,19 @@ const employmentOptions =
       {/* STEP 5 – Business */}
       {step === 5 && (
         <FormCard>
-          <p className="text-[15px] text-[#7B7B7B] mb-3">
+          {/* <p className="text-[15px] text-[#7B7B7B] mb-3">
             Your data is secure with us
           </p>
 
           <h2 className="text-[32px] font-semibold text-[#111] mb-8">
             Tell Us About Your Business
-          </h2>
+          </h2> */}
+
+          <StepHeader
+            title="Tell Us About Your Business"
+            subtitle="Your data is secure with us"
+            onBack={handleBack}
+          />
 
           <InputField
             label="Business Name"

@@ -140,13 +140,18 @@ export default function HomeLoanForm() {
   if (step === 2) {
   return (
     <FormCard>
-      <p className="text-[15px] text-[#6B6B6B] mb-3">
+      {/* <p className="text-[15px] text-[#6B6B6B] mb-3">
         Unlock your best loan offer
       </p>
 
       <h2 className="text-[40px] font-semibold text-[#111] mb-12">
         Type of property
-      </h2>
+      </h2> */}
+      <StepHeader
+        title="Type of property"
+        subtitle="Unlock your best loan offer"
+        onBack={() => setStep(1)}
+      />
 
       <PropertyTypeSelector
         value={form.propertyType}
@@ -164,13 +169,18 @@ export default function HomeLoanForm() {
   if (step === 3) {
     return (
       <FormCard>
-        <p className="text-[15px] text-gray-500 mb-3">
+        {/* <p className="text-[15px] text-gray-500 mb-3">
           Helps us calculate your eligible loan amount
         </p>
 
         <h2 className="text-[32px] font-semibold text-[#111] mb-8">
           Tell us about the property
-        </h2>
+        </h2> */}
+         <StepHeader
+        title="Tell us about the property"
+        subtitle="Helps us calculate your eligible loan amount"
+        onBack={() => setStep(2)}
+      />
 
         <InputField
           label="Estimated Property Value (in lakh)"
@@ -253,6 +263,7 @@ export default function HomeLoanForm() {
     return (
       <PersonalLoanForm
         loanType={form.loanOption}
+        onBack={() => setStep(3)}
         extraData={{
           Property_Type: form.propertyType,
           Property_Value: form.propertyValue,
