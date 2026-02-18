@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function SalaryModeSelector({ value, onChange }) {
+export default function SalaryModeSelector({ value, onChange, error }) {
   const options = [
     {
       label: "Bank Transfer",
@@ -81,7 +81,11 @@ export default function SalaryModeSelector({ value, onChange }) {
             </button>
           );
         })}
+        
       </div>
+      {error && (
+  <p className="text-red-500 text-sm mt-3">{error}</p>
+)}
     </div>
   );
 }

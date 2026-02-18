@@ -358,6 +358,193 @@
 
 
 
+// import { NextResponse } from "next/server";
+
+// const ODOO = "https://payday.finsbee.com";
+
+// const ADMIN = {
+//   db: "finsbee",
+//   login: "finsbee@gmail.com",
+//   password: "Finsbee@123%4ujm",
+// };
+
+// // =======================================
+// // 🔐 LOGIN AS ADMIN
+// // =======================================
+// async function getAdminSession() {
+//   const res = await fetch(`${ODOO}/web/session/authenticate`, {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       jsonrpc: "2.0",
+//       method: "call",
+//       params: ADMIN,
+//     }),
+//   });
+
+//   if (!res.ok) throw new Error("Admin login failed");
+
+//   const setCookie = res.headers.get("set-cookie");
+//   if (!setCookie) throw new Error("No session cookie received");
+
+//   const sessionId = setCookie.split(";")[0].split("=")[1];
+
+//   return { cookie: setCookie, sessionId };
+// }
+
+// // =======================================
+// // 📞 NORMALIZE PHONE
+// // =======================================
+// function normalizePhone(phone) {
+//   if (!phone) return "";
+//   return phone.replace(/\D/g, "").slice(-10);
+// }
+
+// // =======================================
+// // 🚀 MAIN API
+// // =======================================
+// export async function POST(request) {
+//   try {
+//     const body = await request.json();
+//     const { name, phone, email } = body?.params || {};
+
+//     const cleanPhone = normalizePhone(phone);
+
+//     if (!cleanPhone || cleanPhone.length !== 10) {
+//       return NextResponse.json(
+//         {
+//           jsonrpc: "2.0",
+//           error: { code: 400, message: "Valid 10-digit phone required" },
+//         },
+//         { status: 400 }
+//       );
+//     }
+
+//     // 🔐 Admin Session
+//     const { cookie, sessionId } = await getAdminSession();
+
+//     // =======================================
+//     // 🔍 SEARCH EXISTING (phone OR mobile)
+//     // =======================================
+//     const searchRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Cookie: cookie,
+//       },
+//       body: JSON.stringify({
+//         jsonrpc: "2.0",
+//         method: "call",
+//         params: {
+//           model: "res.partner",
+//           method: "search_read",
+//           args: [
+//             [
+//               "|",
+//               ["phone", "ilike", cleanPhone],
+//               ["mobile", "ilike", cleanPhone],
+//             ],
+//             ["id", "name", "email", "phone", "mobile"],
+//           ],
+//           kwargs: { limit: 1 },
+//         },
+//       }),
+//     });
+
+//     const searchData = await searchRes.json();
+//     if (searchData.error) throw new Error(searchData.error.message);
+
+//     const existing = searchData.result?.[0];
+
+//     // =======================================
+//     // ♻ IF EXISTS
+//     // =======================================
+//     if (existing) {
+//       return NextResponse.json({
+//         jsonrpc: "2.0",
+//         result: [
+//           {
+//             success: "True",
+//             isExisting: true,
+//             message: "Customer already exists",
+//             CustomerId: existing.id,
+//             session_id: sessionId,
+//             name: existing.name || name || cleanPhone,
+//             phone: cleanPhone,
+//             email: existing.email || "",
+//           },
+//         ],
+//       });
+//     }
+
+//     // =======================================
+//     // 🆕 CREATE NEW CUSTOMER
+//     // =======================================
+//     const createRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Cookie: cookie,
+//       },
+//       body: JSON.stringify({
+//         jsonrpc: "2.0",
+//         method: "call",
+//         params: {
+//           model: "res.partner",
+//           method: "create",
+//           args: [
+//             [
+//               {
+//                 name: name || cleanPhone,
+//                 phone: cleanPhone,
+//                 mobile: cleanPhone,
+//                 email: email || "",
+//               },
+//             ],
+//           ],
+//           kwargs: {},
+//         },
+//       }),
+//     });
+
+//     const createData = await createRes.json();
+//     if (createData.error) throw new Error(createData.error.message);
+
+//     const newId = createData.result;
+
+//     return NextResponse.json({
+//       jsonrpc: "2.0",
+//       result: [
+//         {
+//           success: "True",
+//           isExisting: false,
+//           message: "New customer created",
+//           CustomerId: newId,
+//           session_id: sessionId,
+//           name: name || cleanPhone,
+//           phone: cleanPhone,
+//           email: email || "",
+//         },
+//       ],
+//     });
+//   } catch (err) {
+//     console.error("API ERROR:", err.message);
+
+//     return NextResponse.json(
+//       {
+//         jsonrpc: "2.0",
+//         error: {
+//           code: 500,
+//           message: err.message || "Internal Server Error",
+//         },
+//       },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
+
 import { NextResponse } from "next/server";
 
 const ODOO = "https://payday.finsbee.com";
@@ -393,7 +580,7 @@ async function getAdminSession() {
 }
 
 // =======================================
-// 📞 NORMALIZE PHONE
+// 📞 NORMALIZE PHONE (10 DIGITS)
 // =======================================
 function normalizePhone(phone) {
   if (!phone) return "";
@@ -420,11 +607,10 @@ export async function POST(request) {
       );
     }
 
-    // 🔐 Admin Session
     const { cookie, sessionId } = await getAdminSession();
 
     // =======================================
-    // 🔍 SEARCH EXISTING (phone OR mobile)
+    // 🔍 STRICT SEARCH (NO ILIKE)
     // =======================================
     const searchRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
       method: "POST",
@@ -437,14 +623,15 @@ export async function POST(request) {
         method: "call",
         params: {
           model: "res.partner",
-          method: "search_read",
+          method: "search",
           args: [
             [
               "|",
-              ["phone", "ilike", cleanPhone],
-              ["mobile", "ilike", cleanPhone],
+              "|",
+              ["phone", "=", cleanPhone],
+              ["mobile", "=", cleanPhone],
+              ["phone", "=", "+91" + cleanPhone],
             ],
-            ["id", "name", "email", "phone", "mobile"],
           ],
           kwargs: { limit: 1 },
         },
@@ -454,12 +641,33 @@ export async function POST(request) {
     const searchData = await searchRes.json();
     if (searchData.error) throw new Error(searchData.error.message);
 
-    const existing = searchData.result?.[0];
+    const existingId = searchData.result?.[0];
 
     // =======================================
-    // ♻ IF EXISTS
+    // ♻ IF EXISTS → READ & RETURN
     // =======================================
-    if (existing) {
+    if (existingId) {
+      const readRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookie,
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          method: "call",
+          params: {
+            model: "res.partner",
+            method: "read",
+            args: [[existingId], ["id", "name", "email"]],
+            kwargs: {},
+          },
+        }),
+      });
+
+      const readData = await readRes.json();
+      const existing = readData.result?.[0];
+
       return NextResponse.json({
         jsonrpc: "2.0",
         result: [
@@ -467,11 +675,11 @@ export async function POST(request) {
             success: "True",
             isExisting: true,
             message: "Customer already exists",
-            CustomerId: existing.id,
+            CustomerId: existingId,
             session_id: sessionId,
-            name: existing.name || name || cleanPhone,
+            name: existing?.name || name || cleanPhone,
             phone: cleanPhone,
-            email: existing.email || "",
+            email: existing?.email || "",
           },
         ],
       });
@@ -508,7 +716,58 @@ export async function POST(request) {
     });
 
     const createData = await createRes.json();
-    if (createData.error) throw new Error(createData.error.message);
+
+    // 🔥 Race condition protection
+    if (createData.error) {
+      // If create failed because duplicate inserted simultaneously
+      // Try searching again
+      const retrySearchRes = await fetch(`${ODOO}/web/dataset/call_kw`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Cookie: cookie,
+        },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          method: "call",
+          params: {
+            model: "res.partner",
+            method: "search",
+            args: [
+              [
+                "|",
+                ["phone", "=", cleanPhone],
+                ["mobile", "=", cleanPhone],
+              ],
+            ],
+            kwargs: { limit: 1 },
+          },
+        }),
+      });
+
+      const retryData = await retrySearchRes.json();
+      const retryId = retryData.result?.[0];
+
+      if (retryId) {
+        return NextResponse.json({
+          jsonrpc: "2.0",
+          result: [
+            {
+              success: "True",
+              isExisting: true,
+              message: "Customer already exists (race handled)",
+              CustomerId: retryId,
+              session_id: sessionId,
+              name: name || cleanPhone,
+              phone: cleanPhone,
+              email: email || "",
+            },
+          ],
+        });
+      }
+
+      throw new Error(createData.error.message);
+    }
 
     const newId = createData.result;
 

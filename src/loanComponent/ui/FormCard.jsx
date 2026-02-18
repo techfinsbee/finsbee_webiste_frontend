@@ -39,7 +39,7 @@
 
 export default function FormCard({ children }) {
   return (
-    <div className="relative min-h-screen flex justify-center px-4 pt-4 overflow-hidden">
+    <div className="relative flex justify-center px-4 pt-4 overflow-hidden">
       
       {/* Background Image */}
       <div

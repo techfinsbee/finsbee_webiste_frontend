@@ -348,93 +348,92 @@ export const Navbar = () => {
   };
 
   const verifyOtp = async () => {
-  if (!/^\d{6}$/.test(otp)) {
-    setError("Enter 6-digit OTP");
-    return;
-  }
-
-  if (loading) return;
-
-  setError("");
-  setLoading(true);
-
-  try {
-    // 1️⃣ VERIFY OTP
-    const verifyUrl = `/twofactor/API/V1/${API_KEY}/SMS/VERIFY/${requestId}/${otp}`;
-    const verifyRes = await fetch(verifyUrl);
-
-    if (!verifyRes.ok) throw new Error(`HTTP ${verifyRes.status}`);
-
-    const verifyData = await verifyRes.json();
-    if (verifyData.Status !== "Success") {
-      throw new Error(verifyData.Details || "Invalid OTP");
+    if (!/^\d{6}$/.test(otp)) {
+      setError("Enter 6-digit OTP");
+      return;
     }
 
-    toast.success("OTP Verified!");
+    if (loading) return;
 
-    const phone = mobile.trim();
+    setError("");
+    setLoading(true);
 
-    // 2️⃣ AUTHENTICATE ODOO (IMPORTANT)
-    const authRes = await fetch("/api/web/session/authenticate", {
-      method: "POST",
-      credentials: "include",
-    });
+    try {
+      // 1️⃣ VERIFY OTP
+      const verifyUrl = `/twofactor/API/V1/${API_KEY}/SMS/VERIFY/${requestId}/${otp}`;
+      const verifyRes = await fetch(verifyUrl);
 
-    const authData = await authRes.json();
+      if (!verifyRes.ok) throw new Error(`HTTP ${verifyRes.status}`);
 
-    if (!authData?.success) {
-      throw new Error("Odoo authentication failed");
+      const verifyData = await verifyRes.json();
+      if (verifyData.Status !== "Success") {
+        throw new Error(verifyData.Details || "Invalid OTP");
+      }
+
+      toast.success("OTP Verified!");
+
+      const phone = mobile.trim();
+
+      // 2️⃣ AUTHENTICATE ODOO (IMPORTANT)
+      const authRes = await fetch("/api/web/session/authenticate", {
+        method: "POST",
+        credentials: "include",
+      });
+
+      const authData = await authRes.json();
+
+      if (!authData?.success) {
+        throw new Error("Odoo authentication failed");
+      }
+
+      // 3️⃣ CREATE / CHECK CUSTOMER
+      const customerRes = await fetch("/api/create/customer", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          method: "call",
+          params: {
+            // name: `User ${phone}`,
+            phone: phone,
+            source_id: "finsbee-website",
+          },
+        }),
+      });
+
+      const customerData = await customerRes.json();
+      const result = customerData?.result?.[0];
+
+      if (!result?.CustomerId) {
+        throw new Error("Failed to get CustomerId");
+      }
+
+      // 4️⃣ STORE AUTH
+      const auth = {
+        sessionId: authData.session_id,
+        customerId: result.CustomerId,
+        phone,
+        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
+      };
+
+      setAuth(auth);
+      localStorage.setItem("originalCustomerId", String(result.CustomerId));
+      localStorage.setItem("verifiedPhone", phone);
+
+      setIsLoggedIn(true);
+      setIsLoginOpen(false);
+
+      toast.success("Login successful!");
+
+      router.push("/dashboard");
+    } catch (err) {
+      console.error("Login error:", err);
+      toast.error(err.message || "Login failed");
+    } finally {
+      setLoading(false);
     }
-
-    // 3️⃣ CREATE / CHECK CUSTOMER
-    const customerRes = await fetch("/api/create/customer", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        method: "call",
-        params: {
-          name: `User ${phone}`,
-          phone: phone,
-          source_id: "Partner-App",
-        },
-      }),
-    });
-
-    const customerData = await customerRes.json();
-    const result = customerData?.result?.[0];
-
-    if (!result?.CustomerId) {
-      throw new Error("Failed to get CustomerId");
-    }
-
-    // 4️⃣ STORE AUTH
-    const auth = {
-      sessionId: authData.session_id,
-      customerId: result.CustomerId,
-      phone,
-      expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    };
-
-    setAuth(auth);
-    localStorage.setItem("originalCustomerId", String(result.CustomerId));
-    localStorage.setItem("verifiedPhone", phone);
-
-    setIsLoggedIn(true);
-    setIsLoginOpen(false);
-
-    toast.success("Login successful!");
-
-    router.push("/dashboard");
-
-  } catch (err) {
-    console.error("Login error:", err);
-    toast.error(err.message || "Login failed");
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   const SidebarButton = ({ item }) => (
     <button
@@ -569,10 +568,25 @@ export const Navbar = () => {
                 )}
             </div>
           ))}
+          {/* Login Button (Desktop) */}
+          <button
+            onClick={() => {
+              if (isLoggedIn) {
+                router.push("/dashboard");
+              } else {
+                setIsLoginOpen(!isLoginOpen);
+              }
+            }}
+            className="ml-4 px-6 py-2 rounded-2xl font-semibold text-white 
+             bg-gradient-to-r from-[#592eff] to-[#7c45ff] 
+             hover:brightness-110 transition-all shadow-lg"
+          >
+            {localStorage.getItem("originalCustomerId") ? "Dashboard" : "Login"}
+          </button>
         </div>
 
         {/* Login / My Account Button */}
-        <div className="hidden lg:flex items-center gap-4">
+        {/* <div className="hidden lg:flex items-center gap-4">
           <button
             onClick={() => {
               if (isLoggedIn) {
@@ -587,13 +601,22 @@ export const Navbar = () => {
               ? "dashboard"
               : "Login"}
           </button>
-        </div>
+        </div> */}
 
         {/* Login Dropdown Card */}
         {isLoginOpen && (
           <div
             ref={loginRef}
-            className="absolute top-full right-0 mt-4 z-50 w-96"
+            className="
+      absolute lg:absolute
+      top-full
+      right-4 lg:right-10
+      mt-4
+      z-50
+      w-[92%] sm:w-[400px] lg:w-96
+      left-1/2 lg:left-auto
+      -translate-x-1/2 lg:translate-x-0
+    "
           >
             <div
               className="p-8 rounded-3xl shadow-2xl backdrop-blur-lg relative overflow-hidden"
@@ -790,6 +813,26 @@ export const Navbar = () => {
                     )}
                   </div>
                 ))}
+              </div>
+              {/* Mobile Login Button */}
+              <div className="pt-4 border-t border-gray-300 mt-4">
+                <button
+                  onClick={() => {
+                    setIsSidebarOpen(false);
+                    if (isLoggedIn) {
+                      router.push("/dashboard");
+                    } else {
+                      setIsLoginOpen(true);
+                    }
+                  }}
+                  className="w-full py-3 rounded-xl font-semibold text-white
+               bg-gradient-to-r from-[#592eff] to-[#7c45ff]
+               hover:brightness-110 transition"
+                >
+                  {localStorage.getItem("originalCustomerId")
+                    ? "Dashboard"
+                    : "Login"}
+                </button>
               </div>
             </div>
           </div>

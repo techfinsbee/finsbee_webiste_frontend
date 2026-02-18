@@ -20,9 +20,9 @@
 //               onClick={() => onChange(option)}
 //               className={`
 //                 flex-1 h-[108px]
-//                 rounded-[16px] 
-//                 py-6 
-//                 border 
+//                 rounded-[16px]
+//                 py-6
+//                 border
 //                 transition-all duration-200
 //                 ${
 //                   active
@@ -44,11 +44,11 @@
 
 "use client";
 
-export default function GenderSelector({ value, onChange }) {
+export default function GenderSelector({ value, onChange, error }) {
   const options = [
     { label: "Male", icon: "/loan/man.svg" },
     { label: "Female", icon: "/loan/woman.svg" },
-    { label: "Other", icon: "/loan/other.svg" },
+    // { label: "Other", icon: "/loan/other.svg" },
   ];
 
   return (
@@ -57,7 +57,12 @@ export default function GenderSelector({ value, onChange }) {
         Select your gender
       </label>
 
-      <div className="flex gap-5">
+      <div
+        className={`
+    flex gap-5 p-3 rounded-[16px] transition-all
+    ${error ? " bg-red-50/30" : ""}
+  `}
+      >
         {options.map((option) => {
           const active = value === option.label;
 
@@ -101,6 +106,7 @@ export default function GenderSelector({ value, onChange }) {
               >
                 {option.label}
               </div>
+              {error && <p className="text-red-500 text-sm mt-3">{error}</p>}
             </button>
           );
         })}

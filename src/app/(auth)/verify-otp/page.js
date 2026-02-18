@@ -163,7 +163,7 @@ export default function VerifyOtpPage() {
         params: {
           name: `User ${phone}`,           // ← give a valid name (backend may require it)
           phone: phone,                    // ← 7458974965 (no +91)
-          source_id: "Partner-App"
+          source_id:"finsbee-website"
         }
       };
 

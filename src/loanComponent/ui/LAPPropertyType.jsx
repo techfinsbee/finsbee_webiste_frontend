@@ -1,28 +1,21 @@
 "use client";
 
-import Image from "next/image";
-
-export default function PropertyTypeSelector({ value, onChange }) {
+export default function LAPPropertyType({ value, onChange }) {
   const options = [
     {
-      label: "Ready to Move",
-      value: "Ready_to_Move",
-      icon: "/loan/ready-to-move.svg",
+      label: "Residential",
+      value: "Residential_Property",
+      icon: "/loan/ready-to-move.svg", // use your icons
     },
     {
-      label: "Under Construction",
-      value: "under_construction",
+      label: "Comercial",
+      value: "Comercial",
       icon: "/loan/construction.svg",
     },
     {
-      label: "Plot + Construction",
-      value: "plot_construction",
+      label: "Industrial",
+      value: "Industrial",
       icon: "/loan/plot-construction.svg",
-    },
-    {
-      label: "Resale Property",
-      value: "resale_property",
-      icon: "/loan/resale.svg",
     },
   ];
 
@@ -37,33 +30,36 @@ export default function PropertyTypeSelector({ value, onChange }) {
             type="button"
             onClick={() => onChange(option.value)}
             className={`
-              h-[116px]
+             h-[116px]
               rounded-[16px]
               border
               flex
               flex-col
               items-center
               justify-center
-              gap-5
+              gap-4
               transition-all
               duration-200
               ${
                 active
-                  ? "border-[#E6B84E] bg-[#FFF8E6]"
-                  : "border-[#D9D9D9] bg-white"
+                  ? "border-[#E6B84E] bg-[#FFF8E6] shadow-[0_6px_20px_rgba(230,184,78,0.18)]"
+                  : "border-[#D9D9D9] bg-white hover:border-[#BDBDBD]"
               }
             `}
           >
-            <div className="w-10 h-10 relative">
-              <Image
+            <div className="w-8 h-8 flex items-center justify-center">
+              <img
                 src={option.icon}
                 alt={option.label}
-                fill
-                className="object-contain"
+                className="w-full h-full object-contain"
               />
             </div>
 
-            <span className="text-[18px] font-medium text-[#6B6B6B]">
+            <span
+              className={`text-[16px] font-medium ${
+                active ? "text-[#1A1A1A]" : "text-[#6B6B6B]"
+              }`}
+            >
               {option.label}
             </span>
           </button>

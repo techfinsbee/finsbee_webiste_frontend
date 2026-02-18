@@ -622,6 +622,8 @@ import { getAuth, isAuthValid, clearAuth } from "@/lib/authStorage";
 import { loanRouteMap } from "@/config/loanRouteMap";
 
 import { loanEligibilityDocuments } from "@/data/loanEligibilityDocuments";
+import OTPInput from "@/loanComponent/ui/OTPInput";
+import { SecurityHint } from "@/loanComponent/ui/SecurityHint";
 
 const ActionButton = ({ onClick, children, iconSrc }) => (
   <button
@@ -858,26 +860,23 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
   const [timer, setTimer] = useState(0);
   const pathname = usePathname();
 
-const [isLoggedIn, setIsLoggedIn] = useState(false);
-const [authChecked, setAuthChecked] = useState(false); // NEW
-const [step, setStep] = useState("phone");
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false); // NEW
+  const [step, setStep] = useState("phone");
 
   useEffect(() => {
-  const auth = getAuth();
-  const valid = auth && isAuthValid(auth);
+    const auth = getAuth();
+    const valid = auth && isAuthValid(auth);
 
-  setIsLoggedIn(valid);
-  setAuthChecked(true); // prevent flicker
+    setIsLoggedIn(valid);
+    setAuthChecked(true); // prevent flicker
 
-  if (valid) {
-    setStep("done"); // hide phone/otp
-  } else {
-    setStep("phone");
-  }
-}, []);
-
-
+    if (valid) {
+      setStep("done"); // hide phone/otp
+    } else {
+      setStep("phone");
+    }
+  }, []);
 
   const API_KEY = "ab163828-7d8d-11f0-a562-0200cd936042";
   const validateMobile = (num) => /^[6-9]\d{9}$/.test(num.trim());
@@ -919,7 +918,6 @@ const [step, setStep] = useState("phone");
     }
   };
 
-  
   const verifyOtp = async () => {
     if (!/^\d{6}$/.test(otp)) {
       setError("Enter 6-digit OTP");
@@ -970,7 +968,7 @@ const [step, setStep] = useState("phone");
           params: {
             name: `User ${phone}`,
             phone: phone,
-            source_id: "Partner-App",
+            source_id: "finsbee-website",
           },
         }),
       });
@@ -1328,98 +1326,98 @@ const [step, setStep] = useState("phone");
         </div>
 
         {/* SIDEBAR - APPLY LOAN FLOW */}
-      {authChecked ? (
-  <div
-    ref={sidebarRef}
-    className="w-full lg:w-1/3 flex justify-center lg:justify-end"
-  >
-    <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
-      <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg overflow-hidden">
-        {isLoggedIn ? (
-          // Logged-in: Apply Now + Logout
-          <div className="p-8">
-            <h2 className="text-2xl font-bold mb-4">Welcome Back 👋</h2>
-            <p className="text-gray-600 mb-6">
-              Continue your loan application.
-            </p>
+        {authChecked ? (
+          <div
+            ref={sidebarRef}
+            className="w-full lg:w-1/3 flex justify-center lg:justify-end"
+          >
+            <div className="sticky top-0 pt-2 self-start  w-full max-w-[432px]">
+              <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg h-[438px] overflow-hidden">
+                {isLoggedIn ? (
+                  // Logged-in: Apply Now + Logout
+                  <div className="p-8">
+                    <h2 className="text-2xl font-bold mb-4  mt-10">Welcome Back 👋</h2>
+                    <p className="text-gray-600 mb-6">
+                      Continue your loan application.
+                    </p>
 
-            <button
-              onClick={() => {
-                const loanType = loanRouteMap[pathname] || "personal-loan";
-                router.push(`/${loanType}/form`);
-              }}
-              className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
-            >
-              Apply Now
-            </button>
+                    <button
+                      onClick={() => {
+                        const loanType =
+                          loanRouteMap[pathname] || "personal-loan";
+                        router.push(`/${loanType}/form`);
+                      }}
+                      className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
+                    >
+                      Apply Now
+                    </button>
 
-            <button
-              onClick={() => {
-                clearAuth();
-                localStorage.removeItem("originalCustomerId");
-                localStorage.removeItem("verifiedPhone");
-                setIsLoggedIn(false);
-                setStep("phone");
-              }}
-              className="w-full mt-4 text-sm text-gray-500 underline"
-            >
-              Logout
-            </button>
-          </div>
-        ) : (
-          // Not logged-in: Phone → OTP flow
-          <>
-            {step === "phone" && (
-              <div className="p-8">
-                <h2 className="text-2xl font-bold mb-6">
-                  Your phone number?
-                </h2>
+                    <button
+                      onClick={() => {
+                        clearAuth();
+                        localStorage.removeItem("originalCustomerId");
+                        localStorage.removeItem("verifiedPhone");
+                        setIsLoggedIn(false);
+                        setStep("phone");
+                      }}
+                      className="w-full mt-4 text-sm text-gray-500 underline"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  // Not logged-in: Phone → OTP flow
+                  <>
+                    {step === "phone" && (
+                      <div className="p-8 ">
+                        <h2 className="text-2xl font-bold mb-6">
+                          Your phone number?
+                        </h2>
 
-                <div className="border rounded-xl px-4 py-4 flex items-center mb-6">
-                  <span className="text-gray-500 mr-2">+91</span>
-                  <input
-                    type="tel"
-                    maxLength={10}
-                    value={mobile}
-                    onChange={(e) => setMobile(e.target.value)}
-                    placeholder="Enter mobile no."
-                    className="w-full outline-none"
-                  />
-                </div>
+                        <div className="border rounded-xl px-5 py-7  flex items-center mb-7">
+                          <span className="text-gray-500 mr-2">+91</span>
+                          <input
+                            type="tel"
+                            maxLength={10}
+                            value={mobile}
+                            onChange={(e) => setMobile(e.target.value)}
+                            placeholder="Enter mobile no."
+                            className="w-full outline-none"
+                          />
+                        </div>
 
-                <p className="text-sm text-gray-600 mb-4">
-                  By creating an account you agree to our Terms and Privacy Policy
-                </p>
+                        <p className="text-sm text-gray-600 mb-7">
+                          By creating an account you agree to our Terms and
+                          Privacy Policy
+                        </p>
 
-                <p className="text-sm text-gray-500 mb-6">
-                  Finsbee keeps your data safe
-                </p>
+                        <SecurityHint/>
 
-                <button
-                  onClick={sendOtp}
-                  disabled={loading}
-                  className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
-                >
-                  {loading ? "Sending..." : "Apply Loan"}
-                </button>
-              </div>
-            )}
+                        <button
+                          onClick={sendOtp}
+                          disabled={loading}
+                          className="w-full px-5 py-6 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
+                        >
+                          {loading ? "Sending..." : "Apply Loan"}
+                        </button>
+                      </div>
+                    )}
 
-            {step === "otp" && (
-              <div className="p-8">
-                <div className="mb-2 text-sm text-gray-500">
-                  {mobile}
-                  <span
-                    className="underline cursor-pointer ml-2"
-                    onClick={() => setStep("phone")}
-                  >
-                    Change
-                  </span>
-                </div>
+                    {step === "otp" && (
+                      <div className="p-8">
+                        <div className="mb-2 text-sm text-gray-500 mt-8">
+                          {mobile}
+                          <span
+                            className="underline cursor-pointer ml-2"
+                            onClick={() => setStep("phone")}
+                          >
+                            Change
+                          </span>
+                        </div>
 
-                <h2 className="text-3xl font-bold mb-6">Verify OTP</h2>
+                        <h2 className="text-3xl font-bold mb-6">Verify OTP</h2>
 
-                <input
+                        {/* <input
                   type="text"
                   maxLength={6}
                   value={otp}
@@ -1429,40 +1427,48 @@ const [step, setStep] = useState("phone");
                   }}
                   placeholder="Enter 6-digit OTP"
                   className="w-full p-4 text-center text-2xl tracking-[10px] border rounded-xl outline-none mb-6"
-                />
+                /> */}
+                        <OTPInput
+                          length={6}
+                          onComplete={(value) => {
+                            setOtp(value);
+                            setError("");
 
-                <button
-                  onClick={async () => {
-                    const success = await verifyOtp();
-                    if (success) {
-                      setIsLoggedIn(true);
-                      setStep("done");
-                    }
-                  }}
-                  disabled={loading}
-                  className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
-                >
-                  {loading ? "Verifying..." : "Submit OTP"}
-                </button>
+                          }}
+                          
+                        />
+                       <SecurityHint />
+                        <button
+                          onClick={async () => {
+                            const success = await verifyOtp();
+                            if (success) {
+                              setIsLoggedIn(true);
+                              setStep("done");
+                            }
+                          }}
+                          disabled={loading}
+                          className="w-full py-4 rounded-lg font-bold bg-yellow-400 hover:bg-yellow-500"
+                        >
+                          {loading ? "Verifying..." : "Submit OTP"}
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
-            )}
-          </>
+            </div>
+          </div>
+        ) : (
+          // Prevent flicker before auth check
+          <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
+            <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
+              <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg overflow-hidden p-8 text-center animate-pulse">
+                <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
+              </div>
+            </div>
+          </div>
         )}
-      </div>
-    </div>
-  </div>
-) : (
-  // Prevent flicker before auth check
-  <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
-    <div className="sticky top-0 pt-2 self-start h-fit w-full max-w-[432px]">
-      <div className="border-[6px] border-yellow-400 rounded-2xl bg-white shadow-lg overflow-hidden p-8 text-center animate-pulse">
-        <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto mb-4"></div>
-        <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto"></div>
-      </div>
-    </div>
-  </div>
-)}
-
       </div>
 
       {/* MODALS */}

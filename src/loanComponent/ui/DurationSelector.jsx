@@ -4,6 +4,7 @@ export function DurationSelector({
   value,
   onChange,
   options,
+   error ,
 }) {
   return (
     <div className="flex gap-4 flex-wrap">
@@ -28,6 +29,9 @@ export function DurationSelector({
           {val}
         </button>
       ))}
+      {error && (
+  <p className="text-red-500 text-sm mt-3">{error}</p>
+)}
     </div>
   );
 }

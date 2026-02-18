@@ -30,20 +30,20 @@ export default function LoanHeader({
         {/* LEFT LOGO */}
         <div className="flex items-center gap-3">
           <Image
-            src="/favicon.svg"  // replace with your logo
+            src="/FinsbeeLogo.svg"  // replace with your logo
             alt="finsbee"
-            width={40}
-            height={40}
+            width={110}
+            height={110}
           />
         </div>
 
         {/* CENTER CONTENT */}
         <div className="flex flex-col items-center w-[400px]">
 
-          {/* Loan Title */}
+          {/* Loan Title
           <span className="font-medium text-lg">
             {loanType}
-          </span>
+          </span> */}
 
           
         </div>
@@ -54,7 +54,7 @@ export default function LoanHeader({
          
 
           {/* Profile Icon */}
-          <User size={22} />
+          {/* <User size={22} /> */}
         </div>
       </div>
     </div>
