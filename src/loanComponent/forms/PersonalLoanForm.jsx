@@ -60,7 +60,20 @@ export default function PersonalLoanForm({
         : "Enter valid PAN (ABCDE1234F)";
     },
 
-    firstName: (v) => (v?.trim().length >= 2 ? "" : "First name is required"),
+    firstName: (v) => {
+      const value = v?.trim();
+
+      if (!value) return "First name is required";
+
+      if (!/^[A-Za-z]+$/.test(value))
+        return "First name should contain only letters";
+
+      if (value.length < 2)
+        return "First name must be at least 2 characters";
+
+      return "";
+    },
+
 
     dob: (v) => {
       if (!v) return "Date of birth is required";
@@ -85,11 +98,11 @@ export default function PersonalLoanForm({
           ? age - 1
           : age;
 
-      if (actualAge < 18) {
-        return "You must be at least 18 years old";
+      if (actualAge < 21) {
+        return "You must be at least 21 years old";
       }
 
-      if (actualAge > 70) {
+      if (actualAge > 60) {
         return "Please enter a valid birth year";
       }
 
@@ -803,7 +816,7 @@ export default function PersonalLoanForm({
 
           <div className="mb-8">
             <label className="block text-[15px] text-[#6B6B6B] mb-2">
-              Your location pincode
+              Pincode
             </label>
 
             <input
