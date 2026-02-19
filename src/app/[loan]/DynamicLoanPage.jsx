@@ -331,7 +331,7 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
         throw new Error(verifyData.Details || "Invalid OTP");
       }
 
-      toast.success("OTP Verified!");
+      // toast.success("OTP Verified!");
 
       // 2️⃣ AUTHENTICATE ODOO (COOKIE SESSION)
       const authRes = await fetch("/api/web/session/authenticate", {

@@ -99,7 +99,7 @@ export default function OTPInput({ length = 6, onComplete }) {
         maxLength={length}
         value={otp}
         onChange={(e) => handleChange(e.target.value)}
-        placeholder="Enter 6-digit OTP"
+        placeholder="Enter OTP"
         className="
           w-full
           py-4

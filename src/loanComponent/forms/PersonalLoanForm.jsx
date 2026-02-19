@@ -125,7 +125,7 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
       return "";
     },
 
-    tenure: (v) => (v ? "" : "Please select repayment tenure"),
+    // tenure: (v) => (v ? "" : "Please select repayment tenure"),
 
     emi: (v) => {
       if (!v) return "";
@@ -776,20 +776,7 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
     }
   };
 
-  /* ================= STEP HANDLERS ================= */
-  // const handleStep1Submit = async () => {
-  //   setSubmitted(true);
-
-  //   const isValid = validateStep();
-
-  //   console.log("Errors:", errors); // 👈 add this
-  //   console.log("Is Valid:", isValid);
-
-  //   if (!isValid) return;
-
-  //   await createLoan();
-  // };
-
+  
   const handleStep1Submit = async () => {
     setSubmitted(true);
 
@@ -1205,18 +1192,12 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
       {/* STEP 5 – Business */}
       {step === 5 && (
         <FormCard>
-          {/* <p className="text-[15px] text-[#7B7B7B] mb-3">
-            Your data is secure with us
-          </p>
-
-          <h2 className="text-[32px] font-semibold text-[#111] mb-8">
-            Tell Us About Your Business
-          </h2> */}
+          
 
           <StepHeader
             title="Tell Us About Your Business"
             subtitle="Your data is secure with us"
-            onBack={handleBack}
+            onBack={() => setStep(3)}
           />
 
           <InputField
