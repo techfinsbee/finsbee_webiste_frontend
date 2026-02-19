@@ -17,6 +17,7 @@ import OptionCard from "../ui/OptionCard";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import PropertyTypeSelector from "../ui/PropertyTypeSelector";
+import StepHeader from "../ui/StepHeader";
 
 
 export default function HomeLoanForm() {
