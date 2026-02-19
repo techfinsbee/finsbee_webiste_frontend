@@ -89,7 +89,7 @@ export default function HomeLoanForm() {
         </h2>
 
         <OptionCard
-          title="Home Loan"
+          title="New Loan"
           description="Select this if you want a new home loan"
           active={form.loanOption === "Home-Loan"}
           onClick={() =>
@@ -102,7 +102,7 @@ export default function HomeLoanForm() {
         />
 
         <OptionCard
-          title="Balance Transfer"
+          title="Transfer Existing Loan"
           description="Transfer your existing home loan"
           active={isBalanceTransfer}
           onClick={() =>

@@ -26,6 +26,7 @@ export async function fetchAPI(path, options = {}) {
     headers: {
       "Content-Type": "application/json",
     },
+    cache: "no-store",
     ...options, // allow override (e.g. next: { revalidate: 3600 } or tags)
   });
 

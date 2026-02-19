@@ -17,12 +17,7 @@ import SalaryModeSelector from "../ui/SalaryModeSelector";
 import { getAuth } from "@/lib/authStorage";
 import StepHeader from "../ui/StepHeader";
 
-export default function PersonalLoanForm({
-  extraData,
-  loanType,
-  onBack,
- 
-}) {
+export default function PersonalLoanForm({ extraData, loanType, onBack }) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -65,15 +60,12 @@ export default function PersonalLoanForm({
 
       if (!value) return "First name is required";
 
-      if (!/^[A-Za-z]+$/.test(value))
-        return "First name contain only letters";
+      if (!/^[A-Za-z]+$/.test(value)) return "First name contain only letters";
 
-      if (value.length < 2)
-        return "First name must be at least 2 characters";
+      if (value.length < 2) return "First name must be at least 2 characters";
 
       return "";
     },
-
 
     dob: (v) => {
       if (!v) return "Date of birth is required";
@@ -332,37 +324,81 @@ export default function PersonalLoanForm({
   });
 
   /* ================= AUTO-FILL CITY/STATE ================= */
+  // useEffect(() => {
+  //   const pinCode = form.pincode?.trim();
+  //   if (pinCode?.length === 6) {
+  //     fetch(`https://api.postalpincode.in/pincode/${pinCode}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         const info = data?.[0]?.PostOffice?.[0];
+  //         if (info) {
+  //           setForm((prev) => ({
+  //             ...prev,
+  //             district: info.District || "",
+  //             state: info.State || "",
+  //           }));
+  //         } else {
+  //           toast.error("Invalid Pincode");
+  //           setForm((prev) => ({
+  //             ...prev,
+  //             district: "",
+  //             state: "",
+  //           }));
+  //         }
+  //       })
+  //       .catch(() => {
+  //         toast.error("Unable to fetch location details");
+  //       });
+  //   }
+  // }, [form.pincode]);
+
+  // ────────────────────────────────────────────────
+  // RULE ENGINE – only for Personal Loan (your exact 4 conditions)
+  // ────────────────────────────────────────────────
+  /* ================= AUTO-FILL CITY/STATE ================= */
   useEffect(() => {
     const pinCode = form.pincode?.trim();
-    if (pinCode?.length === 6) {
+
+    // Only call API if format is valid
+    if (/^[1-9][0-9]{5}$/.test(pinCode)) {
       fetch(`https://api.postalpincode.in/pincode/${pinCode}`)
         .then((res) => res.json())
         .then((data) => {
           const info = data?.[0]?.PostOffice?.[0];
+
           if (info) {
             setForm((prev) => ({
               ...prev,
               district: info.District || "",
               state: info.State || "",
             }));
+
+            // Clear error if success
+            setErrors((prev) => ({
+              ...prev,
+              pincode: "",
+            }));
           } else {
-            toast.error("Invalid Pincode");
             setForm((prev) => ({
               ...prev,
               district: "",
               state: "",
             }));
+
+            setErrors((prev) => ({
+              ...prev,
+              pincode: "Enter valid 6 digit pincode",
+            }));
           }
         })
         .catch(() => {
-          toast.error("Unable to fetch location details");
+          setErrors((prev) => ({
+            ...prev,
+            pincode: "Unable to fetch location",
+          }));
         });
     }
   }, [form.pincode]);
-
-  // ────────────────────────────────────────────────
-  // RULE ENGINE – only for Personal Loan (your exact 4 conditions)
-  // ────────────────────────────────────────────────
 
   const calculateAge = (dobText) => {
     if (!dobText) return 0;
@@ -662,18 +698,39 @@ export default function PersonalLoanForm({
   };
 
   /* ================= STEP HANDLERS ================= */
+  // const handleStep1Submit = async () => {
+  //   setSubmitted(true);
+
+  //   const isValid = validateStep();
+
+  //   console.log("Errors:", errors); // 👈 add this
+  //   console.log("Is Valid:", isValid);
+
+  //   if (!isValid) return;
+
+  //   await createLoan();
+  // };
+
   const handleStep1Submit = async () => {
-    setSubmitted(true);
+  setSubmitted(true);
 
-    const isValid = validateStep();
+  const isValid = validateStep();
 
-    console.log("Errors:", errors); // 👈 add this
-    console.log("Is Valid:", isValid);
+  // 🚨 Extra check for API-based pincode validation
+  const isLocationValid = form.district && form.state;
 
-    if (!isValid) return;
+  if (!isLocationValid) {
+    setErrors((prev) => ({
+      ...prev,
+      pincode: "Enter valid 6 digit pincode",
+    }));
+  }
 
-    await createLoan();
-  };
+  if (!isValid || !isLocationValid) return;
+
+  await createLoan();
+};
+
 
   const handleStep2Submit = () => {
     setSubmitted(true);
