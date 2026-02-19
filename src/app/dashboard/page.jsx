@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import axios from "axios";
@@ -10,7 +8,7 @@ import Image from "next/image";
 
 export default function DashboardPage() {
   const router = useRouter();
-  const [active, setActive] = useState("dashboard");
+  const [active, setActive] = useState("profile");
   const [showDropdown, setShowDropdown] = useState(false);
   // New: User profile state
   const [userProfile, setUserProfile] = useState({
@@ -25,14 +23,13 @@ export default function DashboardPage() {
     if (!customerId) router.replace("/");
   }, [router]);
 
-
-    useEffect(() => {
+  useEffect(() => {
     const customerId = localStorage.getItem("originalCustomerId");
     if (!customerId) {
       router.replace("/");
       return;
     }
-  // Fetch user profile for sidebar
+    // Fetch user profile for sidebar
     const fetchProfile = async () => {
       try {
         const response = await axios.post(
@@ -74,66 +71,58 @@ export default function DashboardPage() {
     document.cookie =
       "auth_session=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     router.push("/");
-
-
-    
   };
   return (
     <div className="min-h-screen bg-[#EEEAFF]">
-
       {/* HEADER */}
       <div className="relative bg-gradient-to-r from-[#3C1E86] to-[#5A36D6] rounded-b-[80px] px-16 py-6 flex justify-between items-center text-white shadow-lg">
         <div className="flex items-center gap-4">
-          <button onClick={() => router.back()} className="text-2xl">←</button>
+          <button onClick={() => router.back()} className="text-2xl">
+            ←
+          </button>
           <span className="text-2xl font-semibold tracking-wide">finsbee.</span>
         </div>
         {/* <div className="bg-white text-[#5A36D6] px-5 py-2 rounded-full font-medium shadow-md">
           My Account
         </div> */}
         <div>
-         <button
-    onClick={() => setShowDropdown(!showDropdown)}
-    className="bg-white text-[#5A36D6] px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
-  >
-    My Account
-  </button>
-  {showDropdown && (
-    <div className="absolute right-0 mt-4 mr-4 w-[240px] bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
-      
-      {/* <div className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition">
+          <button
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="bg-white text-[#5A36D6] px-5 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all"
+          >
+            My Account
+          </button>
+          {showDropdown && (
+            <div className="absolute right-0 mt-4 mr-4 w-[240px] bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+              {/* <div className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition">
         <p className="text-gray-800 font-medium text-[16px]">
           My Account
         </p>
       </div> */}
 
-      <button
-        onClick={handleLogout}
-        className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition"
-      >
-        <p className="text-gray-800 font-medium text-[16px]">
-          Logout
-        </p>
-      </button>
+              <button
+                onClick={handleLogout}
+                className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition"
+              >
+                <p className="text-gray-800 font-medium text-[16px]">Logout</p>
+              </button>
 
-      <div className="border-t border-gray-200 mx-4"></div>
+              <div className="border-t border-gray-200 mx-4"></div>
 
-      <div className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition">
+              {/* <div className="px-6 py-4 hover:bg-gray-50 cursor-pointer transition">
         <p className="text-gray-700 font-semibold text-[16px]">
           Help & Support
         </p>
+      </div> */}
+            </div>
+          )}
+        </div>
       </div>
 
-    </div>
-  )}
-</div>
-      </div>
-
-      <div className="flex gap-10 px-26 py-4">
-
+      <div className="flex items-start gap-10 px-26 py-4">
         {/* SIDEBAR */}
-        <div className="w-[360px] bg-[#FAFAFA] rounded-3xl">
-
-          <div className="pt-12 pb-8 flex flex-col justify-self-center">
+        <div className="w-[360px] h-[calc(100vh-150px)] bg-[#FAFAFA] rounded-3xl sticky top-6 flex flex-col overflow-y-auto">
+          <div className="pt-12 pb-8 flex flex-col   justify-self-center">
             {profileLoading ? (
               <>
                 <div className="h-8 w-48 bg-gray-200 rounded animate-pulse mx-auto"></div>
@@ -155,13 +144,12 @@ export default function DashboardPage() {
             )}
           </div>
 
-          <div className="space-y-3 p-6">
-
-            <SidebarItem
+          <div className="flex-1 flex flex-col p-6 space-y-3 ">
+            {/* <SidebarItem
               label="My Dashboard"
               active={active === "dashboard"}
               onClick={() => setActive("dashboard")}
-            />
+            /> */}
 
             <SidebarItem
               label="My Profile"
@@ -174,16 +162,16 @@ export default function DashboardPage() {
               active={active === "loan"}
               onClick={() => setActive("loan")}
             />
-
+            {/* 
             <SidebarItem
               label="Gold Investment"
               active={active === "gold"}
               onClick={() => setActive("gold")}
-            />
+            /> */}
 
             <button
               onClick={handleLogout}
-              className="mt-14 w-full border border-[#5A36D6] text-[#5A36D6] py-3 rounded-xl font-medium hover:bg-[#F2EEFF] transition-all"
+              className="mt-auto w-full border border-[#5A36D6] text-[#5A36D6] py-3 rounded-xl font-medium hover:bg-[#F2EEFF] transition-all"
             >
               Logout
             </button>
@@ -192,13 +180,11 @@ export default function DashboardPage() {
 
         {/* MAIN CONTAINER */}
         <div className="flex-1 bg-[#FAFAFA] rounded-3xl p-10">
-
           {/* DASHBOARD VIEW */}
           {active === "dashboard" && (
             <>
               {/* TOP CARDS */}
               <div className="flex gap-8 mb-10">
-
                 <div className="flex-1 h-[150px] bg-[#FFF7E2] border border-[#F4D98A] rounded-2xl p-6 hover:shadow-lg transition-all">
                   <div className="flex justify-between items-start">
                     <h3 className="text-2xl font-bold text-gray-900">
@@ -210,9 +196,7 @@ export default function DashboardPage() {
                   </div>
 
                   <div className="mt-3 flex justify-between items-center">
-                    <div className="text-gray-600">
-                      My Gold Investment
-                    </div>
+                    <div className="text-gray-600">My Gold Investment</div>
                     <img
                       src="https://dummyimage.com/100x40/ffd700/fff.png&text=Chart"
                       alt="chart"
@@ -227,13 +211,20 @@ export default function DashboardPage() {
                   </h3>
 
                   <div className="mt-3 flex justify-between items-center">
-                    <div className="text-gray-600">
-                      My Active Loan
-                    </div>
+                    <div className="text-gray-600">My Active Loan</div>
                     <div className="flex gap-3">
-                      <img src="https://dummyimage.com/40x40/ff6b6b/fff.png" className="rounded-lg" />
-                      <img src="https://dummyimage.com/40x40/4dabf7/fff.png" className="rounded-lg" />
-                      <img src="https://dummyimage.com/40x40/f03e3e/fff.png" className="rounded-lg" />
+                      <img
+                        src="https://dummyimage.com/40x40/ff6b6b/fff.png"
+                        className="rounded-lg"
+                      />
+                      <img
+                        src="https://dummyimage.com/40x40/4dabf7/fff.png"
+                        className="rounded-lg"
+                      />
+                      <img
+                        src="https://dummyimage.com/40x40/f03e3e/fff.png"
+                        className="rounded-lg"
+                      />
                     </div>
                   </div>
                 </div>
@@ -256,7 +247,12 @@ export default function DashboardPage() {
 
               <div className="relative rounded-3xl h-[130px] flex items-center justify-center overflow-hidden mt-10">
                 <div className="absolute left-1/5 opacity-20">
-                  <Image src="/sheild.png" alt="shield" width={96} height={96} />
+                  <Image
+                    src="/sheild.png"
+                    alt="shield"
+                    width={96}
+                    height={96}
+                  />
                 </div>
 
                 <div className="text-center z-10 opacity-40">
@@ -274,14 +270,11 @@ export default function DashboardPage() {
           {/* PROFILE VIEW */}
           {active === "profile" && <ProfileSection />}
           {active === "loan" && <LoanHistorySection />}
-
         </div>
       </div>
     </div>
   );
 }
-
-
 
 function ProfileSection() {
   const [tab, setTab] = useState("personal");
@@ -373,17 +366,13 @@ function ProfileSection() {
 
   if (loading) return <div className="p-10">Loading...</div>;
 
-
-
   return (
     <div className="flex flex-col min-h-[500px]">
       <div className="flex border-b mb-8">
         <button
           onClick={() => setTab("personal")}
           className={`px-6 py-3 ${
-            tab === "personal"
-              ? "bg-[#EAE7F5] font-medium"
-              : "text-gray-500"
+            tab === "personal" ? "bg-[#EAE7F5] font-medium" : "text-gray-500"
           }`}
         >
           Personal Detail
@@ -392,9 +381,7 @@ function ProfileSection() {
         <button
           onClick={() => setTab("pan")}
           className={`px-6 py-3 ${
-            tab === "pan"
-              ? "bg-[#EAE7F5] font-medium"
-              : "text-gray-500"
+            tab === "pan" ? "bg-[#EAE7F5] font-medium" : "text-gray-500"
           }`}
         >
           PAN Detail
@@ -403,9 +390,7 @@ function ProfileSection() {
         <button
           onClick={() => setTab("employment")}
           className={`px-6 py-3 ${
-            tab === "employment"
-              ? "bg-[#EAE7F5] font-medium"
-              : "text-gray-500"
+            tab === "employment" ? "bg-[#EAE7F5] font-medium" : "text-gray-500"
           }`}
         >
           Employment Detail
@@ -477,17 +462,16 @@ function ProfileSection() {
         </div>
       )}
       <div className="mt-10">
-  <button
-    onClick={() => handleUpdate()}
-    className="w-full bg-[#EAC15A] hover:bg-[#e2b548] text-black font-semibold py-5 rounded-xl transition-all"
-  >
-    Update Details
-  </button>
-</div>
+        <button
+          onClick={() => handleUpdate()}
+          className="w-full bg-[#EAC15A] hover:bg-[#e2b548] text-black font-semibold py-5 rounded-xl transition-all"
+        >
+          Update Details
+        </button>
+      </div>
     </div>
   );
 }
-
 
 // function LoanHistorySection() {
 //   const customerId =
@@ -637,13 +621,15 @@ function LoanHistorySection() {
                 {loan.name || "Customer"}
               </p>
               <p className="text-xs text-gray-400 mt-1">
-                {loan.Date ? new Date(loan.Date).toLocaleDateString("en-IN", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                }) : "Date not available"}
+                {loan.Date
+                  ? new Date(loan.Date).toLocaleDateString("en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  : "Date not available"}
               </p>
             </div>
 
@@ -670,8 +656,6 @@ function LoanHistorySection() {
   );
 }
 
-
-
 function Input({ label, value = "", onChange = () => {} }) {
   return (
     <div>
@@ -685,7 +669,6 @@ function Input({ label, value = "", onChange = () => {} }) {
     </div>
   );
 }
-
 
 /* ORIGINAL COMPONENTS */
 
@@ -721,7 +704,11 @@ function Transaction({ title, amount, success }) {
         <p className="font-medium text-gray-800">{title}</p>
         <p className="text-sm text-gray-400">22nd Aug 12:17 pm</p>
       </div>
-      <span className={`font-semibold ${success ? "text-green-600" : "text-gray-600"}`}>
+      <span
+        className={`font-semibold ${
+          success ? "text-green-600" : "text-gray-600"
+        }`}
+      >
         {amount}
       </span>
     </div>
@@ -732,22 +719,13 @@ function LoanCard() {
   return (
     <div className="flex justify-between items-center h-[66px] p-5 rounded-xl border border-[#ECEBFF] hover:shadow-md transition-all">
       <div>
-        <p className="font-medium text-sm text-gray-800">
-          State Bank of India
-        </p>
-        <p className="text-sm text-gray-500">
-          Personal Loan
-        </p>
+        <p className="font-medium text-sm text-gray-800">State Bank of India</p>
+        <p className="text-sm text-gray-500">Personal Loan</p>
       </div>
       <div className="text-right">
-        <p className="font-bold text-sm text-gray-900">
-          ₹2,00,000
-        </p>
-        <p className="text-sm text-gray-400">
-          20 Jul 2025
-        </p>
+        <p className="font-bold text-sm text-gray-900">₹2,00,000</p>
+        <p className="text-sm text-gray-400">20 Jul 2025</p>
       </div>
     </div>
   );
 }
-

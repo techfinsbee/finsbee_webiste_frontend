@@ -7,6 +7,7 @@ import OptionCard from "../ui/OptionCard";
 import InputField from "../ui/InputField";
 import PrimaryButton from "../ui/PrimaryButton";
 import { SecurityHint } from "../ui/SecurityHint";
+import StepHeader from "../ui/StepHeader";
 
 export default function LasLoanForm() {
   const [step, setStep] = useState(1);

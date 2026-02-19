@@ -66,7 +66,7 @@ export default function PersonalLoanForm({
       if (!value) return "First name is required";
 
       if (!/^[A-Za-z]+$/.test(value))
-        return "First name should contain only letters";
+        return "First name contain only letters";
 
       if (value.length < 2)
         return "First name must be at least 2 characters";
@@ -103,7 +103,7 @@ export default function PersonalLoanForm({
       }
 
       if (actualAge > 60) {
-        return "Please enter a valid birth year";
+        return "Maximum eligible age is 60 years";
       }
 
       return "";
