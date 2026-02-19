@@ -133,9 +133,9 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar";
-import FreeClassCTA from "@/components/buttoms/FreeClassCTA";
-import BookingCTA from "@/components/buttoms/BookingCTA";
-import Desktopbuttom from "@/components/footer/Desktopbuttom";
+// import FreeClassCTA from "@/components/buttoms/FreeClassCTA";
+// import BookingCTA from "@/components/buttoms/BookingCTA";
+// import Desktopbuttom from "@/components/footer/Desktopbuttom";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import PersonalLoanPopup from "@/components/PersonalLoanPopup";
@@ -152,7 +152,7 @@ export default function ClientLayout({ children }) {
       "/loan/eligibility-documents",
       "/webinar-form",
       "/book-call",
-      "/blog",
+      // "/blog",
       "/my-account",
       "/instant-cash-loan/form",
       "/personal-loan/form",
@@ -178,7 +178,7 @@ export default function ClientLayout({ children }) {
     document.title.includes("Not Found") ||
     document.title.includes("404");
 
-  const shouldShow = !isHiddenRoute && !is404Page;
+  const shouldShow = !is404Page;
 
     setShowNavbar(shouldShow);
     setShowBottomCTA(shouldShow);
@@ -198,21 +198,21 @@ export default function ClientLayout({ children }) {
       </main>
 
       {/* Mobile CTA */}
-      {showBottomCTA && (
+      {/* {showBottomCTA && (
         <div className="lg:hidden fixed bottom-0 left-0 w-full z-50">
           <div className="flex flex-col gap-3 px-4 pb-5 pt-3">
             <FreeClassCTA />
             <BookingCTA />
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Desktop CTA */}
-      {showBottomCTA && (
+      {/* {showBottomCTA && (
         <div className="fixed bottom-0 left-0 w-full z-50">
           <Desktopbuttom />
         </div>
-      )}
+      )} */}
     </>
   );
 }

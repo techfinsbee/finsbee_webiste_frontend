@@ -68,9 +68,6 @@
 
 // export default PageHero;
 
-
-
-
 "use client";
 
 import Image from "next/image";
@@ -86,7 +83,7 @@ const PageHero = ({
     // sm: "sm:h-[38rem]",
     // md: "md:h-[48rem]",
     // lg: "lg:h-[600px]",
-     base: "h-[15rem]",
+    base: "h-[15rem]",
     sm: "sm:h-[20rem]",
     md: "md:h-[25rem]",
     lg: "lg:h-[30rem]",
@@ -118,9 +115,7 @@ const PageHero = ({
 
         {/* Gradient Overlay */}
         {/* <div className="absolute inset-0  radial-gradient(100% 100% at 50% 100%, rgba(89,46,255), rgba(49,25,140,0.7) 100%)" /> */}
-        <div
-  className="absolute inset-0  bg-[radial-gradient(100%_100%_at_50%_100%,rgba(89,46,255,1),rgba(49,25,140,0.7)_100%)]"
-/>
+        <div className="absolute inset-0  bg-[radial-gradient(100%_100%_at_50%_100%,rgba(89,46,255,1),rgba(49,25,140,0.7)_100%)]" />
 
         {/* Abstract Overlay */}
         {abstractImage && (
@@ -133,14 +128,16 @@ const PageHero = ({
         )}
 
         {/* Content */}
-        <div className="relative z-10 pt-25 mx-10  md:pt-30 lg:pt-48">
-          <div className="px-4 md:px-[136px] md:max-w-[890px]">
+        {/* Content */}
+        {/* Content */}
+        <div className="relative z-10 h-full flex items-center justify-center text-center px-4">
+          <div className="max-w-[890px]">
             <h1 className="font-bold text-yellow-400 text-2xl sm:text-4xl md:text-4xl leading-normal">
               {title}
             </h1>
 
             {subtitle && (
-              <p className="mt-4 text-[#FFEEC3] text-lg md:text-xl max-w-2xl">
+              <p className="mt-4 text-[#FFEEC3] text-lg md:text-xl">
                 {subtitle}
               </p>
             )}
@@ -154,6 +151,3 @@ const PageHero = ({
 };
 
 export default PageHero;
-
-
-
