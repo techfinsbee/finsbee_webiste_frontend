@@ -148,7 +148,7 @@ export default function HomeLoanForm() {
               name="outstandingAmount"
               value={form.outstandingAmount}
               onChange={handleChange}
-              placeholder="Enter amount in lakhs"
+              placeholder="Enter amount"
             />
 
             <PrimaryButton
@@ -214,11 +214,11 @@ export default function HomeLoanForm() {
         />
 
         <InputField
-          label="Estimated Property Value (in lakh)"
+          label="Estimated Property Value"
           name="propertyValue"
           value={form.propertyValue}
           onChange={handleChange}
-          placeholder="e.g. 75"
+          placeholder="Enter Property Value"
         />
 
         {/* Property Pincode – styled exactly like Personal Loan */}

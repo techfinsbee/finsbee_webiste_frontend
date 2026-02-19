@@ -110,15 +110,30 @@ export async function middleware(req) {
     "/favicon.ico",
   ];
 
-  const protectedPaths = [
-    "/my-account",
-    "/dashboard",       // add more protected routes here if needed
-    // "/profile",
-    // "/investment",
-  ];
+  // const protectedPaths = [
+  //   "/dashboard",       // add more protected routes here if needed
+  //   // "/profile",
+  //   // "/investment",
+  // ];
 
   const isPublic = publicPaths.some(p => pathname === p || pathname.startsWith(p));
-  const isProtected = protectedPaths.some(p => pathname === p || pathname.startsWith(p));
+  // 4️⃣ Detect protected routes
+
+
+// 4️⃣ Detect protected routes
+
+const isDashboard = pathname.startsWith("/dashboard");
+
+// Protect any route like /something/form
+const isLoanForm = /^\/[^\/]+\/form$/.test(pathname);
+
+// 🔥 Protect dynamic loan pages like /personal-loan
+const isLoanPage = /^\/[a-z-]+$/.test(pathname) && !publicPaths.includes(pathname);
+
+const isProtected = isDashboard || isLoanForm || isLoanPage;
+
+
+  // const isProtected = protectedPaths.some(p => pathname === p || pathname.startsWith(p));
 
   // Skip auth check for public paths and static files
   if (isPublic && !isProtected) {
@@ -152,16 +167,16 @@ if (authCookie) {
   // 6. Protection logic
   // ────────────────────────────────────────────────
   if (isProtected && !isLoggedIn) {
-    console.log(`↪️ Redirecting unauthenticated user from ${pathname} → /login`);
-    const loginUrl = new URL("/login", req.url);
+    console.log(`↪️ Redirecting unauthenticated user from ${pathname} → /`);
+    const loginUrl = new URL("/", req.url);
     loginUrl.searchParams.set("redirect", pathname); // optional: remember destination
     return NextResponse.redirect(loginUrl);
   }
 
   // Redirect logged-in users AWAY from auth pages
-  if (isLoggedIn && (pathname === "/login" || pathname === "/verify-otp" || pathname === "/register")) {
-    console.log(`↪️ Redirecting logged-in user from ${pathname} → /my-account`);
-    return NextResponse.redirect(new URL("/my-account", req.url));
+  if (isLoggedIn && (pathname === "/" )) {
+    console.log(`↪️ Redirecting logged-in user from ${pathname} → /dashboard`);
+    return NextResponse.redirect(new URL("/dashboard", req.url));
   }
 
   // All good — continue to the page
@@ -170,12 +185,5 @@ if (authCookie) {
 
 // Run middleware only on relevant paths (better performance)
 export const config = {
-  matcher: [
-    "/my-account/:path*",
-    "/dashboard/:path*",
-    "/login",
-    "/verify-otp",
-    "/register",
-    "/((?!_next/static|_next/image|favicon.ico).*)", // everything else
-  ],
+  matcher: ["/:path*"],
 };

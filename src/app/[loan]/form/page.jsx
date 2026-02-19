@@ -482,6 +482,8 @@
 "use client";
 
 import { useState } from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useParams } from "next/navigation";
 import LoanHeader from "@/loanComponent/LoanHeader";
 import { loanConfig } from "@/config/loanConfig";
@@ -496,6 +498,14 @@ import LasLoanForm from "@/loanComponent/forms/LASLoanForm";
 import InstantLoanForm from "@/loanComponent/forms/InstatntLoanForm";
 
 export default function DynamicLoanPage() {
+  const router = useRouter();
+
+useEffect(() => {
+  const customerId = localStorage.getItem("originalCustomerId");
+  if (!customerId) {
+    router.replace("/");
+  }
+}, []);
   const params = useParams();
   const loanSlug = params.loan;
 
