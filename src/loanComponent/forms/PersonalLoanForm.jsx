@@ -26,6 +26,7 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [apiError, setApiError] = useState("");
 
   const isNestedFlow = typeof onBack === "function";
 
@@ -420,13 +421,65 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
     return years;
   };
 
+  // const evaluateEligibility = () => {
+  //   const employmentKey = employmentTypeMap[form.employmentType] || "";
+  //   const salaryCreditMode = form.salaryMode || ""; // from form
+  //   const income =
+  //     Number(
+  //       employmentKey === "Salaried" ? form.netIncome : form.monthlyIncome
+  //     ) || 0;
+  //   const age = calculateAge(form.dob);
+  //   const businessExp = calculateYearsSince(
+  //     getEmploymentDate(form.employmentDuration)
+  //   );
+
+  //   let rejected = false;
+  //   let reason = "";
+
+  //   // Your exact 4 rules
+  //   if (salaryCreditMode === "Cash" || salaryCreditMode === "Cheque") {
+  //     rejected = true;
+  //     reason = "Salary credit mode (Cash/Cheque) is not acceptable";
+  //   } else if (income < 15000) {
+  //     rejected = true;
+  //     reason = "Monthly income is below ₹15,000";
+  //   } else if (employmentKey === "Salaried" && (age < 21 || age > 60)) {
+  //     rejected = true;
+  //     reason = `Age ${age} is outside allowed range for salaried (21–60)`;
+  //   } else if (employmentKey === "Self-Employed-Business" && businessExp < 2) {
+  //     rejected = true;
+  //     reason = "Business experience is less than 2 years";
+  //   }
+
+  //   if (loanType === "Loan-Against-Property" && income < 25000) {
+  //     rejected = true;
+  //     reason =
+  //       "Monthly income is below ₹25,000 (required for Loan Against Property)";
+  //   }
+
+  //   // 🔥 NEW LAS RULE
+  //   if (loanType === "Loan-Against-Security") {
+  //     const securityAmount =
+  //       Number(extraData?.Total_Securities_Values || form.totalSecurityValue) ||
+  //       0;
+
+  //     if (securityAmount < 50000) {
+  //       rejected = true;
+  //       reason = "Minimum security value required is ₹50,000";
+  //     }
+  //   }
+
+  //   return { eligible: !rejected, reason };
+  // };
+
   const evaluateEligibility = () => {
     const employmentKey = employmentTypeMap[form.employmentType] || "";
-    const salaryCreditMode = form.salaryMode || ""; // from form
+    const salaryCreditMode = form.salaryMode || "";
     const income =
       Number(
         employmentKey === "Salaried" ? form.netIncome : form.monthlyIncome
       ) || 0;
+
     const age = calculateAge(form.dob);
     const businessExp = calculateYearsSince(
       getEmploymentDate(form.employmentDuration)
@@ -435,29 +488,50 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
     let rejected = false;
     let reason = "";
 
-    // Your exact 4 rules
+    /* ================= SALARY MODE CHECK ================= */
     if (salaryCreditMode === "Cash" || salaryCreditMode === "Cheque") {
       rejected = true;
       reason = "Salary credit mode (Cash/Cheque) is not acceptable";
-    } else if (income < 15000) {
+    }
+
+    /* ================= INCOME RULE (DYNAMIC) ================= */
+
+    // Default minimum income
+    let minimumIncome = 15000;
+
+    // Home Loan rule (only for Salaried)
+    if (loanType === "Home-Loan" && employmentKey === "Salaried") {
+      minimumIncome = 25000;
+    }
+
+    // Loan Against Property rule
+    if (loanType === "Loan-Against-Property") {
+      minimumIncome = 25000;
+    }
+
+    if (!rejected && income < minimumIncome) {
       rejected = true;
-      reason = "Monthly income is below ₹15,000";
-    } else if (employmentKey === "Salaried" && (age < 21 || age > 60)) {
+      reason = `Monthly income is below ₹${minimumIncome.toLocaleString()}`;
+    }
+
+    /* ================= AGE RULE ================= */
+    if (!rejected && employmentKey === "Salaried" && (age < 21 || age > 60)) {
       rejected = true;
       reason = `Age ${age} is outside allowed range for salaried (21–60)`;
-    } else if (employmentKey === "Self-Employed-Business" && businessExp < 2) {
+    }
+
+    /* ================= BUSINESS EXPERIENCE ================= */
+    if (
+      !rejected &&
+      employmentKey === "Self-Employed-Business" &&
+      businessExp < 2
+    ) {
       rejected = true;
       reason = "Business experience is less than 2 years";
     }
 
-    if (loanType === "Loan-Against-Property" && income < 25000) {
-      rejected = true;
-      reason =
-        "Monthly income is below ₹25,000 (required for Loan Against Property)";
-    }
-
-    // 🔥 NEW LAS RULE
-    if (loanType === "Loan-Against-Security") {
+    /* ================= LAS RULE ================= */
+    if (!rejected && loanType === "Loan-Against-Security") {
       const securityAmount =
         Number(extraData?.Total_Securities_Values || form.totalSecurityValue) ||
         0;
@@ -684,10 +758,15 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
       const data = await res.json();
       const result = data?.result?.[0];
 
+      // if (result?.success === true) {
+      //   toast.success(result?.message || "");
+      // } else {
+      //   toast.error(result?.message || "Submission failed");
+      // }
       if (result?.success === true) {
-        toast.success(result?.message || "Application submitted successfully!");
+        setApiError(""); // clear error if any
       } else {
-        toast.error(result?.message || "Submission failed");
+        setApiError(result?.message || "Submission failed");
       }
     } catch {
       toast.error("Server error");
@@ -712,25 +791,24 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
   // };
 
   const handleStep1Submit = async () => {
-  setSubmitted(true);
+    setSubmitted(true);
 
-  const isValid = validateStep();
+    const isValid = validateStep();
 
-  // 🚨 Extra check for API-based pincode validation
-  const isLocationValid = form.district && form.state;
+    // 🚨 Extra check for API-based pincode validation
+    const isLocationValid = form.district && form.state;
 
-  if (!isLocationValid) {
-    setErrors((prev) => ({
-      ...prev,
-      pincode: "Enter valid 6 digit pincode",
-    }));
-  }
+    if (!isLocationValid) {
+      setErrors((prev) => ({
+        ...prev,
+        pincode: "Enter valid 6 digit pincode",
+      }));
+    }
 
-  if (!isValid || !isLocationValid) return;
+    if (!isValid || !isLocationValid) return;
 
-  await createLoan();
-};
-
+    await createLoan();
+  };
 
   const handleStep2Submit = () => {
     setSubmitted(true);
