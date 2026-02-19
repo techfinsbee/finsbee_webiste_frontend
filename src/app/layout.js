@@ -5,7 +5,7 @@ import ClientLayout from "./ClientLayout";
 import GTMNoScript from "./GTMNoScript";
 import MixpanelProvider from "@/components/MixpanelProvider";
 import FacebookPixel from "@/components/FacebookPixel";
-import SplashGate from "@/loanComponent/SplashGate";
+// import SplashGate from "@/loanComponent/SplashGate";
 import { ToastContainer } from "react-toastify";
 import ClientProvider from "@/loanComponent/ClientProvider";
 
@@ -130,10 +130,10 @@ gtag('config', '${GA_ID}');
         <MixpanelProvider>
            <FacebookPixel />
            <ClientProvider>
-             <SplashGate>
+           
                <ToastContainer position="top-center" autoClose={4000} />
                <ClientLayout>{children}</ClientLayout>
-             </SplashGate>
+         
            </ClientProvider>
         </MixpanelProvider>
       </body>

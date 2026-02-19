@@ -11,7 +11,7 @@ export default function SplashGate({ children }) {
   useEffect(() => {
     const auth = getAuth();
     if (!isAuthValid(auth)) {
-      // optional: router.replace('/auth/login');
+    router.replace('/');
     }
     setReady(true);
   }, [router]);

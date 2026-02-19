@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
@@ -729,7 +727,9 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
                 {isLoggedIn ? (
                   // Logged-in: Apply Now + Logout
                   <div className="p-8">
-                    <h2 className="text-2xl font-bold mb-4  mt-10">Welcome Back 👋</h2>
+                    <h2 className="text-2xl font-bold mb-4  mt-10">
+                      Welcome Back 👋
+                    </h2>
                     <p className="text-gray-600 mb-6">
                       Continue your loan application.
                     </p>
@@ -773,7 +773,11 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
                             type="tel"
                             maxLength={10}
                             value={mobile}
-                            onChange={(e) => setMobile(e.target.value)}
+                            // onChange={(e) => setMobile(e.target.value)}
+                            onChange={(e) => {
+                              const value = e.target.value.replace(/\D/g, ""); // remove non-numeric
+                              setMobile(value);
+                            }}
                             placeholder="Enter mobile no."
                             className="w-full outline-none"
                           />
@@ -784,7 +788,7 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
                           Privacy Policy
                         </p>
 
-                        <SecurityHint/>
+                        <SecurityHint />
 
                         <button
                           onClick={sendOtp}
@@ -810,17 +814,14 @@ const DynamicLoanPage = ({ loanData, loanSlug }) => {
 
                         <h2 className="text-3xl font-bold mb-6">Verify OTP</h2>
 
-                     
                         <OTPInput
                           length={6}
                           onComplete={(value) => {
                             setOtp(value);
                             setError("");
-
                           }}
-                          
                         />
-                       <SecurityHint />
+                        <SecurityHint />
                         <button
                           onClick={async () => {
                             const success = await verifyOtp();

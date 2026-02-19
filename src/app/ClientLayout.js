@@ -165,20 +165,20 @@ export default function ClientLayout({ children }) {
     //   document.title.includes("Not Found") ||
     //   document.title.includes("404");
 
-    // const shouldShow = !isHiddenRoute && !is404Page;
+    // const shouldShow = !isHiddenRoute && !is404Page;x
       const isLoanFormRoute =
     pathname?.split("/").length === 3 &&
     pathname?.endsWith("/form");
 
   const isHiddenRoute =
     hiddenRoutes.includes(pathname) ||
-    pathname.startsWith("/blog") ||  isLoanFormRoute; 
+    isLoanFormRoute; 
 
   const is404Page =
     document.title.includes("Not Found") ||
     document.title.includes("404");
 
-  const shouldShow = !is404Page;
+  const shouldShow = !is404Page && !isHiddenRoute;
 
     setShowNavbar(shouldShow);
     setShowBottomCTA(shouldShow);

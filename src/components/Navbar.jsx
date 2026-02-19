@@ -339,7 +339,7 @@ export const Navbar = () => {
 
       setRequestId(data.Details);
       setStep("otp");
-      toast.success("OTP sent!");
+      // toast.success("OTP sent!");
     } catch (err) {
       toast.error(err.message || "Failed to send OTP");
     } finally {
@@ -370,7 +370,7 @@ export const Navbar = () => {
         throw new Error(verifyData.Details || "Invalid OTP");
       }
 
-      toast.success("OTP Verified!");
+      // toast.success("OTP Verified!");
 
       const phone = mobile.trim();
 
@@ -581,27 +581,13 @@ export const Navbar = () => {
              bg-gradient-to-r from-[#592eff] to-[#7c45ff] 
              hover:brightness-110 transition-all shadow-lg"
           >
-            {localStorage.getItem("originalCustomerId") ? "Dashboard" : "Login"}
+            {/* {localStorage.getItem("originalCustomerId") ? "Dashboard" : "Login"} */}
+            {isLoggedIn ? "Dashboard" : "Login"}
+
           </button>
         </div>
 
-        {/* Login / My Account Button */}
-        {/* <div className="hidden lg:flex items-center gap-4">
-          <button
-            onClick={() => {
-              if (isLoggedIn) {
-                router.push("/dashboard");
-              } else {
-                setIsLoginOpen(!isLoginOpen);
-              }
-            }}
-            className="px-6 py-3 rounded-2xl font-semibold text-white bg-gradient-to-r from-[#592eff] to-[#7c45ff] hover:brightness-110 transition-all shadow-lg hover:shadow-xl"
-          >
-            {localStorage.getItem("originalCustomerId")
-              ? "dashboard"
-              : "Login"}
-          </button>
-        </div> */}
+       
 
         {/* Login Dropdown Card */}
         {isLoginOpen && (
@@ -664,9 +650,13 @@ export const Navbar = () => {
                     type="tel"
                     placeholder="Enter Mobile Number"
                     value={mobile}
+                    // onChange={(e) => 
+                    //   setMobile(e.target.value);
+                    //   setError("");
+                    // }}
                     onChange={(e) => {
-                      setMobile(e.target.value);
-                      setError("");
+                      const value = e.target.value.replace(/\D/g, ""); // remove non-numeric
+                      setMobile(value);
                     }}
                     className="w-full p-4 rounded-2xl bg-white/80 border border-gray-300 focus:border-[#592eff] outline-none text-gray-700 mb-4 backdrop-blur-sm"
                     style={{ boxShadow: "inset 0 2px 8px rgba(0,0,0,0.05)" }}
@@ -717,7 +707,7 @@ export const Navbar = () => {
                   <input
                     type="text"
                     maxLength={6}
-                    placeholder="Enter 6-digit OTP"
+                    placeholder="Enter OTP"
                     value={otp}
                     onChange={(e) => {
                       setOtp(e.target.value);
@@ -829,9 +819,10 @@ export const Navbar = () => {
                bg-gradient-to-r from-[#592eff] to-[#7c45ff]
                hover:brightness-110 transition"
                 >
-                  {localStorage.getItem("originalCustomerId")
+                  {/* {localStorage.getItem("originalCustomerId")
                     ? "Dashboard"
-                    : "Login"}
+                    : "Login"} */}
+                    {isLoggedIn ? "Dashboard" : "Login"}
                 </button>
               </div>
             </div>
