@@ -490,7 +490,7 @@ export const Navbar = () => {
         </div>
 
         {/* Hamburger */}
-        <div className="lg:hidden flex items-center mr-7 sm:mr-9 md:mr-15">
+        <div className="lg:hidden flex items-center mr-7 sm:mr-9 md:mr-15  -translate-y-4">
           <button
             onClick={toggleSidebar}
             className="focus:outline-none p-2 rounded-full hover:bg-white/10"

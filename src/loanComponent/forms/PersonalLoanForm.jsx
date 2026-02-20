@@ -592,6 +592,7 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
       name: form.firstName.trim() + " " + form.lastName.trim(),
       gender: form.gender || "",
       Nationality: "Indian",
+      phone: verifiedPhone || "",
       DOB: form.dob,
       Email: form.email.trim() || "",
       Pincode: form.pincode.trim() || "",
@@ -655,6 +656,7 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
       CustomerId: Number(partnerCustomerId),
       LoanID: loanId,
       PAN: form.pan.toUpperCase().trim(),
+      
       First_Name: form.firstName.trim(),
       Last_Name: form.lastName.trim() || "",
       Gender: form.gender || "",
