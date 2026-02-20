@@ -332,7 +332,14 @@ export default function HomeLoanForm() {
     return (
       <PersonalLoanForm
         loanType={form.loanOption}
-        onBack={() => setStep(3)}
+        // onBack={() => setStep(3)}
+        onBack={() => {
+        if (form.loanOption === "balance-transfer-of-hl") {
+          setStep(1); // Balance transfer → go back to step 1
+        } else {
+          setStep(3); // New home loan → go back to step 3
+        }
+        }}
         extraData={{
           Property_Type: form.propertyType,
           Property_Value: form.propertyValue,

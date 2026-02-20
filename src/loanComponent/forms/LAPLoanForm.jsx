@@ -157,12 +157,12 @@ if (step === 1) {
 
       {[
         {
-          label: "LAP",
+          label: "New Loan",
           value: "Loan-Against-Property",
           desc: "Select this if you want a new LAP loan",
         },
         {
-          label: "Balance Transfer",
+          label: "Transfer Existing Loan",
           value: "balance-transfer-lap",
           desc: "Transfer your current LAP loan",
         },
@@ -409,7 +409,14 @@ if (step === 3) {
     return (
       <PersonalLoanForm
         loanType={form.loanOption} 
-        onBack={() => setStep(3)}
+        // onBack={() => setStep(3)}
+         onBack={() => {
+        if (form.loanOption === "balance-transfer-lap") {
+          setStep(1); 
+        } else {
+          setStep(3); 
+        }
+      }}
         extraData={{
           Property_Type: form.propertyType,
           Property_Value: form.propertyValue,
