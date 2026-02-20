@@ -1,0 +1,69 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+// Animated Text Section Component
+const AnimatedTextSection = ({text}) => {
+  const [visibleWords, setVisibleWords] = useState(0);
+
+  // Split text into words
+  const words = text.split(" ");
+
+  // Animation effect - reveal words one by one
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVisibleWords((prev) => {
+        if (prev < words.length) {
+          return prev + 1;
+        }
+        clearInterval(timer);
+        return prev;
+      });
+    }, 150); // Speed: 150ms per word
+
+    return () => clearInterval(timer);
+  }, [words.length]);
+
+  return (
+    <motion.section
+      className=" mx-auto sm:px-6 md:px-[136px] md:py-16 rounded-2xl"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      <div className="text-start">
+        <div
+          className="md:text-5xl font-bold leading-relaxed"
+          style={{ fontFamily: "Inter, sans-serif" }}
+        >
+          {words.map((word, index) => (
+            <motion.span
+              key={index}
+              className={`inline-block mr-3 transition-all duration-500 ${
+                index < visibleWords ? "text-gray-900" : "text-transparent"
+              }`}
+              style={{
+                WebkitTextStroke: index >= visibleWords ? "1px #4d4d4d" : "none",
+                letterSpacing: "0.48px",
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{
+                opacity: index < visibleWords ? 1 : 0.7,
+                y: index < visibleWords ? 0 : 10,
+              }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.05,
+              }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </div>
+      </div>
+    </motion.section>
+  );
+};
+
+export default AnimatedTextSection;

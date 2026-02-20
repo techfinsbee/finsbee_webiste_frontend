@@ -1,0 +1,49 @@
+<body>
+  <!-- Register Service Worker BEFORE Flutter bootstrap -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      const reloadedKey = 'sw_control_reload_done';
+
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then((reg) => {
+          console.log('✅ Service worker registered for 2factor-proxy:', reg.scope);
+
+          // Wait for SW to activate and control the page
+          setTimeout(() => {
+            if (!navigator.serviceWorker.controller && !sessionStorage.getItem(reloadedKey)) {
+              console.log('SW registered but not controlling this page — reloading once so SW can control it');
+              sessionStorage.setItem(reloadedKey, '1');
+              window.location.reload();
+            } else {
+              console.log('SW is already controlling this page.');
+            }
+          }, 300);
+        })
+        .catch((err) => {
+          console.error('SW registration failed:', err);
+        });
+    } else {
+      console.warn('Service Worker not supported in this browser');
+    }
+
+    // Redirect all 2Factor API calls through Next.js proxy
+    const originalFetch = window.fetch;
+    window.fetch = async (...args) => {
+      const [url, options] = args;
+      if (typeof url === 'string' && url.includes('2factor.in/API/')) {
+        const proxyUrl = '/api/2factor-proxy?target=' + encodeURIComponent(url);
+        console.log('🔁 Redirecting request via proxy:', proxyUrl);
+        return originalFetch(proxyUrl, options);
+      }
+      if (typeof url === 'string' && url.includes('dashboard.finsbee.com/api/')) {
+  const proxyUrl = '/api/dashboard-proxy?target=' + encodeURIComponent(url);
+  console.log('🔁 Redirecting dashboard request via proxy:', proxyUrl);
+  return originalFetch(proxyUrl, options);
+}
+      return originalFetch(...args);
+    };
+  </script>
+
+  <!-- Flutter bootstrap (AFTER SW registration) -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
