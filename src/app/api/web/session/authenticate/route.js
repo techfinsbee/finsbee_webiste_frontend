@@ -103,7 +103,7 @@ export async function POST(request) {
     const clientCookie = request.headers.get("cookie") || undefined;
 
     const odooRes = await axios.post(
-      "https://payday.finsbee.com/web/session/authenticate",
+      "https://dashboard.finsbee.com/web/session/authenticate",
       {
         jsonrpc: "2.0",
         method: "call",

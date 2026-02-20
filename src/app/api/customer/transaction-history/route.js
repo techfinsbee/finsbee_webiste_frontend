@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const BACKEND =
-  process.env.NEXT_PUBLIC_BACKEND_URL || "https://payday.finsbee.com";
+  process.env.NEXT_PUBLIC_BACKEND_URL || "https://dashboard.finsbee.com";
 
 export async function POST(req) {
   try {

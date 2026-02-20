@@ -327,7 +327,7 @@
 
 //     // ✅ Use correct Odoo field names - remove 'birthday' which doesn't exist
 //     const odooResponse = await fetch(
-//       "https://payday.finsbee.com/web/dataset/call_kw",
+//       "https://dashboard.finsbee.com/web/dataset/call_kw",
 //       {
 //         method: "POST",
 //         headers: {
@@ -429,7 +429,7 @@
 //     const cookieHeader = req.headers.get("cookie") || "";
 
 //     const odooResponse = await fetch(
-//       "https://payday.finsbee.com/web/dataset/call_kw",
+//       "https://dashboard.finsbee.com/web/dataset/call_kw",
 //       {
 //         method: "POST",
 //         headers: {
@@ -462,7 +462,7 @@
 
 import { NextResponse } from "next/server";
 
-const ODOO = "https://payday.finsbee.com";
+const ODOO = "https://dashboard.finsbee.com";
 
 export async function POST(req) {
   try {

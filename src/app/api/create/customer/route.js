@@ -3,7 +3,7 @@
 // // app/api/create/customer/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://payday.finsbee.com";
+// const ODOO = "https://dashboard.finsbee.com";
 // const ADMIN = {
 //   db: "finsbee",
 //   login: "finsbee@gmail.com",
@@ -155,7 +155,7 @@
 
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://payday.finsbee.com";
+// const ODOO = "https://dashboard.finsbee.com";
 // const ADMIN = {
 //   db: "finsbee",
 //   login: "finsbee@gmail.com",
@@ -360,7 +360,7 @@
 
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://payday.finsbee.com";
+// const ODOO = "https://dashboard.finsbee.com";
 
 // const ADMIN = {
 //   db: "finsbee",
@@ -547,7 +547,7 @@
 
 import { NextResponse } from "next/server";
 
-const ODOO = "https://payday.finsbee.com";
+const ODOO = "https://dashboard.finsbee.com";
 
 const ADMIN = {
   db: "finsbee",

@@ -396,7 +396,7 @@
 
 import { NextResponse } from "next/server";
 
-const ODOO = "https://payday.finsbee.com";
+const ODOO = "https://dashboard.finsbee.com";
 
 // Only include fields that actually exist in your Odoo `res.partner` model
 const FIELD_MAP = {
