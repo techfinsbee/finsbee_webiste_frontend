@@ -3,11 +3,12 @@ import Script from "next/script";
 import "./globals.css";
 import ClientLayout from "./ClientLayout";
 import GTMNoScript from "./GTMNoScript";
-import MixpanelProvider from "@/components/MixpanelProvider";
-import FacebookPixel from "@/components/FacebookPixel";
+
 // import SplashGate from "@/loanComponent/SplashGate";
 import { ToastContainer } from "react-toastify";
 import ClientProvider from "@/loanComponent/ClientProvider";
+import CookieBanner from "@/components/CookieBanner";
+import TrackingProvider from "@/components/TrackingProvider";
 
 /* =============================
    FONT
@@ -94,7 +95,7 @@ f.parentNode.insertBefore(j,f);
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="lazyOnload"
         />
-        <Script
+        {/* <Script
           id="ga4"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
@@ -105,7 +106,29 @@ gtag('js', new Date());
 gtag('config', '${GA_ID}');
             `,
           }}
-        />
+        /> */}
+
+        <Script
+  id="ga4-consent"
+  strategy="lazyOnload"
+  dangerouslySetInnerHTML={{
+    __html: `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+gtag('consent', 'default', {
+  'analytics_storage': 'denied',
+  'ad_storage': 'denied',
+  'functionality_storage': 'denied',
+  'personalization_storage': 'denied',
+  'security_storage': 'granted'
+});
+
+gtag('js', new Date());
+gtag('config', '${GA_ID}');
+    `,
+  }}
+/>
 
         {/* Ahrefs */}
         <Script
@@ -127,15 +150,15 @@ gtag('config', '${GA_ID}');
       <body className="relative min-h-screen antialiased bg-white text-black">
         
         <GTMNoScript />
-        <MixpanelProvider>
-           <FacebookPixel />
+        <TrackingProvider>
            <ClientProvider>
            
                <ToastContainer position="top-center" autoClose={4000} />
                <ClientLayout>{children}</ClientLayout>
-         
+              
            </ClientProvider>
-        </MixpanelProvider>
+      </TrackingProvider>
+       <CookieBanner />
       </body>
       
     </html>

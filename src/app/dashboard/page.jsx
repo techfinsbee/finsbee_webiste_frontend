@@ -671,7 +671,7 @@ function Input({ label, value = "", onChange = () => {} }) {
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Placeholder"
+        placeholder="Enter here"
         className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-300"
       />
     </div>
