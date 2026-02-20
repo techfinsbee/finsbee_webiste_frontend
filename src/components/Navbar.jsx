@@ -276,6 +276,7 @@ export const Navbar = () => {
     { label: "Investment", path: "/investment", isMegaMenu: false },
     { label: "EMI Calculator", key: "emi", isMegaMenu: true },
     { label: "Contact us", scrollTo: "contact-us", isMegaMenu: false },
+    { label: "Blogs", path: "/blog", isMegaMenu: false },
   ];
 
   const handleNavigation = (path, external, scrollTo) => {
