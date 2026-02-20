@@ -6,7 +6,7 @@
 
 //   try {
 //     const backendUrl =
-//       process.env.NEXT_PUBLIC_BACKEND_URL || 'https://dashboard.finsbee.com';
+//       process.env.NEXT_PUBLIC_BACKEND_URL || 'https://payday.finsbee.com';
 
 //     const response = await fetch(`${backendUrl}/api/update/customer`, {
 //       method: 'POST',
@@ -28,7 +28,7 @@
 // // app/api/update/customer/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || "https://dashboard.finsbee.com";
+// const ODOO_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || "https://payday.finsbee.com";
 
 // export async function POST(request) {
 //   return handleUpdate(request);
@@ -115,7 +115,7 @@
 // // app/api/update/customer/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://dashboard.finsbee.com";
+// const ODOO = "https://payday.finsbee.com";
 
 // export async function POST(request) { return handle(request); }
 // export async function PUT(request)  { return handle(request); }
@@ -185,7 +185,7 @@
 // // app/api/update/customer/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://dashboard.finsbee.com";
+// const ODOO = "https://payday.finsbee.com";
 
 // /* -------------------------------------------------
 //    Flutter → Odoo field mapping
@@ -293,7 +293,7 @@
 // // app/api/update/customer/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://dashboard.finsbee.com";
+// const ODOO = "https://payday.finsbee.com";
 
 // const FIELD_MAP = {
 //   Email: "email",

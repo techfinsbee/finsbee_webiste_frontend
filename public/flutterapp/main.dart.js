@@ -53584,7 +53584,7 @@ A3(){var s=0,r=A.t(t.y),q,p=2,o=[],n=this,m,l,k
 var $async$A3=A.o(function(a,b){if(a===1){o.push(b)
 s=p}while(true)switch(s){case 0:p=4
 s=7
-return A.l(A.aMq(A.dr("https://dashboard.finsbee.com/flutterapi/connectivity",0,null)).O1(B.ih),$async$A3)
+return A.l(A.aMq(A.dr("https://payday.finsbee.com/flutterapi/connectivity",0,null)).O1(B.ih),$async$A3)
 case 7:m=b
 if(m.b>=200&&m.b<400){q=!0
 s=1

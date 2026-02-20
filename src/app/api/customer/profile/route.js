@@ -1,7 +1,7 @@
 // // app/api/customer/profile/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://dashboard.finsbee.com";
+// const ODOO = "https://payday.finsbee.com";
 
 // async function handle(request) {
 //   try {
@@ -83,7 +83,7 @@
 // // app/api/customer/profile/route.js
 // import { NextResponse } from "next/server";
 
-// const ODOO = "https://dashboard.finsbee.com";
+// const ODOO = "https://payday.finsbee.com";
 // const ADMIN = {
 //   db: "finsbee",
 //   login: "finsbee@gmail.com",
@@ -217,7 +217,7 @@
 
 //     // ✅ Call Odoo JSON-RPC for reading customer record
 //     const odooResponse = await fetch(
-//       "https://dashboard.finsbee.com/web/dataset/call_kw",
+//       "https://payday.finsbee.com/web/dataset/call_kw",
 //       {
 //         method: "POST",
 //         headers: {

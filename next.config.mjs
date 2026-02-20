@@ -7,16 +7,16 @@
 //       { source: "/api/flutterapi/customer/profile", destination: "/api/customer/profile" },
 //       { source: "/api/flutterapi/customer/loan",    destination: "/api/customer/loan" },
 //       { source: "/api/flutterapi/check-phone",      destination: "/api/check-phone" },
-//       { source: "/api/flutterapi/bre/website",      destination: "https://dashboard.finsbee.com/api/bre/website" },
+//       { source: "/api/flutterapi/bre/website",      destination: "https://payday.finsbee.com/api/bre/website" },
 
        
-//       { source: "/api/flutterapi/crm/webinar", destination: "https://dashboard.finsbee.com/api/crm/webinar" },
-//       { source: "/api/flutterapi/loanremark/update", destination: "https://dashboard.finsbee.com/api/loanremark/update" },
-//       { source: "/api/flutterapi/:path*",           destination: "https://dashboard.finsbee.com/:path*" },
+//       { source: "/api/flutterapi/crm/webinar", destination: "https://payday.finsbee.com/api/crm/webinar" },
+//       { source: "/api/flutterapi/loanremark/update", destination: "https://payday.finsbee.com/api/loanremark/update" },
+//       { source: "/api/flutterapi/:path*",           destination: "https://payday.finsbee.com/:path*" },
 //       { source: "/api/2factor-proxy", destination: "https://2factor.in/" },
 //       { source: "/api/2factor/:path*", destination: "https://2factor.in/API/V1/:path*" },
 //       { source: "/api/booking/:path*", destination: "https://booking.finsbee.com/api/bookings/:path*" },
-//       { source: "/api/dashboard/:path*", destination: "https://dashboard.finsbee.com/api/bookings/:path*" },
+//       { source: "/api/dashboard/:path*", destination: "https://payday.finsbee.com/api/bookings/:path*" },
 //     ];
 //   },
 
@@ -79,10 +79,10 @@ const nextConfig = {
     // { source: "/api/flutterapi/customer/profile", destination: "/api/customer/profile" },
     // { source: "/api/flutterapi/customer/loan",    destination: "/api/customer/loan" },
     // { source: "/api/flutterapi/check-phone",      destination: "/api/check-phone" },
-    // { source: "/api/flutterapi/bre/website",      destination: "https://dashboard.finsbee.com/api/bre/website" },
-    // { source: "/api/flutterapi/crm/webinar",      destination: "https://dashboard.finsbee.com/api/crm/webinar" },
-    // { source: "/api/flutterapi/loanremark/update", destination: "https://dashboard.finsbee.com/api/loanremark/update" },
-    // { source: "/api/flutterapi/:path*",           destination: "https://dashboard.finsbee.com/:path*" },
+    // { source: "/api/flutterapi/bre/website",      destination: "https://payday.finsbee.com/api/bre/website" },
+    // { source: "/api/flutterapi/crm/webinar",      destination: "https://payday.finsbee.com/api/crm/webinar" },
+    // { source: "/api/flutterapi/loanremark/update", destination: "https://payday.finsbee.com/api/loanremark/update" },
+    // { source: "/api/flutterapi/:path*",           destination: "https://payday.finsbee.com/:path*" },
     { source: "/api/flutterapi/bre/website", destination: "https://payday.finsbee.com/api/bre/website" },
 { source: "/api/flutterapi/crm/webinar", destination: "https://payday.finsbee.com/api/crm/webinar" },
 { source: "/api/flutterapi/loanremark/update", destination: "https://payday.finsbee.com/api/loanremark/update" },
@@ -105,7 +105,7 @@ const nextConfig = {
 
     // Your other rewrites
     { source: "/api/booking/:path*", destination: "https://booking.finsbee.com/api/bookings/:path*" },
-    // { source: "/api/dashboard/:path*", destination: "https://dashboard.finsbee.com/api/bookings/:path*" },
+    // { source: "/api/dashboard/:path*", destination: "https://payday.finsbee.com/api/bookings/:path*" },
   ];
 },
 

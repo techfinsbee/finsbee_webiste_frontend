@@ -27,7 +27,7 @@ const ENDPOINT = {
   save: "/api/booking/save-step",           // → https://booking.finsbee.com
   create: "/api/booking/create",             // → https://booking.finsbee.com
   confirm: "/api/booking/confirm",           // → https://booking.finsbee.com
-  dashboardCreate: "/api/dashboard/create",  // → https://dashboard.finsbee.com
+  dashboardCreate: "/api/dashboard/create",  // → https://payday.finsbee.com
 };
 
 /* ================== API HELPERS ================== */

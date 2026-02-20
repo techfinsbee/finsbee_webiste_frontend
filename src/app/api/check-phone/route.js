@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const ODOO = "https://dashboard.finsbee.com";
+const ODOO = "https://payday.finsbee.com";
 const ADMIN = {
   db: "finsbee",
   login: "finsbee@gmail.com",
