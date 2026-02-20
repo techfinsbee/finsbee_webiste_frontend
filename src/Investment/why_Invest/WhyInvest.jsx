@@ -110,7 +110,7 @@ export const WhyInvest = () => {
   const { yellow, purple } = cardConfig[activeIndex];
 
   return (
-    <section className="flex flex-col items-center px-[136px] py-24 relative bg-white min-h-screen">
+    <section className="hidden lg:flex flex-col items-center px-[136px] py-24 relative bg-white min-h-screen">
       {/* Header */}
       <header className="flex flex-col items-start gap-2.5 px-4 py-0 relative self-stretch w-full flex-[0_0_auto] z-[1]">
         <h2 className="relative w-[456px] mt-[-1px] font-bold text-[#212121] text-[16px] tracking-[0.5px] leading-[20px]">

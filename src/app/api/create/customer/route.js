@@ -707,6 +707,7 @@ export async function POST(request) {
                 phone: cleanPhone,
                 mobile: cleanPhone,
                 email: email || "",
+                source_id: "finsbee-website",
               },
             ],
           ],
