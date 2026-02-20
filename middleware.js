@@ -108,6 +108,7 @@ export async function middleware(req) {
     "/_next",           // Next.js assets
     "/api",             // API routes already handled
     "/favicon.ico",
+    
   ];
 
   // const protectedPaths = [
@@ -125,10 +126,10 @@ export async function middleware(req) {
 const isDashboard = pathname.startsWith("/dashboard");
 
 // Protect any route like /something/form
-const isLoanForm = /^\/[^\/]+\/form$/.test(pathname);
+// const isLoanForm = /^\/[^\/]+\/form$/.test(pathname);
 
 // 🔥 Protect dynamic loan pages like /personal-loan
-const isLoanPage = /^\/[a-z-]+$/.test(pathname) && !publicPaths.includes(pathname);
+// const isLoanPage = /^\/[a-z-]+$/.test(pathname) && !publicPaths.includes(pathname);
 
 const isProtected = isDashboard || isLoanForm || isLoanPage;
 
