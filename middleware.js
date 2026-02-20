@@ -99,17 +99,33 @@ export async function middleware(req) {
 
   // ────────────────────────────────────────────────
   // 4. Protected & public routes
-  // ────────────────────────────────────────────────
-  const publicPaths = [
-    "/",
-    "/login",
-    "/verify-otp",
-    "/register",
-    "/_next",           // Next.js assets
-    "/api",             // API routes already handled
-    "/favicon.ico",
-    
-  ];
+ // ────────────────────────────────────────────────
+// 4. Protected & public routes
+// ────────────────────────────────────────────────
+
+const publicPaths = [
+  "/",
+  "/login",
+  "/verify-otp",
+  "/register",
+  "/_next",
+  "/api",
+  "/favicon.ico",
+];
+
+const isPublic = publicPaths.some(
+  (p) => pathname === p || pathname.startsWith(p)
+);
+
+// Only dashboard is protected
+const isDashboard = pathname.startsWith("/dashboard");
+
+const isProtected = isDashboard;
+
+// Skip auth check for public paths
+if (isPublic && !isProtected) {
+  return NextResponse.next();
+}
 
   // const protectedPaths = [
   //   "/dashboard",       // add more protected routes here if needed
@@ -117,29 +133,9 @@ export async function middleware(req) {
   //   // "/investment",
   // ];
 
-  const isPublic = publicPaths.some(p => pathname === p || pathname.startsWith(p));
-  // 4️⃣ Detect protected routes
-
-
-// 4️⃣ Detect protected routes
-
-const isDashboard = pathname.startsWith("/dashboard");
-
-// Protect any route like /something/form
-// const isLoanForm = /^\/[^\/]+\/form$/.test(pathname);
-
-// 🔥 Protect dynamic loan pages like /personal-loan
-// const isLoanPage = /^\/[a-z-]+$/.test(pathname) && !publicPaths.includes(pathname);
-
-const isProtected = isDashboard || isLoanForm || isLoanPage;
-
-
   // const isProtected = protectedPaths.some(p => pathname === p || pathname.startsWith(p));
 
-  // Skip auth check for public paths and static files
-  if (isPublic && !isProtected) {
-    return NextResponse.next();
-  }
+  
 
   // ────────────────────────────────────────────────
   // 5. Read auth from cookie (set after successful login)
