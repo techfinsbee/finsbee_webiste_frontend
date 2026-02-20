@@ -33,5 +33,10 @@ export const loanConfig = {
     title: "Instant Loan",
     steps: 5,
     component: "InstantLoanForm"
+  },
+  "education-loan": {
+    title: "Education Loan",
+    steps: 5,
+    component: "EducationLoanForm"
   }
 };

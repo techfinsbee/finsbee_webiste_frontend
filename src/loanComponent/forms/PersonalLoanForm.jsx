@@ -509,6 +509,11 @@ export default function PersonalLoanForm({ extraData, loanType, onBack }) {
       minimumIncome = 25000;
     }
 
+    // Education Loan rule
+    if (loanType === "Education-Loan") {
+      minimumIncome = 30000;
+    }
+
     if (!rejected && income < minimumIncome) {
       rejected = true;
       reason = `Monthly income is below ₹${minimumIncome.toLocaleString()}`;

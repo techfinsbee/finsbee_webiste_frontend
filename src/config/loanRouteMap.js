@@ -3,7 +3,7 @@ export const loanRouteMap = {
   "/apply-for-personal-loan-online": "personal-loan",
   "/personal-loan-for-self-employed": "personal-loan",
   "/personal-loan-for-government-employees": "personal-loan",
-  "/education-loan": "personal-loan",
+ 
   "/medical-loan-for-emergency": "personal-loan",
   "/travel-loan": "personal-loan",
   "/home-renovation-loan": "personal-loan",
@@ -40,4 +40,10 @@ export const loanRouteMap = {
   "/commercial-vehicle-loan": "auto-loan",
   "/used-car-loan": "auto-loan",
   "/loan-against-car": "auto-loan",
+
+  // ---------------- EDUCATION ----------------
+  "/apply-for-education-loan": "education-loan",
+  // "/student-loan": "education-loan",
+  // "/loan-for-abroad-studies": "education-loan",
+  // "/loan-for-professional-course": "education-loan",
 };

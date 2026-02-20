@@ -496,6 +496,7 @@ import HomeLoanForm from "@/loanComponent/forms/HomeLoanForm";
 import LAPLoanForm from "@/loanComponent/forms/LAPLoanForm";
 import LasLoanForm from "@/loanComponent/forms/LASLoanForm";
 import InstantLoanForm from "@/loanComponent/forms/InstatntLoanForm";
+import EducationLoanForm from "@/loanComponent/forms/EducationLoanForm";
 
 export default function DynamicLoanPage() {
   const router = useRouter();
@@ -533,7 +534,8 @@ useEffect(() => {
         return <LAPLoanForm step={step} setStep={setStep} />;
       case "InstantLoanForm":
         return <InstantLoanForm step={step} setStep={setStep} loanType="Instant-Loan" />;
-
+      case "EducationLoanForm":
+        return <EducationLoanForm step={step} setStep={setStep} loanType="Education-Loan" />;
       default:
         return null;
     }

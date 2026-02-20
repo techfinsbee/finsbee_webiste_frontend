@@ -13,6 +13,7 @@ const dropdownData = {
       "Business Loan",
       "Loan Against Properties",
       "Home Loan",
+      "Education Loan",
       "Loan Against Securities",
     ],
     content: {
@@ -21,7 +22,7 @@ const dropdownData = {
           { label: "Apply for Personal Loan Online", path: "/apply-for-personal-loan-online" },
           { label: "Personal Loan for Self Employed", path: "/personal-loan-for-self-employed" },
           { label: "Personal Loan for Government Employees", path: "/personal-loan-for-government-employees"},
-          { label: "Education Loan", path: "/education-loan"},
+          // { label: "Education Loan", path: "/education-loan"},
         ],
         column2: [
           { label: "Medical Loan for Emergency", path: "/medical-loan-for-emergency" },
@@ -52,6 +53,11 @@ const dropdownData = {
       "Home Loan": {
         column1: [
           { label: "Apply for Home Loan", path: "/apply-for-home-loan" },
+        ]
+      },
+      "Education Loan": {
+        column1: [
+          { label: "Apply for Education Loan", path: "/apply-for-education-loan" },
         ]
       },
       "Loan Against Securities": {
@@ -218,9 +224,9 @@ export default function MegaMenu({ sectionKey = "loans", isSidebar = false, onCl
   const activeData = data.content[activeCategory];
 
   return (
-    <nav className="flex  w-[39rem] sm:h-[23rem] items-start gap-2 sm:gap-3 px-3 sm:px-4 py-4 sm:py-6  bg-white rounded-b-2xl shadow-lg">
+    <nav className="flex  w-[39rem] sm:h-[27rem] items-start gap-2 sm:gap-3 px-3 sm:px-4 py-4 sm:py-6  bg-white rounded-b-2xl shadow-lg">
       {/* Yellow Sidebar - same as old */}
-      <aside className="inline-flex gap-1 flex-col h-[20rem] sm:h-[21rem] bg-[#fff9ec] rounded-l-2xl overflow-hidden">
+      <aside className="inline-flex gap-1 flex-col h-[20rem] sm:h-[25rem] bg-[#fff9ec] rounded-l-2xl overflow-hidden">
         {data.categories.map((category) => (
           <button
             key={category}
