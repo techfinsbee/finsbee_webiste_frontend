@@ -25,7 +25,7 @@ export default function NotFoundUI() {
 
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden ">
+    <div className="min-h-screen w-full relative overflow-x-hidden ">
 
          {/* <div
         className="
@@ -60,7 +60,7 @@ export default function NotFoundUI() {
       />
 
       {/* ================= 404 CONTENT ================= */}
-      <div className="relative flex flex-col items-center justify-center text-center px-6 pt-24">
+     <div className="relative flex flex-col items-center text-center px-6 pt-24 pb-16">
         {/* Illustration */}
         <div className="mb-6">
           <Image
@@ -99,10 +99,6 @@ export default function NotFoundUI() {
         <Link href="/webinar-form" className="underline underline-offset-4">
              Learn Finance Free
           </Link>
-       
-    
-
-      
     </>
 
           <Link href="/Instant-form" className="underline underline-offset-4">

@@ -213,7 +213,7 @@ export default function ResponsiveFooter() {
             Have any questions? <br /> Contact Us
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-8">
+          <div className="flex flex-col sm:flex-row items-start gap-8">
             <div
               className="flex items-center gap-4 cursor-pointer hover:opacity-80"
               onClick={() => window.open("tel:+919220468743")}

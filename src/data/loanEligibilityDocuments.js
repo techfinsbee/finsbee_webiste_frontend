@@ -473,7 +473,7 @@ export const loanEligibilityDocuments = {
       },
     },
   },
-   "education-loan": {
+   "apply-for-education-loan": {
     eligibility: {
       "For Salaried Individuals": [
         "Age: 21–58 years",
@@ -776,6 +776,27 @@ export const loanEligibilityDocuments = {
      LOAN AGAINST Security
   ========================== */
   "apply-for-loan-against-securities": {
+    eligibility: {
+      "Eligibility Criteria": [
+        "Age: 21 to 70 years",
+        "Mutual fund investment: Minimum ₹1 lakh market value in eligible schemes ",
+        "Investment vintage: Minimum 6 months holding period in the mutual funds being pledged ",
+        "Eligible MF types: Equity, debt, hybrid schemes and ETFs from approved AMCs",
+      ],
+    },
+
+    documents: {
+      salaried: {
+        "Required Documents": [
+          "KYC Documents: PAN card, Aadhaar card, and a valid address proof.",
+          "Demat account statement: Latest demat statement clearly showing your eligible stock or mutual fund holdings.",
+          "Bank Statements:Last 3 months’ bank statements for the primary account where funds will be credited.",
+          "Cancelled Cheque: One cancelled cheque of your bank account for loan disbursal and mandate setup.",
+        ],
+      },
+    },
+  },
+  "loan-against-mutual-funds": {
     eligibility: {
       "Eligibility Criteria": [
         "Age: 21 to 70 years",
