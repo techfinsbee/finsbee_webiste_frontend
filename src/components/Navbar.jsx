@@ -396,7 +396,7 @@ export const Navbar = () => {
           jsonrpc: "2.0",
           method: "call",
           params: {
-            // name: `User ${phone}`,
+            name: `User ${phone}`,
             phone: phone,
             source_id: "finsbee-website",
           },
