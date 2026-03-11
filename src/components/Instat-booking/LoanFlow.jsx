@@ -1077,12 +1077,13 @@ export default function LoanFlow() {
       if (resultArray.length > 0) {
         setStep(2);
       } else {
-      router.push("/thank-you"); // redirect if no lender
+      router.push("/thank-you?source=instant-form");
     }
     } catch (error) {
       alert(error.message || "Failed to submit form.");
     }
   };
+
   // ── Rest of your validation, submit, styles ────────────────────────
   // (kept 100% identical to your code)
 
