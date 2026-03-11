@@ -153,6 +153,7 @@ export default function ClientLayout({ children }) {
       "/webinar-form",
       "/book-call",
       // "/blog",
+      "/thank-you",
       "/my-account",
       "/instant-cash-loan/form",
       "/personal-loan/form",

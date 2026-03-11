@@ -9,6 +9,7 @@ const BLOCKED_ROUTES = [
   "/booking",
   "/webinar-form",
   "/Instant-form",
+  "/thank-you",
  
 ];
 
